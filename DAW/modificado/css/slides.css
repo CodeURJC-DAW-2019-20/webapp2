@@ -1142,7 +1142,7 @@ p.uppercase, .p.uppercase,
   .slides-form input[type="number"],
   .slides-form textarea,
   .slides-form select {
-    max-width: 300px;
+    max-width: 400px;
   }
 }
 .slides-form input[type="text"]::-webkit-input-placeholder,
@@ -1896,7 +1896,7 @@ html.mobile .showForMobileInline {
   width: 33.33333%;
   white-space: nowrap;
   font-size: 16px;
-  height: 50px;
+  height: 70px;
 }
 .panel .sections > div.auto {
   width: 0.1%;
@@ -1918,6 +1918,7 @@ html.mobile .showForMobileInline {
 }
 .panel .sections > div.right {
   text-align: right;
+  margin-top: 0px;
 }
 .panel .sections > div.right ul.crop {
   padding-right: 0;
@@ -1959,9 +1960,9 @@ html.mobile .showForMobileInline {
   opacity: 1;
 }
 .panel .sections .menu.uppercase li {
-  font-size: 12px;
+  font-size: 14px;
   margin: 0 10px;
-  letter-spacing: 0.125em;
+  letter-spacing: 0.100em;
   font-weight: 600 !important;
 }
 .panel .sections .menu.uppercase li svg {
@@ -2336,12 +2337,12 @@ html.mobile .showForMobileInline {
   font-size: 0;
 }
 .pole .navigation li:after {
-  height: 20px;
-  width: 4px;
+  height: 25px;
+  width: 8px;
   display: inline-block;
   transition: 0.5s;
   text-align: right;
-  background: #fff;
+  background: #90ee90;
   border-radius: 1px;
   border: none;
 }
@@ -5513,6 +5514,7 @@ body {
 }
 
 /* Social Colors */
+/*
 .social-facebook {
   background: #3b5998 !important;
   color: #fff !important;
@@ -5926,7 +5928,7 @@ body {
 .stroke.button.social-youtube svg {
   fill: #FC0D1C !important;
 }
-
+*/
 /* Welcome new Grid! */
 .grid {
   margin-left: -2%;
@@ -6678,7 +6680,7 @@ html:not(.page-loaded) .dialog {
   form.slides-form .input-9,
   form.slides-form .input-9,
   form.slides-form .input-9 {
-    max-width: 220px;
+    max-width: 420px;
   }
 }
 @media (min-width: 768px) {
