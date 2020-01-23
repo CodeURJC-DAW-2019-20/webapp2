@@ -127,7 +127,7 @@
     </div>
     <div class="right">
       <ul class="menu trim">
-        <li><button class="button lightGreen gradient fromCenter">Sign In</button></li>
+        <li><button onclick="document.getElementById('bg-popup').style.display='block'" class="button lightGreen gradient fromCenter">Sign In</button></li>
         <li><button class="button lightGreen gradient fromCenter">Sign Up</button></li>
       </ul>
     </div>
@@ -137,6 +137,8 @@
     <div class="right"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
   </div>
 </nav>
+
+
 
 <!-- Sidebar -->
 <nav class="sidebar" data-sidebar-id="1">
@@ -159,6 +161,19 @@
     </ul>
   </div>
 </nav>
+
+<!-- POPUP Sign In-->
+<div class="bg-popup">
+    <div class="login-pop">
+      <img src="assets/img/prueba.jpg" alt="">
+      <form class="slides-form holaaa" action="">
+        <input type="email" class="input-9 ae-4 fromCenter" placeholder="Email...">
+        <input type="password" class="input-9 ae-4 fromCenter" placeholder="Password...">
+        <button id="signPopUp" class="button lightGreen gradient fromCenter">Sign In</button>
+      </form>
+    </div>
+</div>
+
 
 <!-- Slide 1 (#TDetails) -->
 <section class="slide fade-6 kenBurns" id="TDetailsScreen">
@@ -188,6 +203,8 @@
   <div class="background" style="background-image:url(assets/img/background/TDetails.jpg)"></div>
 </section>
 
+
+
 <!-- Popup Video -->
 <div class="popup autoplay" data-popup-id="9">
   <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
@@ -210,7 +227,6 @@
   <div class="content">
     <div class="container">
       <div class="wrap">
-
         <div class="fix-12-12">
           <div class="fix-7-12 left toRight">
             <h1 class="ae-1">Register a Match</h1>
@@ -232,7 +248,6 @@
   <div class="content">
     <div class="container">
       <div class="wrap">
-
         <div class="fix-12-12">
           <div class="fix-6-12 left toLeft">
             <h1 class="ae-1">Tournament Creator</h1>
@@ -309,6 +324,7 @@
     </div>
   </div>
 </div>
+
 
 
 
