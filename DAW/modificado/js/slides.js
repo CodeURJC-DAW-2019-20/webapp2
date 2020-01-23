@@ -41,6 +41,10 @@ window.hidePopupOnBodyClick = 1;
 
 var $html = $('html');
 
+document.getElementById('signPopUp').addEventListener('click',function(){
+  document.querySelector('.bg-popup').style.display = 'absolute'; 
+});
+
 //On Window load
 $(window).on('load', function(){
   window.loaded = 1;
