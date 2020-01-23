@@ -58,6 +58,30 @@ html {
   box-sizing: inherit;
 }
 
+/*  CSS PROPIO */
+.bg-popup {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.021);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-pop{
+  width: 500px;
+  height: 300px;
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  padding: 20px;
+
+}
+
+
+
 /***
  *      __  __
  *     |  \/  |     ( )
@@ -77,7 +101,7 @@ html {
 }
 
 body {
-  position: absolute;
+  
   width: 100%;
   height: 100%;
 }
