@@ -40,10 +40,18 @@ window.allowParallaxOnMobile = 1;
 window.hidePopupOnBodyClick = 1;
 
 var $html = $('html');
-
+/*
 document.getElementById('signPopUp').addEventListener('click',function(){
-  document.querySelector('.bg-popup').style.display = 'absolute'; 
+  document.querySelector('bg-popup').style.display = 'absolute'; 
 });
+
+$('#image').click(function() {
+  $('#foo').addClass('myClass');
+});
+*/
+function popupLogin(){
+  document.getElementById('salir').style.display = 'absolute';
+}
 
 //On Window load
 $(window).on('load', function(){

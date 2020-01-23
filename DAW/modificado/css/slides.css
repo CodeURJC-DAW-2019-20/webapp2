@@ -59,28 +59,44 @@ html {
 }
 
 /*  CSS PROPIO */
-.bg-popup {
+.bg-popup{
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.021);
+  background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;
   display: none;
   justify-content: center;
   align-items: center;
+  z-index: 1010;
 }
 
-.login-pop{
-  width: 500px;
-  height: 300px;
-  background-color: white;
+.signin-signup-pop{
+  width: 560px;
+  height: 400px;
+  background-color: rgb(203, 221, 125);
   border-radius: 5px;
-  text-align: center;
   padding: 20px;
-
+  position: relative;
+  text-align: center;
 }
 
+.signin-signup-pop .button{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.close{
+  position: absolute;
+  top: 0;
+  background-color: white;
+  right: 14px;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  z-index: 1011;
+}
 
 /***
  *      __  __
@@ -975,6 +991,9 @@ p.uppercase, .p.uppercase,
   margin-top: -5px;
   font-family: inherit;
 }
+.bg-popup .login-pop .slides-form{
+  z-index: 16;
+}
 .slides-form button {
   font-family: inherit;
 }
@@ -997,6 +1016,8 @@ p.uppercase, .p.uppercase,
 }
 .slides-form input[type="text"],
 .slides-form input[type="name"],
+.slides-form input[type="user-name"],
+.slides-form input[type="user-lastname"],
 .slides-form input[type="email"],
 .slides-form input[type="password"],
 .slides-form input[type="search"],
@@ -1021,9 +1042,14 @@ p.uppercase, .p.uppercase,
   border: 1px solid rgba(0, 0, 0, 0.1);
   transition: 0.15s;
 }
-.slides-form input[type="text"].flat, .slides-form input[type="text"]:focus,
+.slides-form input[type="text"].flat,
+.slides-form input[type="text"]:focus,
 .slides-form input[type="name"].flat,
 .slides-form input[type="name"]:focus,
+.slides-form input[type="user-name"].flat,
+.slides-form input[type="user-name"]:focus,
+.slides-form input[type="user-lastname"].flat,
+.slides-form input[type="user-lastname"]:focus,
 .slides-form input[type="email"].flat,
 .slides-form input[type="email"]:focus,
 .slides-form input[type="password"].flat,
@@ -1042,6 +1068,8 @@ p.uppercase, .p.uppercase,
 }
 .slides-form input[type="text"]:hover,
 .slides-form input[type="name"]:hover,
+.slides-form input[type="user-name"]:hover,
+.slides-form input[type="user-lastname"]:hover,
 .slides-form input[type="email"]:hover,
 .slides-form input[type="password"]:hover,
 .slides-form input[type="search"]:hover,
@@ -1053,6 +1081,8 @@ p.uppercase, .p.uppercase,
 }
 .slides-form input[type="text"]:focus,
 .slides-form input[type="name"]:focus,
+.slides-form input[type="user-name"]:focus,
+.slides-form input[type="user-lastname"]:focus,
 .slides-form input[type="email"]:focus,
 .slides-form input[type="password"]:focus,
 .slides-form input[type="search"]:focus,
@@ -1061,10 +1091,12 @@ p.uppercase, .p.uppercase,
 .slides-form textarea:focus,
 .slides-form select:focus {
   border-color: #2196F3;
-  z-index: 10;
+  z-index: 30;
 }
 .slides-form input[type="text"]:focus::-webkit-input-placeholder,
 .slides-form input[type="name"]:focus::-webkit-input-placeholder,
+.slides-form input[type="user-name"]:focus::-webkit-input-placeholder,
+.slides-form input[type="user-lastname"]:focus::-webkit-input-placeholder,
 .slides-form input[type="email"]:focus::-webkit-input-placeholder,
 .slides-form input[type="password"]:focus::-webkit-input-placeholder,
 .slides-form input[type="search"]:focus::-webkit-input-placeholder,
@@ -1078,6 +1110,8 @@ p.uppercase, .p.uppercase,
 }
 .slides-form input[type="text"]:focus:-moz-placeholder,
 .slides-form input[type="name"]:focus:-moz-placeholder,
+.slides-form input[type="user-name"]:focus:-moz-placeholder,
+.slides-form input[type="user-lastname"]:focus:-moz-placeholder,
 .slides-form input[type="email"]:focus:-moz-placeholder,
 .slides-form input[type="password"]:focus:-moz-placeholder,
 .slides-form input[type="search"]:focus:-moz-placeholder,
@@ -1089,21 +1123,10 @@ p.uppercase, .p.uppercase,
   font-weight: 400;
   opacity: 0;
 }
-.slides-form input[type="text"]:focus::-moz-placeholder,
-.slides-form input[type="name"]:focus::-moz-placeholder,
-.slides-form input[type="email"]:focus::-moz-placeholder,
-.slides-form input[type="password"]:focus::-moz-placeholder,
-.slides-form input[type="search"]:focus::-moz-placeholder,
-.slides-form input[type="tel"]:focus::-moz-placeholder,
-.slides-form input[type="number"]:focus::-moz-placeholder,
-.slides-form textarea:focus::-moz-placeholder,
-.slides-form select:focus::-moz-placeholder {
-  color: #242424;
-  font-weight: 400;
-  opacity: 0;
-}
 .slides-form input[type="text"]:focus:-ms-input-placeholder,
 .slides-form input[type="name"]:focus:-ms-input-placeholder,
+.slides-form input[type="user-name"]:focus:-ms-input-placeholder,
+.slides-form input[type="user-lastname"]:focus:-ms-input-placeholder,
 .slides-form input[type="email"]:focus:-ms-input-placeholder,
 .slides-form input[type="password"]:focus:-ms-input-placeholder,
 .slides-form input[type="search"]:focus:-ms-input-placeholder,
@@ -1116,6 +1139,8 @@ p.uppercase, .p.uppercase,
   opacity: 0;
 }
 .slides-form input[type="text"].round,
+.slides-form input[type="user-name"].round,
+.slides-form input[type="user-lastname"].round,
 .slides-form input[type="name"].round,
 .slides-form input[type="email"].round,
 .slides-form input[type="password"].round,
@@ -1130,6 +1155,8 @@ p.uppercase, .p.uppercase,
 }
 .slides-form input[type="text"].rounded,
 .slides-form input[type="name"].rounded,
+.slides-form input[type="user-name"].rounded,
+.slides-form input[type="user-lastname"].rounded,
 .slides-form input[type="email"].rounded,
 .slides-form input[type="password"].rounded,
 .slides-form input[type="search"].rounded,
@@ -1141,6 +1168,8 @@ p.uppercase, .p.uppercase,
 }
 .slides-form input[type="text"]:after,
 .slides-form input[type="name"]:after,
+.slides-form input[type="user-name"]:after,
+.slides-form input[type="user-lastname"]:after,
 .slides-form input[type="email"]:after,
 .slides-form input[type="password"]:after,
 .slides-form input[type="search"]:after,
@@ -1159,6 +1188,8 @@ p.uppercase, .p.uppercase,
 @media (min-width: 768px) {
   .slides-form input[type="text"],
   .slides-form input[type="name"],
+  .slides-form input[type="user-name"],
+  .slides-form input[type="user-lastname"],
   .slides-form input[type="email"],
   .slides-form input[type="password"],
   .slides-form input[type="search"],
@@ -1171,6 +1202,8 @@ p.uppercase, .p.uppercase,
 }
 .slides-form input[type="text"]::-webkit-input-placeholder,
 .slides-form input[type="name"]::-webkit-input-placeholder,
+.slides-form input[type="user-name"]::-webkit-input-placeholder,
+.slides-form input[type="user-lastname"]::-webkit-input-placeholder,
 .slides-form input[type="email"]::-webkit-input-placeholder,
 .slides-form input[type="password"]::-webkit-input-placeholder,
 .slides-form input[type="search"]::-webkit-input-placeholder,
@@ -1184,6 +1217,8 @@ p.uppercase, .p.uppercase,
 }
 .slides-form input[type="text"]:-moz-placeholder,
 .slides-form input[type="name"]:-moz-placeholder,
+.slides-form input[type="user-name"]:-moz-placeholder,
+.slides-form input[type="user-lastname"]:-moz-placeholder,
 .slides-form input[type="email"]:-moz-placeholder,
 .slides-form input[type="password"]:-moz-placeholder,
 .slides-form input[type="search"]:-moz-placeholder,
@@ -1195,21 +1230,10 @@ p.uppercase, .p.uppercase,
   font-weight: 400;
   opacity: 0.5;
 }
-.slides-form input[type="text"]::-moz-placeholder,
-.slides-form input[type="name"]::-moz-placeholder,
-.slides-form input[type="email"]::-moz-placeholder,
-.slides-form input[type="password"]::-moz-placeholder,
-.slides-form input[type="search"]::-moz-placeholder,
-.slides-form input[type="tel"]::-moz-placeholder,
-.slides-form input[type="number"]::-moz-placeholder,
-.slides-form textarea::-moz-placeholder,
-.slides-form select::-moz-placeholder {
-  color: #242424;
-  font-weight: 400;
-  opacity: 0.5;
-}
 .slides-form input[type="text"]:-ms-input-placeholder,
 .slides-form input[type="name"]:-ms-input-placeholder,
+.slides-form input[type="user-name"]:-ms-input-placeholder,
+.slides-form input[type="user-lastname"]:-ms-input-placeholder,
 .slides-form input[type="email"]:-ms-input-placeholder,
 .slides-form input[type="password"]:-ms-input-placeholder,
 .slides-form input[type="search"]:-ms-input-placeholder,
@@ -1237,6 +1261,8 @@ p.uppercase, .p.uppercase,
 }
 .slides-form input[type="text"],
 .slides-form input[type="name"],
+.slides-form input[type="user-name"],
+.slides-form input[type="user-lastname"],
 .slides-form input[type="email"],
 .slides-form input[type="password"],
 .slides-form input[type="search"],
@@ -1251,6 +1277,8 @@ p.uppercase, .p.uppercase,
 @media (max-width: 768px) {
   .slides-form input[type="text"],
   .slides-form input[type="name"],
+  .slides-form input[type="user-name"],
+  .slides-form input[type="user-lastname"],
   .slides-form input[type="email"],
   .slides-form input[type="password"],
   .slides-form input[type="search"],
@@ -1268,6 +1296,8 @@ p.uppercase, .p.uppercase,
 }
 .slides-form input[type="text"].wide,
 .slides-form input[type="name"].wide,
+.slides-form input[type="user-name"].wide,
+.slides-form input[type="user-lastname"].wide,
 .slides-form input[type="email"].wide,
 .slides-form input[type="password"].wide,
 .slides-form input[type="search"].wide,
