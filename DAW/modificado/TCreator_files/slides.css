@@ -74,7 +74,7 @@ html {
 a.visited {
   color: white;
   pointer-events: none;
-  border-bottom: 3px solid rgb(203, 221, 125);
+  border-bottom: 3px solid lightGreen;
 
 }
 
