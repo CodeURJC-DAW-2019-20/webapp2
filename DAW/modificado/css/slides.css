@@ -71,6 +71,11 @@ html {
   z-index: 1010;
 }
 
+a.visited {
+  color: white;
+  pointer-events: none;
+}
+
 .signin-signup-pop{
   width: 560px;
   height: 400px;
