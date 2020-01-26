@@ -79,8 +79,8 @@
     <!--==========================
       Contact Section
     ============================-->
-    <section id="contact" class="section-bg wow fadeInUp section-fill">
-        <div class="container">
+    <section id="contact" class="section-bg wow fadeInUp">
+        <div class="container container-thin">
 
             <div class="section-header">
                 <h3>Sign in</h3>
@@ -92,21 +92,20 @@
                 <div id="errormessage"></div>
                 <form action="" method="post" role="form" class="contactForm">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Email or username" data-rule="minlen:1" data-msg="Enter username or email" />
                         <div class="validation"></div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" data-rule="minlen:1" data-msg="Enter a password" />
                         <div class="validation"></div>
                     </div>
-                    <div class="form-group">
-                        <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                        <div class="validation"></div>
-                    </div>
-                    <div class="text-center"><button type="submit">Send Message</button></div>
+                    <div class="text-center pt-3"><button type="submit">Log in</button></div>
                 </form>
             </div>
 
+        </div>
+        <div class="container text-center">
+            <p class="pt-3">New to Tenniship? <a href="" >Create an account!</a></p>
         </div>
     </section><!-- #contact -->
 
@@ -134,7 +133,7 @@
 </footer><!-- #footer -->
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-<!-- Uncomment below i you want to use a preloader -->
+<!-- Uncomment below if you want to use a preloader -->
 <div id="preloader"></div>
 
 <!-- JavaScript Libraries -->

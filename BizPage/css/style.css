@@ -1586,3 +1586,9 @@ body.mobile-nav-active #mobile-nav-toggle {
     display: inline;
   }
 }
+
+/* Other */
+
+.container-thin {
+  max-width: 650px;
+}
