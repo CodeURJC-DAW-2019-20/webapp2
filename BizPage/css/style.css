@@ -1334,6 +1334,14 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-weight: 400;
   font-size: 13px;
 }
+.form-control:focus {
+  border-color: #18d26e;
+  border-width: 2px;
+}
+.btn-outline-success{
+  border-color: #18d26e;
+  color: #18d26e;
+}
 
 #contact .form input,
 #contact .form textarea {
