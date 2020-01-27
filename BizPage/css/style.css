@@ -9,6 +9,10 @@
 # General
 --------------------------------------------------------------*/
 
+html {
+  background: #000;
+}
+
 body {
   background: #f7f7f7;
   color: #666666;
@@ -1369,14 +1373,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------------------------------------*/
 
 #footer {
-  background: #000;
+  background: linear-gradient(#848484,#000);
   padding: 0 0 30px 0;
   color: #eee;
   font-size: 14px;
 }
 
 #footer .footer-top {
-  background: #111;
   padding: 60px 0 30px 0;
 }
 
