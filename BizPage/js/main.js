@@ -208,7 +208,7 @@
 // Adaptive footer for short pages
 
 var shortContent = function() {
-  if($(window).height() > $('body').height()) {
+  if($(window).height() >= ($('body').height() + 92)) {
     $('footer').addClass('shortContent');
   }
 
