@@ -2,12 +2,16 @@
 # General
 --------------------------------------------------------------*/
 
+html {
+  height: 100%;
+}
+
 body {
   background: #f7f7f7;
   color: #000;
   font-family: "Open Sans", sans-serif;
-  height: 100vh;
   min-height: 100vh;
+  padding-top: 92px;
 }
 
 a {
@@ -1131,6 +1135,16 @@ div.img {
   #mobile-nav-toggle {
     display: inline;
   }
+}
+
+/* Responsive footer for short pages */
+
+#footer.shortContent {
+  margin-top:10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 /* Other */

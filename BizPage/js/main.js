@@ -205,3 +205,22 @@
 
 })(jQuery);
 
+// Adaptive footer for short pages
+
+var shortContent = function() {
+  if($(window).height() > $('body').height()) {
+    $('footer').addClass('shortContent');
+  }
+
+};
+
+(function(){
+
+  shortContent();
+
+  $(window).resize(function() {
+    shortContent();
+  });
+
+}());
+
