@@ -123,7 +123,7 @@ h6 {
 --------------------------------------------------------------*/
 
 #header {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 1);
   padding: 30px 0;
   height: 92px;
   position: fixed;
@@ -1255,4 +1255,17 @@ h5 {
   font-weight: 500;
   font-size: 14px;
   text-transform: uppercase;
+}
+
+/* This part corresponds to the addition of the image in the Logo section during the Account Registration*/
+.avatar-pic {
+  width: 150px;
+}
+
+.mb-4{
+  text-align:center;
+}
+/* Correction for the footer*/
+main#main {
+  margin-bottom: 50px;
 }
