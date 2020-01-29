@@ -1,0 +1,78 @@
+/* -----------------------
+-------- TEAM.CSS --------
+-------------------------- */
+
+
+#main {
+    margin-top: 50px;
+}
+
+h3 {
+    margin-top: 30px;
+}
+
+/* Team icon */
+
+.team-icon {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content:center;
+    align-items:center;
+}
+
+img.team-img, .linescroll span img {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+}
+
+/* Players */
+
+.player-card {
+    min-width: 136px;
+    width: calc(100% / 5);
+}
+
+/* Tournament scroller list */
+.linescroll {
+    position: relative;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.linescroll span {
+    display: inline-flex;
+    width: 200px;
+    height: 200px;
+    align-items:center;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #dfdfdf;
+    margin: 0 10px 0 10px;
+}
+
+.linescroll .ls-prev {
+    display: block;
+    position: absolute;
+    border: 20px solid transparent;
+    border-right: 20px solid #18d26e;
+    bottom: calc(50% - 20px);
+    left: -20px;
+    cursor: pointer;
+}
+
+.linescroll .ls-next {
+    display: block;
+    position: absolute;
+    border: 20px solid transparent;
+    border-left: 20px solid #18d26e;
+    bottom: calc(50% - 20px);
+    right: -20px;
+    cursor: pointer;
+}
+

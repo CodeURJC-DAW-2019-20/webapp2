@@ -43,6 +43,11 @@ h6 {
   padding: 0;
 }
 
+.btn.btn-primary {
+  background-color: #18d26e;
+  border-color: #18d26e;
+}
+
 /* Back to top button */
 
 .back-to-top {
