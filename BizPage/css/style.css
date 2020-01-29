@@ -118,6 +118,18 @@ h6 {
   }
 }
 
+/* Custom button theming colors */
+
+.btn.btn-primary {
+  background-color: #18d26e;
+  border-color: #18d26e;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+  background-color: #15a959;
+  border-color: #15a959;
+}
+
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -220,7 +232,7 @@ h6 {
   content: "\f107";
   position: absolute;
   right: 15px;
-  font-family: FontAwesome;
+  font-family: FontAwesome, sans-serif;
   font-style: normal;
   font-weight: normal;
 }
@@ -262,7 +274,7 @@ h6 {
 .nav-menu ul {
   margin: 4px 0 0 0;
   padding: 10px;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  box-shadow: 0 0 30px rgba(127, 137, 161, 0.25);
   background: #fff;
 }
 
@@ -532,7 +544,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #home .home-col {
   background: #fff;
   border-radius: 0 0 4px 4px;
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   margin-bottom: 20px;
 }
 
@@ -558,7 +570,6 @@ div.img {
   position: absolute;
   background-color: #18d26e;
   border-radius: 50%;
-  text-align: center;
   border: 4px solid #fff;
   left: calc( 50% - 32px);
   bottom: -30px;
@@ -1145,12 +1156,12 @@ h5 {
 }
 
 #registerMatchSelectTournament .registerMatchSelectTournament-wrap {
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   transition: 0.3s;
 }
 
 #registerMatchSelectTournament .registerMatchSelectTournament-wrap:hover {
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
 }
 
 #registerMatchSelectTournament .registerMatchSelectTournament-item {
