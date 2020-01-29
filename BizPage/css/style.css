@@ -1382,3 +1382,19 @@ main#main {
 #scoreboard{
   margin-left:-23%;
 }
+
+#tournamentSheetChart {
+	margin: auto;
+	position: relative;
+}
+
+#tournamentSheetButtons {
+	left: 0%;
+}
+
+#TournamentChartDisplay {
+	position: relative;
+	margin: auto;
+	/*width: 80%;*/
+	padding: 4%;
+}
