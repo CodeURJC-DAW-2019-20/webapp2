@@ -228,7 +228,6 @@ h6 {
     min-width: 180px;
 }
 
-
 /* Nav Menu Arrows */
 
 .sf-arrows .sf-with-ul {
@@ -248,14 +247,12 @@ h6 {
     content: "\f105";
 }
 
-
 /* Nav Meu Container */
 
 #nav-menu-container {
     float: right;
     margin: 0;
 }
-
 
 /* Nav Meu Styling */
 
@@ -308,7 +305,6 @@ h6 {
     margin: 0;
 }
 
-
 /* Mobile Nav Toggle */
 
 #mobile-nav-toggle {
@@ -329,7 +325,6 @@ h6 {
 #mobile-nav-toggle i {
     color: #fff;
 }
-
 
 /* Mobile Nav Styling */
 
@@ -415,7 +410,6 @@ h6 {
     display: none;
 }
 
-
 /* Mobile Nav body classes */
 
 body.mobile-nav-active {
@@ -430,18 +424,15 @@ body.mobile-nav-active #mobile-nav-toggle {
     color: #fff;
 }
 
-
 /*--------------------------------------------------------------
 # Sections
 --------------------------------------------------------------*/
-
 
 /* Margin before the first section */
 
 .section-header:first-of-type h3 {
     margin-top: 60px;
 }
-
 
 /* Sections Header
 --------------------------------*/
@@ -529,7 +520,6 @@ body.mobile-nav-active #mobile-nav-toggle {
     color: #fff;
     margin-bottom: 0;
 }
-
 
 /* HOME Section
 --------------------------------*/
