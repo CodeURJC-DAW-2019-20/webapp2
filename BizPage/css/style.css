@@ -1395,11 +1395,27 @@ main#main {
     }
 }
 
-#scoreboard {
-    margin-left: -23%;
+
+.scoreboard1 {
+    margin-left: -15%;
+    margin-right:5%;
 }
 
+.scoreboard2 {
+    margin-left: -7%;
+}
 
+.rackets{
+    background: white;
+}
+
+.TeamPositioningRegisterMatchIconVisitor{
+    text-align: right;
+}
+
+.TeamPositioningRegisterMatchIconLocal{
+    text-align:left;
+}
 /*Tournament Sheet*/
 
 #tournamentSwitch {
