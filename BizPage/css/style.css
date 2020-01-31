@@ -1191,10 +1191,10 @@ h5 {
     margin: 0;
 }
 
-#registerMatchSelectTournament .registerMatchSelectTournament-item figure:hover img {
+/*#registerMatchSelectTournament .registerMatchSelectTournament-item figure:hover img {
     opacity: 0.4;
     transition: 0.3s;
-}
+}*/
 
 #registerMatchSelectTournament .registerMatchSelectTournament-item figure .link-preview,
 #registerMatchSelectTournament .registerMatchSelectTournament-item figure .link-details {
@@ -1250,7 +1250,7 @@ h5 {
 #registerMatchSelectTournament .registerMatchSelectTournament-item .registerMatchSelectTournament-info {
     background: #fff;
     text-align: center;
-    padding: 30px;
+    padding-top: 30px;
     height: 90px;
     border-radius: 0 0 3px 3px;
 }
@@ -1313,6 +1313,18 @@ main#main {
     text-align: right;
 }
 
+.card-text.TeamPositioningRegisterMatchIconLocal {
+    background: #d4f7e4;
+    border-radius: 0 50px 50px 0;
+    padding-left: 10px;
+}
+
+.card-text.TeamPositioningRegisterMatchIconVisitor {
+    background: #ffe5c7;
+    border-radius: 50px 0 0 50px;
+    padding-right: 10px;
+}
+
 .number-input input[type="number"] {
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
@@ -1358,7 +1370,6 @@ main#main {
 
 .number-input.number-input {
     border: 1px solid #ced4da;
-    width: 10rem;
     border-radius: .25rem;
 }
 
@@ -1378,7 +1389,7 @@ main#main {
 }
 
 .number-input.number-input input[type=number] {
-    max-width: 4rem;
+    width: calc(100% - 100px);
     padding: .5rem;
     border: 1px solid #ced4da;
     border-width: 0 1px;
@@ -1395,18 +1406,20 @@ main#main {
     }
 }
 
-
-.scoreboard1 {
-    margin-left: -15%;
-    margin-right:5%;
+.registerMatchSelectTournament-info .scoreholder {
+    padding: 0 10px;
 }
 
-.scoreboard2 {
-    margin-left: -7%;
+.TeamPositioningRegisterMatchIconLocal .quantity {
+    background: #d4f7e4;
+}
+
+.TeamPositioningRegisterMatchIconVisitor .quantity {
+    background: #ffe5c7;
 }
 
 .rackets{
-    background: white;
+    background: linear-gradient(90deg, white, #848484, white);
 }
 
 .TeamPositioningRegisterMatchIconVisitor{
@@ -1445,7 +1458,7 @@ main#main {
 }
 
 #tournamentSheetButtons {
-    left: 0%;
+    left: 0;
 }
 
 .groupHeader {
