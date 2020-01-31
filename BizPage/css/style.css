@@ -1434,15 +1434,16 @@ main#main {
 }
 
 .groupStage {
-    padding: 0 8%;
-    border: 1px solid black;
+    padding: 5px 15px;
+    background: #d4d4d4;
+    border-radius: 5px;
     text-align: center;
 }
 
 .TournamentGroup {
-    margin-bottom: 5%;
+    margin: 5px 0;
     padding-bottom: 1%;
-    border-bottom: 0.01em solid #007bff;
+    border-bottom: 1px solid #007bff;
 }
 
 .tournamentBoard {
@@ -1461,7 +1462,7 @@ main#main {
 
 .groupHeader {
     padding-bottom: 3%;
-    font-size: large;
+    font-weight: bold;
 }
 
 #TournamentChartDisplay {
@@ -1469,6 +1470,12 @@ main#main {
     margin: auto;
     /*width: 80%;*/
     padding: 4%;
+}
+
+.groupCard {
+    min-width: 300px;
+    width: calc(100%/3 - 20px);
+    margin: 5px;
 }
 
 
