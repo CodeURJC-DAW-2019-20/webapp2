@@ -28,7 +28,7 @@ a:focus {
 
 p {
   padding: 0;
-  margin: 0 0 30px 0;
+  margin: 0 0 45px 0;
 }
 
 h1,
@@ -652,9 +652,9 @@ div.img {
   background: #13a456;
 }
 
- /*
- creator
- */
+/*
+creator
+*/
 
 #creator {
   padding: 60px 0;
@@ -741,12 +741,57 @@ div.img {
 
 #setting {
   padding: 60px 0;
-  height: 100vh;
-  min-height: 100vh;
+}
+
+#setting .container{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+#setting .container-separation{
+  width: 50%;
+}
+
+#setting #Title{
+  margin-top: 30px;
+}
+
+#setting .form h3{
+  font-size: 27px;
+  color:#111;
+  padding-left: 10px;
+  border-left: 4px solid#18d26e;
+  position: relative;
+  right: 60px;
+}
+
+#setting .form h5{
+  font-size: 22px;
+  color:#111;
+  padding-left: 10px;
+  border-left: 4px solid#108c49;
+  position: relative;
+  right: 23px;
+  margin-top: 40px;
+}
+
+#setting .btn{
+  background:#18d26e;
+  color:white !important;
+}
+
+#setting .button a:hover {
+  background: #13a456;
+  color: #000!important;
 }
 
 #setting p {
   text-align: center;
+}
+
+#setting .separation {
+  margin-top: 45px;
 }
 
 #setting .setting-info {
@@ -1123,6 +1168,14 @@ h5 {
   padding: 60px 0;
 }
 
+#registerMatchSelectTournament h3{
+  margin-top: 0px; /*No Delete*/
+}
+
+#registerMatchSelectTournament header{
+  margin-bottom: 60px;
+}
+
 #registerMatchSelectTournament #registerMatchSelectTournament-flters {
   padding: 0;
   margin: 5px 0 35px 0;
@@ -1384,19 +1437,19 @@ main#main {
 }
 
 #tournamentSheetChart {
-	margin: auto;
-	position: relative;
+  margin: auto;
+  position: relative;
 }
 
 #tournamentSheetButtons {
-	left: 0%;
+  left: 0%;
 }
 
 #TournamentChartDisplay {
-	position: relative;
-	margin: auto;
-	/*width: 80%;*/
-	padding: 4%;
+  position: relative;
+  margin: auto;
+  /*width: 80%;*/
+  padding: 4%;
 }
 
 /* TCreator Section
@@ -1414,8 +1467,13 @@ main#main {
   max-width: 100%;
 }
 
+#TCreator .section-header p{
+  text-align: center;
+  margin-bottom: 40px;
+}
+
 #TCreator header>h3 {
-  margin-top: 60px;
+  margin-top: 0px;
 }
 
 #TCreator p {
@@ -1546,6 +1604,18 @@ main#main {
 #navbarTogglerDemo01{
   align-self: first baseline;
 }
+
+
+.TCreatorNew form{
+  align-content: center;
+  display: grid;
+  justify-content: center;
+}
+
+.TCreatorNew p{
+  margin-top: 5px;
+}
+
 
 .TCreatorTitles h3{
   float: left;
@@ -1721,10 +1791,10 @@ main#main {
   text-align: center;
   font-size: 30px;
   color:#111;
-  padding-left: 10px; 
+  padding-left: 10px;
   border-left: 4px solid#18d26e;
-  border-right: 4px solid#18d26e; 
-  padding-right: 10px;  
+  border-right: 4px solid#18d26e;
+  padding-right: 10px;
   text-transform: uppercase;
 }
 
@@ -1734,13 +1804,13 @@ main#main {
 }
 
 .created p {
-  margin-top: 40px; 
+  margin-top: 40px;
   margin-bottom: 40px!important;
   text-align: center;
 }
 
 .created .buttons{
-  display: flex;  
+  display: flex;
   justify-content: space-around;
 }
 
