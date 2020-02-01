@@ -27,8 +27,8 @@ a:focus {
 }
 
 p {
-    padding: 0;
-    margin: 0 0 45px 0;
+  padding: 0;
+  margin: 0 0 45px 0;
 }
 
 h1,
@@ -1442,7 +1442,7 @@ main#main {
 }
 
 #tournamentSheetButtons {
-    left: 0%;
+    left: 0;
 }
 
 #TournamentChartDisplay {
