@@ -27,8 +27,8 @@ a:focus {
 }
 
 p {
-  padding: 0;
-  margin: 0 0 45px 0;
+    padding: 0;
+    margin: 0 0 30px 0;
 }
 
 h1,
@@ -42,6 +42,7 @@ h6 {
     margin: 0 0 20px 0;
     padding: 0;
 }
+
 
 /* Back to top button */
 
@@ -66,6 +67,7 @@ h6 {
     padding-top: 12px;
     color: #fff;
 }
+
 
 /* Prelaoder */
 
@@ -99,7 +101,6 @@ h6 {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
-
     100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
@@ -111,12 +112,12 @@ h6 {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
-
     100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
 }
+
 
 /* Custom button theming colors */
 
@@ -125,10 +126,13 @@ h6 {
     border-color: #18d26e;
 }
 
-.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
     background-color: #15a959;
     border-color: #15a959;
 }
+
 
 /*--------------------------------------------------------------
 # Header
@@ -178,9 +182,11 @@ h6 {
     margin: 0;
 }
 
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
+
 
 /* Nav Menu Essentials */
 
@@ -204,12 +210,12 @@ h6 {
     white-space: nowrap;
 }
 
-.nav-menu > li {
+.nav-menu>li {
     float: left;
 }
 
-.nav-menu li:hover > ul,
-.nav-menu li.sfHover > ul {
+.nav-menu li:hover>ul,
+.nav-menu li.sfHover>ul {
     display: block;
 }
 
@@ -221,6 +227,7 @@ h6 {
 .nav-menu ul li {
     min-width: 180px;
 }
+
 
 /* Nav Menu Arrows */
 
@@ -241,12 +248,14 @@ h6 {
     content: "\f105";
 }
 
+
 /* Nav Meu Container */
 
 #nav-menu-container {
     float: right;
     margin: 0;
 }
+
 
 /* Nav Meu Styling */
 
@@ -262,12 +271,12 @@ h6 {
     outline: none;
 }
 
-.nav-menu li:hover > a,
-.nav-menu > .menu-active > a {
+.nav-menu li:hover>a,
+.nav-menu>.menu-active>a {
     color: #18d26e;
 }
 
-.nav-menu > li {
+.nav-menu>li {
     margin-left: 10px;
 }
 
@@ -291,13 +300,14 @@ h6 {
     text-transform: none;
 }
 
-.nav-menu ul li:hover > a {
+.nav-menu ul li:hover>a {
     color: #18d26e;
 }
 
 .nav-menu ul ul {
     margin: 0;
 }
+
 
 /* Mobile Nav Toggle */
 
@@ -319,6 +329,7 @@ h6 {
 #mobile-nav-toggle i {
     color: #fff;
 }
+
 
 /* Mobile Nav Styling */
 
@@ -404,6 +415,7 @@ h6 {
     display: none;
 }
 
+
 /* Mobile Nav body classes */
 
 body.mobile-nav-active {
@@ -418,15 +430,18 @@ body.mobile-nav-active #mobile-nav-toggle {
     color: #fff;
 }
 
+
 /*--------------------------------------------------------------
 # Sections
 --------------------------------------------------------------*/
+
 
 /* Margin before the first section */
 
 .section-header:first-of-type h3 {
     margin-top: 60px;
 }
+
 
 /* Sections Header
 --------------------------------*/
@@ -463,12 +478,14 @@ body.mobile-nav-active #mobile-nav-toggle {
     left: calc(50% - 20px);
 }
 
+
 /* Section with background
 --------------------------------*/
 
 .section-bg {
     background: #f7f7f7;
 }
+
 
 /* Featured Services Section
 --------------------------------*/
@@ -512,6 +529,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     color: #fff;
     margin-bottom: 0;
 }
+
 
 /* HOME Section
 --------------------------------*/
@@ -616,6 +634,7 @@ div.img {
     padding: 0 20px 20px 20px;
 }
 
+
 /* Register Section
 --------------------------------*/
 
@@ -652,9 +671,10 @@ div.img {
     background: #13a456;
 }
 
+
 /*
-creator
-*/
+ creator
+ */
 
 #creator {
     padding: 60px 0;
@@ -686,6 +706,7 @@ creator
     text-align: left;
     transition: .9s;
 }
+
 
 /*Management Section
 --------------------------------*/
@@ -736,62 +757,18 @@ creator
     padding-top: 30px;
 }
 
+
 /* Settings Section
 --------------------------------*/
 
 #setting {
     padding: 60px 0;
-}
-
-#setting .container{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-}
-#setting .container-separation{
-    width: 50%;
-}
-
-#setting #Title{
-    margin-top: 30px;
-}
-
-#setting .form h3{
-    font-size: 27px;
-    color:#111;
-    padding-left: 10px;
-    border-left: 4px solid#18d26e;
-    position: relative;
-    right: 60px;
-}
-
-#setting .form h5{
-    font-size: 22px;
-    color:#111;
-    padding-left: 10px;
-    border-left: 4px solid#108c49;
-    position: relative;
-    right: 23px;
-    margin-top: 40px;
-}
-
-#setting .btn{
-    background:#18d26e;
-    color:white !important;
-}
-
-#setting .button a:hover {
-    background: #13a456;
-    color: #000!important;
+    height: 100vh;
+    min-height: 100vh;
 }
 
 #setting p {
     text-align: center;
-}
-
-#setting .separation {
-    margin-top: 45px;
 }
 
 #setting .setting-info {
@@ -867,11 +844,13 @@ creator
     font-weight: 400;
     font-size: 13px;
 }
+
 .form-control:focus {
     border-color: #18d26e;
     border-width: 2px;
 }
-.btn-outline-success{
+
+.btn-outline-success {
     border-color: #18d26e;
     color: #18d26e;
 }
@@ -896,6 +875,7 @@ creator
 #setting .form button[type="submit"]:hover {
     background: #13a456;
 }
+
 
 /*--------------------------------------------------------------
 # Footer
@@ -1060,6 +1040,7 @@ creator
     color: #ddd;
 }
 
+
 /*--------------------------------------------------------------
 # Responsive Media Queries
 --------------------------------------------------------------*/
@@ -1070,7 +1051,6 @@ creator
     #setting .setting-email {
         padding: 20px 0;
     }
-
     #setting .setting-phone {
         border-left: 1px solid #ddd;
         border-right: 1px solid #ddd;
@@ -1087,16 +1067,13 @@ creator
     #header #logo {
         padding-left: 60px;
     }
-
     #intro p {
         width: 60%;
     }
-
     #intro .carousel-control-prev,
     #intro .carousel-control-next {
         width: 5%;
     }
-
     #nav-menu-container {
         padding-right: 60px;
     }
@@ -1106,43 +1083,41 @@ creator
     .back-to-top {
         bottom: 15px;
     }
-
     #header #logo h1 {
         font-size: 28px;
     }
-
     #header #logo img {
         max-height: 40px;
     }
-
     #intro h2 {
         font-size: 28px;
     }
-
     #nav-menu-container {
         display: none;
     }
-
     #mobile-nav-toggle {
         display: inline;
     }
 }
 
+
 /* Responsive footer for short pages */
 
 #footer.shortContent {
-    margin-top:10px;
+    margin-top: 10px;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
 }
 
+
 /* Other */
 
 .container-thin {
     max-width: 650px;
 }
+
 
 /*Search Bar*/
 
@@ -1155,25 +1130,19 @@ creator
     color: #18d26e;
 }
 
+
 /*titles Register*/
 
 h5 {
     color: #000;
 }
 
+
 /*registerMatchSelectTournament
 --------------------------------*/
 
 #registerMatchSelectTournament {
     padding: 60px 0;
-}
-
-#registerMatchSelectTournament h3{
-    margin-top: 0px; /*No Delete*/
-}
-
-#registerMatchSelectTournament header{
-    margin-bottom: 60px;
 }
 
 #registerMatchSelectTournament #registerMatchSelectTournament-flters {
@@ -1321,31 +1290,37 @@ h5 {
     text-transform: uppercase;
 }
 
+
 /* This part corresponds to the addition of the image in the Logo section during the Account Registration*/
+
 .avatar-pic {
     width: 150px;
 }
 
-.mb-4{
-    text-align:center;
+.mb-4 {
+    text-align: center;
 }
+
+
 /* Correction for the footer*/
+
 main#main {
     margin-bottom: 50px;
 }
 
-#UnderTitleParagraph{
-    text-align:center;
-
+#UnderTitleParagraph {
+    text-align: center;
 }
 
+
 /* Local and visitor teams icon in Register Match positioning inside the window*/
-#TeamPositioningRegisterMatchIconLocal{
+
+#TeamPositioningRegisterMatchIconLocal {
     text-align: left;
 }
 
-#TeamPositioningRegisterMatchIconVisitor{
-    text-align:right;
+#TeamPositioningRegisterMatchIconVisitor {
+    text-align: right;
 }
 
 .number-input input[type="number"] {
@@ -1423,17 +1398,39 @@ main#main {
 }
 
 @media not all and (min-resolution:.001dpcm) {
-    @supports (-webkit-appearance: none) and (stroke-color:transparent) {
-
-        .number-input.def-number-input.safari_only button:before,
-        .number-input.def-number-input.safari_only button:after {
+    @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+        .number-input.def-number-input.safari_only button:before, .number-input.def-number-input.safari_only button:after {
             margin-top: -.3rem;
         }
     }
 }
 
-#scoreboard{
-    margin-left:-23%;
+#scoreboard {
+    margin-left: -23%;
+}
+
+
+/*Tournament Sheet*/
+
+#tournamentSwitch {
+    align-items: center;
+}
+
+.groupStage {
+    padding: 0 8%;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.TournamentGroup {
+    margin-bottom: 5%;
+    padding-bottom: 1%;
+    border-bottom: 0.01em solid #007bff;
+}
+
+.tournamentBoard {
+    border: 2px solid #18d26e;
+    padding: 2%;
 }
 
 #tournamentSheetChart {
@@ -1442,7 +1439,12 @@ main#main {
 }
 
 #tournamentSheetButtons {
-    left: 0;
+    left: 0%;
+}
+
+.groupHeader {
+    padding-bottom: 3%;
+    font-size: large;
 }
 
 #TournamentChartDisplay {
@@ -1452,6 +1454,7 @@ main#main {
     padding: 4%;
 }
 
+
 /* TCreator Section
 --------------------------------*/
 
@@ -1460,20 +1463,14 @@ main#main {
     width: 100%;
     height: 100vh;
     min-height: 100vh;
-
 }
 
 #TCreator .col-lg-3 {
     max-width: 100%;
 }
 
-#TCreator .section-header p{
-    text-align: center;
-    margin-bottom: 40px;
-}
-
 #TCreator header>h3 {
-    margin-top: 0px;
+    margin-top: 60px;
 }
 
 #TCreator p {
@@ -1553,11 +1550,13 @@ main#main {
     font-weight: 400;
     font-size: 13px;
 }
+
 .form-control:focus {
     border-color: #18d26e;
     border-width: 2px;
 }
-.btn-outline-success{
+
+.btn-outline-success {
     border-color: #18d26e;
     color: #18d26e;
 }
@@ -1597,53 +1596,41 @@ main#main {
 }
 
 #TCreator .nav-link.active {
-    background-color:#18d26e;
+    background-color: #18d26e;
     color: white;
 }
 
-#navbarTogglerDemo01{
+#navbarTogglerDemo01 {
     align-self: first baseline;
 }
 
-
-.TCreatorNew form{
-    align-content: center;
-    display: grid;
-    justify-content: center;
-}
-
-.TCreatorNew p{
-    margin-top: 5px;
-}
-
-
-.TCreatorTitles h3{
+.TCreatorTitles h3 {
     float: left;
     font-size: 30px;
-    color:#111;
+    color: #111;
     padding-left: 10px;
     border-left: 4px solid#18d26e;
 }
 
-.TCreatorTitles p{
+.TCreatorTitles p {
     float: left;
     padding-top: 8px;
     margin-left: 9px;
 }
 
-.TCreatorTitles a{
+.TCreatorTitles a {
     float: right;
 }
 
-.Separateboth{
+.Separateboth {
     clear: both;
 }
 
-.listTeams{
+.listTeams {
     clear: both;
 }
 
-#TCreatorInfo{
+#TCreatorInfo {
     height: calc(100vh - 300px);
     overflow-y: auto;
 }
@@ -1662,7 +1649,7 @@ main#main {
     color: #000;
 }
 
-#navbarTogglerDemo01{
+#navbarTogglerDemo01 {
     background: rgba(0, 0, 0, 0.9);
 }
 
@@ -1673,9 +1660,11 @@ main#main {
 #navbarTogglerDemo01 a:hover {
     color: white;
 }
+
+
 /* Teams */
 
-.TCreatorTeams .col-3{
+.TCreatorTeams .col-3 {
     width: 100%;
     height: 100%;
 }
@@ -1689,13 +1678,14 @@ main#main {
     background: rgba(0, 0, 0, 0.9);
 }
 
-.ChooseTeam a{
+.ChooseTeam a {
     color: white;
 }
 
-.TCreatorTeams .tab-content{
+.TCreatorTeams .tab-content {
     position: relative;
 }
+
 
 /* TeamMate Section
 --------------------------------*/
@@ -1764,19 +1754,20 @@ main#main {
     color: #fff;
 }
 
+
 /* Created/Raffle*/
 
-#v-pills-tabContent{
+#v-pills-tabContent {
     height: 100%;
     width: 100%;
 }
 
-#v-pills-created{
+#v-pills-created {
     height: 100%;
     width: 100%;
 }
 
-.created{
+.created {
     height: 100%;
     width: 100%;
     display: flex;
@@ -1784,13 +1775,14 @@ main#main {
     align-items: center;
 }
 
-.created>div{
+.created>div {
     height: 75%;
 }
-.created h3{
+
+.created h3 {
     text-align: center;
     font-size: 30px;
-    color:#111;
+    color: #111;
     padding-left: 10px;
     border-left: 4px solid#18d26e;
     border-right: 4px solid#18d26e;
@@ -1798,7 +1790,7 @@ main#main {
     text-transform: uppercase;
 }
 
-.created a{
+.created a {
     background: #18d26e;
     color: white !important;
 }
@@ -1809,7 +1801,7 @@ main#main {
     text-align: center;
 }
 
-.created .buttons{
+.created .buttons {
     display: flex;
     justify-content: space-around;
 }
@@ -1817,4 +1809,10 @@ main#main {
 .buttons a:hover {
     background: #13a456;
     color: #000!important;
+}
+
+/*Tournament Management*/
+.management{
+    border-color:#18d26e;
+    width:80%;
 }
