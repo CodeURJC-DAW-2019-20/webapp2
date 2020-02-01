@@ -14,7 +14,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
-          rel="stylesheet">
+        rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,73 +40,57 @@
 
 <body>
 
-<!--==========================
-Header
+    <!--==========================
+  Header
 ============================-->
 <header id="header">
     <div class="container-fluid">
 
         <div id="logo" class="pull-left">
-            <h1><a href="#intro" class="scrollto">BizPage</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+            <h1><a href="#home" class="scrollto">TenniShip</a></h1>
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <!--<li class="menu-active"><a href="#intro">Home</a></li>-->
-                <li><a href="#about">Register a match</a></li>
-                <li><a href="#services">Tournament creator</a></li>
-                <li><a href="#portfolio">Tournament management</a></li>
-                <li><a href="#team">Team</a></li>
-                <li class="menu-has-children"><a href="">Drop Down</a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                        <li><a href="#">Drop Down 5</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
 </header><!-- #header -->
 
 
-<main id="main">
-    <section id="TCreator" class="section-bg wow ">
-        <!--meter fadeInUp-->
-        <div class="container">
+    <main id="main">
+        <section id="TCreator" class="section-bg wow ">
+            <!--meter fadeInUp-->
+            <div class="container">
 
-            <header class="section-header">
-                <h3>Tournament Creator</h3>
-                <p>You can already create your own tournament. Let's Go!!</p>
-            </header>
+                <header class="section-header">
+                    <h3>Tournament Creator</h3>
+                    <p>Please, follow the steps below</p>
+                </header>
+               
+                <div class="row">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-            <div class="row">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse col-12 col-lg-3 shadow p-3 mb-5 rounded" id="navbarTogglerDemo01">
-                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link active" id="v-pills-new-tab" data-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-new" aria-selected="true">New Tournament</a>
-                            <a class="nav-link" id="v-pills-teams-tab" data-toggle="pill" href="#v-pills-teams" role="tab" aria-controls="v-pills-teams" aria-selected="false">Teams</a>
-                            <a class="nav-link" id="v-pills-raffle-tab" data-toggle="pill" href="#v-pills-raffle" role="tab" aria-controls="v-pills-raffle" aria-selected="false">Raffle Teams</a>
-                            <!--<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>-->
+                        <div class="collapse navbar-collapse col-12 col-lg-3 shadow p-3 mb-5 rounded" id="navbarTogglerDemo01">
+                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <a class="nav-link active" id="v-pills-new-tab" data-toggle="pill" href="#v-pills-new" role="tab" aria-controls="v-pills-new" aria-selected="true">New Tournament</a>
+                                <a class="nav-link" id="v-pills-teams-tab" data-toggle="pill" href="#v-pills-teams" role="tab" aria-controls="v-pills-teams" aria-selected="false">Teams</a>
+                                <a class="nav-link" id="v-pills-raffle-tab" data-toggle="pill" href="#v-pills-raffle" role="tab" aria-controls="v-pills-raffle" aria-selected="false">Raffle Teams</a>
+                                <!--<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>-->
+                            </div>
                         </div>
-                    </div>
-                </nav>
+                    </nav>
 
-                <div id="TCreatorInfo" class="col-12 col-lg-9 shadow p-3 mb-5 bg-white rounded">
-                    <div class="tab-content" id="v-pills-tabContent">
+                    <div id="TCreatorInfo" class="col-12 col-lg-9 shadow p-3 mb-5 bg-white rounded">
+                        <div class="tab-content" id="v-pills-tabContent"> 
 
-                        <div class="TCreatorNew tab-pane fade show active" id="v-pills-new" role="tabpanel" aria-labelledby="v-pills-new-tab">
-                            <div class="form">
-                                <form action="" method="post" role="form" class="contactForm mt-3">
-                                    <div class="form-group">
+                            <div class="TCreatorNew tab-pane fade show active" id="v-pills-new" role="tabpanel" aria-labelledby="v-pills-new-tab">
+                                <div class="form">
+                                    <form action="" method="post" role="form" class="contactForm">
                                         <p>Introduce the Tournament Name:</p>
                                         <div class="input-group flex-nowrap">
                                             <div class="input-group-prepend">
@@ -114,612 +98,609 @@ Header
                                             </div>
                                             <input type="text" class="form-control" placeholder="Tournament Name" aria-label="Username" aria-describedby="addon-wrapping">
                                         </div>
-                                    </div>
-
-                                    <div class="input-group mb-3">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile02">
-                                            <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
-                                        </div>
-                                    </div>
-                                    <div class="mb-4">
-                                        <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
-                                             class="rounded-circle z-depth-1-half avatar-pic" alt="example placeholder avatar">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="TCreatorTeams tab-pane fade" id="v-pills-teams" role="tabpanel" aria-labelledby="v-pills-teams-tab">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class="ChooseTeam p-3 mb-3 rounded">
-                                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                            <a class="nav-link active" id="v-pills-team1-tab" data-toggle="pill" href="#v-pills-team1" role="tab" aria-controls="v-pills-team1" aria-selected="true">Team 1</a>
-                                            <a class="nav-link" id="v-pills-team2-tab" data-toggle="pill" href="#v-pills-team2" role="tab" aria-controls="v-pills-team2" aria-selected="false">Team 2</a>
-                                            <a class="nav-link" id="v-pills-team3-tab" data-toggle="pill" href="#v-pills-team3" role="tab" aria-controls="v-pills-team3" aria-selected="false">Team 3</a>
-                                            <a class="nav-link" id="v-pills-team4-tab" data-toggle="pill" href="#v-pills-team4" role="tab" aria-controls="v-pills-team4" aria-selected="false">Team 4</a>
-                                            <a class="nav-link" id="v-pills-team5-tab" data-toggle="pill" href="#v-pills-team5" role="tab" aria-controls="v-pills-team5" aria-selected="false">Team 5</a>
-                                            <a class="nav-link" id="v-pills-team6-tab" data-toggle="pill" href="#v-pills-team6" role="tab" aria-controls="v-pills-team6" aria-selected="false">Team 6</a>
-                                            <a class="nav-link" id="v-pills-team7-tab" data-toggle="pill" href="#v-pills-team7" role="tab" aria-controls="v-pills-team7" aria-selected="false">Team 7</a>
-                                            <a class="nav-link" id="v-pills-team8-tab" data-toggle="pill" href="#v-pills-team8" role="tab" aria-controls="v-pills-team8" aria-selected="false">Team 8</a>
-                                            <a class="nav-link" id="v-pills-team9-tab" data-toggle="pill" href="#v-pills-team9" role="tab" aria-controls="v-pills-team9" aria-selected="false">Team 9</a>
-                                            <a class="nav-link" id="v-pills-team10-tab" data-toggle="pill" href="#v-pills-team10" role="tab" aria-controls="v-pills-team10" aria-selected="false">Team 10</a>
-                                            <a class="nav-link" id="v-pills-team11-tab" data-toggle="pill" href="#v-pills-team11" role="tab" aria-controls="v-pills-team11" aria-selected="false">Team 11</a>
-                                            <a class="nav-link" id="v-pills-team12-tab" data-toggle="pill" href="#v-pills-team12" role="tab" aria-controls="v-pills-team12" aria-selected="false">Team 12</a>
-                                            <a class="nav-link" id="v-pills-team13-tab" data-toggle="pill" href="#v-pills-team13" role="tab" aria-controls="v-pills-team13" aria-selected="false">Team 13</a>
-                                            <a class="nav-link" id="v-pills-team14-tab" data-toggle="pill" href="#v-pills-team14" role="tab" aria-controls="v-pills-team14" aria-selected="false">Team 14</a>
-                                            <a class="nav-link" id="v-pills-team15-tab" data-toggle="pill" href="#v-pills-team15" role="tab" aria-controls="v-pills-team15" aria-selected="false">Team 15</a>
-                                            <a class="nav-link" id="v-pills-team16-tab" data-toggle="pill" href="#v-pills-team16" role="tab" aria-controls="v-pills-team16" aria-selected="false">Team 16</a>
-                                            <a class="nav-link" id="v-pills-team17-tab" data-toggle="pill" href="#v-pills-team17" role="tab" aria-controls="v-pills-team17" aria-selected="false">Team 17</a>
-                                            <a class="nav-link" id="v-pills-team18-tab" data-toggle="pill" href="#v-pills-team18" role="tab" aria-controls="v-pills-team18" aria-selected="false">Team 18</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="col-9">
-                                    <div class="tab-content" id="v-pills-tabContent">
-
-                                        <div class="tab-pane fade show active" id="v-pills-team1" role="tabpanel" aria-labelledby="v-pills-team1-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 1:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
+                                        <div class="input-group mb-3">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose the Tournament identifier picture</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
                                             </div>
                                         </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team2" role="tabpanel" aria-labelledby="v-pills-team2-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 2:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
+                                        <div class="mb-4">
+                                            <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
+                                                 class="rounded-circle z-depth-1-half avatar-pic" alt="example placeholder avatar">
                                         </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team3" role="tabpanel" aria-labelledby="v-pills-team3-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 3:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team4" role="tabpanel" aria-labelledby="v-pills-team4-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 4:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team5" role="tabpanel" aria-labelledby="v-pills-team5-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 5:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team6" role="tabpanel" aria-labelledby="v-pills-team6-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 6:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team7" role="tabpanel" aria-labelledby="v-pills-team7-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 7:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team8" role="tabpanel" aria-labelledby="v-pills-team8-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 8:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team9" role="tabpanel" aria-labelledby="v-pills-team9-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 9:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team10" role="tabpanel" aria-labelledby="v-pills-team10-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 10:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team11" role="tabpanel" aria-labelledby="v-pills-team11-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 11:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team12" role="tabpanel" aria-labelledby="v-pills-team12-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 12:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team13" role="tabpanel" aria-labelledby="v-pills-team13-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 13:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team14" role="tabpanel" aria-labelledby="v-pills-team14-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 14:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team15" role="tabpanel" aria-labelledby="v-pills-team15-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 15:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team16" role="tabpanel" aria-labelledby="v-pills-team16-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 16:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team17" role="tabpanel" aria-labelledby="v-pills-team17-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 17:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane fade" id="v-pills-team18" role="tabpanel" aria-labelledby="v-pills-team18-tab">
-                                            <div class="form">
-                                                <form action="" method="post" role="form" class="contactForm">
-                                                    <p>Enter the name of Team 18:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="TCreatorRaffle tab-pane fade" id="v-pills-raffle" role="tabpanel" aria-labelledby="v-pills-raffle-tab">
-                            <div>
-                                <div class="TCreatorTitles">
-                                    <h3>Tournament Name:</h3>
-                                    <p>"Nombre del equipo"</p>
-                                    <a class="btn nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-created" role="tab" aria-controls="v-pills-settings" aria-selected="false">Raffle</a>
-                                    <h3 class="listTeams">Teams</h3>
-                                </div>
-                                <!--<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Teams</a>-->
-                                <!--<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>-->
-
-                            </div>
-                            <div class="Separateboth"></div>
-                            <div id="TeamMate" class="scrollspy-example" data-spy="scroll">
-
+                            <div class="TCreatorTeams tab-pane fade" id="v-pills-teams" role="tabpanel" aria-labelledby="v-pills-teams-tab">
                                 <div class="row">
-
-                                    <div class="col-lg-2 col-md-6">
-                                        <div class="member">
-                                            <img src="img/team-1.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Walter White</h4>
-                                                    <span>Chief Executive Officer</span>
-                                                </div>
+                                    <div class="col-3">
+                                        <div class="ChooseTeam p-3 mb-3 rounded">
+                                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                                <a class="nav-link active" id="v-pills-team1-tab" data-toggle="pill" href="#v-pills-team1" role="tab" aria-controls="v-pills-team1" aria-selected="true">Team 1</a>
+                                                <a class="nav-link" id="v-pills-team2-tab" data-toggle="pill" href="#v-pills-team2" role="tab" aria-controls="v-pills-team2" aria-selected="false">Team 2</a>
+                                                <a class="nav-link" id="v-pills-team3-tab" data-toggle="pill" href="#v-pills-team3" role="tab" aria-controls="v-pills-team3" aria-selected="false">Team 3</a>
+                                                <a class="nav-link" id="v-pills-team4-tab" data-toggle="pill" href="#v-pills-team4" role="tab" aria-controls="v-pills-team4" aria-selected="false">Team 4</a>
+                                                <a class="nav-link" id="v-pills-team5-tab" data-toggle="pill" href="#v-pills-team5" role="tab" aria-controls="v-pills-team5" aria-selected="false">Team 5</a>
+                                                <a class="nav-link" id="v-pills-team6-tab" data-toggle="pill" href="#v-pills-team6" role="tab" aria-controls="v-pills-team6" aria-selected="false">Team 6</a>
+                                                <a class="nav-link" id="v-pills-team7-tab" data-toggle="pill" href="#v-pills-team7" role="tab" aria-controls="v-pills-team7" aria-selected="false">Team 7</a>
+                                                <a class="nav-link" id="v-pills-team8-tab" data-toggle="pill" href="#v-pills-team8" role="tab" aria-controls="v-pills-team8" aria-selected="false">Team 8</a>
+                                                <a class="nav-link" id="v-pills-team9-tab" data-toggle="pill" href="#v-pills-team9" role="tab" aria-controls="v-pills-team9" aria-selected="false">Team 9</a>
+                                                <a class="nav-link" id="v-pills-team10-tab" data-toggle="pill" href="#v-pills-team10" role="tab" aria-controls="v-pills-team10" aria-selected="false">Team 10</a>
+                                                <a class="nav-link" id="v-pills-team11-tab" data-toggle="pill" href="#v-pills-team11" role="tab" aria-controls="v-pills-team11" aria-selected="false">Team 11</a>
+                                                <a class="nav-link" id="v-pills-team12-tab" data-toggle="pill" href="#v-pills-team12" role="tab" aria-controls="v-pills-team12" aria-selected="false">Team 12</a>
+                                                <a class="nav-link" id="v-pills-team13-tab" data-toggle="pill" href="#v-pills-team13" role="tab" aria-controls="v-pills-team13" aria-selected="false">Team 13</a>
+                                                <a class="nav-link" id="v-pills-team14-tab" data-toggle="pill" href="#v-pills-team14" role="tab" aria-controls="v-pills-team14" aria-selected="false">Team 14</a>
+                                                <a class="nav-link" id="v-pills-team15-tab" data-toggle="pill" href="#v-pills-team15" role="tab" aria-controls="v-pills-team15" aria-selected="false">Team 15</a>
+                                                <a class="nav-link" id="v-pills-team16-tab" data-toggle="pill" href="#v-pills-team16" role="tab" aria-controls="v-pills-team16" aria-selected="false">Team 16</a>
+                                                <a class="nav-link" id="v-pills-team17-tab" data-toggle="pill" href="#v-pills-team17" role="tab" aria-controls="v-pills-team17" aria-selected="false">Team 17</a>
+                                                <a class="nav-link" id="v-pills-team18-tab" data-toggle="pill" href="#v-pills-team18" role="tab" aria-controls="v-pills-team18" aria-selected="false">Team 18</a>
                                             </div>
                                         </div>
+                                        
                                     </div>
+                                    <div class="col-9">
+                                        <div class="tab-content" id="v-pills-tabContent">
 
-                                    <div class="col-lg-2 col-md-6" data-wow-delay="0.1s">
-                                        <div class="member">
-                                            <img src="img/team-2.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Sarah Jhonson</h4>
-                                                    <span>Product Manager</span>
+                                            <div class="tab-pane fade show active" id="v-pills-team1" role="tabpanel" aria-labelledby="v-pills-team1-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 1:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-2 col-md-6" data-wow-delay="0.2s">
-                                        <div class="member">
-                                            <img src="img/team-3.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>William Anderson</h4>
-                                                    <span>CTO</span>
+                                            <div class="tab-pane fade" id="v-pills-team2" role="tabpanel" aria-labelledby="v-pills-team2-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 2:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-2 col-md-6" data-wow-delay="0.3s">
-                                        <div class="member">
-                                            <img src="img/team-4.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Amanda Jepson</h4>
-                                                    <span>Accountant</span>
+                                            <div class="tab-pane fade" id="v-pills-team3" role="tabpanel" aria-labelledby="v-pills-team3-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 3:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-2 col-md-6">
-                                        <div class="member">
-                                            <img src="img/team-1.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Walter White</h4>
-                                                    <span>Chief Executive Officer</span>
+                                            <div class="tab-pane fade" id="v-pills-team4" role="tabpanel" aria-labelledby="v-pills-team4-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 4:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-2 col-md-6" data-wow-delay="0.1s">
-                                        <div class="member">
-                                            <img src="img/team-2.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Sarah Jhonson</h4>
-                                                    <span>Product Manager</span>
+                                            <div class="tab-pane fade" id="v-pills-team5" role="tabpanel" aria-labelledby="v-pills-team5-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 5:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="row">
-
-                                    <div class="col-lg-2 col-md-6">
-                                        <div class="member">
-                                            <img src="img/team-1.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Walter White</h4>
-                                                    <span>Chief Executive Officer</span>
+                                            <div class="tab-pane fade" id="v-pills-team6" role="tabpanel" aria-labelledby="v-pills-team6-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 6:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-2 col-md-6" data-wow-delay="0.1s">
-                                        <div class="member">
-                                            <img src="img/team-2.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Sarah Jhonson</h4>
-                                                    <span>Product Manager</span>
+                                            <div class="tab-pane fade" id="v-pills-team7" role="tabpanel" aria-labelledby="v-pills-team7-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 7:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-2 col-md-6" data-wow-delay="0.2s">
-                                        <div class="member">
-                                            <img src="img/team-3.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>William Anderson</h4>
-                                                    <span>CTO</span>
+                                            <div class="tab-pane fade" id="v-pills-team8" role="tabpanel" aria-labelledby="v-pills-team8-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 8:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-2 col-md-6" data-wow-delay="0.3s">
-                                        <div class="member">
-                                            <img src="img/team-4.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Amanda Jepson</h4>
-                                                    <span>Accountant</span>
+                                            <div class="tab-pane fade" id="v-pills-team9" role="tabpanel" aria-labelledby="v-pills-team9-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 9:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-2 col-md-6">
-                                        <div class="member">
-                                            <img src="img/team-1.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Walter White</h4>
-                                                    <span>Chief Executive Officer</span>
+                                            <div class="tab-pane fade" id="v-pills-team10" role="tabpanel" aria-labelledby="v-pills-team10-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 10:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-2 col-md-6" data-wow-delay="0.1s">
-                                        <div class="member">
-                                            <img src="img/team-2.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Sarah Jhonson</h4>
-                                                    <span>Product Manager</span>
+                                            <div class="tab-pane fade" id="v-pills-team11" role="tabpanel" aria-labelledby="v-pills-team11-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 11:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="row">
-
-                                    <div class="col-lg-2 col-md-6">
-                                        <div class="member">
-                                            <img src="img/team-1.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Walter White</h4>
-                                                    <span>Chief Executive Officer</span>
+                                            <div class="tab-pane fade" id="v-pills-team12" role="tabpanel" aria-labelledby="v-pills-team12-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 12:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-2 col-md-6" data-wow-delay="0.1s">
-                                        <div class="member">
-                                            <img src="img/team-2.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Sarah Jhonson</h4>
-                                                    <span>Product Manager</span>
+                                            <div class="tab-pane fade" id="v-pills-team13" role="tabpanel" aria-labelledby="v-pills-team13-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 13:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-2 col-md-6" data-wow-delay="0.2s">
-                                        <div class="member">
-                                            <img src="img/team-3.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>William Anderson</h4>
-                                                    <span>CTO</span>
+                                            <div class="tab-pane fade" id="v-pills-team14" role="tabpanel" aria-labelledby="v-pills-team14-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 14:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-2 col-md-6" data-wow-delay="0.3s">
-                                        <div class="member">
-                                            <img src="img/team-4.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Amanda Jepson</h4>
-                                                    <span>Accountant</span>
+                                            <div class="tab-pane fade" id="v-pills-team15" role="tabpanel" aria-labelledby="v-pills-team15-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 15:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-2 col-md-6">
-                                        <div class="member">
-                                            <img src="img/team-1.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Walter White</h4>
-                                                    <span>Chief Executive Officer</span>
+                                            <div class="tab-pane fade" id="v-pills-team16" role="tabpanel" aria-labelledby="v-pills-team16-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 16:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-2 col-md-6" data-wow-delay="0.1s">
-                                        <div class="member">
-                                            <img src="img/team-2.jpg" class="img-fluid" alt="">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>Sarah Jhonson</h4>
-                                                    <span>Product Manager</span>
+                                            <div class="tab-pane fade" id="v-pills-team17" role="tabpanel" aria-labelledby="v-pills-team17-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 17:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane fade" id="v-pills-team18" role="tabpanel" aria-labelledby="v-pills-team18-tab">
+                                                <div class="form">
+                                                    <form action="" method="post" role="form" class="contactForm">
+                                                        <p>Enter the name of Team 18:</p>
+                                                        <div class="input-group flex-nowrap">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="addon-wrapping">></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" placeholder="Team Name" aria-label="Username" aria-describedby="addon-wrapping">
+                                                        </div>                                                    
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="tab-pane fade" id="v-pills-created" role="tabpanel" aria-labelledby="v-pills-created-tab">
-                            <div class="created">
+                            <div class="TCreatorRaffle tab-pane fade" id="v-pills-raffle" role="tabpanel" aria-labelledby="v-pills-raffle-tab">
                                 <div>
-                                    <h3>the tournament has been created</h3>
-                                    <p>Congratulations, the tournament has been created successfully. You can start playing whenever you want.</p>
-                                    <div class="buttons">
-                                        <a class="btn">Go to the Tournament</a>
-                                        <a class="btn">Home</a>
+                                    <div class="TCreatorTitles">
+                                        <h3>Tournament Name:</h3>
+                                        <p>"Nombre del equipo"</p>
+                                        <a class="btn nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-created" role="tab" aria-controls="v-pills-settings" aria-selected="false">Raffle</a>
+                                        <h3 class="listTeams">Teams</h3>
+                                    </div>
+                                    <!--<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Teams</a>-->
+                                    <!--<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>-->
+
+                                </div>
+                                <div class="Separateboth"></div>                                    
+                                <div id="TeamMate" class="scrollspy-example" data-spy="scroll">
+                                    
+                                    <div class="row">
+
+                                        <div class="col-lg-2 col-md-6">
+                                            <div class="member">
+                                                <img src="img/team-1.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Walter White</h4>
+                                                        <span>Chief Executive Officer</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-2 col-md-6" data-wow-delay="0.1s">
+                                            <div class="member">
+                                                <img src="img/team-2.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Sarah Jhonson</h4>
+                                                        <span>Product Manager</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-2 col-md-6" data-wow-delay="0.2s">
+                                            <div class="member">
+                                                <img src="img/team-3.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>William Anderson</h4>
+                                                        <span>CTO</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-2 col-md-6" data-wow-delay="0.3s">
+                                            <div class="member">
+                                                <img src="img/team-4.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Amanda Jepson</h4>
+                                                        <span>Accountant</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-2 col-md-6">
+                                            <div class="member">
+                                                <img src="img/team-1.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Walter White</h4>
+                                                        <span>Chief Executive Officer</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-2 col-md-6" data-wow-delay="0.1s">
+                                            <div class="member">
+                                                <img src="img/team-2.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Sarah Jhonson</h4>
+                                                        <span>Product Manager</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+
+                                        <div class="col-lg-2 col-md-6">
+                                            <div class="member">
+                                                <img src="img/team-1.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Walter White</h4>
+                                                        <span>Chief Executive Officer</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-2 col-md-6" data-wow-delay="0.1s">
+                                            <div class="member">
+                                                <img src="img/team-2.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Sarah Jhonson</h4>
+                                                        <span>Product Manager</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-2 col-md-6" data-wow-delay="0.2s">
+                                            <div class="member">
+                                                <img src="img/team-3.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>William Anderson</h4>
+                                                        <span>CTO</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-2 col-md-6" data-wow-delay="0.3s">
+                                            <div class="member">
+                                                <img src="img/team-4.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Amanda Jepson</h4>
+                                                        <span>Accountant</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-2 col-md-6">
+                                            <div class="member">
+                                                <img src="img/team-1.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Walter White</h4>
+                                                        <span>Chief Executive Officer</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-2 col-md-6" data-wow-delay="0.1s">
+                                            <div class="member">
+                                                <img src="img/team-2.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Sarah Jhonson</h4>
+                                                        <span>Product Manager</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-lg-2 col-md-6">
+                                            <div class="member">
+                                                <img src="img/team-1.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Walter White</h4>
+                                                        <span>Chief Executive Officer</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-2 col-md-6" data-wow-delay="0.1s">
+                                            <div class="member">
+                                                <img src="img/team-2.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Sarah Jhonson</h4>
+                                                        <span>Product Manager</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-2 col-md-6" data-wow-delay="0.2s">
+                                            <div class="member">
+                                                <img src="img/team-3.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>William Anderson</h4>
+                                                        <span>CTO</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-2 col-md-6" data-wow-delay="0.3s">
+                                            <div class="member">
+                                                <img src="img/team-4.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Amanda Jepson</h4>
+                                                        <span>Accountant</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-2 col-md-6">
+                                            <div class="member">
+                                                <img src="img/team-1.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Walter White</h4>
+                                                        <span>Chief Executive Officer</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-2 col-md-6" data-wow-delay="0.1s">
+                                            <div class="member">
+                                                <img src="img/team-2.jpg" class="img-fluid" alt="">
+                                                <div class="member-info">
+                                                    <div class="member-info-content">
+                                                        <h4>Sarah Jhonson</h4>
+                                                        <span>Product Manager</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-created" role="tabpanel" aria-labelledby="v-pills-created-tab">
+                                <div class="created">
+                                    <div>
+                                        <h3>the tournament has been created</h3>
+                                        <p>Enhorabuena, el torneo se ha generado con exito.
+                                            Ya puedes empezar a jugar cuando desee.
+                                        </p>
+                                        <div class="buttons">
+                                            <a class="btn">Go to the Tournament</a>
+                                            <a class="btn">Home</a>
+                                        </div>
+                                    </div>
+                                </div>                        
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
+                </div>  
+            </div>           
+        </section>
+    </main>
 
-<footer id="footer">
-    <div class="container">
+    <!--==========================
+    Footer
+    ============================-->
+    <footer id="footer">
+        <div class="container">
         <div class="copyright">
-            &copy; Copyright <strong>BizPage</strong>. All Rights Reserved
+            &copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>. All Rights Reserved
         </div>
         <div class="credits">
-            <!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
-            -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            ReDesigned by paDAWans
         </div>
-    </div>
-</footer><!-- #footer -->
+        </div>
+    </footer><!-- #footer -->
 
-<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-<!-- Uncomment below if you want to use a preloader -->
-<div id="preloader"></div>
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <!-- Uncomment below if you want to use a preloader -->
+    <div id="preloader"></div>
 
-<!-- JavaScript Libraries -->
-<script src="lib/jquery/jquery.min.js"></script>
-<script src="lib/jquery/jquery-migrate.min.js"></script>
-<script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/superfish/hoverIntent.js"></script>
-<script src="lib/superfish/superfish.min.js"></script>
-<script src="lib/wow/wow.min.js"></script>
-<script src="lib/waypoints/waypoints.min.js"></script>
-<script src="lib/counterup/counterup.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="lib/isotope/isotope.pkgd.min.js"></script>
-<script src="lib/lightbox/js/lightbox.min.js"></script>
-<script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
-<!-- Contact Form JavaScript File -->
-<script src="contactform/contactform.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery-migrate.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/superfish/hoverIntent.js"></script>
+    <script src="lib/superfish/superfish.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+    <!-- Contact Form JavaScript File -->
+    <script src="contactform/contactform.js"></script>
 
-<!-- Template Main Javascript File -->
-<script src="js/main.js"></script>
+    <!-- Template Main Javascript File -->
+    <script src="js/main.js"></script>
 
 </body>
 
