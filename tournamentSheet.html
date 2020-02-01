@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>BizPage Bootstrap Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/_component-examples.scss" rel="stylesheet">
+
+    <!-- =======================================================
+      Theme Name: BizPage
+      Theme URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+      Author: BootstrapMade.com
+      License: https://bootstrapmade.com/license/
+    ======================================================= -->
+</head>
+
+<body>
+
+    <!--==========================
+  Header
+============================-->
+<header id="header">
+    <div class="container-fluid">
+
+        <div id="logo" class="pull-left">
+            <h1><a href="#home" class="scrollto">TenniShip</a></h1>
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- #header -->
+
+
+    <main id="main">
+
+        <section id="contact" class="section-bg wow fadeInUp">
+            <div class="container container-thin">
+                <div class="section-header">
+                    <h3>Davis Cup</h3>
+                    <img src="img\sample_tournament.png" class="rounded mx-auto d-block" alt="Tournament Thumbnail"></img>
+                </div>
+            </div>
+            <div id="TournamentChartDisplay">
+                <div class="row" id="tournamentSwitch">
+                    <div id="tournamentSheetButtons" class="col-1">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Fase Grupos</a>
+                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Fase Final</a>
+                        </div>
+                    </div>
+                    <div id="tournamentSheetChart" class="col-10">
+                        <div class="container tournamentBoard">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                    <div class="container-fluid">
+                                        <div class="row justify-content-between" style="padding:1%">
+                                            <div class="groupCard flex-fill">
+                                                <div class="container groupStage">
+                                                    <div class="row justify-content-between TournamentGroup">Group A</div>
+                                                    <div class="row justify-content-between groupHeader">
+                                                        <div class="col-6">Team Name</div>
+                                                        <div class="col-3">Played</div>
+                                                        <div class="col-3">Wins</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Alpha</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">2</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Epsilon</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">1</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Iota</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">0</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="groupCard flex-fill">
+                                                <div class="container groupStage">
+                                                    <div class="row justify-content-between TournamentGroup">Group B</div>
+                                                    <div class="row justify-content-between groupHeader">
+                                                        <div class="col-6">Team Name</div>
+                                                        <div class="col-3">Played</div>
+                                                        <div class="col-3">Wins</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Beta</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">2</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Zeta</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">1</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Kappa</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">0</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="groupCard flex-fill">
+                                                <div class="container groupStage">
+                                                    <div class="row justify-content-between TournamentGroup">Group C</div>
+                                                    <div class="row justify-content-between groupHeader">
+                                                        <div class="col-6">Team Name</div>
+                                                        <div class="col-3">Played</div>
+                                                        <div class="col-3">Wins</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Gamma</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">2</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Lambda</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">1</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Mu</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">0</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="groupCard flex-fill">
+                                                <div class="container groupStage">
+                                                    <div class="row justify-content-between TournamentGroup">Group D</div>
+                                                    <div class="row justify-content-between groupHeader">
+                                                        <div class="col-6">Team Name</div>
+                                                        <div class="col-3">Played</div>
+                                                        <div class="col-3">Wins</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Gamma</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">2</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Phi</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">1</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Nu</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">0</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="groupCard flex-fill">
+                                                <div class="container groupStage">
+                                                    <div class="row justify-content-between TournamentGroup">Group E</div>
+                                                    <div class="row justify-content-between groupHeader">
+                                                        <div class="col-6">Team Name</div>
+                                                        <div class="col-3">Played</div>
+                                                        <div class="col-3">Wins</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Eta</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">2</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Sigma</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">1</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Xi</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">0</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="groupCard flex-fill">
+                                                <div class="container groupStage">
+                                                    <div class="row justify-content-between TournamentGroup">Group F</div>
+                                                    <div class="row justify-content-between groupHeader">
+                                                        <div class="col-6">Team Name</div>
+                                                        <div class="col-3">Played</div>
+                                                        <div class="col-3">Wins</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Delta</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">2</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Omnicron</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">1</div>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <div class="col-6">Team Pi</div>
+                                                        <div class="col-3">2</div>
+                                                        <div class="col-3">0</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                    <div class="container-fluid">
+                                        <div class="row justify-content-between" style="padding-bottom: 2%;">
+                                            <div class="col-2" style="text-align: center">Quarters</div>
+                                            <div class="col-2" style="text-align: center">Semifinals</div>
+                                            <div class="col-4" style="text-align: center">FINAL</div>
+                                            <div class="col-2" style="text-align: center">Semifinals</div>
+                                            <div class="col-2" style="text-align: center">Quarters</div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <!--Quarters1-->
+                                            <div class="col-2" style="text-align: center">
+                                                <span class="badge badge-primary">Team Alpha</span>
+                                            </div>
+                                            <div class="col-2" style="text-align: center">
+                                                <span class="badge badge-primary">Team Epsilon</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <!--Quarters2-->
+                                            <div class="col-2" style="text-align: center">
+                                                <span class="badge badge-secondary">Team Beta</span>
+                                            </div>
+                                            <div class="col-2" style="text-align: center">
+                                                <span class="badge badge-secondary">Team Zeta</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <!--Semis1-->
+                                            <div class="col-2"></div>
+                                            <div class="col-2" style="text-align: center">
+                                                <span class="badge badge-primary">Team Alpha</span>
+                                            </div>
+                                            <div class="col-4"></div>
+                                            <div class="col-2" style="text-align: center">
+                                                <span class="badge badge-primary">Team Epsilon</span>
+                                            </div>
+                                            <div class="col-2"></div>
+                                        </div>
+
+                                        <div class="row justify-content-between">
+                                            <!--Final-->
+                                            <div class="col-4"></div>
+                                            <div class="col-2" style="text-align: center">
+                                                <span class="badge badge-success">Team Alpha</span>
+                                            </div>
+                                            <div class="col-2" style="text-align: center">
+                                                <span class="badge badge-secondary">Team Epsilon</span>
+                                            </div>
+                                            <div class="col-4"></div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <!--Quarters3-->
+                                            <div class="col-2" style="text-align: center">
+                                                <span class="badge badge-primary">Team Gamma</span>
+                                            </div>
+                                            <div class="col-2" style="text-align: center">
+                                                <span class="badge badge-primary">Team Eta</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <!--Semis2-->
+                                            <div class="col-2"></div>
+                                            <div class="col-2" style="text-align: center">
+                                                <span class="badge badge-secondary">Team Gamma</span>
+                                            </div>
+                                            <div class="col-4"></div>
+                                            <div class="col-2" style="text-align: center">
+                                                <span class="badge badge-secondary">Team Eta</span>
+                                            </div>
+                                            <div class="col-2"></div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <!--Quarters4-->
+                                            <div class="col-2" style="text-align: center">
+                                                <span class="badge badge-secondary">Team Delta</span>
+                                            </div>
+                                            <div class="col-2" style="text-align: center">
+                                                <span class="badge badge-secondary">Team Theta</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+        </section>
+
+
+    </main>
+
+<!--==========================
+  Footer
+============================-->
+
+    <footer id="footer">
+        <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong>BizPage</strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            ReDesigned by paDAWans</a>
+        </div>
+        </div>
+    </footer><!-- #footer -->
+
+    <a href="# " class="back-to-top "><i class="fa fa-chevron-up "></i></a>
+    <!-- Uncomment below if you want to use a preloader -->
+    <div id="preloader "></div>
+
+    <!-- JavaScript Libraries -->
+    <script src="lib/jquery/jquery.min.js "></script>
+    <script src="lib/jquery/jquery-migrate.min.js "></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js "></script>
+    <script src="lib/easing/easing.min.js "></script>
+    <script src="lib/superfish/hoverIntent.js "></script>
+    <script src="lib/superfish/superfish.min.js "></script>
+    <script src="lib/wow/wow.min.js "></script>
+    <script src="lib/waypoints/waypoints.min.js "></script>
+    <script src="lib/counterup/counterup.min.js "></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js "></script>
+    <script src="lib/isotope/isotope.pkgd.min.js "></script>
+    <script src="lib/lightbox/js/lightbox.min.js "></script>
+    <script src="lib/touchSwipe/jquery.touchSwipe.min.js "></script>
+    <!-- Contact Form JavaScript File -->
+    <script src="contactform/contactform.js "></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="js/main.js "></script>
+
+</body>
+
+</html>
