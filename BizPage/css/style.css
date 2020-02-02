@@ -961,8 +961,8 @@ div.img {
 /*Search Bar*/
 
 .active-green-3 input[type=text] {
-    border: 1px solid #18d26e;
-    box-shadow: 0 0 0 1px #18d26e;
+    border: 1px solid rgba(24, 210, 110, .4);
+    box-shadow: 0 .2rem 1rem rgba(24, 210, 110, .4)!important;
 }
 
 .active-green-3 .fa {
@@ -1358,6 +1358,15 @@ body:not(#index) main#main {
     margin: 5px;
 }
 
+@media (max-width: 379px) {
+    .groupCard {
+        width:100%;
+        min-width:100%;
+        font-size: 12px;
+    }
+}
+
+
 /* Tournament progress bar */
 
 #progress-content {
@@ -1386,6 +1395,30 @@ body:not(#index) main#main {
     width: 1px;
     text-align: left;
     transition: .9s;
+}
+
+/* Final phase */
+
+.final-phase .container-fluid {
+    min-width: 650px;
+}
+
+.final-phase {
+    overflow-y: hidden;
+}
+
+@media (max-width: 757px) {
+    .final-phase .container-fluid::after {
+        content: "Swipe to see more >";
+        display: block;
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background: #fff;
+        border-radius: 10px;
+        padding: 5px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
 }
 
 
