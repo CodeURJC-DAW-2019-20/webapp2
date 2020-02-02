@@ -160,8 +160,8 @@
     allowPageScroll:"vertical"
   });
 
-  // Skills section
-  $('#skills').waypoint(function() {
+  // Progress bar (for tournament completion)
+  $('#progress-content').waypoint(function() {
     $('.progress .progress-bar').each(function() {
       $(this).css("width", $(this).attr("aria-valuenow") + '%');
     });
