@@ -195,7 +195,7 @@ button{
     color: white;
 }
 
-.button a:hover {
+button button:hover {
     background: #13a456!important;
     color: #000!important;
 }

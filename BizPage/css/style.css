@@ -580,6 +580,34 @@ div.img {
     padding: 0 20px 20px 20px;
 }
 
+/* Sign IN
+--------------------------------*/
+
+#sign-in {
+    padding: 60px 0;
+}
+  
+#sign-in h3 {
+    margin-top: 30px;
+}
+
+#sign-in .container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+#sign-in button {
+    background:#18d26e;
+    color:white !important;
+}
+
+#sign-in button:hover{
+    background: #13a456;
+    color: #000!important;
+}
+
 /* actions Us Section
 --------------------------------*/
 
@@ -689,7 +717,7 @@ div.img {
     height: 100%;
     justify-content: center;
 }
-#setting .container-separation{
+.container-separation{
     width: 50%;
 }
 #setting #Title{
@@ -1276,22 +1304,16 @@ body:not(#index) main#main {
 .TournamentGroup {
     margin: 5px 0;
     padding-bottom: 1%;
-    border-bottom: 1px solid #007bff;
+    border-bottom: 2px solid #18d26e;
 }
 
-.tournamentBoard {
-    border: 2px solid #18d26e;
-    padding: 2%;
-}
+
 
 #tournamentSheetChart {
     margin: auto;
     position: relative;
 }
 
-#tournamentSheetButtons {
-    left: 0;
-}
 
 .groupHeader {
     padding-bottom: 3%;
@@ -1303,6 +1325,15 @@ body:not(#index) main#main {
     margin: auto;
     /*width: 80%;*/
     padding: 4%;
+}
+
+#tournamentSwitch .theSwitch {
+    max-width: 100%;
+}
+
+#tournamentSwitch #v-pills-tab .nav-link.active {
+    background-color: 
+    #18d26e;
 }
 
 .groupCard {

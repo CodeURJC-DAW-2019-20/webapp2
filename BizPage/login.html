@@ -59,37 +59,39 @@
 <main id="main">
 
     <!--==========================
-      Contact Section
+      Sign In Section
     ============================-->
-    <section id="contact" class="section-bg wow fadeInUp">
-        <div class="container container-thin">
+    <section id="sign-in" class="section-bg wow fadeInUp">
+        <div class="container shadow p-3 mb-5 bg-white rounded">
+            <div class="container-separation">
 
-            <div class="section-header">
-                <h3>Sign in</h3>
-                <p>Sign in to Tenniship</p>
+                <div class="section-header">
+                    <h3>Sign in</h3>
+                    <p id="UnderTitleParagraph">Sign in to Tenniship</p>
+                </div>
+    
+                <div class="form">
+                    <!--<div id="sendmessage">Your message has been sent. Thank you!</div>-->
+                    <div id="errormessage"></div>
+                    <form action="" method="post" role="form" class="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Email or username" data-rule="minlen:1" data-msg="Enter username or email" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password" data-rule="minlen:1" data-msg="Enter a password" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="text-center pt-3"><button class="btn" type="submit">Log in</button></div>
+                    </form>
+                </div>
+                <div class="text-center">
+                    <p class="pt-3">New to Tenniship? <a href="" >Create an account!</a></p>
+                </div>
             </div>
-
-            <div class="form">
-                <div id="sendmessage">Your message has been sent. Thank you!</div>
-                <div id="errormessage"></div>
-                <form action="" method="post" role="form" class="contactForm">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Email or username" data-rule="minlen:1" data-msg="Enter username or email" />
-                        <div class="validation"></div>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" data-rule="minlen:1" data-msg="Enter a password" />
-                        <div class="validation"></div>
-                    </div>
-                    <div class="text-center pt-3"><button type="submit">Log in</button></div>
-                </form>
-            </div>
-
+            
         </div>
-        <div class="container text-center">
-            <p class="pt-3">New to Tenniship? <a href="" >Create an account!</a></p>
-        </div>
-    </section><!-- #contact -->
+    </section><!-- #sign-in -->
 
 </main>
 
