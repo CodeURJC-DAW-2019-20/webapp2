@@ -69,59 +69,72 @@
 
 
     <main id="main">
-        <section id="TCreator" class="section-bg wow ">
+        <section id="TManagement" class="section-bg wow ">
             <!--meter fadeInUp-->
-            <div class="container">
+            
 
+            <div class="container">
                 <header class="section-header">
                     <h3>Tournament Management</h3>
                     <h2 style="text-align: center;">Copa Davis</h2>
                     <img src="img\sample_tournament.png" class="rounded mx-auto d-block" alt="Tournament Thumbnail"></img>
                 </header>
-            </div>
-            <div class="container" style="padding:5%">
-                <div class="row justify-content-center">
-                    <div class="col-3">
-                        <a href="tournamentSheet.html">
-                            <div class="card management">
-                                <img src="img/loup.png" class="card-img-top" alt="See team sheet">
-                                <div class="card-body">
-                                <p class="card-text text-center">Tourament sheet</p>
+  
+                <div>
+                    <div class="row separation">
+                        <div style="visibility: visible; animation-name: fadeInUp;" class="margin col-lg-3 col-md-6 wow fadeInUp">
+                            <div class="management-col">
+                                <div class="img">
+                                <img src="img/loup.png" alt="" class="img-fluid">
+                                <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
                                 </div>
+                                <h2 class="title"><a href="registerMatchSelectMatch.html">Change Match</a></h2>
+                                <p>
+                                    You can change the score of a match
+                                </p>
                             </div>
-                        </a>
-                    </div>
-                    <div class="col-3">
-                        <a href="tournamentSheet.html">
-                            <div class="card management">
-                                <img src="img/edit.png" class="card-img-top" alt="Edit tournament" style="margin:auto;size: 80%;">
-                                <div class="card-body">
-                                    <p class="card-text text-center">Edit tournament</p>
+                        </div>
+            
+                        <div data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;" class="margin col-lg-3 col-md-6 wow fadeInUp">
+                            <div class="management-col">
+                                <div class="img">
+                                <img src="img/edit.png" alt="" class="img-fluid">
+                                <div class="icon"><i class="ion-ios-list-outline"></i></div>
                                 </div>
+                                <h2 class="title"><a href="#">Delete Team</a></h2>
+                                <p>
+                                    You can delete a team. The other teams will win the matches
+                                </p>
                             </div>
-                        </a>
-                    </div>
-                    <div class="col-3">
-                        <a href="tournamentSheet.html">
-                            <div class="card management">
-                                <img src="img/disqualify.png" class="card-img-top" alt="Disqualify team">
-                                <div class="card-body">
-                                    <p class="card-text text-center">Disqualify team</p>
+                        </div>
+            
+                        <div data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;" class="margin col-lg-3 col-md-6 wow fadeInUp">
+                            <div class="management-col">
+                                <div class="img">
+                                <img src="img/disqualify.png" alt="" class="img-fluid">
+                                <div class="icon"><i class="ion-ios-eye-outline"></i></div>
                                 </div>
+                                <h2 class="title"><a href="#">Add Team</a></h2>
+                                <p>
+                                    You can add a team if the tournament haven't started yet
+                                </p>
                             </div>
-                        </a>
-                    </div>
-                    <div class="col-3">
-                        <a href="tournamentSheet.html">
-                            <div class="card management">
-                                <img src="img/delete.png" class="card-img-top" alt="Delete tourament">
-                                <div class="card-body">
-                                    <p class="card-text text-center">Delete tournament</p>
+                        </div>
+    
+                        <div data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;" class="margin col-lg-3 col-md-6 wow fadeInUp">
+                            <div class="management-col">
+                                <div class="img">
+                                <img src="img/delete.png" alt="" class="img-fluid">
+                                <div class="icon"><i class="ion-ios-eye-outline"></i></div>
                                 </div>
+                                <h2 class="title"><a href="#">Delete tournament</a></h2>
+                                <p>
+                                    You can delete the tournament
+                                </p>
                             </div>
-                        </a>
+                        </div>   
                     </div>
-                </div>  
+                </div>
             </div>           
         </section>
     </main>

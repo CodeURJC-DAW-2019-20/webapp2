@@ -1,11 +1,19 @@
 # TenniShip
 
-This web app will be oriented about tennis tournaments, and will allow users to find teams, matches, keep track of scores, and check their standings in tourneys. 
+TenniShip is a web app for managing tennis tournaments. It allows users to find teams, matches, keep track of scores, and check their standings in tourneys. 
 
-# Group members
+## Built With
 
-* Marcos Villacañas Flores - **MarcosVillacanas**
-* Iván Fernández Llorente - **IvanFernandezLlorente**
-* Diego Pascual Ferrer - **Diegopasfer1909**
-* Alvaro Justo Rivas Alcobendas - **Varo412**
-* Santiago González Martin - **SantiagoGnzlz**
+TenniShip has been made with html, css and javascript. BizPage Bootstrap template has been used and modified.
+
+## Authors
+
+* Iván Fernández Llorente - [Ivan's GitHub](https://github.com/IvanFernandezLlorente/ "IvanFernandezLlorente")
+* Santiago González Martin - [Santi's GitHub](https://github.com/SantiagoGnzlz/ "SantiagoGnzlz")
+* Diego Pascual Ferrer - [Diego's GitHub](https://github.com/Diegopasfer1909/ "Diegopasfer1909")
+* Alvaro Justo Rivas Alcobendas - [Álvaro's GitHub](https://github.com/Varo412/ "Varo412")
+* Marcos Villacañas Flores - [Marcos' GitHub](https://github.com/MarcosVillacanas/ "MarcosVillacanas")
+
+## License
+© BizPage Bootstrap template has been designed by BootstrapMade. [Original Bizpage Template](https://bootstrapmade.com/demo/BizPage/ "Bizpage").
+
