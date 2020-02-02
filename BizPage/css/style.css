@@ -270,10 +270,35 @@ body#index #home {
 
 /* Nav Meu Styling */
 
+/*Sign Up button principal page*/
+
+.signUpIndexBtnText{
+    color:#fff!important;
+    background-color: #18d26e!important;
+    border-color: #18d26e!important;
+    padding-bottom: 1px!important;
+}
+
+/*Sign In button principal page*/
+
+.signInIndexBtnText{
+    color:#20fa5f!important;
+    border-color: #18d26e!important;
+    padding-bottom: 1px!important;
+}
+/*Image for the logged in account*/
+.loginImage {
+    margin-top: -0.6em;
+    width: 70px;
+    height: 40px;
+    border-color: white!important;
+    background-color: #18d26e!important;
+}
+
 .nav-menu a {
     padding: 0 8px 10px 8px;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     color: #fff;
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -1152,7 +1177,19 @@ h5 {
 
 }
 
+/*Submit Button on registerMatchSelectMatch.html */
 
+.SubmitButtonMatch {
+    background: #18d26e;
+    color: white !important;
+    margin-bottom: 2%!important;
+
+}
+
+.centerButton{
+    display:flex;
+    justify-content: center;
+}
 
 /* This part corresponds to the addition of the image in the Logo section during the Account Registration*/
 
