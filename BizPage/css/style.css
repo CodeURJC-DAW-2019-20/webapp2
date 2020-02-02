@@ -182,6 +182,20 @@ h6 {
     margin: 0;
 }
 
+/* Header style specific to the index page */
+
+body#index #header:not(.header-scrolled) {
+    background: linear-gradient(45deg, black, transparent);
+}
+
+body#index {
+    padding-top: 0;
+}
+
+body#index #home {
+    padding-top: 152px;
+}
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
