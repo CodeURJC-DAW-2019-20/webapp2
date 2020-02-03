@@ -934,6 +934,9 @@ div.img {
         border-left: 1px solid #ddd;
         border-right: 1px solid #ddd;
     }
+    #nav-menu-container {
+        padding-right: 120px;
+    }
 }
 
 @media (min-width: 992px) {
@@ -952,9 +955,6 @@ div.img {
     #intro .carousel-control-prev,
     #intro .carousel-control-next {
         width: 5%;
-    }
-    #nav-menu-container {
-        padding-right: 60px;
     }
 }
 
