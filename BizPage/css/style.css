@@ -1851,7 +1851,7 @@ body:not(#index) main#main {
 --------------------------------*/
 
 #TManagement {
-    background: url("../img/about-bg.jpg") center top no-repeat fixed;
+    background: #fff;
     background-size: cover;
     padding: 60px 0 40px 0;
     position: relative;
