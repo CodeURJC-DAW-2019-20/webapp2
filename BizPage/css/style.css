@@ -9,6 +9,14 @@ body {
     padding-top: 92px;
 }
 
+.bodyWhiteBackground{
+    background:#fff;
+}
+
+.colorLinkTeam{
+    color:black;
+}
+
 a {
     color: #18d26e;
     transition: 0.5s;
@@ -926,6 +934,9 @@ div.img {
         border-left: 1px solid #ddd;
         border-right: 1px solid #ddd;
     }
+    #nav-menu-container {
+        padding-right: 120px;
+    }
 }
 
 @media (min-width: 992px) {
@@ -944,9 +955,6 @@ div.img {
     #intro .carousel-control-prev,
     #intro .carousel-control-next {
         width: 5%;
-    }
-    #nav-menu-container {
-        padding-right: 60px;
     }
 }
 
@@ -1654,7 +1662,6 @@ body:not(#index) main#main {
 
 #TCreatorInfo {
     height: 450px;
-    overflow-y: auto;
 }
 
 #TCreatorInfo .ChooseTeam {
@@ -1722,9 +1729,37 @@ body:not(#index) main#main {
     position: relative;
 }
 
+.flex-resp {
+    flex-direction: column;
+}
+
+@media (max-width:575px) {
+    #TCreatorInfo, .TCreatorRaffle {
+        height: 100%;
+    }
+    #TCreatorInfo .ChooseTeam {
+        width: calc(100% + 32px);
+        height: auto;
+        display: inline-block;
+    }
+    .flex-resp {
+        flex-direction: row!important;
+        position: initial!important;
+    }
+    .ChooseTeam .nav-link {
+        display: inline-block;
+    }
+}
 
 /* TeamMate Section
 --------------------------------*/
+
+.TCreatorRaffle {
+    height: 434px;
+    width: calc(100% + 15px);
+    overflow-y: auto;
+    padding-right: 20px;
+}
 
 #TeamMate {
     background: #fff;
