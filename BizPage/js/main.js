@@ -203,6 +203,47 @@
     items: 1
   });
 
+  $(document).ready(function(){
+    //open the pop up that delete a tournament
+    document.getElementById('h2-to-delete').addEventListener("click",
+    function(){
+        document.querySelector('.popup').style.display = "flex";
+    });
+    //button X that close the pop up
+    document.querySelector(".closepopup").addEventListener("click",
+    function(){
+        document.querySelector('.popup').style.display = 'none';
+    });
+    //button Cancel that close the pop up
+    document.querySelector(".closepopup2").addEventListener("click",
+    function(){
+        document.querySelector('.popup').style.display = 'none';
+    });
+    //button Delete close the previous pop up
+    document.querySelector(".deleteButton").addEventListener("click",
+    function(){
+        document.querySelector('.popup').style.display = 'none';
+    });
+    //open the pop that confirm the tournament deleted    
+    document.querySelector(".deleteButton").addEventListener("click",
+    function(){
+        document.querySelector('.popupconfirm').style.display = 'flex';
+    });
+    
+
+
+    document.getElementById('h2-to-team').addEventListener("click",
+    function(){
+        document.querySelector('.popupteam').style.display = "flex";
+    });
+    document.querySelector(".closepopup3").addEventListener("click",
+    function(){
+        document.querySelector('.popupteam').style.display = 'none';
+    });
+
+  });
+
+
 })(jQuery);
 
 // Adaptive footer for short pages

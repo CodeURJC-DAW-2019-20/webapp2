@@ -36,6 +36,7 @@
       License: https://bootstrapmade.com/license/
     ======================================================= -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="js/own.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -85,8 +86,8 @@
                         <div style="visibility: visible; animation-name: fadeInUp;" class="margin col-lg-3 col-md-6 wow fadeInUp">
                             <div class="management-col">
                                 <div class="img">
-                                <img src="img/loup.png" alt="" class="img-fluid">
-                                <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+                                    <img src="img/loup.png" alt="" class="img-fluid">
+                                    <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
                                 </div>
                                 <h2 class="title"><a href="registerMatchSelectMatch.html">Change Match</a></h2>
                                 <p>
@@ -94,27 +95,27 @@
                                 </p>
                             </div>
                         </div>
-            
-                        <div data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;" class="margin col-lg-3 col-md-6 wow fadeInUp">
+                        
+                        <div data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;" class="margin col-lg-3 col-md-6 wow fadeInUp">
                             <div class="management-col">
                                 <div class="img">
-                                <img src="img/edit.png" alt="" class="img-fluid">
-                                <div class="icon"><i class="ion-ios-list-outline"></i></div>
+                                    <img src="img/edit.png" alt="" class="img-fluid">
+                                    <div class="icon"><i class="ion-ios-list-outline"></i></div>
                                 </div>
-                                <h2 class="title"><a href="#">Delete Team</a></h2>
+                                <h2 class="title"><a id="h2-to-team" href="#">Delete Team</a></h2>
                                 <p>
                                     You can delete a team. The other teams will win the matches
                                 </p>
                             </div>
                         </div>
-            
+
                         <div data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;" class="margin col-lg-3 col-md-6 wow fadeInUp">
                             <div class="management-col">
                                 <div class="img">
-                                <img src="img/disqualify.png" alt="" class="img-fluid">
-                                <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+                                    <img src="img/disqualify.png" alt="" class="img-fluid">
+                                    <div class="icon"><i class="ion-ios-eye-outline"></i></div>
                                 </div>
-                                <h2 class="title"><a href="#">Add Team</a></h2>
+                                <h2 class="title"><a href="TCreator.html">Add Team</a></h2>
                                 <p>
                                     You can add a team if the tournament haven't started yet
                                 </p>
@@ -124,10 +125,10 @@
                         <div data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;" class="margin col-lg-3 col-md-6 wow fadeInUp">
                             <div class="management-col">
                                 <div class="img">
-                                <img src="img/delete.png" alt="" class="img-fluid">
-                                <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+                                    <img src="img/delete.png" alt="" class="img-fluid">
+                                    <div class="icon"><i class="ion-ios-eye-outline"></i></div>
                                 </div>
-                                <h2 class="title"><a href="#">Delete tournament</a></h2>
+                                <h2 class="title"><a  id="h2-to-delete" href="#">Delete tournament</a></h2>
                                 <p>
                                     You can delete the tournament
                                 </p>
@@ -137,6 +138,44 @@
                 </div>
             </div>           
         </section>
+
+        <div class="popup popup-group">
+            <div class="popupDelete">
+                <div class="icon"><i class="ion-close closepopup"></i></div>
+                <div>
+                    <h4>Are you sure on deleting the tournament?</h4>
+                    <div class="buttons">
+                        <button class="btn closepopup2" type="submit">Cancel</button>
+                        <button class="btn deleteButton" type="submit">Delete</button>
+                    </div>
+                </div>
+            </div>      
+        </div>
+
+        <div class="popupconfirm popup-group">
+            <div class="confirm-delete">
+                <div>
+                    <h4>The tournament has been deleted successfully</h4>
+                    <div class="buttons">
+                        <button class="btn" type="submit"><a href="index.html">Home</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="popupteam popup-group">
+            <div class="confirm-team">
+                <div>
+                    <h4>Delete the team you want</h4>
+                    <div class="buttons">
+                        <form class= "form-inline active-green-3 mx-auto">
+                            <input class="form-control form-control-plaintext m-5 w-75" type="text" placeholder="Search" aria-label="Search">
+                        </form>
+                        <button class="btn closepopup3" type="submit">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!--==========================

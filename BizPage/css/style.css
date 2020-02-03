@@ -632,12 +632,12 @@ div.img {
     justify-content: center;
 }
 
-#sign-in button {
+#sign-in button,.popupDelete button,.confirm-delete button,.confirm-team button{
     background:#18d26e;
     color:white !important;
 }
 
-#sign-in button:hover{
+#sign-in button:hover ,.popupDelete button:hover,.confirm-delete button:hover ,.confirm-team button:hover{
     background: #13a456;
     color: #000!important;
 }
@@ -1851,7 +1851,7 @@ body:not(#index) main#main {
 --------------------------------*/
 
 #TManagement {
-    background: url("../img/about-bg.jpg") center top no-repeat fixed;
+    background: #fff;
     background-size: cover;
     padding: 60px 0 40px 0;
     position: relative;
@@ -1958,4 +1958,80 @@ body:not(#index) main#main {
     margin-bottom: 0;
     padding: 0 20px 20px 20px;
     text-align: center;
+}
+
+.popup-group a{
+    color: white;
+}
+
+/* POP UP Delete Team
+-------------------------*/
+
+.popup,.popupconfirm,.popupteam{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.popupDelete,.confirm-delete,.confirm-team{
+    width: 75%;
+    height: 30%;
+    background-color: white;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.5);
+    border-radius: 15px 15px 15px 15px;
+    position: relative;
+}
+
+.popupDelete h4,.confirm-delete h4,.confirm-team h4{
+    text-align: center;
+    margin: 0px auto;
+}
+
+.popupDelete > div:nth-of-type(2),.confirm-delete:first-of-type div,.confirm-team:first-of-type div{
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    align-self: center;
+    justify-content: space-around;
+}
+
+.popup .icon {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.popupDelete .buttons,.confirm-delete .buttons,.confirm-team .buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn.closepopup3 {
+    width: 25%;
+    align-self: center;
+  }
+
+@media (min-height: 648px){
+    .popupDelete,.confirm-delete,.confirm-team{
+        height: 25%;
+    }
+}
+
+
+@media (min-width: 992px){
+    .popupDelete,.confirm-delete,.confirm-team {
+        width: 50%;
+    }
 }
