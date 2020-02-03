@@ -5,17 +5,17 @@ TenniShip is a web app for managing tennis tournaments inspired in Davis Cup rul
 ![Home Page](https://raw.githubusercontent.com/CodeURJC-DAW-2019-20/webapp2/master/BizPage/img/screenshots/index.png "Home Page")
 Home page has two search bars: one for tournaments and another one for teams. This search bars are only for queries, so they redirect you to the team or tounament information sheet. Another slide below, Home page explains TenniShip web functions.
 
-![Sign Up](https://raw.githubusercontent.com/CodeURJC-DAW-2019-20/webapp2/tree/master/BizPage/img/screenshots/signup.png "Sign Up")
+![Sign Up](https://raw.githubusercontent.com/CodeURJC-DAW-2019-20/webapp2/master/BizPage/img/screenshots/signup.png "Sign Up")
 Users can sign up in TenniShip as teams. Such as in Davis Cup, every team must have five players.
 
-![Tournament Sheet](https://raw.githubusercontent.com/CodeURJC-DAW-2019-20/webapp2/tree/master/BizPage/img/screenshots/tsheetGP.png "Tournament Sheet")
-![Tournament Sheet](https://raw.githubusercontent.com/CodeURJC-DAW-2019-20/webapp2/tree/master/BizPage/img/screenshots/tsheetFP.png "Tournament Sheet")
+![Tournament Sheet](https://raw.githubusercontent.com/CodeURJC-DAW-2019-20/webapp2/master/BizPage/img/screenshots/tsheetGP.png "Tournament Sheet")
+![Tournament Sheet](https://raw.githubusercontent.com/CodeURJC-DAW-2019-20/webapp2/master/BizPage/img/screenshots/tsheetFP.png "Tournament Sheet")
 Tournament information sheets indicates the actual phase of the tournament, its teams and its progress.
 
-![Register Match](https://raw.githubusercontent.com/CodeURJC-DAW-2019-20/webapp2/tree/master/BizPage/img/screenshots/registerMatch.png "Register Match")
+![Register Match](https://raw.githubusercontent.com/CodeURJC-DAW-2019-20/webapp2/master/BizPage/img/screenshots/registerMatch.png "Register Match")
 When a game is played, teams must conclude its result. In case of disagreement, tournament's administrator will be noticed so they decide.
 
-![Team Sheet](https://raw.githubusercontent.com/CodeURJC-DAW-2019-20/webapp2/tree/master/BizPage/img/screenshots/teamSheet.png "Team Sheet")
+![Team Sheet](https://raw.githubusercontent.com/CodeURJC-DAW-2019-20/webapp2/master/BizPage/img/screenshots/teamSheet.png "Team Sheet")
 Team Sheet contains information about a team. It includes a team's logo, its players with their picture and name (hoover), the tournaments played by them and their most recent results.
 
 ## Built With
@@ -50,7 +50,7 @@ Tournaments will automatically reorganize themselves when a match is played.
 ## Authors
 
 * Iván Fernández Llorente - [Ivan's GitHub](https://github.com/IvanFernandezLlorente/ "IvanFernandezLlorente") - [Ivan's e-mail](mailto:i.fernandezl.2017@alumnos.urjc.es "Send e-mail")
-* Santiago González Martin - [Santi's GitHub](https://github.com/SantiagoGnzlz/ "SantiagoGnzlz") - [Santi's e-mail](mailto:s.gonzalezm.2017@alumnos.urjc.es "Send e-mail")
+* Santiago González Martin - [Santi's GitHub](https://github.com/SantiagoGnzlz/ "SantiagoGnzlz") - [Santi's e-mail](mailto:s.gonzalezm.2016@alumnos.urjc.es "Send e-mail")
 * Diego Pascual Ferrer - [Diego's GitHub](https://github.com/Diegopasfer1909/ "Diegopasfer1909") - [Diego's e-mail](mailto:d.pascual.2017@alumnos.urjc.es "Send e-mail")
 * Alvaro Justo Rivas Alcobendas - [Álvaro's GitHub](https://github.com/Varo412/ "Varo412") - [Álvaro's e-mail](mailto:aj.rivas.2017@alumnos.urjc.es "Send e-mail")
 * Marcos Villacañas Flores - [Marcos' GitHub](https://github.com/MarcosVillacanas/ "MarcosVillacanas") - [Marcos' e-mail](mailto:m.villacanas.2017@alumnos.urjc.es "Send e-mail")
