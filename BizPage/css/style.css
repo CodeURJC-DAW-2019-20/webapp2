@@ -9,6 +9,14 @@ body {
     padding-top: 92px;
 }
 
+.bodyWhiteBackground{
+    background:#fff;
+}
+
+.colorLinkTeam{
+    color:black;
+}
+
 a {
     color: #18d26e;
     transition: 0.5s;
