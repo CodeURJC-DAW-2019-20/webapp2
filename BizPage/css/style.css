@@ -1654,7 +1654,6 @@ body:not(#index) main#main {
 
 #TCreatorInfo {
     height: 450px;
-    overflow-y: auto;
 }
 
 #TCreatorInfo .ChooseTeam {
@@ -1722,9 +1721,37 @@ body:not(#index) main#main {
     position: relative;
 }
 
+.flex-resp {
+    flex-direction: column;
+}
+
+@media (max-width:575px) {
+    #TCreatorInfo, .TCreatorRaffle {
+        height: 100%;
+    }
+    #TCreatorInfo .ChooseTeam {
+        width: calc(100% + 32px);
+        height: auto;
+        display: inline-block;
+    }
+    .flex-resp {
+        flex-direction: row!important;
+        position: initial!important;
+    }
+    .ChooseTeam .nav-link {
+        display: inline-block;
+    }
+}
 
 /* TeamMate Section
 --------------------------------*/
+
+.TCreatorRaffle {
+    height: 434px;
+    width: calc(100% + 15px);
+    overflow-y: auto;
+    padding-right: 20px;
+}
 
 #TeamMate {
     background: #fff;
