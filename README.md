@@ -48,13 +48,25 @@ TenniShip has three different users: administrator, registered user and non-regi
 + Teams has 5 images: the team logo, and a profile picture for the five team members.
 
 ### Charts
-In tournament's details appears a vertical bar chart. Horizontal axis contains the participating teams, and vertical axis contains the points gotten.
+In team's details appears a pie chart that automatically calculates and shows the percentage of matches played in each tournament.
 
 ### Additional technology
 An e-mail will be sent in three different situations: when you register your TenniShip account, then a team is disqualified from a tournament your are playing in and when a tournament that you are into is deleted.
 
 ### Advanced algorithm or query
 Tournaments will automatically reorganize themselves when a match is played.
+
+## Screens transitions.
+![Login/up](BizPage/img/screen_transitions/fromHome.jpeg)
+
+![Login/up](BizPage/img/screen_transitions/fromSB.jpeg)
+
+![Login/up](BizPage/img/screen_transitions/fromActions.jpeg)
+
+![Login/up](BizPage/img/screen_transitions/fromActions2.jpeg)
+
+![Login/up](BizPage/img/screen_transitions/fromActions3.jpeg)
+
 
 
 ## Authors
