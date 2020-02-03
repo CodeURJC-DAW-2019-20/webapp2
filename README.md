@@ -23,8 +23,8 @@ When a game is played, teams must conclude its result. In case of disagreement, 
 
 
 
-![Team Sheet](BizPage/img/screenshots/teamSheet.png "Team Sheet")
-Team Sheet contains information about a team. It includes a team's logo, its players with their picture and name (hoover), the tournaments played by them and their most recent results. This screenshot was taken with zoom out.
+![Team Sheet](BizPage/img/screenshots/teamFile.png "Team Sheet")
+Team Sheet contains information about a team. It includes the team's logo, its players with their picture and name (on mouse hover), the tournaments played by them and their most recent results. There's a pie chart that showcases the percentage of matches played in each tournament. This screenshot was taken with zoom out.
 
 
 
