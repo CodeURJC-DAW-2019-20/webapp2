@@ -3,7 +3,7 @@
 TenniShip is a web app for managing tennis tournaments inspired in Davis Cup rules. It allows users to find teams, matches, keep track of scores, and check their standings in tourneys. 
 
 ![Home Page](BizPage/img/screenshots/index.png "Home Page")
-Home page has two search bars: one for tournaments and another one for teams. This search bars are only for queries, so they redirect you to the team or tournament information sheet. Another slide below, Home page explains TenniShip web functions.
+The home page has two search bars: one for tournaments and another one for teams. This search bars are only for queries, so they redirect you to the team or tournament information sheet. There's another slide below, that explains what TenniShip can do and links the user to various actions.
 
 
 
@@ -14,12 +14,12 @@ Users can sign up in TenniShip as teams. Such as in Davis Cup, every team must h
 
 ![Tournament Sheet](BizPage/img/screenshots/tsheetGP.png "Tournament Sheet")
 ![Tournament Sheet](BizPage/img/screenshots/tsheetFP.png "Tournament Sheet")
-Tournament information sheets indicates the actual phase of the tournament, its teams and its progress.
+Tournament information sheets indicate the actual phase of the tournament, its teams and its progress.
 
 
 
 ![Register Match](BizPage/img/screenshots/registerMatch.png "Register Match")
-When a game is played, teams must conclude its result. In case of disagreement, tournament's administrator will be noticed so they decide.
+When a game is played, teams must log the result. In case of disagreement, tournament's administrator will be noticed so they decide.
 
 
 
@@ -34,7 +34,7 @@ TenniShip has been made with HTML, CSS and Javascript. BizPage Bootstrap templat
 
 ## Technical details
 ### Entities
-TenniShip has four different entities: match, tournament, team and user rol. 
+TenniShip has four different entities: match, tournament, team and user role. 
 ![Entities](BizPage/img/diagrams/entities_dependencies.png)
 
 ### Users
@@ -45,7 +45,7 @@ TenniShip has three different users: administrator, registered user and non-regi
 
 ### Pictures
 + Tournament has an image as its logo.
-+ Teams has 5 images: the team logo, and a profile picture for the five team members.
++ Each team has 6 images: the team logo, and a profile picture for the five team members.
 
 ### Charts
 In team's details appears a pie chart that automatically calculates and shows the percentage of matches played in each tournament.
@@ -56,7 +56,15 @@ An e-mail will be sent in three different situations: when you register your Ten
 ### Advanced algorithm or query
 Tournaments will automatically reorganize themselves when a match is played.
 
-## Screens transitions.
+## Screen transitions.
+
++ __Straight__ arrows show how _non-registered users_ can navigate throw the website.
+
++ Arrows that start with a __circle__ show how _registered users_ can navigate throw the website.
++ Arrows that start with a __rhombus__ show how _administrator users_ can navigate throw the website.
+
+
+
 ![Login/up](BizPage/img/screen_transitions/fromHome.jpeg)
 
 ![Login/up](BizPage/img/screen_transitions/fromSB.jpeg)
