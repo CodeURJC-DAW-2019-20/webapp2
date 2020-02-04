@@ -640,12 +640,12 @@ div.img {
     justify-content: center;
 }
 
-#sign-in button,.popupDelete button,.confirm-delete button,.confirm-team button{
+#sign-in button,.popupDelete button,.confirm-delete button,.confirm-team button,.buttonTeamsManagement button,.buttonown {
     background:#18d26e;
     color:white !important;
 }
 
-#sign-in button:hover ,.popupDelete button:hover,.confirm-delete button:hover ,.confirm-team button:hover{
+#sign-in button:hover ,.popupDelete button:hover,.confirm-delete button:hover ,.confirm-team button:hover,.buttonTeamsManagement button:hover,.buttonown:hover{
     background: #13a456;
     color: #000!important;
 }
@@ -1417,6 +1417,12 @@ body:not(#index) main#main {
     }
 }
 
+.member .icon {
+    position: absolute;
+    right: -11px;
+    cursor: pointer;
+    top: -18px;
+  }
 
 /* Tournament progress bar */
 
@@ -1761,19 +1767,19 @@ body:not(#index) main#main {
     padding-right: 20px;
 }
 
-#TeamMate {
+.TeamMate {
     background: #fff;
     padding: 4px 0;
 }
 
-#TeamMate .member {
+.TeamMate .member {
     text-align: center;
     margin-bottom: 20px;
     background: #000;
     position: relative;
 }
 
-#TeamMate .member .member-info {
+.TeamMate .member .member-info {
     opacity: 0;
     display: -webkit-box;
     display: -webkit-flex;
@@ -1795,36 +1801,44 @@ body:not(#index) main#main {
     transition: 0.2s;
 }
 
-#TeamMate .member .member-info-content {
+.TeamMate .member .member-info-content {
     margin-top: -50px;
     transition: margin 0.2s;
+    width: 75%;
 }
 
-#TeamMate .member:hover .member-info {
-    background: rgba(0, 0, 0, 0.7);
+.TeamMate .member:hover .member-info {
+    background: rgba(24, 210, 110 , 0.7);
     opacity: 1;
     transition: 0.4s;
 }
 
-#TeamMate .member:hover .member-info-content {
+.TeamMate .member:hover .member-info-content {
     margin-top: 0;
     transition: margin 0.4s;
 }
 
-#TeamMate .member h4 {
+.TeamMate .member h4 {
     font-weight: 700;
-    margin-bottom: 2px;
+    margin-bottom: 10%;
     font-size: 18px;
     color: #fff;
 }
 
-#TeamMate .member span {
-    font-style: italic;
+.TeamMate .member .span {
     display: block;
     font-size: 13px;
-    color: #fff;
+    color:white;
+    background:black;
+    width: 75%;
+    margin: 0px auto;
+    border-radius: 10px 10px 10px 10px;
+    cursor: pointer;
 }
 
+.btn.span:hover {
+    background-color: grey;
+}
 
 /* Created/Raffle*/
 
@@ -1995,12 +2009,31 @@ body:not(#index) main#main {
     text-align: center;
 }
 
-.popup-group a{
+
+/* Modals
+-------------------------*/
+
+.modal-footer {
+    justify-content: space-around;
+}
+
+.modal-body h6 {
+    text-align: center;
+    margin: 0px auto;
+}
+
+#ConfirmDeleteTeam .modal-header{
+    border-bottom: 0px;
+}
+
+#ConfirmDeleteTeam .modal-footer{
+    border-top: 0px;
+}
+
+.buttonown a{
     color: white;
 }
 
-/* POP UP Delete Team
--------------------------*/
 
 .popup,.popupconfirm,.popupteam{
     width: 100%;
