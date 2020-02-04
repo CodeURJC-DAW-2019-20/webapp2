@@ -1376,12 +1376,26 @@ body:not(#index) main#main {
 }
 
 
-
 #tournamentSheetChart {
     margin: auto;
     position: relative;
 }
 
+#tournamentSheetChart .ion-android-create .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(10, 10, 10);
+    color: #18d26e;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+}
+
+#tournamentSheetChart .ion-android-create:hover .tooltiptext {
+    visibility: visible;
+}
 
 .groupHeader {
     padding-bottom: 3%;
@@ -1896,120 +1910,6 @@ body:not(#index) main#main {
     color: #000!important;
 }
 
-/*Tournament Management
---------------------------------*/
-
-#TManagement {
-    background: #fff;
-    background-size: cover;
-    padding: 60px 0 40px 0;
-    position: relative;
-}
-  
-#TManagement::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.92);
-    z-index: 9;
-}
-
-#TManagement:first-of-type h3 {
-    margin-top: 0px;
-  }
-  
-#TManagement .container {
-    position: relative;
-    z-index: 10;
-}
-  
-#TManagement .separation{
-    display: flex;
-    width: 70%;
-    margin: 0px auto;
-}
-
-#TManagement .margin {
-    margin-top: 50px;
-}
-
-#TManagement .management-col {
-    background: #fff;
-    border-radius: 4px 4px 4px 4px;
-    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px;
-    height: 100%;
-}
-  
-#TManagement .management-col .img {
-    position: relative;
-}
-  
-#TManagement .management-col .img img {
-    border-radius: 4px 4px 0 0;
-    border-bottom: 4px solid black;
-}
-  
-#TManagement .management-col .icon {
-    width: 64px;
-    height: 64px;
-    padding-top: 8px;
-    text-align: center;
-    position: absolute;
-    background-color: #18d26e;
-    border-radius: 50%;
-    text-align: center;
-    border: 4px solid #fff;
-    left: calc( 50% - 32px);
-    bottom: -30px;
-    transition: 0.3s;
-}
-  
-#TManagement .management-col i {
-    font-size: 36px;
-    line-height: 1;
-    color: #fff;
-    transition: 0.3s;
-}
-  
-#TManagement .management-col:hover .icon {
-    background-color: #fff;
-}
-  
-#TManagement .management-col:hover i {
-    color: #18d26e;
-}
-  
-#TManagement .management-col h2 {
-    color: #000;
-    text-align: center;
-    font-weight: 700;
-    font-size: 20px;
-    padding: 0;
-    margin: 40px 0 12px 0;
-}
-  
-#TManagement .management-col h2 a {
-    color: #000;
-}
-  
-#TManagement .management-col h2 a:hover {
-    color: #18d26e;
-}
-  
-#TManagement .management-col p {
-    font-size: 14px;
-    line-height: 24px;
-    color: #333;
-    margin-bottom: 0;
-    padding: 0 20px 20px 20px;
-    text-align: center;
-}
-
-
 /* Modals
 -------------------------*/
 
@@ -2032,76 +1932,6 @@ body:not(#index) main#main {
 
 .buttonown a{
     color: white;
-}
-
-
-.popup,.popupconfirm,.popupteam{
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    display: none;
-}
-
-.popupDelete,.confirm-delete,.confirm-team{
-    width: 75%;
-    height: 30%;
-    background-color: white;
-    opacity: 1;
-    display: flex;
-    justify-content: center;
-    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.5);
-    border-radius: 15px 15px 15px 15px;
-    position: relative;
-}
-
-.popupDelete h4,.confirm-delete h4,.confirm-team h4{
-    text-align: center;
-    margin: 0px auto;
-}
-
-.popupDelete > div:nth-of-type(2),.confirm-delete:first-of-type div,.confirm-team:first-of-type div{
-    display: flex;
-    flex-direction: column;
-    height: 80%;
-    align-self: center;
-    justify-content: space-around;
-}
-
-.popup .icon {
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.popupDelete .buttons,.confirm-delete .buttons,.confirm-team .buttons{
-    display: flex;
-    justify-content: space-around;
-}
-
-.btn.closepopup3 {
-    width: 25%;
-    align-self: center;
-  }
-
-@media (min-height: 648px){
-    .popupDelete,.confirm-delete,.confirm-team{
-        height: 25%;
-    }
-}
-
-
-@media (min-width: 992px){
-    .popupDelete,.confirm-delete,.confirm-team {
-        width: 50%;
-    }
 }
 
 /* --------------------
