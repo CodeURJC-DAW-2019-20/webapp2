@@ -14,9 +14,7 @@ public class Player {
 	
 	private String name;
 	//private Image playerImage;
-	
 
-	
 	public Player() {
 	}
 

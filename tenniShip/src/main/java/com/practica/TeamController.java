@@ -20,6 +20,9 @@ public class TeamController {
 	@Autowired
 	private TeamRepository teamRepository;
 	
+	@Autowired
+	private TournamentRepository tournamentRepository;
+	
 
 	@PostConstruct
 	public void init() {
@@ -167,10 +170,13 @@ public class TeamController {
 
         if (t.isPresent()) {
         	model.addAttribute("teamName", t.get().getName());
+        	
         	List<Player> players = t.get().getPlayers();
         	for (int i = 0; i < 5; i++) {
         		model.addAttribute(String.format("player%d", i), players.get(i).getName());
         	}
+        	
+        	//añadir al html de Team Sheet los partidos disputados por ese equipo en vez de la lista de partidos estática
         }
 		return "teamfile";
 	}

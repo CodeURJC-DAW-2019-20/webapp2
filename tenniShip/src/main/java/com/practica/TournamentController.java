@@ -1,7 +1,6 @@
 package com.practica;
 
 import java.util.Optional;
-import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.practica.model.Team;
 import com.practica.model.Tournament;
+import com.practica.model.Match;
 
 @Controller
 public class TournamentController {
@@ -31,6 +31,16 @@ public class TournamentController {
 	teamRepository.findAll().forEach(team->{
 		tournament1.getTournamentTeams().add(team);
 	});
+	
+	Match m1 = new Match( tournament1.getTournamentTeams().get(0), tournament1.getTournamentTeams().get(1), 3, 0);
+	tournament1.getTournamentMatchs().add(m1);
+	//guardar tambien en el mapa de cada equipo que han jugado un partido en el torneo tournament1
+	
+	Match m2 = new Match( tournament1.getTournamentTeams().get(0), tournament1.getTournamentTeams().get(1), 3, 2);
+	tournament1.getTournamentMatchs().add(m2);
+	//guardar tambien en el mapa de cada equipo que han jugado un partido en el torneo tournament1
+
+
 	tournamentRepository.save(tournament1);
 	}
 	

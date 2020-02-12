@@ -17,8 +17,6 @@ public class Tournament {
 	@Id
 	//@GeneratedValue(strategy= GenerationType.AUTO)
 	String name;
-	
-	
 
 	public String getName() {
 		return name;
@@ -28,14 +26,15 @@ public class Tournament {
 		this.name = name;
 	}
 
-
-	
 //	In this part we should take into account
 //	the possibility of a team being erased if
 //	that team does not participate in more
 //	tournaments
 	@ManyToMany
 	private List<Team> tournamentTeams = new ArrayList<>();
+	
+	@ManyToMany
+	private List<Match> tournamentMatchs = new ArrayList<>();
 	
 	
 	public Tournament() {		
@@ -52,7 +51,22 @@ public class Tournament {
 	public void setTournamentTeams(List<Team> tournamentTeams) {
 		this.tournamentTeams = tournamentTeams;
 	}
+
+	public List<Match> getTournamentMatchs() {
+		return tournamentMatchs;
+	}
+
+	public void setTournamentMatchs(List<Match> tournamentMatchs) {
+		this.tournamentMatchs = tournamentMatchs;
+	}
 	
-	
-	
+	public void setMatch(Team home, Team away, Integer homePoints, Integer awayPoints) {
+		for (Match m : tournamentMatchs) {
+			if (m.getMatchId().equals(home.getName()+away.getName())) {
+				m.setHomePoints(homePoints);
+				m.setAwayPoints(awayPoints);
+				break;
+			}			
+		}
+	}
 }

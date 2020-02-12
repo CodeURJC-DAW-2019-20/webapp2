@@ -3,6 +3,8 @@ package com.practica.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -24,6 +26,9 @@ public class Team {
 	
 	@OneToMany (cascade = CascadeType.ALL)
 	private List<Player> players = new ArrayList<>();
+	
+	@OneToMany (cascade = CascadeType.ALL)
+	private Map<String, List<Match>> matchs = new ConcurrentHashMap<>();
 	
 	@ManyToMany
 	private List<Tournament> tournament;
@@ -52,6 +57,23 @@ public class Team {
 		this.players = players;
 	}
 
+	public List<Match> getMatchs(String t) {
+		return matchs.get(t);
+	}
+
+	public void setMatch(String t, Match m) {
+		this.matchs.get(t).add(m);
+	}
+
+	public List<Tournament> getTournament() {
+		return tournament;
+	}
+
+	public void setTournament(List<Tournament> tournament) {
+		this.tournament = tournament;
+	}
+
+	
 	
 
 }
