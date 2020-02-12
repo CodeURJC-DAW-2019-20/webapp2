@@ -1,6 +1,8 @@
 package com.practica.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
@@ -8,54 +10,53 @@ import javax.persistence.Id;
 public class Match {
 	
 	@Id
-	String matchId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	long matchId;
 		
-	private Team home;
-	private Team away;
+	private String home;
+	private String away;
 	private int homePoints;
 	private int awayPoints;
 	
 	public Match() {
 	}
 	
-	public Match(Team home, Team away) {
-		this.matchId = home.getName() + away.getName();
+	public Match(String home, String away) {
 		this.home = home;
-		//this.away = away;
+		this.away = away;
 	}
 	
-	public Match(Team home, Team away, int homePoints, int awayPoints) {
-		this.matchId = home.getName() + away.getName();
+	public Match(String home, String away, int homePoints, int awayPoints) {
 		this.home = home;
-		//this.away = away;
+		this.away = away;
 		this.homePoints = homePoints;
 		this.awayPoints = awayPoints;
 	
 	}
 
-	public String getMatchId() {
+	public long getMatchId() {
 		return matchId;
 	}
 
-	public void setMatchId(String matchId) {
+	public void setMatchId(long matchId) {
 		this.matchId = matchId;
 	}
 
-	public Team getHome() {
+	public String getHome() {
 		return home;
 	}
 
-	public void setHome(Team home) {
+	public void setHome(String home) {
 		this.home = home;
 	}
 
-	/*public Team getAway() {
+	public String getAway() {
 		return away;
 	}
 
-	public void setAway(Team away) {
+	public void setAway(String away) {
 		this.away = away;
-	}*/
+	}
 
 	public int getHomePoints() {
 		return homePoints;

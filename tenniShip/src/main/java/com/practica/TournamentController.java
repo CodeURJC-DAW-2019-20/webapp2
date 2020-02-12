@@ -24,6 +24,8 @@ public class TournamentController {
 	@Autowired
 	private TeamRepository teamRepository;
 
+	@Autowired
+	private MatchRepository matchRepository;
 	
 	@PostConstruct
 	public void init() {
@@ -32,13 +34,16 @@ public class TournamentController {
 		tournament1.getTournamentTeams().add(team);
 	});
 	
-	Match m1 = new Match( tournament1.getTournamentTeams().get(0), tournament1.getTournamentTeams().get(1), 3, 0);
+	Match m1 = new Match( tournament1.getTournamentTeams().get(0).getName(), tournament1.getTournamentTeams().get(1).getName(), 3, 0);
+	matchRepository.save(m1);
 	tournament1.getTournamentMatchs().add(m1);
-	//guardar tambien en el mapa de cada equipo que han jugado un partido en el torneo tournament1
 	
-	Match m2 = new Match( tournament1.getTournamentTeams().get(0), tournament1.getTournamentTeams().get(1), 3, 2);
-	tournament1.getTournamentMatchs().add(m2);
-	//guardar tambien en el mapa de cada equipo que han jugado un partido en el torneo tournament1
+	Match m2 = new Match( tournament1.getTournamentTeams().get(2).getName(), tournament1.getTournamentTeams().get(3).getName(), 3, 2);
+	matchRepository.save(m2);
+	
+	Match m3 = new Match( tournament1.getTournamentTeams().get(4).getName(), tournament1.getTournamentTeams().get(5).getName(), 3, 2);
+	matchRepository.save(m3);
+	tournament1.getTournamentMatchs().add(m3);
 
 
 	tournamentRepository.save(tournament1);
@@ -59,6 +64,23 @@ public class TournamentController {
 
         return "tournamentSheet";
     }
+	
+	
+	
+	@GetMapping("/Matches")
+	public String tester (Model model) {
+		
+		List<Match> matches = matchRepository.findAllMatches();
+		
+    	
+    	for(int i=0; i< matches.size();i++) {
+    		model.addAttribute(String.format("teamNameHome%d", i),matches.get(i).getHome());
+    		model.addAttribute(String.format("teamNameAway%d", i),matches.get(i).getAway());
+    	}
+		
+		
+		return "registerMatch";
+	}
 	
 }
 

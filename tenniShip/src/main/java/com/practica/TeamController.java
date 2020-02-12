@@ -19,10 +19,7 @@ public class TeamController {
 	
 	@Autowired
 	private TeamRepository teamRepository;
-	
-	@Autowired
-	private TournamentRepository tournamentRepository;
-	
+		
 
 	@PostConstruct
 	public void init() {

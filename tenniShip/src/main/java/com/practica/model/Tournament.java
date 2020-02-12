@@ -15,16 +15,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Tournament {
 	@Id
-	//@GeneratedValue(strategy= GenerationType.AUTO)
 	String name;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 //	In this part we should take into account
 //	the possibility of a team being erased if
@@ -33,7 +24,7 @@ public class Tournament {
 	@ManyToMany
 	private List<Team> tournamentTeams = new ArrayList<>();
 	
-	@ManyToMany
+	@OneToMany
 	private List<Match> tournamentMatchs = new ArrayList<>();
 	
 	
@@ -44,6 +35,14 @@ public class Tournament {
 		this.name = name;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public List<Team> getTournamentTeams() {
 		return tournamentTeams;
 	}
@@ -60,13 +59,13 @@ public class Tournament {
 		this.tournamentMatchs = tournamentMatchs;
 	}
 	
-	public void setMatch(Team home, Team away, Integer homePoints, Integer awayPoints) {
-		for (Match m : tournamentMatchs) {
-			if (m.getMatchId().equals(home.getName()+away.getName())) {
-				m.setHomePoints(homePoints);
-				m.setAwayPoints(awayPoints);
-				break;
-			}			
-		}
-	}
+//	public void setMatch(Team home, Team away, Integer homePoints, Integer awayPoints) {
+//		for (Match m : tournamentMatchs) {
+//			if (m.getMatchId().equals(home.getName()+away.getName())) {
+//				m.setHomePoints(homePoints);
+//				m.setAwayPoints(awayPoints);
+//				break;
+//			}			
+//		}
+//	}
 }

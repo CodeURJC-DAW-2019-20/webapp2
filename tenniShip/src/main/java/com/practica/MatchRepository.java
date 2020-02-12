@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.practica.model.Match;
-import com.practica.model.Tournament;
 
-public interface TournamentRepository extends JpaRepository<Tournament, String> {
 
-	
+public interface MatchRepository extends JpaRepository<Match, Long> {
+	@Query(value="SELECT MATCH.*  FROM TOURNAMENT JOIN MATCH",nativeQuery=true)
+	List<Match> findAllMatches();
 }
