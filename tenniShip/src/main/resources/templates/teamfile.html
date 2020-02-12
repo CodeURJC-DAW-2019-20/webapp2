@@ -12,7 +12,8 @@
     <link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+          rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
     <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,8 +47,8 @@
 <header id="header">
     <div class="container-fluid">
 
-        <div id="logo" class="pull-left">
-            <h1><a href="index.html" class="scrollto">TenniShip</a></h1>
+        <div class="pull-left" id="logo">
+            <h1><a class="scrollto" href="index.html">TenniShip</a></h1>
         </div>
 
         <nav id="nav-menu-container">
@@ -55,12 +56,12 @@
                 <li><a href="index.html">Home</a></li>
                 <li class="menu-has-children"><a href="#actions">Actions</a>
                     <ul>
-                        <li><a href="registerMatchSelectTournament.html">Register a Match</a></li>
-                        <li><a href="TCreator.html">Tournament Creator</a></li>
+                        <li><a href="selectTournament.html">Register a Match</a></li>
+                        <li><a href="tournamentCreator.html">Tournament Creator</a></li>
                     </ul>
                 </li>
                 <li><a href="#">StriderTC</a></li>
-                <li><img src="../img/clients/client-1.png" class="rounded-circle loginImage" alt=""></li>
+                <li><img alt="" class="rounded-circle loginImage" src="../img/clients/client-1.png"></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
@@ -77,7 +78,7 @@
 
             <div class="section-header">
                 <div class="team-icon img-thumbnail">
-                    <img alt="Team logo" src="../img/clients/client-1.png" class="img-fluid team-img">
+                    <img alt="Team logo" class="img-fluid team-img" src="../img/clients/client-1.png">
                 </div>
                 <h3>{{teamName}}</h3>
             </div>
@@ -86,9 +87,10 @@
                 <div id="players">
                     <div class="container">
                         <div class="row justify-content-center">
-                            <div style="visibility: visible; animation-name: fadeInUp;" class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp">
+                            <div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp"
+                                 style="visibility: visible; animation-name: fadeInUp;">
                                 <div class="member">
-                                    <img src="../img/team-1.jpg" class="img-fluid" alt="">
+                                    <img alt="" class="img-fluid" src="../img/team-1.jpg">
                                     <div class="member-info">
                                         <div class="member-info-content">
                                             <h4>{{player0}}</h4>
@@ -96,9 +98,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="visibility: visible; animation-name: fadeInUp;" class="col-lg-2 col-md-4 col-sm-6 col-6 fadeInUp">
+                            <div class="col-lg-2 col-md-4 col-sm-6 col-6 fadeInUp"
+                                 style="visibility: visible; animation-name: fadeInUp;">
                                 <div class="member">
-                                    <img src="../img/team-1.jpg" class="img-fluid" alt="">
+                                    <img alt="" class="img-fluid" src="../img/team-1.jpg">
                                     <div class="member-info">
                                         <div class="member-info-content">
                                             <h4>{{player1}}</h4>
@@ -107,9 +110,11 @@
                                 </div>
                             </div>
 
-                            <div data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;" class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp">
+                            <div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp"
+                                 data-wow-delay="0.1s"
+                                 style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                                 <div class="member">
-                                    <img src="../img/team-2.jpg" class="img-fluid" alt="">
+                                    <img alt="" class="img-fluid" src="../img/team-2.jpg">
                                     <div class="member-info">
                                         <div class="member-info-content">
                                             <h4>{{player2}}</h4>
@@ -118,9 +123,11 @@
                                 </div>
                             </div>
 
-                            <div data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;" class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp">
+                            <div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp"
+                                 data-wow-delay="0.2s"
+                                 style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                                 <div class="member">
-                                    <img src="../img/team-3.jpg" class="img-fluid" alt="">
+                                    <img alt="" class="img-fluid" src="../img/team-3.jpg">
                                     <div class="member-info">
                                         <div class="member-info-content">
                                             <h4>{{player3}}</h4>
@@ -129,9 +136,11 @@
                                 </div>
                             </div>
 
-                            <div data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;" class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp">
+                            <div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp"
+                                 data-wow-delay="0.3s"
+                                 style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
                                 <div class="member">
-                                    <img src="../img/team-4.jpg" class="img-fluid" alt="">
+                                    <img alt="" class="img-fluid" src="../img/team-4.jpg">
                                     <div class="member-info">
                                         <div class="member-info-content">
                                             <h4>{{player4}}</h4>
@@ -149,14 +158,14 @@
                 <section class="wow fadeInUp"> <!--Problem in the future-->
                     <div class="container">
                         <div class="owl-carousel clients-carousel">
-                            <img src="../img/clients/client-1.png" alt="">
-                            <img src="../img/clients/client-2.png" alt="">
-                            <img src="../img/clients/client-3.png" alt="">
-                            <img src="../img/clients/client-4.png" alt="">
-                            <img src="../img/clients/client-5.png" alt="">
-                            <img src="../img/clients/client-6.png" alt="">
-                            <img src="../img/clients/client-7.png" alt="">
-                            <img src="../img/clients/client-8.png" alt="">
+                            <img alt="" src="../img/clients/client-1.png">
+                            <img alt="" src="../img/clients/client-2.png">
+                            <img alt="" src="../img/clients/client-3.png">
+                            <img alt="" src="../img/clients/client-4.png">
+                            <img alt="" src="../img/clients/client-5.png">
+                            <img alt="" src="../img/clients/client-6.png">
+                            <img alt="" src="../img/clients/client-7.png">
+                            <img alt="" src="../img/clients/client-8.png">
                         </div>
                     </div>
                 </section>
@@ -255,7 +264,7 @@
                     </li>
                 </ul>
                 <div class="text-center pt-3">
-                    <button type="button" class="btn btn-primary">Show more</button>
+                    <button class="btn btn-primary" type="button">Show more</button>
                 </div>
             </div>
 
@@ -269,16 +278,17 @@
 ============================-->
 <footer id="footer">
     <div class="container">
-      <div class="copyright">
-          &copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>. All Rights Reserved
-      </div>
-      <div class="credits">
-        ReDesigned by paDAWans
-      </div>
+        <div class="copyright">
+            &copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>. All Rights
+            Reserved
+        </div>
+        <div class="credits">
+            ReDesigned by paDAWans
+        </div>
     </div>
-  </footer><!-- #footer -->
+</footer><!-- #footer -->
 
-<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
 <!-- Uncomment below if you want to use a preloader -->
 <div id="preloader"></div>
 

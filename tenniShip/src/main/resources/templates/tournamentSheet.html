@@ -9,25 +9,26 @@
     <meta content="" name="description">
 
     <!-- Favicons -->
-    <link href="img/favicon.png" rel="icon">
-    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="../img/favicon.png" rel="icon">
+    <link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+          rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Libraries CSS Files -->
-    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/_component-examples.scss" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/_component-examples.scss" rel="stylesheet">
 
     <!-- =======================================================
       Theme Name: BizPage
@@ -39,724 +40,788 @@
 
 <body>
 
-    <!--==========================
-  Header
+<!--==========================
+Header
 ============================-->
-    <header id="header">
-        <div class="container-fluid">
+<header id="header">
+    <div class="container-fluid">
 
-            <div id="logo" class="pull-left">
-                <h1><a href="index.html" class="scrollto">TenniShip</a></h1>
-            </div>
-
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="menu-has-children"><a href="#actions">Actions</a>
-                        <ul>
-                            <li><a href="registerMatchSelectTournament.html">Register a Match</a></li>
-                            <li><a href="TCreator.html">Tournament Creator</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="teamfile.html">StriderTC</a></li>
-                    <li><img src="img/clients/client-1.png" class="rounded-circle loginImage" alt=""></li>
-                </ul>
-            </nav><!-- #nav-menu-container -->
+        <div class="pull-left" id="logo">
+            <h1><a class="scrollto" href="index.html">TenniShip</a></h1>
         </div>
-    </header><!-- #header -->
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li class="menu-has-children"><a href="#actions">Actions</a>
+                    <ul>
+                        <li><a href="selectTournament.html">Register a Match</a></li>
+                        <li><a href="tournamentCreator.html">Tournament Creator</a></li>
+                    </ul>
+                </li>
+                <li><a href="teamfile.html">StriderTC</a></li>
+                <li><img alt="" class="rounded-circle loginImage" src="../img/clients/client-1.png"></li>
+            </ul>
+        </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- #header -->
 
 
-    <main id="main">
+<main id="main">
 
-        <section class="section-bg wow fadeInUp">
-            <div class="container container-thin">
-                <div class="section-header">
-                    <h3>Davis Cup</h3>
-                    <img src="img/sample_tournament.png" class="rounded mx-auto d-block" alt="Tournament Thumbnail"/>
+    <section class="section-bg wow fadeInUp">
+        <div class="container container-thin">
+            <div class="section-header">
+                <h3>Davis Cup</h3>
+                <img alt="Tournament Thumbnail" class="rounded mx-auto d-block" src="../img/sample_tournament.png"/>
+            </div>
+        </div>
+        <div class="container" id="progress-content">
+
+            <div class="progress">
+                <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" class="progress-bar" role="progressbar">
+                    <span class="skill">Tournament completion: <i class="val">75%</i></span>
                 </div>
             </div>
-            <div id="progress-content" class="container">
 
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                        <span class="skill">Tournament completion: <i class="val">75%</i></span>
-                    </div>
-                </div>
+        </div>
+        <div id="TournamentChartDisplay">
+            <div class="row" id="tournamentSwitch">
 
-            </div>
-            <div id="TournamentChartDisplay">
-                <div class="row" id="tournamentSwitch">
+                <nav class="navbar navbar-expand-xl navbar-light bg-light">
+                    <button aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation"
+                            class="navbar-toggler" data-target="#navbarTogglerDemo01" data-toggle="collapse"
+                            type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                    <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-    
-                        <div class="theSwitch collapse navbar-collapse col-12 col-xl-1 shadow p-3 mb-5 rounded" id="navbarTogglerDemo01">
-                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Group phase</a>
-                                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Final phase</a>
-                                <a class="nav-link" id="v-pills-seeTeams-tab" data-toggle="pill" href="#v-pills-seeTeams" role="tab" aria-controls="v-pills-seeTeams" aria-selected="false">Teams</a>
-                            </div>
-                        </div>
-                    </nav>
-
-
-                    
-                    <div id="tournamentSheetChart" class="col-12 col-lg-10">
-                        <div class="tournamentBoard shadow p-3 mb-5 bg-white rounded">
-                            <div class="tab-content" id="v-pills-tabContent">
-
-                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                    <div class="container-fluid">
-                                        <div class="row justify-content-between" style="padding:1%">
-
-                                            <div class="groupCard flex-fill">
-                                                <div class="container groupStage">
-                                                    <div class="row justify-content-between TournamentGroup">
-                                                        <div class="justify-content-between">Group A</div>
-                                                        <div class="icon justify-content-between">
-                                                            <a href="registerMatchSelectMatch.html">
-                                                                <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>  
-                                                            </a>   
-                                                        </div>
-                                                    </div>
-                                                    <div class="row justify-content-between groupHeader">
-                                                        <div class="col-6">Team Name</div>
-                                                        <div class="col-3">Played</div>
-                                                        <div class="col-3">Wins</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Alpha</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">2</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Epsilon</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">1</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Iota</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">0</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="groupCard flex-fill">
-                                                <div class="container groupStage">
-                                                    <div class="row justify-content-between TournamentGroup">
-                                                        <div class="justify-content-between">Group B</div>
-                                                        <div class="icon justify-content-between">
-                                                            <a href="registerMatchSelectMatch.html">
-                                                                <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>  
-                                                            </a>   
-                                                        </div>
-                                                    </div>
-                                                    <div class="row justify-content-between groupHeader">
-                                                        <div class="col-6">Team Name</div>
-                                                        <div class="col-3">Played</div>
-                                                        <div class="col-3">Wins</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Beta</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">2</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Zeta</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">1</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Kappa</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">0</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="groupCard flex-fill">
-                                                <div class="container groupStage">
-                                                    <div class="row justify-content-between TournamentGroup">
-                                                        <div class="justify-content-between">Group C</div>
-                                                        <div class="icon justify-content-between">
-                                                            <a href="registerMatchSelectMatch.html">
-                                                                <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>  
-                                                            </a>   
-                                                        </div>
-                                                    </div>
-                                                    <div class="row justify-content-between groupHeader">
-                                                        <div class="col-6">Team Name</div>
-                                                        <div class="col-3">Played</div>
-                                                        <div class="col-3">Wins</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Gamma</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">2</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Lambda</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">1</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Mu</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">0</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="groupCard flex-fill">
-                                                <div class="container groupStage">
-                                                    <div class="row justify-content-between TournamentGroup">
-                                                        <div class="justify-content-between">Group D</div>
-                                                        <div class="icon justify-content-between">
-                                                            <a href="registerMatchSelectMatch.html">
-                                                                <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>  
-                                                            </a>   
-                                                        </div>
-                                                    </div>
-                                                    <div class="row justify-content-between groupHeader">
-                                                        <div class="col-6">Team Name</div>
-                                                        <div class="col-3">Played</div>
-                                                        <div class="col-3">Wins</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Gamma</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">2</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Phi</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">1</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Nu</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">0</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="groupCard flex-fill">
-                                                <div class="container groupStage">
-                                                    <div class="row justify-content-between TournamentGroup">
-                                                        <div class="justify-content-between">Group E</div>
-                                                        <div class="icon justify-content-between">
-                                                            <a href="registerMatchSelectMatch.html">
-                                                                <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>  
-                                                            </a>   
-                                                        </div>
-                                                    </div>
-                                                    <div class="row justify-content-between groupHeader">
-                                                        <div class="col-6">Team Name</div>
-                                                        <div class="col-3">Played</div>
-                                                        <div class="col-3">Wins</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Eta</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">2</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Sigma</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">1</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Xi</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">0</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="groupCard flex-fill">
-                                                <div class="container groupStage">
-                                                    <div class="row justify-content-between TournamentGroup">
-                                                        <div class="justify-content-between">Group F</div>
-                                                        <div class="icon justify-content-between">
-                                                            <a href="registerMatchSelectMatch.html">
-                                                                <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>  
-                                                            </a>   
-                                                        </div>
-                                                    </div>
-                                                    <div class="row justify-content-between groupHeader">
-                                                        <div class="col-6">Team Name</div>
-                                                        <div class="col-3">Played</div>
-                                                        <div class="col-3">Wins</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Delta</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">2</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Omnicron</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">1</div>
-                                                    </div>
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-6">Team Pi</div>
-                                                        <div class="col-3">2</div>
-                                                        <div class="col-3">0</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade final-phase" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                    <div class="container-fluid">
-                                        <div class="row justify-content-between" style="padding-bottom: 2%;">
-                                            <div class="col-2" style="text-align: center">Quarters</div>
-                                            <div class="col-2" style="text-align: center">Semifinals</div>
-                                            <div class="col-4" style="text-align: center">FINAL</div>
-                                            <div class="col-2" style="text-align: center">Semifinals</div>
-                                            <div class="col-2" style="text-align: center">Quarters</div>
-                                        </div>
-                                        <div class="row justify-content-between">
-                                            <!--Quarters1-->
-                                            <div class="col-2" style="text-align: center">
-                                                <span class="badge badge-primary">Team Alpha</span>
-                                            </div>
-                                            <div class="col-2" style="text-align: center">
-                                                <span class="badge badge-primary">Team Epsilon</span>
-                                            </div>
-                                        </div>
-                                        <div class="row justify-content-between">
-                                            <!--Quarters2-->
-                                            <div class="col-2" style="text-align: center">
-                                                <span class="badge badge-secondary">Team Beta</span>
-                                            </div>
-                                            <div class="col-2" style="text-align: center">
-                                                <span class="badge badge-secondary">Team Zeta</span>
-                                            </div>
-                                        </div>
-                                        <div class="row justify-content-between">
-                                            <!--Semis1-->
-                                            <div class="col-2"></div>
-                                            <div class="col-2" style="text-align: center">
-                                                <span class="badge badge-primary">Team Alpha</span>
-                                            </div>
-                                            <div class="col-4"></div>
-                                            <div class="col-2" style="text-align: center">
-                                                <span class="badge badge-primary">Team Epsilon</span>
-                                            </div>
-                                            <div class="col-2"></div>
-                                        </div>
-
-                                        <div class="row justify-content-between">
-                                            <!--Final-->
-                                            <div class="col-4"></div>
-                                            <div class="col-2" style="text-align: center">
-                                                <span class="badge badge-success">Team Alpha</span>
-                                            </div>
-                                            <div class="col-2" style="text-align: center">
-                                                <span class="badge badge-secondary">Team Epsilon</span>
-                                            </div>
-                                            <div class="col-4"></div>
-                                        </div>
-                                        <div class="row justify-content-between">
-                                            <!--Quarters3-->
-                                            <div class="col-2" style="text-align: center">
-                                                <span class="badge badge-primary">Team Gamma</span>
-                                            </div>
-                                            <div class="col-2" style="text-align: center">
-                                                <span class="badge badge-primary">Team Eta</span>
-                                            </div>
-                                        </div>
-                                        <div class="row justify-content-between">
-                                            <!--Semis2-->
-                                            <div class="col-2"></div>
-                                            <div class="col-2" style="text-align: center">
-                                                <span class="badge badge-secondary">Team Gamma</span>
-                                            </div>
-                                            <div class="col-4"></div>
-                                            <div class="col-2" style="text-align: center">
-                                                <span class="badge badge-secondary">Team Eta</span>
-                                            </div>
-                                            <div class="col-2"></div>
-                                        </div>
-                                        <div class="row justify-content-between">
-                                            <!--Quarters4-->
-                                            <div class="col-2" style="text-align: center">
-                                                <span class="badge badge-secondary">Team Delta</span>
-                                            </div>
-                                            <div class="col-2" style="text-align: center">
-                                                <span class="badge badge-secondary">Team Theta</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="TeamMate tab-pane fade scrollspy-example" id="v-pills-seeTeams" role="tabpanel" aria-labelledby="v-pills-seeTeams-tab" data-spy="scroll">
-
-                                    <div class="row">
-
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <div class="member">
-                                                <img src="img/team-1.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Walter White</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <div class="member">
-                                                <img src="img/team-2.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Sarah Jhonson</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
-                                            <div class="member">
-                                                <img src="img/team-3.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>William Anderson</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
-                                            <div class="member">
-                                                <img src="img/team-4.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Amanda Jepson</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <div class="member">
-                                                <img src="img/team-1.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Walter White</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <div class="member">
-                                                <img src="img/team-2.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Sarah Jhonson</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <div class="member">
-                                                <img src="img/team-1.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Walter White</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <div class="member">
-                                                <img src="img/team-2.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Sarah Jhonson</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
-                                            <div class="member">
-                                                <img src="img/team-3.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>William Anderson</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
-                                            <div class="member">
-                                                <img src="img/team-4.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Amanda Jepson</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <div class="member">
-                                                <img src="img/team-1.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Walter White</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <div class="member">
-                                                <img src="img/team-2.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Sarah Jhonson</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <div class="member">
-                                                <img src="img/team-1.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Walter White</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <div class="member">
-                                                <img src="img/team-2.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Sarah Jhonson</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
-                                            <div class="member">
-                                                <img src="img/team-3.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>William Anderson</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
-                                            <div class="member">
-                                                <img src="img/team-4.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Amanda Jepson</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <div class="member">
-                                                <img src="img/team-1.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Walter White</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <div class="member">
-                                                <img src="img/team-2.jpg" class="img-fluid" alt="">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>Sarah Jhonson</h4>
-                                                        <button class="btn span" type="button" data-toggle="modal" data-target="#DeleteTeamModal">Delete Team</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="centerButton buttonTeamsManagement"><button class="btn" type="button" data-toggle="modal" data-target="#AddTeamModal">Add Team</button></div>
-                                </div>
-
-                            </div>
+                    <div class="theSwitch collapse navbar-collapse col-12 col-xl-1 shadow p-3 mb-5 rounded"
+                         id="navbarTogglerDemo01">
+                        <div aria-orientation="vertical" class="nav flex-column nav-pills" id="v-pills-tab"
+                             role="tablist">
+                            <a aria-controls="v-pills-home" aria-selected="true" class="nav-link active" data-toggle="pill"
+                               href="#v-pills-home" id="v-pills-home-tab" role="tab">Group phase</a>
+                            <a aria-controls="v-pills-profile" aria-selected="false" class="nav-link" data-toggle="pill"
+                               href="#v-pills-profile" id="v-pills-profile-tab" role="tab">Final phase</a>
+                            <a aria-controls="v-pills-seeTeams" aria-selected="false" class="nav-link" data-toggle="pill"
+                               href="#v-pills-seeTeams" id="v-pills-seeTeams-tab" role="tab">Teams</a>
                         </div>
                     </div>
+                </nav>
+
+
+                <div class="col-12 col-lg-10" id="tournamentSheetChart">
+                    <div class="tournamentBoard shadow p-3 mb-5 bg-white rounded">
+                        <div class="tab-content" id="v-pills-tabContent">
+
+                            <div aria-labelledby="v-pills-home-tab" class="tab-pane fade show active" id="v-pills-home"
+                                 role="tabpanel">
+                                <div class="container-fluid">
+                                    <div class="row justify-content-between" style="padding:1%">
+
+                                        <div class="groupCard flex-fill">
+                                            <div class="container groupStage">
+                                                <div class="row justify-content-between TournamentGroup">
+                                                    <div class="justify-content-between">Group A</div>
+                                                    <div class="icon justify-content-between">
+                                                        <a href="registerMatch.html">
+                                                            <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-between groupHeader">
+                                                    <div class="col-6">Team Name</div>
+                                                    <div class="col-3">Played</div>
+                                                    <div class="col-3">Wins</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Alpha</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">2</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Epsilon</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">1</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Iota</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="groupCard flex-fill">
+                                            <div class="container groupStage">
+                                                <div class="row justify-content-between TournamentGroup">
+                                                    <div class="justify-content-between">Group B</div>
+                                                    <div class="icon justify-content-between">
+                                                        <a href="registerMatch.html">
+                                                            <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-between groupHeader">
+                                                    <div class="col-6">Team Name</div>
+                                                    <div class="col-3">Played</div>
+                                                    <div class="col-3">Wins</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Beta</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">2</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Zeta</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">1</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Kappa</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="groupCard flex-fill">
+                                            <div class="container groupStage">
+                                                <div class="row justify-content-between TournamentGroup">
+                                                    <div class="justify-content-between">Group C</div>
+                                                    <div class="icon justify-content-between">
+                                                        <a href="registerMatch.html">
+                                                            <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-between groupHeader">
+                                                    <div class="col-6">Team Name</div>
+                                                    <div class="col-3">Played</div>
+                                                    <div class="col-3">Wins</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Gamma</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">2</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Lambda</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">1</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Mu</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="groupCard flex-fill">
+                                            <div class="container groupStage">
+                                                <div class="row justify-content-between TournamentGroup">
+                                                    <div class="justify-content-between">Group D</div>
+                                                    <div class="icon justify-content-between">
+                                                        <a href="registerMatch.html">
+                                                            <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-between groupHeader">
+                                                    <div class="col-6">Team Name</div>
+                                                    <div class="col-3">Played</div>
+                                                    <div class="col-3">Wins</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Gamma</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">2</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Phi</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">1</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Nu</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="groupCard flex-fill">
+                                            <div class="container groupStage">
+                                                <div class="row justify-content-between TournamentGroup">
+                                                    <div class="justify-content-between">Group E</div>
+                                                    <div class="icon justify-content-between">
+                                                        <a href="registerMatch.html">
+                                                            <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-between groupHeader">
+                                                    <div class="col-6">Team Name</div>
+                                                    <div class="col-3">Played</div>
+                                                    <div class="col-3">Wins</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Eta</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">2</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Sigma</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">1</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Xi</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="groupCard flex-fill">
+                                            <div class="container groupStage">
+                                                <div class="row justify-content-between TournamentGroup">
+                                                    <div class="justify-content-between">Group F</div>
+                                                    <div class="icon justify-content-between">
+                                                        <a href="registerMatch.html">
+                                                            <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-between groupHeader">
+                                                    <div class="col-6">Team Name</div>
+                                                    <div class="col-3">Played</div>
+                                                    <div class="col-3">Wins</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Delta</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">2</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Omnicron</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">1</div>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-6">Team Pi</div>
+                                                    <div class="col-3">2</div>
+                                                    <div class="col-3">0</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div aria-labelledby="v-pills-profile-tab" class="tab-pane fade final-phase" id="v-pills-profile"
+                                 role="tabpanel">
+                                <div class="container-fluid">
+                                    <div class="row justify-content-between" style="padding-bottom: 2%;">
+                                        <div class="col-2" style="text-align: center">Quarters</div>
+                                        <div class="col-2" style="text-align: center">Semifinals</div>
+                                        <div class="col-4" style="text-align: center">FINAL</div>
+                                        <div class="col-2" style="text-align: center">Semifinals</div>
+                                        <div class="col-2" style="text-align: center">Quarters</div>
+                                    </div>
+                                    <div class="row justify-content-between">
+                                        <!--Quarters1-->
+                                        <div class="col-2" style="text-align: center">
+                                            <span class="badge badge-primary">Team Alpha</span>
+                                        </div>
+                                        <div class="col-2" style="text-align: center">
+                                            <span class="badge badge-primary">Team Epsilon</span>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-between">
+                                        <!--Quarters2-->
+                                        <div class="col-2" style="text-align: center">
+                                            <span class="badge badge-secondary">Team Beta</span>
+                                        </div>
+                                        <div class="col-2" style="text-align: center">
+                                            <span class="badge badge-secondary">Team Zeta</span>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-between">
+                                        <!--Semis1-->
+                                        <div class="col-2"></div>
+                                        <div class="col-2" style="text-align: center">
+                                            <span class="badge badge-primary">Team Alpha</span>
+                                        </div>
+                                        <div class="col-4"></div>
+                                        <div class="col-2" style="text-align: center">
+                                            <span class="badge badge-primary">Team Epsilon</span>
+                                        </div>
+                                        <div class="col-2"></div>
+                                    </div>
+
+                                    <div class="row justify-content-between">
+                                        <!--Final-->
+                                        <div class="col-4"></div>
+                                        <div class="col-2" style="text-align: center">
+                                            <span class="badge badge-success">Team Alpha</span>
+                                        </div>
+                                        <div class="col-2" style="text-align: center">
+                                            <span class="badge badge-secondary">Team Epsilon</span>
+                                        </div>
+                                        <div class="col-4"></div>
+                                    </div>
+                                    <div class="row justify-content-between">
+                                        <!--Quarters3-->
+                                        <div class="col-2" style="text-align: center">
+                                            <span class="badge badge-primary">Team Gamma</span>
+                                        </div>
+                                        <div class="col-2" style="text-align: center">
+                                            <span class="badge badge-primary">Team Eta</span>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-between">
+                                        <!--Semis2-->
+                                        <div class="col-2"></div>
+                                        <div class="col-2" style="text-align: center">
+                                            <span class="badge badge-secondary">Team Gamma</span>
+                                        </div>
+                                        <div class="col-4"></div>
+                                        <div class="col-2" style="text-align: center">
+                                            <span class="badge badge-secondary">Team Eta</span>
+                                        </div>
+                                        <div class="col-2"></div>
+                                    </div>
+                                    <div class="row justify-content-between">
+                                        <!--Quarters4-->
+                                        <div class="col-2" style="text-align: center">
+                                            <span class="badge badge-secondary">Team Delta</span>
+                                        </div>
+                                        <div class="col-2" style="text-align: center">
+                                            <span class="badge badge-secondary">Team Theta</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div aria-labelledby="v-pills-seeTeams-tab" class="TeamMate tab-pane fade scrollspy-example" data-spy="scroll"
+                                 id="v-pills-seeTeams" role="tabpanel">
+
+                                <div class="row">
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-1.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Walter White</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-2.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Sarah Jhonson</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-3.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>William Anderson</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-4.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Amanda Jepson</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-1.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Walter White</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-2.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Sarah Jhonson</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-1.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Walter White</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-2.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Sarah Jhonson</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-3.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>William Anderson</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-4.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Amanda Jepson</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-1.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Walter White</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-2.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Sarah Jhonson</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-1.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Walter White</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-2.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Sarah Jhonson</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-3.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>William Anderson</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-4.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Amanda Jepson</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-1.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Walter White</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
+                                        <div class="member">
+                                            <img alt="" class="img-fluid" src="../img/team-2.jpg">
+                                            <div class="member-info">
+                                                <div class="member-info-content">
+                                                    <h4>Sarah Jhonson</h4>
+                                                    <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
+                                                            type="button">Delete Team
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="centerButton buttonTeamsManagement">
+                                    <button class="btn" data-target="#AddTeamModal" data-toggle="modal" type="button">
+                                        Add Team
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="centerButton buttonTeamsManagement"><button class="btn" type="button" data-toggle="modal" data-target="#DeleteTournamentModal">Delete Tournament</button></div>
-        </section>
+        </div>
+        <div class="centerButton buttonTeamsManagement">
+            <button class="btn" data-target="#DeleteTournamentModal" data-toggle="modal" type="button">Delete
+                Tournament
+            </button>
+        </div>
+    </section>
 
-        <div class="modal fade" id="DeleteTeamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
+    <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="DeleteTeamModal" role="dialog"
+         tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Deleting Team: Strider T.C.</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                    <h5 class="modal-title">Deleting Team: Strider T.C.</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <h6>Are you sure on deleting the team?</h6>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button id="buttonDeleteTeamConfirm" type="button" class="btn buttonown" data-toggle="modal" data-target="">Delete</button>
+                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button>
+                    <button class="btn buttonown" data-target="" data-toggle="modal" id="buttonDeleteTeamConfirm"
+                            type="button">Delete
+                    </button>
                 </div>
-              </div>
             </div>
         </div>
+    </div>
 
-        <div class="modal fade" id="ConfirmDeleteTeam" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
+    <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="ConfirmDeleteTeam" role="dialog"
+         tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title">Team deleted successfully</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                    <h5 class="modal-title">Team deleted successfully</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                
+
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
                 </div>
-              </div>
             </div>
         </div>
+    </div>
 
-        <div class="modal fade" id="DeleteTournamentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Deleting Tournament: Davis Cup</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                      <h6>Are you sure on deleting the tournament?</h6>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button id="buttonDeleteTournamentConfirm" type="button" class="btn buttonown" data-toggle="modal" data-target="">Delete</button>
-                  </div>
-                </div>
-              </div>
-        </div>
-
-        <div class="modal fade" id="ConfirmDeleteTournament" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
+    <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="DeleteTournamentModal"
+         role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title">Tournament deleted successfully</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                    <h5 class="modal-title">Deleting Tournament: Davis Cup</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                
-                <div class="modal-footer buttons">
-                  <button type="button" class="btn buttonown"><a href="index.html">Home</a></button>
+                <div class="modal-body">
+                    <h6>Are you sure on deleting the tournament?</h6>
                 </div>
-              </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button>
+                    <button class="btn buttonown" data-target="" data-toggle="modal" id="buttonDeleteTournamentConfirm"
+                            type="button">Delete
+                    </button>
+                </div>
             </div>
         </div>
+    </div>
 
-        <div class="modal fade" id="AddTeamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Search the team you want</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
+    <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="ConfirmDeleteTournament"
+         role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tournament deleted successfully</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
                     </button>
-                  </div>
-                  <div class="modal-body">
-                    <form class= "form-inline active-green-3 mx-auto">
-                        <input class="form-control form-control-plaintext m-5 w-75" type="text" placeholder="Search" aria-label="Search">
-                      </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button id="" type="button" class="btn buttonown" data-toggle="modal" data-target="">Add</button>
-                  </div>
                 </div>
-              </div>
+
+                <div class="modal-footer buttons">
+                    <button class="btn buttonown" type="button"><a href="index.html">Home</a></button>
+                </div>
+            </div>
         </div>
-    </main>
+    </div>
+
+    <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="AddTeamModal" role="dialog"
+         tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Search the team you want</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-inline active-green-3 mx-auto">
+                        <input aria-label="Search" class="form-control form-control-plaintext m-5 w-75" placeholder="Search"
+                               type="text">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button>
+                    <button class="btn buttonown" data-target="" data-toggle="modal" id="" type="button">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
 <!--==========================
   Footer
 ============================-->
 
-    <footer id="footer">
-        <div class="container">
+<footer id="footer">
+    <div class="container">
         <div class="copyright">
-            &copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>. All Rights Reserved
+            &copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>. All Rights
+            Reserved
         </div>
         <div class="credits">
             ReDesigned by paDAWans
         </div>
-        </div>
-    </footer><!-- #footer -->
+    </div>
+</footer><!-- #footer -->
 
-    <a href="# " class="back-to-top "><i class="fa fa-chevron-up "></i></a>
-    <!-- Uncomment below if you want to use a preloader -->
-    <div id="preloader "></div>
+<a class="back-to-top " href="# "><i class="fa fa-chevron-up "></i></a>
+<!-- Uncomment below if you want to use a preloader -->
+<div id="preloader "></div>
 
-    <!-- JavaScript Libraries -->
-    <script src="lib/jquery/jquery.min.js "></script>
-    <script src="lib/jquery/jquery-migrate.min.js "></script>
-    <script src="lib/bootstrap/js/bootstrap.bundle.min.js "></script>
-    <script src="lib/easing/easing.min.js "></script>
-    <script src="lib/superfish/hoverIntent.js "></script>
-    <script src="lib/superfish/superfish.min.js "></script>
-    <script src="lib/wow/wow.min.js "></script>
-    <script src="lib/waypoints/waypoints.min.js "></script>
-    <script src="lib/counterup/counterup.min.js "></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js "></script>
-    <script src="lib/isotope/isotope.pkgd.min.js "></script>
-    <script src="lib/lightbox/js/lightbox.min.js "></script>
-    <script src="lib/touchSwipe/jquery.touchSwipe.min.js "></script>
-    <!-- Contact Form JavaScript File -->
-    <script src="contactform/contactform.js "></script>
+<!-- JavaScript Libraries -->
+<script src="../lib/jquery/jquery.min.js "></script>
+<script src="../lib/jquery/jquery-migrate.min.js "></script>
+<script src="../lib/bootstrap/js/bootstrap.bundle.min.js "></script>
+<script src="../lib/easing/easing.min.js "></script>
+<script src="../lib/superfish/hoverIntent.js "></script>
+<script src="../lib/superfish/superfish.min.js "></script>
+<script src="../lib/wow/wow.min.js "></script>
+<script src="../lib/waypoints/waypoints.min.js "></script>
+<script src="../lib/counterup/counterup.min.js "></script>
+<script src="../lib/owlcarousel/owl.carousel.min.js "></script>
+<script src="../lib/isotope/isotope.pkgd.min.js "></script>
+<script src="../lib/lightbox/js/lightbox.min.js "></script>
+<script src="../lib/touchSwipe/jquery.touchSwipe.min.js "></script>
+<!-- Contact Form JavaScript File -->
+<script src="../contactform/contactform.js "></script>
 
-    <!-- Template Main Javascript File -->
-    <script src="js/main.js "></script>
+<!-- Template Main Javascript File -->
+<script src="../js/main.js "></script>
 
 </body>
 

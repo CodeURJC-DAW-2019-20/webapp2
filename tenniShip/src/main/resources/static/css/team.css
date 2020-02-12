@@ -11,15 +11,16 @@ h3 {
     margin-top: 30px;
 }
 
-.content h3{
+.content h3 {
     margin-top: 50px;
     font-size: 27px;
-    color:#111;
+    color: #111;
     padding-left: 10px;
-    border-left: 4px solid#18d26e;
+    border-left: 4px solid #18d26e;
     position: relative;
     right: 20px;
 }
+
 /* Team icon */
 
 .team-icon {
@@ -28,8 +29,8 @@ h3 {
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
 }
 
 img.team-img, .linescroll span img {
@@ -58,7 +59,7 @@ img.team-img, .linescroll span img {
     display: inline-flex;
     width: 200px;
     height: 200px;
-    align-items:center;
+    align-items: center;
     background: white;
     border-radius: 5px;
     border: 1px solid #dfdfdf;
@@ -84,9 +85,6 @@ img.team-img, .linescroll span img {
     right: -20px;
     cursor: pointer;
 }
-
-
-
 
 
 /* Player Section
@@ -134,7 +132,7 @@ img.team-img, .linescroll span img {
 }
 
 #players .member:hover .member-info {
-    background: rgba(24, 210, 110 , 0.7);
+    background: rgba(24, 210, 110, 0.7);
     opacity: 1;
     transition: 0.4s;
 }
@@ -150,7 +148,6 @@ img.team-img, .linescroll span img {
     font-size: 18px;
     color: #fff;
 }
-
 
 
 /* Tournaments Section
@@ -190,14 +187,14 @@ img.team-img, .linescroll span img {
     background-color: #18d26e;
 }
 
-button{
+button {
     background: #18d26e;
     color: white;
 }
 
 button:hover {
-    background: #13a456!important;
-    color: #000!important;
+    background: #13a456 !important;
+    color: #000 !important;
 }
 
 

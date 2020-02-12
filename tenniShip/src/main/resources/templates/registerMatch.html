@@ -8,24 +8,25 @@
     <meta content="" name="description">
 
     <!-- Favicons -->
-    <link href="img/favicon.png" rel="icon">
-    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="../img/favicon.png" rel="icon">
+    <link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+          rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Libraries CSS Files -->
-    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -35,8 +36,8 @@
 <header id="header">
     <div class="container-fluid">
 
-        <div id="logo" class="pull-left">
-            <h1><a href="index.html" class="scrollto">TenniShip</a></h1>
+        <div class="pull-left" id="logo">
+            <h1><a class="scrollto" href="index.html">TenniShip</a></h1>
         </div>
 
         <nav id="nav-menu-container">
@@ -44,12 +45,12 @@
                 <li><a href="index.html">Home</a></li>
                 <li class="menu-has-children"><a href="#actions">Actions</a>
                     <ul>
-                        <li><a href="registerMatchSelectTournament.html">Register a Match</a></li>
-                        <li><a href="TCreator.html">Tournament Creator</a></li>
+                        <li><a href="selectTournament.html">Register a Match</a></li>
+                        <li><a href="tournamentCreator.html">Tournament Creator</a></li>
                     </ul>
                 </li>
                 <li><a href="index.html">StriderTC</a></li>
-                <li><img src="img/clients/client-1.png" class="rounded-circle loginImage" alt=""></li>
+                <li><img alt="" class="rounded-circle loginImage" src="../img/clients/client-1.png"></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
@@ -66,7 +67,7 @@
         <h4 id="UnderTitleParagraph">Group Stage</h4>
     </div>
 
-    <section id="registerMatchBothPages"  class="section-bg" >
+    <section class="section-bg" id="registerMatchBothPages">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-3">
@@ -75,8 +76,8 @@
 
                         <!-- Card image -->
                         <div class="view overlay">
-                            <img class="card-img-top" src="img/SpainFlag.png"
-                                 alt="Card image cap">
+                            <img alt="Card image cap" class="card-img-top"
+                                 src="../img/SpainFlag.png">
                             <a href="#!">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
@@ -86,7 +87,9 @@
                         <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title TeamPositioningRegisterMatchIconLocal"><a class="colorLinkTeam" href="teamfile.html">Spain</a></h4>
+                            <h4 class="card-title TeamPositioningRegisterMatchIconLocal"><a class="colorLinkTeam"
+                                                                                            href="teamfile.html">Spain</a>
+                            </h4>
                             <!-- Text -->
                             <p class="card-text TeamPositioningRegisterMatchIconLocal">Local´s Team</p>
 
@@ -99,24 +102,28 @@
                 <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp ">
                     <div class="registerMatchBothPages-wrap ">
                         <figure>
-                            <img src="img/rackets.png" class="img-fluid rackets" alt="">
+                            <img alt="" class="img-fluid rackets" src="../img/rackets.png">
                         </figure>
 
                         <div class="registerMatchBothPages-info ">
-                            <h4><a href="registerMatchSelectMatch.html">Match Result</a></h4>
+                            <h4><a href="registerMatch.html">Match Result</a></h4>
                             <div class="d-flex justify-content-around">
                                 <div class="TeamPositioningRegisterMatchIconLocal">
                                     <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                                        <input class="quantity" min="0" name="quantity" value="0" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                        <button class="minus"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                        <input class="quantity" min="0" name="quantity" type="number" value="0">
+                                        <button class="plus"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                                     </div>
                                 </div>
                                 <div class="TeamPositioningRegisterMatchIconVisitor">
                                     <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                                        <input class="quantity" min="0" name="quantity" value="0" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                        <button class="minus"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                        <input class="quantity" min="0" name="quantity" type="number" value="0">
+                                        <button class="plus"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                                     </div>
                                 </div>
                             </div>
@@ -130,8 +137,8 @@
 
                         <!-- Card image -->
                         <div class="view overlay">
-                            <img class="card-img-top" src="img/MaltaFlag.png"
-                                 alt="Card image cap">
+                            <img alt="Card image cap" class="card-img-top"
+                                 src="../img/MaltaFlag.png">
                             <a href="#!">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
@@ -141,7 +148,9 @@
                         <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title TeamPositioningRegisterMatchIconVisitor"><a class="colorLinkTeam" href="teamfile.html">Malta</a></h4>
+                            <h4 class="card-title TeamPositioningRegisterMatchIconVisitor"><a class="colorLinkTeam"
+                                                                                              href="teamfile.html">Malta</a>
+                            </h4>
                             <!-- Text -->
                             <p class="card-text TeamPositioningRegisterMatchIconVisitor">Visitor´s Team</p>
 
@@ -152,7 +161,9 @@
                 </div>
 
             </div>
-            <div class="centerButton"><button class="btn SubmitButtonMatch" type="submit">Submit</button></div>
+            <div class="centerButton">
+                <button class="btn SubmitButtonMatch" type="submit">Submit</button>
+            </div>
 
             <div class="row">
                 <!-- New row of teams -->
@@ -163,8 +174,8 @@
 
                         <!-- Card image -->
                         <div class="view overlay">
-                            <img class="card-img-top" src="img/GermanyFlag.png"
-                                 alt="Card image cap">
+                            <img alt="Card image cap" class="card-img-top"
+                                 src="../img/GermanyFlag.png">
                             <a href="#!">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
@@ -174,7 +185,9 @@
                         <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title TeamPositioningRegisterMatchIconLocal"><a class="colorLinkTeam" href="teamfile.html">Germany</a></h4>
+                            <h4 class="card-title TeamPositioningRegisterMatchIconLocal"><a class="colorLinkTeam"
+                                                                                            href="teamfile.html">Germany</a>
+                            </h4>
                             <!-- Text -->
                             <p class="card-text TeamPositioningRegisterMatchIconLocal">Local´s Team</p>
 
@@ -187,24 +200,28 @@
                 <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp ">
                     <div class="registerMatchBothPages-wrap ">
                         <figure>
-                            <img src="img/rackets.png" class="img-fluid rackets" alt="">
+                            <img alt="" class="img-fluid rackets" src="../img/rackets.png">
                         </figure>
 
                         <div class="registerMatchBothPages-info ">
-                            <h4><a href="registerMatchSelectMatch.html">Match Result</a></h4>
+                            <h4><a href="registerMatch.html">Match Result</a></h4>
                             <div class="d-flex justify-content-around">
                                 <div class="TeamPositioningRegisterMatchIconLocal">
                                     <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                                        <input class="quantity" min="0" name="quantity" value="0" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                        <button class="minus"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                        <input class="quantity" min="0" name="quantity" type="number" value="0">
+                                        <button class="plus"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                                     </div>
                                 </div>
                                 <div class="TeamPositioningRegisterMatchIconVisitor">
                                     <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                                        <input class="quantity" min="0" name="quantity" value="0" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                        <button class="minus"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                        <input class="quantity" min="0" name="quantity" type="number" value="0">
+                                        <button class="plus"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                                     </div>
                                 </div>
                             </div>
@@ -218,8 +235,8 @@
 
                         <!-- Card image -->
                         <div class="view overlay">
-                            <img class="card-img-top" src="img/SpainFlag.png"
-                                 alt="Card image cap">
+                            <img alt="Card image cap" class="card-img-top"
+                                 src="../img/SpainFlag.png">
                             <a href="#!">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
@@ -229,7 +246,9 @@
                         <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title TeamPositioningRegisterMatchIconVisitor"><a class="colorLinkTeam" href="teamfile.html">Spain</a></h4>
+                            <h4 class="card-title TeamPositioningRegisterMatchIconVisitor"><a class="colorLinkTeam"
+                                                                                              href="teamfile.html">Spain</a>
+                            </h4>
                             <!-- Text -->
                             <p class="card-text TeamPositioningRegisterMatchIconVisitor">Visitor´s Team</p>
 
@@ -241,7 +260,9 @@
 
             </div>
 
-            <div class="centerButton"><button class="btn SubmitButtonMatch" type="submit">Submit</button></div>
+            <div class="centerButton">
+                <button class="btn SubmitButtonMatch" type="submit">Submit</button>
+            </div>
 
             <div class="row">
                 <!-- New row of teams -->
@@ -252,8 +273,8 @@
 
                         <!-- Card image -->
                         <div class="view overlay">
-                            <img class="card-img-top" src="img/SpainFlag.png"
-                                 alt="Card image cap">
+                            <img alt="Card image cap" class="card-img-top"
+                                 src="../img/SpainFlag.png">
                             <a href="#!">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
@@ -263,7 +284,9 @@
                         <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title TeamPositioningRegisterMatchIconLocal"><a class="colorLinkTeam" href="teamfile.html">Spain</a></h4>
+                            <h4 class="card-title TeamPositioningRegisterMatchIconLocal"><a class="colorLinkTeam"
+                                                                                            href="teamfile.html">Spain</a>
+                            </h4>
                             <!-- Text -->
                             <p class="card-text TeamPositioningRegisterMatchIconLocal">Local´s Team</p>
 
@@ -276,24 +299,28 @@
                 <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp ">
                     <div class="registerMatchBothPages-wrap ">
                         <figure>
-                            <img src="img/rackets.png" class="img-fluid rackets" alt="">
+                            <img alt="" class="img-fluid rackets" src="../img/rackets.png">
                         </figure>
 
                         <div class="registerMatchBothPages-info ">
-                            <h4><a href="registerMatchSelectMatch.html">Match Result</a></h4>
+                            <h4><a href="registerMatch.html">Match Result</a></h4>
                             <div class="d-flex justify-content-around">
                                 <div class="TeamPositioningRegisterMatchIconLocal">
                                     <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                                        <input class="quantity" min="0" name="quantity" value="0" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                        <button class="minus"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                        <input class="quantity" min="0" name="quantity" type="number" value="0">
+                                        <button class="plus"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                                     </div>
                                 </div>
                                 <div class="TeamPositioningRegisterMatchIconVisitor">
                                     <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                                        <input class="quantity" min="0" name="quantity" value="0" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                        <button class="minus"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                        <input class="quantity" min="0" name="quantity" type="number" value="0">
+                                        <button class="plus"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                                     </div>
                                 </div>
                             </div>
@@ -307,8 +334,8 @@
 
                         <!-- Card image -->
                         <div class="view overlay">
-                            <img class="card-img-top" src="img/ItalyFlag.png"
-                                 alt="Card image cap">
+                            <img alt="Card image cap" class="card-img-top"
+                                 src="../img/ItalyFlag.png">
                             <a href="#!">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
@@ -318,7 +345,9 @@
                         <div class="card-body">
 
                             <!-- Title -->
-                            <h4 class="card-title TeamPositioningRegisterMatchIconVisitor"><a class="colorLinkTeam" href="teamfile.html">Italy</a></h4>
+                            <h4 class="card-title TeamPositioningRegisterMatchIconVisitor"><a class="colorLinkTeam"
+                                                                                              href="teamfile.html">Italy</a>
+                            </h4>
                             <!-- Text -->
                             <p class="card-text TeamPositioningRegisterMatchIconVisitor">Visitor´s Team</p>
 
@@ -330,7 +359,9 @@
 
                 <br clear="all"/>
             </div>
-            <div class="centerButton"><button class="btn SubmitButtonMatch" type="submit">Submit</button></div>
+            <div class="centerButton">
+                <button class="btn SubmitButtonMatch" type="submit">Submit</button>
+            </div>
 
         </div>
     </section><!-- #registerMatchSelectMatch -->
@@ -342,38 +373,39 @@
 ============================-->
 <footer id="footer">
     <div class="container">
-      <div class="copyright">
-          &copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>. All Rights Reserved
-      </div>
-      <div class="credits">
-        ReDesigned by paDAWans
-      </div>
+        <div class="copyright">
+            &copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>. All Rights
+            Reserved
+        </div>
+        <div class="credits">
+            ReDesigned by paDAWans
+        </div>
     </div>
-  </footer><!-- #footer -->
+</footer><!-- #footer -->
 
-<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
 <!-- Uncomment below i you want to use a preloader -->
 <div id="preloader"></div>
 
 <!-- JavaScript Libraries -->
-<script src="lib/jquery/jquery.min.js"></script>
-<script src="lib/jquery/jquery-migrate.min.js"></script>
-<script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/superfish/hoverIntent.js"></script>
-<script src="lib/superfish/superfish.min.js"></script>
-<script src="lib/wow/wow.min.js"></script>
-<script src="lib/waypoints/waypoints.min.js"></script>
-<script src="lib/counterup/counterup.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="lib/isotope/isotope.pkgd.min.js"></script>
-<script src="lib/lightbox/js/lightbox.min.js"></script>
-<script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+<script src="../lib/jquery/jquery.min.js"></script>
+<script src="../lib/jquery/jquery-migrate.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../lib/easing/easing.min.js"></script>
+<script src="../lib/superfish/hoverIntent.js"></script>
+<script src="../lib/superfish/superfish.min.js"></script>
+<script src="../lib/wow/wow.min.js"></script>
+<script src="../lib/waypoints/waypoints.min.js"></script>
+<script src="../lib/counterup/counterup.min.js"></script>
+<script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="../lib/isotope/isotope.pkgd.min.js"></script>
+<script src="../lib/lightbox/js/lightbox.min.js"></script>
+<script src="../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
 <!-- Contact Form JavaScript File -->
-<script src="contactform/contactform.js"></script>
+<script src="../contactform/contactform.js"></script>
 
 <!-- Template Main Javascript File -->
-<script src="js/main.js"></script>
+<script src="../js/main.js"></script>
 
 </body>
 </html>

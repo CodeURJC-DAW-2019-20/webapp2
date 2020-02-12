@@ -9,12 +9,12 @@ body {
     padding-top: 92px;
 }
 
-.bodyWhiteBackground{
-    background:#fff;
+.bodyWhiteBackground {
+    background: #fff;
 }
 
-.colorLinkTeam{
-    color:black;
+.colorLinkTeam {
+    color: black;
 }
 
 a {
@@ -132,7 +132,7 @@ h6 {
 
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
-.show>.btn-primary.dropdown-toggle {
+.show > .btn-primary.dropdown-toggle {
     background-color: #15a959;
     border-color: #15a959;
 }
@@ -228,12 +228,12 @@ body#index #home {
     white-space: nowrap;
 }
 
-.nav-menu>li {
+.nav-menu > li {
     float: left;
 }
 
-.nav-menu li:hover>ul,
-.nav-menu li.sfHover>ul {
+.nav-menu li:hover > ul,
+.nav-menu li.sfHover > ul {
     display: block;
 }
 
@@ -276,27 +276,28 @@ body#index #home {
 
 /*Sign Up button principal page*/
 
-.signUpIndexBtnText{
-    color:#fff!important;
-    background-color: #18d26e!important;
-    border-color: #18d26e!important;
-    padding-bottom: 1px!important;
+.signUpIndexBtnText {
+    color: #fff !important;
+    background-color: #18d26e !important;
+    border-color: #18d26e !important;
+    padding-bottom: 1px !important;
 }
 
 /*Sign In button principal page*/
 
-.signInIndexBtnText{
-    color:#20fa5f!important;
-    border-color: #18d26e!important;
-    padding-bottom: 1px!important;
+.signInIndexBtnText {
+    color: #20fa5f !important;
+    border-color: #18d26e !important;
+    padding-bottom: 1px !important;
 }
+
 /*Image for the logged in account*/
 .loginImage {
     margin-top: -0.6em;
     width: 70px;
     height: 40px;
-    border-color: white!important;
-    background-color: #18d26e!important;
+    border-color: white !important;
+    background-color: #18d26e !important;
 }
 
 .nav-menu a {
@@ -311,12 +312,12 @@ body#index #home {
     outline: none;
 }
 
-.nav-menu li:hover>a,
-.nav-menu>.menu-active>a {
+.nav-menu li:hover > a,
+.nav-menu > .menu-active > a {
     color: #18d26e;
 }
 
-.nav-menu>li {
+.nav-menu > li {
     margin-left: 10px;
 }
 
@@ -340,7 +341,7 @@ body#index #home {
     text-transform: none;
 }
 
-.nav-menu ul li:hover>a {
+.nav-menu ul li:hover > a {
     color: #18d26e;
 }
 
@@ -577,7 +578,7 @@ div.img {
     background-color: #18d26e;
     border-radius: 50%;
     border: 4px solid #fff;
-    left: calc( 50% - 32px);
+    left: calc(50% - 32px);
     bottom: -30px;
     transition: 0.3s;
 }
@@ -628,26 +629,26 @@ div.img {
 #sign-in {
     padding: 60px 0;
 }
-  
+
 #sign-in h3 {
     margin-top: 30px;
 }
 
-#sign-in .container{
+#sign-in .container {
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: center;
 }
 
-#sign-in button,.popupDelete button,.confirm-delete button,.confirm-team button,.buttonTeamsManagement button,.buttonown {
-    background:#18d26e;
-    color:white !important;
+#sign-in button, .popupDelete button, .confirm-delete button, .confirm-team button, .buttonTeamsManagement button, .buttonown {
+    background: #18d26e;
+    color: white !important;
 }
 
-#sign-in button:hover ,.popupDelete button:hover,.confirm-delete button:hover ,.confirm-team button:hover,.buttonTeamsManagement button:hover,.buttonown:hover{
+#sign-in button:hover, .popupDelete button:hover, .confirm-delete button:hover, .confirm-team button:hover, .buttonTeamsManagement button:hover, .buttonown:hover {
     background: #13a456;
-    color: #000!important;
+    color: #000 !important;
 }
 
 /* actions Us Section
@@ -658,7 +659,7 @@ div.img {
     background-size: cover;
     padding: 60px 0 40px 0;
     position: relative;
-    min-height:  100vh;
+    min-height: 100vh;
     width: 100%;
 }
 
@@ -702,7 +703,7 @@ div.img {
     border-radius: 50%;
     text-align: center;
     border: 4px solid #fff;
-    left: calc( 50% - 32px);
+    left: calc(50% - 32px);
     bottom: -30px;
     transition: 0.3s;
 }
@@ -753,64 +754,77 @@ div.img {
 #setting {
     padding: 60px 0;
 }
-#setting .container{
+
+#setting .container {
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: center;
 }
-.container-separation{
+
+.container-separation {
     width: 50%;
 }
-#setting #Title{
+
+#setting #Title {
     margin-top: 30px;
 }
-#setting .form h3{
+
+#setting .form h3 {
     font-size: 27px;
-    color:#111;
+    color: #111;
     padding-left: 10px;
-    border-left: 4px solid#18d26e;
+    border-left: 4px solid #18d26e;
     position: relative;
     right: 60px;
 }
-#setting .form h5{
+
+#setting .form h5 {
     font-size: 22px;
-    color:#111;
+    color: #111;
     padding-left: 10px;
-    border-left: 4px solid#108c49;
+    border-left: 4px solid #108c49;
     position: relative;
     right: 23px;
     margin-top: 40px;
 }
-#setting .btn{
-    background:#18d26e;
-    color:white !important;
+
+#setting .btn {
+    background: #18d26e;
+    color: white !important;
 }
+
 #setting .button a:hover {
     background: #13a456;
-    color: #000!important;
+    color: #000 !important;
 }
+
 #setting p {
     text-align: center;
 }
+
 #setting .separation {
     margin-top: 45px;
 }
+
 #setting .setting-info {
     margin-bottom: 20px;
     text-align: center;
 }
+
 #setting .setting-info i {
     font-size: 48px;
     display: inline-block;
     margin-bottom: 10px;
     color: #18d26e;
 }
+
 #setting .setting-info address,
 #setting .setting-info p {
     margin-bottom: 0;
     color: #000;
 }
+
 #setting .setting-info h3 {
     font-size: 18px;
     margin-bottom: 15px;
@@ -818,17 +832,21 @@ div.img {
     text-transform: uppercase;
     color: #999;
 }
+
 #setting .setting-info a {
     color: #000;
 }
+
 #setting .setting-info a:hover {
     color: #18d26e;
 }
+
 #setting .setting-address,
 #setting .setting-phone,
 #setting .setting-email {
     margin-bottom: 20px;
 }
+
 #setting .form #sendmessage {
     color: #18d26e;
     border: 1px solid #18d26e;
@@ -838,6 +856,7 @@ div.img {
     font-weight: 600;
     margin-bottom: 15px;
 }
+
 #setting .form #errormessage {
     color: red;
     display: none;
@@ -847,11 +866,13 @@ div.img {
     font-weight: 600;
     margin-bottom: 15px;
 }
+
 #setting .form #sendmessage.show,
 #setting .form #errormessage.show,
 #setting .form .show {
     display: block;
 }
+
 #setting .form .validation {
     color: red;
     display: none;
@@ -859,14 +880,17 @@ div.img {
     font-weight: 400;
     font-size: 13px;
 }
+
 .form-control:focus {
     border-color: #18d26e;
     border-width: 2px;
 }
-.btn-outline-success{
+
+.btn-outline-success {
     border-color: #18d26e;
     color: #18d26e;
 }
+
 #setting .form input,
 #setting .form textarea {
     padding: 10px 14px;
@@ -874,6 +898,7 @@ div.img {
     box-shadow: none;
     font-size: 15px;
 }
+
 #setting .form button[type="submit"] {
     background: #18d26e;
     border: 0;
@@ -882,6 +907,7 @@ div.img {
     transition: 0.4s;
     cursor: pointer;
 }
+
 #setting .form button[type="submit"]:hover {
     background: #13a456;
 }
@@ -930,10 +956,12 @@ div.img {
     #setting .setting-email {
         padding: 20px 0;
     }
+
     #setting .setting-phone {
         border-left: 1px solid #ddd;
         border-right: 1px solid #ddd;
     }
+
     #nav-menu-container {
         padding-right: 120px;
     }
@@ -949,9 +977,11 @@ div.img {
     #header #logo {
         padding-left: 60px;
     }
+
     #intro p {
         width: 60%;
     }
+
     #intro .carousel-control-prev,
     #intro .carousel-control-next {
         width: 5%;
@@ -962,18 +992,23 @@ div.img {
     .back-to-top {
         bottom: 15px;
     }
+
     #header #logo h1 {
         font-size: 28px;
     }
+
     #header #logo img {
         max-height: 40px;
     }
+
     #intro h2 {
         font-size: 28px;
     }
+
     #nav-menu-container {
         display: none;
     }
+
     #mobile-nav-toggle {
         display: inline;
     }
@@ -990,7 +1025,7 @@ div.img {
 
 .active-green-3 input[type=text] {
     border: 1px solid rgba(24, 210, 110, .4);
-    box-shadow: 0 .2rem 1rem rgba(24, 210, 110, .4)!important;
+    box-shadow: 0 .2rem 1rem rgba(24, 210, 110, .4) !important;
 }
 
 .active-green-3 .fa {
@@ -1155,14 +1190,14 @@ h5 {
     text-transform: uppercase;
 }
 
-#registerMatchBothPages .button{
+#registerMatchBothPages .button {
     background: #18d26e;
     color: white;
 }
 
 #registerMatchBothPages .TournamentButton button:hover {
-    background: #13a456!important;
-    color: #000!important;
+    background: #13a456 !important;
+    color: #000 !important;
 }
 
 
@@ -1176,7 +1211,6 @@ h5 {
     }
 
     /* IMPORTANT: Keep a difference of 90px */
-
     #registerMatchBothPages .registerMatchBothPages-item figure {
         height: 138px;
     }
@@ -1191,17 +1225,17 @@ h5 {
 
 }
 
-/*Submit Button on registerMatchSelectMatch.html */
+/*Submit Button on registerMatch.html */
 
 .SubmitButtonMatch {
     background: #18d26e;
     color: white !important;
-    margin-bottom: 2%!important;
+    margin-bottom: 2% !important;
 
 }
 
-.centerButton{
-    display:flex;
+.centerButton {
+    display: flex;
     justify-content: center;
 }
 
@@ -1322,7 +1356,7 @@ body:not(#index) main#main {
     color: #495057;
 }
 
-@media not all and (min-resolution:.001dpcm) {
+@media not all and (min-resolution: .001dpcm) {
     @supports (-webkit-appearance: none) and (stroke-color: transparent) {
         .number-input.def-number-input.safari_only button:before, .number-input.def-number-input.safari_only button:after {
             margin-top: -.3rem;
@@ -1342,16 +1376,16 @@ body:not(#index) main#main {
     background: #ffe5c7;
 }
 
-.rackets{
+.rackets {
     background: linear-gradient(90deg, white, #848484, white);
 }
 
-.TeamPositioningRegisterMatchIconVisitor{
+.TeamPositioningRegisterMatchIconVisitor {
     text-align: right;
 }
 
-.TeamPositioningRegisterMatchIconLocal{
-    text-align:left;
+.TeamPositioningRegisterMatchIconLocal {
+    text-align: left;
 }
 
 /* -----------------
@@ -1413,20 +1447,19 @@ body:not(#index) main#main {
 }
 
 #tournamentSwitch #v-pills-tab .nav-link.active {
-    background-color: 
-    #18d26e;
+    background-color: #18d26e;
 }
 
 .groupCard {
     min-width: 300px;
-    width: calc(100%/3 - 20px);
+    width: calc(100% / 3 - 20px);
     margin: 5px;
 }
 
 @media (max-width: 379px) {
     .groupCard {
-        width:100%;
-        min-width:100%;
+        width: 100%;
+        min-width: 100%;
         font-size: 12px;
     }
 }
@@ -1436,7 +1469,7 @@ body:not(#index) main#main {
     right: -11px;
     cursor: pointer;
     top: -18px;
-  }
+}
 
 /* Tournament progress bar */
 
@@ -1488,7 +1521,7 @@ body:not(#index) main#main {
         background: #fff;
         border-radius: 10px;
         padding: 5px;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     }
 }
 
@@ -1505,12 +1538,12 @@ body:not(#index) main#main {
     max-width: 100%;
 }
 
-#TCreator .section-header p{
+#TCreator .section-header p {
     text-align: center;
     margin-bottom: 40px;
 }
 
-#TCreator header>h3 {
+#TCreator header > h3 {
     margin-top: 0;
 }
 
@@ -1645,12 +1678,13 @@ body:not(#index) main#main {
     align-self: first baseline;
 }
 
-.TCreatorNew form{
+.TCreatorNew form {
     align-content: center;
     display: grid;
     justify-content: center;
 }
-.TCreatorNew p{
+
+.TCreatorNew p {
     margin-top: 5px;
 }
 
@@ -1659,7 +1693,7 @@ body:not(#index) main#main {
     font-size: 30px;
     color: #111;
     padding-left: 10px;
-    border-left: 4px solid#18d26e;
+    border-left: 4px solid #18d26e;
 }
 
 .TCreatorTitles p {
@@ -1753,19 +1787,22 @@ body:not(#index) main#main {
     flex-direction: column;
 }
 
-@media (max-width:575px) {
+@media (max-width: 575px) {
     #TCreatorInfo, .TCreatorRaffle {
         height: 100%;
     }
+
     #TCreatorInfo .ChooseTeam {
         width: calc(100% + 32px);
         height: auto;
         display: inline-block;
     }
+
     .flex-resp {
-        flex-direction: row!important;
-        position: initial!important;
+        flex-direction: row !important;
+        position: initial !important;
     }
+
     .ChooseTeam .nav-link {
         display: inline-block;
     }
@@ -1822,7 +1859,7 @@ body:not(#index) main#main {
 }
 
 .TeamMate .member:hover .member-info {
-    background: rgba(24, 210, 110 , 0.7);
+    background: rgba(24, 210, 110, 0.7);
     opacity: 1;
     transition: 0.4s;
 }
@@ -1842,8 +1879,8 @@ body:not(#index) main#main {
 .TeamMate .member .span {
     display: block;
     font-size: 13px;
-    color:white;
-    background:black;
+    color: white;
+    background: black;
     width: 75%;
     margin: 0px auto;
     border-radius: 10px 10px 10px 10px;
@@ -1874,7 +1911,7 @@ body:not(#index) main#main {
     align-items: center;
 }
 
-.created>div {
+.created > div {
     height: 75%;
 }
 
@@ -1883,8 +1920,8 @@ body:not(#index) main#main {
     font-size: 30px;
     color: #111;
     padding-left: 10px;
-    border-left: 4px solid#18d26e;
-    border-right: 4px solid#18d26e;
+    border-left: 4px solid #18d26e;
+    border-right: 4px solid #18d26e;
     padding-right: 10px;
     text-transform: uppercase;
 }
@@ -1896,7 +1933,7 @@ body:not(#index) main#main {
 
 .created p {
     margin-top: 40px;
-    margin-bottom: 40px!important;
+    margin-bottom: 40px !important;
     text-align: center;
 }
 
@@ -1907,7 +1944,7 @@ body:not(#index) main#main {
 
 .buttons a:hover {
     background: #13a456;
-    color: #000!important;
+    color: #000 !important;
 }
 
 /* Modals
@@ -1922,15 +1959,15 @@ body:not(#index) main#main {
     margin: 0px auto;
 }
 
-#ConfirmDeleteTeam .modal-header{
+#ConfirmDeleteTeam .modal-header {
     border-bottom: 0px;
 }
 
-#ConfirmDeleteTeam .modal-footer{
+#ConfirmDeleteTeam .modal-footer {
     border-top: 0px;
 }
 
-.buttonown a{
+.buttonown a {
     color: white;
 }
 
@@ -1949,6 +1986,7 @@ body:not(#index) main#main {
     margin-left: auto;
     margin-right: auto;
 }
+
 .pie__segment {
     --a: calc(var(--over50, 0) * -100%);
     --b: calc((1 + var(--over50, 0)) * 100%);
@@ -1964,6 +2002,7 @@ body:not(#index) main#main {
     width: 100%;
     z-index: calc(1 + var(--over50));
 }
+
 .pie__segment:after,
 .pie__segment:before {
     background: var(--bg, #e74c3c);
@@ -1972,6 +2011,7 @@ body:not(#index) main#main {
     position: absolute;
     width: 100%;
 }
+
 .pie__segment:before {
     --degrees: calc((var(--value, 45) / 100) * 360);
     -webkit-transform: translate(0, 100%) rotate(calc(var(--degrees) * 1deg));
@@ -1979,6 +2019,7 @@ body:not(#index) main#main {
     -webkit-transform-origin: 50% 0%;
     transform-origin: 50% 0%;
 }
+
 .pie__segment:after {
     opacity: var(--over50, 0);
 }
