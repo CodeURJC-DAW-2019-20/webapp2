@@ -1,41 +1,42 @@
-# TenniShip
+﻿# TenniShip
 
 TenniShip is a web app for managing tennis tournaments inspired in Davis Cup rules. It allows users to find teams, matches, keep track of scores, and check their standings in tourneys. 
 
-![Home Page](BizPage/img/screenshots/index.png "Home Page")
+![Home Page](tenniShip\src\main\resources\static\img\screenshots\index.png "Home Page")
 The home page has two search bars: one for tournaments and another one for teams. This search bars are only for queries, so they redirect you to the team or tournament information sheet. There's another slide below, that explains what TenniShip can do and links the user to various actions.
 
 
 
-![Sign Up](BizPage/img/screenshots/signup.png "Sign Up")
+
+![Sign Up](tenniShip/src/main/resources/static/img/screenshots/signup.png "Sign Up")
 Users can sign up in TenniShip as teams. Such as in Davis Cup, every team must have five players.
 
 
 
-![Tournament Sheet](BizPage/img/screenshots/tsheetGP.png "Tournament Sheet")
-![Tournament Sheet](BizPage/img/screenshots/tsheetFP.png "Tournament Sheet")
+![Tournament Sheet](tenniShip/src/main/resources/static/img/screenshots/tsheetGP.png "Tournament Sheet")
+![Tournament Sheet](tenniShip/src/main/resources/static/img/screenshots/tsheetFP.png "Tournament Sheet")
 Tournament information sheets indicate the actual phase of the tournament, its teams and its progress.
 
 
 
-![Register Match](BizPage/img/screenshots/registerMatch.png "Register Match")
+![Register Match](tenniShip/src/main/resources/static/img/screenshots/registerMatch.png "Register Match")
 When a game is played, teams must log the result. In case of disagreement, tournament's administrator will be noticed so they decide.
 
 
 
-![Team Sheet](BizPage/img/screenshots/teamFile.png "Team Sheet")
+![Team Sheet](tenniShip/src/main/resources/static/img/screenshots/teamFile.png "Team Sheet")
 Team Sheet contains information about a team. It includes the team's logo, its players with their picture and name (on mouse hover), the tournaments played by them and their most recent results. There's a pie chart that showcases the percentage of matches played in each tournament. This screenshot was taken with zoom out.
 
 
 
 ## Built With
 
-TenniShip has been made with HTML, CSS and Javascript. BizPage Bootstrap template has been used and modified.
+TenniShip has been made with HTML, CSS and JavaScript. BizPage Bootstrap template has been used and modified.
 
 ## Technical details
 ### Entities
 TenniShip has four different entities: match, tournament, team and user role. 
-![Entities](BizPage/img/diagrams/entities_dependencies.png)
+![Entities](tenniShip/src/main/resources/static/img/diagrams/TenniShip_ER.png)
 
 ### Users
 TenniShip has three different users: administrator, registered user and non-registered user.
@@ -65,15 +66,15 @@ Tournaments will automatically reorganize themselves when a match is played.
 
 
 
-![Login/up](BizPage/img/screen_transitions/fromHome.jpeg)
+![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/fromHome.jpeg)
 
-![Login/up](BizPage/img/screen_transitions/fromSB.jpeg)
+![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/fromSB.jpeg)
 
-![Login/up](BizPage/img/screen_transitions/fromActions.jpeg)
+![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/fromActions.jpeg)
 
-![Login/up](BizPage/img/screen_transitions/fromActions2.jpeg)
+![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/fromActions2.jpeg)
 
-![Login/up](BizPage/img/screen_transitions/fromActions3.jpeg)
+![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/fromActions3.jpeg)
 
 
 

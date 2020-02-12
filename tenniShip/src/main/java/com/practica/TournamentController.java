@@ -1,6 +1,7 @@
 package com.practica;
 
 import java.util.Optional;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -66,7 +67,6 @@ public class TournamentController {
     }
 	
 	
-	
 	@GetMapping("/Matches")
 	public String tester (Model model) {
 		
@@ -80,6 +80,14 @@ public class TournamentController {
 		
 		
 		return "registerMatch";
+	}
+	
+	protected void raffleGP (Model model) {
+		List <String> teams = teamRepository.findAllTeams();
+		Collections.shuffle(teams);
+		for(int i=0;i<18;i++) {
+			model.addAttribute(String.format("team%d",i),teams.get(i));
+		}
 	}
 	
 }
