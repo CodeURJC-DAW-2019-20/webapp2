@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 
 @Entity
@@ -18,11 +19,14 @@ public class Team {
 	@Id
 	String name;
 	
-	
+
 	//private Image teamImage;	
 	
 	@OneToMany (cascade = CascadeType.ALL)
 	private List<Player> players = new ArrayList<>();
+	
+	@ManyToMany
+	private List<Tournament> tournament;
 	
 	public Team() {
 	}
@@ -49,5 +53,5 @@ public class Team {
 	}
 
 	
-	
+
 }
