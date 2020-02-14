@@ -16,8 +16,6 @@ public class Team {
 	
 	@Id
 	String name;
-	
-
 	//private Image teamImage;	
 	
 	@OneToMany (cascade = CascadeType.ALL)
