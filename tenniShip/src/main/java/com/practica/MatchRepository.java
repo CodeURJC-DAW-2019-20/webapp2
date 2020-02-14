@@ -9,6 +9,6 @@ import com.practica.model.Match;
 
 
 public interface MatchRepository extends JpaRepository<Match, Long> {
-	@Query(value="SELECT MATCH.*  FROM TOURNAMENT JOIN MATCH",nativeQuery=true)
+	@Query(value="SELECT DISTINCT MATCH.*  FROM TOURNAMENT JOIN MATCH",nativeQuery=true)
 	List<Match> findAllMatches();
 }

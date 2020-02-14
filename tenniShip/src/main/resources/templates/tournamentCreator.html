@@ -47,19 +47,19 @@ Header
     <div class="container-fluid">
 
         <div class="pull-left" id="logo">
-            <h1><a class="scrollto" href="index.html">TenniShip</a></h1>
+            <h1><a class="scrollto" href="/TenniShip/{{team}}">TenniShip</a></h1>
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/TenniShip/{{team}}">Home</a></li>
                 <li class="menu-has-children"><a href="#actions">Actions</a>
                     <ul>
-                        <li><a href="selectTournament.html">Register a Match</a></li>
-                        <li><a href="tournamentCreator.html">Tournament Creator</a></li>
+                        <li><a href="/SelectTournament/{{team}}">Register a Match</a></li>
+                        <li><a href="/{{team}}/Creator">Tournament Creator</a></li>
                     </ul>
                 </li>
-                <li><a href="teamfile.html">StriderTC</a></li>
+                <li><a href="/Team/{{team}}">StriderTC</a></li>
                 <li><img alt="" class="rounded-circle loginImage" src="../img/clients/client-1.png"></li>
             </ul>
         </nav><!-- #nav-menu-container -->
@@ -502,7 +502,7 @@ Header
                             <div>
                                 <div class="TCreatorTitles">
                                     <h3>Tournament Name:</h3>
-                                    <p>"Davis Cup"</p>
+                                    <p>{{tournament}}</p>
                                     <a aria-controls="v-pills-settings" aria-selected="false" class="btn nav-link"
                                        data-toggle="pill" href="#v-pills-created" id="v-pills-settings-tab"
                                        role="tab">Raffle</a>
@@ -519,7 +519,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-1.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Walter White</h4>
+                                                    <h4>{{team0}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -530,7 +530,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-2.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Sarah Jhonson</h4>
+                                                    <h4>{{team1}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -541,7 +541,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-3.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>William Anderson</h4>
+                                                    <h4>{{team2}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -552,7 +552,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-4.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Amanda Jepson</h4>
+                                                    <h4>{{team3}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -563,7 +563,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-1.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Walter White</h4>
+                                                    <h4>{{team4}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -574,7 +574,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-2.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Sarah Jhonson</h4>
+                                                    <h4>{{team5}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -585,7 +585,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-1.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Walter White</h4>
+                                                    <h4>{{team6}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -596,7 +596,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-2.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Sarah Jhonson</h4>
+                                                    <h4>{{team7}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -607,7 +607,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-3.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>William Anderson</h4>
+                                                    <h4>{{team8}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -618,7 +618,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-4.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Amanda Jepson</h4>
+                                                    <h4>{{team9}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -629,7 +629,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-1.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Walter White</h4>
+                                                    <h4>{{team10}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -640,7 +640,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-2.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Sarah Jhonson</h4>
+                                                    <h4>{{team11}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -651,7 +651,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-1.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Walter White</h4>
+                                                    <h4>{{team12}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -662,7 +662,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-2.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Sarah Jhonson</h4>
+                                                    <h4>{{team13}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -673,7 +673,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-3.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>William Anderson</h4>
+                                                    <h4>{{team14}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -684,7 +684,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-4.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Amanda Jepson</h4>
+                                                    <h4>{{team15}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -695,7 +695,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-1.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Walter White</h4>
+                                                    <h4>{{team16}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -706,7 +706,7 @@ Header
                                             <img alt="" class="img-fluid" src="../img/team-2.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>Sarah Jhonson</h4>
+                                                    <h4>{{team17}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -723,8 +723,8 @@ Header
                                     <p>Congratulations, the tournament has been created successfully. You can start
                                         playing whenever you want.</p>
                                     <div class="buttons">
-                                        <a class="btn" href="tournamentSheet.html">Go to the Tournament</a>
-                                        <a class="btn" href="index.html">Home</a>
+                                        <a class="btn" href="/Tournament/{{tournament}}">Go to the Tournament</a>
+                                        <a class="btn" href="/TenniShip/{{team}}">Home</a>
                                     </div>
                                 </div>
                             </div>

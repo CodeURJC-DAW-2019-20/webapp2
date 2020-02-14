@@ -8,25 +8,25 @@
     <meta content="" name="description">
 
     <!-- Favicons -->
-    <link href="../img/favicon.png" rel="icon">
-    <link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="/../img/favicon.png" rel="icon">
+    <link href="/../img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
           rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
-    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Libraries CSS Files -->
-    <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../lib/animate/animate.min.css" rel="stylesheet">
-    <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="/../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/../lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="/../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="/../css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -37,20 +37,20 @@
     <div class="container-fluid">
 
         <div class="pull-left" id="logo">
-            <h1><a class="scrollto" href="index.html">TenniShip</a></h1>
+            <h1><a class="scrollto" href="/TenniShip/{{team}}">TenniShip</a></h1>
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li class="menu-has-children"><a href="#actions">Actions</a>
+                <li><a href="/TenniShip/{{team}}">Home</a></li>
+                <li class="menu-has-children"><a href="#">Actions</a>
                     <ul>
-                        <li><a href="selectTournament.html">Register a Match</a></li>
-                        <li><a href="tournamentCreator.html">Tournament Creator</a></li>
+                        <li><a href="/SelectTournament/{{team}}">Register a Match</a></li>
+                        <li><a href="/{{team}}/Creator">Tournament Creator</a></li>
                     </ul>
                 </li>
-                <li><a href="index.html">StriderTC</a></li>
-                <li><img alt="" class="rounded-circle loginImage" src="../img/clients/client-1.png"></li>
+                <li><a href="/Team/{{team}}">StriderTC</a></li>
+                <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/client-1.png"></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
@@ -77,7 +77,7 @@
                         <!-- Card image -->
                         <div class="view overlay">
                             <img alt="Card image cap" class="card-img-top"
-                                 src="../img/SpainFlag.png">
+                                 src="/../img/SpainFlag.png">
                             <a href="#!">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
@@ -102,7 +102,7 @@
                 <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp ">
                     <div class="registerMatchBothPages-wrap ">
                         <figure>
-                            <img alt="" class="img-fluid rackets" src="../img/rackets.png">
+                            <img alt="" class="img-fluid rackets" src="/../img/rackets.png">
                         </figure>
 
                         <div class="registerMatchBothPages-info ">
@@ -112,7 +112,7 @@
                                     <div class="def-number-input number-input safari_only">
                                         <button class="minus"
                                                 onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                                        <input class="quantity" min="0" name="quantity" type="number" value="0">
+                                        <input class="quantity" min="0" name="quantity" type="number" value="{{teamHomePoints0}}">
                                         <button class="plus"
                                                 onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                                     </div>
@@ -121,7 +121,7 @@
                                     <div class="def-number-input number-input safari_only">
                                         <button class="minus"
                                                 onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                                        <input class="quantity" min="0" name="quantity" type="number" value="0">
+                                        <input class="quantity" min="0" name="quantity" type="number" value="{{teamAwayPoints0}}">
                                         <button class="plus"
                                                 onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                                     </div>
@@ -138,7 +138,7 @@
                         <!-- Card image -->
                         <div class="view overlay">
                             <img alt="Card image cap" class="card-img-top"
-                                 src="../img/MaltaFlag.png">
+                                 src="/../img/MaltaFlag.png">
                             <a href="#!">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
@@ -175,7 +175,7 @@
                         <!-- Card image -->
                         <div class="view overlay">
                             <img alt="Card image cap" class="card-img-top"
-                                 src="../img/GermanyFlag.png">
+                                 src="/../img/GermanyFlag.png">
                             <a href="#!">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
@@ -200,7 +200,7 @@
                 <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp ">
                     <div class="registerMatchBothPages-wrap ">
                         <figure>
-                            <img alt="" class="img-fluid rackets" src="../img/rackets.png">
+                            <img alt="" class="img-fluid rackets" src="/../img/rackets.png">
                         </figure>
 
                         <div class="registerMatchBothPages-info ">
@@ -210,7 +210,7 @@
                                     <div class="def-number-input number-input safari_only">
                                         <button class="minus"
                                                 onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                                        <input class="quantity" min="0" name="quantity" type="number" value="0">
+                                        <input class="quantity" min="0" name="quantity" type="number" value="{{teamHomePoints1}}">
                                         <button class="plus"
                                                 onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                                     </div>
@@ -219,7 +219,7 @@
                                     <div class="def-number-input number-input safari_only">
                                         <button class="minus"
                                                 onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                                        <input class="quantity" min="0" name="quantity" type="number" value="0">
+                                        <input class="quantity" min="0" name="quantity" type="number" value="{{teamAwayPoints1}}">
                                         <button class="plus"
                                                 onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                                     </div>
@@ -236,7 +236,7 @@
                         <!-- Card image -->
                         <div class="view overlay">
                             <img alt="Card image cap" class="card-img-top"
-                                 src="../img/SpainFlag.png">
+                                 src="/../img/SpainFlag.png">
                             <a href="#!">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
@@ -274,7 +274,7 @@
                         <!-- Card image -->
                         <div class="view overlay">
                             <img alt="Card image cap" class="card-img-top"
-                                 src="../img/SpainFlag.png">
+                                 src="/../img/SpainFlag.png">
                             <a href="#!">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
@@ -299,7 +299,7 @@
                 <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp ">
                     <div class="registerMatchBothPages-wrap ">
                         <figure>
-                            <img alt="" class="img-fluid rackets" src="../img/rackets.png">
+                            <img alt="" class="img-fluid rackets" src="/../img/rackets.png">
                         </figure>
 
                         <div class="registerMatchBothPages-info ">
@@ -309,7 +309,7 @@
                                     <div class="def-number-input number-input safari_only">
                                         <button class="minus"
                                                 onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                                        <input class="quantity" min="0" name="quantity" type="number" value="0">
+                                        <input class="quantity" min="0" name="quantity" type="number" value="{{teamHomePoints2}}">
                                         <button class="plus"
                                                 onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                                     </div>
@@ -318,7 +318,7 @@
                                     <div class="def-number-input number-input safari_only">
                                         <button class="minus"
                                                 onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                                        <input class="quantity" min="0" name="quantity" type="number" value="0">
+                                        <input class="quantity" min="0" name="quantity" type="number" value="{{teamAwayPoints2}}">
                                         <button class="plus"
                                                 onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                                     </div>
@@ -335,7 +335,7 @@
                         <!-- Card image -->
                         <div class="view overlay">
                             <img alt="Card image cap" class="card-img-top"
-                                 src="../img/ItalyFlag.png">
+                                 src="/../img/ItalyFlag.png">
                             <a href="#!">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
@@ -388,24 +388,24 @@
 <div id="preloader"></div>
 
 <!-- JavaScript Libraries -->
-<script src="../lib/jquery/jquery.min.js"></script>
-<script src="../lib/jquery/jquery-migrate.min.js"></script>
-<script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../lib/easing/easing.min.js"></script>
-<script src="../lib/superfish/hoverIntent.js"></script>
-<script src="../lib/superfish/superfish.min.js"></script>
-<script src="../lib/wow/wow.min.js"></script>
-<script src="../lib/waypoints/waypoints.min.js"></script>
-<script src="../lib/counterup/counterup.min.js"></script>
-<script src="../lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="../lib/isotope/isotope.pkgd.min.js"></script>
-<script src="../lib/lightbox/js/lightbox.min.js"></script>
-<script src="../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+<script src="/../lib/jquery/jquery.min.js"></script>
+<script src="/../lib/jquery/jquery-migrate.min.js"></script>
+<script src="/../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/../lib/easing/easing.min.js"></script>
+<script src="/../lib/superfish/hoverIntent.js"></script>
+<script src="/../lib/superfish/superfish.min.js"></script>
+<script src="/../lib/wow/wow.min.js"></script>
+<script src="/../lib/waypoints/waypoints.min.js"></script>
+<script src="/../lib/counterup/counterup.min.js"></script>
+<script src="/../lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="/../lib/isotope/isotope.pkgd.min.js"></script>
+<script src="/../lib/lightbox/js/lightbox.min.js"></script>
+<script src="/../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
 <!-- Contact Form JavaScript File -->
-<script src="../contactform/contactform.js"></script>
+<script src="/../contactform/contactform.js"></script>
 
 <!-- Template Main Javascript File -->
-<script src="../js/main.js"></script>
+<script src="/../js/main.js"></script>
 
 </body>
 </html>

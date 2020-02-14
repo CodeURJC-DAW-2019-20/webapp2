@@ -1,10 +1,9 @@
 package com.practica;
 
 import java.util.Optional;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,32 +23,8 @@ public class TournamentController {
 	
 	@Autowired
 	private TeamRepository teamRepository;
+	
 
-	@Autowired
-	private MatchRepository matchRepository;
-	
-	@PostConstruct
-	public void init() {
-	Tournament tournament1 = new Tournament("CopaDavis");
-	teamRepository.findAll().forEach(team->{
-		tournament1.getTournamentTeams().add(team);
-	});
-	
-	Match m1 = new Match( tournament1.getTournamentTeams().get(0).getName(), tournament1.getTournamentTeams().get(1).getName(), 3, 0);
-	matchRepository.save(m1);
-	tournament1.getTournamentMatchs().add(m1);
-	
-	Match m2 = new Match( tournament1.getTournamentTeams().get(2).getName(), tournament1.getTournamentTeams().get(3).getName(), 3, 2);
-	matchRepository.save(m2);
-	
-	Match m3 = new Match( tournament1.getTournamentTeams().get(4).getName(), tournament1.getTournamentTeams().get(5).getName(), 3, 2);
-	matchRepository.save(m3);
-	tournament1.getTournamentMatchs().add(m3);
-
-
-	tournamentRepository.save(tournament1);
-	}
-	
 	@GetMapping("/Tournament/{tournament}")
     public String tournament(Model model, @PathVariable String tournament) {
 		
@@ -59,7 +34,7 @@ public class TournamentController {
         	model.addAttribute("tournamentName", t.get().getName());
         	List<Team> teamList = t.get().getTournamentTeams();
         	for(int i=0; i< teamList.size();i++) {
-        		model.addAttribute(String.format("team%d", i+1),teamList.get(i).getName());
+        		model.addAttribute(String.format("team%d", i),teamList.get(i).getName());
         	}
         }
 
@@ -67,19 +42,47 @@ public class TournamentController {
     }
 	
 	
-	@GetMapping("/Matches")
-	public String tester (Model model) {
-		
-		List<Match> matches = matchRepository.findAllMatches();
-		
-    	
-    	for(int i=0; i< matches.size();i++) {
-    		model.addAttribute(String.format("teamNameHome%d", i),matches.get(i).getHome());
-    		model.addAttribute(String.format("teamNameAway%d", i),matches.get(i).getAway());
-    	}
-		
-		
+	@GetMapping("/{tournament}/SelectMatch/{team}")
+	public String selectMatch (Model model, @PathVariable String tournament, @PathVariable String team) {
+		Optional <Tournament> t = tournamentRepository.findById(tournament);
+		List<Match> matchesWithMyTeam = new ArrayList<>();
+
+		if(t.isPresent()) {
+			t.get().getTournamentMatchs().forEach(Match->{
+				if (Match.getHome().equals(team) || Match.getAway().equals(team)) 
+					matchesWithMyTeam.add(Match);
+			});
+			for(int i =0;i<Math.min(matchesWithMyTeam.size(), 3);i++) {
+				model.addAttribute(String.format("teamNameHome%d", i), matchesWithMyTeam.get(i).getHome());
+				model.addAttribute(String.format("teamHomePoints%d", i), Integer.toString(matchesWithMyTeam.get(i).getHomePoints()));
+				model.addAttribute(String.format("teamAwayPoints%d", i), Integer.toString(matchesWithMyTeam.get(i).getAwayPoints()));
+				model.addAttribute(String.format("teamNameAway%d", i), matchesWithMyTeam.get(i).getAway());
+			}
+		}
+			
 		return "registerMatch";
+	}
+	
+	
+	@GetMapping("/SelectTournament/{team}")
+	public String selectTournament (Model model, @PathVariable String team) {
+				
+		List<Tournament> tournaments = tournamentRepository.findAll(); 
+		Optional <Team> t = teamRepository.findById(team); 
+		
+		List<Tournament> tournamentsWithMyTeam = new ArrayList<>();
+		
+		if(t.isPresent()) {
+			tournaments.forEach(Tournament->{
+				if(Tournament.getTournamentTeams().contains(t.get()))
+					tournamentsWithMyTeam.add(Tournament);
+			});
+			model.addAttribute("currentTeam", team);
+			for(int i =0;i<Math.min(tournamentsWithMyTeam.size(), 6);i++) {
+				model.addAttribute(String.format("tournamentName%d", i), tournamentsWithMyTeam.get(i).getName());
+			}
+		}
+		return "selectTournament";
 	}
 	
 	protected void raffleGP (Model model) {
@@ -90,6 +93,51 @@ public class TournamentController {
 		}
 	}
 	
+	
+	@GetMapping("/{team}/Creator")
+	public String create (Model model,@PathVariable String team) {
+		
+		Optional <Team> t = teamRepository.findById(team); 
+		
+		if(t.isPresent()) {
+			String tournamentName;
+			tournamentName = "CopaDavis";//cambiar futuro
+			List<Team> teamsProvisional = new ArrayList<>();
+			teamsProvisional.addAll(teamRepository.findAll());//futura query
+			
+			
+			model.addAttribute("tournament", tournamentName);
+			
+			for(int i=0; i< Math.min(18, teamsProvisional.size())/*teamList.size() Poner esto*/;i++) {
+	    		model.addAttribute(String.format("team%d", i),teamsProvisional.get(i).getName());
+	    	}				
+		}
+		
+		return "tournamentCreator";
+	}
+	
+	@GetMapping("/TenniShip/{team}")
+	public String index (Model model,@PathVariable String team) {
+		
+		Optional <Team> t = teamRepository.findById(team); 
+		
+		return "index";
+	}
+	
+	@GetMapping("/TenniShip/SignIn")
+	public String sign_in (Model model) {
+		 
+		
+		return "login";
+	}
+	
+	
+	@GetMapping("/TenniShip/SignUp")
+	public String sign_up (Model model) {
+		 
+		
+		return "registerAccount";
+	}
 }
 
 
