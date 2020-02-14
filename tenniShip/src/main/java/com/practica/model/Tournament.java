@@ -17,10 +17,6 @@ public class Tournament {
 	@Id
 	String name;
 
-//	In this part we should take into account
-//	the possibility of a team being erased if
-//	that team does not participate in more
-//	tournaments
 	@ManyToMany
 	private List<Team> tournamentTeams = new ArrayList<>();
 	
