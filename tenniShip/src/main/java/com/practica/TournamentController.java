@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.practica.model.Team;
 import com.practica.model.Tournament;
+import com.practica.security.User;
+import com.practica.security.UserComponent;
+import com.practica.security.UserRepository;
 import com.practica.model.Match;
 
 @Controller
@@ -23,6 +26,13 @@ public class TournamentController {
 
 	@Autowired
 	private TeamRepository teamRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private UserComponent userComponent;
+
 
 	@GetMapping("/Tournament/{tournament}")
 	public String tournament(Model model, @PathVariable String tournament) {
@@ -83,7 +93,7 @@ public class TournamentController {
 					model.addAttribute(String.format("tournamentName%d", i), "Empty");
 				}
 			}
-		}
+		} 
 		return "selectTournament";
 	}
 
@@ -95,7 +105,7 @@ public class TournamentController {
 		}
 	}*/
 
-	}
+	
 
 
 	@GetMapping("/{team}/Creator")
@@ -120,10 +130,14 @@ public class TournamentController {
 		return "tournamentCreator";
 	}
 
-	@GetMapping("/TenniShip/{team}")
-	public String index (Model model,@PathVariable String team) {
+	@GetMapping("/TenniShip")
+	public String index (Model model) {
 
-		Optional <Team> t = teamRepository.findById(team);
+		if(userComponent.isLoggedUser()) {
+			String teamUser = userComponent.getTeam();
+			model.addAttribute("team", teamUser);
+		}
+		model.addAttribute("registered",userComponent.isLoggedUser());
 
 		return "index";
 	}
@@ -134,8 +148,22 @@ public class TournamentController {
 
 		return "login";
 	}
+ 
 
-
+	@GetMapping("/home")
+    public String home(Model model) {
+	
+		
+		if(userComponent.isLoggedUser()) {
+			String team = userComponent.getTeam();
+			model.addAttribute("ejemplo",team);
+			
+			 return "hola";
+		}
+		
+       return"registerAccount";
+    }
+	
 	@GetMapping("/TenniShip/SignUp")
 	public String sign_up (Model model) {
 

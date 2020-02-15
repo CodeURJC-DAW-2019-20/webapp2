@@ -10,6 +10,8 @@ import com.practica.model.Match;
 import com.practica.model.Player;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
+import com.practica.security.User;
+import com.practica.security.UserRepository;
 
 @Controller
 public class DataBaseUsage implements CommandLineRunner{
@@ -23,6 +25,8 @@ public class DataBaseUsage implements CommandLineRunner{
 	@Autowired
 	private MatchRepository matchRepository;
 	
+	@Autowired
+    private UserRepository userRepository;
 	
 	private static LinkedList<Player> playerGenerator () {
         LinkedList<Player> list = new LinkedList<>();
@@ -35,6 +39,10 @@ public class DataBaseUsage implements CommandLineRunner{
     }
 	@Override
 	public void run(String... args) throws Exception {
+		
+		//users
+		userRepository.save(new User("user","Spain","pass", "ROLE_USER"));
+
 		
 		//
 		//

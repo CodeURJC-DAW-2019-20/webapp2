@@ -26,7 +26,7 @@
     <link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="/../css/style.css" rel="stylesheet">
 
     <!-- =======================================================
       Theme Name: BizPage
@@ -45,20 +45,9 @@
     <div class="container-fluid">
 
         <div class="pull-left" id="logo">
-            <h1><a class="scrollto" href="">TenniShip</a></h1>
+            <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
         </div>
 
-        <nav id="nav-menu-container">
-            <ul class="nav-menu">
-                <li><a href="">Home</a></li>
-                <li class="menu-has-children"><a href="#actions">Actions</a>
-                    <ul>
-                        <li><a href="selectTournament.html">Register a Match</a></li>
-                        <li><a href="tournamentCreator.html">Tournament Creator</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav><!-- #nav-menu-container -->
     </div>
 </header><!-- #header -->
 
@@ -78,12 +67,13 @@
                 </div>
 
                 <div class="form">
-                    <!--<div id="sendmessage">Your message has been sent. Thank you!</div>-->
-                    <div id="errormessage"></div>
-                    <form action="" class="contactForm" method="post" role="form">
+                    <!--<div id="sendmessage">Your message has been sent. Thank you!</div>\
+                    <div id="errormessage"></div>-->
+                    
+                    <form action="/TenniShip/SignIn" method="post" role="form">
                         <div class="form-group">
-                            <input class="form-control" data-msg="Enter username or email" data-rule="minlen:1" id="email"
-                                   name="email" placeholder="Email or username"
+                            <input class="form-control" data-msg="Enter username" data-rule="minlen:1" id="username"
+                                   name="username" placeholder="Username"
                                    type="text"/>
                             <div class="validation"></div>
                         </div>

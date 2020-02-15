@@ -349,6 +349,24 @@ body#index #home {
     margin: 0;
 }
 
+
+.teamMenu button {
+  padding: 10px;
+  color: #333;
+  transition: 0.3s;
+  display: block;
+  font-size: 13px;
+  text-transform: none;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  outline: none;
+}
+
+.teamMenu button:hover {
+  color: #18d26e;
+}
+
 /* Mobile Nav Toggle */
 
 #mobile-nav-toggle {
