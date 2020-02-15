@@ -11,7 +11,7 @@ public class Match {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	long matchId;
+	private long matchId;
 		
 	private String home;
 	private String away;
