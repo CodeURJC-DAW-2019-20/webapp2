@@ -95,7 +95,7 @@ public class TournamentController {
 		}
 	}*/
 
-	}
+
 
 
 	@GetMapping("/{team}/Creator")

@@ -38,7 +38,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		
 		//
 		//
-		//---------------------ZONA EQUIPOS
+		//---------------------TEAMS ZONE
 		//
 		//
 
@@ -94,12 +94,12 @@ public class DataBaseUsage implements CommandLineRunner{
 		teamRepository.save(team5B); teamRepository.save(team11B); teamRepository.save(team17B);
 		teamRepository.save(team6B); teamRepository.save(team12B); teamRepository.save(team18B);
 				
-		Tournament tournament1 = new Tournament("CopaDavis");
-		Tournament tournament2 = new Tournament("CopaPrueba");
+		Tournament tournament1 = new Tournament("DavisCup");
+		Tournament tournament2 = new Tournament("TestCup");
 		
 		teamRepository.findAll().forEach(team->{
-			String letra = team.getName().substring(team.getName().length()-1);
-			switch (letra) {
+			String letter = team.getName().substring(team.getName().length()-1);
+			switch (letter) {
 			case "B":
 				tournament2.getTournamentTeams().add(team);
 				break;
@@ -115,7 +115,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		
 		//
 		//
-		//---------------------ZONA PARTIDOS
+		//---------------------MATCHES ZONE
 		//
 		//
 
