@@ -31,7 +31,7 @@ public class TournamentController {
 
 		if (t.isPresent()) {
 			model.addAttribute("tournamentName", t.get().getName());
-			List<Team> teamList = t.get().getTournamentTeams();
+			List<Team> teamList = tournamentRepository.getTeams(t.get());
 			for (int i = 0; i < teamList.size(); i++) {
 				model.addAttribute(String.format("team%d", i), teamList.get(i).getName());
 			}
@@ -42,19 +42,21 @@ public class TournamentController {
 
 	@GetMapping("/{tournament}/SelectMatch/{team}")
 	public String selectMatch(Model model, @PathVariable String tournament, @PathVariable String team) {
+		
 		Optional<Tournament> t = tournamentRepository.findById(tournament);
+		Optional<Team> tm = teamRepository.findById(team);
+		
 		List<Match> matchesWithMyTeam = new ArrayList<>();
 
-		if (t.isPresent()) {
-			t.get().getTournamentMatchs().forEach(Match -> {
-				if (Match.getHome().equals(team) || Match.getAway().equals(team))
-					matchesWithMyTeam.add(Match);
+		if (t.isPresent() && tm.isPresent()) {
+			tournamentRepository.getMatches(t.get()).forEach(Match -> {
+				if (Match.getTeam1().equals(tm.get()) || Match.getTeam2().equals(tm.get())) matchesWithMyTeam.add(Match);
 			});
 			for (int i = 0; i < Math.min(matchesWithMyTeam.size(), 3); i++) {
-				model.addAttribute(String.format("teamNameHome%d", i), matchesWithMyTeam.get(i).getHome());
+				model.addAttribute(String.format("teamNameHome%d", i), matchesWithMyTeam.get(i).getTeam1().getName());
 				model.addAttribute(String.format("teamHomePoints%d", i), Integer.toString(matchesWithMyTeam.get(i).getHomePoints()));
 				model.addAttribute(String.format("teamAwayPoints%d", i), Integer.toString(matchesWithMyTeam.get(i).getAwayPoints()));
-				model.addAttribute(String.format("teamNameAway%d", i), matchesWithMyTeam.get(i).getAway());
+				model.addAttribute(String.format("teamNameAway%d", i), matchesWithMyTeam.get(i).getTeam2().getName());
 			}
 		}
 
@@ -64,22 +66,15 @@ public class TournamentController {
 	@GetMapping("/SelectTournament/{team}")
 	public String selectTournament(Model model, @PathVariable String team) {
 
-		List<Tournament> tournaments = tournamentRepository.findAll();
 		Optional<Team> t = teamRepository.findById(team);
 
-		List<Tournament> tournamentsWithMyTeam = new ArrayList<>();
-
 		if (t.isPresent()) {
-			tournaments.forEach(Tournament -> {
-				if (Tournament.getTournamentTeams().contains(t.get()))
-					tournamentsWithMyTeam.add(Tournament);
-			});
 			model.addAttribute("currentTeam", team);
-			for (int i = 0; i < Math.min(tournamentsWithMyTeam.size(), 6); i++) {
-				model.addAttribute(String.format("tournamentName%d", i), tournamentsWithMyTeam.get(i).getName());
+			for (int i = 0; i < Math.min(teamRepository.getTournaments(t.get()).size(), 6); i++) {
+				model.addAttribute(String.format("tournamentName%d", i), teamRepository.getTournaments(t.get()).get(i).getName());
 			}
-			if (tournamentsWithMyTeam.size() < 6) {
-				for (int i = tournamentsWithMyTeam.size(); i < 6; i++) {
+			if (teamRepository.getTournaments(t.get()).size() < 6) {
+				for (int i = teamRepository.getTournaments(t.get()).size(); i < 6; i++) {
 					model.addAttribute(String.format("tournamentName%d", i), "Empty");
 				}
 			}
@@ -95,20 +90,16 @@ public class TournamentController {
 		}
 	}*/
 
-
-
-
 	@GetMapping("/{team}/Creator")
-	public String create (Model model,@PathVariable String team) {
+	public String create (Model model, @PathVariable String team) {
 
 		Optional <Team> t = teamRepository.findById(team);
 
 		if(t.isPresent()) {
 			String tournamentName;
-			tournamentName = "CopaDavis";//cambiar futuro
+			tournamentName = "CopaDavis"; //cambiar futuro
 			List<Team> teamsProvisional = new ArrayList<>();
-			teamsProvisional.addAll(teamRepository.findAll());//futura query
-
+			teamsProvisional.addAll(teamRepository.findAll()); //futura query
 
 			model.addAttribute("tournament", tournamentName);
 
@@ -130,7 +121,6 @@ public class TournamentController {
 
 	@GetMapping("/TenniShip/SignIn")
 	public String sign_in (Model model) {
-
 
 		return "login";
 	}

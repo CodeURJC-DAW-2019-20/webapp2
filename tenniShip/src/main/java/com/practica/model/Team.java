@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToMany;
@@ -15,14 +17,10 @@ import javax.persistence.ManyToMany;
 public class Team {
 	
 	@Id
-	String name;
-	//private Image teamImage;	
+	private String name;
 	
 	@OneToMany (cascade = CascadeType.ALL)
 	private List<Player> players = new ArrayList<>();
-		
-	@ManyToMany
-	private List<Tournament> tournament;
 	
 	public Team() {
 	}
@@ -47,17 +45,5 @@ public class Team {
 	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
-
-
-	public List<Tournament> getTournament() {
-		return tournament;
-	}
-
-	public void setTournament(List<Tournament> tournament) {
-		this.tournament = tournament;
-	}
-
-	
-	
 
 }

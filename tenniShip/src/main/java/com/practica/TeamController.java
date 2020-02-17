@@ -42,19 +42,11 @@ public class TeamController {
         		model.addAttribute(String.format("player%d", i), players.get(i).getName());
         	}
         	
-        	List<Tournament> tournaments = tournamentRepository.findAll();
-        	List<Tournament> tournamentsWithMyTeam = new ArrayList<>();
-        	
-        	tournaments.forEach(Tournament -> {
-				if (Tournament.getTournamentTeams().contains(t.get()))
-					tournamentsWithMyTeam.add(Tournament);
-			});
-        	
-        	tournamentsWithMyTeam.forEach(Tournament -> {
-				Tournament.getTournamentMatchs().forEach(Match -> {
-					if ((i < 10) && (Match.getHome().equals(team) || Match.getAway().equals(team))) {
-						model.addAttribute(String.format("teamNameHome%d", i), Match.getHome());
-						model.addAttribute(String.format("teamNameAway%d", i), Match.getAway());
+        	teamRepository.getTournaments(t.get()).forEach(Tournament -> {
+				tournamentRepository.getMatches(Tournament).forEach(Match -> {
+					if ((i < 10) && (Match.getTeam1().equals(t.get()) || Match.getTeam2().equals(t.get()))) {
+						model.addAttribute(String.format("teamNameHome%d", i), Match.getTeam1().getName());
+						model.addAttribute(String.format("teamNameAway%d", i), Match.getTeam2().getName());
 						model.addAttribute(String.format("teamHomePoints%d", i), Integer.toString(Match.getHomePoints()));
 						model.addAttribute(String.format("teamAwayPoints%d", i), Integer.toString(Match.getAwayPoints()));
 						model.addAttribute(String.format("matchTournament%d", i), Tournament.getName());
@@ -69,7 +61,7 @@ public class TeamController {
 				model.addAttribute(String.format("teamAwayPoints%d", j), "0");
 				model.addAttribute(String.format("matchTournament%d", j), "Empty");
         	}
-        	i = 0;
+        	i = 0; //Needed because if f5, i does not restart and forEach loop starts with i != 0
         }
 		return "teamfile";
 	}
