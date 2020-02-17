@@ -6,9 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.practica.model.Match;
+import com.practica.model.Team;
+import com.practica.model.Tournament;
 
 
 public interface MatchRepository extends JpaRepository<Match, Long> {
-	@Query(value="SELECT DISTINCT MATCH.*  FROM TOURNAMENT JOIN MATCH",nativeQuery=true)
-	List<Match> findAllMatches();
+	
+	@Query("SELECT m FROM Match m WHERE m.tournament = :tournament AND m.team1 = :team OR m.team2 = :team")
+	List<Match> findMatches(Team team, Tournament tournament);
 }

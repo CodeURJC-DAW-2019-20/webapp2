@@ -20,6 +20,9 @@ public class TournamentController {
 
 	@Autowired
 	private TournamentRepository tournamentRepository;
+	
+	@Autowired
+	private MatchRepository matchRepository;	
 
 	@Autowired
 	private TeamRepository teamRepository;
@@ -45,18 +48,13 @@ public class TournamentController {
 		
 		Optional<Tournament> t = tournamentRepository.findById(tournament);
 		Optional<Team> tm = teamRepository.findById(team);
-		
-		List<Match> matchesWithMyTeam = new ArrayList<>();
 
 		if (t.isPresent() && tm.isPresent()) {
-			tournamentRepository.getMatches(t.get()).forEach(Match -> {
-				if (Match.getTeam1().equals(tm.get()) || Match.getTeam2().equals(tm.get())) matchesWithMyTeam.add(Match);
-			});
-			for (int i = 0; i < Math.min(matchesWithMyTeam.size(), 3); i++) {
-				model.addAttribute(String.format("teamNameHome%d", i), matchesWithMyTeam.get(i).getTeam1().getName());
-				model.addAttribute(String.format("teamHomePoints%d", i), Integer.toString(matchesWithMyTeam.get(i).getHomePoints()));
-				model.addAttribute(String.format("teamAwayPoints%d", i), Integer.toString(matchesWithMyTeam.get(i).getAwayPoints()));
-				model.addAttribute(String.format("teamNameAway%d", i), matchesWithMyTeam.get(i).getTeam2().getName());
+			for (int i = 0; i < Math.min(matchRepository.findMatches(tm.get(), t.get()).size(), 3); i++) {
+				model.addAttribute(String.format("teamNameHome%d", i), matchRepository.findMatches(tm.get(), t.get()).get(i).getTeam1().getName());
+				model.addAttribute(String.format("teamHomePoints%d", i), Integer.toString(matchRepository.findMatches(tm.get(), t.get()).get(i).getHomePoints()));
+				model.addAttribute(String.format("teamAwayPoints%d", i), Integer.toString(matchRepository.findMatches(tm.get(), t.get()).get(i).getAwayPoints()));
+				model.addAttribute(String.format("teamNameAway%d", i), matchRepository.findMatches(tm.get(), t.get()).get(i).getTeam2().getName());
 			}
 		}
 
