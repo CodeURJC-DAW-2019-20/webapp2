@@ -38,25 +38,39 @@
     <div class="container-fluid">
 
         <div class="pull-left" id="logo">
-            <h1><a class="scrollto" href="/TenniShip/{{team}}">TenniShip</a></h1>
+            <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <!--<li class="menu-active"><a href="#intro">Home</a></li>-->
-                <li><a href="/TenniShip/{{team}}">Home</a></li>
-                <li class="menu-has-children"><a href="#actions">Actions</a>
-                    <ul>
-                        <li><a href="/SelectTournament/{{team}}">Register a Match</a></li>
-                        <li><a href="/{{team}}/Creator">Tournament Creator</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
-                </li>
-                <li>
-                    <a class="btn signInIndexBtnText" href="/TenniShip/SignIn" type="submit">Sign In</a>
-                </li>
+                {{#registered}}
+                	<li class="menu-has-children"><a href="#actions">Actions</a>
+	                    <ul>
+	                        <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
+	                        <li><a href="/Creator">Tournament Creator</a></li>
+	                    </ul>
+                	</li>
+                	 <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
+                	 	<ul>
+                	 		<li><a href="/Team/{{team}}">View Profile</a></li>
+                	 		<li>
+                	 			<form action="/logout" method="post">
+									<button class="btn" type="submit">Sign Out</button>
+								</form>
+                	 		</li>
+                	 	</ul>
+                	 </li>
+               		 <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/client-1.png"></li>
+                {{/registered}}
+                   
+                {{^registered}}               
+	                <li>
+	                    <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
+	                </li>
+	                <li>
+	                    <a class="btn signInIndexBtnText" href="/TenniShip/SignIn" type="submit">Sign In</a>
+	                </li>
+                {{/registered}}
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
@@ -120,7 +134,7 @@
                             <img alt="" class="img-fluid" src="../img/registerMatch.jpg">
                             <div class="icon"><i class="ion-ios-tennisball"></i></div>
                         </div>
-                        <h2 class="title"><a href="/SelectTournament/{{team}}">Register a Match</a></h2>
+                        <h2 class="title"><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></h2>
                         <p>
                             This section´s purpose is the insertion of the results of the matchs
                             from a league in which your team is involved, it also lets
@@ -136,7 +150,7 @@
                             <img alt="" class="img-fluid" src="../img/emptyStadium.jpg">
                             <div class="icon"><i class="ion-podium"></i></div>
                         </div>
-                        <h2 class="title"><a href="/{{team}}/Creator">Tournament Creator</a></h2>
+                        <h2 class="title"><a href="/Creator">Tournament Creator</a></h2>
                         <p>
                             The tournament creator lets you make your own tournaments, set up the
                             teams and information, and you'll be able to manage them on the go.

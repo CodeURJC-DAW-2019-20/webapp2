@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.practica.model.Team;
 import com.practica.model.Tournament;
+import com.practica.security.User;
+import com.practica.security.UserComponent;
+import com.practica.security.UserRepository;
 import com.practica.model.Match;
 
 @Controller
@@ -20,12 +23,19 @@ public class TournamentController {
 
 	@Autowired
 	private TournamentRepository tournamentRepository;
-	
+
 	@Autowired
-	private MatchRepository matchRepository;	
+	private MatchRepository matchRepository;
 
 	@Autowired
 	private TeamRepository teamRepository;
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Autowired
+	private UserComponent userComponent;
+
 
 	@GetMapping("/Tournament/{tournament}")
 	public String tournament(Model model, @PathVariable String tournament) {
@@ -43,10 +53,12 @@ public class TournamentController {
 		return "tournamentSheet";
 	}
 
-	@GetMapping("/{tournament}/SelectMatch/{team}")
-	public String selectMatch(Model model, @PathVariable String tournament, @PathVariable String team) {
-		
-		Optional<Tournament> t = tournamentRepository.findById(tournament);
+	@GetMapping("/TenniShip/RegisterMatch/Tournament/{tournament}")
+	public String selectMatch(Model model, @PathVariable String tournament) {
+
+		String team = userComponent.getTeam();
+
+		Optional<Tournament> t = tournamentRepository.findById(tournament);//check if that team play this tournament
 		Optional<Team> tm = teamRepository.findById(team);
 
 		if (t.isPresent() && tm.isPresent()) {
@@ -61,21 +73,28 @@ public class TournamentController {
 		return "registerMatch";
 	}
 
-	@GetMapping("/SelectTournament/{team}")
-	public String selectTournament(Model model, @PathVariable String team) {
+	@GetMapping("/TenniShip/RegisterMatch/Tournament")
+	public String selectTournament(Model model) {
+
+		String team = userComponent.getTeam();
 
 		Optional<Team> t = teamRepository.findById(team);
 
+        model.addAttribute("registered", userComponent.getLoggedUser());
+        model.addAttribute("team", team);
+
 		if (t.isPresent()) {
-			model.addAttribute("currentTeam", team);
 			for (int i = 0; i < Math.min(teamRepository.getTournaments(t.get()).size(), 6); i++) {
 				model.addAttribute(String.format("tournamentName%d", i), teamRepository.getTournaments(t.get()).get(i).getName());
 			}
-			if (teamRepository.getTournaments(t.get()).size() < 6) {
-				for (int i = teamRepository.getTournaments(t.get()).size(); i < 6; i++) {
-					model.addAttribute(String.format("tournamentName%d", i), "Empty");
-				}
-			}
+
+			//model.addAttribute("listTournaments", tournamentsWithMyTeam);
+
+//			if (teamRepository.getTournaments(t.get()).size() < 6) {
+//				for (int i = teamRepository.getTournaments(t.get()).size(); i < 6; i++) {
+//					model.addAttribute(String.format("tournamentName%d", i), "Empty");
+//				}
+//			}
 		}
 		return "selectTournament";
 	}
@@ -88,6 +107,9 @@ public class TournamentController {
 		}
 	}*/
 
+
+
+
 	@GetMapping("/{team}/Creator")
 	public String create (Model model, @PathVariable String team) {
 
@@ -99,6 +121,7 @@ public class TournamentController {
 			List<Team> teamsProvisional = new ArrayList<>();
 			teamsProvisional.addAll(teamRepository.findAll()); //futura query
 
+
 			model.addAttribute("tournament", tournamentName);
 
 			for(int i=0; i< Math.min(18, teamsProvisional.size())/*teamList.size() Poner esto*/;i++) {
@@ -109,10 +132,14 @@ public class TournamentController {
 		return "tournamentCreator";
 	}
 
-	@GetMapping("/TenniShip/{team}")
-	public String index (Model model,@PathVariable String team) {
+	@GetMapping("/TenniShip")
+	public String index (Model model) {
 
-		Optional <Team> t = teamRepository.findById(team);
+		if(userComponent.isLoggedUser()) {
+			String teamUser = userComponent.getTeam();
+			model.addAttribute("team", teamUser);
+		}
+		model.addAttribute("registered",userComponent.isLoggedUser());
 
 		return "index";
 	}
@@ -120,9 +147,9 @@ public class TournamentController {
 	@GetMapping("/TenniShip/SignIn")
 	public String sign_in (Model model) {
 
+
 		return "login";
 	}
-
 
 	@GetMapping("/TenniShip/SignUp")
 	public String sign_up (Model model) {
