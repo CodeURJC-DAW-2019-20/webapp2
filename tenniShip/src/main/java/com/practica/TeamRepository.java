@@ -7,9 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.practica.model.Match;
 import com.practica.model.Team;
+import com.practica.model.Tournament;
 
 public interface TeamRepository extends JpaRepository<Team, String> {
-	@Query("select t.name from Team t")
-	List<String> findAllTeams();
+
+	@Query("SELECT distinct t FROM Match m JOIN m.tournament t WHERE m.team1 = :team OR m.team2 = :team")
+	public List<Tournament> getTournaments(Team team);
 	
 }

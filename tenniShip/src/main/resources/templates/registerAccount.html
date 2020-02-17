@@ -38,20 +38,8 @@
     <div class="container-fluid">
 
         <div class="pull-left" id="logo">
-            <h1><a class="scrollto" href="">TenniShip</a></h1>
+            <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
         </div>
-
-        <nav id="nav-menu-container">
-            <ul class="nav-menu">
-                <li><a href=" ">Home</a></li>
-                <li class="menu-has-children"><a href="#actions">Actions</a>
-                    <ul>
-                        <li><a href="selectTournament.html">Register a Match</a></li>
-                        <li><a href="tournamentCreator.html">Tournament Creator</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav><!-- #nav-menu-container -->
     </div>
 </header><!-- #header -->
 
@@ -73,7 +61,7 @@
                     <h3>Team Data</h3>
                     <div id="sendmessage">Your message has been sent. Thank you!</div>
                     <div id="errormessage"></div>
-                    <form action="" class="contactForm" method="post" role="form">
+                    <form action="/RegisterAccount/Saved" method="post" role="form" enctype="multipart/form-data">
                         <div class="form-group">
                             <input class="form-control" data-msg="That´s not a valid name" data-rule="minlen:1"
                                    id="name" name="name" placeholder="Admin username or Team Name" type="text"/>
@@ -81,12 +69,12 @@
                         </div>
                         <div class="input-group mb-3">
                             <div class="custom-file">
-                                <input class="custom-file-input" type="file">
+                                <input class="custom-file-input" type="file" name="imageFile" accept=".jpg"/>
                                 <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Team
                                     Logo</label>
                             </div>
                             <div class="input-group-append">
-                                <button class="input-group-text" type="button">Upload
+                                <button class="input-group-text" type="submit">Upload
                                 </button>
                             </div>
                         </div>

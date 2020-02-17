@@ -1,6 +1,7 @@
 package com.practica;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,6 +11,8 @@ import com.practica.model.Match;
 import com.practica.model.Player;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
+import com.practica.security.User;
+import com.practica.security.UserRepository;
 
 @Controller
 public class DataBaseUsage implements CommandLineRunner{
@@ -23,7 +26,9 @@ public class DataBaseUsage implements CommandLineRunner{
 	@Autowired
 	private MatchRepository matchRepository;
 	
-	
+	@Autowired
+    private UserRepository userRepository;
+
 	private static LinkedList<Player> playerGenerator () {
         LinkedList<Player> list = new LinkedList<>();
         list.add(new Player("a"));
@@ -36,128 +41,105 @@ public class DataBaseUsage implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
+		//users
+		userRepository.save(new User("user","Spain","pass", "ROLE_USER"));
+
+
 		//
 		//
 		//---------------------TEAMS ZONE
 		//
 		//
 
-		//Tournament 1
-		Team team1 = new Team("Spain"); team1.getPlayers().addAll(playerGenerator());
-        Team team2 = new Team("France"); team2.getPlayers().addAll(playerGenerator());
-        Team team3 = new Team("Serbia"); team3.getPlayers().addAll(playerGenerator());
-        Team team4 = new Team("Italy"); team4.getPlayers().addAll(playerGenerator());
-        Team team5 = new Team("Norway"); team5.getPlayers().addAll(playerGenerator());
-        Team team6 = new Team("Australia"); team6.getPlayers().addAll(playerGenerator());
-        Team team7 = new Team("Brazil"); team7.getPlayers().addAll(playerGenerator());
-        Team team8 = new Team("Argentina"); team8.getPlayers().addAll(playerGenerator());
-        Team team9 = new Team("Canada"); team9.getPlayers().addAll(playerGenerator());
-        Team team10 = new Team("Mexico"); team10.getPlayers().addAll(playerGenerator());
-        Team team11 = new Team("UnitedStates"); team11.getPlayers().addAll(playerGenerator());
-        Team team12 = new Team("China"); team12.getPlayers().addAll(playerGenerator());
-        Team team13 = new Team("Japan"); team13.getPlayers().addAll(playerGenerator());
-        Team team14 = new Team("Russia"); team14.getPlayers().addAll(playerGenerator());
-        Team team15 = new Team("Germany"); team15.getPlayers().addAll(playerGenerator());
-        Team team16 = new Team("Denmark"); team16.getPlayers().addAll(playerGenerator());
-        Team team17 = new Team("Finland"); team17.getPlayers().addAll(playerGenerator());
-        Team team18 = new Team("SouthAfrica"); team18.getPlayers().addAll(playerGenerator());
+		Team team1 = new Team("Spain"); team1.getPlayers().addAll(playerGenerator()); teamRepository.save(team1);
+        Team team2 = new Team("France"); team2.getPlayers().addAll(playerGenerator()); teamRepository.save(team2);
+        Team team3 = new Team("Serbia"); team3.getPlayers().addAll(playerGenerator()); teamRepository.save(team3);
+        Team team4 = new Team("Italy"); team4.getPlayers().addAll(playerGenerator()); teamRepository.save(team4);
+        Team team5 = new Team("Norway"); team5.getPlayers().addAll(playerGenerator()); teamRepository.save(team5);
+        Team team6 = new Team("Australia"); team6.getPlayers().addAll(playerGenerator()); teamRepository.save(team6);
+        Team team7 = new Team("Brazil"); team7.getPlayers().addAll(playerGenerator()); teamRepository.save(team7);
+        Team team8 = new Team("Argentina"); team8.getPlayers().addAll(playerGenerator()); teamRepository.save(team8);
+        Team team9 = new Team("Canada"); team9.getPlayers().addAll(playerGenerator()); teamRepository.save(team9);
+        Team team10 = new Team("Mexico"); team10.getPlayers().addAll(playerGenerator()); teamRepository.save(team10);
+        Team team11 = new Team("UnitedStates"); team11.getPlayers().addAll(playerGenerator()); teamRepository.save(team11);
+        Team team12 = new Team("China"); team12.getPlayers().addAll(playerGenerator()); teamRepository.save(team12);
+        Team team13 = new Team("Japan"); team13.getPlayers().addAll(playerGenerator()); teamRepository.save(team13);
+        Team team14 = new Team("Russia"); team14.getPlayers().addAll(playerGenerator()); teamRepository.save(team14);
+        Team team15 = new Team("Germany"); team15.getPlayers().addAll(playerGenerator()); teamRepository.save(team15);
+        Team team16 = new Team("Denmark"); team16.getPlayers().addAll(playerGenerator()); teamRepository.save(team16);
+        Team team17 = new Team("Finland"); team17.getPlayers().addAll(playerGenerator()); teamRepository.save(team17);
+        Team team18 = new Team("SouthAfrica"); team18.getPlayers().addAll(playerGenerator()); teamRepository.save(team18);
 
-		teamRepository.save(team1); teamRepository.save(team7); teamRepository.save(team13);
-		teamRepository.save(team2); teamRepository.save(team8); teamRepository.save(team14);
-		teamRepository.save(team3); teamRepository.save(team9); teamRepository.save(team15);
-		teamRepository.save(team4); teamRepository.save(team10); teamRepository.save(team16);
-		teamRepository.save(team5); teamRepository.save(team11); teamRepository.save(team17);
-		teamRepository.save(team6); teamRepository.save(team12); teamRepository.save(team18);
+        //Team1B not created to have Team1 in two tournaments
+        //Team2B not created to have Team2 in two tournaments
+        Team team3B = new Team("SerbiaB"); team3B.getPlayers().addAll(playerGenerator()); teamRepository.save(team3B);
+        Team team4B = new Team("ItalyB"); team4B.getPlayers().addAll(playerGenerator()); teamRepository.save(team4B);
+        Team team5B = new Team("NorwayB"); team5B.getPlayers().addAll(playerGenerator()); teamRepository.save(team5B);
+        Team team6B = new Team("AustraliaB"); team6B.getPlayers().addAll(playerGenerator()); teamRepository.save(team6B);
+        Team team7B = new Team("BrazilB"); team7B.getPlayers().addAll(playerGenerator()); teamRepository.save(team7B);
+        Team team8B = new Team("ArgentinaB"); team8B.getPlayers().addAll(playerGenerator()); teamRepository.save(team8B);
+        Team team9B = new Team("CanadaB"); team9B.getPlayers().addAll(playerGenerator()); teamRepository.save(team9B);
+        Team team10B = new Team("MexicoB"); team10B.getPlayers().addAll(playerGenerator()); teamRepository.save(team10B);
+        Team team11B = new Team("UnitedStatesB"); team11B.getPlayers().addAll(playerGenerator()); teamRepository.save(team11B);
+        Team team12B = new Team("ChinaB"); team12B.getPlayers().addAll(playerGenerator()); teamRepository.save(team12B);
+        Team team13B = new Team("JapanB"); team13B.getPlayers().addAll(playerGenerator()); teamRepository.save(team13B);
+        Team team14B = new Team("RussiaB"); team14B.getPlayers().addAll(playerGenerator()); teamRepository.save(team14B);
+        Team team15B = new Team("GermanyB"); team15B.getPlayers().addAll(playerGenerator()); teamRepository.save(team15B);
+        Team team16B = new Team("DenmarkB"); team16B.getPlayers().addAll(playerGenerator()); teamRepository.save(team16B);
+        Team team17B = new Team("FinlandB"); team17B.getPlayers().addAll(playerGenerator()); teamRepository.save(team17B);
+        Team team18B = new Team("SouthAfricaB"); team18B.getPlayers().addAll(playerGenerator()); teamRepository.save(team18B);
 
-		//Tournament 2
-        Team team3B = new Team("SerbiaB"); team3B.getPlayers().addAll(playerGenerator());
-        Team team4B = new Team("ItalyB"); team4B.getPlayers().addAll(playerGenerator());
-        Team team5B = new Team("NorwayB"); team5B.getPlayers().addAll(playerGenerator());
-        Team team6B = new Team("AustraliaB"); team6B.getPlayers().addAll(playerGenerator());
-        Team team7B = new Team("BrazilB"); team7B.getPlayers().addAll(playerGenerator());
-        Team team8B = new Team("ArgentinaB"); team8B.getPlayers().addAll(playerGenerator());
-        Team team9B = new Team("CanadaB"); team9B.getPlayers().addAll(playerGenerator());
-        Team team10B = new Team("MexicoB"); team10B.getPlayers().addAll(playerGenerator());
-        Team team11B = new Team("UnitedStatesB"); team11B.getPlayers().addAll(playerGenerator());
-        Team team12B = new Team("ChinaB"); team12B.getPlayers().addAll(playerGenerator());
-        Team team13B = new Team("JapanB"); team13B.getPlayers().addAll(playerGenerator());
-        Team team14B = new Team("RussiaB"); team14B.getPlayers().addAll(playerGenerator());
-        Team team15B = new Team("GermanyB"); team15B.getPlayers().addAll(playerGenerator());
-        Team team16B = new Team("DenmarkB"); team16B.getPlayers().addAll(playerGenerator());
-        Team team17B = new Team("FinlandB"); team17B.getPlayers().addAll(playerGenerator());
-        Team team18B = new Team("SouthAfricaB"); team18B.getPlayers().addAll(playerGenerator());
-
-		/*team1 is added later*/ teamRepository.save(team7B); teamRepository.save(team13B);
-		/*team2 is added later*/ teamRepository.save(team8B); teamRepository.save(team14B);
-		teamRepository.save(team3B); teamRepository.save(team9B); teamRepository.save(team15B);
-		teamRepository.save(team4B); teamRepository.save(team10B); teamRepository.save(team16B);
-		teamRepository.save(team5B); teamRepository.save(team11B); teamRepository.save(team17B);
-		teamRepository.save(team6B); teamRepository.save(team12B); teamRepository.save(team18B);
+		//
+		//
+		//---------------------TOURNAMENTS ZONE
+		//
+		//
 				
-		Tournament tournament1 = new Tournament("DavisCup");
-		Tournament tournament2 = new Tournament("TestCup");
-		
-		teamRepository.findAll().forEach(team->{
-			String letter = team.getName().substring(team.getName().length()-1);
-			switch (letter) {
-			case "B":
-				tournament2.getTournamentTeams().add(team);
-				break;
+		Tournament tournament1 = new Tournament("DavisCup"); tournamentRepository.save(tournament1);
+		Tournament tournament2 = new Tournament("TestCup");  tournamentRepository.save(tournament2);
 
-			default:
-				tournament1.getTournamentTeams().add(team);
-				break;
-			}
-		});
-		
-		tournament2.getTournamentTeams().add(team1);
-		tournament2.getTournamentTeams().add(team2);
-		
 		//
 		//
 		//---------------------MATCHES ZONE
 		//
 		//
 
-		Match m0 = new Match( tournament1.getTournamentTeams().get(0).getName(), tournament1.getTournamentTeams().get(1).getName(), 3, 0); matchRepository.save(m0); tournament1.getTournamentMatchs().add(m0);
-		Match m1 = new Match( tournament1.getTournamentTeams().get(2).getName(), tournament1.getTournamentTeams().get(0).getName(), 1, 3); matchRepository.save(m1); tournament1.getTournamentMatchs().add(m1);
-		Match m2 = new Match( tournament1.getTournamentTeams().get(1).getName(), tournament1.getTournamentTeams().get(2).getName(), 0, 3); matchRepository.save(m2); tournament1.getTournamentMatchs().add(m2);
-		Match m3 = new Match( tournament1.getTournamentTeams().get(3).getName(), tournament1.getTournamentTeams().get(4).getName(), 3, 2); matchRepository.save(m3); tournament1.getTournamentMatchs().add(m3);
-		Match m4 = new Match( tournament1.getTournamentTeams().get(5).getName(), tournament1.getTournamentTeams().get(3).getName(), 2, 3); matchRepository.save(m4); tournament1.getTournamentMatchs().add(m4);
-		Match m5 = new Match( tournament1.getTournamentTeams().get(4).getName(), tournament1.getTournamentTeams().get(5).getName(), 0, 3); matchRepository.save(m5); tournament1.getTournamentMatchs().add(m5);
-		Match m6 = new Match( tournament1.getTournamentTeams().get(6).getName(), tournament1.getTournamentTeams().get(7).getName(), 3, 0); matchRepository.save(m6); tournament1.getTournamentMatchs().add(m6);
-		Match m7 = new Match( tournament1.getTournamentTeams().get(8).getName(), tournament1.getTournamentTeams().get(6).getName(), 1, 3); matchRepository.save(m7); tournament1.getTournamentMatchs().add(m7);
-		Match m8 = new Match( tournament1.getTournamentTeams().get(7).getName(), tournament1.getTournamentTeams().get(8).getName(), 0, 3); matchRepository.save(m8); tournament1.getTournamentMatchs().add(m8);
-		Match m9 = new Match( tournament1.getTournamentTeams().get(9).getName(), tournament1.getTournamentTeams().get(10).getName(), 3, 1); matchRepository.save(m9); tournament1.getTournamentMatchs().add(m9);
-		Match m10 = new Match( tournament1.getTournamentTeams().get(11).getName(), tournament1.getTournamentTeams().get(9).getName(), 2, 3); matchRepository.save(m10); tournament1.getTournamentMatchs().add(m10);
-		Match m11 = new Match( tournament1.getTournamentTeams().get(10).getName(), tournament1.getTournamentTeams().get(11).getName(), 0, 3); matchRepository.save(m11); tournament1.getTournamentMatchs().add(m11);
-		Match m12 = new Match( tournament1.getTournamentTeams().get(12).getName(), tournament1.getTournamentTeams().get(13).getName(), 3, 0); matchRepository.save(m12); tournament1.getTournamentMatchs().add(m12);
-		Match m13 = new Match( tournament1.getTournamentTeams().get(14).getName(), tournament1.getTournamentTeams().get(12).getName(), 1, 3); matchRepository.save(m13); tournament1.getTournamentMatchs().add(m13);
-		Match m14 = new Match( tournament1.getTournamentTeams().get(13).getName(), tournament1.getTournamentTeams().get(14).getName(), 0, 3); matchRepository.save(m14); tournament1.getTournamentMatchs().add(m14);
-		Match m15 = new Match( tournament1.getTournamentTeams().get(15).getName(), tournament1.getTournamentTeams().get(16).getName(), 3, 2); matchRepository.save(m15); tournament1.getTournamentMatchs().add(m15);
-		Match m16 = new Match( tournament1.getTournamentTeams().get(17).getName(), tournament1.getTournamentTeams().get(15).getName(), 1, 3); matchRepository.save(m16); tournament1.getTournamentMatchs().add(m16);
-		Match m17 = new Match( tournament1.getTournamentTeams().get(16).getName(), tournament1.getTournamentTeams().get(17).getName(), 2, 3); matchRepository.save(m17); tournament1.getTournamentMatchs().add(m17);
+		Match m1 = new Match(3, 0, "A"); m1.setTeam1(team1); m1.setTeam2(team3); m1.setTournament(tournament1); matchRepository.save(m1);
+		Match m2 = new Match(3, 2, "A"); m2.setTeam1(team3); m2.setTeam2(team2); m2.setTournament(tournament1); matchRepository.save(m2);
+		Match m3 = new Match(3, 1, "A"); m3.setTeam1(team2); m3.setTeam2(team1); m3.setTournament(tournament1); matchRepository.save(m3);
+		Match m4 = new Match(3, 0, "B"); m4.setTeam1(team4); m4.setTeam2(team5); m4.setTournament(tournament1); matchRepository.save(m4);
+		Match m5 = new Match(2, 3, "B"); m5.setTeam1(team6); m5.setTeam2(team4); m5.setTournament(tournament1); matchRepository.save(m5);
+		Match m6 = new Match(3, 2, "B"); m6.setTeam1(team5); m6.setTeam2(team6); m6.setTournament(tournament1); matchRepository.save(m6);
+		Match m7 = new Match(3, 1, "C"); m7.setTeam1(team7); m7.setTeam2(team8); m7.setTournament(tournament1); matchRepository.save(m7);
+		Match m8 = new Match(3, 2, "C"); m8.setTeam1(team9); m8.setTeam2(team7); m8.setTournament(tournament1); matchRepository.save(m8);
+		Match m9 = new Match(1, 3, "C"); m9.setTeam1(team8); m9.setTeam2(team9); m9.setTournament(tournament1); matchRepository.save(m9);
+		Match m10 = new Match(0, 3, "D"); m10.setTeam1(team10); m10.setTeam2(team11); m10.setTournament(tournament1); matchRepository.save(m10);
+		Match m11 = new Match(0, 3, "D"); m11.setTeam1(team12); m11.setTeam2(team10); m11.setTournament(tournament1); matchRepository.save(m11);
+		Match m12 = new Match(0, 3, "D"); m12.setTeam1(team11); m12.setTeam2(team12); m12.setTournament(tournament1); matchRepository.save(m12);
+		Match m13 = new Match(2, 3, "E"); m13.setTeam1(team13); m13.setTeam2(team14); m13.setTournament(tournament1); matchRepository.save(m13);
+		Match m14 = new Match(1, 3, "E"); m14.setTeam1(team15); m14.setTeam2(team13); m14.setTournament(tournament1); matchRepository.save(m14);
+		Match m15 = new Match(3, 2, "E"); m15.setTeam1(team14); m15.setTeam2(team15); m15.setTournament(tournament1); matchRepository.save(m15);
+		Match m16 = new Match(3, 1, "F"); m16.setTeam1(team16); m16.setTeam2(team17); m16.setTournament(tournament1); matchRepository.save(m16);
+		Match m17 = new Match(3, 2, "F"); m17.setTeam1(team18); m17.setTeam2(team16); m17.setTournament(tournament1); matchRepository.save(m17);
+		Match m18 = new Match(3, 1, "F"); m18.setTeam1(team17); m18.setTeam2(team18); m18.setTournament(tournament1); matchRepository.save(m18);
 
-		Match m0B = new Match( tournament2.getTournamentTeams().get(0).getName(), tournament2.getTournamentTeams().get(1).getName(), 3, 0); matchRepository.save(m0B); tournament2.getTournamentMatchs().add(m0B);
-		Match m1B = new Match( tournament2.getTournamentTeams().get(2).getName(), tournament2.getTournamentTeams().get(0).getName(), 1, 3); matchRepository.save(m1B); tournament2.getTournamentMatchs().add(m1B);
-		Match m2B = new Match( tournament2.getTournamentTeams().get(1).getName(), tournament2.getTournamentTeams().get(2).getName(), 0, 3); matchRepository.save(m2B); tournament2.getTournamentMatchs().add(m2B);
-		Match m3B = new Match( tournament2.getTournamentTeams().get(3).getName(), tournament2.getTournamentTeams().get(4).getName(), 3, 2); matchRepository.save(m3B); tournament2.getTournamentMatchs().add(m3B);
-		Match m4B = new Match( tournament2.getTournamentTeams().get(5).getName(), tournament2.getTournamentTeams().get(3).getName(), 2, 3); matchRepository.save(m4B); tournament2.getTournamentMatchs().add(m4B);
-		Match m5B = new Match( tournament2.getTournamentTeams().get(4).getName(), tournament2.getTournamentTeams().get(5).getName(), 0, 3); matchRepository.save(m5B); tournament2.getTournamentMatchs().add(m5B);
-		Match m6B = new Match( tournament2.getTournamentTeams().get(6).getName(), tournament2.getTournamentTeams().get(7).getName(), 3, 0); matchRepository.save(m6B); tournament2.getTournamentMatchs().add(m6B);
-		Match m7B = new Match( tournament2.getTournamentTeams().get(8).getName(), tournament2.getTournamentTeams().get(6).getName(), 1, 3); matchRepository.save(m7B); tournament2.getTournamentMatchs().add(m7B);
-		Match m8B = new Match( tournament2.getTournamentTeams().get(7).getName(), tournament2.getTournamentTeams().get(8).getName(), 0, 3); matchRepository.save(m8B); tournament2.getTournamentMatchs().add(m8B);
-		Match m9B = new Match( tournament2.getTournamentTeams().get(9).getName(), tournament2.getTournamentTeams().get(10).getName(), 3, 1); matchRepository.save(m9B); tournament2.getTournamentMatchs().add(m9B);
-		Match m10B = new Match( tournament2.getTournamentTeams().get(11).getName(), tournament2.getTournamentTeams().get(9).getName(), 2, 3); matchRepository.save(m10B); tournament2.getTournamentMatchs().add(m10B);
-		Match m11B = new Match( tournament2.getTournamentTeams().get(10).getName(), tournament2.getTournamentTeams().get(11).getName(), 0, 3); matchRepository.save(m11B); tournament2.getTournamentMatchs().add(m11B);
-		Match m12B = new Match( tournament2.getTournamentTeams().get(12).getName(), tournament2.getTournamentTeams().get(13).getName(), 3, 0); matchRepository.save(m12B); tournament2.getTournamentMatchs().add(m12B);
-		Match m13B = new Match( tournament2.getTournamentTeams().get(14).getName(), tournament2.getTournamentTeams().get(12).getName(), 1, 3); matchRepository.save(m13B); tournament2.getTournamentMatchs().add(m13B);
-		Match m14B = new Match( tournament2.getTournamentTeams().get(13).getName(), tournament2.getTournamentTeams().get(14).getName(), 0, 3); matchRepository.save(m14B); tournament2.getTournamentMatchs().add(m14B);
-		Match m15B = new Match( tournament2.getTournamentTeams().get(15).getName(), tournament2.getTournamentTeams().get(16).getName(), 3, 2); matchRepository.save(m15B); tournament2.getTournamentMatchs().add(m15B);
-		Match m16B = new Match( tournament2.getTournamentTeams().get(17).getName(), tournament2.getTournamentTeams().get(15).getName(), 1, 3); matchRepository.save(m16B); tournament2.getTournamentMatchs().add(m16B);
-		Match m17B = new Match( tournament2.getTournamentTeams().get(16).getName(), tournament2.getTournamentTeams().get(17).getName(), 2, 3); matchRepository.save(m17B); tournament2.getTournamentMatchs().add(m17B);
-
-		tournamentRepository.save(tournament1);
-		tournamentRepository.save(tournament2);	
+		Match m1B = new Match(3, 0, "A"); m1B.setTeam1(team1); m1B.setTeam2(team3B); m1B.setTournament(tournament2); matchRepository.save(m1B);
+		Match m2B = new Match(3, 0, "A"); m2B.setTeam1(team3B); m2B.setTeam2(team2); m2B.setTournament(tournament2); matchRepository.save(m2B);
+		Match m3B = new Match(3, 0, "A"); m3B.setTeam1(team2); m3B.setTeam2(team1); m3B.setTournament(tournament2); matchRepository.save(m3B);
+		Match m4B = new Match(3, 0, "B"); m4B.setTeam1(team4B); m4B.setTeam2(team5B); m4B.setTournament(tournament2); matchRepository.save(m4B);
+		Match m5B = new Match(3, 0, "B"); m5B.setTeam1(team6B); m5B.setTeam2(team4B); m5B.setTournament(tournament2); matchRepository.save(m5B);
+		Match m6B = new Match(3, 0, "B"); m6B.setTeam1(team5B); m6B.setTeam2(team6B); m6B.setTournament(tournament2); matchRepository.save(m6B);
+		Match m7B = new Match(3, 0, "C"); m7B.setTeam1(team7B); m7B.setTeam2(team8B); m7B.setTournament(tournament2); matchRepository.save(m7B);
+		Match m8B = new Match(3, 0, "C"); m8B.setTeam1(team9B); m8B.setTeam2(team7B); m8B.setTournament(tournament2); matchRepository.save(m8B);
+		Match m9B = new Match(3, 0, "C"); m9B.setTeam1(team8B); m9B.setTeam2(team9B); m9B.setTournament(tournament2); matchRepository.save(m9B);
+		Match m10B = new Match(3, 0, "D"); m10B.setTeam1(team10B); m10B.setTeam2(team11B); m10B.setTournament(tournament2); matchRepository.save(m10B);
+		Match m11B = new Match(3, 0, "D"); m11B.setTeam1(team12B); m11B.setTeam2(team10B); m11B.setTournament(tournament2); matchRepository.save(m11B);
+		Match m12B = new Match(3, 0, "D"); m12B.setTeam1(team11B); m12B.setTeam2(team12B); m12B.setTournament(tournament2); matchRepository.save(m12B);
+		Match m13B = new Match(3, 0, "E"); m13B.setTeam1(team13B); m13B.setTeam2(team14B); m13B.setTournament(tournament2); matchRepository.save(m13B);
+		Match m14B = new Match(3, 0, "E"); m14B.setTeam1(team15B); m14B.setTeam2(team13B); m14B.setTournament(tournament2); matchRepository.save(m14B);
+		Match m15B = new Match(3, 0, "E"); m15B.setTeam1(team14B); m15B.setTeam2(team15B); m15B.setTournament(tournament2); matchRepository.save(m15B);
+		Match m16B = new Match(3, 0, "F"); m16B.setTeam1(team16B); m16B.setTeam2(team17B); m16B.setTournament(tournament2); matchRepository.save(m16B);
+		Match m17B = new Match(3, 0, "F"); m17B.setTeam1(team18B); m17B.setTeam2(team16B); m17B.setTournament(tournament2); matchRepository.save(m17B);
+		Match m18B = new Match(3, 0, "F"); m18B.setTeam1(team17B); m18B.setTeam2(team18B); m18B.setTournament(tournament2); matchRepository.save(m18B);
 	}	
 }
