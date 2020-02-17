@@ -11,8 +11,9 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Tournament {
+	
 	@Id	
-	private String name;	
+	private String name;
 	
 	public Tournament() {		
 	}
