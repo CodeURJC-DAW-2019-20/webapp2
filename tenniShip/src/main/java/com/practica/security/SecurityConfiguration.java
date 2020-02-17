@@ -21,6 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/TenniShip").permitAll();
         http.authorizeRequests().antMatchers("/TenniShip/SignIn").permitAll();
         http.authorizeRequests().antMatchers("/TenniShip/SignUp").permitAll();
+        http.authorizeRequests().antMatchers("/Team/**").permitAll();
         http.authorizeRequests().antMatchers("/loginerror").permitAll();
         http.authorizeRequests().antMatchers("/logout").permitAll();
         http.authorizeRequests().antMatchers("/contactform/**","/css/**",

@@ -50,9 +50,12 @@ public class TournamentController {
 		return "tournamentSheet";
 	}
 
-	@GetMapping("/{tournament}/SelectMatch/{team}")
-	public String selectMatch(Model model, @PathVariable String tournament, @PathVariable String team) {
-		Optional<Tournament> t = tournamentRepository.findById(tournament);
+	@GetMapping("/TenniShip/RegisterMatch/Tournament/{tournament}")
+	public String selectMatch(Model model, @PathVariable String tournament) {
+		
+		String team = userComponent.getTeam();
+		
+		Optional<Tournament> t = tournamentRepository.findById(tournament);//check if that team play this tournament
 		List<Match> matchesWithMyTeam = new ArrayList<>();
 
 		if (t.isPresent()) {
@@ -71,28 +74,36 @@ public class TournamentController {
 		return "registerMatch";
 	}
 
-	@GetMapping("/SelectTournament/{team}")
-	public String selectTournament(Model model, @PathVariable String team) {
+	@GetMapping("/TenniShip/RegisterMatch/Tournament")
+	public String selectTournament(Model model) {
 
+		
+		String team = userComponent.getTeam();
+		
 		List<Tournament> tournaments = tournamentRepository.findAll();
 		Optional<Team> t = teamRepository.findById(team);
 
-		List<Tournament> tournamentsWithMyTeam = new ArrayList<>();
+		List<String> tournamentsWithMyTeam = new ArrayList<>();
+		
+		model.addAttribute("registered", userComponent.getLoggedUser());
+		model.addAttribute("team", team);
 
 		if (t.isPresent()) {
 			tournaments.forEach(Tournament -> {
 				if (Tournament.getTournamentTeams().contains(t.get()))
-					tournamentsWithMyTeam.add(Tournament);
+					tournamentsWithMyTeam.add(Tournament.getName());
 			});
-			model.addAttribute("currentTeam", team);
+			
+			model.addAttribute("listTournaments", tournamentsWithMyTeam);
+			
 			for (int i = 0; i < Math.min(tournamentsWithMyTeam.size(), 6); i++) {
-				model.addAttribute(String.format("tournamentName%d", i), tournamentsWithMyTeam.get(i).getName());
+				model.addAttribute(String.format("tournamentName%d", i), tournamentsWithMyTeam.get(i));
 			}
-			if (tournamentsWithMyTeam.size() < 6) {
-				for (int i = tournamentsWithMyTeam.size(); i < 6; i++) {
-					model.addAttribute(String.format("tournamentName%d", i), "Empty");
-				}
-			}
+//			if (tournamentsWithMyTeam.size() < 6) {
+//				for (int i = tournamentsWithMyTeam.size(); i < 6; i++) {
+//					model.addAttribute(String.format("tournamentName%d", i), "Empty");
+//				}
+//			}
 		} 
 		return "selectTournament";
 	}
@@ -132,7 +143,7 @@ public class TournamentController {
 
 	@GetMapping("/TenniShip")
 	public String index (Model model) {
-
+		
 		if(userComponent.isLoggedUser()) {
 			String teamUser = userComponent.getTeam();
 			model.addAttribute("team", teamUser);
@@ -148,22 +159,7 @@ public class TournamentController {
 
 		return "login";
 	}
- 
-
-	@GetMapping("/home")
-    public String home(Model model) {
-	
-		
-		if(userComponent.isLoggedUser()) {
-			String team = userComponent.getTeam();
-			model.addAttribute("ejemplo",team);
-			
-			 return "hola";
-		}
-		
-       return"registerAccount";
-    }
-	
+ 	
 	@GetMapping("/TenniShip/SignUp")
 	public String sign_up (Model model) {
 

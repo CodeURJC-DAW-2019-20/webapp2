@@ -1,6 +1,7 @@
 package com.practica;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -166,6 +167,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		Match m17B = new Match( tournament2.getTournamentTeams().get(16).getName(), tournament2.getTournamentTeams().get(17).getName(), 2, 3); matchRepository.save(m17B); tournament2.getTournamentMatchs().add(m17B);
 
 		tournamentRepository.save(tournament1);
-		tournamentRepository.save(tournament2);	
+		tournamentRepository.save(tournament2);
+		
 	}	
 }

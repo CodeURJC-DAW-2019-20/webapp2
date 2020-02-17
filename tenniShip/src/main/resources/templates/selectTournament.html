@@ -37,19 +37,30 @@
     <div class="container-fluid">
 
         <div class="pull-left" id="logo">
-            <h1><a class="scrollto" href="/TenniShip/{{team}}">TenniShip</a></h1>
+            <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li><a href="/TenniShip/{{team}}">Home</a></li>
                 <li class="menu-has-children"><a href="#">Actions</a>
                     <ul>
-                        <li><a href="/SelectTournament/{{team}}">Register a Match</a></li>
-                        <li><a href="/{{team}}/Creator">Tournament Creator</a></li>
+                        <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
+                        <li><a href="/Creator">Tournament Creator</a></li>
                     </ul>
                 </li>
-                <li><a href="/Team/{{team}}">StriderTC</a></li>
+				
+				{{#registered}}
+                <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
+                	 	<ul>
+                	 		<li><a href="/Team/{{team}}">View Profile</a></li>
+                	 		<li>
+                	 			<form action="/logout" method="post">
+									<button class="btn" type="submit">Sign Out</button>
+								</form>
+                	 		</li>
+                	 	</ul>
+                	 </li>
+                {{/registered}}
                 <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/client-1.png"></li>
             </ul>
         </nav><!-- #nav-menu-container -->
@@ -69,83 +80,21 @@
             </header>
 
             <div class="row registerMatchBothPages-container">
-
-                <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp">
-                    <div class="registerMatchBothPages-wrap">
-                        <figure>
-                            <a href="/{{tournamentName0}}/SelectMatch/{{currentTeam}}"><img alt="" class="img-fluid" src="/../img/trophy.png"></a>
-                        </figure>
-
-                        <div class="registerMatchBothPages-info">
-                            <h4><a href="/{{tournamentName0}}/SelectMatch/{{currentTeam}}">{{tournamentName0}}</a></h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-web wow fadeInUp"
-                     data-wow-delay="0.1s">
-                    <div class="registerMatchBothPages-wrap">
-                        <figure>
-                            <a href="registerMatch.html"><img alt="" class="img-fluid" src="/../img/trophy.png"></a>
-                        </figure>
-
-                        <div class="registerMatchBothPages-info">
-                            <h4><a href="/{{tournamentName1}}/SelectMatch/{{currentTeam}}">{{tournamentName1}}</a></h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp"
-                     data-wow-delay="0.2s">
-                    <div class="registerMatchBothPages-wrap">
-                        <figure>
-                            <a href="registerMatch.html"><img alt="" class="img-fluid" src="/../img/trophy.png"></a>
-                        </figure>
-
-                        <div class="registerMatchBothPages-info">
-                            <h4><a href="/{{tournamentName2}}/SelectMatch/{{currentTeam}}">{{tournamentName2}}</a></h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-card wow fadeInUp">
-                    <div class="registerMatchBothPages-wrap">
-                        <figure>
-                            <a href="registerMatch.html"><img alt="" class="img-fluid" src="/../img/trophy.png"></a>
-                        </figure>
-
-                        <div class="registerMatchBothPages-info">
-                            <h4><a href="/{{tournamentName3}}/SelectMatch/{{currentTeam}}">{{tournamentName3}}</a></h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-web wow fadeInUp"
-                     data-wow-delay="0.1s">
-                    <div class="registerMatchBothPages-wrap">
-                        <figure>
-                            <a href="registerMatch.html"><img alt="" class="img-fluid" src="/../img/trophy.png"></a>
-                        </figure>
-
-                        <div class="registerMatchBothPages-info">
-                            <h4><a href="/{{tournamentName4}}/SelectMatch/{{currentTeam}}">{{tournamentName4}}</a></h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp"
-                     data-wow-delay="0.2s">
-                    <div class="registerMatchBothPages-wrap">
-                        <figure>
-                            <a href="registerMatch.html"><img alt="" class="img-fluid" src="/../img/trophy.png"></a>
-                        </figure>
-
-                        <div class="registerMatchBothPages-info">
-                            <h4><a href="/{{tournamentName5}}/SelectMatch/{{currentTeam}}">{{tournamentName5}}</a></h4>
-                        </div>
-                    </div>
-                </div>
-
+			
+				{{#listTournaments}}
+	                <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp">
+	                    <div class="registerMatchBothPages-wrap">
+	                        <figure>
+	                            <a href=""><img alt="" class="img-fluid" src="/../img/trophy.png"></a>
+	                        </figure>
+	
+	                        <div class="registerMatchBothPages-info">
+	                            <h4><a href="/TenniShip/RegisterMatch/Tournament/{{.}}">{{.}}</a></h4>
+	                        </div>
+	                    </div>
+	                </div>	                
+				{{/listTournaments}}
+			
             </div>
 
             <div class="text-center pt-3 TournamentButton">
