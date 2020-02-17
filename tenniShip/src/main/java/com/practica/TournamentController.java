@@ -88,7 +88,7 @@ public class TournamentController {
 				model.addAttribute(String.format("tournamentName%d", i), teamRepository.getTournaments(t.get()).get(i).getName());
 			}
 
-			//model.addAttribute("listTournaments", tournamentsWithMyTeam);
+			model.addAttribute("listTournaments", tournamentsString(teamRepository.getTournaments(t.get())));
 
 //			if (teamRepository.getTournaments(t.get()).size() < 6) {
 //				for (int i = teamRepository.getTournaments(t.get()).size(); i < 6; i++) {
@@ -99,6 +99,16 @@ public class TournamentController {
 		return "selectTournament";
 	}
 
+	private List<String> tournamentsString (List<Tournament> tour){
+		List<String> tournamentsNames = new ArrayList<>();
+		
+		for(Tournament x : tour) {
+			tournamentsNames.add(x.getName());
+		}
+		
+		return tournamentsNames;
+	}
+	
 	/*protected void raffleGP(Model model) {
 		List<String> teams = teamRepository.findAllTeams();
 		Collections.shuffle(teams);
