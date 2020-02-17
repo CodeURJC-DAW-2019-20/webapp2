@@ -19,12 +19,12 @@ import com.practica.model.Tournament;
 
 @Controller
 public class TeamController {
-
-	@Autowired
-	private TournamentRepository tournamentRepository;
 	
 	@Autowired
 	private TeamRepository teamRepository;
+	
+	@Autowired
+	private MatchRepository matchRepository;	
 	
 	private static int i = 0; //Matches Played Iterator
 		
@@ -43,8 +43,8 @@ public class TeamController {
         	}
         	
         	teamRepository.getTournaments(t.get()).forEach(Tournament -> {
-				tournamentRepository.getMatches(Tournament).forEach(Match -> {
-					if ((i < 10) && (Match.getTeam1().equals(t.get()) || Match.getTeam2().equals(t.get()))) {
+				matchRepository.findMatches(t.get(), Tournament).forEach(Match -> {
+					if (i < 10) {
 						model.addAttribute(String.format("teamNameHome%d", i), Match.getTeam1().getName());
 						model.addAttribute(String.format("teamNameAway%d", i), Match.getTeam2().getName());
 						model.addAttribute(String.format("teamHomePoints%d", i), Integer.toString(Match.getHomePoints()));

@@ -16,6 +16,18 @@ public class Match {
 		
 	private int homePoints;
 	private int awayPoints;
+	private String type; 
+	/*
+		groupA : A
+		groupB : B
+		groupC : C
+		groupD : D
+		groupE : E
+		groupF : F
+		Round of 8: X --last 8 teams
+		Round of 4: Y --last 4 teams
+		Round of 2: Z --last 2 teams
+	*/
 	
 	@ManyToOne
 	private Team team1;
@@ -29,10 +41,10 @@ public class Match {
 	public Match() {
 	}
 	
-	public Match(int homePoints, int awayPoints) {
+	public Match(int homePoints, int awayPoints, String type) {
 		this.homePoints = homePoints;
 		this.awayPoints = awayPoints;
-	
+		this.type = type;
 	}
 
 	public long getId() {
@@ -41,6 +53,10 @@ public class Match {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public String getType() {
+		return type;
 	}
 
 	public Team getTeam1() {

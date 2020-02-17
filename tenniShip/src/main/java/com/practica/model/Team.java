@@ -45,5 +45,4 @@ public class Team {
 	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
-
 }
