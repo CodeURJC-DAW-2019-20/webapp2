@@ -29,12 +29,15 @@ public class TeamController {
 	private TeamRepository teamRepository;
 	
 	@Autowired
+	private MatchRepository matchRepository;	
+	
+	@Autowired
 	private ImageService imgService;
 	
 	private static int i = 0; //Matches Played Iterator
 		
 	
-	@GetMapping("/Team/{team}")
+	@GetMapping("/TenniShip/Team/{team}")
 	public String team(Model model, @PathVariable String team) {
 		
 		Optional<Team> t = teamRepository.findById(team);
