@@ -47,16 +47,20 @@ public class TournamentSheetController {
 
 
 		@GetMapping("/TenniShip/Tournament/{tournament}")
-		public String tournament(Model model, @PathVariable String tournament) {
+        public String tournament(Model model, @PathVariable String tournament) {
 
-			Optional<Tournament> t = tournamentRepository.findById(tournament);
+            Optional<Tournament> t = tournamentRepository.findById(tournament);
+            double progressPercentage;
+    		final int TOTAL_MATCHES=25;
 
-			if (t.isPresent()) {
-				model.addAttribute("tournamentName", t.get().getName());
-				
-				totalGroupMatchesPlayed = 0; totalRound8MatchesPlayed = 0; totalRound4MatchesPlayed = 0;
-				
-				//GRUPOS-------
+            if (t.isPresent()) {
+    			progressPercentage=tournamentRepository.getPlayedMatches(t.get().getName());
+    			System.out.println(progressPercentage);
+    			progressPercentage=(progressPercentage/TOTAL_MATCHES)*100;
+                model.addAttribute("tournamentName", t.get().getName());
+                model.addAttribute("completion",progressPercentage);
+                totalGroupMatchesPlayed = 0; totalRound8MatchesPlayed = 0; totalRound4MatchesPlayed = 0;
+			//GROUPS-------
 				String [] groups = {"A", "B", "C", "D", "E", "F"};
 				ArrayList<AuxiliarClass>[] sortedGroups = new ArrayList[6];
 				for	(int i = 0; i < 6; i++) { sortedGroups[i] = new ArrayList<>();}
@@ -90,14 +94,14 @@ public class TournamentSheetController {
 					j++;
 				}
 				j = 0;
-				//-------GRUPOS
+				//-------GROUPS
 				
 				//FINAL PHASE--
 				
 				List<Team> last8 = new ArrayList<>();
 				List<Team> last4 = new ArrayList<>();
 				List<Team> last2 = new ArrayList<>();
-				
+				System.out.println(totalGroupMatchesPlayed);
 					if ((totalGroupMatchesPlayed/3) == 18) { //Groups Played						
 						if (tournamentRepository.getPhaseTeams(t.get(), "X").isEmpty()) { //RoundOf8 has to be created
 							List<AuxiliarClass> secondPlaceTeams = new ArrayList<>();
