@@ -15,16 +15,16 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Team {
-	
+
 	@Id
 	private String name;
-	
+
 	@OneToMany (cascade = CascadeType.ALL)
 	private List<Player> players = new ArrayList<>();
-	
+
 	public Team() {
 	}
-	
+
 	public Team(String name) {
 		this.name = name;
 		//this.teamImage = teamImage;

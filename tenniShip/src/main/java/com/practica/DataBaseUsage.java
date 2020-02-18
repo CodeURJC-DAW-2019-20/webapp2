@@ -104,9 +104,9 @@ public class DataBaseUsage implements CommandLineRunner{
 		//
 		//
 
-		Match m1 = new Match(3, 0, "A"); m1.setTeam1(team1); m1.setTeam2(team3); m1.setTournament(tournament1); matchRepository.save(m1);
-		Match m2 = new Match(3, 2, "A"); m2.setTeam1(team3); m2.setTeam2(team2); m2.setTournament(tournament1); matchRepository.save(m2);
-		Match m3 = new Match(3, 1, "A"); m3.setTeam1(team2); m3.setTeam2(team1); m3.setTournament(tournament1); matchRepository.save(m3);
+		Match m1 = new Match(0, 0, "A"); m1.setTeam1(team1); m1.setTeam2(team3); m1.setTournament(tournament1); matchRepository.save(m1);
+		Match m2 = new Match(3, 1, "A"); m2.setTeam1(team3); m2.setTeam2(team2); m2.setTournament(tournament1); matchRepository.save(m2);
+		Match m3 = new Match(1, 3, "A"); m3.setTeam1(team2); m3.setTeam2(team1); m3.setTournament(tournament1); matchRepository.save(m3);
 		Match m4 = new Match(3, 0, "B"); m4.setTeam1(team4); m4.setTeam2(team5); m4.setTournament(tournament1); matchRepository.save(m4);
 		Match m5 = new Match(2, 3, "B"); m5.setTeam1(team6); m5.setTeam2(team4); m5.setTournament(tournament1); matchRepository.save(m5);
 		Match m6 = new Match(3, 2, "B"); m6.setTeam1(team5); m6.setTeam2(team6); m6.setTournament(tournament1); matchRepository.save(m6);

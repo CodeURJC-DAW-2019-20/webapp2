@@ -65,10 +65,14 @@ public class TournamentController {
 	public String tournament(Model model, @PathVariable String tournament) {
 
 		Optional<Tournament> t = tournamentRepository.findById(tournament);
+		int progressPercentage;
+		final int TOTAL_MATCHES=25;
 
 		if (t.isPresent()) {
+			progressPercentage=tournamentRepository.getPlayedMatches(t.get());
+			progressPercentage=(progressPercentage/TOTAL_MATCHES)*100;
 			model.addAttribute("tournamentName", t.get().getName());
-			
+			model.addAttribute("completion",progressPercentage);
 			//GRUPOS-------
 			totalMatchesPlayed = 0;
 			String [] groups = {"A", "B", "C", "D", "E", "F"};
