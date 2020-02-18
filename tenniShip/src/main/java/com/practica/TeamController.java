@@ -1,5 +1,6 @@
 package com.practica;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -11,11 +12,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.practica.model.Match;
 import com.practica.model.Player;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
+
 
 @Controller
 public class TeamController {
@@ -26,10 +31,13 @@ public class TeamController {
 	@Autowired
 	private MatchRepository matchRepository;	
 	
+	@Autowired
+	private ImageService imgService;
+	
 	private static int i = 0; //Matches Played Iterator
 		
 	
-	@GetMapping("/Team/{team}")
+	@GetMapping("/TenniShip/Team/{team}")
 	public String team(Model model, @PathVariable String team) {
 		
 		Optional<Team> t = teamRepository.findById(team);
@@ -64,6 +72,14 @@ public class TeamController {
         	i = 0; //Needed because if f5, i does not restart and forEach loop starts with i != 0
         }
 		return "teamfile";
+	}
+	
+	@PostMapping("/RegisterAccount/Saved")
+	public String newTeam(Model model, Team team, @RequestParam MultipartFile imageFile) throws IOException {
+		team.setImage(true);
+		teamRepository.save(team);
+		imgService.saveImage("teams", team.getName(), imageFile);
+		return "good";
 	}
 	
 }

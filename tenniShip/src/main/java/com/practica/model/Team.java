@@ -15,16 +15,18 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Team {
-
+	
 	@Id
 	private String name;
 
+	private boolean teamImage;
+
 	@OneToMany (cascade = CascadeType.ALL)
 	private List<Player> players = new ArrayList<>();
-
+	
 	public Team() {
 	}
-
+	
 	public Team(String name) {
 		this.name = name;
 		//this.teamImage = teamImage;
@@ -45,4 +47,13 @@ public class Team {
 	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
+
+	public boolean hasImage() {
+		return teamImage;
+	}
+
+	public void setImage(boolean image) {
+		this.teamImage = image;
+	}
+
 }
