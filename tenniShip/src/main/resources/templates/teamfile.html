@@ -194,8 +194,8 @@
                 <div class="container row mb-5">
                     <div class="col-sm-6 col-12">
                         <div class="pie">
-                            <div class="pie__segment" style="--offset: 0; --value: {{wonMatches}}; --over50:1; --bg: #51e28f;"></div>
-                            <div class="pie__segment" style="--offset: {{wonMatches}}; --value: {{lostMatches}}; --bg: #dc5187;"></div>
+                            <div class="pie__segment" style="--offset: 0; --value: {{wonMatches}}; {{#over50won}}--over50:1; {{/over50won}}--bg: #51e28f;"></div>
+                            <div class="pie__segment" style="--offset: {{wonMatches}}; --value: {{lostMatches}}; {{#over50lost}}--over50:1; {{/over50lost}}--bg: #dc5187;"></div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">

@@ -58,13 +58,21 @@ public class TeamController {
         	
         	model.addAttribute("lostMatches",totalMatchesLost);        	
         	model.addAttribute("wonMatches",totalMatchesWon);
+
+        	/* If either of these values is higher than 50, we need to indicate it to the html through a clause */
+        	if (totalMatchesLost >= 50) {
+        		model.addAttribute("over50lost", true);
+			}
+			if (totalMatchesWon >= 50) {
+				model.addAttribute("over50won", true);
+			}
         	
         	List<Player> players = t.get().getPlayers();
         	for (int i = 0; i < 5; i++) {
         		model.addAttribute(String.format("player%d", i), players.get(i).getName());
         	}
         	i = 0; //Needed because if f5, i does not restart and forEach loop starts with i != 0
-			
+
 			List<Match> recentMatches = teamRepository.getRecentMatches(t.get());
 			if (!recentMatches.isEmpty()) {
 				model.addAttribute("matchHistory", true);
