@@ -795,6 +795,7 @@ div.img {
     border-left: 4px solid #18d26e;
     position: relative;
     right: 60px;
+    margin-top: 40px;
 }
 
 #setting .form h5 {
@@ -817,9 +818,6 @@ div.img {
     color: #000 !important;
 }
 
-#setting p {
-    text-align: center;
-}
 
 #setting .separation {
     margin-top: 45px;
@@ -928,6 +926,12 @@ div.img {
 
 #setting .form button[type="submit"]:hover {
     background: #13a456;
+}
+
+.errorsText p {
+  color: red;
+  margin: 0px;
+  font-size: 13px;
 }
 
 

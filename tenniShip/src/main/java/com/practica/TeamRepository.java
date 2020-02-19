@@ -13,5 +13,5 @@ public interface TeamRepository extends JpaRepository<Team, String> {
 
 	@Query("SELECT distinct t FROM Match m JOIN m.tournament t WHERE m.team1 = :team OR m.team2 = :team")
 	public List<Tournament> getTournaments(Team team);
-	
+
 }

@@ -58,14 +58,86 @@
                 </div>
 
                 <div class="form">
-                    <h3>Team Data</h3>
-                    <div id="sendmessage">Your message has been sent. Thank you!</div>
-                    <div id="errormessage"></div>
-                    <form action="" class="contactForm" method="post" role="form">
+
+                    <h3>User Data</h3>
+                    
+                    <form action="/register" method="post" role="form" modelAttribute="personUser">
                         <div class="form-group">
                             <input class="form-control" data-msg="That´s not a valid name" data-rule="minlen:1"
-                                   id="name" name="name" placeholder="Admin username or Team Name" type="text"/>
-                            <div class="validation"></div>
+                                   id="" name="userName" placeholder="User Name" type="text" {{#personUser.userName}} value={{personUser.userName}} {{/personUser.userName}}>
+                            <div class="errorsText">
+                            	{{#userNameAlreadyExist}}
+                            		<p>Username already exist</p>
+                            	{{/userNameAlreadyExist}}
+                            	
+                            	{{#userNameEmpty}}
+                            		<p>Introduce a username</p>
+                            	{{/userNameEmpty}}
+                            	
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" data-msg="Enter email" data-rule="minlen:1"
+                                   id="email" name="email" placeholder="Email" type="text" {{#personUser.email}} value={{personUser.email}} {{/personUser.email}} >
+                            <div class="errorsText">
+                            	
+                            	{{#emailAlreadyExist}}
+                            		<p>Email already exist</p>
+                            	{{/emailAlreadyExist}}
+                            	                            	
+                            	{{#emailEmpty}}
+                            		<p>Introduce a email</p>
+                            	{{/emailEmpty}}
+                            	
+                            	{{^emailEmpty}}
+	                            	{{#emailNotGood}}
+	                            		<p>Write a valid email</p>
+	                            	{{/emailNotGood}}
+	                            {{/emailEmpty}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" data-msg="Enter a password" id="password"
+                                   name="passwordHash" placeholder="Password" type="password" {{#personUser.passwordHash}} value={{personUser.passwordHash}} {{/personUser.passwordHash}} >
+                            <div class="errorsText">
+                            	{{#passwordEmpty}}
+                            		<p>Introduce a password</p>	                            		
+                            	{{/passwordEmpty}}
+                            	
+                            	{{^passwordEmpty}}
+	                            	{{#passwordNotGood}}
+	                            		<p>Password needs 8 characters</p>	                            		
+	                            	{{/passwordNotGood}}
+	                           {{/passwordEmpty}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" data-msg="The passwords don´t match" data-rule="minlen:1"
+                                   name="passwordCheck" placeholder="Confirm your Password" type="password">
+                            <div class="errorsText">
+                            {{^passwordEmpty}}
+	                            {{^passwordNotGood}}
+		                            {{#passNotSame}}
+		                        		<p>Password isn't the same</p>	                            			
+		                            {{/passNotSame}}
+		                    	{{/passwordNotGood}}
+                            {{/passwordEmpty}}
+                            </div>
+                        </div>
+
+                        <h3>Team Data</h3>
+                        <div class="form-group">
+                            <input class="form-control" data-msg="That´s not a valid name" data-rule="minlen:1"
+                                   id="name" name="team" placeholder="Team Name" type="text" {{#personUser.team}} value={{personUser.team}} {{/personUser.team}} >                             
+                            <div class="errorsText">
+	                            {{#teamAlreadyExist}}
+	                             	<p>Team already exist</p>
+	                             {{/teamAlreadyExist}}
+	                             
+	                             {{#teamEmpty}}
+	                             	<p>Introduce a team</p>
+	                             {{/teamEmpty}}
+                            </div>
                         </div>
                         <div class="input-group mb-3">
                             <div class="custom-file">
@@ -83,45 +155,19 @@
                                  class="rounded-circle z-depth-1-half avatar-pic"
                                  src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg">
                         </div>
-                        <div class="form-group">
-                            <input class="form-control" data-msg="Enter username or email" data-rule="minlen:1"
-                                   id="email" name="email" placeholder="Email or username" type="text"/>
-                            <div class="validation"></div>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" data-msg="Enter a password" data-rule="minlen:1" id="password"
-                                   name="password" placeholder="Password" type="password"/>
-                            <div class="validation"></div>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" data-msg="The passwords don´t match" data-rule="minlen:1"
-                                   name="password" placeholder="Confirm your Password" type="password"/>
-                            <div class="validation"></div>
-                        </div>
-                        <div class="form-check">
-                            <input checked class="form-check-input" id="exampleRadios1" name="exampleRadios"
-                                   type="radio" value="option1">
-                            <label class="form-check-label" for="exampleRadios1">
-                                Admin user
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" id="exampleRadios2" name="exampleRadios" type="radio"
-                                   value="option2">
-                            <label class="form-check-label" for="exampleRadios2">
-                                Team user
-                            </label>
-                        </div>
+                      
                         <div class="separation"></div>
                         <h3>Players Data</h3>
                         <h5>Player 1</h5>
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-control" placeholder="Player´s First name" type="text">
+                                <input class="form-control" name="player1" placeholder="Player's First name" type="text">
                             </div>
-                            <div class="col">
-                                <input class="form-control" placeholder="Player´s Last name" type="text">
-                            </div>
+                        </div>
+                        <div class="errorsText">
+                        	{{#player1NameEmpty}}
+                        		<p>Introduce a player again please</p>
+                       		{{/player1NameEmpty}}
                         </div>
                         <div class="input-group mb-3 pt-3">
                             <div class="custom-file">
@@ -137,11 +183,13 @@
                         <h5>Player 2</h5>
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-control" placeholder="Player´s First name" type="text">
+                                <input class="form-control" name="player2" placeholder="Player's First name" type="text">
                             </div>
-                            <div class="col">
-                                <input class="form-control" placeholder="Player´s Last name" type="text">
-                            </div>
+                        </div>
+                        <div class="errorsText">
+                        	{{#player2NameEmpty}}
+                        		<p>Introduce a player again please</p>
+                       		{{/player2NameEmpty}}
                         </div>
                         <div class="input-group mb-3 pt-3">
                             <div class="custom-file">
@@ -157,11 +205,13 @@
                         <h5>Player 3</h5>
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-control" placeholder="Player´s First name" type="text">
+                                <input class="form-control" name="player3" placeholder="Player's First name" type="text">
                             </div>
-                            <div class="col">
-                                <input class="form-control" placeholder="Player´s Last name" type="text">
-                            </div>
+                        </div>
+                        <div class="errorsText">
+                        	{{#player3NameEmpty}}
+                        		<p>Introduce a player again please</p>
+                       		{{/player3NameEmpty}}
                         </div>
                         <div class="input-group mb-3 pt-3">
                             <div class="custom-file">
@@ -177,11 +227,13 @@
                         <h5>Player 4</h5>
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-control" placeholder="Player´s First name" type="text">
+                                <input class="form-control" name="player4" placeholder="Player's First name" type="text">
                             </div>
-                            <div class="col">
-                                <input class="form-control" placeholder="Player´s Last name" type="text">
-                            </div>
+                        </div>
+                        <div class="errorsText">
+                        	{{#player4NameEmpty}}
+                        		<p>Introduce a player again please</p>
+                       		{{/player4NameEmpty}}
                         </div>
                         <div class="input-group mb-3 pt-3">
                             <div class="custom-file">
@@ -197,11 +249,13 @@
                         <h5>Player 5</h5>
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-control" placeholder="Player´s First name" type="text">
+                                <input class="form-control" name="player5" placeholder="Player's First name" type="text">
                             </div>
-                            <div class="col">
-                                <input class="form-control" placeholder="Player´s Last name" type="text">
-                            </div>
+                        </div>
+                        <div class="errorsText">
+                        	{{#player5NameEmpty}}
+                        		<p>Introduce a player again please</p>
+                       		{{/player5NameEmpty}}
                         </div>
                         <div class="input-group mb-3 pt-3">
                             <div class="custom-file">
@@ -214,7 +268,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="text-center pt-3 button"><a class="btn" type="submit">Sign Up</a></div>
+                        <div class="text-center pt-3 button"><button class="btn" type="submit">Sign Up</button></div>
                     </form>
                 </div>
             </div>

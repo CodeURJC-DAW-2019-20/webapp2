@@ -17,7 +17,7 @@ import javax.persistence.ManyToMany;
 public class Team {
 	
 	@Id
-	private String name;
+	private String teamName;
 	
 	@OneToMany (cascade = CascadeType.ALL)
 	private List<Player> players = new ArrayList<>();
@@ -26,16 +26,16 @@ public class Team {
 	}
 	
 	public Team(String name) {
-		this.name = name;
+		this.teamName = name;
 		//this.teamImage = teamImage;
 	}
 
 	public String getName() {
-		return name;
+		return teamName;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.teamName = name;
 	}
 
 	public List<Player> getPlayers() {

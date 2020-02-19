@@ -88,8 +88,9 @@ public class TournamentController {
 				model.addAttribute(String.format("tournamentName%d", i), teamRepository.getTournaments(t.get()).get(i).getName());
 			}
 
-			model.addAttribute("listTournaments", tournamentsString(teamRepository.getTournaments(t.get())));
 
+			model.addAttribute("listTournaments", teamRepository.getTournaments(t.get()));
+			
 //			if (teamRepository.getTournaments(t.get()).size() < 6) {
 //				for (int i = teamRepository.getTournaments(t.get()).size(); i < 6; i++) {
 //					model.addAttribute(String.format("tournamentName%d", i), "Empty");
@@ -99,15 +100,6 @@ public class TournamentController {
 		return "selectTournament";
 	}
 
-	private List<String> tournamentsString (List<Tournament> tour){
-		List<String> tournamentsNames = new ArrayList<>();
-		
-		for(Tournament x : tour) {
-			tournamentsNames.add(x.getName());
-		}
-		
-		return tournamentsNames;
-	}
 	
 	/*protected void raffleGP(Model model) {
 		List<String> teams = teamRepository.findAllTeams();
@@ -142,29 +134,4 @@ public class TournamentController {
 		return "tournamentCreator";
 	}
 
-	@GetMapping("/TenniShip")
-	public String index (Model model) {
-
-		if(userComponent.isLoggedUser()) {
-			String teamUser = userComponent.getTeam();
-			model.addAttribute("team", teamUser);
-		}
-		model.addAttribute("registered",userComponent.isLoggedUser());
-
-		return "index";
-	}
-
-	@GetMapping("/TenniShip/SignIn")
-	public String sign_in (Model model) {
-
-
-		return "login";
-	}
-
-	@GetMapping("/TenniShip/SignUp")
-	public String sign_up (Model model) {
-
-
-		return "registerAccount";
-	}
 }
