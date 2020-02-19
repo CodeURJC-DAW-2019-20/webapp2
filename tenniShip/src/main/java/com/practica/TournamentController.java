@@ -82,12 +82,6 @@ public class TournamentController {
 
 
 			model.addAttribute("listTournaments", teamRepository.getTournaments(t.get()));
-			
-//			if (teamRepository.getTournaments(t.get()).size() < 6) {
-//				for (int i = teamRepository.getTournaments(t.get()).size(); i < 6; i++) {
-//					model.addAttribute(String.format("tournamentName%d", i), "Empty");
-//				}
-//			}
 		}
 		return "selectTournament";
 	}

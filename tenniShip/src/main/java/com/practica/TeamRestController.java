@@ -50,7 +50,7 @@ public class TeamRestController {
 			teamRepository.save(team.get());
 
 			imgService.saveImage("teams", team.get().getName(), imageFile.get(0));
-			for(int i=1;i<=6;i++) {
+			for(int i=1;i<6;i++) {
 				imgService.saveImage("players", team.get().getName()+String.format("player%d",i), imageFile.get(i));
 			}
 			return new ResponseEntity<>(HttpStatus.CREATED);

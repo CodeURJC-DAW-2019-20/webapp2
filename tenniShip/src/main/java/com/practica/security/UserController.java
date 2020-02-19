@@ -1,6 +1,7 @@
 package com.practica.security;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.practica.ImageService;
 import com.practica.TeamRepository;
 import com.practica.TournamentController;
 import com.practica.model.Player;
@@ -26,6 +29,9 @@ public class UserController {
 	private UserRepository userRepository;
 	
 	@Autowired
+	private ImageService imgService;
+	
+	@Autowired
 	private UserComponent userComponent;
 	
 	@Autowired
@@ -34,7 +40,7 @@ public class UserController {
 	@PostMapping("/register")
 	public String newUser(Model model,@ModelAttribute("personUser") User user,@RequestParam String passwordCheck,
 			@RequestParam Player player1,@RequestParam Player player2,@RequestParam Player player3,
-			@RequestParam Player player4,@RequestParam Player player5) {
+			@RequestParam Player player4,@RequestParam Player player5, @RequestParam List<MultipartFile> imageFile) throws IOException {
 		
 		
 		boolean canContinue = true;
@@ -110,6 +116,15 @@ public class UserController {
 			teamNew.getPlayers().add(player4);
 			teamNew.getPlayers().add(player5);
 			teamRepository.save(teamNew);
+			
+			/*Saving images*/
+			teamNew.setImage(true);
+			teamRepository.save(teamNew);
+			imgService.saveImage("teams", teamNew.getName(), imageFile.get(0));
+			for(int i=1;i<6;i++) {
+				imgService.saveImage("players", teamNew.getName()+String.format("player%d",i), imageFile.get(i));
+			}
+			
 			Iterable<User> usuaruis = userRepository.findAll();
 			for(User x: usuaruis) {
 				System.out.println(x.toString());
@@ -145,11 +160,15 @@ public class UserController {
 		return "login";
 	}
 	
+//	@GetMapping("/")
+//	private String redirect (Model model) {
+//		return index(model);
+//	}
+	
 	@GetMapping("/TenniShip/SignUp")
 	public String sign_up (Model model) {
 
 		User user = new User();
-		Player player1 = new Player();
 		model.addAttribute("personUser", user);
 		return "registerAccount";
 	}

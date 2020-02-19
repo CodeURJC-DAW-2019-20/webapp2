@@ -72,17 +72,5 @@ public class TeamController {
         	i = 0; //Needed because if f5, i does not restart and forEach loop starts with i != 0
         }
 		return "teamfile";
-	}
-	
-	@PostMapping("/RegisterAccount/Saved")
-	public String newTeam(Model model, Team team, @RequestParam List<MultipartFile> imageFile) throws IOException {
-		team.setImage(true);
-		teamRepository.save(team);
-		imgService.saveImage("teams", team.getName(), imageFile.get(0));
-		for(int i=1;i<=6;i++) {
-			imgService.saveImage("players", team.getName()+String.format("player%d",i), imageFile.get(i));
-		}
-		return "good";
-	}
-	
+	}	
 }
