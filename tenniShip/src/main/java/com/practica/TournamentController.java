@@ -42,9 +42,9 @@ public class TournamentController {
 	public String submitMatch(Model model, @RequestParam int quantityHome, @RequestParam int quantityAway) {
 		System.out.println(quantityHome + " " + quantityAway);
 		return "good";
-	}
-
-
+	} 
+	
+	
 	@GetMapping("/TenniShip/RegisterMatch/Tournament/{tournament}")
 	public String selectMatch(Model model, @PathVariable String tournament) {
 

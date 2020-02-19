@@ -41,23 +41,9 @@ public class TeamController {
 	public String team(Model model, @PathVariable String team) {
 		
 		Optional<Team> t = teamRepository.findById(team);
-		double totalMatches=0;
-		double totalMatchesLost=0;
-	    double totalMatchesWon=0;
 
         if (t.isPresent()) {
         	model.addAttribute("teamName", t.get().getName());
-        	
-        	totalMatchesLost=teamRepository.getMatchesLost(t.get().getName());
-        	totalMatchesWon=teamRepository.getMatchesWon(t.get().getName());
-        	
-        	totalMatches=totalMatchesLost+totalMatchesWon;
-        	
-        	totalMatchesLost = (totalMatchesLost/totalMatches)*100;
-        	totalMatchesWon = (totalMatchesWon/totalMatches)*100;
-        	
-        	model.addAttribute("lostMatches",totalMatchesLost);        	
-        	model.addAttribute("wonMatches",totalMatchesWon);
         	
         	List<Player> players = t.get().getPlayers();
         	for (int i = 0; i < 5; i++) {
@@ -89,10 +75,13 @@ public class TeamController {
 	}
 	
 	@PostMapping("/RegisterAccount/Saved")
-	public String newTeam(Model model, Team team, @RequestParam MultipartFile imageFile) throws IOException {
+	public String newTeam(Model model, Team team, @RequestParam List<MultipartFile> imageFile) throws IOException {
 		team.setImage(true);
 		teamRepository.save(team);
-		imgService.saveImage("teams", team.getName(), imageFile);
+		imgService.saveImage("teams", team.getName(), imageFile.get(0));
+		for(int i=1;i<=6;i++) {
+			imgService.saveImage("players", team.getName()+String.format("player%d",i), imageFile.get(i));
+		}
 		return "good";
 	}
 	
