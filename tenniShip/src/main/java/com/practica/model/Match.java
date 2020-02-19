@@ -82,6 +82,10 @@ public class Match {
 		this.tournament = tournament;
 	}
 
+	public Tournament getTournament() {
+		return tournament;
+	}
+
 	public int getHomePoints() {
 		return homePoints;
 	}

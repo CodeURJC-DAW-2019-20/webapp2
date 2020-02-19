@@ -63,27 +63,13 @@ public class TeamController {
         	for (int i = 0; i < 5; i++) {
         		model.addAttribute(String.format("player%d", i), players.get(i).getName());
         	}
-        	
-        	teamRepository.getTournaments(t.get()).forEach(Tournament -> {
-				matchRepository.findMatches(t.get(), Tournament).forEach(Match -> {
-					if (i < 10) {
-						model.addAttribute(String.format("teamNameHome%d", i), Match.getTeam1().getName());
-						model.addAttribute(String.format("teamNameAway%d", i), Match.getTeam2().getName());
-						model.addAttribute(String.format("teamHomePoints%d", i), Integer.toString(Match.getHomePoints()));
-						model.addAttribute(String.format("teamAwayPoints%d", i), Integer.toString(Match.getAwayPoints()));
-						model.addAttribute(String.format("matchTournament%d", i), Tournament.getName());
-						i++;
-					}					
-				});
-			});
-        	for (int j=i; j<10; j++) {
-        		model.addAttribute(String.format("teamNameHome%d", j), "Empty");
-				model.addAttribute(String.format("teamNameAway%d", j), "Empty");
-				model.addAttribute(String.format("teamHomePoints%d", j), "0");
-				model.addAttribute(String.format("teamAwayPoints%d", j), "0");
-				model.addAttribute(String.format("matchTournament%d", j), "Empty");
-        	}
         	i = 0; //Needed because if f5, i does not restart and forEach loop starts with i != 0
+			
+			List<Match> recentMatches = teamRepository.getRecentMatches(t.get());
+			if (!recentMatches.isEmpty()) {
+				model.addAttribute("matchHistory", true);
+				model.addAttribute("matchList", recentMatches);
+			}
         }
 		return "teamfile";
 	}
