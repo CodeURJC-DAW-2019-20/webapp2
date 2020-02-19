@@ -12,15 +12,15 @@ public class Player {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private String name;
+	private String playerName;
 	//private Image playerImage;
+	
 
 	public Player() {
 	}
 
 	public Player(String name/*, Image playerImage*/) {
-		super();
-		this.name = name;
+		this.playerName = name;
 		//this.playerImage = playerImage;
 	}
 
@@ -33,11 +33,11 @@ public class Player {
 	}
 
 	public String getName() {
-		return name;
+		return playerName;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.playerName = name;
 	}
 
 //	public Image getPlayerImage() {

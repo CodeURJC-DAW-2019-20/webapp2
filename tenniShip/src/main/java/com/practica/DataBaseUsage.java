@@ -42,7 +42,7 @@ public class DataBaseUsage implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		//users
-		userRepository.save(new User("user","Spain","pass", "ROLE_USER"));
+		userRepository.save(new User("user","Spain","tennishipdaw@gmail.com","pass", "ROLE_USER"));
 
 
 		//

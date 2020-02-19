@@ -17,7 +17,7 @@ import javax.persistence.ManyToMany;
 public class Team {
 	
 	@Id
-	private String name;
+	private String teamName;
 	
 	private boolean teamImage;
 	
@@ -28,16 +28,16 @@ public class Team {
 	}
 	
 	public Team(String name) {
-		this.name = name;
+		this.teamName = name;
 		//this.teamImage = teamImage;
 	}
 
 	public String getName() {
-		return name;
+		return teamName;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.teamName = name;
 	}
 
 	public List<Player> getPlayers() {

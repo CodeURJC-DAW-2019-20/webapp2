@@ -10,6 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -19,9 +22,13 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String name;
+	
+	private String userName;
 
 	private String passwordHash;
+	
+	@Email
+	private String email;
 	
 	private String team;
 
@@ -31,19 +38,33 @@ public class User {
 	public User () {
 	}
 	
-	public User(String name,String team, String password, String... roles) {
-		this.name = name;
+	public User(String name,String team,String email,String password, String... roles) {
+		this.userName = name;
 		this.team = team;
+		this.email = email;
 		this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.roles = new ArrayList<>(Arrays.asList(roles));
 	}
 	
-	public String getName() {
-		return name;
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.userName = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getTeam() {
@@ -69,4 +90,11 @@ public class User {
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userName=" + userName + ", passwordHash=" + passwordHash + ", email=" + email
+				+ ", team=" + team + ", roles=" + roles + "]";
+	}
+
 }
