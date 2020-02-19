@@ -42,26 +42,34 @@
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
+                {{#registered}}
                 <li class="menu-has-children"><a href="#">Actions</a>
                     <ul>
                         <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
-                        <li><a href="/Creator">Tournament Creator</a></li>
+                        <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
                     </ul>
                 </li>
-				
-				{{#registered}}
-                <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
-                	 	<ul>
-                	 		<li><a href="/Team/{{team}}">View Profile</a></li>
-                	 		<li>
-                	 			<form action="/logout" method="post">
-									<button class="btn" type="submit">Sign Out</button>
-								</form>
-                	 		</li>
-                	 	</ul>
-                	 </li>
+                <li class="menu-has-children teamMenu"><a href="/TenniShip/Team/{{team}}">{{team}}</a>
+                    <ul>
+                        <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
+                        <li>
+                            <form action="/logout" method="post">
+                                <button class="btn" type="submit">Sign Out</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                <li><img alt="" class="loginImage" src="/../img/clients/client-1.png"></li>
                 {{/registered}}
-                <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/client-1.png"></li>
+
+                {{^registered}}
+                <li>
+                    <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
+                </li>
+                <li>
+                    <a class="btn signInIndexBtnText" href="/TenniShip/SignIn" type="submit">Sign In</a>
+                </li>
+                {{/registered}}
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>

@@ -298,6 +298,7 @@ body#index #home {
     height: 40px;
     border-color: white !important;
     background-color: #18d26e !important;
+    border-radius: 20px;
 }
 
 .nav-menu a {
