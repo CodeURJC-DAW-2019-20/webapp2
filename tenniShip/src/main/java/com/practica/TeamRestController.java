@@ -1,6 +1,7 @@
 package com.practica;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class TeamRestController {
 	}
 	
 	@PostMapping("/{id}/image")
-	public ResponseEntity<Team> newTeamImage(@PathVariable String id, @RequestParam MultipartFile imageFile)
+	public ResponseEntity<Team> newTeamImage(@PathVariable String id, @RequestParam List<MultipartFile> imageFile)
 			throws IOException {
 
 		Optional<Team> team = teamRepository.findById(id);
@@ -48,7 +49,10 @@ public class TeamRestController {
 			team.get().setImage(true);
 			teamRepository.save(team.get());
 
-			imgService.saveImage("teams", team.get().getName(), imageFile);
+			imgService.saveImage("teams", team.get().getName(), imageFile.get(0));
+			for(int i=1;i<6;i++) {
+				imgService.saveImage("players", team.get().getName()+String.format("player%d",i), imageFile.get(i));
+			}
 			return new ResponseEntity<>(HttpStatus.CREATED);
 
 		} else {

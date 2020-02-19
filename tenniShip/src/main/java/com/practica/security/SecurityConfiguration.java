@@ -18,6 +18,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	
     	// Public pages 
+        http.authorizeRequests().antMatchers("/register").permitAll();
         http.authorizeRequests().antMatchers("/TenniShip").permitAll();
         http.authorizeRequests().antMatchers("/TenniShip/SignIn").permitAll();
         http.authorizeRequests().antMatchers("/TenniShip/SignUp").permitAll();

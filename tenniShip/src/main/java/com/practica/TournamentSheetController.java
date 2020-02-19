@@ -86,7 +86,7 @@ public class TournamentSheetController {
 					j++;
 				}
 				j = 0;
-				//-------GROUPS
+				//-------GRUPOS
 				
 				//FINAL PHASE--
 				

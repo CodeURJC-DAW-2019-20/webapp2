@@ -121,28 +121,4 @@ public class TournamentController {
 		return "tournamentCreator";
 	}
 
-	@GetMapping("/TenniShip")
-	public String index (Model model) {
-
-		if(userComponent.isLoggedUser()) {
-			String teamUser = userComponent.getTeam();
-			model.addAttribute("team", teamUser);
-		}
-		model.addAttribute("registered",userComponent.isLoggedUser());
-		return "index";
-	}
-
-	@GetMapping("/TenniShip/SignIn")
-	public String sign_in (Model model) {
-
-
-		return "login";
-	}
-
-	@GetMapping("/TenniShip/SignUp")
-	public String sign_up (Model model) {
-
-
-		return "registerAccount";
-	}
 }

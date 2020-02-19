@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Tenniship - Keep track of teams, scores and tournaments</title>
@@ -13,8 +14,7 @@
     <!-- Icons made by Freepik from www.flaticon.com-->
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
     <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,176 +31,176 @@
 </head>
 
 <body id="index">
-<!--==========================
+    <!--==========================
   Header
 ============================-->
-<header id="header">
-    <div class="container-fluid">
+    <header id="header">
+        <div class="container-fluid">
 
-        <div class="pull-left" id="logo">
-            <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
+            <div class="pull-left" id="logo">
+                <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
+            </div>
+
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    {{#registered}}
+                    <li class="menu-has-children"><a href="#actions">Actions</a>
+                        <ul>
+                            <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
+                            <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-has-children teamMenu"><a href="/TenniShip/Team/{{team}}">{{team}}</a>
+                        <ul>
+                            <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
+                            <li>
+                                <form action="/logout" method="post">
+                                    <button class="btn" type="submit">Sign Out</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
+                    {{/registered}} {{^registered}}
+                    <li>
+                        <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
+                    </li>
+                    <li>
+                        <a class="btn signInIndexBtnText" href="/TenniShip/SignIn" type="submit">Sign In</a>
+                    </li>
+                    {{/registered}}
+                </ul>
+            </nav>
+            <!-- #nav-menu-container -->
         </div>
+    </header>
+    <!-- #header -->
 
-        <nav id="nav-menu-container">
-            <ul class="nav-menu">
-                {{#registered}}
-                	<li class="menu-has-children"><a href="#actions">Actions</a>
-	                    <ul>
-	                        <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
-	                        <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
-	                    </ul>
-                	</li>
-                	 <li class="menu-has-children teamMenu"><a href="/TenniShip/Team/{{team}}">{{team}}</a>
-                	 	<ul>
-                	 		<li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
-                	 		<li>
-                	 			<form action="/logout" method="post">
-									<button class="btn" type="submit">Sign Out</button>
-								</form>
-                	 		</li>
-                	 	</ul>
-                	 </li>
-               		 <li><img alt="" class="loginImage" src="/../img/clients/client-1.png"></li>
-                {{/registered}}
-                   
-                {{^registered}}               
-	                <li>
-	                    <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
-	                </li>
-	                <li>
-	                    <a class="btn signInIndexBtnText" href="/TenniShip/SignIn" type="submit">Sign In</a>
-	                </li>
-                {{/registered}}
-            </ul>
-        </nav><!-- #nav-menu-container -->
-    </div>
-</header><!-- #header -->
+    <main id="main">
 
-<main id="main">
-
-    <!--==========================
+        <!--==========================
       HOME Section
     ============================-->
-    <section id="home">
-        <div class="container">
-            <header class="section-header"><h3></h3></header>
+        <section id="home">
+            <div class="container">
+                <header class="section-header">
+                    <h3></h3>
+                </header>
 
-            <div class="row actions-cols">
+                <div class="row actions-cols">
 
-                <div class="col-md-6 wow fadeInUp">
-                    <div class="home-col">
-                        <div class="img">
-                            <img alt="" class="img-fluid" src="../img/trophy.png">
-                            <div class="icon"><i class="ion-trophy"></i></div>
+                    <div class="col-md-6 wow fadeInUp">
+                        <div class="home-col">
+                            <div class="img">
+                                <img alt="" class="img-fluid" src="../img/trophy.png">
+                                <div class="icon"><i class="ion-trophy"></i></div>
+                            </div>
+                            <h2 class="title"><a href="#">Tournament Search</a></h2>
+                            <form class="form-inline active-green-3">
+                                <input aria-label="Search" class="form-control form-control-plaintext m-5 w-75" placeholder="Search" type="text">
+                            </form>
                         </div>
-                        <h2 class="title"><a href="#">Tournament Search</a></h2>
-                        <form class="form-inline active-green-3">
-                            <input aria-label="Search" class="form-control form-control-plaintext m-5 w-75" placeholder="Search"
-                                   type="text">
-                        </form>
                     </div>
-                </div>
 
-                <div class="col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="home-col">
-                        <div class="img">
-                            <img alt="" class="img-fluid" src="../img/team.png">
-                            <div class="icon"><i class="ion-ios-people"></i></div>
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="home-col">
+                            <div class="img">
+                                <img alt="" class="img-fluid" src="../img/team.png">
+                                <div class="icon"><i class="ion-ios-people"></i></div>
+                            </div>
+                            <h2 class="title"><a href="#">Team Search</a></h2>
+                            <form class="form-inline active-green-3 mx-auto">
+                                <input aria-label="Search" class="form-control form-control-plaintext m-5 w-75" placeholder="Search" type="text">
+                            </form>
                         </div>
-                        <h2 class="title"><a href="#">Team Search</a></h2>
-                        <form class="form-inline active-green-3 mx-auto">
-                            <input aria-label="Search" class="form-control form-control-plaintext m-5 w-75" placeholder="Search"
-                                   type="text">
-                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </section><!-- #home -->
+        </section>
+        <!-- #home -->
 
-    <!--==========================
+        <!--==========================
       Actions Section
     ============================-->
 
-    <section id="actions">
-        <div class="container">
-            <header class="section-header"><h3></h3></header>
+        <section id="actions">
+            <div class="container">
+                <header class="section-header">
+                    <h3></h3>
+                </header>
 
-            <div class="row actions-cols">
+                <div class="row actions-cols">
 
-                <div class="col-md-6 wow fadeInUp">
-                    <div class="actions-col">
-                        <div class="img">
-                            <img alt="" class="img-fluid" src="../img/registerMatch.jpg">
-                            <div class="icon"><i class="ion-ios-tennisball"></i></div>
+                    <div class="col-md-6 wow fadeInUp">
+                        <div class="actions-col">
+                            <div class="img">
+                                <img alt="" class="img-fluid" src="../img/registerMatch.jpg">
+                                <div class="icon"><i class="ion-ios-tennisball"></i></div>
+                            </div>
+                            <h2 class="title"><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></h2>
+                            <p>
+                                This section´s purpose is the insertion of the results of the matchs from a league in which your team is involved, it also lets the administrator of the league the ability to change match results. Working as a double check for the assurance of the participants.
+                            </p>
                         </div>
-                        <h2 class="title"><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></h2>
-                        <p>
-                            This section´s purpose is the insertion of the results of the matchs
-                            from a league in which your team is involved, it also lets
-                            the administrator of the league the ability to change match results.
-                            Working as a double check for the assurance of the participants.
-                        </p>
+                    </div>
+
+                    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="actions-col">
+                            <div class="img">
+                                <img alt="" class="img-fluid" src="../img/emptyStadium.jpg">
+                                <div class="icon"><i class="ion-podium"></i></div>
+                            </div>
+                            <h2 class="title"><a href="/Creator">Tournament Creator</a></h2>
+                            <p>
+                                The tournament creator lets you make your own tournaments, set up the teams and information, and you'll be able to manage them on the go. Now keeping track of scores and standings is easier than ever!
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="actions-col">
-                        <div class="img">
-                            <img alt="" class="img-fluid" src="../img/emptyStadium.jpg">
-                            <div class="icon"><i class="ion-podium"></i></div>
-                        </div>
-                        <h2 class="title"><a href="/Creator">Tournament Creator</a></h2>
-                        <p>
-                            The tournament creator lets you make your own tournaments, set up the
-                            teams and information, and you'll be able to manage them on the go.
-                            Now keeping track of scores and standings is easier than ever!
-                        </p>
-                    </div>
-                </div>
             </div>
+        </section>
+        <!-- #actions -->
+    </main>
 
-        </div>
-    </section><!-- #actions -->
-</main>
-
-<!--==========================
+    <!--==========================
   Footer
 ============================-->
-<footer id="footer">
-    <div class="container">
-        <div class="copyright">
-            &copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>. All Rights
-            Reserved
+    <footer id="footer">
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>. All Rights Reserved
+            </div>
+            <div class="credits">
+                ReDesigned by paDAWans
+            </div>
         </div>
-        <div class="credits">
-            ReDesigned by paDAWans
-        </div>
-    </div>
-</footer><!-- #footer -->
+    </footer>
+    <!-- #footer -->
 
-<a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
-<div id="preloader"></div>
+    <a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
+    <div id="preloader"></div>
 
-<!-- JavaScript Libraries -->
-<script src="../lib/jquery/jquery.min.js"></script>
-<script src="../lib/jquery/jquery-migrate.min.js"></script>
-<script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../lib/easing/easing.min.js"></script>
-<script src="../lib/superfish/hoverIntent.js"></script>
-<script src="../lib/superfish/superfish.min.js"></script>
-<script src="../lib/wow/wow.min.js"></script>
-<script src="../lib/waypoints/waypoints.min.js"></script>
-<script src="../lib/counterup/counterup.min.js"></script>
-<script src="../lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="../lib/isotope/isotope.pkgd.min.js"></script>
-<script src="../lib/lightbox/js/lightbox.min.js"></script>
-<script src="../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
-<!-- Contact Form JavaScript File -->
-<script src="../contactform/contactform.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../lib/jquery/jquery-migrate.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/easing/easing.min.js"></script>
+    <script src="../lib/superfish/hoverIntent.js"></script>
+    <script src="../lib/superfish/superfish.min.js"></script>
+    <script src="../lib/wow/wow.min.js"></script>
+    <script src="../lib/waypoints/waypoints.min.js"></script>
+    <script src="../lib/counterup/counterup.min.js"></script>
+    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="../lib/lightbox/js/lightbox.min.js"></script>
+    <script src="../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+    <!-- Contact Form JavaScript File -->
+    <script src="../contactform/contactform.js"></script>
 
-<!-- Template Main Javascript File -->
-<script src="../js/main.js"></script>
+    <!-- Template Main Javascript File -->
+    <script src="../js/main.js"></script>
 
 </body>
+
 </html>

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import com.practica.model.Match;
 import com.practica.model.Team;
@@ -14,11 +13,5 @@ public interface TeamRepository extends JpaRepository<Team, String> {
 
 	@Query("SELECT distinct t FROM Match m JOIN m.tournament t WHERE m.team1 = :team OR m.team2 = :team")
 	public List<Tournament> getTournaments(Team team);
-	
-	@Query(value="SELECT COUNT(partido.id) FROM partido JOIN Team ON (partido.team1_name=Team.name OR partido.team2_name=Team.name) WHERE (((partido.team1_name=:n) AND (partido.home_points>partido.away_points)) OR ((partido.team2_name=:n) AND (partido.home_points<partido.away_points)))", nativeQuery = true )
-	public int getMatchesWon(@Param("n") String n);
-	
-	@Query(value="SELECT COUNT(partido.id) FROM partido JOIN Team ON (partido.team1_name=Team.name OR partido.team2_name=Team.name) WHERE (((partido.team1_name=:n) AND (partido.home_points<partido.away_points)) OR ((partido.team2_name=:n) AND (partido.home_points>partido.away_points)))", nativeQuery = true )
-	public int getMatchesLost(@Param("n") String n);
-	
+
 }
