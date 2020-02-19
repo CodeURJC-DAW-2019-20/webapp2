@@ -39,6 +39,7 @@ public class TournamentController {
 	@Autowired
 	private UserComponent userComponent;
 	
+
 	@PostMapping("/RegisterMatchSucceded/{tournament}")
 	public String submitMatch(Model model, @PathVariable String tournament, @RequestParam String teamHome,
 			@RequestParam String teamAway, @RequestParam int quantityHome, @RequestParam int quantityAway) {
@@ -56,8 +57,7 @@ public class TournamentController {
 
 		return selectMatch(model, tournament);
 	} 
-	
-	
+
 	@GetMapping("/TenniShip/RegisterMatch/Tournament/{tournament}")
 	public String selectMatch(Model model, @PathVariable String tournament) {
 

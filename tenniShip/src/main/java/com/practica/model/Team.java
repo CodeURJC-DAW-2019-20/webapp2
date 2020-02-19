@@ -18,9 +18,9 @@ public class Team {
 	
 	@Id
 	private String name;
-	
+
 	private boolean teamImage;
-	
+
 	@OneToMany (cascade = CascadeType.ALL)
 	private List<Player> players = new ArrayList<>();
 	
@@ -47,7 +47,7 @@ public class Team {
 	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
-	
+
 	public boolean hasImage() {
 		return teamImage;
 	}

@@ -42,14 +42,19 @@ public class TournamentSheetController {
 		}
 
 		@GetMapping("/TenniShip/Tournament/{tournament}")
-		public String tournament(Model model, @PathVariable String tournament) {
+        public String tournament(Model model, @PathVariable String tournament) {
 
-			Optional<Tournament> t = tournamentRepository.findById(tournament);
+            Optional<Tournament> t = tournamentRepository.findById(tournament);
+            double progressPercentage;
+    		final int TOTAL_MATCHES=25;
 
-			if (t.isPresent()) {
-				model.addAttribute("tournamentName", t.get().getName());
-				
-				//GRUPOS-------
+            if (t.isPresent()) {
+    			progressPercentage=tournamentRepository.getPlayedMatches(t.get().getName());
+    			System.out.println(progressPercentage);
+    			progressPercentage=(progressPercentage/TOTAL_MATCHES)*100;
+                model.addAttribute("tournamentName", t.get().getName());
+                model.addAttribute("completion",progressPercentage);
+			//GROUPS-------
 				String [] groups = {"A", "B", "C", "D", "E", "F"};
 				ArrayList<AuxiliarClass>[] sortedGroups = new ArrayList[6];
 				for	(int i = 0; i < 6; i++) { sortedGroups[i] = new ArrayList<>();}
@@ -81,13 +86,13 @@ public class TournamentSheetController {
 					j++;
 				}
 				j = 0;
-				//-------GRUPOS
+				//-------GROUPS
 				
 				//FINAL PHASE--
 				
 				List<Team> last8 = new ArrayList<>(); List<Team> last4 = new ArrayList<>(); List<Team> last2 = new ArrayList<>();
 				
-					if (tournamentRepository.getPlayedMatches(t.get()) >= 18) { //Groups Played						
+					if (tournamentRepository.getPlayedMatchesJQL(t.get()) >= 18) { //Groups Played						
 						if (tournamentRepository.getPhaseTeams(t.get(), "X").isEmpty()) { //RoundOf8 has to be created
 							List<AuxiliarClass> secondPlaceTeams = new ArrayList<>();
 							secondPlaceTeams.add(sortedGroups[0].get(1)); secondPlaceTeams.add(sortedGroups[1].get(1)); secondPlaceTeams.add(sortedGroups[2].get(1));
@@ -132,7 +137,7 @@ public class TournamentSheetController {
 					}
 						
 					
-					if (tournamentRepository.getPlayedMatches(t.get()) >= 22) { //RoundOf8 Played
+					if (tournamentRepository.getPlayedMatchesJQL(t.get()) >= 22) { //RoundOf8 Played
 						if (tournamentRepository.getPhaseTeams(t.get(), "Y").isEmpty()) { //RoundOf4 has to be created
 							tournamentRepository.getPhaseMatches(t.get(), "X").forEach(Match -> {
 								if (Match.getHomePoints() > Match.getAwayPoints())
@@ -170,7 +175,7 @@ public class TournamentSheetController {
 					}
 					
 					
-					if (tournamentRepository.getPlayedMatches(t.get()) >= 24) { //RoundOf4 Played
+					if (tournamentRepository.getPlayedMatchesJQL(t.get()) >= 24) { //RoundOf4 Played
 						if (tournamentRepository.getPhaseTeams(t.get(), "Z").isEmpty()) { //RoundOf2 has to be created
 							tournamentRepository.getPhaseMatches(t.get(), "Y").forEach(Match -> {
 								if (Match.getHomePoints() > Match.getAwayPoints())
