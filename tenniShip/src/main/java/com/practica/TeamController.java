@@ -41,6 +41,9 @@ public class TeamController {
 	public String team(Model model, @PathVariable String team) {
 		
 		Optional<Team> t = teamRepository.findById(team);
+		double totalMatchesLost = 0.0;
+		double totalMatchesWon = 0.0;
+		double totalMatches = 0.0;
 
         if (t.isPresent()) {
         	model.addAttribute("teamName", t.get().getName());
