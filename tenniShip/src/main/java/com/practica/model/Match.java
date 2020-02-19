@@ -5,9 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name = "partido")
 public class Match {
 	
 	@Id
@@ -16,7 +18,8 @@ public class Match {
 		
 	private int homePoints;
 	private int awayPoints;
-	private String type; 
+	private String type;
+	
 	/*
 		groupA : A
 		groupB : B
@@ -45,7 +48,7 @@ public class Match {
 		this.homePoints = homePoints;
 		this.awayPoints = awayPoints;
 		this.type = type;
-	}
+	}	
 
 	public long getId() {
 		return id;
@@ -94,4 +97,5 @@ public class Match {
 	public void setAwayPoints(int awayPoints) {
 		this.awayPoints = awayPoints;
 	}
+		
 }

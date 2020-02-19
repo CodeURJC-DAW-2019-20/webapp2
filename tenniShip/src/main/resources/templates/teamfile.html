@@ -174,9 +174,8 @@
                 <div class="container row mb-5">
                     <div class="col-sm-6 col-12">
                         <div class="pie">
-                            <!-- Use "--over50: 1;" if the value is higher than 50 -->
-                            <div class="pie__segment" style="--offset: 0; --value: 60; --bg: #51e28f;"></div>
-                            <div class="pie__segment" style="--offset: 180; --value: 40; --bg: #dc5187;"></div>
+                            <div class="pie__segment" style="--offset: 0; --value: {{wonMatches}}; --over50:1; --bg: #51e28f;"></div>
+                            <div class="pie__segment" style="--offset: {{wonMatches}}; --value: {{lostMatches}}; --bg: #dc5187;"></div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">

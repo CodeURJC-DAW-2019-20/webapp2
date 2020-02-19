@@ -41,9 +41,23 @@ public class TeamController {
 	public String team(Model model, @PathVariable String team) {
 		
 		Optional<Team> t = teamRepository.findById(team);
+		double totalMatches=0;
+		double totalMatchesLost=0;
+	    double totalMatchesWon=0;
 
         if (t.isPresent()) {
         	model.addAttribute("teamName", t.get().getName());
+        	
+        	totalMatchesLost=teamRepository.getMatchesLost(t.get().getName());
+        	totalMatchesWon=teamRepository.getMatchesWon(t.get().getName());
+        	
+        	totalMatches=totalMatchesLost+totalMatchesWon;
+        	
+        	totalMatchesLost = (totalMatchesLost/totalMatches)*100;
+        	totalMatchesWon = (totalMatchesWon/totalMatches)*100;
+        	
+        	model.addAttribute("lostMatches",totalMatchesLost);        	
+        	model.addAttribute("wonMatches",totalMatchesWon);
         	
         	List<Player> players = t.get().getPlayers();
         	for (int i = 0; i < 5; i++) {

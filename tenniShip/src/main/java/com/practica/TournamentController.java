@@ -3,6 +3,7 @@ package com.practica;
 import java.util.Optional;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,13 +39,25 @@ public class TournamentController {
 	@Autowired
 	private UserComponent userComponent;
 	
-	@PostMapping("/prueba")
-	public String submitMatch(Model model, @RequestParam int quantityHome, @RequestParam int quantityAway) {
-		System.out.println(quantityHome + " " + quantityAway);
-		return "good";
+
+	@PostMapping("/RegisterMatchSucceded/{tournament}")
+	public String submitMatch(Model model, @PathVariable String tournament, @RequestParam String teamHome,
+			@RequestParam String teamAway, @RequestParam int quantityHome, @RequestParam int quantityAway) {
+		
+		Optional<Team> home = teamRepository.findById(teamHome);
+		Optional<Team> away = teamRepository.findById(teamAway);
+		Optional<Tournament> t = tournamentRepository.findById(tournament);
+		
+		Match match = matchRepository.findMatch(home.get(), away.get(), t.get()).get(0);
+		
+		matchRepository.getOne(match.getId()).setHomePoints(quantityHome);
+		matchRepository.getOne(match.getId()).setAwayPoints(quantityAway);
+		
+		matchRepository.deleteById(match.getId()); matchRepository.save(match);
+
+		return selectMatch(model, tournament);
 	} 
-	
-	
+
 	@GetMapping("/TenniShip/RegisterMatch/Tournament/{tournament}")
 	public String selectMatch(Model model, @PathVariable String tournament) {
 
@@ -52,14 +65,19 @@ public class TournamentController {
 
 		Optional<Tournament> t = tournamentRepository.findById(tournament);//check if that team play this tournament
 		Optional<Team> tm = teamRepository.findById(team);
+		
+		HashMap<String, String> rounds = new HashMap<>(); rounds.put("A", "Group Stage"); rounds.put("B", "Group Stage");
+		rounds.put("C", "Group Stage"); rounds.put("D", "Group Stage"); rounds.put("E", "Group Stage"); rounds.put("F", "Group Stage");
+		rounds.put("X", "Round of 8"); rounds.put("Y", "Round of 4"); rounds.put("Z", "Final");
 
-		if (t.isPresent() && tm.isPresent()) {
-			for (int i = 0; i < Math.min(matchRepository.findMatches(tm.get(), t.get()).size(), 3); i++) {
-				model.addAttribute(String.format("teamNameHome%d", i), matchRepository.findMatches(tm.get(), t.get()).get(i).getTeam1().getName());
-				model.addAttribute(String.format("teamHomePoints%d", i), Integer.toString(matchRepository.findMatches(tm.get(), t.get()).get(i).getHomePoints()));
-				model.addAttribute(String.format("teamAwayPoints%d", i), Integer.toString(matchRepository.findMatches(tm.get(), t.get()).get(i).getAwayPoints()));
-				model.addAttribute(String.format("teamNameAway%d", i), matchRepository.findMatches(tm.get(), t.get()).get(i).getTeam2().getName());
+		if (t.isPresent()) {
+			if (tournamentRepository.getNextMatches(t.get(), tm.get()).isEmpty()) {
+				model.addAttribute("round", "All Played");
+			} else {
+				model.addAttribute("round", rounds.get(tournamentRepository.getNextMatches(t.get(), tm.get()).get(0).getType()));
 			}
+			model.addAttribute("listMatches", tournamentRepository.getNextMatches(t.get(), tm.get()));
+			
 		}
 
 		return "registerMatch";
@@ -76,25 +94,10 @@ public class TournamentController {
         model.addAttribute("team", team);
 
 		if (t.isPresent()) {
-			for (int i = 0; i < Math.min(teamRepository.getTournaments(t.get()).size(), 6); i++) {
-				model.addAttribute(String.format("tournamentName%d", i), teamRepository.getTournaments(t.get()).get(i).getName());
-			}
-
 			model.addAttribute("listTournaments", teamRepository.getTournaments(t.get()));
 		}
 		return "selectTournament";
 	}
-	
-	/*protected void raffleGP(Model model) {
-		List<String> teams = teamRepository.findAllTeams();
-		Collections.shuffle(teams);
-		for (int i = 0; i < 18; i++) {
-			model.addAttribute(String.format("team%d", i), teams.get(i));
-		}
-	}*/
-
-
-
 
 	@GetMapping("/{team}/Creator")
 	public String create (Model model, @PathVariable String team) {
@@ -126,7 +129,6 @@ public class TournamentController {
 			model.addAttribute("team", teamUser);
 		}
 		model.addAttribute("registered",userComponent.isLoggedUser());
-
 		return "index";
 	}
 
