@@ -71,42 +71,31 @@
 
 		<div class="section-header">
 			<h3 class="section-title">Select the Match</h3>
-			<h4 id="UnderTitleParagraph">Group Stage</h4>
+			<h4 id="UnderTitleParagraph">{{round}}</h4>
 		</div>
 
 		<section class="section-bg" id="registerMatchBothPages">
 			<div class="container">
-			<form action="/prueba" method="post" onSubmit="">
+			
+			{{#listMatches}}
+			<form action="/RegisterMatchSucceded/{{tournament.name}}" method="post">
 				<div class="row">
 					<div class="col-lg-4 col-md-3">
-						<!-- Card -->
 						<div class="card">
-
-							<!-- Card image -->
 							<div class="view overlay">
-								<img alt="Card image cap" class="card-img-top"
-									src="/../img/SpainFlag.png">
+								<img alt="Card image cap" class="card-img-top" src="/../img/SpainFlag.png">
 							</div>
-
-							<!-- Card content -->
 							<div class="card-body">
-
-								<!-- Title -->
 								<h4 class="card-title TeamPositioningRegisterMatchIconLocal">
-									<a class="colorLinkTeam" href="/Team/{{teamNameHome0}}">{{teamNameHome0}}</a>
+									<a class="colorLinkTeam" href="/Team/{{team1.name}}">{{team1.name}}</a>
+									<input type="hidden" name="teamHome" value="{{team1.name}}">
 								</h4>
-								<!-- Text -->
-								<p class="card-text TeamPositioningRegisterMatchIconLocal">Local´s
-									Team</p>
-
+								<p class="card-text TeamPositioningRegisterMatchIconLocal">Local´s Team</p>
 							</div>
-
 						</div>
-						<!-- Card -->
 					</div>
 
-					<div
-						class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp ">
+					<div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp ">
 						<div class="registerMatchBothPages-wrap ">
 							<figure>
 								<img alt="" class="img-fluid rackets" src="/../img/rackets.png">
@@ -120,21 +109,21 @@
 
 									<div class="TeamPositioningRegisterMatchIconLocal">
 										<div class="def-number-input number-input safari_only">
-											<button class="minus"
+											<button class="minus" type="button"
 												onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
 											<input class="quantity" min="0" max="3" name="quantityHome"
-												type="number" value="{{teamHomePoints0}}">
-											<button class="plus"
+												type="number" value="{{homePoints}}">
+											<button class="plus" type="button"
 												onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
 										</div>
 									</div>
 									<div class="TeamPositioningRegisterMatchIconVisitor">
 										<div class="def-number-input number-input safari_only">
-											<button class="minus"
+											<button class="minus" type="button"
 												onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
 											<input class="quantity" min="0" max="3" name="quantityAway"
-												type="number" value="{{teamAwayPoints0}}" formAction="">
-											<button class="plus"
+												type="number" value="{{awayPoints}}">
+											<button class="plus" type="button"
 												onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
 										</div>
 									</div>
@@ -144,136 +133,25 @@
 					</div>
 
 					<div class="col-lg-4 col-md-3 ">
-						<!-- Card -->
 						<div class="card">
-
-							<!-- Card image -->
 							<div class="view overlay">
-								<img alt="Card image cap" class="card-img-top"
-									src="/../img/MaltaFlag.png">
+								<img alt="Card image cap" class="card-img-top" src="/../img/MaltaFlag.png">
 							</div>
-
-							<!-- Card content -->
 							<div class="card-body">
-
-								<!-- Title -->
 								<h4 class="card-title TeamPositioningRegisterMatchIconVisitor">
-									<a class="colorLinkTeam" href="/Team/{{teamNameAway0}}">{{teamNameAway0}}</a>
+									<a class="colorLinkTeam" href="/Team/{{team2.name}}">{{team2.name}}</a>
+									<input type="hidden" name="teamAway" value="{{team2.name}}">
 								</h4>
-								<!-- Text -->
-								<p class="card-text TeamPositioningRegisterMatchIconVisitor">Visitor´s
-									Team</p>
-
+								<p class="card-text TeamPositioningRegisterMatchIconVisitor">Visitor´s Team</p>
 							</div>
-
 						</div>
-						<!-- Card -->
 					</div>
-
 				</div>
 				<div class="centerButton">
 					<button class="btn SubmitButtonMatch" type="submit">Submit</button>
 				</div>
-			</form>
-				<div class="row">
-					<!-- New row of teams -->
-
-					<div class="col-lg-4 col-md-3">
-						<!-- Card -->
-						<div class="card">
-
-							<!-- Card image -->
-							<div class="view overlay">
-								<img alt="Card image cap" class="card-img-top"
-									src="/../img/GermanyFlag.png">
-							</div>
-
-							<!-- Card content -->
-							<div class="card-body">
-
-								<!-- Title -->
-								<h4 class="card-title TeamPositioningRegisterMatchIconLocal">
-									<a class="colorLinkTeam" href="/Team/{{teamNameHome1}}">{{teamNameHome1}}</a>
-								</h4>
-								<!-- Text -->
-								<p class="card-text TeamPositioningRegisterMatchIconLocal">Local´s
-									Team</p>
-
-							</div>
-
-						</div>
-						<!-- Card -->
-					</div>
-
-					<div
-						class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp ">
-						<div class="registerMatchBothPages-wrap ">
-							<figure>
-								<img alt="" class="img-fluid rackets" src="/../img/rackets.png">
-							</figure>
-
-							<div class="registerMatchBothPages-info ">
-								<h4>
-									<a href="registerMatch.html">Match Result</a>
-								</h4>
-								<div class="d-flex justify-content-around">
-									<div class="TeamPositioningRegisterMatchIconLocal">
-										<div class="def-number-input number-input safari_only">
-											<button class="minus"
-												onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-											<input class="quantity" min="0" max="3" name="quantity"
-												type="number" value="{{teamHomePoints1}}">
-											<button class="plus"
-												onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
-										</div>
-									</div>
-									<div class="TeamPositioningRegisterMatchIconVisitor">
-										<div class="def-number-input number-input safari_only">
-											<button class="minus"
-												onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-											<input class="quantity" min="0" max="3" name="quantity"
-												type="number" value="{{teamAwayPoints1}}">
-											<button class="plus"
-												onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-md-3 ">
-						<!-- Card -->
-						<div class="card">
-
-							<!-- Card image -->
-							<div class="view overlay">
-								<img alt="Card image cap" class="card-img-top"
-									src="/../img/SpainFlag.png">
-							</div>
-
-							<!-- Card content -->
-							<div class="card-body">
-
-								<!-- Title -->
-								<h4 class="card-title TeamPositioningRegisterMatchIconVisitor">
-									<a class="colorLinkTeam" href="/Team/{{teamNameAway1}}">{{teamNameAway1}}</a>
-								</h4>
-								<!-- Text -->
-								<p class="card-text TeamPositioningRegisterMatchIconVisitor">Visitor´s
-									Team</p>
-
-							</div>
-
-						</div>
-						<!-- Card -->
-					</div>
-
-				</div>
-
-				<div class="centerButton">
-					<button class="btn SubmitButtonMatch" type="submit">Submit</button>
-				</div>
+			</form>	
+			{{/listMatches}}	
 			</div>
 		</section>
 		<!-- #registerMatchSelectMatch -->

@@ -42,7 +42,15 @@ public class DataBaseUsage implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		//users
-		userRepository.save(new User("user","Spain","pass", "ROLE_USER"));
+		userRepository.save(new User("userSpain","Spain","pass", "ROLE_USER")); userRepository.save(new User("userFrance","France","pass", "ROLE_USER"));
+		userRepository.save(new User("userSerbiaB","SerbiaB","pass", "ROLE_USER")); userRepository.save(new User("userItalyB","ItalyB","pass", "ROLE_USER"));
+		userRepository.save(new User("userNorwayB","NorwayB","pass", "ROLE_USER")); userRepository.save(new User("userAustraliaB","AustraliaB","pass", "ROLE_USER"));
+		userRepository.save(new User("userBrazilB","BrazilB","pass", "ROLE_USER")); userRepository.save(new User("userArgentinaB","ArgentinaB","pass", "ROLE_USER"));
+		userRepository.save(new User("userCanadaB","CanadaB","pass", "ROLE_USER")); userRepository.save(new User("userMexicoB","MexicoB","pass", "ROLE_USER"));
+		userRepository.save(new User("userUnitedStatesB","UnitedStatesB","pass", "ROLE_USER")); userRepository.save(new User("userChinaB","ChinaB","pass", "ROLE_USER"));	
+		userRepository.save(new User("userJapanB","JapanB","pass", "ROLE_USER")); userRepository.save(new User("userRussiaB","RussiaB","pass", "ROLE_USER"));
+		userRepository.save(new User("userGermanyB","GermanyB","pass", "ROLE_USER")); userRepository.save(new User("userDenmarkB","DenmarkB","pass", "ROLE_USER"));
+		userRepository.save(new User("userFinlandB","FinlandB","pass", "ROLE_USER")); userRepository.save(new User("userSouthAfricaB","SouthAfricaB","pass", "ROLE_USER"));
 
 
 		//
@@ -104,7 +112,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		//
 		//
 
-		Match m1 = new Match(3, 0, "A"); m1.setTeam1(team1); m1.setTeam2(team3); m1.setTournament(tournament1); matchRepository.save(m1);
+		Match m1 = new Match(0, 3, "A"); m1.setTeam1(team1); m1.setTeam2(team3); m1.setTournament(tournament1); matchRepository.save(m1);
 		Match m2 = new Match(3, 2, "A"); m2.setTeam1(team3); m2.setTeam2(team2); m2.setTournament(tournament1); matchRepository.save(m2);
 		Match m3 = new Match(3, 1, "A"); m3.setTeam1(team2); m3.setTeam2(team1); m3.setTournament(tournament1); matchRepository.save(m3);
 		Match m4 = new Match(3, 0, "B"); m4.setTeam1(team4); m4.setTeam2(team5); m4.setTournament(tournament1); matchRepository.save(m4);
@@ -124,22 +132,22 @@ public class DataBaseUsage implements CommandLineRunner{
 		Match m18 = new Match(3, 1, "F"); m18.setTeam1(team17); m18.setTeam2(team18); m18.setTournament(tournament1); matchRepository.save(m18);
 
 		Match m1B = new Match(3, 0, "A"); m1B.setTeam1(team1); m1B.setTeam2(team3B); m1B.setTournament(tournament2); matchRepository.save(m1B);
-		Match m2B = new Match(3, 0, "A"); m2B.setTeam1(team3B); m2B.setTeam2(team2); m2B.setTournament(tournament2); matchRepository.save(m2B);
-		Match m3B = new Match(3, 0, "A"); m3B.setTeam1(team2); m3B.setTeam2(team1); m3B.setTournament(tournament2); matchRepository.save(m3B);
-		Match m4B = new Match(3, 0, "B"); m4B.setTeam1(team4B); m4B.setTeam2(team5B); m4B.setTournament(tournament2); matchRepository.save(m4B);
-		Match m5B = new Match(3, 0, "B"); m5B.setTeam1(team6B); m5B.setTeam2(team4B); m5B.setTournament(tournament2); matchRepository.save(m5B);
-		Match m6B = new Match(3, 0, "B"); m6B.setTeam1(team5B); m6B.setTeam2(team6B); m6B.setTournament(tournament2); matchRepository.save(m6B);
-		Match m7B = new Match(3, 0, "C"); m7B.setTeam1(team7B); m7B.setTeam2(team8B); m7B.setTournament(tournament2); matchRepository.save(m7B);
-		Match m8B = new Match(3, 0, "C"); m8B.setTeam1(team9B); m8B.setTeam2(team7B); m8B.setTournament(tournament2); matchRepository.save(m8B);
+		Match m2B = new Match(3, 2, "A"); m2B.setTeam1(team3B); m2B.setTeam2(team2); m2B.setTournament(tournament2); matchRepository.save(m2B);
+		Match m3B = new Match(1, 3, "A"); m3B.setTeam1(team2); m3B.setTeam2(team1); m3B.setTournament(tournament2); matchRepository.save(m3B);
+		Match m4B = new Match(0, 3, "B"); m4B.setTeam1(team4B); m4B.setTeam2(team5B); m4B.setTournament(tournament2); matchRepository.save(m4B);
+		Match m5B = new Match(3, 2, "B"); m5B.setTeam1(team6B); m5B.setTeam2(team4B); m5B.setTournament(tournament2); matchRepository.save(m5B);
+		Match m6B = new Match(3, 2, "B"); m6B.setTeam1(team5B); m6B.setTeam2(team6B); m6B.setTournament(tournament2); matchRepository.save(m6B);
+		Match m7B = new Match(2, 3, "C"); m7B.setTeam1(team7B); m7B.setTeam2(team8B); m7B.setTournament(tournament2); matchRepository.save(m7B);
+		Match m8B = new Match(1, 3, "C"); m8B.setTeam1(team9B); m8B.setTeam2(team7B); m8B.setTournament(tournament2); matchRepository.save(m8B);
 		Match m9B = new Match(3, 0, "C"); m9B.setTeam1(team8B); m9B.setTeam2(team9B); m9B.setTournament(tournament2); matchRepository.save(m9B);
 		Match m10B = new Match(3, 0, "D"); m10B.setTeam1(team10B); m10B.setTeam2(team11B); m10B.setTournament(tournament2); matchRepository.save(m10B);
-		Match m11B = new Match(3, 0, "D"); m11B.setTeam1(team12B); m11B.setTeam2(team10B); m11B.setTournament(tournament2); matchRepository.save(m11B);
-		Match m12B = new Match(3, 0, "D"); m12B.setTeam1(team11B); m12B.setTeam2(team12B); m12B.setTournament(tournament2); matchRepository.save(m12B);
-		Match m13B = new Match(3, 0, "E"); m13B.setTeam1(team13B); m13B.setTeam2(team14B); m13B.setTournament(tournament2); matchRepository.save(m13B);
-		Match m14B = new Match(3, 0, "E"); m14B.setTeam1(team15B); m14B.setTeam2(team13B); m14B.setTournament(tournament2); matchRepository.save(m14B);
+		Match m11B = new Match(2, 3, "D"); m11B.setTeam1(team12B); m11B.setTeam2(team10B); m11B.setTournament(tournament2); matchRepository.save(m11B);
+		Match m12B = new Match(0, 3, "D"); m12B.setTeam1(team11B); m12B.setTeam2(team12B); m12B.setTournament(tournament2); matchRepository.save(m12B);
+		Match m13B = new Match(1, 3, "E"); m13B.setTeam1(team13B); m13B.setTeam2(team14B); m13B.setTournament(tournament2); matchRepository.save(m13B);
+		Match m14B = new Match(3, 2, "E"); m14B.setTeam1(team15B); m14B.setTeam2(team13B); m14B.setTournament(tournament2); matchRepository.save(m14B);
 		Match m15B = new Match(3, 0, "E"); m15B.setTeam1(team14B); m15B.setTeam2(team15B); m15B.setTournament(tournament2); matchRepository.save(m15B);
-		Match m16B = new Match(3, 0, "F"); m16B.setTeam1(team16B); m16B.setTeam2(team17B); m16B.setTournament(tournament2); matchRepository.save(m16B);
-		Match m17B = new Match(3, 0, "F"); m17B.setTeam1(team18B); m17B.setTeam2(team16B); m17B.setTournament(tournament2); matchRepository.save(m17B);
+		Match m16B = new Match(2, 3, "F"); m16B.setTeam1(team16B); m16B.setTeam2(team17B); m16B.setTournament(tournament2); matchRepository.save(m16B);
+		Match m17B = new Match(0, 3, "F"); m17B.setTeam1(team18B); m17B.setTeam2(team16B); m17B.setTournament(tournament2); matchRepository.save(m17B);
 		Match m18B = new Match(3, 0, "F"); m18B.setTeam1(team17B); m18B.setTeam2(team18B); m18B.setTournament(tournament2); matchRepository.save(m18B);
 	}	
 }
