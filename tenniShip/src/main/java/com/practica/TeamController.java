@@ -73,11 +73,11 @@ public class TeamController {
         	}
         	i = 0; //Needed because if f5, i does not restart and forEach loop starts with i != 0
 
-//			List<Match> recentMatches = teamRepository.getRecentMatches(t.get());
-//			if (!recentMatches.isEmpty()) {
-//				model.addAttribute("matchHistory", true);
-//				model.addAttribute("matchList", recentMatches);
-//			}
+			List<Match> recentMatches = teamRepository.getRecentMatches(t.get());
+			if (!recentMatches.isEmpty()) {
+				model.addAttribute("matchHistory", true);
+				model.addAttribute("matchList", recentMatches);
+			}
         }
 		return "teamfile";
 	}	
