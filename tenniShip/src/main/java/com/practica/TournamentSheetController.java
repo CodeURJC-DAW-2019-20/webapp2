@@ -50,7 +50,6 @@ public class TournamentSheetController {
 
             if (t.isPresent()) {
     			progressPercentage=tournamentRepository.getPlayedMatches(t.get().getName());
-    			System.out.println(progressPercentage);
     			progressPercentage=(progressPercentage/TOTAL_MATCHES)*100;
                 model.addAttribute("tournamentName", t.get().getName());
                 model.addAttribute("completion",progressPercentage);

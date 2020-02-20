@@ -33,4 +33,6 @@ public interface TournamentRepository extends JpaRepository<Tournament, String> 
 	
 	@Query(value="SELECT COUNT(partido.id) FROM partido JOIN tournament ON(tournament_name=tournament.name) WHERE tournament_name=:t AND (home_points>0 OR away_points>0)",nativeQuery= true)
     public int getPlayedMatches(@Param("t") String t);
+	
+	//SELECT * FROM team JOIN partido ON ((team.name=partido.team1_name) OR (team.name=partido.team2_name)) JOIN Tournament ON (partido.tournament_name=tournament.name) WHERE team.name='Spain'
 }

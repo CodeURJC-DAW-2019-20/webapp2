@@ -31,28 +31,31 @@ public class DataBaseUsage implements CommandLineRunner{
 
 	private static LinkedList<Player> playerGenerator () {
         LinkedList<Player> list = new LinkedList<>();
-        list.add(new Player("a"));
-        list.add(new Player("b"));
-        list.add(new Player("c"));
-        list.add(new Player("d"));
-        list.add(new Player("e"));
+        list.add(new Player("Varo"));
+        list.add(new Player("Ivan"));
+        list.add(new Player("Santi"));
+        list.add(new Player("Marcos"));
+        list.add(new Player("Diego"));
         return list;
     }
 	@Override
 	public void run(String... args) throws Exception {
 		
+		System.out.println("pepito");
 		//users
-		userRepository.save(new User("userSpain","Spain","pass", "ROLE_USER")); userRepository.save(new User("userFrance","France","pass", "ROLE_USER"));
-		userRepository.save(new User("userSerbiaB","SerbiaB","pass", "ROLE_USER")); userRepository.save(new User("userItalyB","ItalyB","pass", "ROLE_USER"));
-		userRepository.save(new User("userNorwayB","NorwayB","pass", "ROLE_USER")); userRepository.save(new User("userAustraliaB","AustraliaB","pass", "ROLE_USER"));
-		userRepository.save(new User("userBrazilB","BrazilB","pass", "ROLE_USER")); userRepository.save(new User("userArgentinaB","ArgentinaB","pass", "ROLE_USER"));
-		userRepository.save(new User("userCanadaB","CanadaB","pass", "ROLE_USER")); userRepository.save(new User("userMexicoB","MexicoB","pass", "ROLE_USER"));
-		userRepository.save(new User("userUnitedStatesB","UnitedStatesB","pass", "ROLE_USER")); userRepository.save(new User("userChinaB","ChinaB","pass", "ROLE_USER"));	
-		userRepository.save(new User("userJapanB","JapanB","pass", "ROLE_USER")); userRepository.save(new User("userRussiaB","RussiaB","pass", "ROLE_USER"));
-		userRepository.save(new User("userGermanyB","GermanyB","pass", "ROLE_USER")); userRepository.save(new User("userDenmarkB","DenmarkB","pass", "ROLE_USER"));
-		userRepository.save(new User("userFinlandB","FinlandB","pass", "ROLE_USER")); userRepository.save(new User("userSouthAfricaB","SouthAfricaB","pass", "ROLE_USER"));
+	
+		userRepository.save(new User("userSpain","Spain","tennishipdaw1@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userFrance","France","tennishipdaw10@gmail.com","pass", "ROLE_USER"));
+		userRepository.save(new User("userSerbiaB","SerbiaB","tennishipdaw2@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userItalyB","ItalyB","tennishipdaw11@gmail.com","pass", "ROLE_USER"));
+		userRepository.save(new User("userNorwayB","NorwayB","tennishipdaw3@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userAustraliaB","AustraliaB","tennishipdaw12@gmail.com","pass", "ROLE_USER"));
+		userRepository.save(new User("userBrazilB","BrazilB","tennishipdaw4@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userArgentinaB","ArgentinaB","tennishipdaw13@gmail.com","pass", "ROLE_USER"));
+		userRepository.save(new User("userCanadaB","CanadaB","tennishipdaw5@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userMexicoB","MexicoB","tennishipdaw14@gmail.com","pass", "ROLE_USER"));
+		userRepository.save(new User("userUnitedStatesB","UnitedStatesB","tennishipdaw6@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userChinaB","ChinaB","tennishipdaw15@gmail.com","pass", "ROLE_USER"));	
+		userRepository.save(new User("userJapanB","JapanB","tennishipdaw7@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userRussiaB","RussiaB","tennishipdaw16@gmail.com","pass", "ROLE_USER"));
+		userRepository.save(new User("userGermanyB","GermanyB","tennishipdaw8@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userDenmarkB","DenmarkB","tennishipdaw17@gmail.com","pass", "ROLE_USER"));
+		userRepository.save(new User("userFinlandB","FinlandB","tennishipdaw9@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userSouthAfricaB","SouthAfricaB","tennishipdaw18@gmail.com","pass", "ROLE_USER"));
 
-
+		System.out.println("pepito2");
+		
 		//
 		//
 		//---------------------TEAMS ZONE
@@ -78,6 +81,8 @@ public class DataBaseUsage implements CommandLineRunner{
         Team team17 = new Team("Finland"); team17.getPlayers().addAll(playerGenerator()); teamRepository.save(team17);
         Team team18 = new Team("SouthAfrica"); team18.getPlayers().addAll(playerGenerator()); teamRepository.save(team18);
 
+        System.out.println("pepito3");
+        
         //Team1B not created to have Team1 in two tournaments
         //Team2B not created to have Team2 in two tournaments
         Team team3B = new Team("SerbiaB"); team3B.getPlayers().addAll(playerGenerator()); teamRepository.save(team3B);
