@@ -2,9 +2,12 @@ package com.practica.security;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.practica.TournamentRepository;
+import com.practica.model.Tournament;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +36,9 @@ public class UserController {
 	
 	@Autowired
 	private TeamRepository teamRepository;
+
+	@Autowired
+	private TournamentRepository tournamentRepository;
 	
 	@PostMapping("/register")
 	public String newUser(Model model,@ModelAttribute("personUser") User user,@RequestParam String passwordCheck,
@@ -133,6 +139,19 @@ public class UserController {
 			model.addAttribute("team", teamUser);
 		}
 		model.addAttribute("registered",userComponent.isLoggedUser());
+
+		List<Tournament> allTournaments = tournamentRepository.getAllTournaments();
+		List<Team> allTeams = teamRepository.getAllTeams();
+		List<String> tournamentNames = new ArrayList<>();
+		List<String> teamNames = new ArrayList<>();
+		for (Tournament t : allTournaments) {
+			tournamentNames.add(t.getName());
+		}
+		for (Team t : allTeams) {
+			teamNames.add(t.getName());
+		}
+		model.addAttribute("tournamentNames", tournamentNames);
+		model.addAttribute("teamNames", teamNames);
 
 		return "index"; 
 	}

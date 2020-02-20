@@ -25,6 +25,7 @@
     <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="../lib/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
     <link href="../css/style.css" rel="stylesheet">
@@ -97,7 +98,7 @@
                             </div>
                             <h2 class="title"><a href="#">Tournament Search</a></h2>
                             <form class="form-inline active-green-3">
-                                <input aria-label="Search" class="form-control form-control-plaintext m-5 w-75" placeholder="Search" type="text">
+                                <input id="tournamentSearch" aria-label="Search" class="form-control form-control-plaintext m-5 w-75" placeholder="Search" type="search">
                             </form>
                         </div>
                     </div>
@@ -110,7 +111,7 @@
                             </div>
                             <h2 class="title"><a href="#">Team Search</a></h2>
                             <form class="form-inline active-green-3 mx-auto">
-                                <input aria-label="Search" class="form-control form-control-plaintext m-5 w-75" placeholder="Search" type="text">
+                                <input id="teamSearch" aria-label="Search" class="form-control form-control-plaintext m-5 w-75" placeholder="Search" type="search">
                             </form>
                         </div>
                     </div>
@@ -184,6 +185,7 @@
     <!-- JavaScript Libraries -->
     <script src="../lib/jquery/jquery.min.js"></script>
     <script src="../lib/jquery/jquery-migrate.min.js"></script>
+    <script src="../lib/jquery-ui/jquery-ui.min.js"></script>
     <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/easing/easing.min.js"></script>
     <script src="../lib/superfish/hoverIntent.js"></script>
@@ -200,6 +202,25 @@
 
     <!-- Template Main Javascript File -->
     <script src="../js/main.js"></script>
+    <script>
+
+        var tournamentNames = [
+            {{#tournamentNames}}"{{.}}",{{/tournamentNames}}
+        ];
+
+        var teamNames = [
+            {{#teamNames}}"{{.}}",{{/teamNames}}
+        ];
+
+        $( "#teamSearch" ).autocomplete({
+            source: teamNames
+        });
+
+        $( "#tournamentSearch" ).autocomplete({
+            source: tournamentNames
+        })
+
+    </script>
 
 </body>
 
