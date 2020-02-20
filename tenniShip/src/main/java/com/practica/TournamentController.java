@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.practica.model.Team;
 import com.practica.model.Tournament;
-import com.practica.security.User;
 import com.practica.security.UserComponent;
-import com.practica.security.UserRepository;
 import com.practica.model.Match;
 
 @Controller
