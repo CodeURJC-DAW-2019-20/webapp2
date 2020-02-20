@@ -69,7 +69,11 @@
                 <div class="form">
                     <!--<div id="sendmessage">Your message has been sent. Thank you!</div>\
                     <div id="errormessage"></div>-->
-                    
+                    {{#wrongData}}
+                    <div>
+                        <div class="alert" style="">Wrong data. Please, try again.</div>
+                    </div>
+                    {{/wrongData}}
                     <form action="/TenniShip/SignIn" method="post" role="form">
                         <div class="form-group">
                             <input class="form-control" data-msg="Enter username" data-rule="minlen:1" id="username"
@@ -93,7 +97,7 @@
             </div>
 
         </div>
-        
+
     </section><!-- #sign-in -->
 
 </main>

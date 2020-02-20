@@ -22,9 +22,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/TenniShip").permitAll();
         http.authorizeRequests().antMatchers("/TenniShip/SignIn").permitAll();
         http.authorizeRequests().antMatchers("/TenniShip/SignUp").permitAll();
-        http.authorizeRequests().antMatchers("/Team/**").permitAll();
-        http.authorizeRequests().antMatchers("/loginerror").permitAll();
+        http.authorizeRequests().antMatchers("/TenniShip/Team/**").permitAll();
+        http.authorizeRequests().antMatchers("/TenniShip/loginerror").permitAll();
         http.authorizeRequests().antMatchers("/logout").permitAll();
+        http.authorizeRequests().antMatchers("/error").permitAll();
         http.authorizeRequests().antMatchers("/contactform/**","/css/**",
         		"/js/**","/img/**","/lib/**").permitAll();
         
@@ -39,7 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.formLogin().usernameParameter("username");
         http.formLogin().passwordParameter("password");
         http.formLogin().defaultSuccessUrl("/TenniShip");
-        http.formLogin().failureUrl("/loginerror");
+        http.formLogin().failureUrl("/TenniShip/loginerror");
 
         // Logout
         http.logout().logoutUrl("/logout");
