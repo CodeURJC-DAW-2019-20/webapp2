@@ -1052,7 +1052,7 @@ div.img {
 
 /*Search Bar*/
 
-.active-green-3 input[type=text] {
+.active-green-3 input[type=search] {
     border: 1px solid rgba(24, 210, 110, .4);
     box-shadow: 0 .2rem 1rem rgba(24, 210, 110, .4) !important;
 }
