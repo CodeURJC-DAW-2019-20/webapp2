@@ -1,7 +1,6 @@
 package com.practica;
 
 import java.util.LinkedList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -31,18 +30,20 @@ public class DataBaseUsage implements CommandLineRunner{
 
 	private static LinkedList<Player> playerGenerator () {
         LinkedList<Player> list = new LinkedList<>();
-        list.add(new Player("Varo"));
-        list.add(new Player("Ivan"));
-        list.add(new Player("Santi"));
-        list.add(new Player("Marcos"));
-        list.add(new Player("Diego"));
+        list.add(new Player("Varo")); list.add(new Player("Ivan"));
+        list.add(new Player("Santi")); list.add(new Player("Marcos"));
+        list.add(new Player("Diego")); 
         return list;
     }
 	@Override
 	public void run(String... args) throws Exception {
-		
-	
-		//users
+
+
+		//
+		//
+		//---------------------USERS ZONE
+		//
+		//
 	
 		userRepository.save(new User("userSpain","Spain","tennishipdaw1@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userFrance","France","tennishipdaw10@gmail.com","pass", "ROLE_USER"));
 		userRepository.save(new User("userSerbiaB","SerbiaB","tennishipdaw2@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userItalyB","ItalyB","tennishipdaw11@gmail.com","pass", "ROLE_USER"));
@@ -53,7 +54,6 @@ public class DataBaseUsage implements CommandLineRunner{
 		userRepository.save(new User("userJapanB","JapanB","tennishipdaw7@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userRussiaB","RussiaB","tennishipdaw16@gmail.com","pass", "ROLE_USER"));
 		userRepository.save(new User("userGermanyB","GermanyB","tennishipdaw8@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userDenmarkB","DenmarkB","tennishipdaw17@gmail.com","pass", "ROLE_USER"));
 		userRepository.save(new User("userFinlandB","FinlandB","tennishipdaw9@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userSouthAfricaB","SouthAfricaB","tennishipdaw18@gmail.com","pass", "ROLE_USER"));
-
 		
 		//
 		//
@@ -80,7 +80,6 @@ public class DataBaseUsage implements CommandLineRunner{
         Team team17 = new Team("Finland"); team17.getPlayers().addAll(playerGenerator()); teamRepository.save(team17);
         Team team18 = new Team("SouthAfrica"); team18.getPlayers().addAll(playerGenerator()); teamRepository.save(team18);
 
-   
         
         //Team1B not created to have Team1 in two tournaments
         //Team2B not created to have Team2 in two tournaments
@@ -116,7 +115,7 @@ public class DataBaseUsage implements CommandLineRunner{
 		//
 		//
 
-		Match m1 = new Match(0, 3, "A"); m1.setTeam1(team1); m1.setTeam2(team3); m1.setTournament(tournament1); matchRepository.save(m1);
+		Match m1 = new Match(0, 0, "A"); m1.setTeam1(team1); m1.setTeam2(team3); m1.setTournament(tournament1); matchRepository.save(m1);
 		Match m2 = new Match(3, 2, "A"); m2.setTeam1(team3); m2.setTeam2(team2); m2.setTournament(tournament1); matchRepository.save(m2);
 		Match m3 = new Match(3, 1, "A"); m3.setTeam1(team2); m3.setTeam2(team1); m3.setTournament(tournament1); matchRepository.save(m3);
 		Match m4 = new Match(3, 0, "B"); m4.setTeam1(team4); m4.setTeam2(team5); m4.setTournament(tournament1); matchRepository.save(m4);

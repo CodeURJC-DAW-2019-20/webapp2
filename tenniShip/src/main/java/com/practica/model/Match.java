@@ -19,17 +19,8 @@ public class Match {
 	private int homePoints;
 	private int awayPoints;
 	private String type; 
-	/*
-		groupA : A
-		groupB : B
-		groupC : C
-		groupD : D
-		groupE : E
-		groupF : F
-		Round of 8: X --last 8 teams
-		Round of 4: Y --last 4 teams
-		Round of 2: Z --last 2 teams
-	*/
+	/*  groupA : A groupB : B groupC : C groupD : D groupE : E groupF : F
+		Round of 8: X --last 8 teams Round of 4: Y --last 4 teams Round of 2: Z --last 2 teams */
 	
 	@ManyToOne
 	private Team team1;
