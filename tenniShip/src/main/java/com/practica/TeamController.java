@@ -26,6 +26,9 @@ public class TeamController {
 	@Autowired
 	private TeamRepository teamRepository;
 	
+	@Autowired
+	private ImageService imgService;
+	
 	private static int i = 0; //Matches Played Iterator
 		
 	

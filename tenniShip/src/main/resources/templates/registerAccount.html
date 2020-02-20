@@ -61,7 +61,7 @@
 
                     <h3>User Data</h3>
                     
-                    <form action="/register" method="post" role="form" modelAttribute="personUser">
+                    <form action="/register" method="post" role="form" modelAttribute="personUser" enctype="multipart/form-data">
                         <div class="form-group">
                             <input class="form-control" data-msg="That´s not a valid name" data-rule="minlen:1"
                                    id="" name="userName" placeholder="User Name" type="text" {{#personUser.userName}} value={{personUser.userName}} {{/personUser.userName}}>
@@ -140,15 +140,12 @@
                             </div>
                         </div>
                         <div class="input-group mb-3">
-                            <div class="custom-file">
-                                <input class="custom-file-input" type="file">
-                                <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Team
-                                    Logo</label>
-                            </div>
-                            <div class="input-group-append">
-                                <button class="input-group-text" type="button">Upload
-                                </button>
-                            </div>
+                           <div class="custom-file">
+									<input class="custom-file-input" type="file" name="imageFile"
+										accept=".jpg" /> <label
+										aria-describedby="inputGroupFileAddon02"
+										class="custom-file-label">Team Logo</label>
+								</div>
                         </div>
                         <div class="mb-4">
                             <img alt="example placeholder avatar"
@@ -171,14 +168,11 @@
                         </div>
                         <div class="input-group mb-3 pt-3">
                             <div class="custom-file">
-                                <input class="custom-file-input" type="file">
-                                <label aria-describedby="inputGroupFileAddon02" class="custom-file-label"
-                                >Player´s photo</label>
-                            </div>
-                            <div class="input-group-append">
-                                <button class="input-group-text" type="button">Upload
-                                </button>
-                            </div>
+									<input class="custom-file-input" type="file" name="imageFile"
+										accept=".jpg"> <label
+										aria-describedby="inputGroupFileAddon02"
+										class="custom-file-label">Player´s photo</label>
+								</div>
                         </div>
                         <h5>Player 2</h5>
                         <div class="form-row">
@@ -193,14 +187,11 @@
                         </div>
                         <div class="input-group mb-3 pt-3">
                             <div class="custom-file">
-                                <input class="custom-file-input" type="file">
-                                <label aria-describedby="inputGroupFileAddon02" class="custom-file-label"
-                                >Player´s photo</label>
-                            </div>
-                            <div class="input-group-append">
-                                <button class="input-group-text" type="button">Upload
-                                </button>
-                            </div>
+									<input class="custom-file-input" type="file" name="imageFile"
+										accept=".jpg"> <label
+										aria-describedby="inputGroupFileAddon02"
+										class="custom-file-label">Player´s photo</label>
+								</div>
                         </div>
                         <h5>Player 3</h5>
                         <div class="form-row">
@@ -215,14 +206,11 @@
                         </div>
                         <div class="input-group mb-3 pt-3">
                             <div class="custom-file">
-                                <input class="custom-file-input" type="file">
-                                <label aria-describedby="inputGroupFileAddon02" class="custom-file-label"
-                                >Player´s photo</label>
-                            </div>
-                            <div class="input-group-append">
-                                <button class="input-group-text" type="button">Upload
-                                </button>
-                            </div>
+									<input class="custom-file-input" type="file" name="imageFile"
+										accept=".jpg"> <label
+										aria-describedby="inputGroupFileAddon02"
+										class="custom-file-label">Player´s photo</label>
+								</div>
                         </div>
                         <h5>Player 4</h5>
                         <div class="form-row">
@@ -237,14 +225,11 @@
                         </div>
                         <div class="input-group mb-3 pt-3">
                             <div class="custom-file">
-                                <input class="custom-file-input" type="file">
-                                <label aria-describedby="inputGroupFileAddon02" class="custom-file-label"
-                                >Player´s photo</label>
-                            </div>
-                            <div class="input-group-append">
-                                <button class="input-group-text" type="button">Upload
-                                </button>
-                            </div>
+									<input class="custom-file-input" type="file" name="imageFile"
+										accept=".jpg"> <label
+										aria-describedby="inputGroupFileAddon02"
+										class="custom-file-label">Player´s photo</label>
+								</div>
                         </div>
                         <h5>Player 5</h5>
                         <div class="form-row">
@@ -259,16 +244,16 @@
                         </div>
                         <div class="input-group mb-3 pt-3">
                             <div class="custom-file">
-                                <input class="custom-file-input" type="file">
-                                <label aria-describedby="inputGroupFileAddon02" class="custom-file-label"
-                                >Player´s photo</label>
-                            </div>
-                            <div class="input-group-append">
-                                <button class="input-group-text" type="button">Upload
-                                </button>
-                            </div>
+									<input class="custom-file-input" type="file" name="imageFile"
+										accept=".jpg"> <label
+										aria-describedby="inputGroupFileAddon02"
+										class="custom-file-label">Player´s photo</label>
+								</div>
                         </div>
-                        <div class="text-center pt-3 button"><button class="btn" type="submit">Sign Up</button></div>
+                        <div class="text-center pt-3 button">
+								<button class="input-group-test btn" type="submit">Sign
+									Up!</button>
+							</div>
                     </form>
                 </div>
             </div>
