@@ -92,12 +92,12 @@
             <div class="container">
 
                 {{#listMatches}}
-                <form action="/RegisterMatchSucceded/{{tournament.name}}" method="post">
+                <form action="/TenniShip/RegisterMatch/Tournament/{{tournament.name}}/Submission" method="post">
                     <div class="row">
                         <div class="col-lg-4 col-md-3">
                             <div class="card">
                                 <div class="view overlay">
-                                    <img alt="Card image cap" class="card-img-top" src="/../img/clients/teams/{{teamNameHome0}}.jpg">
+                                    <img alt="Card image cap" class="card-img-top" src="/../img/clients/teams/{{team1.name}}.jpg">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title TeamPositioningRegisterMatchIconLocal">
@@ -156,11 +156,22 @@
                         </div>
                     </div>
                     <div class="centerButton">
-                        <button class="btn SubmitButtonMatch" type="submit">Submit</button>
+                        <button class="btn SubmitButtonMatch" type="submit" {{#error}}data-target="#PointsError" data-toggle="modal"{{/error}}>Submit</button>
                     </div>
                 </form>
                 {{/listMatches}}
             </div>
+            
+	     <div aria-labelledby="exampleModalCenterTitle" class="modal fade" id="PointsError"
+	         role="dialog" tabindex="-1" data-backdrop="static">
+	        <div class="modal-dialog modal-dialog-centered" role="document">
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                    <h5 class="modal-title">Someone has to Win!</h5>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
         </section>
         <!-- #registerMatchSelectMatch -->
 

@@ -15,6 +15,16 @@ public interface TeamRepository extends JpaRepository<Team, String> {
 	@Query("SELECT distinct t FROM Match m JOIN m.tournament t WHERE m.team1 = :team OR m.team2 = :team")
 	public List<Tournament> getTournaments(Team team);
 	
+	@Query("SELECT COUNT (m.id) FROM Match m WHERE m.tournament = :t AND m.type = :g "
+			+ "AND ((m.team1 = :tm AND m.homePoints > m.awayPoints) OR (m.team2 = :tm AND m.homePoints < m.awayPoints))")
+	public int getWonGroupMatches(Tournament t, Team tm, String g);
+	
+	@Query("SELECT sum(m.homePoints) FROM Match m WHERE m.tournament = :t AND m.type = :g AND m.team1 = :tm ")
+	public int getWonGroupPointsPlayingHome(Tournament t, Team tm, String g);
+	
+	@Query("SELECT sum(m.awayPoints) FROM Match m WHERE m.tournament = :t AND m.type = :g AND m.team2 = :tm ")
+	public int getWonGroupPointsPlayingAway(Tournament t, Team tm, String g);
+	
 	@Query(value="SELECT COUNT(partido.id) FROM partido JOIN Team ON (partido.team1_name=Team.teamName OR partido.team2_name=Team.teamName) WHERE (((partido.team1_name=:n) AND (partido.home_points>partido.away_points)) OR ((partido.team2_name=:n) AND (partido.home_points<partido.away_points)))", nativeQuery = true )
 	public int getMatchesWon(@Param("n") String n);
 	
