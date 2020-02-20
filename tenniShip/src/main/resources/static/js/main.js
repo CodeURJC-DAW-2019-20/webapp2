@@ -23,6 +23,23 @@
     return false;
   });
 
+  // Adaptive footer for short pages
+
+  $(window).on('load', function () {
+    if($(window).height() >= ($('body').height() + 92)) {
+      $('footer').addClass('shortContent');
+    }
+  });
+
+  $(window).resize(function() {
+    if($(window).height() >= ($('body').height() + 92)) {
+      $('footer').addClass('shortContent');
+    }
+    else {
+      $('footer').removeClass('shortContent');
+    }
+  });
+
   // Initiate the wowjs animation library
   new WOW().init();
 
@@ -216,24 +233,20 @@
       $('#ConfirmDeleteTournament').modal('toggle');
   });
 
-})(jQuery);
+  // Search autocomplete
 
-// Adaptive footer for short pages
+  $(function() {
+    $("#Plant_Name").autocomplete({
+      source: "plantNamesAutocomplete",
+      minLength: 3,
+      select: function(event, ui) {
+        this.value = ui.item.label;
+        $("#Plant_ID").val(ui.item.value);
+        return false;
+      }
+    });
 
-var shortContent = function() {
-  if($(window).height() >= ($('body').height() + 92)) {
-    $('footer').addClass('shortContent');
-  }
-
-};
-
-(function(){
-
-  shortContent();
-
-  $(window).resize(function() {
-    shortContent();
   });
 
-}());
+})(jQuery);
 

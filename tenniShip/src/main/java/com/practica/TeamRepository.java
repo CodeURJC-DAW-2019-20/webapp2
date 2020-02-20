@@ -41,9 +41,12 @@ public interface TeamRepository extends JpaRepository<Team, String> {
 	@Query("SELECT DISTINCT m " +
 			"FROM Match m JOIN Team t " +
 			"ON (m.team1.teamName=t.teamName OR m.team2.teamName=t.teamName) " +
-			"WHERE ((m.team1 = :team) OR (m.team2 = :team) AND ( (m.homePoints > 0) OR (m.awayPoints > 0) ))")
+			"WHERE (((m.team1 = :team) OR (m.team2 = :team)) AND ( (m.homePoints > 0) OR (m.awayPoints > 0) ))")
 	public List<Match> getRecentMatches(Team team);
 	
 	@Query(value="SELECT Team.* FROM Team WHERE teamName = : n ",nativeQuery= true)
 	public Team getTeamToAdd(@Param("n") String n);
+
+	@Query(value="SELECT team.* FROM Team", nativeQuery=true)
+	public List<Team> getAllTeams();
 }
