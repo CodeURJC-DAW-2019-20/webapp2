@@ -2,10 +2,13 @@ package com.practica.security;
 
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +30,9 @@ public class UserController {
 	
 	@Autowired
 	private UserComponent userComponent;
+	
+	@Autowired
+    private JavaMailSender javaMailSender;
 	
 	@Autowired
 	private ImageService imgService;
@@ -121,6 +127,15 @@ public class UserController {
 			for(int i=1;i<6;i++) {
 				imgService.saveImage("players", teamNew.getName()+String.format("player%d",i), imageFile.get(i));
 			}
+
+			SimpleMailMessage msg = new SimpleMailMessage();
+	        msg.setFrom("tennishipSpring@gmail.com");
+	        msg.setSentDate(new Date());
+	        msg.setReplyTo("jumalon4@yahoo.es");
+	        msg.setSubject("Prueba desde UCon");
+	        msg.setText("lalal");
+
+	        javaMailSender.send(msg);
 			
 			Iterable<User> usuaruis = userRepository.findAll();
 			for(User x: usuaruis) {
