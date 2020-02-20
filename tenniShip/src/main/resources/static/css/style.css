@@ -670,6 +670,12 @@ div.img {
     color: #000 !important;
 }
 
+.alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+}
+
 /* actions Us Section
 --------------------------------*/
 

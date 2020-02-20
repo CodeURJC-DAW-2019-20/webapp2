@@ -2,8 +2,6 @@ package com.practica.security;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.practica.ImageService;
 import com.practica.TeamRepository;
-import com.practica.TournamentController;
 import com.practica.model.Player;
 import com.practica.model.Team;
 
@@ -120,20 +117,9 @@ public class UserController {
 			/*Saving images*/
 			teamNew.setImage(true);
 			teamRepository.save(teamNew);
-			imgService.saveImage("teams", teamNew.getName(), imageFile.get(0));
-			for(int i=1;i<6;i++) {
-				imgService.saveImage("players", teamNew.getName()+String.format("player%d",i), imageFile.get(i));
-			}
-			
-			Iterable<User> usuaruis = userRepository.findAll();
-			for(User x: usuaruis) {
-				System.out.println(x.toString());
-			}
-			Optional<Team> prueba = teamRepository.findById(teamNew.getName());
-			System.out.println(prueba.get().getName());
 			userComponent.setLoggedUser(userNew);
 			userComponent.setTeam(userNew);
-			return index(model);
+			return "index";
 		} else {
 			return "registerAccount";
 		}		
@@ -159,6 +145,16 @@ public class UserController {
 		}
 		return "login";
 	}
+
+	@GetMapping("/TenniShip/loginerror")
+    	public String sign_in_wrong (Model model) {
+
+    		if(userComponent.isLoggedUser()) {
+    			return index(model);
+    		}
+    		model.addAttribute("wrongData", true);
+    		return "login";
+    	} 
 	
 //	@GetMapping("/")
 //	private String redirect (Model model) {

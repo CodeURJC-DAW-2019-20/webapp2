@@ -41,7 +41,7 @@ public class DataBaseUsage implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		System.out.println("pepito");
+	
 		//users
 	
 		userRepository.save(new User("userSpain","Spain","tennishipdaw1@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userFrance","France","tennishipdaw10@gmail.com","pass", "ROLE_USER"));
@@ -54,7 +54,6 @@ public class DataBaseUsage implements CommandLineRunner{
 		userRepository.save(new User("userGermanyB","GermanyB","tennishipdaw8@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userDenmarkB","DenmarkB","tennishipdaw17@gmail.com","pass", "ROLE_USER"));
 		userRepository.save(new User("userFinlandB","FinlandB","tennishipdaw9@gmail.com","pass", "ROLE_USER")); userRepository.save(new User("userSouthAfricaB","SouthAfricaB","tennishipdaw18@gmail.com","pass", "ROLE_USER"));
 
-		System.out.println("pepito2");
 		
 		//
 		//
@@ -81,7 +80,7 @@ public class DataBaseUsage implements CommandLineRunner{
         Team team17 = new Team("Finland"); team17.getPlayers().addAll(playerGenerator()); teamRepository.save(team17);
         Team team18 = new Team("SouthAfrica"); team18.getPlayers().addAll(playerGenerator()); teamRepository.save(team18);
 
-        System.out.println("pepito3");
+   
         
         //Team1B not created to have Team1 in two tournaments
         //Team2B not created to have Team2 in two tournaments
