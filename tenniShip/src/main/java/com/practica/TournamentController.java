@@ -35,9 +35,6 @@ public class TournamentController {
 	private TeamRepository teamRepository;
 
 	@Autowired
-	private UserRepository userRepository;
-
-	@Autowired
 	private UserComponent userComponent;
 	
 

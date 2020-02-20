@@ -1,38 +1,38 @@
 package com.practica;
 
-import java.util.Date;
+import java.util.Properties;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.mail.SimpleMailMessage;
+import org.springframework.context.annotation.Bean;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 @SpringBootApplication
 public class Application {
 
 	public static void main(String[] args) {
+		
 		SpringApplication.run(Application.class, args);
-	}
+		
+	}	
 	
-//	@Autowired
-//    private static JavaMailSender javaMailSender;
-//	
-//	static void sendEmail() {
-//
-//        SimpleMailMessage msg = new SimpleMailMessage();
-//        msg.setTo("alvarora12@gmail.com", "aj.rivas.2017@alumnos.urjc.es", "d.pascual.2017@alumnos.urjc.es");
-//        msg.setBcc("alonsorial@gmail.com");
-//        msg.setCc("rivasalcobendas@yahoo.es");
-//        msg.setFrom("tennishipSpring@gmail.com");
-//        msg.setSentDate(new Date());
-//        msg.setReplyTo("jumalon4@yahoo.es");
-//        msg.setSubject("Testing from Spring Boot");
-//        msg.setText("Hello World \n Spring Boot Email");
-//
-//        javaMailSender.send(msg);
-//
-//    }
-//	
+	@Bean
+	public JavaMailSender getJavaMailSender() {
+	    JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+	    mailSender.setHost("smtp.gmail.com");
+	    mailSender.setPort(587);
+	     
+	    mailSender.setUsername("tennishipSpring@gmail.com");
+	    mailSender.setPassword("tenspring");
+	     
+	    Properties props = mailSender.getJavaMailProperties();
+	    props.put("mail.transport.protocol", "smtp");
+	    props.put("mail.smtp.auth", "true");
+	    props.put("mail.smtp.starttls.enable", "true");
+	    props.put("mail.debug", "true");
+	     
+	    return mailSender;
+	}
+
 }

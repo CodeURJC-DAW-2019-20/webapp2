@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.practica.ImageService;
+import com.practica.MailSenderXX;
 import com.practica.TeamRepository;
 import com.practica.model.Player;
 import com.practica.model.Team;
@@ -27,6 +29,9 @@ public class UserController {
 	
 	@Autowired
 	private ImageService imgService;
+	
+	@Autowired
+	private ApplicationContext appContext;
 	
 	@Autowired
 	private UserComponent userComponent;
@@ -114,9 +119,18 @@ public class UserController {
 			teamNew.getPlayers().add(player5);
 			teamRepository.save(teamNew);
 			
-			/*Saving images*/
+			//Saving Images
 			teamNew.setImage(true);
 			teamRepository.save(teamNew);
+			imgService.saveImage("teams", teamNew.getName(), imageFile.get(0));
+			for (int i = 1; i < 6; i++) {
+				imgService.saveImage("players", teamNew.getName() + String.format("player%d", i), imageFile.get(i));
+			}
+			
+			// Sending Confirmation Mail
+			MailSenderXX ms=(MailSenderXX) appContext.getBean("mailSenderXX");
+			ms.sendConfirmationEmail(user);
+			
 			userComponent.setLoggedUser(userNew);
 			userComponent.setTeam(userNew);
 			return "index";

@@ -1,25 +1,17 @@
 package com.practica;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.practica.model.Match;
 import com.practica.model.Player;
 import com.practica.model.Team;
-import com.practica.model.Tournament;
 
 
 @Controller
@@ -27,12 +19,6 @@ public class TeamController {
 	
 	@Autowired
 	private TeamRepository teamRepository;
-	
-	@Autowired
-	private MatchRepository matchRepository;	
-	
-	@Autowired
-	private ImageService imgService;
 	
 	private static int i = 0; //Matches Played Iterator
 		
