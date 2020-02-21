@@ -23,16 +23,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/TenniShip/SignIn").permitAll();
         http.authorizeRequests().antMatchers("/TenniShip/SignUp").permitAll();
         http.authorizeRequests().antMatchers("/TenniShip/Team/**").permitAll();
+        http.authorizeRequests().antMatchers("/TenniShip/Tournament/**").permitAll();
         http.authorizeRequests().antMatchers("/TenniShip/loginerror").permitAll();
         http.authorizeRequests().antMatchers("/logout").permitAll();
         http.authorizeRequests().antMatchers("/error").permitAll();
-        http.authorizeRequests().antMatchers("/contactform/**","/css/**",
-        		"/js/**","/img/**","/lib/**").permitAll();
+        http.authorizeRequests().antMatchers("/contactform/**","/css/**","/js/**","/img/**","/lib/**").permitAll();
         
 
         // Private pages (all other pages)
+        http.authorizeRequests().antMatchers("/TenniShip/ADMIN/**").hasAnyRole("ROLE_ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
-        //http.authorizeRequests().antMatchers("/home").hasAnyRole("USER");
+    
         //http.authorizeRequests().antMatchers("/admin").hasAnyRole("ADMIN");
 
         // Login form

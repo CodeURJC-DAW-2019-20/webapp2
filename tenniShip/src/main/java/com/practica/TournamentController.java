@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
 import com.practica.security.UserComponent;
+import com.practica.security.UserController;
 import com.practica.model.Match;
 
 @Controller
@@ -56,7 +57,7 @@ public class TournamentController {
 			TimeUnit.SECONDS.sleep(4);
 		}
 
-		return selectMatch(model, tournament);
+		return "redirect:/TenniShip/RegisterMatch/Tournament/"+ tournament;
 	} 
 	
 	public void raffleTeamsCreateMatches(Tournament tournament, List<Team> teams) {

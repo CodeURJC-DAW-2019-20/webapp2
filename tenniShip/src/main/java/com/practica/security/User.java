@@ -38,14 +38,20 @@ public class User {
 	public User () {
 	}
 	
-	public User(String name,String team,String email,String password, String... roles) {
+	public User(String name,String team,String email,String password, List<String> roles) {
 		this.userName = name;
 		this.team = team;
 		this.email = email;
 		this.passwordHash = new BCryptPasswordEncoder().encode(password);
-		this.roles = new ArrayList<>(Arrays.asList(roles));
+		this.roles = roles;
 	}
 	
+	public User(String name,String email,String password, List<String> roles) {
+		this.userName = name;
+		this.email = email;
+		this.passwordHash = new BCryptPasswordEncoder().encode(password);
+		this.roles = roles;
+	}
 
 	public String getUserName() {
 		return userName;
