@@ -130,7 +130,7 @@ public class UserController {
 			teamRepository.save(teamNew);
 			imgService.saveImage("teams", teamNew.getName(), imageFile.get(0));
 			for (int i = 1; i < 6; i++) {
-				imgService.saveImage("players", teamNew.getName() + String.format("player%d", i), imageFile.get(i));
+				imgService.saveImage("players", teamNew.getName() + String.format("Player%d", i), imageFile.get(i));
 			}
 			
 			// Sending Confirmation Mail
