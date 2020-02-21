@@ -62,7 +62,8 @@
                         </ul>
                     </li>
                     <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
-                    {{/registered}} {{^registered}}
+                    {{/registered}} 
+                    {{^registered}}
                     <li>
                         <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
                     </li>
@@ -96,25 +97,24 @@
                                 <img alt="" class="img-fluid" src="../img/trophy.png">
                                 <div class="icon"><i class="ion-trophy"></i></div>
                             </div>
-                            <h2 class="title"><a href="#">Tournament Search</a></h2>
-                            <form class="form-inline active-green-3">
-                                <input id="tournamentSearch" aria-label="Search" class="form-control form-control-plaintext m-5 w-75" placeholder="Search" type="search">
+                            <h2 class="title">Tournament Search</h2>
+                            <form class="form-inline active-green-3" action="/TenniShip/SearchTournament" method="post">
+                                <input id="tournamentSearch" aria-label="Search" class="form-control form-control-plaintext m-5 w-75" name="tournamentName" placeholder="Search" type="search">
                             </form>
                         </div>
                     </div>
-
-                    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="home-col">
-                            <div class="img">
-                                <img alt="" class="img-fluid" src="../img/team.png">
-                                <div class="icon"><i class="ion-ios-people"></i></div>
-                            </div>
-                            <h2 class="title"><a href="#">Team Search</a></h2>
-                            <form class="form-inline active-green-3 mx-auto">
-                                <input id="teamSearch" aria-label="Search" class="form-control form-control-plaintext m-5 w-75" placeholder="Search" type="search">
-                            </form>
-                        </div>
-                    </div>
+	                    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+	                        <div class="home-col">
+	                            <div class="img">
+	                                <img alt="" class="img-fluid" src="../img/team.png">
+	                                <div class="icon"><i class="ion-ios-people"></i></div>
+	                            </div>
+	                            <h2 class="title">Team Search</h2>
+	                            <form class="form-inline active-green-3 mx-auto" action="/TenniShip/SearchTeam" method="post">
+	                                <input id="teamSearch" aria-label="Search" class="form-control form-control-plaintext m-5 w-75" name="teamName" placeholder="Search" type="search">
+	                            </form>
+	                        </div>
+	                    </div>
                 </div>
             </div>
         </section>
