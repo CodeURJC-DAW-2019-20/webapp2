@@ -44,6 +44,18 @@
 
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
+                	{{#admin}}
+                	<li class="menu-has-children teamMenu"><a href="#"><strong>ADMIN</strong></a>
+                        <ul>
+                            <li>
+                                <form action="/logout" method="post">
+                                    <button class="btn" type="submit">Sign Out</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    {{/admin}}
+                    {{^admin}}
                     {{#registered}}
                     <li class="menu-has-children"><a href="#actions">Actions</a>
                         <ul>
@@ -73,6 +85,8 @@
                     {{/registered}}
                 </ul>
             </nav>
+            {{/admin}}
+           
             <!-- #nav-menu-container -->
         </div>
     </header>
@@ -131,20 +145,23 @@
                 </header>
 
                 <div class="row actions-cols">
-
+		
+		
+					
                     <div class="col-md-6 wow fadeInUp">
                         <div class="actions-col">
                             <div class="img">
                                 <img alt="" class="img-fluid" src="../img/registerMatch.jpg">
                                 <div class="icon"><i class="ion-ios-tennisball"></i></div>
                             </div>
-                            <h2 class="title"><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></h2>
+                            <h2 class="title">{{^admin}}<a href="/TenniShip/RegisterMatch/Tournament">{{/admin}}Register a Match</a></h2>
                             <p>
                                 This section´s purpose is the insertion of the results of the matchs from a league in which your team is involved, it also lets the administrator of the league the ability to change match results. Working as a double check for the assurance of the participants.
                             </p>
                         </div>
                     </div>
-
+					
+					
                     <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="actions-col">
                             <div class="img">

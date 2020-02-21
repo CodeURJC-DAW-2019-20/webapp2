@@ -3,8 +3,11 @@ package com.practica.security;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
 
 import com.practica.TournamentRepository;
 import com.practica.model.Tournament;
@@ -109,7 +112,8 @@ public class UserController {
 
 		canContinue = (userReady && emailReady && passReady && samePassword && teamReady && player1NotEmpty && player2NotEmpty && player3NotEmpty && player4NotEmpty && player5NotEmpty);
 		if(canContinue) {
-			User userNew = new User(user.getUserName(), user.getTeam(), user.getEmail(), user.getPasswordHash(), "ROLE_USER");
+			List<String> l = new LinkedList<>(); l.add("ROLE_USER");
+			User userNew = new User(user.getUserName(), user.getTeam(), user.getEmail(), user.getPasswordHash(), l);
 			userRepository.save(userNew);
 			
 			Team teamNew = new Team(user.getTeam());
@@ -141,14 +145,14 @@ public class UserController {
 	}
 	
 	@GetMapping("/TenniShip")
-	public String index (Model model) {
+	public String index (Model model, HttpServletRequest request) {
 
-		if(userComponent.isLoggedUser()) {
+		if(userComponent.isLoggedUser() && request.isUserInRole("ROLE_USER")) {
 			String teamUser = userComponent.getTeam();
 			model.addAttribute("team", teamUser);
 		}
-		model.addAttribute("registered",userComponent.isLoggedUser());
-
+		model.addAttribute("registered",userComponent.isLoggedUser() && request.isUserInRole("ROLE_USER") && !request.isUserInRole("ADMIN") );
+		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ROLE_ADMIN"));
 		List<Tournament> allTournaments = tournamentRepository.getAllTournaments();
 		List<Team> allTeams = teamRepository.getAllTeams();
 		List<String> tournamentNames = new ArrayList<>();
@@ -169,7 +173,7 @@ public class UserController {
 	public String sign_in (Model model) {
 		
 		if(userComponent.isLoggedUser()) {
-			return index(model);
+			return "redirect:/TenniShip";
 		}
 		return "login";
 	}
@@ -178,7 +182,7 @@ public class UserController {
     	public String sign_in_wrong (Model model) {
 
     		if(userComponent.isLoggedUser()) {
-    			return index(model);
+    			return "redirect:/TenniShip";
     		}
     		model.addAttribute("wrongData", true);
     		return "login";
