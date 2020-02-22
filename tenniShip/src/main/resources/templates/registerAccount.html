@@ -79,7 +79,9 @@
 								<div class="errorsText">
 									{{#userNameAlreadyExist}}
 									<p>Username already exist</p>
-									{{/userNameAlreadyExist}} {{#userNameEmpty}}
+									{{/userNameAlreadyExist}} 
+									
+									{{#userNameEmpty}}
 									<p>Introduce a username</p>
 									{{/userNameEmpty}}
 
@@ -93,12 +95,18 @@
 								<div class="errorsText">
 
 									{{#emailAlreadyExist}}
-									<p>Email already exist</p>
-									{{/emailAlreadyExist}} {{#emailEmpty}}
-									<p>Introduce a email</p>
-									{{/emailEmpty}} {{^emailEmpty}} {{#emailNotGood}}
-									<p>Write a valid email</p>
-									{{/emailNotGood}} {{/emailEmpty}}
+										<p>Email already exist</p>
+									{{/emailAlreadyExist}} 
+									
+									{{#emailEmpty}}
+										<p>Introduce a email</p>
+									{{/emailEmpty}} 
+									
+									{{^emailEmpty}}
+										 {{#emailNotGood}}
+											<p>Write a valid email</p>
+										{{/emailNotGood}} 
+									{{/emailEmpty}}
 								</div>
 							</div>
 							<div class="form-group">
@@ -108,10 +116,14 @@
 									{{#personUser.passwordHash}} value={{personUser.passwordHash}}{{/personUser.passwordHash}}>
 								<div class="errorsText">
 									{{#passwordEmpty}}
-									<p>Introduce a password</p>
-									{{/passwordEmpty}} {{^passwordEmpty}} {{#passwordNotGood}}
-									<p>Password needs 8 characters</p>
-									{{/passwordNotGood}} {{/passwordEmpty}}
+										<p>Introduce a password</p>
+									{{/passwordEmpty}} 
+									
+									{{^passwordEmpty}} 
+										{{#passwordNotGood}}
+											<p>Password needs 8 characters</p>
+										{{/passwordNotGood}}
+									{{/passwordEmpty}}
 								</div>
 							</div>
 							<div class="form-group">
@@ -256,8 +268,7 @@
 								</div>
 							</div>
 							<div class="text-center pt-3 button">
-								<button class="input-group-test btn" type="submit">Sign
-									Up!</button>
+								<button class="input-group-test btn" type="submit">Sign Up!</button>
 							</div>
 						</form>
 					</div>

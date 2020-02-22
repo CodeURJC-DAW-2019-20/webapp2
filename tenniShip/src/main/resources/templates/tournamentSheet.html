@@ -142,11 +142,14 @@ Header
                                             <div class="container groupStage">
                                                 <div class="row justify-content-between TournamentGroup">
                                                     <div class="justify-content-between">Group A</div>
+                                                    {{#adminGroups}}
                                                     <div class="icon justify-content-between">
-                                                        <a href="registerMatch.html">
+                                                        <a href="/TenniShip/ADMIN/Tournament/{{tournamentName}}/EditMatches/A">
                                                             <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>
                                                         </a>
+                                                        <input type="hidden" name="group" value="A">
                                                     </div>
+                                                    {{/adminGroups}}
                                                 </div>
                                                 <div class="row justify-content-between groupHeader">
                                                     <div class="col-6">Team Name</div>
@@ -174,11 +177,14 @@ Header
                                             <div class="container groupStage">
                                                 <div class="row justify-content-between TournamentGroup">
                                                     <div class="justify-content-between">Group B</div>
+                                                    {{#adminGroups}}
                                                     <div class="icon justify-content-between">
-                                                        <a href="registerMatch.html">
+                                                        <a href="/TenniShip/ADMIN/Tournament/{{tournamentName}}/EditMatches/B">
                                                             <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>
                                                         </a>
+                                                        <input type="hidden" name="group" value="B">
                                                     </div>
+                                                    {{/adminGroups}}
                                                 </div>
                                                 <div class="row justify-content-between groupHeader">
                                                     <div class="col-6">Team Name</div>
@@ -206,11 +212,14 @@ Header
                                             <div class="container groupStage">
                                                 <div class="row justify-content-between TournamentGroup">
                                                     <div class="justify-content-between">Group C</div>
+                                                    {{#adminGroups}}
                                                     <div class="icon justify-content-between">
-                                                        <a href="registerMatch.html">
+                                                        <a href="/TenniShip/ADMIN/Tournament/{{tournamentName}}/EditMatches/C">
                                                             <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>
                                                         </a>
+                                                        <input type="hidden" name="group" value="C">
                                                     </div>
+                                                    {{/adminGroups}}
                                                 </div>
                                                 <div class="row justify-content-between groupHeader">
                                                     <div class="col-6">Team Name</div>
@@ -238,11 +247,14 @@ Header
                                             <div class="container groupStage">
                                                 <div class="row justify-content-between TournamentGroup">
                                                     <div class="justify-content-between">Group D</div>
+                                                    {{#adminGroups}}
                                                     <div class="icon justify-content-between">
-                                                        <a href="registerMatch.html">
+                                                        <a href="/TenniShip/ADMIN/Tournament/{{tournamentName}}/EditMatches/D">
                                                             <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>
                                                         </a>
+                                                        <input type="hidden" name="group" value="D">
                                                     </div>
+                                                    {{/adminGroups}}
                                                 </div>
                                                 <div class="row justify-content-between groupHeader">
                                                     <div class="col-6">Team Name</div>
@@ -270,11 +282,14 @@ Header
                                             <div class="container groupStage">
                                                 <div class="row justify-content-between TournamentGroup">
                                                     <div class="justify-content-between">Group E</div>
+                                                   {{#adminGroups}}
                                                     <div class="icon justify-content-between">
-                                                        <a href="registerMatch.html">
+                                                        <a href="/TenniShip/ADMIN/Tournament/{{tournamentName}}/EditMatches/E">
                                                             <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>
                                                         </a>
+                                                        <input type="hidden" name="group" value="E">
                                                     </div>
+                                                    {{/adminGroups}}
                                                 </div>
                                                 <div class="row justify-content-between groupHeader">
                                                     <div class="col-6">Team Name</div>
@@ -302,11 +317,14 @@ Header
                                             <div class="container groupStage">
                                                 <div class="row justify-content-between TournamentGroup">
                                                     <div class="justify-content-between">Group F</div>
+                                                   {{#adminGroups}}
                                                     <div class="icon justify-content-between">
-                                                        <a href="registerMatch.html">
+                                                        <a href="/TenniShip/ADMIN/Tournament/{{tournamentName}}/EditMatches/F">
                                                             <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>
                                                         </a>
+                                                        <input type="hidden" name="group" value="F">
                                                     </div>
+                                                    {{/adminGroups}}
                                                 </div>
                                                 <div class="row justify-content-between groupHeader">
                                                     <div class="col-6">Team Name</div>
@@ -430,9 +448,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team0GroupA}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -444,9 +464,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team0GroupB}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -458,9 +480,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team0GroupC}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -472,9 +496,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team0GroupD}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -486,9 +512,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team0GroupE}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -500,9 +528,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team0GroupF}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -514,9 +544,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team1GroupA}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -528,9 +560,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team1GroupB}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -542,9 +576,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team1GroupC}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -556,9 +592,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team1GroupD}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -570,9 +608,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team1GroupE}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -584,9 +624,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team1GroupF}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -598,9 +640,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team2GroupA}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -612,9 +656,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team2GroupB}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -626,9 +672,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team2GroupC}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -640,9 +688,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team2GroupD}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -654,9 +704,11 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team2GroupE}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
@@ -668,19 +720,21 @@ Header
                                             <div class="member-info">
                                                 <div class="member-info-content">
                                                     <h4>{{team2GroupF}}</h4>
+                                                    {{#adminDeletingTeams}}
                                                     <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal"
                                                             type="button">Delete Team
                                                     </button>
+                                                    {{/adminDeletingTeams}}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="centerButton buttonTeamsManagement">
-                                    <button class="btn" data-target="#AddTeamModal" data-toggle="modal" type="button">
-                                        Add Team
-                                    </button>
-                                </div>
+<!--                                 <div class="centerButton buttonTeamsManagement"> -->
+<!--                                     <button class="btn" data-target="#AddTeamModal" data-toggle="modal" type="button"> -->
+<!--                                         Add Team -->
+<!--                                     </button> -->
+<!--                                 </div> -->
                             </div>
 
                         </div>
@@ -688,11 +742,13 @@ Header
                 </div>
             </div>
         </div>
+        {{#adminDeleting}}
         <div class="centerButton buttonTeamsManagement">
             <button class="btn" data-target="#DeleteTournamentModal" data-toggle="modal" type="button">Delete
                 Tournament
             </button>
         </div>
+        {{/adminDeleting}}
     </section>
 
     <div aria-hidden="false" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="DeleteTeamModal" role="dialog"
@@ -719,7 +775,7 @@ Header
     </div>
 
     <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="ConfirmDeleteTeam" role="dialog"
-         tabindex="-1">
+         tabindex="-1" data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -749,30 +805,14 @@ Header
                 <div class="modal-body">
                     <h6>Are you sure on deleting the tournament?</h6>
                 </div>
+                <form action="/TenniShip/ADMIN/Tournament/{{tournamentName}}/Deleted" method="post">
                 <div class="modal-footer">
                     <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button>
                     <button class="btn buttonown" data-target="" data-toggle="modal" id="buttonDeleteTournamentConfirm"
-                            type="button">Delete
+                            type="submit">Delete
                     </button>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="modal fade" id="ConfirmDeleteTournament"
-         role="dialog" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Tournament deleted successfully</h5>
-                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-footer buttons">
-                    <button class="btn buttonown" type="button"><a href="index.html">Home</a></button>
-                </div>
+                </form>
             </div>
         </div>
     </div>

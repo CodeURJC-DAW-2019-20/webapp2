@@ -3,12 +3,16 @@ package com.practica.security;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
 
 import com.practica.TournamentRepository;
 import com.practica.model.Tournament;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.practica.ImageService;
+import com.practica.MailSenderXX;
 import com.practica.TeamRepository;
 import com.practica.model.Player;
 import com.practica.model.Team;
@@ -30,6 +35,9 @@ public class UserController {
 	
 	@Autowired
 	private ImageService imgService;
+	
+	@Autowired
+	private ApplicationContext appContext;
 	
 	@Autowired
 	private UserComponent userComponent;
@@ -100,16 +108,12 @@ public class UserController {
 		model.addAttribute("player3NameEmpty", true);
 		model.addAttribute("player4NameEmpty", true);
 		model.addAttribute("player5NameEmpty", true);
-		System.out.println("el player1 es : "+player1.getName());
-		System.out.println("el player2 es : "+player2.getName());
-		System.out.println("el player3 es : "+player3.getName());
-		System.out.println("el player4 es : "+player4.getName());
-		System.out.println("el player5 es : "+player5.getName());
 		
 
 		canContinue = (userReady && emailReady && passReady && samePassword && teamReady && player1NotEmpty && player2NotEmpty && player3NotEmpty && player4NotEmpty && player5NotEmpty);
 		if(canContinue) {
-			User userNew = new User(user.getUserName(), user.getTeam(), user.getEmail(), user.getPasswordHash(), "ROLE_USER");
+			List<String> l = new LinkedList<>(); l.add("ROLE_USER");
+			User userNew = new User(user.getUserName(), user.getTeam(), user.getEmail(), user.getPasswordHash(), l);
 			userRepository.save(userNew);
 			
 			Team teamNew = new Team(user.getTeam());
@@ -120,9 +124,18 @@ public class UserController {
 			teamNew.getPlayers().add(player5);
 			teamRepository.save(teamNew);
 			
-			/*Saving images*/
+			//Saving Images
 			teamNew.setImage(true);
 			teamRepository.save(teamNew);
+			imgService.saveImage("teams", teamNew.getName(), imageFile.get(0));
+			for (int i = 1; i < 6; i++) {
+				imgService.saveImage("players", teamNew.getName() + String.format("Player%d", i), imageFile.get(i));
+			}
+			
+			// Sending Confirmation Mail
+			MailSenderXX ms=(MailSenderXX) appContext.getBean("mailSenderXX");
+			ms.sendConfirmationEmail(user);
+			
 			userComponent.setLoggedUser(userNew);
 			userComponent.setTeam(userNew);
 			return "index";
@@ -132,14 +145,14 @@ public class UserController {
 	}
 	
 	@GetMapping("/TenniShip")
-	public String index (Model model) {
+	public String index (Model model, HttpServletRequest request) {
 
-		if(userComponent.isLoggedUser()) {
+		if(userComponent.isLoggedUser() && request.isUserInRole("ROLE_USER")) {
 			String teamUser = userComponent.getTeam();
 			model.addAttribute("team", teamUser);
 		}
-		model.addAttribute("registered",userComponent.isLoggedUser());
-
+		model.addAttribute("registered",userComponent.isLoggedUser() && request.isUserInRole("ROLE_USER") && !request.isUserInRole("ADMIN") );
+		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ROLE_ADMIN"));
 		List<Tournament> allTournaments = tournamentRepository.getAllTournaments();
 		List<Team> allTeams = teamRepository.getAllTeams();
 		List<String> tournamentNames = new ArrayList<>();
@@ -160,7 +173,7 @@ public class UserController {
 	public String sign_in (Model model) {
 		
 		if(userComponent.isLoggedUser()) {
-			return index(model);
+			return "redirect:/TenniShip";
 		}
 		return "login";
 	}
@@ -169,7 +182,7 @@ public class UserController {
     	public String sign_in_wrong (Model model) {
 
     		if(userComponent.isLoggedUser()) {
-    			return index(model);
+    			return "redirect:/TenniShip";
     		}
     		model.addAttribute("wrongData", true);
     		return "login";

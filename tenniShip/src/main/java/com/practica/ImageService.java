@@ -20,13 +20,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class ImageService implements WebMvcConfigurer {
 
-	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "target/classes/static/img/clients");
+	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "src/main/resources/static/img/clients");
+	private static final Path TARGET_FOLDER = Paths.get(System.getProperty("user.dir"), "target/classes/static/img/clients");
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
 		registry.addResourceHandler("clients/**")
 				.addResourceLocations("file:" + FILES_FOLDER.toAbsolutePath().toString() + "/");
+		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+		registry.addResourceHandler("clients/**")
+		.addResourceLocations("file:" + TARGET_FOLDER.toAbsolutePath().toString() + "/");
 		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
 	}
 	
@@ -37,6 +41,7 @@ public class ImageService implements WebMvcConfigurer {
 	public void saveImage(String folderName, String id, MultipartFile image) throws IOException {
 
 		Path folder = FILES_FOLDER.resolve(folderName);
+		Path fTarget = TARGET_FOLDER.resolve(folderName);
 
 		if (!Files.exists(folder)) {
 			Files.createDirectories(folder);
@@ -44,6 +49,13 @@ public class ImageService implements WebMvcConfigurer {
 
 		Path newFile = createFilePath(id, folder);
 		image.transferTo(newFile);
+		
+		if (!Files.exists(fTarget)) {
+			Files.createDirectories(fTarget);
+		}
+
+		Path newFile2 = createFilePath(id, fTarget);
+		image.transferTo(newFile2);
 	}
 
 	public ResponseEntity<Object> createResponseFromImage(String folderName, String id) throws MalformedURLException {

@@ -9,25 +9,25 @@
     <meta content="" name="description">
 
     <!-- Favicons -->
-    <link href="../img/favicon.png" rel="icon">
-    <link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="/../img/favicon.png" rel="icon">
+    <link href="/../img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
           rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
-    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Libraries CSS Files -->
-    <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../lib/animate/animate.min.css" rel="stylesheet">
-    <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="/../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/../lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="/../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="/../css/style.css" rel="stylesheet">
 
     <!-- =======================================================
       Theme Name: BizPage
@@ -111,10 +111,9 @@ Header
                             <a aria-controls="v-pills-new" aria-selected="true" class="nav-link active" data-toggle="pill"
                                href="#v-pills-new" id="v-pills-new-tab" role="tab">New Tournament</a>
                             <a aria-controls="v-pills-teams" aria-selected="false" class="nav-link" data-toggle="pill"
-                               href="#v-pills-teams" id="v-pills-teams-tab" role="tab">Teams</a>
+                               href="#v-pills-teams" id="v-pills-teams-tab" role="tab" {{^next1}} style="pointer-events: none;cursor: default;color: transparent;" {{/next1}}>Teams</a>
                             <a aria-controls="v-pills-raffle" aria-selected="false" class="nav-link" data-toggle="pill"
-                               href="#v-pills-raffle" id="v-pills-raffle-tab" role="tab">Raffle Teams</a>
-                            <!--<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>-->
+                               href="#v-pills-raffle" id="v-pills-raffle-tab" role="tab" {{^next2}} style="pointer-events: none;cursor: default;color: transparent;" {{/next2}} >Raffle Teams</a>
                         </div>
                     </div>
                 </nav>
@@ -125,16 +124,25 @@ Header
                         <div aria-labelledby="v-pills-new-tab" class="TCreatorNew tab-pane fade show active" id="v-pills-new"
                              role="tabpanel">
                             <div class="form">
-                                <form action="" class="contactForm mt-3" method="post" role="form">
+                                <form action="/TenniShip/Creator/Tournament" class="mt-3" method="post" role="form" modelAttribute="newTournament">
                                     <div class="form-group">
                                         <p>Introduce the Tournament Name:</p>
                                         <div class="input-group flex-nowrap">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="addon-wrapping">></span>
                                             </div>
-                                            <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                   placeholder="Tournament Name" type="text">
+                                            <input aria-describedby="addon-wrapping" aria-label="" name="name" class="form-control"
+                                                   placeholder="Tournament Name" type="text" {{#tourFinal.name}} value="{{tourFinal.name}}"{{/tourFinal.name}}>
                                         </div>
+                                        <div class="errorsText">
+											{{#tourAlready}}
+												<p>Tournament already exist</p>
+											{{/tourAlready}} 	
+											
+											{{#tourEmpty}}
+												<p>Introduce a tournament</p>
+											{{/tourEmpty}} 		
+										</div>
                                     </div>
 
                                     <div class="input-group mb-3">
@@ -152,379 +160,526 @@ Header
                                              class="rounded-circle z-depth-1-half avatar-pic"
                                              src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg">
                                     </div>
+                                    <div class="text-right pt-3 button">
+										<button class="input-group-test btn" type="submit">Next</button>
+									</div>
                                 </form>
                             </div>
                         </div>
-
+				
                         <div aria-labelledby="v-pills-teams-tab" class="TCreatorTeams tab-pane fade" id="v-pills-teams"
                              role="tabpanel">
                             <div class="row">
-                                <div class="col-sm-3 col-12">
-                                    <div class="ChooseTeam p-3 mb-3 rounded">
-                                        <div aria-orientation="vertical" class="nav flex-resp nav-pills" id="v-pills-tab"
-                                             role="tablist">
-                                            <a aria-controls="v-pills-team1" aria-selected="true" class="nav-link active"
-                                               data-toggle="pill" href="#v-pills-team1" id="v-pills-team1-tab"
-                                               role="tab">Team 1</a>
-                                            <a aria-controls="v-pills-team2" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team2" id="v-pills-team2-tab"
-                                               role="tab">Team 2</a>
-                                            <a aria-controls="v-pills-team3" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team3" id="v-pills-team3-tab"
-                                               role="tab">Team 3</a>
-                                            <a aria-controls="v-pills-team4" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team4" id="v-pills-team4-tab"
-                                               role="tab">Team 4</a>
-                                            <a aria-controls="v-pills-team5" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team5" id="v-pills-team5-tab"
-                                               role="tab">Team 5</a>
-                                            <a aria-controls="v-pills-team6" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team6" id="v-pills-team6-tab"
-                                               role="tab">Team 6</a>
-                                            <a aria-controls="v-pills-team7" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team7" id="v-pills-team7-tab"
-                                               role="tab">Team 7</a>
-                                            <a aria-controls="v-pills-team8" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team8" id="v-pills-team8-tab"
-                                               role="tab">Team 8</a>
-                                            <a aria-controls="v-pills-team9" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team9" id="v-pills-team9-tab"
-                                               role="tab">Team 9</a>
-                                            <a aria-controls="v-pills-team10" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team10" id="v-pills-team10-tab"
-                                               role="tab">Team 10</a>
-                                            <a aria-controls="v-pills-team11" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team11" id="v-pills-team11-tab"
-                                               role="tab">Team 11</a>
-                                            <a aria-controls="v-pills-team12" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team12" id="v-pills-team12-tab"
-                                               role="tab">Team 12</a>
-                                            <a aria-controls="v-pills-team13" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team13" id="v-pills-team13-tab"
-                                               role="tab">Team 13</a>
-                                            <a aria-controls="v-pills-team14" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team14" id="v-pills-team14-tab"
-                                               role="tab">Team 14</a>
-                                            <a aria-controls="v-pills-team15" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team15" id="v-pills-team15-tab"
-                                               role="tab">Team 15</a>
-                                            <a aria-controls="v-pills-team16" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team16" id="v-pills-team16-tab"
-                                               role="tab">Team 16</a>
-                                            <a aria-controls="v-pills-team17" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team17" id="v-pills-team17-tab"
-                                               role="tab">Team 17</a>
-                                            <a aria-controls="v-pills-team18" aria-selected="false" class="nav-link"
-                                               data-toggle="pill" href="#v-pills-team18" id="v-pills-team18-tab"
-                                               role="tab">Team 18</a>
-                                        </div>
-                                    </div>
-
-                                </div>
                                 <div class="col-9">
                                     <div class="tab-content" id="v-pills-tabContent">
 
+									<form action="/TenniShip/Creator/Teams" method="post" role="form">
                                         <div aria-labelledby="v-pills-team1-tab" class="tab-pane fade show active" id="v-pills-team1"
                                              role="tabpanel">
+                                             
                                             <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 1:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
+	                                             <p>Enter the name of Team 1:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team1" {{#teamFinal0}} value="{{teamFinal0}}"{{/teamFinal0}}>
+	                                             </div>
+	                                             <div class="errorsText">
+	                                            {{^teamEmpty0}}
+													{{#teamNo0}}
+														<p>Team doesn't exist</p>
+													{{/teamNo0}} 	
+												{{/teamEmpty0}}
+												
+												{{#teamEmpty0}}
+													<p>Introduce a team</p>
+												{{/teamEmpty0}} 	
+												
+												{{#teamInList0}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList0}}
+												</div>
+											</div>	
+											
+											<div class="form">
+	                                             <p>Enter the name of Team 2:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team2" {{#teamFinal1}} value="{{teamFinal1}}"{{/teamFinal1}}>
+	                                             </div>
+ 												<div class="errorsText">
+	                                            {{^teamEmpty1}}
+													{{#teamNo1}}
+														<p>Team doesn't exist</p>
+													{{/teamNo1}} 	
+												{{/teamEmpty1}}
+												
+												{{#teamEmpty1}}
+													<p>Introduce a team</p>
+												{{/teamEmpty1}} 	
+												
+												{{#teamInList1}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList1}}
+												</div>
                                             </div>
-                                        </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 3:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team3" {{#teamFinal2}} value="{{teamFinal2}}"{{/teamFinal2}}>
+	                                             </div>
+												<div class="errorsText">
+	                                            {{^teamEmpty2}}
+													{{#teamNo2}}
+														<p>Team doesn't exist</p>
+													{{/teamNo2}} 	
+												{{/teamEmpty2}}
+												
+												{{#teamEmpty2}}
+													<p>Introduce a team</p>
+												{{/teamEmpty2}} 	
+												
+												{{#teamInList2}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList2}}
+												</div>
+                                            </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 4:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team4" {{#teamFinal3}} value="{{teamFinal3}}"{{/teamFinal3}}>
+	                                             </div>
+												<div class="errorsText">
+	                                            {{^teamEmpty3}}
+													{{#teamNo3}}
+														<p>Team doesn't exist</p>
+													{{/teamNo3}} 	
+												{{/teamEmpty3}}
+												
+												{{#teamEmpty3}}
+													<p>Introduce a team</p>
+												{{/teamEmpty3}} 	
+												
+												{{#teamInList3}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList3}}
+												</div>
+                                            </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 5:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team5" {{#teamFinal4}} value="{{teamFinal4}}"{{/teamFinal4}}>
+	                                             </div>
+												<div class="errorsText">
+	                                            {{^teamEmpty4}}
+													{{#teamNo4}}
+														<p>Team doesn't exist</p>
+													{{/teamNo4}} 	
+												{{/teamEmpty4}}
+												
+												{{#teamEmpty4}}
+													<p>Introduce a team</p>
+												{{/teamEmpty4}} 	
+												
+												{{#teamInList4}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList4}}
+												</div>
+                                            </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 6:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team6" {{#teamFinal5}} value="{{teamFinal5}}"{{/teamFinal5}}>
+	                                             </div>
+												<div class="errorsText">
+	                                            {{^teamEmpty5}}
+													{{#teamNo5}}
+														<p>Team doesn't exist</p>
+													{{/teamNo5}} 	
+												{{/teamEmpty5}}
+												
+												{{#teamEmpty5}}
+													<p>Introduce a team</p>
+												{{/teamEmpty5}} 	
+												
+												{{#teamInList5}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList5}}
+												</div>	
+                                            </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 7:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team7"  {{#teamFinal6}} value="{{teamFinal6}}"{{/teamFinal6}}>
+	                                             </div>
+												<div class="errorsText">
+	                                            {{^teamEmpty6}}
+													{{#teamNo6}}
+														<p>Team doesn't exist</p>
+													{{/teamNo6}} 	
+												{{/teamEmpty6}}
+												
+												{{#teamEmpty6}}
+													<p>Introduce a team</p>
+												{{/teamEmpty6}} 	
+												
+												{{#teamInList6}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList6}}
+												</div>
+                                            </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 8:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team8" {{#teamFinal7}} value="{{teamFinal7}}"{{/teamFinal7}}>
+	                                             </div>
+												<div class="errorsText">
+	                                            {{^teamEmpty7}}
+													{{#teamNo7}}
+														<p>Team doesn't exist</p>
+													{{/teamNo7}} 	
+												{{/teamEmpty7}}
+												
+												{{#teamEmpty7}}
+													<p>Introduce a team</p>
+												{{/teamEmpty7}} 	
+												
+												{{#teamInList7}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList7}}
+												</div>
+                                            </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 9:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team9"  {{#teamFinal8}} value="{{teamFinal8}}"{{/teamFinal8}}>
+	                                             </div>
+												<div class="errorsText">
+	                                            {{^teamEmpty8}}
+													{{#teamNo8}}
+														<p>Team doesn't exist</p>
+													{{/teamNo8}} 	
+												{{/teamEmpty8}}
+												
+												{{#teamEmpty8}}
+													<p>Introduce a team</p>
+												{{/teamEmpty8}} 	
+												
+												{{#teamInList8}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList8}}
+												</div>
 
-                                        <div aria-labelledby="v-pills-team2-tab" class="tab-pane fade" id="v-pills-team2"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 2:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
                                             </div>
-                                        </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 10:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team10" {{#teamFinal9}} value="{{teamFinal9}}"{{/teamFinal9}}>
+	                                             </div>
+												<div class="errorsText">
+	                                            {{^teamEmpty9}}
+													{{#teamNo9}}
+														<p>Team doesn't exist</p>
+													{{/teamNo9}} 	
+												{{/teamEmpty9}}
+												
+												{{#teamEmpty9}}
+													<p>Introduce a team</p>
+												{{/teamEmpty9}} 	
+												
+												{{#teamInList9}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList9}}
+												</div>
 
-                                        <div aria-labelledby="v-pills-team3-tab" class="tab-pane fade" id="v-pills-team3"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 3:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
                                             </div>
-                                        </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 11:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team11" {{#teamFinal10}} value="{{teamFinal10}}"{{/teamFinal10}}>
+	                                             </div>
+												<div class="errorsText">
+	                                            {{^teamEmpty10}}
+													{{#teamNo10}}
+														<p>Team doesn't exist</p>
+													{{/teamNo10}} 	
+												{{/teamEmpty10}}
+												
+												{{#teamEmpty10}}
+													<p>Introduce a team</p>
+												{{/teamEmpty10}} 	
+												
+												{{#teamInList10}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList10}}
+												</div>
 
-                                        <div aria-labelledby="v-pills-team4-tab" class="tab-pane fade" id="v-pills-team4"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 4:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
                                             </div>
-                                        </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 12:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team12" {{#teamFinal11}} value="{{teamFinal11}}"{{/teamFinal11}}>
+	                                             </div>
+												<div class="errorsText">
+	                                            {{^teamEmpty11}}
+													{{#teamNo11}}
+														<p>Team doesn't exist</p>
+													{{/teamNo11}} 	
+												{{/teamEmpty11}}
+												
+												{{#teamEmpty11}}
+													<p>Introduce a team</p>
+												{{/teamEmpty11}} 	
+												
+												{{#teamInList11}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList11}}
+												</div>
 
-                                        <div aria-labelledby="v-pills-team5-tab" class="tab-pane fade" id="v-pills-team5"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 5:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
                                             </div>
-                                        </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 13:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team13" {{#teamFinal12}} value="{{teamFinal12}}"{{/teamFinal12}}>
+	                                             </div>
 
-                                        <div aria-labelledby="v-pills-team6-tab" class="tab-pane fade" id="v-pills-team6"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 6:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
+												<div class="errorsText">
+	                                            {{^teamEmpty12}}
+													{{#teamNo12}}
+														<p>Team doesn't exist</p>
+													{{/teamNo12}} 	
+												{{/teamEmpty12}}
+												
+												{{#teamEmpty12}}
+													<p>Introduce a team</p>
+												{{/teamEmpty12}} 	
+												
+												{{#teamInList12}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList12}}
+												</div>
                                             </div>
-                                        </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 14:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team14" {{#teamFinal13}} value="{{teamFinal13}}"{{/teamFinal13}}>
+	                                             </div>
+												<div class="errorsText">
+	                                            {{^teamEmpty13}}
+													{{#teamNo13}}
+														<p>Team doesn't exist</p>
+													{{/teamNo13}} 	
+												{{/teamEmpty13}}
+												
+												{{#teamEmpty13}}
+													<p>Introduce a team</p>
+												{{/teamEmpty13}} 	
+												
+												{{#teamInList13}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList13}}
+												</div>
 
-                                        <div aria-labelledby="v-pills-team7-tab" class="tab-pane fade" id="v-pills-team7"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 7:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
                                             </div>
-                                        </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 15:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team15"  {{#teamFinal14}} value="{{teamFinal14}}"{{/teamFinal14}}>
+	                                             </div>
 
-                                        <div aria-labelledby="v-pills-team8-tab" class="tab-pane fade" id="v-pills-team8"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 8:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
+												<div class="errorsText">
+	                                            {{^teamEmpty14}}
+													{{#teamNo14}}
+														<p>Team doesn't exist</p>
+													{{/teamNo14}} 	
+												{{/teamEmpty14}}
+												
+												{{#teamEmpty14}}
+													<p>Introduce a team</p>
+												{{/teamEmpty14}} 	
+												
+												{{#teamInList14}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList14}}
+												</div>
                                             </div>
-                                        </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 16:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team16"  {{#teamFinal15}} value="{{teamFinal15}}"{{/teamFinal15}}>
+	                                             </div>
+	                                            <div class="errorsText">
+	                                            {{^teamEmpty15}}
+													{{#teamNo15}}
+														<p>Team doesn't exist</p>
+													{{/teamNo15}} 	
+												{{/teamEmpty15}}
+												
+												{{#teamEmpty15}}
+													<p>Introduce a team</p>
+												{{/teamEmpty15}} 	
+												
+												{{#teamInList15}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList15}}
+												</div>
 
-                                        <div aria-labelledby="v-pills-team9-tab" class="tab-pane fade" id="v-pills-team9"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 9:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
                                             </div>
-                                        </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 17:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team17" {{#teamFinal16}} value="{{teamFinal16}}"{{/teamFinal16}}>
+	                                             </div>
+	                                            <div class="errorsText">
+	                                            {{^teamEmpty16}}
+													{{#teamNo16}}
+														<p>Team doesn't exist</p>
+													{{/teamNo16}} 	
+												{{/teamEmpty16}}
+												
+												{{#teamEmpty16}}
+													<p>Introduce a team</p>
+												{{/teamEmpty16}} 	
+												
+												{{#teamInList16}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList16}}
+												</div>
 
-                                        <div aria-labelledby="v-pills-team10-tab" class="tab-pane fade" id="v-pills-team10"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 10:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
                                             </div>
-                                        </div>
+                                            
+                                            <div class="form">
+	                                             <p>Enter the name of Team 18:</p>
+	                                             <div class="input-group flex-nowrap">
+	                                                 <div class="input-group-prepend">
+	                                                     <span class="input-group-text" id="addon-wrapping">></span>
+	                                                 </div>
+	                                                 <input aria-describedby="addon-wrapping" aria-label="" class="form-control"
+	                                                        placeholder="Team Name" type="text" name="team18"  {{#teamFinal17}} value="{{teamFinal17}}"{{/teamFinal17}}>
+	                                             </div>
+	                                            <div class="errorsText">
+	                                            {{^teamEmpty17}}
+													{{#teamNo17}}
+														<p>Team doesn't exist</p>
+													{{/teamNo17}} 	
+												{{/teamEmpty17}}
+												
+												{{#teamEmpty17}}
+													<p>Introduce a team</p>
+												{{/teamEmpty17}} 	
+												
+												{{#teamInList17}}	
+													<p>The team has already been introducided</p>
+												{{/teamInList17}}
+												</div>
 
-                                        <div aria-labelledby="v-pills-team11-tab" class="tab-pane fade" id="v-pills-team11"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 11:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
                                             </div>
-                                        </div>
-
-                                        <div aria-labelledby="v-pills-team12-tab" class="tab-pane fade" id="v-pills-team12"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 12:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div aria-labelledby="v-pills-team13-tab" class="tab-pane fade" id="v-pills-team13"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 13:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div aria-labelledby="v-pills-team14-tab" class="tab-pane fade" id="v-pills-team14"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 14:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div aria-labelledby="v-pills-team15-tab" class="tab-pane fade" id="v-pills-team15"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 15:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div aria-labelledby="v-pills-team16-tab" class="tab-pane fade" id="v-pills-team16"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 16:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div aria-labelledby="v-pills-team17-tab" class="tab-pane fade" id="v-pills-team17"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 17:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div aria-labelledby="v-pills-team18-tab" class="tab-pane fade" id="v-pills-team18"
-                                             role="tabpanel">
-                                            <div class="form">
-                                                <form action="" class="contactForm" method="post" role="form">
-                                                    <p>Enter the name of Team 18:</p>
-                                                    <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">></span>
-                                                        </div>
-                                                        <input aria-describedby="addon-wrapping" aria-label="Username" class="form-control"
-                                                               placeholder="Team Name" type="text">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
+                                            
+                                            
+                                           	<div class="text-center pt-3 button">
+												<button class="input-group-test btn" type="submit">Next</button>
+											</div>
+                                               
+                                  		</div>
+									</form>
+                                                                            
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+						
                         <div aria-labelledby="v-pills-raffle-tab" class="TCreatorRaffle tab-pane fade" id="v-pills-raffle"
                              role="tabpanel">
                             <div>
                                 <div class="TCreatorTitles">
                                     <h3>Tournament Name:</h3>
-                                    <p>{{tournament}}</p>
-                                    <a aria-controls="v-pills-settings" aria-selected="false" class="btn nav-link"
-                                       data-toggle="pill" href="#v-pills-created" id="v-pills-settings-tab"
-                                       role="tab">Raffle</a>
+                                    <p>{{tourFinal.name}}</p>
+                                    <form action="/TenniShip/Creator/Raffle" method="post">
+                                    <div class="text-right pt-3 button">
+										<button class="input-group-test btn" type="submit">Raffle</button>
+									</div>
+                                    	
+                                    </form>
                                     <h3 class="listTeams">Teams</h3>
                                 </div>
                             </div>
@@ -532,222 +687,22 @@ Header
                             <div class="TeamMate scrollspy-example" data-spy="scroll">
 
                                 <div class="row">
-
+									{{#listTeam}}
                                     <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
                                         <div class="member">
                                             <img alt="" class="img-fluid" src="../img/team-1.jpg">
                                             <div class="member-info">
                                                 <div class="member-info-content">
-                                                    <h4>{{team0}}</h4>
+                                                    <h4>{{.}}</h4>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-2.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team1}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-3.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team2}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-4.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team3}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-1.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team4}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-2.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team5}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-1.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team6}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-2.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team7}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-3.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team8}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-4.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team9}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-1.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team10}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-2.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team11}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-1.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team12}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-2.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team13}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-3.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team14}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-4.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team15}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-1.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team16}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                        <div class="member">
-                                            <img alt="" class="img-fluid" src="../img/team-2.jpg">
-                                            <div class="member-info">
-                                                <div class="member-info-content">
-                                                    <h4>{{team17}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+									{{/listTeam}}
                                 </div>
                             </div>
                         </div>
 
-                        <div aria-labelledby="v-pills-created-tab" class="tab-pane fade" id="v-pills-created"
-                             role="tabpanel">
-                            <div class="created">
-                                <div>
-                                    <h3>the tournament has been created</h3>
-                                    <p>Congratulations, the tournament has been created successfully. You can start
-                                        playing whenever you want.</p>
-                                    <div class="buttons">
-                                        <a class="btn" href="/Tournament/{{tournament}}">Go to the Tournament</a>
-                                        <a class="btn" href="/TenniShip/{{team}}">Home</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -775,24 +730,24 @@ Footer
 <div id="preloader"></div>
 
 <!-- JavaScript Libraries -->
-<script src="../lib/jquery/jquery.min.js"></script>
-<script src="../lib/jquery/jquery-migrate.min.js"></script>
-<script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../lib/easing/easing.min.js"></script>
-<script src="../lib/superfish/hoverIntent.js"></script>
-<script src="../lib/superfish/superfish.min.js"></script>
-<script src="../lib/wow/wow.min.js"></script>
-<script src="../lib/waypoints/waypoints.min.js"></script>
-<script src="../lib/counterup/counterup.min.js"></script>
-<script src="../lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="../lib/isotope/isotope.pkgd.min.js"></script>
-<script src="../lib/lightbox/js/lightbox.min.js"></script>
-<script src="../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+<script src="/../lib/jquery/jquery.min.js"></script>
+<script src="/../lib/jquery/jquery-migrate.min.js"></script>
+<script src="/../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/../lib/easing/easing.min.js"></script>
+<script src="/../lib/superfish/hoverIntent.js"></script>
+<script src="/../lib/superfish/superfish.min.js"></script>
+<script src="/../lib/wow/wow.min.js"></script>
+<script src="/../lib/waypoints/waypoints.min.js"></script>
+<script src="/../lib/counterup/counterup.min.js"></script>
+<script src="/../lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="/../lib/isotope/isotope.pkgd.min.js"></script>
+<script src="/../lib/lightbox/js/lightbox.min.js"></script>
+<script src="/../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
 <!-- Contact Form JavaScript File -->
 <script src="../contactform/contactform.js"></script>
 
 <!-- Template Main Javascript File -->
-<script src="../js/main.js"></script>
+<script src="/../js/main.js"></script>
 
 </body>
 

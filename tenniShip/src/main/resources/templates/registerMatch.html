@@ -92,17 +92,22 @@
             <div class="container">
 
                 {{#listMatches}}
-                <form action="/TenniShip/RegisterMatch/Tournament/{{tournament.name}}/Submission" method="post">
+                {{^admin}}
+                	<form action="/TenniShip/RegisterMatch/Tournament/{{tournament.name}}/Submission" method="post">
+                {{/admin}}
+                {{#admin}}
+                	<form action="/TenniShip/ADMIN/Tournament/{{tournament.name}}/EditMatches/{{type}}/Submission" method="post">
+                {{/admin}}
                     <div class="row">
                         <div class="col-lg-4 col-md-3">
                             <div class="card">
                                 <div class="view overlay">
-                                    <img alt="Card image cap" class="card-img-top" src="/../img/clients/teams/{{team1.name}}.jpg">
+                                    <img alt="Card image cap" class="card-img-top" src="/../img/clients/teams/{{team1.teamName}}.jpg">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title TeamPositioningRegisterMatchIconLocal">
-                                        <a class="colorLinkTeam" href="/Team/{{team1.name}}">{{team1.name}}</a>
-                                        <input type="hidden" name="teamHome" value="{{team1.name}}">
+                                        <a class="colorLinkTeam" href="/Team/{{team1.teamName}}">{{team1.name}}</a>
+                                        <input type="hidden" name="teamHome" value="{{team1.teamName}}">
                                     </h4>
                                     <p class="card-text TeamPositioningRegisterMatchIconLocal">Local´s Team</p>
                                 </div>
@@ -147,7 +152,7 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title TeamPositioningRegisterMatchIconVisitor">
-                                        <a class="colorLinkTeam" href="/Team/{{team2.name}}">{{team2.name}}</a>
+                                        <a class="colorLinkTeam" href="/Team/{{team2.teamName}}">{{team2.teamName}}</a>
                                         <input type="hidden" name="teamAway" value="{{team2.name}}">
                                     </h4>
                                     <p class="card-text TeamPositioningRegisterMatchIconVisitor">Visitor´s Team</p>

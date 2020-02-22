@@ -17,9 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.practica.model.Team;
 import com.practica.model.Tournament;
-import com.practica.security.User;
 import com.practica.security.UserComponent;
-import com.practica.security.UserRepository;
+import com.practica.security.UserController;
 import com.practica.model.Match;
 
 @Controller
@@ -33,9 +32,6 @@ public class TournamentController {
 
 	@Autowired
 	private TeamRepository teamRepository;
-
-	@Autowired
-	private UserRepository userRepository;
 
 	@Autowired
 	private UserComponent userComponent;
@@ -61,7 +57,7 @@ public class TournamentController {
 			TimeUnit.SECONDS.sleep(4);
 		}
 
-		return selectMatch(model, tournament);
+		return "redirect:/TenniShip/RegisterMatch/Tournament/"+ tournament;
 	} 
 	
 	public void raffleTeamsCreateMatches(Tournament tournament, List<Team> teams) {
@@ -130,26 +126,6 @@ public class TournamentController {
 		return "selectTournament";
 	}
 
-	@GetMapping("/{team}/Creator")
-	public String create (Model model, @PathVariable String team) {
-
-		Optional <Team> t = teamRepository.findById(team);
-
-		if(t.isPresent()) {
-			String tournamentName;
-			tournamentName = "CopaDavis"; //cambiar futuro
-			List<Team> teamsProvisional = new ArrayList<>();
-			teamsProvisional.addAll(teamRepository.findAll()); //futura query
-
-
-			model.addAttribute("tournament", tournamentName);
-
-			for(int i=0; i< Math.min(18, teamsProvisional.size())/*teamList.size() Poner esto*/;i++) {
-	    		model.addAttribute(String.format("team%d", i),teamsProvisional.get(i).getName());
-	    	}
-		}
-
-		return "tournamentCreator";
-	}
+	
 
 }
