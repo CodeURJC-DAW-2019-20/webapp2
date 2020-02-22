@@ -2,10 +2,7 @@ package com.practica;
 
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
 import com.practica.security.UserComponent;
-import com.practica.security.UserController;
 import com.practica.model.Match;
 
 @Controller
