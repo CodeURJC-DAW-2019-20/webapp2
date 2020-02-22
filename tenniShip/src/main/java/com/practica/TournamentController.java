@@ -48,12 +48,14 @@ public class TournamentController {
 			matchRepository.getOne(match.getId()).setAwayPoints(quantityAway);
 			
 			matchRepository.save(match); 
+			
+			return "redirect:/TenniShip/RegisterMatch/Tournament/"+ tournament;
+			
 		} else {
 			model.addAttribute("error", true);
 			TimeUnit.SECONDS.sleep(4);
-		}
-
-		return "redirect:/TenniShip/RegisterMatch/Tournament/"+ tournament;
+			return selectMatch(model, tournament);
+		}		
 	} 
 	
 	@GetMapping("/TenniShip/RegisterMatch/Tournament/{tournament}")

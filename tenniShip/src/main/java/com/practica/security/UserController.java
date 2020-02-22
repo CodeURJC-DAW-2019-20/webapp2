@@ -190,11 +190,6 @@ public class UserController {
     		return "login";
     	} 
 	
-//	@GetMapping("/")
-//	private String redirect (Model model) {
-//		return index(model);
-//	}
-	
 	@GetMapping("/TenniShip/SignUp")
 	public String sign_up (Model model) {
 

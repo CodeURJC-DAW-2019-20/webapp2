@@ -63,10 +63,8 @@ public class TournamentSheetController {
 			model.addAttribute("error", true);
 			TimeUnit.SECONDS.sleep(4);
 			
-			return "redirect:/TenniShip/Tournament/" + tournament + "/EditMatches/" + group;
-		}
-
-		
+			return editMatches(model, tournament, group);
+		}		
 	} 
 	
 	@GetMapping("/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}")
