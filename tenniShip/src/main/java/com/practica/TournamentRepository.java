@@ -37,4 +37,7 @@ public interface TournamentRepository extends JpaRepository<Tournament, String> 
 
 	@Query(value="SELECT tournament.* FROM tournament", nativeQuery=true)
 	public List<Tournament> getAllTournaments();
+
+	@Query(value="SELECT tournament.* FROM Tournament WHERE name LIKE %:keyword%", nativeQuery = true)
+	public List<Team> findSimilarTournaments(@Param("keyword") String keyword);
 }

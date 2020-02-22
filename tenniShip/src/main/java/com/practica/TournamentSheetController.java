@@ -276,11 +276,26 @@ public class TournamentSheetController {
 						model.addAttribute(String.format("team%dFinal", k+1), "-Keep Playing");
 						model.addAttribute(String.format("team%dFinalPoints", k+1), "");
 					}
+
+				//--FINAL PHASE	
+
+				return "tournamentSheet";
+			} //if (t.isPresent())
+			else {
+				model.addAttribute("tournamentName", tournament);
+				List<Team> results = tournamentRepository.findSimilarTournaments(tournament);
+				if (!results.isEmpty()) {
+					List<String> names = new ArrayList<>();
+					model.addAttribute("results", true);
+					for (Team i : results) {
+						names.add(i.getName());
+					}
+					model.addAttribute("resultsList", names);
 				}
-			//--FINAL PHASE	
-				
-		} //if (t.isPresent())
-		
-		return "tournamentSheet";
-	}
+				return "tournamentResults";
+			}
+			
+
+		}
+
 }
