@@ -92,17 +92,22 @@
             <div class="container">
 
                 {{#listMatches}}
-                <form action="/RegisterMatchSucceded/{{tournament.name}}" method="post">
+                {{^admin}}
+                	<form action="/TenniShip/RegisterMatch/Tournament/{{tournament.name}}/Submission" method="post">
+                {{/admin}}
+                {{#admin}}
+                	<form action="/TenniShip/ADMIN/Tournament/{{tournament.name}}/EditMatches/{{type}}/Submission" method="post">
+                {{/admin}}
                     <div class="row">
                         <div class="col-lg-4 col-md-3">
                             <div class="card">
                                 <div class="view overlay">
-                                    <img alt="Card image cap" class="card-img-top" src="/../img/clients/teams/{{teamNameHome0}}.jpg">
+                                    <img alt="Card image cap" class="card-img-top" src="/../img/clients/teams/{{team1.teamName}}.jpg">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title TeamPositioningRegisterMatchIconLocal">
-                                        <a class="colorLinkTeam" href="/Team/{{team1.name}}">{{team1.name}}</a>
-                                        <input type="hidden" name="teamHome" value="{{team1.name}}">
+                                        <a class="colorLinkTeam" href="/Team/{{team1.teamName}}">{{team1.name}}</a>
+                                        <input type="hidden" name="teamHome" value="{{team1.teamName}}">
                                     </h4>
                                     <p class="card-text TeamPositioningRegisterMatchIconLocal">Local´s Team</p>
                                 </div>
@@ -147,7 +152,7 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title TeamPositioningRegisterMatchIconVisitor">
-                                        <a class="colorLinkTeam" href="/Team/{{team2.name}}">{{team2.name}}</a>
+                                        <a class="colorLinkTeam" href="/Team/{{team2.teamName}}">{{team2.teamName}}</a>
                                         <input type="hidden" name="teamAway" value="{{team2.name}}">
                                     </h4>
                                     <p class="card-text TeamPositioningRegisterMatchIconVisitor">Visitor´s Team</p>
@@ -156,11 +161,22 @@
                         </div>
                     </div>
                     <div class="centerButton">
-                        <button class="btn SubmitButtonMatch" type="submit">Submit</button>
+                        <button class="btn SubmitButtonMatch" type="submit" {{#error}}data-target="#PointsError" data-toggle="modal"{{/error}}>Submit</button>
                     </div>
                 </form>
                 {{/listMatches}}
             </div>
+            
+	     <div aria-labelledby="exampleModalCenterTitle" class="modal fade" id="PointsError"
+	         role="dialog" tabindex="-1" data-backdrop="static">
+	        <div class="modal-dialog modal-dialog-centered" role="document">
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                    <h5 class="modal-title">Someone has to Win!</h5>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
         </section>
         <!-- #registerMatchSelectMatch -->
 

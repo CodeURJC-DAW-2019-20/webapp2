@@ -1,6 +1,5 @@
 package com.practica;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -35,4 +34,7 @@ public interface TournamentRepository extends JpaRepository<Tournament, String> 
     public int getPlayedMatches(@Param("t") String t);
 	
 	//SELECT * FROM team JOIN partido ON ((team.name=partido.team1_name) OR (team.name=partido.team2_name)) JOIN Tournament ON (partido.tournament_name=tournament.name) WHERE team.name='Spain'
+
+	@Query(value="SELECT tournament.* FROM tournament", nativeQuery=true)
+	public List<Tournament> getAllTournaments();
 }

@@ -25,6 +25,7 @@
     <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="../lib/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
     <link href="../css/style.css" rel="stylesheet">
@@ -43,6 +44,18 @@
 
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
+                	{{#admin}}
+                	<li class="menu-has-children teamMenu"><a href="#"><strong>ADMIN</strong></a>
+                        <ul>
+                            <li>
+                                <form action="/logout" method="post">
+                                    <button class="btn" type="submit">Sign Out</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    {{/admin}}
+                    {{^admin}}
                     {{#registered}}
                     <li class="menu-has-children"><a href="#actions">Actions</a>
                         <ul>
@@ -61,7 +74,8 @@
                         </ul>
                     </li>
                     <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
-                    {{/registered}} {{^registered}}
+                    {{/registered}} 
+                    {{^registered}}
                     <li>
                         <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
                     </li>
@@ -71,6 +85,8 @@
                     {{/registered}}
                 </ul>
             </nav>
+            {{/admin}}
+           
             <!-- #nav-menu-container -->
         </div>
     </header>
@@ -95,25 +111,24 @@
                                 <img alt="" class="img-fluid" src="../img/trophy.png">
                                 <div class="icon"><i class="ion-trophy"></i></div>
                             </div>
-                            <h2 class="title"><a href="#">Tournament Search</a></h2>
-                            <form class="form-inline active-green-3">
-                                <input aria-label="Search" class="form-control form-control-plaintext m-5 w-75" placeholder="Search" type="text">
+                            <h2 class="title">Tournament Search</h2>
+                            <form class="form-inline active-green-3" action="/TenniShip/SearchTournament" method="post">
+                                <input id="tournamentSearch" aria-label="Search" class="form-control form-control-plaintext m-5 w-75" name="tournamentName" placeholder="Search" type="search">
                             </form>
                         </div>
                     </div>
-
-                    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="home-col">
-                            <div class="img">
-                                <img alt="" class="img-fluid" src="../img/team.png">
-                                <div class="icon"><i class="ion-ios-people"></i></div>
-                            </div>
-                            <h2 class="title"><a href="#">Team Search</a></h2>
-                            <form class="form-inline active-green-3 mx-auto">
-                                <input aria-label="Search" class="form-control form-control-plaintext m-5 w-75" placeholder="Search" type="text">
-                            </form>
-                        </div>
-                    </div>
+	                    <div class="col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+	                        <div class="home-col">
+	                            <div class="img">
+	                                <img alt="" class="img-fluid" src="../img/team.png">
+	                                <div class="icon"><i class="ion-ios-people"></i></div>
+	                            </div>
+	                            <h2 class="title">Team Search</h2>
+	                            <form class="form-inline active-green-3 mx-auto" action="/TenniShip/SearchTeam" method="post">
+	                                <input id="teamSearch" aria-label="Search" class="form-control form-control-plaintext m-5 w-75" name="teamName" placeholder="Search" type="search">
+	                            </form>
+	                        </div>
+	                    </div>
                 </div>
             </div>
         </section>
@@ -130,20 +145,23 @@
                 </header>
 
                 <div class="row actions-cols">
-
+		
+		
+					
                     <div class="col-md-6 wow fadeInUp">
                         <div class="actions-col">
                             <div class="img">
                                 <img alt="" class="img-fluid" src="../img/registerMatch.jpg">
                                 <div class="icon"><i class="ion-ios-tennisball"></i></div>
                             </div>
-                            <h2 class="title"><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></h2>
+                            <h2 class="title">{{^admin}}<a href="/TenniShip/RegisterMatch/Tournament">{{/admin}}Register a Match</a></h2>
                             <p>
                                 This section´s purpose is the insertion of the results of the matchs from a league in which your team is involved, it also lets the administrator of the league the ability to change match results. Working as a double check for the assurance of the participants.
                             </p>
                         </div>
                     </div>
-
+					
+					
                     <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="actions-col">
                             <div class="img">
@@ -184,6 +202,7 @@
     <!-- JavaScript Libraries -->
     <script src="../lib/jquery/jquery.min.js"></script>
     <script src="../lib/jquery/jquery-migrate.min.js"></script>
+    <script src="../lib/jquery-ui/jquery-ui.min.js"></script>
     <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/easing/easing.min.js"></script>
     <script src="../lib/superfish/hoverIntent.js"></script>
@@ -200,6 +219,25 @@
 
     <!-- Template Main Javascript File -->
     <script src="../js/main.js"></script>
+    <script>
+
+        var tournamentNames = [
+            {{#tournamentNames}}"{{.}}",{{/tournamentNames}}
+        ];
+
+        var teamNames = [
+            {{#teamNames}}"{{.}}",{{/teamNames}}
+        ];
+
+        $( "#teamSearch" ).autocomplete({
+            source: teamNames
+        });
+
+        $( "#tournamentSearch" ).autocomplete({
+            source: tournamentNames
+        })
+
+    </script>
 
 </body>
 
