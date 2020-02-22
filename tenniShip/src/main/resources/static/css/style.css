@@ -1937,6 +1937,15 @@ body:not(#index) main#main {
     width: 100%;
 }
 
+#v-pills-teams .row {
+    justify-content: center;
+}
+
+.formTeam {
+  margin-bottom: 25px;
+  margin-top: 15px;
+}
+
 .created {
     height: 100%;
     width: 100%;

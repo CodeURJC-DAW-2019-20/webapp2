@@ -138,7 +138,7 @@ public class UserController {
 			
 			userComponent.setLoggedUser(userNew);
 			userComponent.setTeam(userNew);
-			return "index";
+			return "redirect:/TenniShip";
 		} else {
 			return "registerAccount";
 		}		
