@@ -53,8 +53,8 @@ public class UserController {
 	@PostMapping("/register")
 	public String newUser(Model model,@ModelAttribute("personUser") User user,@RequestParam String passwordCheck,
 			@RequestParam Player player1,@RequestParam Player player2,@RequestParam Player player3,
-			@RequestParam Player player4,@RequestParam Player player5, @RequestParam List<MultipartFile> imageFile,
-			HttpServletRequest request) throws IOException {
+			@RequestParam Player player4,@RequestParam Player player5, @RequestParam List<MultipartFile> imageFile
+			) throws IOException {
 		
 		
 		boolean canContinue = true;

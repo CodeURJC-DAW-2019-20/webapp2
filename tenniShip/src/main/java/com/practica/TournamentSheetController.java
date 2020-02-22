@@ -136,11 +136,8 @@ public class TournamentSheetController {
 			model.addAttribute("tournamentName", t.get().getName());
 			model.addAttribute("completion", progressPercentage);
 			model.addAttribute("adminGroups", userComponent.isLoggedUser() && request.isUserInRole("ROLE_ADMIN") &&
-					tournamentRepository.getPhaseMatches(t.get(), "X").isEmpty());
-			model.addAttribute("adminDeleting", userComponent.isLoggedUser() && request.isUserInRole("ROLE_ADMIN"));
-			model.addAttribute("adminDeletingTeams", userComponent.isLoggedUser() && request.isUserInRole("ROLE_ADMIN") && (
-					tournamentRepository.getPlayedMatchesJQL(t.get()) == 0));
-
+                    tournamentRepository.getPhaseMatches(t.get(), "X").isEmpty());
+            model.addAttribute("adminDeleting", userComponent.isLoggedUser() && request.isUserInRole("ROLE_ADMIN"));
 
 			//GROUPS-------
 			String[] groups = {"A", "B", "C", "D", "E", "F"};
