@@ -194,9 +194,23 @@ public class TournamentSheetController {
 						}
 					}
 				//--FINAL PHASE	
-					
+
+				return "tournamentSheet";
 			} //if (t.isPresent())
+			else {
+				model.addAttribute("tournamentName", tournament);
+				List<Team> results = tournamentRepository.findSimilarTournaments(tournament);
+				if (!results.isEmpty()) {
+					List<String> names = new ArrayList<>();
+					model.addAttribute("results", true);
+					for (Team i : results) {
+						names.add(i.getName());
+					}
+					model.addAttribute("resultsList", names);
+				}
+				return "tournamentResults";
+			}
 			
-			return "tournamentSheet";
+
 		}
 }

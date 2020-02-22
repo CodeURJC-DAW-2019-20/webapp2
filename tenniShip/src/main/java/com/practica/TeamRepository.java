@@ -44,9 +44,12 @@ public interface TeamRepository extends JpaRepository<Team, String> {
 			"WHERE (((m.team1 = :team) OR (m.team2 = :team)) AND ( (m.homePoints > 0) OR (m.awayPoints > 0) ))")
 	public List<Match> getRecentMatches(Team team);
 	
-	@Query(value="SELECT Team.* FROM Team WHERE teamName = : n ",nativeQuery= true)
+	@Query(value="SELECT Team.* FROM Team WHERE team_name = : n ",nativeQuery= true)
 	public Team getTeamToAdd(@Param("n") String n);
 
 	@Query(value="SELECT team.* FROM Team", nativeQuery=true)
 	public List<Team> getAllTeams();
+
+	@Query(value="SELECT team.* FROM Team WHERE team_name LIKE %:keyword%", nativeQuery = true)
+	public List<Team> findSimilarTeams(@Param("keyword") String keyword);
 }

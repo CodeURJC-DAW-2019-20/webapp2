@@ -45,7 +45,7 @@ public class TeamController {
 		double totalMatchesWon = 0.0;
 		double totalMatches = 0.0;
 
-        if (t.isPresent()) {
+        if (t.isPresent()) {	/* If there's a team with that name, we show them the team page */
         	model.addAttribute("teamName", t.get().getName());
         	
         	totalMatchesLost=teamRepository.getMatchesLost(t.get().getName());
@@ -78,7 +78,22 @@ public class TeamController {
 				model.addAttribute("matchHistory", true);
 				model.addAttribute("matchList", recentMatches);
 			}
+
+			return "teamfile";
         }
-		return "teamfile";
+        else {
+        	model.addAttribute("teamName", team);
+        	List<Team> results = teamRepository.findSimilarTeams(team);
+        	if (!results.isEmpty()) {
+        		List<String> names = new ArrayList<>();
+				model.addAttribute("results", true);
+				for (Team i : results) {
+					names.add(i.getName());
+				}
+				model.addAttribute("resultsList", names);
+			}
+        	return "teamResults";
+		}
+
 	}	
 }
