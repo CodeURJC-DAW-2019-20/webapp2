@@ -23,6 +23,29 @@
     return false;
   });
 
+  // Search boxes functionality
+
+  $("#tournamentForm").keydown(function(e) {
+    if (e.which === 13) {
+      e.preventDefault();
+      var input = document.getElementById("tournamentSearch");
+      var text = input.value;
+      var url = "./TenniShip/Tournament/" + text;
+      $(location).attr('href',url);
+    }
+  });
+
+  $("#teamForm").keydown(function(e) {
+    if (e.which === 13) {
+      e.preventDefault();
+      var input = document.getElementById("teamSearch");
+      var text = input.value;
+      var url = "./TenniShip/Team/" + text;
+      $(location).attr('href',url);
+    }
+  });
+
+
   // Adaptive footer for short pages
 
   $(window).on('load', function () {
@@ -233,20 +256,7 @@
       $('#ConfirmDeleteTournament').modal('toggle');
   });
 
-  // Search autocomplete
 
-  $(function() {
-    $("#Plant_Name").autocomplete({
-      source: "plantNamesAutocomplete",
-      minLength: 3,
-      select: function(event, ui) {
-        this.value = ui.item.label;
-        $("#Plant_ID").val(ui.item.value);
-        return false;
-      }
-    });
-
-  });
 
 })(jQuery);
 
