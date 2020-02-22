@@ -102,6 +102,7 @@ img.team-img, .linescroll span img {
     position: relative;
     border-radius: 50%;
     overflow: hidden;
+    background: #c5c5c5;
 }
 
 #players .member .member-info {
@@ -148,6 +149,37 @@ img.team-img, .linescroll span img {
     font-size: 18px;
     color: #fff;
 }
+
+/* Team player images */
+
+#players .member img {
+    object-fit: cover;
+}
+
+@media (min-width: 1200px) {
+    #players .member img {
+        height: 155px;
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+    #players .member img {
+        height: 125px;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    #players .member img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 767px) {
+    #players .member img {
+        height: 225px;
+    }
+}
+
 
 
 /* Tournaments Section
@@ -198,3 +230,61 @@ button:hover {
 }
 
 
+/* Pure CSS pie chart (from Jhey Tompkins at CodeBurst) */
+
+.pie {
+    border-radius: 100%;
+    height: calc(var(--size, 200) * 1px);
+    overflow: hidden;
+    position: relative;
+    width: calc(var(--size, 200) * 1px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pie__segment {
+    --a: calc(var(--over50, 0) * -100%);
+    --b: calc((1 + var(--over50, 0)) * 100%);
+    --degrees: calc((var(--offset, 0) / 100) * 360);
+    -webkit-clip-path: polygon(var(--a) var(--a), var(--b) var(--a), var(--b) var(--b), var(--a) var(--b));
+    clip-path: polygon(var(--a) var(--a), var(--b) var(--a), var(--b) var(--b), var(--a) var(--b));
+    height: 100%;
+    position: absolute;
+    -webkit-transform: translate(0, -50%) rotate(90deg) rotate(calc(var(--degrees) * 1deg));
+    transform: translate(0, -50%) rotate(90deg) rotate(calc(var(--degrees) * 1deg));
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    width: 100%;
+    z-index: calc(1 + var(--over50));
+}
+
+.pie__segment:after,
+.pie__segment:before {
+    background: var(--bg, #e74c3c);
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.pie__segment:before {
+    --degrees: calc((var(--value, 45) / 100) * 360);
+    -webkit-transform: translate(0, 100%) rotate(calc(var(--degrees) * 1deg));
+    transform: translate(0, 100%) rotate(calc(var(--degrees) * 1deg));
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+}
+
+.pie__segment:after {
+    opacity: var(--over50, 0);
+}
+
+/* Tournament participation list */
+ul.tourn-part li::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 20px;
+    background-color: var(--bg);
+}

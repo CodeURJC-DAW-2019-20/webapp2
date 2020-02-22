@@ -1516,6 +1516,8 @@ body:not(#index) main#main {
     padding: 0;
     margin: 0 0 0 20px;
     text-transform: uppercase;
+    width: max-content;
+    text-shadow: 0px 1px 4px #000;
 }
 
 #progress-content .progress .skill .val {
@@ -2012,67 +2014,4 @@ body:not(#index) main#main {
 
 .buttonown a {
     color: white;
-}
-
-/* --------------------
-----Team file page ----
------------------------*/
-
-/* Pure CSS pie chart (from Jhey Tompkins at CodeBurst) */
-
-.pie {
-    border-radius: 100%;
-    height: calc(var(--size, 200) * 1px);
-    overflow: hidden;
-    position: relative;
-    width: calc(var(--size, 200) * 1px);
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.pie__segment {
-    --a: calc(var(--over50, 0) * -100%);
-    --b: calc((1 + var(--over50, 0)) * 100%);
-    --degrees: calc((var(--offset, 0) / 100) * 360);
-    -webkit-clip-path: polygon(var(--a) var(--a), var(--b) var(--a), var(--b) var(--b), var(--a) var(--b));
-    clip-path: polygon(var(--a) var(--a), var(--b) var(--a), var(--b) var(--b), var(--a) var(--b));
-    height: 100%;
-    position: absolute;
-    -webkit-transform: translate(0, -50%) rotate(90deg) rotate(calc(var(--degrees) * 1deg));
-    transform: translate(0, -50%) rotate(90deg) rotate(calc(var(--degrees) * 1deg));
-    -webkit-transform-origin: 50% 100%;
-    transform-origin: 50% 100%;
-    width: 100%;
-    z-index: calc(1 + var(--over50));
-}
-
-.pie__segment:after,
-.pie__segment:before {
-    background: var(--bg, #e74c3c);
-    content: '';
-    height: 100%;
-    position: absolute;
-    width: 100%;
-}
-
-.pie__segment:before {
-    --degrees: calc((var(--value, 45) / 100) * 360);
-    -webkit-transform: translate(0, 100%) rotate(calc(var(--degrees) * 1deg));
-    transform: translate(0, 100%) rotate(calc(var(--degrees) * 1deg));
-    -webkit-transform-origin: 50% 0%;
-    transform-origin: 50% 0%;
-}
-
-.pie__segment:after {
-    opacity: var(--over50, 0);
-}
-
-/* Tournament participation list */
-ul.tourn-part li::before {
-    content: "";
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    margin-right: 20px;
-    background-color: var(--bg);
 }
