@@ -116,7 +116,10 @@ public class TournamentSheetController {
 
 		@Override
 		public int compareTo(AuxiliarClass p2) {
-			if (this.matchesWon > p2.matchesWon) return -1; else if (this.pointsWon > p2.pointsWon) return -1; else return 0;
+			int dif = Integer.compare(p2.matchesWon, this.matchesWon);  
+			if (dif != 0) return dif; 
+			else Integer.compare(p2.pointsWon, this.pointsWon); 
+			return 0;
 		}
 	}
 

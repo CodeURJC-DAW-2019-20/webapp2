@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.practica.TournamentRepository;
 import com.practica.model.Tournament;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -48,10 +49,12 @@ public class UserController {
 	@Autowired
 	private TournamentRepository tournamentRepository;
 	
+	
 	@PostMapping("/register")
 	public String newUser(Model model,@ModelAttribute("personUser") User user,@RequestParam String passwordCheck,
 			@RequestParam Player player1,@RequestParam Player player2,@RequestParam Player player3,
-			@RequestParam Player player4,@RequestParam Player player5, @RequestParam List<MultipartFile> imageFile) throws IOException {
+			@RequestParam Player player4,@RequestParam Player player5, @RequestParam List<MultipartFile> imageFile,
+			HttpServletRequest request) throws IOException {
 		
 		
 		boolean canContinue = true;
@@ -95,8 +98,6 @@ public class UserController {
 		boolean teamReady = !(teamAlready || teamEmty);
 		model.addAttribute("teamAlreadyExist", teamAlready);
 		model.addAttribute("teamEmpty", teamEmty);
-		
-		
 	
 		boolean player1NotEmpty = !(player1.getName().isEmpty());
 		boolean player2NotEmpty = !(player2.getName().isEmpty());
@@ -109,7 +110,6 @@ public class UserController {
 		model.addAttribute("player4NameEmpty", true);
 		model.addAttribute("player5NameEmpty", true);
 		
-
 		canContinue = (userReady && emailReady && passReady && samePassword && teamReady && player1NotEmpty && player2NotEmpty && player3NotEmpty && player4NotEmpty && player5NotEmpty);
 		if(canContinue) {
 			List<String> l = new LinkedList<>(); l.add("ROLE_USER");
@@ -135,10 +135,9 @@ public class UserController {
 			// Sending Confirmation Mail
 			MailSenderXX ms=(MailSenderXX) appContext.getBean("mailSenderXX");
 			ms.sendConfirmationEmail(user);
-			
-			userComponent.setLoggedUser(userNew);
-			userComponent.setTeam(userNew);
-			return "redirect:/TenniShip";
+		    
+		    return "redirect:/TenniShip/SignIn";
+		    
 		} else {
 			return "registerAccount";
 		}		
@@ -147,12 +146,12 @@ public class UserController {
 	@GetMapping("/TenniShip")
 	public String index (Model model, HttpServletRequest request) {
 
-		if(userComponent.isLoggedUser() && request.isUserInRole("ROLE_USER")) {
+		if(userComponent.isLoggedUser()  && !request.isUserInRole("ADMIN")) {
 			String teamUser = userComponent.getTeam();
 			model.addAttribute("team", teamUser);
 		}
-		model.addAttribute("registered",userComponent.isLoggedUser() && request.isUserInRole("ROLE_USER") && !request.isUserInRole("ADMIN") );
-		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ROLE_ADMIN"));
+		model.addAttribute("registered",userComponent.isLoggedUser() && !request.isUserInRole("ADMIN") );
+		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
 		List<Tournament> allTournaments = tournamentRepository.getAllTournaments();
 		List<Team> allTeams = teamRepository.getAllTeams();
 		List<String> tournamentNames = new ArrayList<>();
