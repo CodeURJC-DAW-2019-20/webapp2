@@ -1745,6 +1745,7 @@ body:not(#index) main#main {
 
 #TCreatorInfo {
     height: 450px;
+    overflow-y: auto;
 }
 
 #TCreatorInfo .ChooseTeam {
@@ -1787,6 +1788,10 @@ body:not(#index) main#main {
     color: white;
 }
 
+.no-tournament-check a{
+  pointer-events: none;
+  cursor: default;
+}
 
 /* Teams */
 

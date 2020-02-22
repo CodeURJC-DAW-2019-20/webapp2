@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         // Private pages (all other pages)
         http.authorizeRequests().anyRequest().authenticated();
-        //http.authorizeRequests().antMatchers("/home").hasAnyRole("USER");
+        //http.authorizeRequests().antMatchers("/TenniShip/Creator").hasAnyRole("USER");
         //http.authorizeRequests().antMatchers("/admin").hasAnyRole("ADMIN");
 
         // Login form

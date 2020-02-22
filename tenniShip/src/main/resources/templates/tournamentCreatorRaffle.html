@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Tournament Creator - Tenniship</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="/../img/favicon.png" rel="icon">
+    <link href="/../img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+          rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="/../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="/../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/../lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="/../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="/../css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+      Theme Name: BizPage
+      Theme URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+      Author: BootstrapMade.com
+      License: https://bootstrapmade.com/license/
+    ======================================================= -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<!--==========================
+Header
+============================-->
+<header id="header">
+    <div class="container-fluid">
+
+        <div class="pull-left" id="logo">
+            <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                {{#registered}}
+                <li class="menu-has-children"><a href="#">Actions</a>
+                    <ul>
+                        <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
+                        <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
+                    </ul>
+                </li>
+                <li class="menu-has-children teamMenu"><a href="/TenniShip/Team/{{team}}">{{team}}</a>
+                    <ul>
+                        <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
+                        <li>
+                            <form action="/logout" method="post">
+                                <button class="btn" type="submit">Sign Out</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                <li><img alt="" class="loginImage" src="/../img/clients/client-1.png"></li>
+                {{/registered}}
+
+                {{^registered}}
+                <li>
+                    <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
+                </li>
+                <li>
+                    <a class="btn signInIndexBtnText" href="/TenniShip/SignIn" type="submit">Sign In</a>
+                </li>
+                {{/registered}}
+            </ul>
+        </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- #header -->
+
+
+<main id="main">
+    <section class="section-bg wow " id="TCreator">
+        <!--meter fadeInUp-->
+        <div class="container">
+
+            <header class="section-header">
+                <h3>Tournament Creator</h3>
+                <p>You can already create your own tournament. Let's Go!!</p>
+            </header>
+
+            <div class="row">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation"
+                            class="navbar-toggler" data-target="#navbarTogglerDemo01" data-toggle="collapse"
+                            type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse col-12 col-lg-3 shadow p-3 mb-5 rounded"
+                         id="navbarTogglerDemo01">
+                        <div aria-orientation="vertical" class="nav flex-column nav-pills" id="v-pills-tab"
+                             role="tablist">
+                            <a aria-controls="v-pills-new" aria-selected="false" class="nav-link" data-toggle="pill"
+                               href="#v-pills-new" id="v-pills-new-tab" role="tab" style="pointer-events: none;cursor: default;color: transparent;">New Tournament</a>
+                            <a aria-controls="v-pills-teams" aria-selected="false" class="nav-link" data-toggle="pill"
+                               href="#v-pills-teams" id="v-pills-teams-tab" role="tab" style="pointer-events: none;cursor: default;color: transparent;">Teams</a>
+                            <a aria-controls="v-pills-raffle" aria-selected="true" class="nav-link active" data-toggle="pill"
+                               href="#v-pills-created" id="v-pills-created-tab" role="tab"  >Raffle Teams</a>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="col-12 col-lg-9 shadow p-3 mb-5 bg-white rounded" id="TCreatorInfo">
+                    <div class="tab-content" id="v-pills-tabContent">
+
+                        <div aria-labelledby="v-pills-created-tab" class="tab-pane fade show active" id="v-pills-created"
+                             role="tabpanel">
+                            <div class="created">
+                                <div>
+                                    <h3>the tournament has been created</h3>
+                                    <p>Congratulations, the tournament has been created successfully. You can start
+                                        playing whenever you want.</p>
+                                    <div class="buttons">
+                                        <a class="btn" href="/TenniShip/Tournament/{{tourFinal.name}}">Go to the Tournament</a>
+                                        <a class="btn" href="/TenniShip">Home</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!--==========================
+Footer
+============================-->
+<footer id="footer">
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>. All Rights
+            Reserved
+        </div>
+        <div class="credits">
+            ReDesigned by paDAWans
+        </div>
+    </div>
+</footer><!-- #footer -->
+
+<a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
+<!-- Uncomment below if you want to use a preloader -->
+<div id="preloader"></div>
+
+<!-- JavaScript Libraries -->
+<script src="/../lib/jquery/jquery.min.js"></script>
+<script src="/../lib/jquery/jquery-migrate.min.js"></script>
+<script src="/../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/../lib/easing/easing.min.js"></script>
+<script src="/../lib/superfish/hoverIntent.js"></script>
+<script src="/../lib/superfish/superfish.min.js"></script>
+<script src="/../lib/wow/wow.min.js"></script>
+<script src="/../lib/waypoints/waypoints.min.js"></script>
+<script src="/../lib/counterup/counterup.min.js"></script>
+<script src="/../lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="/../lib/isotope/isotope.pkgd.min.js"></script>
+<script src="/../lib/lightbox/js/lightbox.min.js"></script>
+<script src="/../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+<!-- Contact Form JavaScript File -->
+<script src="../contactform/contactform.js"></script>
+
+<!-- Template Main Javascript File -->
+<script src="/../js/main.js"></script>
+
+</body>
+
+</html>

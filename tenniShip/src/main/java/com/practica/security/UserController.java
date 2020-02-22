@@ -94,11 +94,6 @@ public class UserController {
 		model.addAttribute("player3NameEmpty", true);
 		model.addAttribute("player4NameEmpty", true);
 		model.addAttribute("player5NameEmpty", true);
-		System.out.println("el player1 es : "+player1.getName());
-		System.out.println("el player2 es : "+player2.getName());
-		System.out.println("el player3 es : "+player3.getName());
-		System.out.println("el player4 es : "+player4.getName());
-		System.out.println("el player5 es : "+player5.getName());
 		
 
 		canContinue = (userReady && emailReady && passReady && samePassword && teamReady && player1NotEmpty && player2NotEmpty && player3NotEmpty && player4NotEmpty && player5NotEmpty);

@@ -99,26 +99,6 @@ public class TournamentController {
 		return "selectTournament";
 	}
 
-	@GetMapping("/{team}/Creator")
-	public String create (Model model, @PathVariable String team) {
-
-		Optional <Team> t = teamRepository.findById(team);
-
-		if(t.isPresent()) {
-			String tournamentName;
-			tournamentName = "CopaDavis"; //cambiar futuro
-			List<Team> teamsProvisional = new ArrayList<>();
-			teamsProvisional.addAll(teamRepository.findAll()); //futura query
-
-
-			model.addAttribute("tournament", tournamentName);
-
-			for(int i=0; i< Math.min(18, teamsProvisional.size())/*teamList.size() Poner esto*/;i++) {
-	    		model.addAttribute(String.format("team%d", i),teamsProvisional.get(i).getName());
-	    	}
-		}
-
-		return "tournamentCreator";
-	}
+	
 
 }
