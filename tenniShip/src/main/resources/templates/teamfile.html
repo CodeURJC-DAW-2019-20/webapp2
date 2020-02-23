@@ -2,36 +2,40 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Tenniship - Keep track of teams, scores and tournaments</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+<meta charset="utf-8">
+<title>Tenniship - Keep track of teams, scores and tournaments</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="keywords">
+<meta content="" name="description">
 
-    <!-- Favicons -->
-    <link href="/../img/favicon.png" rel="icon">
-    <link href="/../img/apple-touch-icon.png" rel="apple-touch-icon">
+<!-- Favicons -->
+<link href="/../img/favicon.png" rel="icon">
+<link href="/../img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+	rel="stylesheet">
 
-    <!-- Bootstrap CSS File -->
-    <link href="/../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap CSS File -->
+<link href="/../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Libraries CSS Files -->
-    <link href="/../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/../lib/animate/animate.min.css" rel="stylesheet">
-    <link href="/../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="/../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="/../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+<!-- Libraries CSS Files -->
+<link href="/../lib/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet">
+<link href="/../lib/animate/animate.min.css" rel="stylesheet">
+<link href="/../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+<link href="/../lib/owlcarousel/assets/owl.carousel.min.css"
+	rel="stylesheet">
+<link href="/../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-    <!-- Main Stylesheet File -->
-    <link href="/../css/style.css" rel="stylesheet">
+<!-- Main Stylesheet File -->
+<link href="/../css/style.css" rel="stylesheet">
 
-    <!-- Subpage Stylesheet File -->
-    <link href="/../css/team.css" rel="stylesheet">
+<!-- Subpage Stylesheet File -->
+<link href="/../css/team.css" rel="stylesheet">
 
-    <!-- =======================================================
+<!-- =======================================================
       Theme Name: BizPage
       Theme URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
       Author: BootstrapMade.com
@@ -41,226 +45,243 @@
 
 <body>
 
-    <!--==========================
+	<!--==========================
   Header
 ============================-->
-    <header id="header">
-        <div class="container-fluid">
+	<header id="header">
+		<div class="container-fluid">
 
-            <div class="pull-left" id="logo">
-                <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
-            </div>
+			<div class="pull-left" id="logo">
+				<h1>
+					<a class="scrollto" href="/TenniShip">TenniShip</a>
+				</h1>
+			</div>
 
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    {{#registered}}
-                    <li class="menu-has-children"><a href="#">Actions</a>
-                        <ul>
-                            <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
-                            <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-has-children teamMenu"><a href="/TenniShip/Team/{{team}}">{{team}}</a>
-                        <ul>
-                            <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
-                            <li>
-                                <form action="/logout" method="post">
-                                    <button class="btn" type="submit">Sign Out</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><img alt="" class="loginImage" src="/../img/clients/client-1.png"></li>
-                    {{/registered}} {{^registered}}
-                    <li>
-                        <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
-                    </li>
-                    <li>
-                        <a class="btn signInIndexBtnText" href="/TenniShip/SignIn" type="submit">Sign In</a>
-                    </li>
-                    {{/registered}}
-                </ul>
-            </nav>
-            <!-- #nav-menu-container -->
-        </div>
-    </header>
-    <!-- #header -->
+			<nav id="nav-menu-container">
+				<ul class="nav-menu">
+					{{#registered}}
+					<li class="menu-has-children"><a href="#">Actions</a>
+						<ul>
+							<li><a href="/TenniShip/RegisterMatch/Tournament">Register
+									a Match</a></li>
+							<li><a href="/TenniShip/Creator">Tournament Creator</a></li>
+						</ul></li>
+					<li class="menu-has-children teamMenu"><a
+						href="/TenniShip/Team/{{team}}">{{team}}</a>
+						<ul>
+							<li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
+							<li>
+								<form action="/logout" method="post">
+									<button class="btn" type="submit">Sign Out</button>
+								</form>
+							</li>
+						</ul></li>
+					<li><img alt="" class="loginImage"
+						src="/../img/clients/client-1.png"></li> {{/registered}}
+					{{^registered}}
+					<li><a class="btn btn-primary signUpIndexBtnText"
+						href="/TenniShip/SignUp" type="submit">Sign Up</a></li>
+					<li><a class="btn signInIndexBtnText" href="/TenniShip/SignIn"
+						type="submit">Sign In</a></li> {{/registered}}
+				</ul>
+			</nav>
+			<!-- #nav-menu-container -->
+		</div>
+	</header>
+	<!-- #header -->
 
 
-    <main id="main">
+	<main id="main">
 
-        <!--==========================
+		<!--==========================
       Contact Section
     ============================-->
-        <section class="section-bg wow fadeInUp">
-            <div class="container">
+		<section class="section-bg wow fadeInUp">
+			<div class="container">
 
-                <div class="section-header">
-                    <div class="team-icon img-thumbnail">
-                        <img alt="Team logo" class="img-fluid team-img" src="/../img/clients/teams/{{teamName}}.jpg">
-                    </div>
-                    <h3>{{teamName}}</h3>
-                </div>
-                <div class="content">
-                    <h3>Players</h3>
-                    <div id="players">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                                    <div class="member">
-                                        <img alt="" class="img-fluid" src="/../img/clients/players/{{teamName}}Player1.jpg">
-                                        <div class="member-info">
-                                            <div class="member-info-content">
-                                                <h4>{{player0}}</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-4 col-sm-6 col-6 fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                                    <div class="member">
-                                        <img alt="" class="img-fluid" src="/../img/clients/players/{{teamName}}Player2.jpg">
-                                        <div class="member-info">
-                                            <div class="member-info-content">
-                                                <h4>{{player1}}</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+				<div class="section-header">
+					<div class="team-icon img-thumbnail">
+						<img alt="Team logo" class="img-fluid team-img"
+							src="/../img/clients/teams/{{teamName}}.jpg">
+					</div>
+					<h3>{{teamName}}</h3>
+				</div>
+				<div class="content">
+					<h3>Players</h3>
+					<div id="players">
+						<div class="container">
+							<div class="row justify-content-center">
+								<div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp"
+									style="visibility: visible; animation-name: fadeInUp;">
+									<div class="member">
+										<img alt="" class="img-fluid"
+											src="/../img/clients/players/{{teamName}}Player1.jpg">
+										<div class="member-info">
+											<div class="member-info-content">
+												<h4>{{player0}}</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2 col-md-4 col-sm-6 col-6 fadeInUp"
+									style="visibility: visible; animation-name: fadeInUp;">
+									<div class="member">
+										<img alt="" class="img-fluid"
+											src="/../img/clients/players/{{teamName}}Player2.jpg">
+										<div class="member-info">
+											<div class="member-info-content">
+												<h4>{{player1}}</h4>
+											</div>
+										</div>
+									</div>
+								</div>
 
-                                <div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                                    <div class="member">
-                                        <img alt="" class="img-fluid" src="/../img/clients/players/{{teamName}}Player3.jpg">
-                                        <div class="member-info">
-                                            <div class="member-info-content">
-                                                <h4>{{player2}}</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+								<div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp"
+									data-wow-delay="0.1s"
+									style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+									<div class="member">
+										<img alt="" class="img-fluid"
+											src="/../img/clients/players/{{teamName}}Player3.jpg">
+										<div class="member-info">
+											<div class="member-info-content">
+												<h4>{{player2}}</h4>
+											</div>
+										</div>
+									</div>
+								</div>
 
-                                <div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                                    <div class="member">
-                                        <img alt="" class="img-fluid" src="/../img/clients/players/{{teamName}}Player4.jpg">
-                                        <div class="member-info">
-                                            <div class="member-info-content">
-                                                <h4>{{player3}}</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+								<div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp"
+									data-wow-delay="0.2s"
+									style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+									<div class="member">
+										<img alt="" class="img-fluid"
+											src="/../img/clients/players/{{teamName}}Player4.jpg">
+										<div class="member-info">
+											<div class="member-info-content">
+												<h4>{{player3}}</h4>
+											</div>
+										</div>
+									</div>
+								</div>
 
-                                <div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                                    <div class="member">
-                                        <img alt="" class="img-fluid" src="/../img/clients/players/{{teamName}}Player5.jpg">
-                                        <div class="member-info">
-                                            <div class="member-info-content">
-                                                <h4>{{player4}}</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+								<div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp"
+									data-wow-delay="0.3s"
+									style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+									<div class="member">
+										<img alt="" class="img-fluid"
+											src="/../img/clients/players/{{teamName}}Player5.jpg">
+										<div class="member-info">
+											<div class="member-info-content">
+												<h4>{{player4}}</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
 
-                    <h3>Tournaments</h3>
+					<h3>Tournaments</h3>
 
-                    <section class="wow fadeInUp">
-                        <!--Problem in the future-->
-                        <div class="container">
-                            <div class="owl-carousel clients-carousel">
-                                <img alt="" src="/../img/clients/client-1.png">
-                                <img alt="" src="/../img/clients/client-2.png">
-                                <img alt="" src="/../img/clients/client-3.png">
-                                <img alt="" src="/../img/clients/client-4.png">
-                                <img alt="" src="/../img/clients/client-5.png">
-                                <img alt="" src="/../img/clients/client-6.png">
-                                <img alt="" src="/../img/clients/client-7.png">
-                                <img alt="" src="/../img/clients/client-8.png">
-                            </div>
-                        </div>
-                    </section>
+					<section class="wow fadeInUp">
+						<!--Problem in the future-->
+						<div class="container">
+							<div class="owl-carousel clients-carousel">
+								<img alt="" src="/../img/clients/client-1.png"> <img
+									alt="" src="/../img/clients/client-2.png"> <img alt=""
+									src="/../img/clients/client-3.png"> <img alt=""
+									src="/../img/clients/client-4.png"> <img alt=""
+									src="/../img/clients/client-5.png"> <img alt=""
+									src="/../img/clients/client-6.png"> <img alt=""
+									src="/../img/clients/client-7.png"> <img alt=""
+									src="/../img/clients/client-8.png">
+							</div>
+						</div>
+					</section>
 
-                    {{#matchHistory}}
-                    <h3>Matches played</h3>
-                    <div class="container row mb-5">
-                        <div class="col-sm-6 col-12">
-                            <div class="pie">
-                                <div class="pie__segment" style="--offset: 0; --value: {{wonMatches}}; {{#over50won}}--over50:1; {{/over50won}}--bg: #51e28f;"></div>
-                                <div class="pie__segment" style="--offset: {{wonMatches}}; --value: {{lostMatches}}; {{#over50lost}}--over50:1; {{/over50lost}}--bg: #dc5187;"></div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-12">
-                            <h5>Tournament participation:</h5>
-                            <ul class="list-group tourn-part">
-                                <li class="list-group-item" style="--bg: #51e28f;">Matches Won</li>
-                                <li class="list-group-item" style="--bg: #dc5187;">Matches Lost</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <ul class="list-group">
-                        {{#matchList}}
-                        <li class="list-group-item">
-                            <div class="row row-cols-2">
-                                <div class="col col-sm-6 col-12">{{team1.teamName}} vs {{team2.teamName}}</div>
-                                <div class="col col-sm-3 col-6"> {{homePoints}} - {{awayPoints}} </div>
-                                <div class="col col-sm-3 col-6">{{tournament.name}}</div>
-                            </div>
-                        </li>
-                        {{/matchList}}
-                    </ul>
-                    {{#matchPages}}
-                    <div class="text-center pt-3">
-                        <button class="btn btn-primary" type="button">Show more</button>
-                    </div>
-                    {{/matchPages}} {{/matchHistory}}
+					{{#matchHistory}}
+					<h3>Matches played</h3>
+					<div class="container row mb-5">
+						<div class="col-sm-6 col-12">
+							<div class="pie">
+								<div class="pie__segment"
+									style="-offset: 0; - -value: {{wonMatches"></div>
+								<div class="pie__segment" style="-offset: {{wonMatches"></div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-12">
+							<h5>Tournament participation:</h5>
+							<ul class="list-group tourn-part">
+								<li class="list-group-item" style="-bg: #51e28f;">Matches
+									Won</li>
+								<li class="list-group-item" style="-bg: #dc5187;">Matches
+									Lost</li>
+							</ul>
+						</div>
+					</div>
+					<ul class="list-group">
+						{{#matchList}}
+						<li class="list-group-item">
+							<div class="row row-cols-2">
+								<div class="col col-sm-6 col-12">{{team1.teamName}} vs
+									{{team2.teamName}}</div>
+								<div class="col col-sm-3 col-6">{{homePoints}} -
+									{{awayPoints}}</div>
+								<div class="col col-sm-3 col-6">{{tournament.name}}</div>
+							</div>
+						</li> {{/matchList}}
+					</ul>
+					{{#matchPages}}
+					<div class="text-center pt-3">
+						<button class="btn btn-primary" type="button">Show more</button>
+					</div>
+					{{/matchPages}} {{/matchHistory}}
 
-                </div>
+				</div>
 
-            </div>
-        </section>
+			</div>
+		</section>
 
-    </main>
+	</main>
 
-    <!--==========================
+	<!--==========================
   Footer
 ============================-->
-    <footer id="footer">
-        <div class="container">
-            <div class="copyright">
-                &copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>. All Rights Reserved
-            </div>
-            <div class="credits">
-                ReDesigned by paDAWans
-            </div>
-        </div>
-    </footer>
-    <!-- #footer -->
+	<footer id="footer">
+		<div class="container">
+			<div class="copyright">
+				&copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>.
+				All Rights Reserved
+			</div>
+			<div class="credits">ReDesigned by paDAWans</div>
+		</div>
+	</footer>
+	<!-- #footer -->
 
-    <a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
-    <!-- Uncomment below if you want to use a preloader -->
-    <div id="preloader"></div>
+	<a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
+	<!-- Uncomment below if you want to use a preloader -->
+	<div id="preloader"></div>
 
-    <!-- JavaScript Libraries -->
-    <script src="/../lib/jquery/jquery.min.js"></script>
-    <script src="/../lib/jquery/jquery-migrate.min.js"></script>
-    <script src="/../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/../lib/easing/easing.min.js"></script>
-    <script src="/../lib/superfish/hoverIntent.js"></script>
-    <script src="/../lib/superfish/superfish.min.js"></script>
-    <script src="/../lib/wow/wow.min.js"></script>
-    <script src="/../lib/waypoints/waypoints.min.js"></script>
-    <script src="/../lib/counterup/counterup.min.js"></script>
-    <script src="/../lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="/../lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="/../lib/lightbox/js/lightbox.min.js"></script>
-    <script src="/../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
-    <!-- Contact Form JavaScript File -->
-    <script src="/../contactform/contactform.js"></script>
+	<!-- JavaScript Libraries -->
+	<script src="/../lib/jquery/jquery.min.js"></script>
+	<script src="/../lib/jquery/jquery-migrate.min.js"></script>
+	<script src="/../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/../lib/easing/easing.min.js"></script>
+	<script src="/../lib/superfish/hoverIntent.js"></script>
+	<script src="/../lib/superfish/superfish.min.js"></script>
+	<script src="/../lib/wow/wow.min.js"></script>
+	<script src="/../lib/waypoints/waypoints.min.js"></script>
+	<script src="/../lib/counterup/counterup.min.js"></script>
+	<script src="/../lib/owlcarousel/owl.carousel.min.js"></script>
+	<script src="/../lib/isotope/isotope.pkgd.min.js"></script>
+	<script src="/../lib/lightbox/js/lightbox.min.js"></script>
+	<script src="/../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+	<!-- Contact Form JavaScript File -->
+	<script src="/../contactform/contactform.js"></script>
 
-    <!-- Template Main Javascript File -->
-    <script src="/../js/main.js"></script>
+	<!-- Template Main Javascript File -->
+	<script src="/../js/main.js"></script>
 
 </body>
 

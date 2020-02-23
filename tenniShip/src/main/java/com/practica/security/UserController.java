@@ -1,6 +1,7 @@
 package com.practica.security;
 
 
+import java.awt.Image;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.ImageIcon;
 
 import com.practica.TournamentRepository;
 import com.practica.model.Tournament;
@@ -186,6 +188,11 @@ public class UserController {
     		model.addAttribute("wrongData", true);
     		return "login";
     	} 
+	
+//	@GetMapping("/")
+//	private String redirect (Model model) {
+//		return index(model);
+//	}
 	
 	@GetMapping("/TenniShip/SignUp")
 	public String sign_up (Model model) {

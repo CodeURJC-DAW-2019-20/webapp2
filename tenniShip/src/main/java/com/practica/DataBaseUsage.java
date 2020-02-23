@@ -193,12 +193,10 @@ public class DataBaseUsage implements CommandLineRunner {
 		//
 		//
 
-		Tournament tournament1 = new Tournament("DavisCup");
+		Tournament tournament1 = new Tournament("Davis Cup");
 		tournamentRepository.save(tournament1);
-		Tournament tournament2 = new Tournament("TestCup");
+		Tournament tournament2 = new Tournament("Champions League");
 		tournamentRepository.save(tournament2);
-		Tournament tournament3 = new Tournament("EmptyCup");
-		tournamentRepository.save(tournament3);
 
 		//
 		//
@@ -387,96 +385,5 @@ public class DataBaseUsage implements CommandLineRunner {
 		m18B.setTeam2(team18B);
 		m18B.setTournament(tournament2);
 		matchRepository.save(m18B);
-		
-		Match m1C = new Match(0, 0, "A");
-		m1C.setTeam1(team1);
-		m1C.setTeam2(team3B);
-		m1C.setTournament(tournament3);
-		matchRepository.save(m1C);
-		Match m2C = new Match(0, 0, "A");
-		m2C.setTeam1(team3B);
-		m2C.setTeam2(team2);
-		m2C.setTournament(tournament3);
-		matchRepository.save(m2C);
-		Match m3C = new Match(0, 0, "A");
-		m3C.setTeam1(team2);
-		m3C.setTeam2(team1);
-		m3C.setTournament(tournament3);
-		matchRepository.save(m3C);
-		Match m4C = new Match(0, 0, "B");
-		m4C.setTeam1(team4B);
-		m4C.setTeam2(team5B);
-		m4C.setTournament(tournament3);
-		matchRepository.save(m4C);
-		Match m5C = new Match(0, 0, "B");
-		m5C.setTeam1(team6B);
-		m5C.setTeam2(team4B);
-		m5C.setTournament(tournament3);
-		matchRepository.save(m5C);
-		Match m6C = new Match(0, 0, "B");
-		m6C.setTeam1(team5B);
-		m6C.setTeam2(team6B);
-		m6C.setTournament(tournament3);
-		matchRepository.save(m6C);
-		Match m7C = new Match(0, 0, "C");
-		m7C.setTeam1(team7B);
-		m7C.setTeam2(team8B);
-		m7C.setTournament(tournament3);
-		matchRepository.save(m7C);
-		Match m8C = new Match(0, 0, "C");
-		m8C.setTeam1(team9B);
-		m8C.setTeam2(team7B);
-		m8C.setTournament(tournament3);
-		matchRepository.save(m8C);
-		Match m9C = new Match(0, 0, "C");
-		m9C.setTeam1(team8B);
-		m9C.setTeam2(team9B);
-		m9C.setTournament(tournament3);
-		matchRepository.save(m9C);
-		Match m10C = new Match(0, 0, "D");
-		m10C.setTeam1(team10B);
-		m10C.setTeam2(team11B);
-		m10C.setTournament(tournament3);
-		matchRepository.save(m10C);
-		Match m11C = new Match(0, 0, "D");
-		m11C.setTeam1(team12B);
-		m11C.setTeam2(team10B);
-		m11C.setTournament(tournament3);
-		matchRepository.save(m11C);
-		Match m12C = new Match(0, 0, "D");
-		m12C.setTeam1(team11B);
-		m12C.setTeam2(team12B);
-		m12C.setTournament(tournament3);
-		matchRepository.save(m12C);
-		Match m13C = new Match(0, 0, "E");
-		m13C.setTeam1(team13B);
-		m13C.setTeam2(team14B);
-		m13C.setTournament(tournament3);
-		matchRepository.save(m13C);
-		Match m14C = new Match(0, 0, "E");
-		m14C.setTeam1(team15B);
-		m14C.setTeam2(team13B);
-		m14C.setTournament(tournament3);
-		matchRepository.save(m14C);
-		Match m15C = new Match(0, 0, "E");
-		m15C.setTeam1(team14B);
-		m15C.setTeam2(team15B);
-		m15C.setTournament(tournament3);
-		matchRepository.save(m15C);
-		Match m16C = new Match(0, 0, "F");
-		m16C.setTeam1(team16B);
-		m16C.setTeam2(team17B);
-		m16C.setTournament(tournament3);
-		matchRepository.save(m16C);
-		Match m17C = new Match(0, 0, "F");
-		m17C.setTeam1(team18B);
-		m17C.setTeam2(team16B);
-		m17C.setTournament(tournament3);
-		matchRepository.save(m17C);
-		Match m18C = new Match(0, 0, "F");
-		m18C.setTeam1(team17B);
-		m18C.setTeam2(team18B);
-		m18C.setTournament(tournament3);
-		matchRepository.save(m18C);
 	}
 }
