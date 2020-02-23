@@ -79,25 +79,40 @@
             </header>
 
             <div class="row registerMatchBothPages-container">
-			
+
+                {{#listTournaments}}
+                <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp displayTournamentsHidden">
+                    <div class="registerMatchBothPages-wrap">
+                        <figure>
+                            <a href=""><img alt="" class="img-fluid" src="/../img/clients/tournaments/{{name}}.jpg"></a>
+                        </figure>
+
+                        <div class="registerMatchBothPages-info">
+                            <h4><a href="/TenniShip/RegisterMatch/Tournament/{{name}}">{{name}}</a></h4>
+                        </div>
+                    </div>
+                </div>
+                {{/listTournaments}}
+
+
 				{{#listTournaments}}
 	                <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp">
 	                    <div class="registerMatchBothPages-wrap">
 	                        <figure>
 	                            <a href="/TenniShip/RegisterMatch/Tournament/{{name}}"><img alt="" class="img-fluid" src="/../img/clients/tournaments/{{name}}.jpg">
 	                        </figure>
-	
+
 	                        <div class="registerMatchBothPages-info">
 	                            <h4><a href="/TenniShip/RegisterMatch/Tournament/{{name}}">{{name}}</a></h4>
 	                        </div>
 	                    </div>
-	                </div>	                
+	                </div>
 				{{/listTournaments}}
-			
+
             </div>
 
             <div class="text-center pt-3 TournamentButton">
-                <button class="button btn" type="submit">Show more</button>
+                <button class="button btn" id="loadContentButtonTournament" type="submit">Show more</button>
             </div>
 
         </div>
@@ -143,6 +158,8 @@
 
 <!-- Template Main Javascript File -->
 <script src="/../js/main.js"></script>
+<script src="/../js/showMoreContent.js"></script>
+
 
 </body>
 </html>
