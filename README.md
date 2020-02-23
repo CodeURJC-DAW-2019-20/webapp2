@@ -36,7 +36,7 @@ TenniShip has been made with HTML, CSS and JavaScript. BizPage Bootstrap templat
 ## Technical details
 ### Entities
 TenniShip has four different entities: match, tournament, team and user role. 
-![Entities](tenniShip/src/main/resources/static/img/diagrams/TenniShip_ER.png)
+![Entities](tenniShip/src/main/resources/static/img/diagrams/MySQL_DB.png)
 
 ### Users
 TenniShip has three different users: administrator, registered user and non-registered user.
@@ -44,6 +44,30 @@ TenniShip has three different users: administrator, registered user and non-regi
 + _Registered users_ can only see tournaments and teams information on those tournaments that they are not its administrator.
 + _Administrators_ can modify tournaments information on those who they are its administrator. For the rest of tournaments they are simple _registered users_.
 
+### Development
+#### Source Code
+[Source Code Repository](https://trello.com/b/uJDmvvK9/daw-tareas/ "GitHub").
+
+#### Development tools
++ Spring Tool Suite 4.
++ MySQL Server 8.0.
++ MySQL WorkBench 8.0.
+#### Dependencies
++ MSQL Server 8.0.
+
+#### Useful commands
+Generate MySQL schema:
+``` shell
+insert commands here
+```
+Build application:
+``` shell
+insert commands here
+```
+Run application:
+``` shell
+insert commands here
+```
 ### Pictures
 + Tournament has an image as its logo.
 + Each team has 6 images: the team logo, and a profile picture for the five team members.
@@ -76,7 +100,8 @@ Tournaments will automatically reorganize themselves when a match is played.
 
 ![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/fromActions3.jpeg)
 
-
+## Process Tools
+We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") for tasks management.
 
 ## Authors
 
@@ -85,6 +110,55 @@ Tournaments will automatically reorganize themselves when a match is played.
 * Diego Pascual Ferrer - [Diego's GitHub](https://github.com/Diegopasfer1909/ "Diegopasfer1909") - [Diego's e-mail](mailto:d.pascual.2017@alumnos.urjc.es "Send e-mail")
 * Alvaro Justo Rivas Alcobendas - [Álvaro's GitHub](https://github.com/Varo412/ "Varo412") - [Álvaro's e-mail](mailto:aj.rivas.2017@alumnos.urjc.es "Send e-mail")
 * Marcos Villacañas Flores - [Marcos' GitHub](https://github.com/MarcosVillacanas/ "MarcosVillacanas") - [Marcos' e-mail](mailto:m.villacanas.2017@alumnos.urjc.es "Send e-mail")
+
+#### Authors' participation
+* Iván: 
+	- Tasks:
+		- d
+	- Top 5 most important commits in 'Second Phase':
+		- d
+	- Top 5 most modified files:
+		- d
+* Santi: 
+	- Tasks:
+		- d
+	- Top 5 most important commits in 'Second Phase':
+		- d
+	- Top 5 most modified files:
+		- d
+* Diego: 
+	- Tasks:
+		- d
+	- Top 5 most important commits in 'Second Phase':
+		- d
+	- Top 5 most modified files:
+		- d
+* Álvaro: 
+	- Tasks:
+		- Images upload.
+		- Images visualization.
+		- E-Mail sender: e-mail sent when a new user signs up and when a team is disqualified.
+		- Documentation: Readme and diagrams.
+		- Insertion of sample data for demo.
+	- Top 5 most important commits in 'Second Phase':
+		- [Email implemented!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/ed623ab115cc423e3d9282339be99007238e21cc "de0ce05") 
+		- [Images implemented!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/ed623ab115cc423e3d9282339be99007238e21cc "ed623ab") 
+		- [Images implemented on header and Register Match!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/f37bb40a44d591178751cc6f5f487d5578646f2c "f37bb40") 
+		- [Project Fixed](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/25c47d3700c9e54fc956d58e9690c6a86463518e "25c47d3") 
+		- [Tournament Sheet images, default avatar and minor fixes](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/26e9e5e5468259ccd846bb6973fa5b3a65deb495 "26e9e5e") 
+	- Top 5 most modified files in 'Second Phase':
+		- [Mail Sender](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/MailSenderXX.java "MailSenderXX.java") 
+		- [Images Service](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/ImageService.java "Image Service") 
+		- [Data Base Usage](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/DataBaseUsage.java "DataBaseUsage.java") 
+		- [Tournament Rest Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentRestController.java "TournamentRestController.java") 
+		- [Team Rest Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamRestController.java "TeamRestController.java") 
+* Marcos: 
+	- Tasks:
+		- d
+	- Top 5 most important commits in 'Second Phase':
+		- d
+	- Top 5 most modified files:
+		- d
 
 ## License
 © BizPage Bootstrap template has been designed by BootstrapMade. [Original Bizpage Template](https://bootstrapmade.com/demo/BizPage/ "Bizpage").
