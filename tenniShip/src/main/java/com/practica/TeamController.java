@@ -60,7 +60,10 @@ public class TeamController {
     		double totalMatches = 0.0;
     		
         	model.addAttribute("teamName", t.get().getName());
-        	
+
+            List <String> tournamentsList = teamRepository.getTournamentsName(t.get());
+            model.addAttribute("imageListTournaments",tournamentsList);
+
         	totalMatchesLost=teamRepository.getMatchesLost(t.get().getName());
         	totalMatchesWon=teamRepository.getMatchesWon(t.get().getName());
         	
