@@ -1,12 +1,9 @@
 package com.practica;
 
-import java.util.Optional;
+import java.io.File;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -139,6 +136,10 @@ public class TournamentSheetController {
 
 		if (t.isPresent()) {
             model.addAttribute("adminDeleting", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
+
+			if (Objects.nonNull(t.get().hasImage()) && t.get().hasImage()) {
+				model.addAttribute("hasImage", true);
+			}
 
 			//GROUPS-------
 			String[] groups = {"A", "B", "C", "D", "E", "F"};

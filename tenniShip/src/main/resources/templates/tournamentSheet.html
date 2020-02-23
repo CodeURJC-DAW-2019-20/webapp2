@@ -105,9 +105,11 @@ Header
             <div class="container container-thin">
                 <div class="section-header">
                     <h3>{{tournamentName}}</h3>
+                    {{#hasImage}}
                     <div class="tournament-icon img-thumbnail">
                         <img alt="Tournament Image" class="tournamentPic rounded mx-auto d-block" src="/../img/clients/tournaments/{{tournamentName}}.jpg">
                     </div>
+                    {{/hasImage}}
                 </div>
             </div>
             <div id="progress-content" class="container">

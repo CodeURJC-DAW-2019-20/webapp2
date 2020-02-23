@@ -194,8 +194,10 @@ public class DataBaseUsage implements CommandLineRunner {
 		//
 
 		Tournament tournament1 = new Tournament("Davis Cup");
+		tournament1.setImage(true);
 		tournamentRepository.save(tournament1);
 		Tournament tournament2 = new Tournament("Champions League");
+		tournament2.setImage(true);
 		tournamentRepository.save(tournament2);
 		Tournament tournament3 = new Tournament("EmptyCup");
 		tournamentRepository.save(tournament3);
