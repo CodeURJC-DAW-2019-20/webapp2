@@ -16,6 +16,10 @@ public interface TeamRepository extends JpaRepository<Team, String> {
 			"WHERE m.team1 = :team OR m.team2 = :team")
 	public List<Tournament> getTournaments(Team team);
 
+    @Query("SELECT distinct t.name FROM Match m JOIN m.tournament t " +
+           "WHERE m.team1 = :team OR m.team2 = :team")
+    public List<String> getTournamentsName(Team team);
+
 	@Query("SELECT COUNT (m.id) FROM Match m WHERE m.tournament = :t AND m.type = :g "
 			+ "AND ((m.team1 = :tm AND m.homePoints > m.awayPoints) OR (m.team2 = :tm AND m.homePoints < m.awayPoints))")
 	public int getWonGroupMatches(Tournament t, Team tm, String g);

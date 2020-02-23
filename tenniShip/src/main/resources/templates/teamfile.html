@@ -200,17 +200,11 @@
 					<h3>Tournaments</h3>
 
 					<section class="wow fadeInUp">
-						<!--Problem in the future-->
 						<div class="container">
 							<div class="owl-carousel clients-carousel">
-								<img alt="" src="/../img/clients/client-1.png"> <img
-									alt="" src="/../img/clients/client-2.png"> <img alt=""
-									src="/../img/clients/client-3.png"> <img alt=""
-									src="/../img/clients/client-4.png"> <img alt=""
-									src="/../img/clients/client-5.png"> <img alt=""
-									src="/../img/clients/client-6.png"> <img alt=""
-									src="/../img/clients/client-7.png"> <img alt=""
-									src="/../img/clients/client-8.png">
+								{{#imageListTournaments}}
+								<img alt="" src="/../img/clients/tournaments/{{.}}.jpg">
+								{{/imageListTournaments}}
 							</div>
 						</div>
 					</section>
