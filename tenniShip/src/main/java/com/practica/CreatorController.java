@@ -227,15 +227,21 @@ public class CreatorController {
 
 	@GetMapping("/TenniShip/Creator")
 	public String create(Model model, HttpServletRequest request) {
-		Tournament tour = new Tournament();
-		model.addAttribute("newTournament", tour);
-		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
 		
-		if(userComponent.isLoggedUser()  && !request.isUserInRole("ADMIN")) {
-			String teamUser = userComponent.getTeam();
-			model.addAttribute("team", teamUser);
+		if(userComponent.isLoggedUser()) {
+			Tournament tour = new Tournament();
+			model.addAttribute("newTournament", tour);
+			model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
+			
+			if(!request.isUserInRole("ADMIN")) {
+				String teamUser = userComponent.getTeam();
+				model.addAttribute("team", teamUser);
+			}
+			return "tournamentCreator";
+		} else {
+			return "redirect:/TenniShip/SignIn";
 		}
-		return "tournamentCreator";
+		
 	}
 
 	public void raffleTeamsCreateMatches(Tournament tournament, List<Team> teams) {

@@ -1,7 +1,6 @@
 package com.practica;
 
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -42,7 +41,7 @@ public class TournamentSheetController {
 	@PostMapping("/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}/Submission")
 	public String submitMatchEdited(Model model, @PathVariable String tournament, @RequestParam String teamHome, @PathVariable String group,
 			@RequestParam String teamAway, @RequestParam int quantityHome, @RequestParam int quantityAway, 
-			HttpServletRequest request) throws InterruptedException {
+			HttpServletRequest request) {
 		
 		if (quantityHome == 3 ^ quantityAway == 3) { //XOR
 			Optional<Team> home = teamRepository.findById(teamHome);
@@ -59,10 +58,13 @@ public class TournamentSheetController {
 			return "redirect:/TenniShip/Tournament/"+ tournament;
 			
 		} else {
-			model.addAttribute("error", true);
-			TimeUnit.SECONDS.sleep(4);
-			
-			return "redirect:/TenniShip/Tournament/" + tournament + "/EditMatches/" + group;
+			model.addAttribute("errormsg", "Someone has to win");
+			model.addAttribute("goback", true);
+			model.addAttribute("admin", true);
+			model.addAttribute("tournament", tournament);
+			model.addAttribute("group", group);
+			return "error";
+			//return "redirect:/TenniShip/ADMIN/Tournament/" + tournament + "/EditMatches/" + group;
 		}
 
 		
@@ -127,24 +129,15 @@ public class TournamentSheetController {
     public String tournament(Model model, @PathVariable String tournament, HttpServletRequest request) {
 
 		Optional<Tournament> t = tournamentRepository.findById(tournament);
+		
+		if(userComponent.isLoggedUser()  && !request.isUserInRole("ADMIN")) {
+			String teamUser = userComponent.getTeam();
+			model.addAttribute("team", teamUser);
+		}
+		model.addAttribute("registered",userComponent.isLoggedUser() && !request.isUserInRole("ADMIN") );
+		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
 
 		if (t.isPresent()) {
-			if(userComponent.isLoggedUser()  && !request.isUserInRole("ADMIN")) {
-				String teamUser = userComponent.getTeam();
-				model.addAttribute("team", teamUser);
-			}
-			model.addAttribute("registered",userComponent.isLoggedUser() && !request.isUserInRole("ADMIN") );
-			model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
-			
-			double progressPercentage;
-			final int TOTAL_MATCHES = 25;
-			progressPercentage = tournamentRepository.getPlayedMatches(t.get().getName());
-			progressPercentage = (progressPercentage / TOTAL_MATCHES) * 100;
-			
-			model.addAttribute("tournamentName", t.get().getName());
-			model.addAttribute("completion", progressPercentage);
-			model.addAttribute("adminGroups", userComponent.isLoggedUser() && request.isUserInRole("ADMIN") &&
-                    tournamentRepository.getPhaseMatches(t.get(), "X").isEmpty());
             model.addAttribute("adminDeleting", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
 
 			//GROUPS-------
@@ -200,22 +193,22 @@ public class TournamentSheetController {
 					last8.add(secondPlaceTeams.get(1).t);
 					Collections.shuffle(last8);
 
-					Match a = new Match(0, 3, "X");
+					Match a = new Match(0, 0, "X");
 					a.setTeam1(last8.get(0));
 					a.setTeam2(last8.get(1));
 					a.setTournament(t.get());
 					matchRepository.save(a);
-					Match b = new Match(0, 3, "X");
+					Match b = new Match(0, 0, "X");
 					b.setTeam1(last8.get(2));
 					b.setTeam2(last8.get(3));
 					b.setTournament(t.get());
 					matchRepository.save(b);
-					Match c = new Match(0, 3, "X");
+					Match c = new Match(0, 0, "X");
 					c.setTeam1(last8.get(4));
 					c.setTeam2(last8.get(5));
 					c.setTournament(t.get());
 					matchRepository.save(c);
-					Match d = new Match(0, 3, "X");
+					Match d = new Match(0, 0, "X");
 					d.setTeam1(last8.get(6));
 					d.setTeam2(last8.get(7));
 					d.setTournament(t.get());
@@ -253,12 +246,12 @@ public class TournamentSheetController {
 							last4.add(Match.getTeam2());
 					});
 
-					Match a = new Match(0, 3, "Y");
+					Match a = new Match(0, 0, "Y");
 					a.setTeam1(last4.get(0));
 					a.setTeam2(last4.get(1));
 					a.setTournament(t.get());
 					matchRepository.save(a);
-					Match b = new Match(3, 0, "Y");
+					Match b = new Match(0, 0, "Y");
 					b.setTeam1(last4.get(2));
 					b.setTeam2(last4.get(3));
 					b.setTournament(t.get());
@@ -296,7 +289,7 @@ public class TournamentSheetController {
 							last2.add(Match.getTeam2());
 					});
 
-					Match a = new Match(3, 2, "Z");
+					Match a = new Match(0, 0, "Z");
 					a.setTeam1(last2.get(0));
 					a.setTeam2(last2.get(1));
 					a.setTournament(t.get());
@@ -326,9 +319,21 @@ public class TournamentSheetController {
 				//--FINAL PHASE	
 
 			}
+			
+			double progressPercentage;
+			final int TOTAL_MATCHES = 25;
+			progressPercentage = tournamentRepository.getPlayedMatches(t.get().getName());
+			progressPercentage = (progressPercentage / TOTAL_MATCHES) * 100;
+			
+			model.addAttribute("tournamentName", t.get().getName());
+			model.addAttribute("completion", progressPercentage);
+			
+			model.addAttribute("adminGroups", userComponent.isLoggedUser() && request.isUserInRole("ADMIN") &&
+                    tournamentRepository.getPhaseMatches(t.get(), "X").isEmpty());
+			
 			return "tournamentSheet";
 
-		}//if (t.isPresent())
+		}
 
 		else {
 			model.addAttribute("tournamentName", tournament);

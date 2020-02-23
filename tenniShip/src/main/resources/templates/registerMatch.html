@@ -33,7 +33,7 @@
     <!--==========================
   Header
 ============================-->
-<header id="header">
+    <header id="header">
         <div class="container-fluid">
 
             <div class="pull-left" id="logo">
@@ -43,7 +43,7 @@
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     {{#admin}}
-                	<li class="menu-has-children teamMenu"><a href="#"><strong>ADMIN</strong></a>
+                    <li class="menu-has-children teamMenu"><a href="#"><strong>ADMIN</strong></a>
                         <ul>
                             <li>
                                 <form action="/logout" method="post">
@@ -52,8 +52,7 @@
                             </li>
                         </ul>
                     </li>
-                    {{/admin}}
-                    {{^admin}}
+                    {{/admin}} {{^admin}}
                     <li class="menu-has-children"><a href="#actions">Actions</a>
                         <ul>
                             <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
@@ -71,7 +70,7 @@
                         </ul>
                     </li>
                     <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
-                	{{/admin}}
+                    {{/admin}}
                 </ul>
             </nav>
             <!-- #nav-menu-container -->
@@ -89,7 +88,7 @@
             <h3 class="section-title">Select the Match</h3>
             <h4 id="UnderTitleParagraph">{{round}}</h4>
         </div>
-        
+
         {{#allPlayed}}
         <div class="text-center pt-3">
             <h4><a href="/TenniShip/Tournament/{{tournamentName}}" style="color: green;"><strong>See Tournament Details</strong></a></h4>
@@ -99,92 +98,79 @@
         <section class="section-bg" id="registerMatchBothPages">
             <div class="container">
 
-                {{#listMatches}}
-                {{^admin}}
-                	<form action="/TenniShip/RegisterMatch/Tournament/{{tournament.name}}/Submission" method="post">
-                {{/admin}}
-                {{#admin}}
-                	<form action="/TenniShip/ADMIN/Tournament/{{tournament.name}}/EditMatches/{{type}}/Submission" method="post">
-                {{/admin}}
-                    <div class="row">
-                        <div class="col-lg-4 col-md-3">
-                            <div class="card">
-                                <div class="view overlay">
-                                    <img alt="Card image cap" class="card-img-top" src="/../img/clients/teams/{{team1.teamName}}.jpg">
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title TeamPositioningRegisterMatchIconLocal">
-                                        <a class="colorLinkTeam" href="/Team/{{team1.teamName}}">{{team1.name}}</a>
-                                        <input type="hidden" name="teamHome" value="{{team1.teamName}}">
-                                    </h4>
-                                    <p class="card-text TeamPositioningRegisterMatchIconLocal">Local´s Team</p>
+                {{#listMatches}} {{^admin}}
+                <form action="/TenniShip/RegisterMatch/Tournament/{{tournament.name}}/Submission" method="post">
+                    {{/admin}} {{#admin}}
+                    <form action="/TenniShip/ADMIN/Tournament/{{tournament.name}}/EditMatches/{{type}}/Submission" method="post">
+                        {{/admin}}
+                        <div class="row">
+                            <div class="col-lg-4 col-md-3">
+                                <div class="card cardMatch">
+                                    <div class="view overlay">
+                                        <img alt="Card image cap" class="cardMatchImg card-img-top" src="/../img/clients/teams/{{team1.teamName}}.jpg">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title TeamPositioningRegisterMatchIconLocal">
+                                            <a class="colorLinkTeam" href="/Team/{{team1.teamName}}">{{team1.name}}</a>
+                                            <input type="hidden" name="teamHome" value="{{team1.teamName}}">
+                                        </h4>
+                                        <p class="card-text TeamPositioningRegisterMatchIconLocal">Local´s Team</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp ">
-                            <div class="registerMatchBothPages-wrap ">
-                                <figure>
-                                    <img alt="" class="img-fluid rackets" src="/../img/rackets.png">
-                                </figure>
+                            <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp ">
+                                <div class="registerMatchBothPages-wrap ">
+                                    <figure>
+                                        <img alt="" class="img-fluid rackets" src="/../img/rackets.png">
+                                    </figure>
 
-                                <div class="registerMatchBothPages-info ">
-                                    <h4>
-                                        <a href="registerMatch.html">Match Result</a>
-                                    </h4>
-                                    <div class="d-flex justify-content-around">
+                                    <div class="registerMatchBothPages-info ">
+                                        <h4>
+                                            <a href="#">Match Result</a>
+                                        </h4>
+                                        <div class="d-flex justify-content-around">
 
-                                        <div class="TeamPositioningRegisterMatchIconLocal">
-                                            <div class="def-number-input number-input safari_only">
-                                                <button class="minus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                                                <input class="quantity" min="0" max="3" name="quantityHome" type="number" value="{{homePoints}}">
-                                                <button class="plus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
+                                            <div class="TeamPositioningRegisterMatchIconLocal">
+                                                <div class="def-number-input number-input safari_only">
+                                                    <button class="minus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                                    <input class="quantity" min="0" max="3" name="quantityHome" type="number" value="{{homePoints}}">
+                                                    <button class="plus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="TeamPositioningRegisterMatchIconVisitor">
-                                            <div class="def-number-input number-input safari_only">
-                                                <button class="minus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                                                <input class="quantity" min="0" max="3" name="quantityAway" type="number" value="{{awayPoints}}">
-                                                <button class="plus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
+                                            <div class="TeamPositioningRegisterMatchIconVisitor">
+                                                <div class="def-number-input number-input safari_only">
+                                                    <button class="minus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                                    <input class="quantity" min="0" max="3" name="quantityAway" type="number" value="{{awayPoints}}">
+                                                    <button class="plus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-3 ">
-                            <div class="card">
-                                <div class="view overlay">
-                                    <img alt="Card image cap" class="card-img-top" src="/../img/MaltaFlag.png">
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="card-title TeamPositioningRegisterMatchIconVisitor">
-                                        <a class="colorLinkTeam" href="/Team/{{team2.teamName}}">{{team2.teamName}}</a>
-                                        <input type="hidden" name="teamAway" value="{{team2.name}}">
-                                    </h4>
-                                    <p class="card-text TeamPositioningRegisterMatchIconVisitor">Visitor´s Team</p>
+                            <div class="col-lg-4 col-md-3 ">
+                                <div class="card cardMatch">
+                                    <div class="view overlay">
+                                        <img alt="Card image cap" class="cardMatchImg card-img-top" src="/../img/clients/teams/{{team2.teamName}}.jpg">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title TeamPositioningRegisterMatchIconVisitor">
+                                            <a class="colorLinkTeam" href="/Team/{{team2.teamName}}">{{team2.teamName}}</a>
+                                            <input type="hidden" name="teamAway" value="{{team2.name}}">
+                                        </h4>
+                                        <p class="card-text TeamPositioningRegisterMatchIconVisitor">Visitor´s Team</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="centerButton">
-                        <button class="btn SubmitButtonMatch" type="submit" {{#error}}data-target="#PointsError" data-toggle="modal"{{/error}}>Submit</button>
-                    </div>
-                </form>
-                {{/listMatches}}
+                        <div class="centerButton">
+                            <button class="btn SubmitButtonMatch" type="submit">Submit</button>
+                        </div>
+                    </form>
+                    {{/listMatches}}
             </div>
-            
-	     <div aria-labelledby="exampleModalCenterTitle" class="modal fade" id="PointsError"
-	         role="dialog" tabindex="-1" data-backdrop="static">
-	        <div class="modal-dialog modal-dialog-centered" role="document">
-	            <div class="modal-content">
-	                <div class="modal-header">
-	                    <h5 class="modal-title">Someone has to Win!</h5>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
         </section>
         <!-- #registerMatchSelectMatch -->
 

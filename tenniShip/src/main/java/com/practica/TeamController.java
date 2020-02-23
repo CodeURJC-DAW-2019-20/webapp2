@@ -3,7 +3,6 @@ package com.practica;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.practica.model.Match;
 import com.practica.model.Player;
 import com.practica.model.Team;
-import com.practica.model.Tournament;
 import com.practica.security.UserComponent;
-import com.practica.security.UserController;
 
 
 @Controller
@@ -48,13 +45,13 @@ public class TeamController {
 	public String team(Model model, @PathVariable String team, HttpServletRequest request) {
 		
 		Optional<Team> t = teamRepository.findById(team);
+		
 		if(userComponent.isLoggedUser()  && !request.isUserInRole("ADMIN")) {
 			String teamUser = userComponent.getTeam();
 			model.addAttribute("team", teamUser);
 		}
 		model.addAttribute("registered",userComponent.isLoggedUser() && !request.isUserInRole("ADMIN") );
 		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
-		
 
         if (t.isPresent()) {	/* If there's a team with that name, we show them the team page */
         	

@@ -1,7 +1,5 @@
 package com.practica.security;
 
-
-import java.awt.Image;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -9,7 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.ImageIcon;
 
 import com.practica.TournamentRepository;
 import com.practica.model.Tournament;
@@ -181,10 +178,11 @@ public class UserController {
 
 	@GetMapping("/TenniShip/loginerror")
     	public String sign_in_wrong (Model model) {
-
-    		if(userComponent.isLoggedUser()) {
-    			return "redirect:/TenniShip";
-    		}
+			
+			if(userComponent.isLoggedUser()) {
+				return "redirect:/TenniShip";
+			}
+			
     		model.addAttribute("wrongData", true);
     		return "login";
     	} 
@@ -196,7 +194,11 @@ public class UserController {
 	
 	@GetMapping("/TenniShip/SignUp")
 	public String sign_up (Model model) {
-
+		
+		if(userComponent.isLoggedUser()) {
+			return "redirect:/TenniShip";
+		}
+		
 		User user = new User();
 		model.addAttribute("personUser", user);
 		return "registerAccount";

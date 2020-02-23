@@ -53,9 +53,10 @@ public class TournamentController {
 			
 			matchRepository.save(match); 
 		} else {
-			model.addAttribute("error", true);
-			TimeUnit.SECONDS.sleep(4);
-			return selectMatch(model, tournament, request);
+			model.addAttribute("errormsg", "Someone has to win");
+			model.addAttribute("goback", true);
+			model.addAttribute("tournament", tournament);
+			return "error";
 		}
 		return "redirect:/TenniShip/RegisterMatch/Tournament/"+ tournament;
 	} 
@@ -64,8 +65,8 @@ public class TournamentController {
 	public String selectMatch(Model model, @PathVariable String tournament , HttpServletRequest request) {
 		
 		Optional<Tournament> t = tournamentRepository.findById(tournament);//check if that team play this tournament
-		
-		if (t.isPresent()) {
+				
+		if (t.isPresent() && tournamentRepository.getTeams(t.get()).contains(teamRepository.findById(userComponent.getTeam()).get())) {
 			model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
 			String team = userComponent.getTeam();
 			model.addAttribute("team", team);
@@ -81,24 +82,28 @@ public class TournamentController {
 			} else {
 				model.addAttribute("round", rounds.get(tournamentRepository.getNextMatches(t.get(), tm.get()).get(0).getType()));
 			}
-			model.addAttribute("listMatches", tournamentRepository.getNextMatches(t.get(), tm.get()));	
-		}
-		//else return ERROR
-
-		return "registerMatch";
+			model.addAttribute("listMatches", tournamentRepository.getNextMatches(t.get(), tm.get()));
+			return "registerMatch";
+		} else {
+			model.addAttribute("errormsg", "You need to be a participant of the tournament you want to register a match at");
+			return "error";
+		}		
 	}
 
 	@GetMapping("/TenniShip/RegisterMatch/Tournament")
 	public String selectTournament(Model model, HttpServletRequest request) {
-
-		String team = userComponent.getTeam();
-		Optional<Team> t = teamRepository.findById(team);
-
-        model.addAttribute("registered", userComponent.getLoggedUser());
-        model.addAttribute("team", team);
-		model.addAttribute("listTournaments", teamRepository.getTournaments(t.get()));
-		
-		return "selectTournament";
+		if(userComponent.isLoggedUser()) {
+			String team = userComponent.getTeam();
+			Optional<Team> t = teamRepository.findById(team);
+	
+	        model.addAttribute("team", team);
+			model.addAttribute("listTournaments", teamRepository.getTournaments(t.get()));
+			
+			return "selectTournament";
+		}
+		else {
+			return "redirect:/TenniShip/SignIn";
+		}
 	}
 
 	
