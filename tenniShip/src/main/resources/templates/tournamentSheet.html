@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Davis Cup - Tenniship</title>
-    <!-- This should change dynamically with tournament name (in the future) -->
+    <title>{{tournamentName}} - Tenniship</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -82,7 +81,7 @@ Header
                         </ul>
                     </li>
                     <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
-                    {{/registered}} 
+                    {{/registered}}
                     {{^registered}}
                     <li>
                         <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
@@ -93,7 +92,7 @@ Header
                     {{/registered}}
                     {{/admin}}
                 </ul>
-            </nav>    
+            </nav>
             <!-- #nav-menu-container -->
         </div>
     </header>
@@ -106,7 +105,7 @@ Header
             <div class="container container-thin">
                 <div class="section-header">
                     <h3>{{tournamentName}}</h3>
-                    <div class="team-icon img-thumbnail">
+                    <div class="tournament-icon img-thumbnail">
                         <img alt="Tournament Image" class="tournamentPic rounded mx-auto d-block" src="/../img/clients/tournaments/{{tournamentName}}.jpg">
                     </div>
                 </div>
@@ -163,17 +162,17 @@ Header
                                                         <div class="col-3">Points</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team0GroupA}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team0GroupA}}">{{team0GroupA}}</a></div>
                                                         <div class="col-3">{{team0GroupAMatchesWon}}</div>
                                                         <div class="col-3">{{team0GroupAPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team1GroupA}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team1GroupA}}">{{team1GroupA}}</a></div>
                                                         <div class="col-3">{{team1GroupAMatchesWon}}</div>
                                                         <div class="col-3">{{team1GroupAPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team2GroupA}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team2GroupA}}">{{team2GroupA}}</a></div>
                                                         <div class="col-3">{{team2GroupAMatchesWon}}</div>
                                                         <div class="col-3">{{team2GroupAPointsWon}}</div>
                                                     </div>
@@ -198,17 +197,17 @@ Header
                                                         <div class="col-3">Points</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team0GroupB}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team0GroupB}}">{{team0GroupB}}</a></div>
                                                         <div class="col-3">{{team0GroupBMatchesWon}}</div>
                                                         <div class="col-3">{{team0GroupBPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team1GroupB}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team1GroupB}}">{{team1GroupB}}</a></div>
                                                         <div class="col-3">{{team1GroupBMatchesWon}}</div>
                                                         <div class="col-3">{{team1GroupBPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team2GroupB}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team2GroupB}}">{{team2GroupB}}</a></div>
                                                         <div class="col-3">{{team2GroupBMatchesWon}}</div>
                                                         <div class="col-3">{{team2GroupBPointsWon}}</div>
                                                     </div>
@@ -233,17 +232,17 @@ Header
                                                         <div class="col-3">Points</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team0GroupC}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team0GroupC}}">{{team0GroupC}}</a></div>
                                                         <div class="col-3">{{team0GroupCMatchesWon}}</div>
                                                         <div class="col-3">{{team0GroupCPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team1GroupC}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team1GroupC}}">{{team1GroupC}}</a></div>
                                                         <div class="col-3">{{team1GroupCMatchesWon}}</div>
                                                         <div class="col-3">{{team1GroupCPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team2GroupC}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team2GroupC}}">{{team2GroupC}}</a></div>
                                                         <div class="col-3">{{team2GroupCMatchesWon}}</div>
                                                         <div class="col-3">{{team2GroupCPointsWon}}</div>
                                                     </div>
@@ -268,17 +267,17 @@ Header
                                                         <div class="col-3">Points</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team0GroupD}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team0GroupD}}">{{team0GroupD}}</a></div>
                                                         <div class="col-3">{{team0GroupDMatchesWon}}</div>
                                                         <div class="col-3">{{team0GroupDPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team1GroupD}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team1GroupD}}">{{team1GroupD}}</a></div>
                                                         <div class="col-3">{{team1GroupDMatchesWon}}</div>
                                                         <div class="col-3">{{team1GroupDPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team2GroupD}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team2GroupD}}">{{team2GroupD}}</a></div>
                                                         <div class="col-3">{{team2GroupDMatchesWon}}</div>
                                                         <div class="col-3">{{team2GroupDPointsWon}}</div>
                                                     </div>
@@ -303,17 +302,17 @@ Header
                                                         <div class="col-3">Points</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team0GroupE}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team0GroupE}}">{{team0GroupE}}</a></div>
                                                         <div class="col-3">{{team0GroupEMatchesWon}}</div>
                                                         <div class="col-3">{{team0GroupEPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team1GroupE}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team1GroupE}}">{{team1GroupE}}</a></div>
                                                         <div class="col-3">{{team1GroupEMatchesWon}}</div>
                                                         <div class="col-3">{{team1GroupEPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team2GroupE}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team2GroupE}}">{{team2GroupE}}</a></div>
                                                         <div class="col-3">{{team2GroupEMatchesWon}}</div>
                                                         <div class="col-3">{{team2GroupEPointsWon}}</div>
                                                     </div>
@@ -338,17 +337,17 @@ Header
                                                         <div class="col-3">Points</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team0GroupF}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team0GroupF}}">{{team0GroupF}}</a></div>
                                                         <div class="col-3">{{team0GroupFMatchesWon}}</div>
                                                         <div class="col-3">{{team0GroupFPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team1GroupF}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team1GroupF}}">{{team1GroupF}}</a></div>
                                                         <div class="col-3">{{team1GroupFMatchesWon}}</div>
                                                         <div class="col-3">{{team1GroupFPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6">{{team2GroupF}}</div>
+                                                        <div class="col-6"><a href="/TenniShip/Team/{{team2GroupF}}">{{team2GroupF}}</a></div>
                                                         <div class="col-3">{{team2GroupFMatchesWon}}</div>
                                                         <div class="col-3">{{team2GroupFPointsWon}}</div>
                                                     </div>
@@ -461,237 +460,273 @@ Header
                                     <div class="row">
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupA}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team0GroupA}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team0GroupA}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupA}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team0GroupA}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupB}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team0GroupB}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team0GroupB}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupB}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team0GroupB}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupC}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team0GroupC}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team0GroupC}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupC}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team0GroupC}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupD}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team0GroupD}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team0GroupD}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupD}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team0GroupD}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupE}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team0GroupE}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team0GroupE}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupE}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team0GroupE}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupF}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team0GroupF}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team0GroupF}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupF}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team0GroupF}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupA}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team1GroupA}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team1GroupA}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupA}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team1GroupA}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupB}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team1GroupB}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team1GroupB}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupB}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team1GroupB}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupC}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team1GroupC}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team1GroupC}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupC}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team1GroupC}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupD}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team1GroupD}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team1GroupD}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupD}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team1GroupD}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupE}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team1GroupE}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team1GroupE}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupE}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team1GroupE}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupF}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team1GroupF}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team1GroupF}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupF}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team1GroupF}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupA}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team2GroupA}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team2GroupA}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupA}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team2GroupA}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupB}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team2GroupB}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team2GroupB}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupB}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team2GroupB}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupC}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team2GroupC}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team2GroupC}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupC}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team2GroupC}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupD}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team2GroupD}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team2GroupD}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupD}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team2GroupD}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupE}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team2GroupE}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team2GroupE}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupE}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team2GroupE}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <div class="member tournamentTeams">
-                                                <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupF}}.jpg">
-                                                <div class="member-info">
-                                                    <div class="member-info-content">
-                                                        <h4>{{team2GroupF}}</h4>
-                                                        {{#adminDeletingTeams}}
-                                                        <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                            <a href="/TenniShip/Team/{{team2GroupF}}">
+                                                <div class="member tournamentTeams">
+                                                    <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupF}}.jpg">
+                                                    <div class="member-info">
+                                                        <div class="member-info-content">
+                                                            <h4>{{team2GroupF}}</h4>
+                                                            {{#adminDeletingTeams}}
+                                                            <button class="btn span" data-target="#DeleteTeamModal" data-toggle="modal" type="button">Delete Team</button> {{/adminDeletingTeams}}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                     <!--                                 <div class="centerButton buttonTeamsManagement"> -->
@@ -795,8 +830,9 @@ Header
     <!-- Contact Form JavaScript File -->
     <script src="/../contactform/contactform.js "></script>
 
-    <!-- Template Main Javascript File -->
-    <script src="/../js/main.js "></script>
+<!-- Template Main Javascript File -->
+<script src="/../js/main.js"></script>
+<script src="/../js/showMoreContent.js"></script>
 
 </body>
 

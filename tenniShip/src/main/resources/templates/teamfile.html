@@ -87,7 +87,7 @@
                         </ul>
                     </li>
                     <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
-                    {{/registered}} 
+                    {{/registered}}
                     {{^registered}}
                     <li>
                         <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
@@ -99,7 +99,7 @@
                 </ul>
             </nav>
             {{/admin}}
-           
+
             <!-- #nav-menu-container -->
         </div>
     </header>
@@ -215,43 +215,44 @@
 						</div>
 					</section>
 
-					{{#matchHistory}}
-					<h3>Matches played</h3>
-					<div class="container row mb-5">
-						<div class="col-sm-6 col-12">
-							<div class="pie">
-								<div class="pie__segment"
-									style="-offset: 0; - -value: {{wonMatches"></div>
-								<div class="pie__segment" style="-offset: {{wonMatches"></div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-12">
-							<h5>Tournament participation:</h5>
-							<ul class="list-group tourn-part">
-								<li class="list-group-item" style="-bg: #51e28f;">Matches
-									Won</li>
-								<li class="list-group-item" style="-bg: #dc5187;">Matches
-									Lost</li>
-							</ul>
-						</div>
-					</div>
-					<ul class="list-group">
-						{{#matchList}}
-						<li class="list-group-item">
-							<div class="row row-cols-2">
-								<div class="col col-sm-6 col-12">{{team1.teamName}} vs
-									{{team2.teamName}}</div>
-								<div class="col col-sm-3 col-6">{{homePoints}} -
-									{{awayPoints}}</div>
-								<div class="col col-sm-3 col-6">{{tournament.name}}</div>
-							</div>
-						</li> {{/matchList}}
-					</ul>
-					{{#matchPages}}
-					<div class="text-center pt-3">
-						<button class="btn btn-primary" type="button">Show more</button>
-					</div>
-					{{/matchPages}} {{/matchHistory}}
+                    {{#matchHistory}}
+                    <h3>Matches played</h3>
+                    <div class="container row mb-5">
+                        <div class="col-sm-6 col-12">
+                            <div class="pie">
+                                <div class="pie__segment" style="--offset: 0; --value: {{wonMatches}}; {{#over50won}}--over50:1; {{/over50won}}--bg: #51e28f;"></div>
+                                <div class="pie__segment" style="--offset: {{wonMatches}}; --value: {{lostMatches}}; {{#over50lost}}--over50:1; {{/over50lost}}--bg: #dc5187;"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-12">
+                            <h5>Tournament participation:</h5>
+                            <ul class="list-group tourn-part">
+                                <li class="list-group-item" style="--bg: #51e28f;">Matches Won</li>
+                                <li class="list-group-item" style="--bg: #dc5187;">Matches Lost</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="list-group">
+                        {{#matchList}}
+                        <li class="list-group-item displayMatchesHidden">
+                            <div class="row row-cols-2">
+                                <div class="col col-sm-6 col-12">
+                                    <a href="/TenniShip/Team/{{team1.teamName}}">{{team1.teamName}}</a> vs
+                                    <a href="/TenniShip/Team/{{team2.teamName}}">{{team2.teamName}}</a>
+                                </div>
+                                <div class="col col-sm-3 col-6"> {{homePoints}} - {{awayPoints}} </div>
+                                <div class="col col-sm-3 col-6">
+                                    <a href="/TenniShip/Tournament/{{tournament.name}}">{{tournament.name}}</a>
+                                </div>
+                            </div>
+                        </li>
+                        {{/matchList}}
+                    </ul>
+
+                    <div class="text-center pt-3">
+                        <button class="btn btn-primary" id="loadContentButtonMatches" type="button">Show more</button>
+                    </div>
+                    {{/matchHistory}}
 
 				</div>
 
@@ -295,8 +296,9 @@
 	<!-- Contact Form JavaScript File -->
 	<script src="/../contactform/contactform.js"></script>
 
-	<!-- Template Main Javascript File -->
-	<script src="/../js/main.js"></script>
+    <!-- Template Main Javascript File -->
+    <script src="/../js/main.js"></script>
+    <script src="/../js/showMoreContent.js"></script>
 
 </body>
 
