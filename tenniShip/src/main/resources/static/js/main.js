@@ -250,13 +250,18 @@
   });
 
 
+
   document.getElementById('buttonDeleteTournamentConfirm').addEventListener("click",
     function(){
       $('#DeleteTournamentModal').modal('toggle');
       $('#ConfirmDeleteTournament').modal('toggle');
   });
 
+  //
+
+
 
 
 })(jQuery);
+
 

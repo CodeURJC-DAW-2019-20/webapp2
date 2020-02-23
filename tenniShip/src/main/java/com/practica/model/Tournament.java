@@ -11,6 +11,8 @@ public class Tournament {
 	@Id	
 	private String name;
 	
+	private boolean tournamentImage;
+	
 	public Tournament() {		
 	}
 	
@@ -26,4 +28,11 @@ public class Tournament {
 		this.name = name;
 	}
 
+	public boolean hasImage() {
+		return tournamentImage;
+	}
+
+	public void setImage(boolean image) {
+		this.tournamentImage = image;
+	}
 }

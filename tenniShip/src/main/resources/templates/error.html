@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Tournament register - Tenniship</title>
+    <title>Error</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -27,9 +27,17 @@
 
     <!-- Main Stylesheet File -->
     <link href="/../css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+      Theme Name: BizPage
+      Theme URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+      Author: BootstrapMade.com
+      License: https://bootstrapmade.com/license/
+    ======================================================= -->
 </head>
 
 <body>
+
 <!--==========================
   Header
 ============================-->
@@ -40,86 +48,42 @@
             <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
         </div>
 
-        <nav id="nav-menu-container">
-            <ul class="nav-menu">
-                {{#registered}}
-                <li class="menu-has-children"><a href="#">Actions</a>
-                    <ul>
-                        <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
-                        <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
-                    </ul>
-                </li>
-                <li class="menu-has-children teamMenu"><a href="/TenniShip/Team/{{team}}">{{team}}</a>
-                    <ul>
-                        <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
-                        <li>
-                            <form action="/logout" method="post">
-                                <button class="btn" type="submit">Sign Out</button>
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-                <li><img alt="" class="loginImage" src="/../img/clients/client-1.png"></li>
-                {{/registered}}
-
-                {{^registered}}
-                <li>
-                    <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
-                </li>
-                <li>
-                    <a class="btn signInIndexBtnText" href="/TenniShip/SignIn" type="submit">Sign In</a>
-                </li>
-                {{/registered}}
-            </ul>
-        </nav><!-- #nav-menu-container -->
     </div>
 </header><!-- #header -->
+
 
 <main id="main">
 
     <!--==========================
-      tournamentResults Section
+      Sign In Section
     ============================-->
-    <section class="section-bg" id="tournamentResults">
-        <div class="container">
+    <section class="section-bg wow fadeInUp" id="sign-in">
+        <div class="container shadow p-3 mb-5 bg-white rounded">
+            <div class="container-separation">
 
-            <header class="section-header">
-                <h3 class="section-title">Tournament search results</h3>
-            </header>
-
-            <div class="registerMatchBothPages-container container">
-
-                <div class="alert alert-secondary" role="alert">
-                    Tournament named "{{tournamentName}}" not found. Here's some similar tournaments:
+                <div class="section-header">
+                    <h3>Error</h3>
+                     <h1>An error has been ocurried</h1>
+                    <p id="UnderTitleParagraph">{{errormsg}}</p>
                 </div>
-                {{#results}}
-                <ul class="list-group">
-                    {{#resultsList}}
-                    <li class="list-group-item">
-                        <div class="row justify-content-center">
-                            <div class="col col-12 text-center"><a href="/TenniShip/Tournament/{{.}}">{{.}}</a></div>
-                        </div>
-                    </li>
-                    {{/resultsList}}
-                </ul>
-                {{/results}}
-                {{^results}}
-                <br>
-                <div class="alert alert-warning" role="alert">
-                    No tournaments found with a similar name. Please try with another name.
-                </div>
-                {{/results}}
 
+                
+                <div class="text-center pt-3">
+                	<button class="btn" type="submit"><a href="/TenniShip" style="color: white;">Home</a></button>
+                </div>
+                
             </div>
 
         </div>
-    </section><!-- #tournamentResults -->
+        
+    </section><!-- #sign-in -->
 
 </main>
 
 <!--==========================
   Footer
 ============================-->
+
 <footer id="footer">
     <div class="container">
         <div class="copyright">
@@ -133,7 +97,7 @@
 </footer><!-- #footer -->
 
 <a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
-<!-- Uncomment below i you want to use a preloader -->
+<!-- Uncomment below if you want to use a preloader -->
 <div id="preloader"></div>
 
 <!-- JavaScript Libraries -->
@@ -156,6 +120,5 @@
 <!-- Template Main Javascript File -->
 <script src="/../js/main.js"></script>
 <script src="/../js/showMoreContent.js"></script>
-
 </body>
 </html>

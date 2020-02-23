@@ -33,25 +33,34 @@
     <!--==========================
   Header
 ============================-->
-    <header id="header">
+<header id="header">
         <div class="container-fluid">
 
             <div class="pull-left" id="logo">
-                <h1>
-                    <a class="scrollto" href="/TenniShip">TenniShip</a>
-                </h1>
+                <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
             </div>
 
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    {{#registered}}
-                    <li class="menu-has-children"><a href="#">Actions</a>
+                    {{#admin}}
+                	<li class="menu-has-children teamMenu"><a href="#"><strong>ADMIN</strong></a>
+                        <ul>
+                            <li>
+                                <form action="/logout" method="post">
+                                    <button class="btn" type="submit">Sign Out</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    {{/admin}}
+                    {{^admin}}
+                    <li class="menu-has-children"><a href="#actions">Actions</a>
                         <ul>
                             <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
                             <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
                         </ul>
                     </li>
-                    <li class="menu-has-children teamMenu"><a href="/TenniShip/Team/{{team}}">{{team}}</a>
+                    <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
                         <ul>
                             <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
                             <li>
@@ -61,15 +70,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li><img alt="" class="loginImage" src="/../img/clients/client-1.png"></li>
-                    {{/registered}} {{^registered}}
-                    <li>
-                        <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
-                    </li>
-                    <li>
-                        <a class="btn signInIndexBtnText" href="/TenniShip/SignIn" type="submit">Sign In</a>
-                    </li>
-                    {{/registered}}
+                    <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
+                	{{/admin}}
                 </ul>
             </nav>
             <!-- #nav-menu-container -->
@@ -87,6 +89,12 @@
             <h3 class="section-title">Select the Match</h3>
             <h4 id="UnderTitleParagraph">{{round}}</h4>
         </div>
+        
+        {{#allPlayed}}
+        <div class="text-center pt-3">
+            <h4><a href="/TenniShip/Tournament/{{tournamentName}}" style="color: green;"><strong>See Tournament Details</strong></a></h4>
+        </div>
+        {{/allPlayed}}
 
         <section class="section-bg" id="registerMatchBothPages">
             <div class="container">
@@ -122,7 +130,7 @@
 
                                 <div class="registerMatchBothPages-info ">
                                     <h4>
-                                        <a>Match Result</a>
+                                        <a href="registerMatch.html">Match Result</a>
                                     </h4>
                                     <div class="d-flex justify-content-around">
 
@@ -148,7 +156,7 @@
                         <div class="col-lg-4 col-md-3 ">
                             <div class="card">
                                 <div class="view overlay">
-                                    <img alt="Card image cap" class="card-img-top" src="/../img/clients/teams/{{team2.teamName}}.jpg">
+                                    <img alt="Card image cap" class="card-img-top" src="/../img/MaltaFlag.png">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title TeamPositioningRegisterMatchIconVisitor">
@@ -167,7 +175,8 @@
                 {{/listMatches}}
             </div>
             
-	     <div aria-labelledby="exampleModalCenterTitle" class="modal fade" id="PointsError" role="dialog" tabindex="-1" data-backdrop="static">
+	     <div aria-labelledby="exampleModalCenterTitle" class="modal fade" id="PointsError"
+	         role="dialog" tabindex="-1" data-backdrop="static">
 	        <div class="modal-dialog modal-dialog-centered" role="document">
 	            <div class="modal-content">
 	                <div class="modal-header">
@@ -176,7 +185,6 @@
 	            </div>
 	        </div>
 	    </div>
-	    
         </section>
         <!-- #registerMatchSelectMatch -->
 
@@ -218,6 +226,7 @@
 
     <!-- Template Main Javascript File -->
     <script src="/../js/main.js"></script>
+    <script src="/../js/showMoreContent.js"></script>
 
 </body>
 
