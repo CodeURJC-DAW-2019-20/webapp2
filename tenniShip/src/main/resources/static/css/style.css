@@ -670,10 +670,16 @@ div.img {
 	color: #000 !important;
 }
 
-.alert {
+.wrongmsg {
 	background-color: #f2dede;
 	border-color: #eed3d7;
 	color: #b94a48;
+}
+
+.successmsg {
+  background-color: #bcf1d4;
+  border-color: #bcf1d4;
+  color: black;
 }
 
 /* actions Us Section

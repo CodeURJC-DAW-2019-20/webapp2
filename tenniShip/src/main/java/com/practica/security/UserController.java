@@ -135,7 +135,8 @@ public class UserController {
 			MailSenderXX ms=(MailSenderXX) appContext.getBean("mailSenderXX");
 			ms.sendConfirmationEmail(user);
 		    
-		    return "redirect:/TenniShip/SignIn";
+			model.addAttribute("registeredSuccessful", true);
+			return sign_in(model);
 		    
 		} else {
 			return "registerAccount";
