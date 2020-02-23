@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
 import com.practica.security.UserComponent;
-import com.practica.security.UserController;
 import com.practica.model.Match;
 
 @Controller
@@ -43,7 +41,8 @@ public class TournamentSheetController {
 	
 	@PostMapping("/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}/Submission")
 	public String submitMatchEdited(Model model, @PathVariable String tournament, @RequestParam String teamHome, @PathVariable String group,
-			@RequestParam String teamAway, @RequestParam int quantityHome, @RequestParam int quantityAway) throws InterruptedException {
+			@RequestParam String teamAway, @RequestParam int quantityHome, @RequestParam int quantityAway, 
+			HttpServletRequest request) throws InterruptedException {
 		
 		if (quantityHome == 3 ^ quantityAway == 3) { //XOR
 			Optional<Team> home = teamRepository.findById(teamHome);
@@ -120,8 +119,7 @@ public class TournamentSheetController {
 		public int compareTo(AuxiliarClass p2) {
 			int dif = Integer.compare(p2.matchesWon, this.matchesWon);  
 			if (dif != 0) return dif; 
-			else Integer.compare(p2.pointsWon, this.pointsWon); 
-			return 0;
+			else return Integer.compare(p2.pointsWon, this.pointsWon); 
 		}
 	}
 
@@ -129,17 +127,25 @@ public class TournamentSheetController {
     public String tournament(Model model, @PathVariable String tournament, HttpServletRequest request) {
 
 		Optional<Tournament> t = tournamentRepository.findById(tournament);
-		double progressPercentage;
-		final int TOTAL_MATCHES = 25;
 
 		if (t.isPresent()) {
+			if(userComponent.isLoggedUser()  && !request.isUserInRole("ADMIN")) {
+				String teamUser = userComponent.getTeam();
+				model.addAttribute("team", teamUser);
+			}
+			model.addAttribute("registered",userComponent.isLoggedUser() && !request.isUserInRole("ADMIN") );
+			model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
+			
+			double progressPercentage;
+			final int TOTAL_MATCHES = 25;
 			progressPercentage = tournamentRepository.getPlayedMatches(t.get().getName());
 			progressPercentage = (progressPercentage / TOTAL_MATCHES) * 100;
+			
 			model.addAttribute("tournamentName", t.get().getName());
 			model.addAttribute("completion", progressPercentage);
-			model.addAttribute("adminGroups", userComponent.isLoggedUser() && request.isUserInRole("ROLE_ADMIN") &&
+			model.addAttribute("adminGroups", userComponent.isLoggedUser() && request.isUserInRole("ADMIN") &&
                     tournamentRepository.getPhaseMatches(t.get(), "X").isEmpty());
-            model.addAttribute("adminDeleting", userComponent.isLoggedUser() && request.isUserInRole("ROLE_ADMIN"));
+            model.addAttribute("adminDeleting", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
 
 			//GROUPS-------
 			String[] groups = {"A", "B", "C", "D", "E", "F"};

@@ -2,6 +2,9 @@ package com.practica;
 
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
+
+import javax.servlet.http.HttpServletRequest;
+
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +38,8 @@ public class TournamentController {
 
 	@PostMapping("/TenniShip/RegisterMatch/Tournament/{tournament}/Submission")
 	public String submitMatch(Model model, @PathVariable String tournament, @RequestParam String teamHome,
-			@RequestParam String teamAway, @RequestParam int quantityHome, @RequestParam int quantityAway) throws InterruptedException {
+			@RequestParam String teamAway, @RequestParam int quantityHome, @RequestParam int quantityAway, 
+			HttpServletRequest request) throws InterruptedException {
 		
 		if (quantityHome == 3 ^ quantityAway == 3) { //XOR
 			Optional<Team> home = teamRepository.findById(teamHome);
@@ -51,48 +55,49 @@ public class TournamentController {
 		} else {
 			model.addAttribute("error", true);
 			TimeUnit.SECONDS.sleep(4);
+			return selectMatch(model, tournament, request);
 		}
-
 		return "redirect:/TenniShip/RegisterMatch/Tournament/"+ tournament;
 	} 
 	
 	@GetMapping("/TenniShip/RegisterMatch/Tournament/{tournament}")
-	public String selectMatch(Model model, @PathVariable String tournament) {
-
-		String team = userComponent.getTeam();
-
-		Optional<Tournament> t = tournamentRepository.findById(tournament);//check if that team play this tournament
-		Optional<Team> tm = teamRepository.findById(team);
+	public String selectMatch(Model model, @PathVariable String tournament , HttpServletRequest request) {
 		
-		HashMap<String, String> rounds = new HashMap<>(); rounds.put("A", "Group Stage"); rounds.put("B", "Group Stage");
-		rounds.put("C", "Group Stage"); rounds.put("D", "Group Stage"); rounds.put("E", "Group Stage"); rounds.put("F", "Group Stage");
-		rounds.put("X", "Round of 8"); rounds.put("Y", "Round of 4"); rounds.put("Z", "Final");
-
+		Optional<Tournament> t = tournamentRepository.findById(tournament);//check if that team play this tournament
+		
 		if (t.isPresent()) {
+			model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
+			String team = userComponent.getTeam();
+			model.addAttribute("team", team);
+			Optional<Team> tm = teamRepository.findById(team);	
+			HashMap<String, String> rounds = new HashMap<>(); rounds.put("A", "Group Stage"); rounds.put("B", "Group Stage");
+			rounds.put("C", "Group Stage"); rounds.put("D", "Group Stage"); rounds.put("E", "Group Stage"); rounds.put("F", "Group Stage");
+			rounds.put("X", "Round of 8"); rounds.put("Y", "Round of 4"); rounds.put("Z", "Final");
+			
 			if (tournamentRepository.getNextMatches(t.get(), tm.get()).isEmpty()) {
 				model.addAttribute("round", "All Played");
+				model.addAttribute("allPlayed", true);
+				model.addAttribute("tournamentName", t.get().getName());
 			} else {
 				model.addAttribute("round", rounds.get(tournamentRepository.getNextMatches(t.get(), tm.get()).get(0).getType()));
 			}
 			model.addAttribute("listMatches", tournamentRepository.getNextMatches(t.get(), tm.get()));	
 		}
+		//else return ERROR
 
 		return "registerMatch";
 	}
 
 	@GetMapping("/TenniShip/RegisterMatch/Tournament")
-	public String selectTournament(Model model) {
+	public String selectTournament(Model model, HttpServletRequest request) {
 
 		String team = userComponent.getTeam();
-
 		Optional<Team> t = teamRepository.findById(team);
 
         model.addAttribute("registered", userComponent.getLoggedUser());
         model.addAttribute("team", team);
-
-		if (t.isPresent()) {
-			model.addAttribute("listTournaments", teamRepository.getTournaments(t.get()));
-		}
+		model.addAttribute("listTournaments", teamRepository.getTournaments(t.get()));
+		
 		return "selectTournament";
 	}
 

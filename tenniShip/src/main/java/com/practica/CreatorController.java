@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.practica.model.Match;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
+import com.practica.security.UserComponent;
 
 @Controller
 public class CreatorController {
@@ -31,6 +34,9 @@ public class CreatorController {
 	@Autowired
 	private ImageService imgService;
 	//private MultipartFile tourImg;
+	
+	@Autowired
+	private UserComponent userComponent;	
 
 	@Autowired
 	private MatchRepository matchRepository;
@@ -40,7 +46,16 @@ public class CreatorController {
 	private int numberTeams = 0;
 
 	@PostMapping("/TenniShip/Creator/Tournament")
-	public String tournament(Model model, @ModelAttribute("newTournament") Tournament tour, MultipartFile imageFile) throws IOException {
+	public String tournament(Model model, @ModelAttribute("newTournament") Tournament tour, MultipartFile imageFile,
+			HttpServletRequest request) throws IOException {
+		
+		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
+		
+		if(userComponent.isLoggedUser()  && !request.isUserInRole("ADMIN")) {
+			String teamUser = userComponent.getTeam();
+			model.addAttribute("team", teamUser);
+		}
+		
 		Optional<Tournament> tourExist = tournamentRepository.findById(tour.getName());
 		boolean tournamenAlreadyExist = tourExist.isPresent();
 		boolean tourEmpty = tour.getName().isEmpty();
@@ -147,7 +162,15 @@ public class CreatorController {
 			@RequestParam String team9, @RequestParam String team10, @RequestParam String team11,
 			@RequestParam String team12, @RequestParam String team13, @RequestParam String team14,
 			@RequestParam String team15, @RequestParam String team16, @RequestParam String team17,
-			@RequestParam String team18) {
+			@RequestParam String team18, HttpServletRequest request) {
+		
+		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
+		
+		if(userComponent.isLoggedUser()  && !request.isUserInRole("ADMIN")) {
+			String teamUser = userComponent.getTeam();
+			model.addAttribute("team", teamUser);
+		}
+		
 		model.addAttribute("tourFinal", finalTournament);
 		model.addAttribute("next1", !finalTournament.getName().isEmpty());
 		check(model, team1, 1);
@@ -177,7 +200,11 @@ public class CreatorController {
 	}
 
 	@PostMapping("/TenniShip/Creator/Raffle")
-	public String raffle(Model model){
+	public String raffle(Model model, HttpServletRequest request){
+		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
+		String userTeam = userComponent.getTeam();
+		model.addAttribute("team", userTeam);
+		
 		model.addAttribute("next3Raffle", true);
 		model.addAttribute("tourFinal", finalTournament);
 		tournamentRepository.save(finalTournament);
@@ -191,9 +218,15 @@ public class CreatorController {
 	}
 
 	@GetMapping("/TenniShip/Creator")
-	public String create(Model model) {
+	public String create(Model model, HttpServletRequest request) {
 		Tournament tour = new Tournament();
 		model.addAttribute("newTournament", tour);
+		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
+		
+		if(userComponent.isLoggedUser()  && !request.isUserInRole("ADMIN")) {
+			String teamUser = userComponent.getTeam();
+			model.addAttribute("team", teamUser);
+		}
 		return "tournamentCreator";
 	}
 

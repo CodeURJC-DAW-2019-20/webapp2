@@ -48,47 +48,50 @@
 Header
 ============================-->
 	<header id="header">
-		<div class="container-fluid">
+        <div class="container-fluid">
 
-			<div class="pull-left" id="logo">
-				<h1>
-					<a class="scrollto" href="/TenniShip">TenniShip</a>
-				</h1>
-			</div>
+            <div class="pull-left" id="logo">
+                <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
+            </div>
 
-			<nav id="nav-menu-container">
-				<ul class="nav-menu">
-					{{#registered}}
-					<li class="menu-has-children"><a href="#">Actions</a>
-						<ul>
-							<li><a href="/TenniShip/RegisterMatch/Tournament">Register
-									a Match</a></li>
-							<li><a href="/TenniShip/Creator">Tournament Creator</a></li>
-						</ul></li>
-					<li class="menu-has-children teamMenu"><a
-						href="/TenniShip/Team/{{team}}">{{team}}</a>
-						<ul>
-							<li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
-							<li>
-								<form action="/logout" method="post">
-									<button class="btn" type="submit">Sign Out</button>
-								</form>
-							</li>
-						</ul></li>
-					<li><img alt="" class="loginImage"
-						src="/../img/clients/client-1.png"></li> {{/registered}}
-
-					{{^registered}}
-					<li><a class="btn btn-primary signUpIndexBtnText"
-						href="/TenniShip/SignUp" type="submit">Sign Up</a></li>
-					<li><a class="btn signInIndexBtnText" href="/TenniShip/SignIn"
-						type="submit">Sign In</a></li> {{/registered}}
-				</ul>
-			</nav>
-			<!-- #nav-menu-container -->
-		</div>
-	</header>
-	<!-- #header -->
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    {{#admin}}
+                	<li class="menu-has-children teamMenu"><a href="#"><strong>ADMIN</strong></a>
+                        <ul>
+                            <li>
+                                <form action="/logout" method="post">
+                                    <button class="btn" type="submit">Sign Out</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    {{/admin}}
+                    {{^admin}}
+                    <li class="menu-has-children"><a href="#actions">Actions</a>
+                        <ul>
+                            <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
+                            <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
+                        <ul>
+                            <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
+                            <li>
+                                <form action="/logout" method="post">
+                                    <button class="btn" type="submit">Sign Out</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
+                	{{/admin}}
+                </ul>
+            </nav>
+            <!-- #nav-menu-container -->
+        </div>
+    </header>
+    <!-- #header -->
 
 
 	<main id="main">
