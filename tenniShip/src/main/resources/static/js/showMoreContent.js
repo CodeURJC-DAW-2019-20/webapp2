@@ -3,6 +3,9 @@ $('.displayTournamentsHidden').slice(0,3).show();
 
 $('#loadContentButtonTournament').on('click',async function(){
     $('.displayTournamentsHidden:hidden').slice(0,3).slideDown();
+    if($('.displayTournamentsHidden:hidden').length===0){
+        $('#loadContentButtonTournament').fadeOut();
+    }
     await sleep(250);
     windowResize();
 });
@@ -11,6 +14,9 @@ $('.displayMatchesHidden').slice(0,2).show();
 
 $('#loadContentButtonMatches').on('click',async function(){
     $('.displayMatchesHidden:hidden').slice(0,1).slideDown();
+    if($('.displayMatchesHidden:hidden').length===0){
+        $('#loadContentButtonMatches').fadeOut();
+    }
     await sleep(250);
     windowResize();
 });
