@@ -203,9 +203,14 @@
                         {{#matchList}}
                         <li class="list-group-item">
                             <div class="row row-cols-2">
-                                <div class="col col-sm-6 col-12">{{team1.teamName}} vs {{team2.teamName}}</div>
+                                <div class="col col-sm-6 col-12">
+                                    <a href="/TenniShip/Team/{{team1.teamName}}">{{team1.teamName}}</a> vs
+                                    <a href="/TenniShip/Team/{{team2.teamName}}">{{team2.teamName}}</a>
+                                </div>
                                 <div class="col col-sm-3 col-6"> {{homePoints}} - {{awayPoints}} </div>
-                                <div class="col col-sm-3 col-6">{{tournament.name}}</div>
+                                <div class="col col-sm-3 col-6">
+                                    <a href="/TenniShip/Tournament/{{tournament.name}}">{{tournament.name}}</a>
+                                </div>
                             </div>
                         </li>
                         {{/matchList}}
@@ -214,7 +219,8 @@
                     <div class="text-center pt-3">
                         <button class="btn btn-primary" type="button">Show more</button>
                     </div>
-                    {{/matchPages}} {{/matchHistory}}
+                    {{/matchPages}}
+                    {{/matchHistory}}
 
                 </div>
 
