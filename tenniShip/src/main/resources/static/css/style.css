@@ -676,6 +676,11 @@ div.img {
 	color: #b94a48;
 }
 
+.successmsg {
+  background-color: #bcf1d4;
+  border-color: #bcf1d4;
+  color: black;
+}
 /* actions Us Section
 --------------------------------*/
 
