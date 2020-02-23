@@ -293,12 +293,12 @@ body#index #home {
 
 /*Image for the logged in account*/
 .loginImage {
-	margin-top: -0.6em;
-	width: 70px;
-	height: 40px;
-	border-color: white !important;
-	background-color: #18d26e !important;
-	border-radius: 20px;
+    margin-top: -0.6em;
+    width: 70px;
+    height: 40px;
+    border-color: white !important;
+    background-color: #18d26e !important;
+    border-radius: 20px;
 }
 
 .nav-menu a {
@@ -1430,6 +1430,24 @@ body:not(#index) main#main {
   Tournament Sheet
 ------------------ */
 
+.tournament-icon {
+	width: 200px;
+	height: 200px;
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+	justify-content: center;
+	align-items: center;
+}
+
+.tournamentPic {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 100%;
+	max-height: 100%;
+	height: auto;
+}
+
 #tournamentSwitch {
 	align-items: center;
 }
@@ -1530,9 +1548,9 @@ body:not(#index) main#main {
 }
 
 #progress-content .progress .skill .val {
-	float: right;
-	font-style: normal;
-	margin: 0 20px 0 0;
+    float: right;
+    font-style: normal;
+    margin: 0 0 0 20px;
 }
 
 #progress-content .progress-bar {

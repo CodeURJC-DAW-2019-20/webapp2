@@ -87,7 +87,7 @@
                         </ul>
                     </li>
                     <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
-                    {{/registered}} 
+                    {{/registered}}
                     {{^registered}}
                     <li>
                         <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
@@ -99,7 +99,7 @@
                 </ul>
             </nav>
             {{/admin}}
-           
+
             <!-- #nav-menu-container -->
         </div>
     </header>
@@ -236,9 +236,14 @@
                         {{#matchList}}
                         <li class="list-group-item displayMatchesHidden">
                             <div class="row row-cols-2">
-                                <div class="col col-sm-6 col-12">{{team1.teamName}} vs {{team2.teamName}}</div>
+                                <div class="col col-sm-6 col-12">
+                                    <a href="/TenniShip/Team/{{team1.teamName}}">{{team1.teamName}}</a> vs
+                                    <a href="/TenniShip/Team/{{team2.teamName}}">{{team2.teamName}}</a>
+                                </div>
                                 <div class="col col-sm-3 col-6"> {{homePoints}} - {{awayPoints}} </div>
-                                <div class="col col-sm-3 col-6">{{tournament.name}}</div>
+                                <div class="col col-sm-3 col-6">
+                                    <a href="/TenniShip/Tournament/{{tournament.name}}">{{tournament.name}}</a>
+                                </div>
                             </div>
                         </li>
                         {{/matchList}}
