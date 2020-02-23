@@ -19,25 +19,24 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.practica.model.Team;
 
-
 @RestController
 @RequestMapping("api/teams")
 
 public class TeamRestController {
-	
-	@Autowired 
+
+	@Autowired
 	private TeamRepository teamRepository;
-	
+
 	@Autowired
 	private ImageService imgService;
-	
+
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Team newTeam(@RequestBody Team team) {
 		teamRepository.save(team);
 		return team;
 	}
-	
+
 	@PostMapping("/{id}/image")
 	public ResponseEntity<Team> newTeamImage(@PathVariable String id, @RequestParam List<MultipartFile> imageFile)
 			throws IOException {
@@ -50,8 +49,8 @@ public class TeamRestController {
 			teamRepository.save(team.get());
 
 			imgService.saveImage("teams", team.get().getName(), imageFile.get(0));
-			for(int i=1;i<6;i++) {
-				imgService.saveImage("players", team.get().getName()+String.format("player%d",i), imageFile.get(i));
+			for (int i = 1; i < 6; i++) {
+				imgService.saveImage("players", team.get().getName() + String.format("player%d", i), imageFile.get(i));
 			}
 			return new ResponseEntity<>(HttpStatus.CREATED);
 
@@ -59,12 +58,12 @@ public class TeamRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
 	@GetMapping("/{id}/image")
 	public ResponseEntity<Object> getTeamImage(@PathVariable String id) throws IOException {
 		Optional<Team> team = teamRepository.findById(id);
 		if (team.isPresent()) {
-			if(team.get().hasImage()) {
+			if (team.get().hasImage()) {
 				return this.imgService.createResponseFromImage("teams", id);
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -73,7 +72,7 @@ public class TeamRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<Team> seeTeam(@PathVariable String id) {
 

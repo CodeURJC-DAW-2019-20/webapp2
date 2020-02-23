@@ -22,38 +22,38 @@ import com.practica.model.Match;
 public class TournamentSheetController {
 
 	@Autowired
-	private TournamentRepository tournamentRepository;	
-	
+	private TournamentRepository tournamentRepository;
+
 	@Autowired
 	private TeamRepository teamRepository;
 
 	@Autowired
 	private MatchRepository matchRepository;
-	
+
 	@Autowired
 	private UserComponent userComponent;
-	
+
 	static int matchesWon = 0, pointsWon = 0, j;
-	
+
 	@PostMapping("/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}/Submission")
-	public String submitMatchEdited(Model model, @PathVariable String tournament, @RequestParam String teamHome, @PathVariable String group,
-			@RequestParam String teamAway, @RequestParam int quantityHome, @RequestParam int quantityAway, 
-			HttpServletRequest request) {
-		
-		if (quantityHome == 3 ^ quantityAway == 3) { //XOR
+	public String submitMatchEdited(Model model, @PathVariable String tournament, @RequestParam String teamHome,
+			@PathVariable String group, @RequestParam String teamAway, @RequestParam int quantityHome,
+			@RequestParam int quantityAway, HttpServletRequest request) {
+
+		if (quantityHome == 3 ^ quantityAway == 3) { // XOR
 			Optional<Team> home = teamRepository.findById(teamHome);
 			Optional<Team> away = teamRepository.findById(teamAway);
 			Optional<Tournament> t = tournamentRepository.findById(tournament);
-			
+
 			Match match = matchRepository.findMatch(home.get(), away.get(), t.get()).get(0);
-			
+
 			matchRepository.getOne(match.getId()).setHomePoints(quantityHome);
 			matchRepository.getOne(match.getId()).setAwayPoints(quantityAway);
-			
-			matchRepository.save(match); 
-			
-			return "redirect:/TenniShip/Tournament/"+ tournament;
-			
+
+			matchRepository.save(match);
+
+			return "redirect:/TenniShip/Tournament/" + tournament;
+
 		} else {
 			model.addAttribute("errormsg", "Someone has to win");
 			model.addAttribute("goback", true);
@@ -61,88 +61,92 @@ public class TournamentSheetController {
 			model.addAttribute("tournament", tournament);
 			model.addAttribute("group", group);
 			return "error";
-			//return "redirect:/TenniShip/ADMIN/Tournament/" + tournament + "/EditMatches/" + group;
+			// return "redirect:/TenniShip/ADMIN/Tournament/" + tournament + "/EditMatches/"
+			// + group;
 		}
 
-		
-	} 
-	
+	}
+
 	@GetMapping("/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}")
 	public String editMatches(Model model, @PathVariable String tournament, @PathVariable String group) {
-		
+
 		Optional<Tournament> t = tournamentRepository.findById(tournament);
-		
-		if (t.isPresent()) {		
+
+		if (t.isPresent()) {
 			model.addAttribute("admin", true);
 			model.addAttribute("round", "Group Stage");
-			model.addAttribute("listMatches", tournamentRepository.getPhaseMatches(t.get(), group));	
+			model.addAttribute("listMatches", tournamentRepository.getPhaseMatches(t.get(), group));
 		}
 		return "registerMatch";
 	}
-	
+
 	@PostMapping("/TenniShip/ADMIN/Tournament/{tournament}/Deleted")
 	public String deleteTournament(Model model, @PathVariable String tournament) {
-		
+
 		Optional<Tournament> t = tournamentRepository.findById(tournament);
-		
-		for (Match m : tournamentRepository.getMatches(t.get())) { 
-			matchRepository.delete(m); 
+
+		for (Match m : tournamentRepository.getMatches(t.get())) {
+			matchRepository.delete(m);
 		}
-		tournamentRepository.delete(t.get());	
-		
+		tournamentRepository.delete(t.get());
+
 		return "redirect:/TenniShip";
 	}
-	
+
 	@PostMapping("/TenniShip/SearchTournament")
 	public String searchTournament(Model model, @RequestParam String tournamentName) {
-		
+
 		Optional<Tournament> t = tournamentRepository.findById(tournamentName);
-		
+
 		if (t.isPresent()) {
-			return "redirect:/TenniShip/Tournament/"+tournamentName;
+			return "redirect:/TenniShip/Tournament/" + tournamentName;
 		} else {
 			return "redirect:/TenniShip";
-		}	
-	} 
-	
+		}
+	}
+
 	private static class AuxiliarClass implements Comparable<AuxiliarClass> {
 		private Team t;
-		private Integer matchesWon; //Spain 3 - 2 France
-		private Integer pointsWon; //Spain matchesWon += 1, Spain pointsWon += 3
-		
+		private Integer matchesWon; // Spain 3 - 2 France
+		private Integer pointsWon; // Spain matchesWon += 1, Spain pointsWon += 3
+
 		public AuxiliarClass(Team team, int matchesWon, int pointsWon) {
-			this.t = team; this.matchesWon = matchesWon; this.pointsWon = pointsWon;
+			this.t = team;
+			this.matchesWon = matchesWon;
+			this.pointsWon = pointsWon;
 		}
 
 		@Override
 		public int compareTo(AuxiliarClass p2) {
-			int dif = Integer.compare(p2.matchesWon, this.matchesWon);  
-			if (dif != 0) return dif; 
-			else return Integer.compare(p2.pointsWon, this.pointsWon); 
+			int dif = Integer.compare(p2.matchesWon, this.matchesWon);
+			if (dif != 0)
+				return dif;
+			else
+				return Integer.compare(p2.pointsWon, this.pointsWon);
 		}
 	}
 
 	@GetMapping("/TenniShip/Tournament/{tournament}")
-    public String tournament(Model model, @PathVariable String tournament, HttpServletRequest request) {
+	public String tournament(Model model, @PathVariable String tournament, HttpServletRequest request) {
 
 		Optional<Tournament> t = tournamentRepository.findById(tournament);
-		
-		if(userComponent.isLoggedUser()  && !request.isUserInRole("ADMIN")) {
+
+		if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
 			String teamUser = userComponent.getTeam();
 			model.addAttribute("team", teamUser);
 		}
-		model.addAttribute("registered",userComponent.isLoggedUser() && !request.isUserInRole("ADMIN") );
+		model.addAttribute("registered", userComponent.isLoggedUser() && !request.isUserInRole("ADMIN"));
 		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
 
 		if (t.isPresent()) {
-            model.addAttribute("adminDeleting", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
+			model.addAttribute("adminDeleting", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
 
 			if (Objects.nonNull(t.get().hasImage()) && t.get().hasImage()) {
 				model.addAttribute("hasImage", true);
 			}
 
-			//GROUPS-------
-			String[] groups = {"A", "B", "C", "D", "E", "F"};
+			// GROUPS-------
+			String[] groups = { "A", "B", "C", "D", "E", "F" };
 			@SuppressWarnings("unchecked")
 			ArrayList<AuxiliarClass>[] sortedGroups = new ArrayList[6];
 			for (int i = 0; i < 6; i++) {
@@ -158,23 +162,26 @@ public class TournamentSheetController {
 				Collections.sort(sortedGroups[j]);
 
 				for (int k = 0; k < 3; k++) {
-					model.addAttribute(String.format("team%dGroup%s", k, groups[j]), sortedGroups[j].get(k).t.getName());
-					model.addAttribute(String.format("team%dGroup%sMatchesWon", k, groups[j]), sortedGroups[j].get(k).matchesWon);
-					model.addAttribute(String.format("team%dGroup%sPointsWon", k, groups[j]), sortedGroups[j].get(k).pointsWon);
+					model.addAttribute(String.format("team%dGroup%s", k, groups[j]),
+							sortedGroups[j].get(k).t.getName());
+					model.addAttribute(String.format("team%dGroup%sMatchesWon", k, groups[j]),
+							sortedGroups[j].get(k).matchesWon);
+					model.addAttribute(String.format("team%dGroup%sPointsWon", k, groups[j]),
+							sortedGroups[j].get(k).pointsWon);
 				}
 				j++;
 			}
 			j = 0;
-			//-------GROUPS
+			// -------GROUPS
 
-			//FINAL PHASE--
+			// FINAL PHASE--
 
 			List<Team> last8 = new ArrayList<>();
 			List<Team> last4 = new ArrayList<>();
 			List<Team> last2 = new ArrayList<>();
 
-			if (tournamentRepository.getPlayedMatchesJQL(t.get()) >= 18) { //Groups Played
-				if (tournamentRepository.getPhaseTeams(t.get(), "X").isEmpty()) { //RoundOf8 has to be created
+			if (tournamentRepository.getPlayedMatchesJQL(t.get()) >= 18) { // Groups Played
+				if (tournamentRepository.getPhaseTeams(t.get(), "X").isEmpty()) { // RoundOf8 has to be created
 					List<AuxiliarClass> secondPlaceTeams = new ArrayList<>();
 					secondPlaceTeams.add(sortedGroups[0].get(1));
 					secondPlaceTeams.add(sortedGroups[1].get(1));
@@ -215,21 +222,31 @@ public class TournamentSheetController {
 					d.setTournament(t.get());
 					matchRepository.save(d);
 				}
-				for (int k = 0; k < 8; k += 2) { //RoundOf8
-					if (tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getHomePoints() > tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getAwayPoints()) {
-						model.addAttribute(String.format("team%dQuarters", k), tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getTeam1().getName());
-						model.addAttribute(String.format("team%dQuartersPoints", k), tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getHomePoints());
-						model.addAttribute(String.format("team%dQuarters", k + 1), tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getTeam2().getName());
-						model.addAttribute(String.format("team%dQuartersPoints", k + 1), tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getAwayPoints());
+				for (int k = 0; k < 8; k += 2) { // RoundOf8
+					if (tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2)
+							.getHomePoints() > tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2)
+									.getAwayPoints()) {
+						model.addAttribute(String.format("team%dQuarters", k),
+								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getTeam1().getName());
+						model.addAttribute(String.format("team%dQuartersPoints", k),
+								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getHomePoints());
+						model.addAttribute(String.format("team%dQuarters", k + 1),
+								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getTeam2().getName());
+						model.addAttribute(String.format("team%dQuartersPoints", k + 1),
+								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getAwayPoints());
 					} else {
-						model.addAttribute(String.format("team%dQuarters", k + 1), tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getTeam1().getName());
-						model.addAttribute(String.format("team%dQuartersPoints", k + 1), tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getHomePoints());
-						model.addAttribute(String.format("team%dQuarters", k), tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getTeam2().getName());
-						model.addAttribute(String.format("team%dQuartersPoints", k), tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getAwayPoints());
+						model.addAttribute(String.format("team%dQuarters", k + 1),
+								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getTeam1().getName());
+						model.addAttribute(String.format("team%dQuartersPoints", k + 1),
+								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getHomePoints());
+						model.addAttribute(String.format("team%dQuarters", k),
+								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getTeam2().getName());
+						model.addAttribute(String.format("team%dQuartersPoints", k),
+								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getAwayPoints());
 					}
 				}
 			} else {
-				for (int k = 0; k < 8; k += 2) { //RoundOf8
+				for (int k = 0; k < 8; k += 2) { // RoundOf8
 					model.addAttribute(String.format("team%dQuarters", k), "-Keep Playing");
 					model.addAttribute(String.format("team%dQuartersPoints", k), "");
 					model.addAttribute(String.format("team%dQuarters", k + 1), "-Keep Playing");
@@ -237,9 +254,8 @@ public class TournamentSheetController {
 				}
 			}
 
-
-			if (tournamentRepository.getPlayedMatchesJQL(t.get()) >= 22) { //RoundOf8 Played
-				if (tournamentRepository.getPhaseTeams(t.get(), "Y").isEmpty()) { //RoundOf4 has to be created
+			if (tournamentRepository.getPlayedMatchesJQL(t.get()) >= 22) { // RoundOf8 Played
+				if (tournamentRepository.getPhaseTeams(t.get(), "Y").isEmpty()) { // RoundOf4 has to be created
 					tournamentRepository.getPhaseMatches(t.get(), "X").forEach(Match -> {
 						if (Match.getHomePoints() > Match.getAwayPoints())
 							last4.add(Match.getTeam1());
@@ -258,21 +274,31 @@ public class TournamentSheetController {
 					b.setTournament(t.get());
 					matchRepository.save(b);
 				}
-				for (int k = 0; k < 4; k += 2) { //RoundOf4
-					if (tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getHomePoints() > tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getAwayPoints()) {
-						model.addAttribute(String.format("team%dSemi", k), tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getTeam1().getName());
-						model.addAttribute(String.format("team%dSemiPoints", k), tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getHomePoints());
-						model.addAttribute(String.format("team%dSemi", k + 1), tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getTeam2().getName());
-						model.addAttribute(String.format("team%dSemiPoints", k + 1), tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getAwayPoints());
+				for (int k = 0; k < 4; k += 2) { // RoundOf4
+					if (tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2)
+							.getHomePoints() > tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2)
+									.getAwayPoints()) {
+						model.addAttribute(String.format("team%dSemi", k),
+								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getTeam1().getName());
+						model.addAttribute(String.format("team%dSemiPoints", k),
+								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getHomePoints());
+						model.addAttribute(String.format("team%dSemi", k + 1),
+								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getTeam2().getName());
+						model.addAttribute(String.format("team%dSemiPoints", k + 1),
+								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getAwayPoints());
 					} else {
-						model.addAttribute(String.format("team%dSemi", k + 1), tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getTeam1().getName());
-						model.addAttribute(String.format("team%dSemiPoints", k + 1), tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getHomePoints());
-						model.addAttribute(String.format("team%dSemi", k), tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getTeam2().getName());
-						model.addAttribute(String.format("team%dSemiPoints", k), tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getAwayPoints());
+						model.addAttribute(String.format("team%dSemi", k + 1),
+								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getTeam1().getName());
+						model.addAttribute(String.format("team%dSemiPoints", k + 1),
+								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getHomePoints());
+						model.addAttribute(String.format("team%dSemi", k),
+								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getTeam2().getName());
+						model.addAttribute(String.format("team%dSemiPoints", k),
+								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getAwayPoints());
 					}
 				}
 			} else {
-				for (int k = 0; k < 4; k += 2) { //RoundOf4
+				for (int k = 0; k < 4; k += 2) { // RoundOf4
 					model.addAttribute(String.format("team%dSemi", k), "-Keep Playing");
 					model.addAttribute(String.format("team%dSemiPoints", k), "");
 					model.addAttribute(String.format("team%dSemi", k + 1), "-Keep Playing");
@@ -280,9 +306,8 @@ public class TournamentSheetController {
 				}
 			}
 
-
-			if (tournamentRepository.getPlayedMatchesJQL(t.get()) >= 24) { //RoundOf4 Played
-				if (tournamentRepository.getPhaseTeams(t.get(), "Z").isEmpty()) { //RoundOf2 has to be created
+			if (tournamentRepository.getPlayedMatchesJQL(t.get()) >= 24) { // RoundOf4 Played
+				if (tournamentRepository.getPhaseTeams(t.get(), "Z").isEmpty()) { // RoundOf2 has to be created
 					tournamentRepository.getPhaseMatches(t.get(), "Y").forEach(Match -> {
 						if (Match.getHomePoints() > Match.getAwayPoints())
 							last2.add(Match.getTeam1());
@@ -296,42 +321,52 @@ public class TournamentSheetController {
 					a.setTournament(t.get());
 					matchRepository.save(a);
 				}
-				for (int k = 0; k < 2; k += 2) { //RoundOf2
-					if (tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getHomePoints() > tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getAwayPoints()) {
-						model.addAttribute(String.format("team%dFinal", k), tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getTeam1().getName());
-						model.addAttribute(String.format("team%dFinalPoints", k), tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getHomePoints());
-						model.addAttribute(String.format("team%dFinal", k + 1), tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getTeam2().getName());
-						model.addAttribute(String.format("team%dFinalPoints", k + 1), tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getAwayPoints());
+				for (int k = 0; k < 2; k += 2) { // RoundOf2
+					if (tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2)
+							.getHomePoints() > tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2)
+									.getAwayPoints()) {
+						model.addAttribute(String.format("team%dFinal", k),
+								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getTeam1().getName());
+						model.addAttribute(String.format("team%dFinalPoints", k),
+								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getHomePoints());
+						model.addAttribute(String.format("team%dFinal", k + 1),
+								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getTeam2().getName());
+						model.addAttribute(String.format("team%dFinalPoints", k + 1),
+								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getAwayPoints());
 					} else {
-						model.addAttribute(String.format("team%dFinal", k + 1), tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getTeam1().getName());
-						model.addAttribute(String.format("team%dFinalPoints", k + 1), tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getHomePoints());
-						model.addAttribute(String.format("team%dFinal", k), tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getTeam2().getName());
-						model.addAttribute(String.format("team%dFinalPoints", k), tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getAwayPoints());
+						model.addAttribute(String.format("team%dFinal", k + 1),
+								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getTeam1().getName());
+						model.addAttribute(String.format("team%dFinalPoints", k + 1),
+								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getHomePoints());
+						model.addAttribute(String.format("team%dFinal", k),
+								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getTeam2().getName());
+						model.addAttribute(String.format("team%dFinalPoints", k),
+								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getAwayPoints());
 					}
 				}
 			} else {
-				for (int k = 0; k < 2; k += 2) { //RoundOf2
+				for (int k = 0; k < 2; k += 2) { // RoundOf2
 					model.addAttribute(String.format("team%dFinal", k), "-Keep Playing");
 					model.addAttribute(String.format("team%dFinalPoints", k), "");
 					model.addAttribute(String.format("team%dFinal", k + 1), "-Keep Playing");
 					model.addAttribute(String.format("team%dFinalPoints", k + 1), "");
 				}
 
-				//--FINAL PHASE	
+				// --FINAL PHASE
 
 			}
-			
+
 			double progressPercentage;
 			final int TOTAL_MATCHES = 25;
 			progressPercentage = tournamentRepository.getPlayedMatches(t.get().getName());
 			progressPercentage = (progressPercentage / TOTAL_MATCHES) * 100;
-			
+
 			model.addAttribute("tournamentName", t.get().getName());
 			model.addAttribute("completion", progressPercentage);
-			
-			model.addAttribute("adminGroups", userComponent.isLoggedUser() && request.isUserInRole("ADMIN") &&
-                    tournamentRepository.getPhaseMatches(t.get(), "X").isEmpty());
-			
+
+			model.addAttribute("adminGroups", userComponent.isLoggedUser() && request.isUserInRole("ADMIN")
+					&& tournamentRepository.getPhaseMatches(t.get(), "X").isEmpty());
+
 			return "tournamentSheet";
 
 		}

@@ -18,25 +18,24 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.practica.model.Tournament;
 
-
 @RestController
 @RequestMapping("api/tournaments")
 
 public class TournamentRestController {
-	
-	@Autowired 
+
+	@Autowired
 	private TournamentRepository tournamentRepository;
-	
+
 	@Autowired
 	private ImageService imgService;
-	
+
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Tournament newTournament(@RequestBody Tournament tournament) {
 		tournamentRepository.save(tournament);
 		return tournament;
 	}
-	
+
 	@PostMapping("/{id}/image")
 	public ResponseEntity<Tournament> newTournamentImage(@PathVariable String id, @RequestParam MultipartFile imageFile)
 			throws IOException {
@@ -55,12 +54,12 @@ public class TournamentRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
 	@GetMapping("/{id}/image")
 	public ResponseEntity<Object> getTournamentImage(@PathVariable String id) throws IOException {
 		Optional<Tournament> tournament = tournamentRepository.findById(id);
 		if (tournament.isPresent()) {
-			if(tournament.get().hasImage()) {
+			if (tournament.get().hasImage()) {
 				return this.imgService.createResponseFromImage("tournaments", id);
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -69,7 +68,7 @@ public class TournamentRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<Tournament> seeTournament(@PathVariable String id) {
 

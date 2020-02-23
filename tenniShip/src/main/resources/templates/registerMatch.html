@@ -13,7 +13,8 @@
     <link href="/../img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+          rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
     <link href="/../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -30,189 +31,201 @@
 </head>
 
 <body>
-    <!--==========================
-  Header
+<!--==========================
+Header
 ============================-->
-    <header id="header">
-        <div class="container-fluid">
+<header id="header">
+    <div class="container-fluid">
 
-            <div class="pull-left" id="logo">
-                <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
-            </div>
+        <div class="pull-left" id="logo">
+            <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
+        </div>
 
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    {{#admin}}
-                    <li class="menu-has-children teamMenu"><a href="#"><strong>ADMIN</strong></a>
-                        <ul>
-                            <li>
-                                <form action="/logout" method="post">
-                                    <button class="btn" type="submit">Sign Out</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                    {{/admin}} {{^admin}}
-                    <li class="menu-has-children"><a href="#actions">Actions</a>
-                        <ul>
-                            <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
-                            <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
-                        <ul>
-                            <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
-                            <li>
-                                <form action="/logout" method="post">
-                                    <button class="btn" type="submit">Sign Out</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                {{#admin}}
+                <li class="menu-has-children teamMenu"><a href="#"><strong>ADMIN</strong></a>
+                    <ul>
+                        <li>
+                            <form action="/logout" method="post">
+                                <button class="btn" type="submit">Sign Out</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                {{/admin}}
+                {{^admin}}
+                <li class="menu-has-children"><a href="#actions">Actions</a>
+                    <ul>
+                        <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
+                        <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
+                    </ul>
+                </li>
+                <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
+                    <ul>
+                        <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
+                        <li>
+                            <form action="/logout" method="post">
+                                <button class="btn" type="submit">Sign Out</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
+                {{/admin}}
+            </ul>
+        </nav>
+        <!-- #nav-menu-container -->
+    </div>
+</header>
+<!-- #header -->
+
+<main id="main">
+
+    <!--==========================
+  registerMatchSelectMatch Section
+============================-->
+
+    <div class="section-header">
+        <h3 class="section-title">Select the Match</h3>
+        <h4 id="UnderTitleParagraph">{{round}}</h4>
+    </div>
+
+    {{#allPlayed}}
+    <div class="text-center pt-3">
+        <h4><a href="/TenniShip/Tournament/{{tournamentName}}" style="color: green;"><strong>See Tournament
+            Details</strong></a></h4>
+    </div>
+    {{/allPlayed}}
+
+    <section class="section-bg" id="registerMatchBothPages">
+        <div class="container">
+
+            {{#listMatches}} {{^admin}}
+            <form action="/TenniShip/RegisterMatch/Tournament/{{tournament.name}}/Submission" method="post">
+                {{/admin}} {{#admin}}
+                <form action="/TenniShip/ADMIN/Tournament/{{tournament.name}}/EditMatches/{{type}}/Submission"
+                      method="post">
                     {{/admin}}
-                </ul>
-            </nav>
-            <!-- #nav-menu-container -->
-        </div>
-    </header>
-    <!-- #header -->
-
-    <main id="main">
-
-        <!--==========================
-      registerMatchSelectMatch Section
-    ============================-->
-
-        <div class="section-header">
-            <h3 class="section-title">Select the Match</h3>
-            <h4 id="UnderTitleParagraph">{{round}}</h4>
-        </div>
-
-        {{#allPlayed}}
-        <div class="text-center pt-3">
-            <h4><a href="/TenniShip/Tournament/{{tournamentName}}" style="color: green;"><strong>See Tournament Details</strong></a></h4>
-        </div>
-        {{/allPlayed}}
-
-        <section class="section-bg" id="registerMatchBothPages">
-            <div class="container">
-
-                {{#listMatches}} {{^admin}}
-                <form action="/TenniShip/RegisterMatch/Tournament/{{tournament.name}}/Submission" method="post">
-                    {{/admin}} {{#admin}}
-                    <form action="/TenniShip/ADMIN/Tournament/{{tournament.name}}/EditMatches/{{type}}/Submission" method="post">
-                        {{/admin}}
-                        <div class="row">
-                            <div class="col-lg-4 col-md-3">
-                                <div class="card cardMatch">
-                                    <div class="view overlay">
-                                        <img alt="Card image cap" class="cardMatchImg card-img-top" src="/../img/clients/teams/{{team1.teamName}}.jpg">
-                                    </div>
-                                    <div class="card-body">
-                                        <h4 class="card-title TeamPositioningRegisterMatchIconLocal">
-                                            <a class="colorLinkTeam" href="/Team/{{team1.teamName}}">{{team1.name}}</a>
-                                            <input type="hidden" name="teamHome" value="{{team1.teamName}}">
-                                        </h4>
-                                        <p class="card-text TeamPositioningRegisterMatchIconLocal">Local´s Team</p>
-                                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-3">
+                            <div class="card cardMatch">
+                                <div class="view overlay">
+                                    <img alt="Card image cap" class="cardMatchImg card-img-top"
+                                         src="/../img/clients/teams/{{team1.teamName}}.jpg">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title TeamPositioningRegisterMatchIconLocal">
+                                        <a class="colorLinkTeam" href="/TenniShip/Team/{{team1.teamName}}">{{team1.name}}</a>
+                                        <input type="hidden" name="teamHome" value="{{team1.teamName}}">
+                                    </h4>
+                                    <p class="card-text TeamPositioningRegisterMatchIconLocal">Local´s Team</p>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp ">
-                                <div class="registerMatchBothPages-wrap ">
-                                    <figure>
-                                        <img alt="" class="img-fluid rackets" src="/../img/rackets.png">
-                                    </figure>
+                        <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp ">
+                            <div class="registerMatchBothPages-wrap ">
+                                <figure>
+                                    <img alt="" class="img-fluid rackets" src="/../img/rackets.png">
+                                </figure>
 
-                                    <div class="registerMatchBothPages-info ">
-                                        <h4>
-                                            <a href="#">Match Result</a>
-                                        </h4>
-                                        <div class="d-flex justify-content-around">
+                                <div class="registerMatchBothPages-info ">
+                                    <h4>
+                                        <a href="#">Match Result</a>
+                                    </h4>
+                                    <div class="d-flex justify-content-around">
 
-                                            <div class="TeamPositioningRegisterMatchIconLocal">
-                                                <div class="def-number-input number-input safari_only">
-                                                    <button class="minus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                                                    <input class="quantity" min="0" max="3" name="quantityHome" type="number" value="{{homePoints}}">
-                                                    <button class="plus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
-                                                </div>
+                                        <div class="TeamPositioningRegisterMatchIconLocal">
+                                            <div class="def-number-input number-input safari_only">
+                                                <button class="minus" type="button"
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                                <input class="quantity" min="0" max="3" name="quantityHome"
+                                                       type="number" value="{{homePoints}}">
+                                                <button class="plus" type="button"
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                                             </div>
-                                            <div class="TeamPositioningRegisterMatchIconVisitor">
-                                                <div class="def-number-input number-input safari_only">
-                                                    <button class="minus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                                                    <input class="quantity" min="0" max="3" name="quantityAway" type="number" value="{{awayPoints}}">
-                                                    <button class="plus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
-                                                </div>
+                                        </div>
+                                        <div class="TeamPositioningRegisterMatchIconVisitor">
+                                            <div class="def-number-input number-input safari_only">
+                                                <button class="minus" type="button"
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                                <input class="quantity" min="0" max="3" name="quantityAway"
+                                                       type="number" value="{{awayPoints}}">
+                                                <button class="plus" type="button"
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-lg-4 col-md-3 ">
-                                <div class="card cardMatch">
-                                    <div class="view overlay">
-                                        <img alt="Card image cap" class="cardMatchImg card-img-top" src="/../img/clients/teams/{{team2.teamName}}.jpg">
-                                    </div>
-                                    <div class="card-body">
-                                        <h4 class="card-title TeamPositioningRegisterMatchIconVisitor">
-                                            <a class="colorLinkTeam" href="/Team/{{team2.teamName}}">{{team2.teamName}}</a>
-                                            <input type="hidden" name="teamAway" value="{{team2.name}}">
-                                        </h4>
-                                        <p class="card-text TeamPositioningRegisterMatchIconVisitor">Visitor´s Team</p>
-                                    </div>
+                        <div class="col-lg-4 col-md-3 ">
+                            <div class="card cardMatch">
+                                <div class="view overlay">
+                                    <img alt="Card image cap" class="cardMatchImg card-img-top"
+                                         src="/../img/clients/teams/{{team2.teamName}}.jpg">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title TeamPositioningRegisterMatchIconVisitor">
+                                        <a class="colorLinkTeam" href="/TenniShip/Team/{{team2.teamName}}">{{team2.teamName}}</a>
+                                        <input type="hidden" name="teamAway" value="{{team2.name}}">
+                                    </h4>
+                                    <p class="card-text TeamPositioningRegisterMatchIconVisitor">Visitor´s Team</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="centerButton">
-                            <button class="btn SubmitButtonMatch" type="submit">Submit</button>
-                        </div>
-                    </form>
-                    {{/listMatches}}
-            </div>
-        </section>
-        <!-- #registerMatchSelectMatch -->
-
-    </main>
-
-    <!--==========================
-  Footer
-============================-->
-    <footer id="footer">
-        <div class="container">
-            <div class="copyright">
-                &copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>. All Rights Reserved
-            </div>
-            <div class="credits">ReDesigned by paDAWans</div>
+                    </div>
+                    <div class="centerButton">
+                        <button class="btn SubmitButtonMatch" type="submit">Submit</button>
+                    </div>
+                </form>
+                {{/listMatches}}
         </div>
-    </footer>
-    <!-- #footer -->
+    </section>
+    <!-- #registerMatchSelectMatch -->
 
-    <a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
-    <!-- Uncomment below i you want to use a preloader -->
-    <div id="preloader"></div>
+</main>
 
-    <!-- JavaScript Libraries -->
-    <script src="/../lib/jquery/jquery.min.js"></script>
-    <script src="/../lib/jquery/jquery-migrate.min.js"></script>
-    <script src="/../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/../lib/easing/easing.min.js"></script>
-    <script src="/../lib/superfish/hoverIntent.js"></script>
-    <script src="/../lib/superfish/superfish.min.js"></script>
-    <script src="/../lib/wow/wow.min.js"></script>
-    <script src="/../lib/waypoints/waypoints.min.js"></script>
-    <script src="/../lib/counterup/counterup.min.js"></script>
-    <script src="/../lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="/../lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="/../lib/lightbox/js/lightbox.min.js"></script>
-    <script src="/../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
-    <!-- Contact Form JavaScript File -->
-    <script src="/../contactform/contactform.js"></script>
+<!--==========================
+Footer
+============================-->
+<footer id="footer">
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>. All Rights
+            Reserved
+        </div>
+        <div class="credits">ReDesigned by paDAWans</div>
+    </div>
+</footer>
+<!-- #footer -->
 
-    <!-- Template Main Javascript File -->
-    <script src="/../js/main.js"></script>
-    <script src="/../js/showMoreContent.js"></script>
+<a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
+<!-- Uncomment below i you want to use a preloader -->
+<div id="preloader"></div>
+
+<!-- JavaScript Libraries -->
+<script src="/../lib/jquery/jquery.min.js"></script>
+<script src="/../lib/jquery/jquery-migrate.min.js"></script>
+<script src="/../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/../lib/easing/easing.min.js"></script>
+<script src="/../lib/superfish/hoverIntent.js"></script>
+<script src="/../lib/superfish/superfish.min.js"></script>
+<script src="/../lib/wow/wow.min.js"></script>
+<script src="/../lib/waypoints/waypoints.min.js"></script>
+<script src="/../lib/counterup/counterup.min.js"></script>
+<script src="/../lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="/../lib/isotope/isotope.pkgd.min.js"></script>
+<script src="/../lib/lightbox/js/lightbox.min.js"></script>
+<script src="/../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+<!-- Contact Form JavaScript File -->
+<script src="/../contactform/contactform.js"></script>
+
+<!-- Template Main Javascript File -->
+<script src="/../js/main.js"></script>
+<script src="/../js/showMoreContent.js"></script>
 
 </body>
 

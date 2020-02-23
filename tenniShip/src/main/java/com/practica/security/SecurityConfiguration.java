@@ -11,49 +11,47 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    public UserRepositoryAuthenticationProvider authenticationProvider;
+	@Autowired
+	public UserRepositoryAuthenticationProvider authenticationProvider;
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-    	
-    	// Public pages 
-        http.authorizeRequests().antMatchers("/register").permitAll();
-        http.authorizeRequests().antMatchers("/TenniShip").permitAll();
-        http.authorizeRequests().antMatchers("/TenniShip/SignIn").permitAll();
-        http.authorizeRequests().antMatchers("/TenniShip/SignUp").permitAll();
-        http.authorizeRequests().antMatchers("/TenniShip/Team/**").permitAll();
-        http.authorizeRequests().antMatchers("/TenniShip/Tournament/**").permitAll();
-        http.authorizeRequests().antMatchers("/TenniShip/loginerror").permitAll();
-        http.authorizeRequests().antMatchers("/logout").permitAll();
-        http.authorizeRequests().antMatchers("/error").permitAll();
-        http.authorizeRequests().antMatchers("/contactform/**","/css/**","/js/**","/img/**","/lib/**").permitAll();
-        
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
 
-        // Private pages (all other pages)
-        http.authorizeRequests().antMatchers("/TenniShip/ADMIN/**").hasRole("ADMIN");
-        http.authorizeRequests().anyRequest().authenticated();
+		// Public pages
+		http.authorizeRequests().antMatchers("/register").permitAll();
+		http.authorizeRequests().antMatchers("/TenniShip").permitAll();
+		http.authorizeRequests().antMatchers("/TenniShip/SignIn").permitAll();
+		http.authorizeRequests().antMatchers("/TenniShip/SignUp").permitAll();
+		http.authorizeRequests().antMatchers("/TenniShip/Team/**").permitAll();
+		http.authorizeRequests().antMatchers("/TenniShip/Tournament/**").permitAll();
+		http.authorizeRequests().antMatchers("/TenniShip/loginerror").permitAll();
+		http.authorizeRequests().antMatchers("/logout").permitAll();
+		http.authorizeRequests().antMatchers("/error").permitAll();
+		http.authorizeRequests().antMatchers("/contactform/**", "/css/**", "/js/**", "/img/**", "/lib/**").permitAll();
 
+		// Private pages (all other pages)
+		http.authorizeRequests().antMatchers("/TenniShip/ADMIN/**").hasRole("ADMIN");
+		http.authorizeRequests().anyRequest().authenticated();
 
-        // Login form
-        http.formLogin().loginPage("/TenniShip/SignIn");
-        http.formLogin().usernameParameter("username");
-        http.formLogin().passwordParameter("password");
-        http.formLogin().defaultSuccessUrl("/TenniShip");
-        http.formLogin().failureUrl("/TenniShip/loginerror");
+		// Login form
+		http.formLogin().loginPage("/TenniShip/SignIn");
+		http.formLogin().usernameParameter("username");
+		http.formLogin().passwordParameter("password");
+		http.formLogin().defaultSuccessUrl("/TenniShip");
+		http.formLogin().failureUrl("/TenniShip/loginerror");
 
-        // Logout
-        http.logout().logoutUrl("/logout");
-        http.logout().logoutSuccessUrl("/TenniShip/SignIn");
-    
-     // Disable CSRF at the moment
-        http.csrf().disable();
-    }
+		// Logout
+		http.logout().logoutUrl("/logout");
+		http.logout().logoutSuccessUrl("/TenniShip/SignIn");
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    	
-        // Database authentication provider
-        auth.authenticationProvider(authenticationProvider);
-    }
+		// Disable CSRF at the moment
+		http.csrf().disable();
+	}
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+		// Database authentication provider
+		auth.authenticationProvider(authenticationProvider);
+	}
 }
