@@ -1,7 +1,6 @@
 package com.practica.security;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -11,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

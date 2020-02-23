@@ -67,11 +67,22 @@
                     <p id="UnderTitleParagraph">{{errormsg}}</p>
                 </div>
 
-                
+                {{^goback}}
                 <div class="text-center pt-3">
                 	<button class="btn" type="submit"><a href="/TenniShip" style="color: white;">Home</a></button>
                 </div>
+                {{/goback}}
                 
+                {{#goback}}
+				<div class="text-center pt-3">
+					{{#admin}}
+                	<button class="btn" type="submit"><a href="/TenniShip/ADMIN/Tournament/{{tournament}}/EditMatches/{{group}}" style="color: white;">Go Back</a></button>
+                	{{/admin}}
+                	{{^admin}}
+                	<button class="btn" type="submit"><a href="/TenniShip/RegisterMatch/Tournament/{{tournament}}" style="color: white;">Go Back</a></button>
+                	{{/admin}}
+                </div>
+                {{/goback}}
             </div>
 
         </div>
