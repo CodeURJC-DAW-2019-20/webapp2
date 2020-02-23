@@ -74,12 +74,7 @@ public class CreatorController {
 		}
 
 		/* Adding a list of all teams for the autocomplete */
-		List<Team> allTeams = teamRepository.getAllTeams();
-		List<String> teamNames = new ArrayList<>();
-		for (Team t : allTeams) {
-			teamNames.add(t.getName());
-		}
-		model.addAttribute("teamNames", teamNames);
+		model.addAttribute("teamNames", teamNames());
 
 		return "tournamentCreator";
 	}
@@ -204,7 +199,20 @@ public class CreatorController {
 		model.addAttribute("next2", numberTeams == 18);
 		if (numberTeams == 18)
 			model.addAttribute("listTeam", teamList);
+
+		/* Adding a list of all teams for the autocomplete */
+		model.addAttribute("teamNames", teamNames());
+
 		return "tournamentCreator";
+	}
+
+	private List<String> teamNames() {
+		List<Team> allTeams = teamRepository.getAllTeams();
+		List<String> teamNames = new ArrayList<>();
+		for (Team t : allTeams) {
+			teamNames.add(t.getName());
+		}
+		return teamNames;
 	}
 
 	@PostMapping("/TenniShip/Creator/Raffle")
@@ -222,6 +230,10 @@ public class CreatorController {
 			teamListFinal.add(team.get());
 		}
 		raffleTeamsCreateMatches(finalTournament, teamListFinal);
+
+		/* Adding a list of all teams for the autocomplete */
+		model.addAttribute("teamNames", teamNames());
+
 		return "tournamentCreatorRaffle";
 	}
 
