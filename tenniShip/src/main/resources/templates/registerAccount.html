@@ -2,324 +2,323 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Sign up - Tenniship</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+<meta charset="utf-8">
+<title>Sign up - Tenniship</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="keywords">
+<meta content="" name="description">
 
-    <!-- Favicons -->
-    <link href="../img/favicon.png" rel="icon">
-    <link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
+<!-- Favicons -->
+<link href="../img/favicon.png" rel="icon">
+<link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
-            rel="stylesheet">
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+	rel="stylesheet">
 
-    <!-- Bootstrap CSS File -->
-    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap CSS File -->
+<link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Libraries CSS Files -->
-    <link href="../lib/font-awesome/css/font-awesome.min.css"
-          rel="stylesheet">
-    <link href="../lib/animate/animate.min.css" rel="stylesheet">
-    <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="../lib/owlcarousel/assets/owl.carousel.min.css"
-          rel="stylesheet">
-    <link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+<!-- Libraries CSS Files -->
+<link href="../lib/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet">
+<link href="../lib/animate/animate.min.css" rel="stylesheet">
+<link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+<link href="../lib/owlcarousel/assets/owl.carousel.min.css"
+	rel="stylesheet">
+<link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-    <!-- Main Stylesheet File -->
-    <link href="../css/style.css" rel="stylesheet">
+<!-- Main Stylesheet File -->
+<link href="../css/style.css" rel="stylesheet">
 </head>
 
 <body>
 
-<!--==========================
-Header
+	<!--==========================
+  Header
 ============================-->
-<header id="header">
-    <div class="container-fluid">
+	<header id="header">
+		<div class="container-fluid">
 
-        <div class="pull-left" id="logo">
-            <h1>
-                <a class="scrollto" href="/TenniShip">TenniShip</a>
-            </h1>
-        </div>
-    </div>
-</header>
-<!-- #header -->
+			<div class="pull-left" id="logo">
+				<h1>
+					<a class="scrollto" href="/TenniShip">TenniShip</a>
+				</h1>
+			</div>
+		</div>
+	</header>
+	<!-- #header -->
 
 
-<main id="main">
+	<main id="main">
 
-    <!--==========================
-  Account register
+		<!--==========================
+      Account register
+    ============================-->
+		<section class="section-bg wow fadeInUp" id="setting">
+			<div class="container shadow p-3 mb-5 bg-white rounded">
+				<div class="container-separation">
+					<div class="section-header">
+						<h3 id="Title">Register Account</h3>
+						<p id="UnderTitleParagraph">Register your account on the
+							platform Tenniship</p>
+					</div>
+
+					<div class="form">
+						<h3>User Data</h3>
+						<div id="sendmessage">Your message has been sent. Thank you!</div>
+						<div id="errormessage"></div>
+						<form action="/register" method="post" role="form"
+							modelAttribute="personUser" enctype="multipart/form-data">
+							<div class="form-group">
+								<input class="form-control" data-msg="That´s not a valid name"
+									data-rule="minlen:1" id="" name="userName"
+									placeholder="User Name" type="text"
+									{{#personUser.userName}} value={{personUser.userName}}{{/personUser.userName}}>
+								<div class="errorsText">
+									{{#userNameAlreadyExist}}
+									<p>Username already exist</p>
+									{{/userNameAlreadyExist}} 
+									
+									{{#userNameEmpty}}
+									<p>Introduce a username</p>
+									{{/userNameEmpty}}
+
+								</div>
+							</div>
+							<div class="form-group">
+								<input class="form-control" data-msg="Enter email"
+									data-rule="minlen:1" id="email" name="email"
+									placeholder="Email" type="text"
+									{{#personUser.email}} value={{personUser.email}}{{/personUser.email}}>
+								<div class="errorsText">
+
+									{{#emailAlreadyExist}}
+										<p>Email already exist</p>
+									{{/emailAlreadyExist}} 
+									
+									{{#emailEmpty}}
+										<p>Introduce a email</p>
+									{{/emailEmpty}} 
+									
+									{{^emailEmpty}}
+										 {{#emailNotGood}}
+											<p>Write a valid email</p>
+										{{/emailNotGood}} 
+									{{/emailEmpty}}
+								</div>
+							</div>
+							<div class="form-group">
+								<input class="form-control" data-msg="Enter a password"
+									id="password" name="passwordHash" placeholder="Password"
+									type="password"
+									{{#personUser.passwordHash}} value={{personUser.passwordHash}}{{/personUser.passwordHash}}>
+								<div class="errorsText">
+									{{#passwordEmpty}}
+										<p>Introduce a password</p>
+									{{/passwordEmpty}} 
+									
+									{{^passwordEmpty}} 
+										{{#passwordNotGood}}
+											<p>Password needs 8 characters</p>
+										{{/passwordNotGood}}
+									{{/passwordEmpty}}
+								</div>
+							</div>
+							<div class="form-group">
+								<input class="form-control" data-msg="The passwords don´t match"
+									data-rule="minlen:1" name="passwordCheck"
+									placeholder="Confirm your Password" type="password">
+								<div class="errorsText">
+									{{^passwordEmpty}} {{^passwordNotGood}} {{#passNotSame}}
+									<p>Password isn't the same</p>
+									{{/passNotSame}} {{/passwordNotGood}} {{/passwordEmpty}}
+								</div>
+							</div>
+
+							<h3>Team Data</h3>
+							<div class="form-group">
+								<input class="form-control" data-msg="That´s not a valid name"
+									data-rule="minlen:1" id="name" name="team"
+									placeholder="Team Name" type="text"
+									{{#personUser.team}} value={{personUser.team}}{{/personUser.team}}>
+								<div class="errorsText">
+									{{#teamAlreadyExist}}
+									<p>Team already exist</p>
+									{{/teamAlreadyExist}} {{#teamEmpty}}
+									<p>Introduce a team</p>
+									{{/teamEmpty}}
+								</div>
+							</div>
+							<div class="input-group mb-3">
+								<div class="custom-file">
+									<input class="custom-file-input" type="file" name="imageFile"
+										accept=".jpg" /> <label
+										aria-describedby="inputGroupFileAddon02"
+										class="custom-file-label">Team Logo</label>
+								</div>
+							</div>
+							<div class="mb-4">
+								<img alt="example placeholder avatar"
+									class="rounded-circle z-depth-1-half avatar-pic"
+									src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg">
+							</div>
+
+							<div class="separation"></div>
+							<h3>Players Data</h3>
+							<h5>Player 1</h5>
+							<div class="form-row">
+								<div class="col">
+									<input class="form-control" name="player1"
+										placeholder="Player's First name" type="text">
+								</div>
+							</div>
+							<div class="errorsText">
+								{{#player1NameEmpty}}
+								<p>Introduce a player again please</p>
+								{{/player1NameEmpty}}
+							</div>
+							<div class="input-group mb-3 pt-3">
+								<div class="custom-file">
+									<input class="custom-file-input" type="file" name="imageFile"
+										accept=".jpg"> <label
+										aria-describedby="inputGroupFileAddon02"
+										class="custom-file-label">Player´s photo</label>
+								</div>
+							</div>
+							<h5>Player 2</h5>
+							<div class="form-row">
+								<div class="col">
+									<input class="form-control" name="player2"
+										placeholder="Player's First name" type="text">
+								</div>
+							</div>
+							<div class="errorsText">
+								{{#player2NameEmpty}}
+								<p>Introduce a player again please</p>
+								{{/player2NameEmpty}}
+							</div>
+							<div class="input-group mb-3 pt-3">
+								<div class="custom-file">
+									<input class="custom-file-input" type="file" name="imageFile"
+										accept=".jpg"> <label
+										aria-describedby="inputGroupFileAddon02"
+										class="custom-file-label">Player´s photo</label>
+								</div>
+							</div>
+							<h5>Player 3</h5>
+							<div class="form-row">
+								<div class="col">
+									<input class="form-control" name="player3"
+										placeholder="Player's First name" type="text">
+								</div>
+							</div>
+							<div class="errorsText">
+								{{#player3NameEmpty}}
+								<p>Introduce a player again please</p>
+								{{/player3NameEmpty}}
+							</div>
+							<div class="input-group mb-3 pt-3">
+								<div class="custom-file">
+									<input class="custom-file-input" type="file" name="imageFile"
+										accept=".jpg"> <label
+										aria-describedby="inputGroupFileAddon02"
+										class="custom-file-label">Player´s photo</label>
+								</div>
+							</div>
+							<h5>Player 4</h5>
+							<div class="form-row">
+								<div class="col">
+									<input class="form-control" name="player4"
+										placeholder="Player's First name" type="text">
+								</div>
+							</div>
+							<div class="errorsText">
+								{{#player4NameEmpty}}
+								<p>Introduce a player again please</p>
+								{{/player4NameEmpty}}
+							</div>
+							<div class="input-group mb-3 pt-3">
+								<div class="custom-file">
+									<input class="custom-file-input" type="file" name="imageFile"
+										accept=".jpg"> <label
+										aria-describedby="inputGroupFileAddon02"
+										class="custom-file-label">Player´s photo</label>
+								</div>
+							</div>
+							<h5>Player 5</h5>
+							<div class="form-row">
+								<div class="col">
+									<input class="form-control" name="player5"
+										placeholder="Player's First name" type="text">
+								</div>
+							</div>
+							<div class="errorsText">
+								{{#player5NameEmpty}}
+								<p>Introduce a player again please</p>
+								{{/player5NameEmpty}}
+							</div>
+							<div class="input-group mb-3 pt-3">
+								<div class="custom-file">
+									<input class="custom-file-input" type="file" name="imageFile"
+										accept=".jpg"> <label
+										aria-describedby="inputGroupFileAddon02"
+										class="custom-file-label">Player´s photo</label>
+								</div>
+							</div>
+							<div class="text-center pt-3 button">
+								<button class="input-group-test btn" type="submit">Sign Up!</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</section>
+		<!-- #contact -->
+
+	</main>
+
+	<!--==========================
+  Footer
 ============================-->
-    <section class="section-bg wow fadeInUp" id="setting">
-        <div class="container shadow p-3 mb-5 bg-white rounded">
-            <div class="container-separation">
-                <div class="section-header">
-                    <h3 id="Title">Register Account</h3>
-                    <p id="UnderTitleParagraph">Register your account on the
-                        platform Tenniship</p>
-                </div>
 
-                <div class="form">
-                    <h3>User Data</h3>
-                    <div id="sendmessage">Your message has been sent. Thank you!</div>
-                    <div id="errormessage"></div>
-                    <form action="/register" method="post" role="form"
-                          modelAttribute="personUser" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <input class="form-control" data-msg="That´s not a valid name"
-                                   data-rule="minlen:1" id="" name="userName"
-                                   placeholder="User Name" type="text"
-                                   {{#personUser.userName}} value={{personUser.userName}}{{/personUser.userName}}>
-                            <div class="errorsText">
-                                {{#userNameAlreadyExist}}
-                                <p>Username already exist</p>
-                                {{/userNameAlreadyExist}}
+	<footer id="footer">
+		<div class="container">
+			<div class="copyright">
+				&copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>.
+				All Rights Reserved
+			</div>
+			<div class="credits">ReDesigned by paDAWans</div>
+		</div>
+	</footer>
+	<!-- #footer -->
 
-                                {{#userNameEmpty}}
-                                <p>Introduce a username</p>
-                                {{/userNameEmpty}}
+	<a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
+	<!-- Uncomment below if you want to use a preloader -->
+	<div id="preloader"></div>
 
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" data-msg="Enter email"
-                                   data-rule="minlen:1" id="email" name="email"
-                                   placeholder="Email" type="text"
-                                   {{#personUser.email}} value={{personUser.email}}{{/personUser.email}}>
-                            <div class="errorsText">
+	<!-- JavaScript Libraries -->
+	<script src="../lib/jquery/jquery.min.js"></script>
+	<script src="../lib/jquery/jquery-migrate.min.js"></script>
+	<script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../lib/easing/easing.min.js"></script>
+	<script src="../lib/superfish/hoverIntent.js"></script>
+	<script src="../lib/superfish/superfish.min.js"></script>
+	<script src="../lib/wow/wow.min.js"></script>
+	<script src="../lib/waypoints/waypoints.min.js"></script>
+	<script src="../lib/counterup/counterup.min.js"></script>
+	<script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+	<script src="../lib/isotope/isotope.pkgd.min.js"></script>
+	<script src="../lib/lightbox/js/lightbox.min.js"></script>
+	<script src="../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+	<!-- Contact Form JavaScript File -->
+	<script src="../contactform/contactform.js"></script>
 
-                                {{#emailAlreadyExist}}
-                                <p>Email already exist</p>
-                                {{/emailAlreadyExist}}
-
-                                {{#emailEmpty}}
-                                <p>Introduce a email</p>
-                                {{/emailEmpty}}
-
-                                {{^emailEmpty}}
-                                {{#emailNotGood}}
-                                <p>Write a valid email</p>
-                                {{/emailNotGood}}
-                                {{/emailEmpty}}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" data-msg="Enter a password"
-                                   id="password" name="passwordHash" placeholder="Password"
-                                   type="password"
-                                   {{#personUser.passwordHash}}
-                                   value={{personUser.passwordHash}}{{/personUser.passwordHash}}>
-                            <div class="errorsText">
-                                {{#passwordEmpty}}
-                                <p>Introduce a password</p>
-                                {{/passwordEmpty}}
-
-                                {{^passwordEmpty}}
-                                {{#passwordNotGood}}
-                                <p>Password needs 8 characters</p>
-                                {{/passwordNotGood}}
-                                {{/passwordEmpty}}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" data-msg="The passwords don´t match"
-                                   data-rule="minlen:1" name="passwordCheck"
-                                   placeholder="Confirm your Password" type="password">
-                            <div class="errorsText">
-                                {{^passwordEmpty}} {{^passwordNotGood}} {{#passNotSame}}
-                                <p>Password isn't the same</p>
-                                {{/passNotSame}} {{/passwordNotGood}} {{/passwordEmpty}}
-                            </div>
-                        </div>
-
-                        <h3>Team Data</h3>
-                        <div class="form-group">
-                            <input class="form-control" data-msg="That´s not a valid name"
-                                   data-rule="minlen:1" id="name" name="team"
-                                   placeholder="Team Name" type="text"
-                                   {{#personUser.team}} value={{personUser.team}}{{/personUser.team}}>
-                            <div class="errorsText">
-                                {{#teamAlreadyExist}}
-                                <p>Team already exist</p>
-                                {{/teamAlreadyExist}} {{#teamEmpty}}
-                                <p>Introduce a team</p>
-                                {{/teamEmpty}}
-                            </div>
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="custom-file">
-                                <input class="custom-file-input" type="file" name="imageFile"
-                                       accept=".jpg"/> <label
-                                    aria-describedby="inputGroupFileAddon02"
-                                    class="custom-file-label">Team Logo</label>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <img alt="example placeholder avatar"
-                                 class="rounded-circle z-depth-1-half avatar-pic"
-                                 src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg">
-                        </div>
-
-                        <div class="separation"></div>
-                        <h3>Players Data</h3>
-                        <h5>Player 1</h5>
-                        <div class="form-row">
-                            <div class="col">
-                                <input class="form-control" name="player1"
-                                       placeholder="Player's First name" type="text">
-                            </div>
-                        </div>
-                        <div class="errorsText">
-                            {{#player1NameEmpty}}
-                            <p>Introduce a player again please</p>
-                            {{/player1NameEmpty}}
-                        </div>
-                        <div class="input-group mb-3 pt-3">
-                            <div class="custom-file">
-                                <input class="custom-file-input" type="file" name="imageFile"
-                                       accept=".jpg"> <label
-                                    aria-describedby="inputGroupFileAddon02"
-                                    class="custom-file-label">Player´s photo</label>
-                            </div>
-                        </div>
-                        <h5>Player 2</h5>
-                        <div class="form-row">
-                            <div class="col">
-                                <input class="form-control" name="player2"
-                                       placeholder="Player's First name" type="text">
-                            </div>
-                        </div>
-                        <div class="errorsText">
-                            {{#player2NameEmpty}}
-                            <p>Introduce a player again please</p>
-                            {{/player2NameEmpty}}
-                        </div>
-                        <div class="input-group mb-3 pt-3">
-                            <div class="custom-file">
-                                <input class="custom-file-input" type="file" name="imageFile"
-                                       accept=".jpg"> <label
-                                    aria-describedby="inputGroupFileAddon02"
-                                    class="custom-file-label">Player´s photo</label>
-                            </div>
-                        </div>
-                        <h5>Player 3</h5>
-                        <div class="form-row">
-                            <div class="col">
-                                <input class="form-control" name="player3"
-                                       placeholder="Player's First name" type="text">
-                            </div>
-                        </div>
-                        <div class="errorsText">
-                            {{#player3NameEmpty}}
-                            <p>Introduce a player again please</p>
-                            {{/player3NameEmpty}}
-                        </div>
-                        <div class="input-group mb-3 pt-3">
-                            <div class="custom-file">
-                                <input class="custom-file-input" type="file" name="imageFile"
-                                       accept=".jpg"> <label
-                                    aria-describedby="inputGroupFileAddon02"
-                                    class="custom-file-label">Player´s photo</label>
-                            </div>
-                        </div>
-                        <h5>Player 4</h5>
-                        <div class="form-row">
-                            <div class="col">
-                                <input class="form-control" name="player4"
-                                       placeholder="Player's First name" type="text">
-                            </div>
-                        </div>
-                        <div class="errorsText">
-                            {{#player4NameEmpty}}
-                            <p>Introduce a player again please</p>
-                            {{/player4NameEmpty}}
-                        </div>
-                        <div class="input-group mb-3 pt-3">
-                            <div class="custom-file">
-                                <input class="custom-file-input" type="file" name="imageFile"
-                                       accept=".jpg"> <label
-                                    aria-describedby="inputGroupFileAddon02"
-                                    class="custom-file-label">Player´s photo</label>
-                            </div>
-                        </div>
-                        <h5>Player 5</h5>
-                        <div class="form-row">
-                            <div class="col">
-                                <input class="form-control" name="player5"
-                                       placeholder="Player's First name" type="text">
-                            </div>
-                        </div>
-                        <div class="errorsText">
-                            {{#player5NameEmpty}}
-                            <p>Introduce a player again please</p>
-                            {{/player5NameEmpty}}
-                        </div>
-                        <div class="input-group mb-3 pt-3">
-                            <div class="custom-file">
-                                <input class="custom-file-input" type="file" name="imageFile"
-                                       accept=".jpg"> <label
-                                    aria-describedby="inputGroupFileAddon02"
-                                    class="custom-file-label">Player´s photo</label>
-                            </div>
-                        </div>
-                        <div class="text-center pt-3 button">
-                            <button class="input-group-test btn" type="submit">Sign Up!</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-    </section>
-    <!-- #contact -->
-
-</main>
-
-<!--==========================
-Footer
-============================-->
-
-<footer id="footer">
-    <div class="container">
-        <div class="copyright">
-            &copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>.
-            All Rights Reserved
-        </div>
-        <div class="credits">ReDesigned by paDAWans</div>
-    </div>
-</footer>
-<!-- #footer -->
-
-<a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
-<!-- Uncomment below if you want to use a preloader -->
-<div id="preloader"></div>
-
-<!-- JavaScript Libraries -->
-<script src="../lib/jquery/jquery.min.js"></script>
-<script src="../lib/jquery/jquery-migrate.min.js"></script>
-<script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../lib/easing/easing.min.js"></script>
-<script src="../lib/superfish/hoverIntent.js"></script>
-<script src="../lib/superfish/superfish.min.js"></script>
-<script src="../lib/wow/wow.min.js"></script>
-<script src="../lib/waypoints/waypoints.min.js"></script>
-<script src="../lib/counterup/counterup.min.js"></script>
-<script src="../lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="../lib/isotope/isotope.pkgd.min.js"></script>
-<script src="../lib/lightbox/js/lightbox.min.js"></script>
-<script src="../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
-<!-- Contact Form JavaScript File -->
-<script src="../contactform/contactform.js"></script>
-
-<!-- Template Main Javascript File -->
-<script src="/../js/main.js"></script>
-<script src="/../js/showMoreContent.js"></script>
+	<!-- Template Main Javascript File -->
+	<script src="/../js/main.js"></script>
+	<script src="/../js/showMoreContent.js"></script>
 
 </body>
 

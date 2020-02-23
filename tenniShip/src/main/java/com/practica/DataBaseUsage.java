@@ -391,7 +391,7 @@ public class DataBaseUsage implements CommandLineRunner {
 		m18B.setTeam2(team18B);
 		m18B.setTournament(tournament2);
 		matchRepository.save(m18B);
-
+		
 		Match m1C = new Match(0, 0, "A");
 		m1C.setTeam1(team1);
 		m1C.setTeam2(team3B);

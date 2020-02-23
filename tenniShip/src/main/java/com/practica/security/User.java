@@ -1,5 +1,6 @@
 package com.practica.security;
 
+
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -18,30 +19,31 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	
 	private String userName;
 
 	private String passwordHash;
-
+	
 	@Email
 	private String email;
-
+	
 	private String team;
 
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
-
-	public User() {
+	
+	public User () {
 	}
-
-	public User(String name, String team, String email, String password, List<String> roles) {
+	
+	public User(String name,String team,String email,String password, List<String> roles) {
 		this.userName = name;
 		this.team = team;
 		this.email = email;
 		this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.roles = roles;
 	}
-
-	public User(String name, String email, String password, List<String> roles) {
+	
+	public User(String name,String email,String password, List<String> roles) {
 		this.userName = name;
 		this.email = email;
 		this.passwordHash = new BCryptPasswordEncoder().encode(password);

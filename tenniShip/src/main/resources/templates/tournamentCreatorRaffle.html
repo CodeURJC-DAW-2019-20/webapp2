@@ -44,50 +44,50 @@
 <!--==========================
 Header
 ============================-->
-<header id="header">
-    <div class="container-fluid">
+	<header id="header">
+        <div class="container-fluid">
 
-        <div class="pull-left" id="logo">
-            <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
+            <div class="pull-left" id="logo">
+                <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
+            </div>
+
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    {{#admin}}
+                	<li class="menu-has-children teamMenu"><a href="#"><strong>ADMIN</strong></a>
+                        <ul>
+                            <li>
+                                <form action="/logout" method="post">
+                                    <button class="btn" type="submit">Sign Out</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    {{/admin}}
+                    {{^admin}}
+                    <li class="menu-has-children"><a href="#actions">Actions</a>
+                        <ul>
+                            <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
+                            <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
+                        <ul>
+                            <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
+                            <li>
+                                <form action="/logout" method="post">
+                                    <button class="btn" type="submit">Sign Out</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
+                	{{/admin}}
+                </ul>
+            </nav>
+            <!-- #nav-menu-container -->
         </div>
-
-        <nav id="nav-menu-container">
-            <ul class="nav-menu">
-                {{#admin}}
-                <li class="menu-has-children teamMenu"><a href="#"><strong>ADMIN</strong></a>
-                    <ul>
-                        <li>
-                            <form action="/logout" method="post">
-                                <button class="btn" type="submit">Sign Out</button>
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-                {{/admin}}
-                {{^admin}}
-                <li class="menu-has-children"><a href="#actions">Actions</a>
-                    <ul>
-                        <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
-                        <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
-                    </ul>
-                </li>
-                <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
-                    <ul>
-                        <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
-                        <li>
-                            <form action="/logout" method="post">
-                                <button class="btn" type="submit">Sign Out</button>
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-                <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
-                {{/admin}}
-            </ul>
-        </nav>
-        <!-- #nav-menu-container -->
-    </div>
-</header>
+    </header>
 
 
 <main id="main">
@@ -113,14 +113,11 @@ Header
                         <div aria-orientation="vertical" class="nav flex-column nav-pills" id="v-pills-tab"
                              role="tablist">
                             <a aria-controls="v-pills-new" aria-selected="false" class="nav-link" data-toggle="pill"
-                               href="#v-pills-new" id="v-pills-new-tab" role="tab"
-                               style="pointer-events: none;cursor: default;color: transparent;">New Tournament</a>
+                               href="#v-pills-new" id="v-pills-new-tab" role="tab" style="pointer-events: none;cursor: default;color: transparent;">New Tournament</a>
                             <a aria-controls="v-pills-teams" aria-selected="false" class="nav-link" data-toggle="pill"
-                               href="#v-pills-teams" id="v-pills-teams-tab" role="tab"
-                               style="pointer-events: none;cursor: default;color: transparent;">Teams</a>
-                            <a aria-controls="v-pills-raffle" aria-selected="true" class="nav-link active"
-                               data-toggle="pill"
-                               href="#v-pills-created" id="v-pills-created-tab" role="tab">Raffle Teams</a>
+                               href="#v-pills-teams" id="v-pills-teams-tab" role="tab" style="pointer-events: none;cursor: default;color: transparent;">Teams</a>
+                            <a aria-controls="v-pills-raffle" aria-selected="true" class="nav-link active" data-toggle="pill"
+                               href="#v-pills-created" id="v-pills-created-tab" role="tab"  >Raffle Teams</a>
                         </div>
                     </div>
                 </nav>
@@ -128,8 +125,7 @@ Header
                 <div class="col-12 col-lg-9 shadow p-3 mb-5 bg-white rounded" id="TCreatorInfo">
                     <div class="tab-content" id="v-pills-tabContent">
 
-                        <div aria-labelledby="v-pills-created-tab" class="tab-pane fade show active"
-                             id="v-pills-created"
+                        <div aria-labelledby="v-pills-created-tab" class="tab-pane fade show active" id="v-pills-created"
                              role="tabpanel">
                             <div class="created">
                                 <div>
@@ -137,8 +133,7 @@ Header
                                     <p>Congratulations, the tournament has been created successfully. You can start
                                         playing whenever you want.</p>
                                     <div class="buttons">
-                                        <a class="btn" href="/TenniShip/Tournament/{{tourFinal.name}}">Go to the
-                                            Tournament</a>
+                                        <a class="btn" href="/TenniShip/Tournament/{{tourFinal.name}}">Go to the Tournament</a>
                                         <a class="btn" href="/TenniShip">Home</a>
                                     </div>
                                 </div>
@@ -194,16 +189,10 @@ Footer
 <script>
 
     var teamNames = [
-        {{#teamNames
-    }
-    }
-    "{{.}}", {
-    {
-        /teamNames}}
-    ]
-        ;
+        {{#teamNames}}"{{.}}",{{/teamNames}}
+    ];
 
-        $(".teamSearch").autocomplete({
+        $( ".teamSearch" ).autocomplete({
             source: teamNames
         });
 

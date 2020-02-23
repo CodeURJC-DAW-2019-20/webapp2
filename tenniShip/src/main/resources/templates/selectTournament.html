@@ -34,37 +34,37 @@
   Header
 ============================-->
 <header id="header">
-    <div class="container-fluid">
+        <div class="container-fluid">
 
-        <div class="pull-left" id="logo">
-            <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
+            <div class="pull-left" id="logo">
+                <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
+            </div>
+
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="menu-has-children"><a href="#actions">Actions</a>
+                        <ul>
+                            <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
+                            <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
+                        <ul>
+                            <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
+                            <li>
+                                <form action="/logout" method="post">
+                                    <button class="btn" type="submit">Sign Out</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li> 
+                </ul>
+            </nav>
+           
+            <!-- #nav-menu-container -->
         </div>
-
-        <nav id="nav-menu-container">
-            <ul class="nav-menu">
-                <li class="menu-has-children"><a href="#actions">Actions</a>
-                    <ul>
-                        <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
-                        <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
-                    </ul>
-                </li>
-                <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
-                    <ul>
-                        <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
-                        <li>
-                            <form action="/logout" method="post">
-                                <button class="btn" type="submit">Sign Out</button>
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-                <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
-            </ul>
-        </nav>
-
-        <!-- #nav-menu-container -->
-    </div>
-</header>
+    </header>
 
 <main id="main">
 
@@ -84,8 +84,7 @@
                 <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp displayTournamentsHidden">
                     <div class="registerMatchBothPages-wrap">
                         <figure>
-                            <a href="/TenniShip/RegisterMatch/Tournament/{{name}}"><img alt="" class="img-fluid"
-                                                                                        src="/../img/clients/tournaments/{{name}}.jpg"></a>
+                            <a href="/TenniShip/RegisterMatch/Tournament/{{name}}"><img alt="" class="img-fluid" src="/../img/clients/tournaments/{{name}}.jpg"></a>
                         </figure>
 
                         <div class="registerMatchBothPages-info">

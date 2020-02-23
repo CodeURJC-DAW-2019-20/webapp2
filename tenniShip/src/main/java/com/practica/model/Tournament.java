@@ -1,19 +1,21 @@
 package com.practica.model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+
 @Entity
 public class Tournament {
-
-	@Id
+	
+	@Id	
 	private String name;
-
+	
 	private boolean tournamentImage;
-
-	public Tournament() {
+	
+	public Tournament() {		
 	}
-
+	
 	public Tournament(String name) {
 		this.name = name;
 	}

@@ -7,20 +7,21 @@ import javax.persistence.Id;
 
 @Entity
 public class Player {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-
+	
 	private String playerName;
-	// private Image playerImage;
+	//private Image playerImage;
+	
 
 	public Player() {
 	}
 
-	public Player(String name/* , Image playerImage */) {
+	public Player(String name/*, Image playerImage*/) {
 		this.playerName = name;
-		// this.playerImage = playerImage;
+		//this.playerImage = playerImage;
 	}
 
 	public long getId() {
@@ -51,5 +52,6 @@ public class Player {
 //	public String toString() {
 //		return "Player [id=" + id + ", name=" + name + ", playerImage=" + playerImage + "]";
 //	}
-
+	
+	
 }
