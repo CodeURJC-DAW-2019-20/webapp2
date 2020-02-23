@@ -288,3 +288,7 @@ ul.tourn-part li::before {
     margin-right: 20px;
     background-color: var(--bg);
 }
+
+.matchList {
+    list-style-type: none;
+}

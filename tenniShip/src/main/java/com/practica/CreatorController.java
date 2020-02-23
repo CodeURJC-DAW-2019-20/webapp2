@@ -73,6 +73,14 @@ public class CreatorController {
 //			imgService.saveImage("tournaments", finalTournament.getName(), imageFile);
 		}
 
+		/* Adding a list of all teams for the autocomplete */
+		List<Team> allTeams = teamRepository.getAllTeams();
+		List<String> teamNames = new ArrayList<>();
+		for (Team t : allTeams) {
+			teamNames.add(t.getName());
+		}
+		model.addAttribute("teamNames", teamNames);
+
 		return "tournamentCreator";
 	}
 
