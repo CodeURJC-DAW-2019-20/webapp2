@@ -8,9 +8,6 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.practica.TournamentRepository;
-import com.practica.model.Tournament;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -24,8 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.practica.ImageService;
 import com.practica.MailSenderXX;
 import com.practica.TeamRepository;
+import com.practica.TournamentRepository;
 import com.practica.model.Player;
 import com.practica.model.Team;
+import com.practica.model.Tournament;
 
 @Controller
 public class UserController {
@@ -109,7 +108,13 @@ public class UserController {
 		model.addAttribute("player4NameEmpty", true);
 		model.addAttribute("player5NameEmpty", true);
 		
-		canContinue = (userReady && emailReady && passReady && samePassword && teamReady && player1NotEmpty && player2NotEmpty && player3NotEmpty && player4NotEmpty && player5NotEmpty);
+		boolean missingPics=false;
+		for(MultipartFile mf:imageFile) {
+			if(mf.isEmpty()) missingPics=true;
+		}
+		model.addAttribute("ImageEmpty", missingPics);
+		
+		canContinue = (userReady && emailReady && passReady && samePassword && teamReady && player1NotEmpty && player2NotEmpty && player3NotEmpty && player4NotEmpty && player5NotEmpty && !(missingPics));
 		if(canContinue) {
 			List<String> l = new LinkedList<>(); l.add("ROLE_USER");
 			User userNew = new User(user.getUserName(), user.getTeam(), user.getEmail(), user.getPasswordHash(), l);
@@ -121,10 +126,9 @@ public class UserController {
 			teamNew.getPlayers().add(player3);
 			teamNew.getPlayers().add(player4);
 			teamNew.getPlayers().add(player5);
-			teamRepository.save(teamNew);
 			
-			//Saving Images
-			teamNew.setImage(true);
+			//Saving team icon
+			teamNew.setTeamImage(true);
 			teamRepository.save(teamNew);
 			imgService.saveImage("teams", teamNew.getName(), imageFile.get(0));
 			for (int i = 1; i < 6; i++) {

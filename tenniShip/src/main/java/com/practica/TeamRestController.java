@@ -46,7 +46,7 @@ public class TeamRestController {
 
 		if (team.isPresent()) {
 
-			team.get().setImage(true);
+			team.get().setTeamImage(true);
 			teamRepository.save(team.get());
 
 			imgService.saveImage("teams", team.get().getName(), imageFile.get(0));
@@ -64,7 +64,7 @@ public class TeamRestController {
 	public ResponseEntity<Object> getTeamImage(@PathVariable String id) throws IOException {
 		Optional<Team> team = teamRepository.findById(id);
 		if (team.isPresent()) {
-			if(team.get().hasImage()) {
+			if(team.get().hasTeamImage()) {
 				return this.imgService.createResponseFromImage("teams", id);
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
