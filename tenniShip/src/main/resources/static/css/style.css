@@ -1550,6 +1550,22 @@ body:not(#index) main#main {
     top: -18px;
 }
 
+.tournamentPic {
+	width: 10rem;
+	height: 10rem;
+	background: none !important;
+}
+
+.tournamentTeamsPic {
+	height: 5rem;
+}
+
+.tournamentTeams {
+	text-align: center;
+	margin-bottom: 20px;
+	position: relative;
+	background: none !important;
+}
 
 /* Tournament progress bar */
 
