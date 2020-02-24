@@ -24,7 +24,7 @@ When a game is played, teams must log the result. In case of disagreement, tourn
 
 
 ![Team Sheet](tenniShip/src/main/resources/static/img/screenshots/teamFile.png "Team Sheet")
-Team Sheet contains information about a team. It includes the team's logo, its players with their picture and name (on mouse hover), the tournaments played by them and their most recent results. There's a pie chart that showcases the percentage of matches played in each tournament. This screenshot was taken with zoom out.
+Team Sheet contains information about a team. It includes the team's logo, its players with their picture and name (on mouse hover), the tournaments played by them and their most recent results. There's a pie chart that showcases the percentage of matches won and lost in each tournament.
 
 
 
