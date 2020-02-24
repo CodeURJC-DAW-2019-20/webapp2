@@ -1483,6 +1483,14 @@ body:not(#index) main#main {
     text-align: center;
 }
 
+.teamLink a {
+  color: black;
+}
+
+.teamLink a:hover {
+  color: #18d26e;
+}
+
 .TournamentGroup {
     margin: 5px 0;
     padding-bottom: 1%;

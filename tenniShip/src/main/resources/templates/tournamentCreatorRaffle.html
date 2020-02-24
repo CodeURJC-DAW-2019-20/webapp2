@@ -59,6 +59,7 @@ Header
                             <li>
                                 <form action="/logout" method="post">
                                     <button class="btn" type="submit">Sign Out</button>
+                                    <input type="hidden" name="_csrf" value="{{token}}">
                                 </form>
                             </li>
                         </ul>
@@ -77,6 +78,7 @@ Header
                             <li>
                                 <form action="/logout" method="post">
                                     <button class="btn" type="submit">Sign Out</button>
+                                    <input type="hidden" name="_csrf" value="{{token}}">
                                 </form>
                             </li>
                         </ul>
