@@ -17,7 +17,7 @@ public class MailSenderXX {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(user.getEmail());
         msg.setSubject("Register Confirmation e-Mail");
-        String msgBody="Welcome to TenniShip! These are your credentials:\nUser: " + user.getEmail() + "\nPassword: " + user.getPasswordHash()+
+        String msgBody="Welcome to TenniShip!\nYou successfully registered " + user.getTeam() + " as a team.\nThese are your credentials:\nUser: " + user.getUserName() + "\nPassword: " + user.getPasswordHash()+
         		"\n\nIf you have any issue, please contact to tennishipSpring@gmail.com.";
         msg.setText(msgBody);
         

@@ -1853,7 +1853,9 @@ body:not(#index) main#main {
     pointer-events: none;
     cursor: default;
 }
-
+ #tourNameSty{
+ 	font-style: italic;
+ }
 
 /* Teams */
 
