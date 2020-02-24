@@ -162,7 +162,7 @@ public class CreatorController {
 	}
 
 	@PostMapping("/TenniShip/Creator/Teams")
-	public String prueba(Model model, @RequestParam String team1, @RequestParam String team2,
+	public String teams(Model model, @RequestParam String team1, @RequestParam String team2,
 			@RequestParam String team3, @RequestParam String team4, @RequestParam String team5,
 			@RequestParam String team6, @RequestParam String team7, @RequestParam String team8,
 			@RequestParam String team9, @RequestParam String team10, @RequestParam String team11,

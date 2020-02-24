@@ -141,7 +141,7 @@ public class UserController {
 			ms.sendConfirmationEmail(user);
 
 			model.addAttribute("registeredSuccessful", true);
-			return sign_in(model);
+			return signIn(model);
 
 		} else {
 			return "registerAccount";
@@ -174,7 +174,7 @@ public class UserController {
 	}
 
 	@GetMapping("/TenniShip/SignIn")
-	public String sign_in(Model model) {
+	public String signIn(Model model) {
 
 		if (userComponent.isLoggedUser()) {
 			return "redirect:/TenniShip";
@@ -183,7 +183,7 @@ public class UserController {
 	}
 
 	@GetMapping("/TenniShip/loginerror")
-	public String sign_in_wrong(Model model) {
+	public String signInWrong(Model model) {
 
 		if (userComponent.isLoggedUser()) {
 			return "redirect:/TenniShip";
@@ -194,7 +194,7 @@ public class UserController {
 	}
 
 	@GetMapping("/TenniShip/SignUp")
-	public String sign_up(Model model) {
+	public String signUp(Model model) {
 
 		if (userComponent.isLoggedUser()) {
 			return "redirect:/TenniShip";
