@@ -35,18 +35,18 @@ TenniShip has been made with HTML, CSS and JavaScript. BizPage Bootstrap templat
 
 ## Technical details
 ### Entities
-TenniShip has four different entities: match, tournament, team and user role. 
+TenniShip has five different entities: match, tournament, team, player and user role. 
 ![Entities](tenniShip/src/main/resources/static/img/diagrams/MySQL_DB.png)
 
 ### Users
 TenniShip has three different users: administrator, registered user and non-registered user.
 + _Non-registered users_ can only see tournaments and teams information.
-+ _Registered users_ can only see tournaments and teams information on those tournaments that they are not its administrator.
-+ _Administrators_ can modify tournaments information on those who they are its administrator. For the rest of tournaments they are simple _registered users_.
++ _Registered users_ can see tournaments and teams information and register matches on those tournaments they play at.
++ _Administrators_ can modify tournaments information.
 
 ### Development
 #### Source Code
-[Source Code Repository](https://trello.com/b/uJDmvvK9/daw-tareas/ "GitHub").
+[Source Code Repository](https://github.com/CodeURJC-DAW-2019-20/webapp2 "GitHub").
 
 #### Development tools
 + Spring Tool Suite 4.
@@ -76,7 +76,7 @@ insert commands here
 In team's details appears a pie chart that automatically calculates and shows the percentage of matches played in each tournament.
 
 ### Additional technology
-An e-mail will be sent in three different situations: when you register your TenniShip account, then a team is disqualified from a tournament your are playing in and when a tournament that you are into is deleted.
+An e-mail will be sent  when you register your TenniShip account.
 
 ### Advanced algorithm or query
 Tournaments will automatically reorganize themselves when a match is played.
@@ -137,8 +137,8 @@ We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") f
 	- Tasks:
 		- Images upload.
 		- Images visualization.
-		- E-Mail sender: e-mail sent when a new user signs up and when a team is disqualified.
-		- Documentation: Readme and diagrams.
+		- E-Mail sender: e-mail sent when a new user signs up.
+		- Documentation: Readme.
 		- Insertion of sample data for demo.
 	- Top 5 most important commits in 'Second Phase':
 		- [Email implemented!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/ed623ab115cc423e3d9282339be99007238e21cc "de0ce05") 
@@ -154,11 +154,23 @@ We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") f
 		- [Team Rest Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamRestController.java "TeamRestController.java") 
 * Marcos: 
 	- Tasks:
-		- d
+		- Data Base correctly implemented.
+		- Make Register Match functional and fix its bugs.
+		- Create Tournament Logic, team ranking, create matches, advanced sorting algorithm, tournament progression, useful querys and bugs fixed.
+		- Admin Role functions, deleting tournaments option available, edit matches option available too.
+		- Url and Navs uploaded.
 	- Top 5 most important commits in 'Second Phase':
-		- d
+		- [Data Base!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/1e4af4da28300f29a28b5b844d1ca5bbec686481 "1e4af4d") 
+		- [Register Match and Tournament Logic Part 2!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/d7ea968008a91a062786620b0aeb46877b84d2ec "d7ea968") 
+		- [Tournament Logic Part 1!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/25a45942692d692c46ce2d8bcaeb3a0068c7facc "25a4594") 
+		- [Admin Role and Tournament Information!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/85b2a1859dd01387adc98e0c1a7056353ac56527 "85b2a18") 
+		- [Navs fixed!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/a6cba970ad16ec86e72cf8c247a01423097f2818 "a6cba97") 
 	- Top 5 most modified files:
-		- d
+		- [Tournament Sheet Controllerr](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentSheetController.java "TournamentSheetController.java") 
+		- [Tournament Repository](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentRepository.java "TournamentRepository.java") 
+		- [Data Base Usage](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/DataBaseUsage.java "DataBaseUsage.java") 
+		- [Tournament Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentController.java "TournamentController.java") 
+		- [Team Repository](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamRepository.java "TeamRepository.java")
 
 ## License
 © BizPage Bootstrap template has been designed by BootstrapMade. [Original Bizpage Template](https://bootstrapmade.com/demo/BizPage/ "Bizpage").
