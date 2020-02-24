@@ -2,7 +2,7 @@
 
 TenniShip is a web app for managing tennis tournaments inspired in Davis Cup rules. It allows users to find teams, matches, keep track of scores, and check their standings in tourneys. 
 
-![Home Page](tenniShip\src\main\resources\static\img\screenshots\index.png "Home Page")
+![Home Page](tenniShip/src/main/resources/static/img/screenshots/Index.png "Home Page")
 The home page has two search bars: one for tournaments and another one for teams. This search bars are only for queries, so they redirect you to the team or tournament information sheet. There's another slide below, that explains what TenniShip can do and links the user to various actions.
 
 
