@@ -1805,6 +1805,12 @@ body:not(#index) main#main {
     float: right;
 }
 
+body#TCreatorPage .ui-autocomplete {
+    max-height: 200px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
 .Separateboth {
     clear: both;
 }
