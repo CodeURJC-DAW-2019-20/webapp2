@@ -23,18 +23,5 @@ public class MailSenderXX {
         
         javaMailSender.send(msg);
     }
-	
-	public void sendDisqualificationEmail(User user, String tournament) {
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo(user.getEmail());
-        msg.setFrom("tennishipSpring@gmail.com");
-        msg.setSubject("You've been disqualified from "+tournament+" tournament");
-        String msgBody="Dear "+user.getUserName()+"we regret to comunicate you that your team " + user.getTeam() + 
-        		"has been disqualified from " + tournament + " tournament.\n If you have any complaint or you would like to get more information"+
-        		"please, contact to tennishipSpring@gmail.com.";
-        msg.setText(msgBody);
-        
-        javaMailSender.send(msg);
-    }
 
 }

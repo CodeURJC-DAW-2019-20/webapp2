@@ -7,9 +7,8 @@ The home page has two search bars: one for tournaments and another one for teams
 
 
 
-
 ![Sign Up](tenniShip/src/main/resources/static/img/screenshots/signup.png "Sign Up")
-Users can sign up in TenniShip as teams. Such as in Davis Cup, every team must have five players.
+Users can sign up in TenniShip as team leaders. Such as in Davis Cup official tournament, every team must have five players.
 
 
 

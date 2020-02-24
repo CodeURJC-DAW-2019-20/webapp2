@@ -123,7 +123,7 @@ public class DataBaseUsage implements CommandLineRunner {
 
 		
 		/*TEAMS TO PLAY CHAMPIONS LEAGUE*/
-		Team team1B = new Team("Atletico de Madrid");
+		Team team1B = new Team("Atlético de Madrid");
 		team1B.getPlayers().addAll(playerGenerator());
 		teamRepository.save(team1B);
 		Team team2B = new Team("PSG");
@@ -174,7 +174,7 @@ public class DataBaseUsage implements CommandLineRunner {
 		Team team17B = new Team("Real Madrid");
 		team17B.getPlayers().addAll(playerGenerator());
 		teamRepository.save(team17B);
-		Team team18B = new Team("Atletico de Madrid");
+		Team team18B = new Team("Manchester City");
 		team18B.getPlayers().addAll(playerGenerator());
 		teamRepository.save(team18B);
 		
