@@ -33,9 +33,9 @@ public class CreatorController {
 
 	@Autowired
 	private ImageService imgService;
-	
+
 	@Autowired
-	private UserComponent userComponent;	
+	private UserComponent userComponent;
 
 	@Autowired
 	private MatchRepository matchRepository;
@@ -47,14 +47,14 @@ public class CreatorController {
 	@PostMapping("/TenniShip/Creator/Tournament")
 	public String tournament(Model model, @ModelAttribute("newTournament") Tournament tour, MultipartFile imageFile,
 			HttpServletRequest request) throws IOException {
-		
+
 		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
-		
-		if(userComponent.isLoggedUser()  && !request.isUserInRole("ADMIN")) {
+
+		if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
 			String teamUser = userComponent.getTeam();
 			model.addAttribute("team", teamUser);
 		}
-		
+
 		Optional<Tournament> tourExist = tournamentRepository.findById(tour.getName());
 		boolean tournamenAlreadyExist = tourExist.isPresent();
 		boolean tourEmpty = tour.getName().isEmpty();
@@ -63,14 +63,14 @@ public class CreatorController {
 		model.addAttribute("tourEmpty", tourEmpty);
 		model.addAttribute("next1", tourReady && !(imageFile.isEmpty()));
 		model.addAttribute("tourFinal", tour);
-		
-		//Image
-		
-		model.addAttribute("imageEmpty",imageFile.isEmpty());
-		
+
+		// Image
+
+		model.addAttribute("imageEmpty", imageFile.isEmpty());
+
 		if (tourReady && !(imageFile.isEmpty())) {
 			finalTournament.setName(tour.getName());
-			
+
 			// Save TournamentImage
 			finalTournament.setImage(true);
 			imgService.saveImage("tournaments", finalTournament.getName(), imageFile);
@@ -122,7 +122,7 @@ public class CreatorController {
 			Optional<Team> team1finalExist = teamRepository.findById(teamList[id - 1]);
 			team1NoExist = team1finalExist.isPresent();
 			if (team1NoExist) {
-				if (exist2(model, teamList, teamList[id - 1]) == 1) {// si aux es igual a 1 se quita
+				if (exist2(model, teamList, teamList[id - 1]) == 1) {// aux == 1 
 					numberTeams--;
 				}
 			}
@@ -133,15 +133,15 @@ public class CreatorController {
 					if (!(teamList[id - 1].equals(team))) {
 						String aux = teamList[id - 1];
 						teamList[id - 1] = team;
-						if ((exist2(model, teamList, team)) < 2) {// aux<2
+						if ((exist2(model, teamList, team)) < 2) {// aux < 2
 							numberTeams++;
 						}
-						if ((teamRepository.findById(aux).isPresent()) && ((exist2(model, teamList, team) == 0))) {// aux=0
+						if ((teamRepository.findById(aux).isPresent()) && ((exist2(model, teamList, team) == 0))) {// aux == 0
 							numberTeams--;
 						}
 					}
 				} else {
-					if ((exist2(model, teamList, team)) == 0) {// aux = 0
+					if ((exist2(model, teamList, team)) == 0) {// aux == 0
 						numberTeams++;
 					}
 					teamList[id - 1] = team;
@@ -169,14 +169,14 @@ public class CreatorController {
 			@RequestParam String team12, @RequestParam String team13, @RequestParam String team14,
 			@RequestParam String team15, @RequestParam String team16, @RequestParam String team17,
 			@RequestParam String team18, HttpServletRequest request) {
-		
+
 		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
-		
-		if(userComponent.isLoggedUser()  && !request.isUserInRole("ADMIN")) {
+
+		if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
 			String teamUser = userComponent.getTeam();
 			model.addAttribute("team", teamUser);
 		}
-		
+
 		model.addAttribute("tourFinal", finalTournament);
 		model.addAttribute("next1", !finalTournament.getName().isEmpty());
 		check(model, team1, 1);
@@ -223,7 +223,7 @@ public class CreatorController {
 		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
 		String userTeam = userComponent.getTeam();
 		model.addAttribute("team", userTeam);
-		
+
 		model.addAttribute("next3Raffle", true);
 		model.addAttribute("tourFinal", finalTournament);
 		tournamentRepository.save(finalTournament);
@@ -242,13 +242,13 @@ public class CreatorController {
 
 	@GetMapping("/TenniShip/Creator")
 	public String create(Model model, HttpServletRequest request) {
-		
-		if(userComponent.isLoggedUser()) {
+
+		if (userComponent.isLoggedUser()) {
 			Tournament tour = new Tournament();
 			model.addAttribute("newTournament", tour);
 			model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
-			
-			if(!request.isUserInRole("ADMIN")) {
+
+			if (!request.isUserInRole("ADMIN")) {
 				String teamUser = userComponent.getTeam();
 				model.addAttribute("team", teamUser);
 			}
@@ -256,7 +256,7 @@ public class CreatorController {
 		} else {
 			return "redirect:/TenniShip/SignIn";
 		}
-		
+
 	}
 
 	public void raffleTeamsCreateMatches(Tournament tournament, List<Team> teams) {

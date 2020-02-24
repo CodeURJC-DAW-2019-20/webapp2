@@ -65,7 +65,7 @@ public class DataBaseUsage implements CommandLineRunner {
 		//
 		//
 
-		/*TEAMS TO COMPLETE DAVIS CUP (and Eurocup) SAMPLE*/
+		/* TEAMS TO COMPLETE DAVIS CUP (and Eurocup) SAMPLE */
 		Team team1 = new Team("Spain");
 		team1.getPlayers().addAll(playerGenerator());
 		teamRepository.save(team1);
@@ -121,8 +121,7 @@ public class DataBaseUsage implements CommandLineRunner {
 		team18.getPlayers().addAll(playerGenerator());
 		teamRepository.save(team18);
 
-		
-		/*TEAMS TO PLAY CHAMPIONS LEAGUE*/
+		/* TEAMS TO PLAY CHAMPIONS LEAGUE */
 		Team team1B = new Team("Atlético de Madrid");
 		team1B.getPlayers().addAll(playerGenerator());
 		teamRepository.save(team1B);
@@ -177,9 +176,8 @@ public class DataBaseUsage implements CommandLineRunner {
 		Team team18B = new Team("Manchester City");
 		team18B.getPlayers().addAll(playerGenerator());
 		teamRepository.save(team18B);
-		
-		
-		/*Teams to complete Eurocup sample tournament*/
+
+		/* Teams to complete Eurocup sample tournament */
 		Team team1C = new Team("Hungary");
 		team1C.getPlayers().addAll(playerGenerator());
 		teamRepository.save(team1C);
@@ -217,11 +215,11 @@ public class DataBaseUsage implements CommandLineRunner {
 		Tournament tournament1 = new Tournament("Davis Cup");
 		tournament1.setImage(true);
 		tournamentRepository.save(tournament1);
-		
+
 		Tournament tournament2 = new Tournament("Champions League");
 		tournament2.setImage(true);
 		tournamentRepository.save(tournament2);
-		
+
 		Tournament tournament3 = new Tournament("Eurocup");
 		tournament3.setImage(true);
 		tournamentRepository.save(tournament3);
@@ -322,7 +320,7 @@ public class DataBaseUsage implements CommandLineRunner {
 		m18.setTeam2(team18);
 		m18.setTournament(tournament1);
 		matchRepository.save(m18);
-		
+
 		Match m19 = new Match(3, 0, "X");
 		m19.setTeam1(team6);
 		m19.setTeam2(team13);
@@ -353,19 +351,25 @@ public class DataBaseUsage implements CommandLineRunner {
 		m24.setTeam2(team14);
 		m24.setTournament(tournament1);
 		matchRepository.save(m24);
+		Match m25 = new Match(0, 0, "Z");
+		m25.setTeam1(team6);
+		m25.setTeam2(team16);
+		m25.setTournament(tournament1);
+		matchRepository.save(m25);
+		
 
-		Match m1B = new Match(3, 0, "A");
+		Match m1B = new Match(0, 0, "A");
 		m1B.setTeam1(team1);
 		m1B.setTeam2(team3B);
 		m1B.setTournament(tournament2);
 		matchRepository.save(m1B);
 		Match m2B = new Match(3, 2, "A");
 		m2B.setTeam1(team3B);
-		m2B.setTeam2(team2);
+		m2B.setTeam2(team16);
 		m2B.setTournament(tournament2);
 		matchRepository.save(m2B);
 		Match m3B = new Match(1, 3, "A");
-		m3B.setTeam1(team2);
+		m3B.setTeam1(team16);
 		m3B.setTeam2(team1);
 		m3B.setTournament(tournament2);
 		matchRepository.save(m3B);
@@ -444,8 +448,7 @@ public class DataBaseUsage implements CommandLineRunner {
 		m18B.setTeam2(team18B);
 		m18B.setTournament(tournament2);
 		matchRepository.save(m18B);
-		
-		
+
 		Match m1C = new Match(0, 0, "A");
 		m1C.setTeam1(team1);
 		m1C.setTeam2(team1C);
@@ -461,7 +464,7 @@ public class DataBaseUsage implements CommandLineRunner {
 		m3C.setTeam2(team17);
 		m3C.setTournament(tournament3);
 		matchRepository.save(m3C);
-		
+
 		Match m4C = new Match(0, 0, "B");
 		m4C.setTeam1(team4);
 		m4C.setTeam2(team4C);
@@ -477,7 +480,7 @@ public class DataBaseUsage implements CommandLineRunner {
 		m6C.setTeam2(team5);
 		m6C.setTournament(tournament3);
 		matchRepository.save(m6C);
-		
+
 		Match m7C = new Match(0, 0, "C");
 		m7C.setTeam1(team14);
 		m7C.setTeam2(team9C);
@@ -493,7 +496,7 @@ public class DataBaseUsage implements CommandLineRunner {
 		m9C.setTeam2(team15);
 		m9C.setTournament(tournament3);
 		matchRepository.save(m9C);
-		
+
 		Match m10C = new Match(0, 0, "D");
 		m10C.setTeam1(team2C);
 		m10C.setTeam2(team16);
@@ -509,7 +512,7 @@ public class DataBaseUsage implements CommandLineRunner {
 		m12C.setTeam2(team5C);
 		m12C.setTournament(tournament3);
 		matchRepository.save(m12C);
-		
+
 		Match m13C = new Match(0, 0, "E");
 		m13C.setTeam1(team2);
 		m13C.setTeam2(team3);
@@ -525,7 +528,7 @@ public class DataBaseUsage implements CommandLineRunner {
 		m15C.setTeam2(team7C);
 		m15C.setTournament(tournament3);
 		matchRepository.save(m15C);
-		
+
 		Match m16C = new Match(0, 0, "F");
 		m16C.setTeam1(team3C);
 		m16C.setTeam2(team8C);

@@ -20,8 +20,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class ImageService implements WebMvcConfigurer {
 
-	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "src/main/resources/static/img/clients");
-	private static final Path TARGET_FOLDER = Paths.get(System.getProperty("user.dir"), "target/classes/static/img/clients");
+	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"),
+			"src/main/resources/static/img/clients");
+	private static final Path TARGET_FOLDER = Paths.get(System.getProperty("user.dir"),
+			"target/classes/static/img/clients");
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -30,14 +32,14 @@ public class ImageService implements WebMvcConfigurer {
 				.addResourceLocations("file:" + FILES_FOLDER.toAbsolutePath().toString() + "/");
 		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
 		registry.addResourceHandler("clients/**")
-		.addResourceLocations("file:" + TARGET_FOLDER.toAbsolutePath().toString() + "/");
+				.addResourceLocations("file:" + TARGET_FOLDER.toAbsolutePath().toString() + "/");
 		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
 	}
-	
+
 	private Path createFilePath(String id, Path folder) {
 		return folder.resolve(id + ".jpg");
 	}
-	
+
 	public void saveImage(String folderName, String id, MultipartFile image) throws IOException {
 
 		Path folder = FILES_FOLDER.resolve(folderName);
@@ -49,7 +51,7 @@ public class ImageService implements WebMvcConfigurer {
 
 		Path newFile = createFilePath(id, folder);
 		image.transferTo(newFile);
-		
+
 		if (!Files.exists(fTarget)) {
 			Files.createDirectories(fTarget);
 		}
@@ -61,7 +63,7 @@ public class ImageService implements WebMvcConfigurer {
 	public ResponseEntity<Object> createResponseFromImage(String folderName, String id) throws MalformedURLException {
 
 		Path folder = FILES_FOLDER.resolve(folderName);
-		
+
 		Resource file = new UrlResource(createFilePath(id, folder).toUri());
 
 		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpg").body(file);
