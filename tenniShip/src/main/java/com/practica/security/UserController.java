@@ -108,7 +108,13 @@ public class UserController {
 		model.addAttribute("player4NameEmpty", true);
 		model.addAttribute("player5NameEmpty", true);
 		
-		canContinue = (userReady && emailReady && passReady && samePassword && teamReady && player1NotEmpty && player2NotEmpty && player3NotEmpty && player4NotEmpty && player5NotEmpty);
+		boolean missingPics=false;
+		for(MultipartFile mf:imageFile) {
+			if(mf.isEmpty()) missingPics=true;
+		}
+		model.addAttribute("ImageEmpty", missingPics);
+		
+		canContinue = (userReady && emailReady && passReady && samePassword && teamReady && player1NotEmpty && player2NotEmpty && player3NotEmpty && player4NotEmpty && player5NotEmpty && !(missingPics));
 		if(canContinue) {
 			List<String> l = new LinkedList<>(); l.add("ROLE_USER");
 			User userNew = new User(user.getUserName(), user.getTeam(), user.getEmail(), user.getPasswordHash(), l);
@@ -120,21 +126,14 @@ public class UserController {
 			teamNew.getPlayers().add(player3);
 			teamNew.getPlayers().add(player4);
 			teamNew.getPlayers().add(player5);
+			
+			//Saving team icon
+			teamNew.setTeamImage(true);
 			teamRepository.save(teamNew);
-			
-			//Saving Images
-			if(!imageFile.get(0).isEmpty()) {
-				teamNew.setImage(true);
-				teamRepository.save(teamNew);
-				imgService.saveImage("teams", teamNew.getName(), imageFile.get(0));
+			imgService.saveImage("teams", teamNew.getName(), imageFile.get(0));
+			for (int i = 1; i < 6; i++) {
+				imgService.saveImage("players", teamNew.getName() + String.format("Player%d", i), imageFile.get(i));
 			}
-			
-			/*for (int i = 1; i < 6; i++) {
-				if(!imageFile.get(i).isEmpty()) {
-					imgService.saveImage("players", teamNew.getName() + String.format("Player%d", i), imageFile.get(i));
-				}
-				
-			}*/
 			
 			// Sending Confirmation Mail
 			MailSenderXX ms=(MailSenderXX) appContext.getBean("mailSenderXX");

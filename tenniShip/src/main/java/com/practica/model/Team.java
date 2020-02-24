@@ -45,11 +45,11 @@ public class Team {
 		this.players = players;
 	}
 	
-	public boolean hasImage() {
+	public boolean hasTeamImage() {
 		return teamImage;
 	}
 
-	public void setImage(boolean image) {
+	public void setTeamImage(boolean image) {
 		this.teamImage = image;
 	}
 

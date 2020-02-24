@@ -33,7 +33,6 @@ public class CreatorController {
 
 	@Autowired
 	private ImageService imgService;
-	//private MultipartFile tourImg;
 	
 	@Autowired
 	private UserComponent userComponent;	
@@ -62,14 +61,18 @@ public class CreatorController {
 		boolean tourReady = (!tournamenAlreadyExist && !tourEmpty);
 		model.addAttribute("tourAlready", tournamenAlreadyExist);
 		model.addAttribute("tourEmpty", tourEmpty);
-		model.addAttribute("next1", tourReady);
+		model.addAttribute("next1", tourReady && !(imageFile.isEmpty()));
 		model.addAttribute("tourFinal", tour);
-
-		if (tourReady) {
+		
+		//Image
+		
+		model.addAttribute("imageEmpty",imageFile.isEmpty());
+		
+		if (tourReady && !(imageFile.isEmpty())) {
 			finalTournament.setName(tour.getName());
+			
 			// Save TournamentImage
 			finalTournament.setImage(true);
-			tournamentRepository.save(finalTournament);
 			imgService.saveImage("tournaments", finalTournament.getName(), imageFile);
 		}
 
@@ -216,7 +219,7 @@ public class CreatorController {
 	}
 
 	@PostMapping("/TenniShip/Creator/Raffle")
-	public String raffle(Model model, HttpServletRequest request){
+	public String raffle(Model model, HttpServletRequest request) {
 		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
 		String userTeam = userComponent.getTeam();
 		model.addAttribute("team", userTeam);

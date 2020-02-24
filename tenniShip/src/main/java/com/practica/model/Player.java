@@ -13,7 +13,7 @@ public class Player {
 	private long id;
 	
 	private String playerName;
-	//private Image playerImage;
+	private boolean playerImage;
 	
 
 	public Player() {
@@ -40,18 +40,17 @@ public class Player {
 		this.playerName = name;
 	}
 
-//	public Image getPlayerImage() {
-//		return playerImage;
-//	}
-//
-//	public void setPlayerImage(Image playerImage) {
-//		this.playerImage = playerImage;
-//	}
-//
+	public boolean hasPlayerImage() {
+		return playerImage;
+	}
+
+	public void setPlayerImage(boolean image) {
+		this.playerImage = image;
+	}
+
 //	@Override
 //	public String toString() {
 //		return "Player [id=" + id + ", name=" + name + ", playerImage=" + playerImage + "]";
 //	}
-	
 	
 }

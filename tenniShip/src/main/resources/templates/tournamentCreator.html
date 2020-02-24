@@ -2,45 +2,45 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<title>Tournament Creator - Tenniship</title>
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<meta content="" name="keywords">
-	<meta content="" name="description">
+<meta charset="utf-8">
+<title>Tournament Creator - Tenniship</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="keywords">
+<meta content="" name="description">
 
-	<!-- Favicons -->
-	<link href="/../img/favicon.png" rel="icon">
-	<link href="/../img/apple-touch-icon.png" rel="apple-touch-icon">
+<!-- Favicons -->
+<link href="/../img/favicon.png" rel="icon">
+<link href="/../img/apple-touch-icon.png" rel="apple-touch-icon">
 
-	<!-- Google Fonts -->
-	<link
-		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
-		rel="stylesheet">
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+	rel="stylesheet">
 
-	<!-- Bootstrap CSS File -->
-	<link href="/../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap CSS File -->
+<link href="/../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Libraries CSS Files -->
-	<link href="/../lib/font-awesome/css/font-awesome.min.css"
-		rel="stylesheet">
-	<link href="/../lib/animate/animate.min.css" rel="stylesheet">
-	<link href="/../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-	<link href="/../lib/owlcarousel/assets/owl.carousel.min.css"
-		rel="stylesheet">
-	<link href="/../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-	<link href="/../lib/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+<!-- Libraries CSS Files -->
+<link href="/../lib/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet">
+<link href="/../lib/animate/animate.min.css" rel="stylesheet">
+<link href="/../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+<link href="/../lib/owlcarousel/assets/owl.carousel.min.css"
+	rel="stylesheet">
+<link href="/../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+<link href="/../lib/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 
-	<!-- Main Stylesheet File -->
-	<link href="/../css/style.css" rel="stylesheet">
+<!-- Main Stylesheet File -->
+<link href="/../css/style.css" rel="stylesheet">
 
-	<!-- =======================================================
+<!-- =======================================================
 		  Theme Name: BizPage
 		  Theme URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
 		  Author: BootstrapMade.com
 		  License: https://bootstrapmade.com/license/
 		======================================================= -->
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -49,50 +49,48 @@
 Header
 ============================-->
 	<header id="header">
-        <div class="container-fluid">
+		<div class="container-fluid">
 
-            <div class="pull-left" id="logo">
-                <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
-            </div>
+			<div class="pull-left" id="logo">
+				<h1>
+					<a class="scrollto" href="/TenniShip">TenniShip</a>
+				</h1>
+			</div>
 
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    {{#admin}}
-                	<li class="menu-has-children teamMenu"><a href="#"><strong>ADMIN</strong></a>
-                        <ul>
-                            <li>
-                                <form action="/logout" method="post">
-                                    <button class="btn" type="submit">Sign Out</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                    {{/admin}}
-                    {{^admin}}
-                    <li class="menu-has-children"><a href="#actions">Actions</a>
-                        <ul>
-                            <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
-                            <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
-                        <ul>
-                            <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
-                            <li>
-                                <form action="/logout" method="post">
-                                    <button class="btn" type="submit">Sign Out</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><img alt="" class="rounded-circle loginImage" src="/../img/clients/teams/{{team}}.jpg"></li>
-                	{{/admin}}
-                </ul>
-            </nav>
-            <!-- #nav-menu-container -->
-        </div>
-    </header>
-    <!-- #header -->
+			<nav id="nav-menu-container">
+				<ul class="nav-menu">
+					{{#admin}}
+					<li class="menu-has-children teamMenu"><a href="#"><strong>ADMIN</strong></a>
+						<ul>
+							<li>
+								<form action="/logout" method="post">
+									<button class="btn" type="submit">Sign Out</button>
+								</form>
+							</li>
+						</ul></li> {{/admin}} {{^admin}}
+					<li class="menu-has-children"><a href="#actions">Actions</a>
+						<ul>
+							<li><a href="/TenniShip/RegisterMatch/Tournament">Register
+									a Match</a></li>
+							<li><a href="/TenniShip/Creator">Tournament Creator</a></li>
+						</ul></li>
+					<li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
+						<ul>
+							<li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
+							<li>
+								<form action="/logout" method="post">
+									<button class="btn" type="submit">Sign Out</button>
+								</form>
+							</li>
+						</ul></li>
+					<li><img alt="" class="rounded-circle loginImage"
+						src="/../img/clients/teams/{{team}}.jpg"></li> {{/admin}}
+				</ul>
+			</nav>
+			<!-- #nav-menu-container -->
+		</div>
+	</header>
+	<!-- #header -->
 
 
 	<main id="main">
@@ -145,7 +143,8 @@ Header
 								role="tabpanel">
 								<div class="form">
 									<form action="/TenniShip/Creator/Tournament" class="mt-3"
-										method="post" role="form" modelAttribute="newTournament" enctype="multipart/form-data">
+										method="post" role="form" modelAttribute="newTournament"
+										enctype="multipart/form-data">
 										<div class="form-group">
 											<p>Introduce the Tournament Name:</p>
 											<div class="input-group flex-nowrap">
@@ -167,13 +166,19 @@ Header
 										</div>
 
 										<div class="input-group mb-3">
-								<div class="custom-file">
-									<input class="custom-file-input" type="file" name="imageFile"
-										accept=".jpg" /> <label
-										aria-describedby="inputGroupFileAddon02"
-										class="custom-file-label">Tournament Logo</label>
-								</div>
-							</div>
+											<div class="custom-file">
+												<input class="custom-file-input" type="file"
+													name="imageFile" accept=".jpg" /> <label
+													aria-describedby="inputGroupFileAddon02"
+													class="custom-file-label">Tournament Logo</label>
+
+											</div>
+										</div>
+										<div class="errorsText">
+											{{#imageEmpty}}
+											<p>Missing picture</p>
+											{{/imageEmpty}}
+										</div>
 										<div class="text-right pt-3 button">
 											<button class="input-group-test btn" type="submit">Next</button>
 										</div>
@@ -201,8 +206,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team1" {{#teamFinal0}} value="{{teamFinal0}}"{{/teamFinal0}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team1"
+																{{#teamFinal0}} value="{{teamFinal0}}"{{/teamFinal0}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty0}} {{#teamNo0}}
@@ -222,8 +228,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team2" {{#teamFinal1}} value="{{teamFinal1}}"{{/teamFinal1}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team2"
+																{{#teamFinal1}} value="{{teamFinal1}}"{{/teamFinal1}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty1}} {{#teamNo1}}
@@ -243,8 +250,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team3" {{#teamFinal2}} value="{{teamFinal2}}"{{/teamFinal2}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team3"
+																{{#teamFinal2}} value="{{teamFinal2}}"{{/teamFinal2}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty2}} {{#teamNo2}}
@@ -264,8 +272,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team4" {{#teamFinal3}} value="{{teamFinal3}}"{{/teamFinal3}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team4"
+																{{#teamFinal3}} value="{{teamFinal3}}"{{/teamFinal3}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty3}} {{#teamNo3}}
@@ -285,8 +294,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team5" {{#teamFinal4}} value="{{teamFinal4}}"{{/teamFinal4}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team5"
+																{{#teamFinal4}} value="{{teamFinal4}}"{{/teamFinal4}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty4}} {{#teamNo4}}
@@ -306,8 +316,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team6" {{#teamFinal5}} value="{{teamFinal5}}"{{/teamFinal5}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team6"
+																{{#teamFinal5}} value="{{teamFinal5}}"{{/teamFinal5}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty5}} {{#teamNo5}}
@@ -327,8 +338,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team7" {{#teamFinal6}} value="{{teamFinal6}}"{{/teamFinal6}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team7"
+																{{#teamFinal6}} value="{{teamFinal6}}"{{/teamFinal6}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty6}} {{#teamNo6}}
@@ -348,8 +360,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team8" {{#teamFinal7}} value="{{teamFinal7}}"{{/teamFinal7}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team8"
+																{{#teamFinal7}} value="{{teamFinal7}}"{{/teamFinal7}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty7}} {{#teamNo7}}
@@ -369,8 +382,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team9" {{#teamFinal8}} value="{{teamFinal8}}"{{/teamFinal8}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team9"
+																{{#teamFinal8}} value="{{teamFinal8}}"{{/teamFinal8}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty8}} {{#teamNo8}}
@@ -391,8 +405,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team10" {{#teamFinal9}} value="{{teamFinal9}}"{{/teamFinal9}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team10"
+																{{#teamFinal9}} value="{{teamFinal9}}"{{/teamFinal9}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty9}} {{#teamNo9}}
@@ -413,8 +428,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team11" {{#teamFinal10}} value="{{teamFinal10}}"{{/teamFinal10}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team11"
+																{{#teamFinal10}} value="{{teamFinal10}}"{{/teamFinal10}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty10}} {{#teamNo10}}
@@ -435,8 +451,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team12" {{#teamFinal11}} value="{{teamFinal11}}"{{/teamFinal11}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team12"
+																{{#teamFinal11}} value="{{teamFinal11}}"{{/teamFinal11}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty11}} {{#teamNo11}}
@@ -457,8 +474,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team13" {{#teamFinal12}} value="{{teamFinal12}}"{{/teamFinal12}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team13"
+																{{#teamFinal12}} value="{{teamFinal12}}"{{/teamFinal12}}>
 														</div>
 
 														<div class="errorsText">
@@ -479,8 +497,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team14" {{#teamFinal13}} value="{{teamFinal13}}"{{/teamFinal13}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team14"
+																{{#teamFinal13}} value="{{teamFinal13}}"{{/teamFinal13}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty13}} {{#teamNo13}}
@@ -501,8 +520,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team15" {{#teamFinal14}} value="{{teamFinal14}}"{{/teamFinal14}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team15"
+																{{#teamFinal14}} value="{{teamFinal14}}"{{/teamFinal14}}>
 														</div>
 
 														<div class="errorsText">
@@ -523,8 +543,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team16" {{#teamFinal15}} value="{{teamFinal15}}"{{/teamFinal15}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team16"
+																{{#teamFinal15}} value="{{teamFinal15}}"{{/teamFinal15}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty15}} {{#teamNo15}}
@@ -545,8 +566,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team17" {{#teamFinal16}} value="{{teamFinal16}}"{{/teamFinal16}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team17"
+																{{#teamFinal16}} value="{{teamFinal16}}"{{/teamFinal16}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty16}} {{#teamNo16}}
@@ -567,8 +589,9 @@ Header
 																<span class="input-group-text" id="addon-wrapping">></span>
 															</div>
 															<input aria-describedby="addon-wrapping" aria-label=""
-																class="form-control teamSearch" placeholder="Team Name" type="text"
-																name="team18" {{#teamFinal17}} value="{{teamFinal17}}"{{/teamFinal17}}>
+																class="form-control teamSearch" placeholder="Team Name"
+																type="text" name="team18"
+																{{#teamFinal17}} value="{{teamFinal17}}"{{/teamFinal17}}>
 														</div>
 														<div class="errorsText">
 															{{^teamEmpty17}} {{#teamNo17}}
@@ -601,7 +624,7 @@ Header
 								<div>
 									<div class="TCreatorTitles">
 										<h3>Tournament Name:</h3>
-										<p>{{tourFinal.name}}</p>
+										<p id="tourNameSty">{{tourFinal.name}}</p>
 										<form action="/TenniShip/Creator/Raffle" method="post">
 											<div class="text-right pt-3 button">
 												<button class="input-group-test btn" type="submit">Raffle</button>
@@ -618,7 +641,8 @@ Header
 										{{#listTeam}}
 										<div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
 											<div class="member">
-												<img alt="" class="img-fluid" src="/../img/clients/teams/{{.}}.jpg">
+												<img alt="" class="img-fluid"
+													src="/../img/clients/teams/{{.}}.jpg">
 												<div class="member-info">
 													<div class="member-info-content">
 														<h4>{{.}}</h4>
