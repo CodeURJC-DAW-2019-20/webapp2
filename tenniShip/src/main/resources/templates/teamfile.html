@@ -116,8 +116,10 @@
 
 				<div class="section-header">
 					<div class="team-icon img-thumbnail">
+				
 						<img alt="Team logo" class="img-fluid team-img"
-							src="/../img/clients/teams/{{teamName}}.jpg">
+							src="{{#hasImage}}/../img/clients/teams/{{teamName}}.jpg{{/hasImage}}{{^hasImage}}/../img/clients/teams/sampleTeam.jpg{{/hasImage}}">
+							
 					</div>
 					<h3>{{teamName}}</h3>
 				</div>

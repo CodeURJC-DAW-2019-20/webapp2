@@ -8,9 +8,6 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.practica.TournamentRepository;
-import com.practica.model.Tournament;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -24,8 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.practica.ImageService;
 import com.practica.MailSenderXX;
 import com.practica.TeamRepository;
+import com.practica.TournamentRepository;
 import com.practica.model.Player;
 import com.practica.model.Team;
+import com.practica.model.Tournament;
 
 @Controller
 public class UserController {
@@ -124,12 +123,18 @@ public class UserController {
 			teamRepository.save(teamNew);
 			
 			//Saving Images
-			teamNew.setImage(true);
-			teamRepository.save(teamNew);
-			imgService.saveImage("teams", teamNew.getName(), imageFile.get(0));
-			for (int i = 1; i < 6; i++) {
-				imgService.saveImage("players", teamNew.getName() + String.format("Player%d", i), imageFile.get(i));
+			if(!imageFile.get(0).isEmpty()) {
+				teamNew.setImage(true);
+				teamRepository.save(teamNew);
+				imgService.saveImage("teams", teamNew.getName(), imageFile.get(0));
 			}
+			
+			/*for (int i = 1; i < 6; i++) {
+				if(!imageFile.get(i).isEmpty()) {
+					imgService.saveImage("players", teamNew.getName() + String.format("Player%d", i), imageFile.get(i));
+				}
+				
+			}*/
 			
 			// Sending Confirmation Mail
 			MailSenderXX ms=(MailSenderXX) appContext.getBean("mailSenderXX");
