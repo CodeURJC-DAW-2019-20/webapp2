@@ -46,8 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.logout().logoutUrl("/logout");
         http.logout().logoutSuccessUrl("/TenniShip/SignIn");
     
-     // Disable CSRF at the moment
-        http.csrf().disable();
+     
     }
 
     @Override
