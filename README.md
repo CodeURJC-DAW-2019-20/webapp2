@@ -35,7 +35,7 @@ TenniShip has been made with HTML, CSS and JavaScript. BizPage Bootstrap templat
 ## Technical details
 ### Entities
 TenniShip has five different entities: match, tournament, team, player and user role. 
-![Entities](https://raw.githubusercontent.com/CodeURJC-DAW-2019-20/webapp2/master/tenniShip/src/main/resources/static/img/screenshots/teamFile.png "DB Diagram")
+![Entities](https://raw.githubusercontent.com/CodeURJC-DAW-2019-20/webapp2/master/tenniShip/src/main/resources/static/img/diagrams/MySQL_DB.PNG "DB Diagram")
 
 ### Users
 TenniShip has three different users: administrator, registered user and non-registered user.
