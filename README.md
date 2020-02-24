@@ -19,7 +19,7 @@ Tournament information sheets indicate the actual phase of the tournament, its t
 
 
 ![Register Match](tenniShip/src/main/resources/static/img/screenshots/registerMatch.png "Register Match")
-When a game is played, teams must log the result. In case of disagreement, tournament's administrator will be noticed so they decide.
+When a game is played, teams must log the result.
 
 
 
