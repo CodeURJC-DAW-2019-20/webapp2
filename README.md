@@ -8,13 +8,13 @@ The home page has two search bars: one for tournaments and another one for teams
 
 
 
-![Sign Up](tenniShip/src/main/resources/static/img/screenshots/signup.png "Sign Up")
+![Sign Up](tenniShip/src/main/resources/static/img/screenshots/SignUp.png "Sign Up")
 Users can sign up in TenniShip as teams. Such as in Davis Cup, every team must have five players.
 
 
 
-![Tournament Sheet](tenniShip/src/main/resources/static/img/screenshots/tsheetGP.png "Tournament Sheet")
-![Tournament Sheet](tenniShip/src/main/resources/static/img/screenshots/tsheetFP.png "Tournament Sheet")
+![Tournament Sheet](tenniShip/src/main/resources/static/img/screenshots/TournamentSheet.png "Tournament Sheet")
+![Tournament Sheet](tenniShip/src/main/resources/static/img/screenshots/TournamentSheet2.png "Tournament Sheet")
 Tournament information sheets indicate the actual phase of the tournament, its teams and its progress.
 
 
@@ -24,7 +24,7 @@ When a game is played, teams must log the result. In case of disagreement, tourn
 
 
 
-![Team Sheet](tenniShip/src/main/resources/static/img/screenshots/teamFile.png "Team Sheet")
+![Team Sheet](tenniShip/src/main/resources/static/img/screenshots/TeamFile.png "Team Sheet")
 Team Sheet contains information about a team. It includes the team's logo, its players with their picture and name (on mouse hover), the tournaments played by them and their most recent results. There's a pie chart that showcases the percentage of matches played in each tournament. This screenshot was taken with zoom out.
 
 
