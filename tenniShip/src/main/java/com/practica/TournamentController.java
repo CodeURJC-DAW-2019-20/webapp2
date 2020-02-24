@@ -1,5 +1,7 @@
 package com.practica;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -113,4 +115,29 @@ public class TournamentController {
 		}
 	}
 
+	@GetMapping("/TenniShip/RegisterMatch/Tournament/ListTournament/{position}/{end}")
+	public String listTournament(Model model, HttpServletRequest request,  @PathVariable int position,  @PathVariable int end) {
+		if(userComponent.isLoggedUser()) {
+			String team = userComponent.getTeam();
+			Optional<Team> t = teamRepository.findById(team);
+
+			List<Tournament> tournaments = teamRepository.getTournaments(t.get());
+			end = Integer.min(tournaments.size(),end);
+			if (end == (tournaments.size())) {
+				model.addAttribute("finished", true);
+			}
+			tournaments = tournaments.subList(position, end);
+			List<String> tourNames = new ArrayList<>();
+			for (Tournament tour : tournaments) {
+				tourNames.add(tour.getName());
+			}
+			model.addAttribute("listTournaments", tourNames);
+
+
+			return "listTournaments";
+		}
+		else {
+			return "error";
+		}
+	}
 }

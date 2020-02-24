@@ -1,25 +1,3 @@
-//Slice method for content in tournaments section
-$('.displayTournamentsHidden').slice(0,3).show();
-
-$('#loadContentButtonTournament').on('click',async function(){
-    $('.displayTournamentsHidden:hidden').slice(0,3).slideDown();
-    if($('.displayTournamentsHidden:hidden').length===0){
-        $('#loadContentButtonTournament').fadeOut();
-    }
-    await sleep(250);
-    windowResize();
-});
-
-$('.displayMatchesHidden').slice(0,2).show();
-
-$('#loadContentButtonMatches').on('click',async function(){
-    $('.displayMatchesHidden:hidden').slice(0,1).slideDown();
-    if($('.displayMatchesHidden:hidden').length===0){
-        $('#loadContentButtonMatches').fadeOut();
-    }
-    await sleep(250);
-    windowResize();
-});
 
 
 function windowResize() {
@@ -34,3 +12,37 @@ function windowResize() {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+(function ($) {
+    "use strict";
+
+    const TOUR_PAGE_ELEM = 1;
+    var tourPosition = 0;
+
+    function LoadTournaments(e){
+        if (e) {
+            e.preventDefault();
+        }
+        var posNew = tourPosition + TOUR_PAGE_ELEM;
+        $.ajax({
+            url: "https://localhost:8443/TenniShip/RegisterMatch/Tournament/ListTournament/" + tourPosition + "/" + posNew,
+            type: "GET",
+            dataType: "html",
+            success: function(msg){
+                $('#tournamentListChange').append(msg)
+            }
+        });
+        tourPosition += TOUR_PAGE_ELEM;
+        sleep(250);
+        windowResize();
+    }
+
+    $('#loadContentButtonTournament').click(function(e) {
+        LoadTournaments(e)
+    });
+
+    $(document).ready(function() {
+        LoadTournaments()
+    });
+
+})(jQuery);
