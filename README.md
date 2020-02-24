@@ -90,15 +90,15 @@ Tournaments will automatically reorganize themselves when a match is played.
 
 
 
-![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/fromHome.jpeg)
+![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/nonregister.jpeg)
 
-![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/fromSB.jpeg)
+![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/nonregister2.jpeg)
 
-![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/fromActions.jpeg)
+![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/registerregister.jpeg)
 
-![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/fromActions2.jpeg)
+![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/registercreator.jpeg)
 
-![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/fromActions3.jpeg)
+![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/admin.jpeg)
 
 ## Process Tools
 We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") for tasks management.
