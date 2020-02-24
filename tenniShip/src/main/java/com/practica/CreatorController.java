@@ -68,9 +68,9 @@ public class CreatorController {
 		if (tourReady) {
 			finalTournament.setName(tour.getName());
 			// Save TournamentImage
-//			finalTournament.setImage(true);
-//			tournamentRepository.save(finalTournament);
-//			imgService.saveImage("tournaments", finalTournament.getName(), imageFile);
+			finalTournament.setImage(true);
+			tournamentRepository.save(finalTournament);
+			imgService.saveImage("tournaments", finalTournament.getName(), imageFile);
 		}
 
 		/* Adding a list of all teams for the autocomplete */
