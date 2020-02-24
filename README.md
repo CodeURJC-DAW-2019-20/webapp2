@@ -53,21 +53,32 @@ TenniShip has three different users: administrator, registered user and non-regi
 + MySQL WorkBench 8.0.
 #### Dependencies
 + MSQL Server 8.0.
++ Spring framework.
++ Mustache.
++ Springboot starter mail.
++ Springboot starter security.
 
-#### Useful commands
-Generate MySQL schema:
-``` shell
-insert commands here
-```
-Build application:
-``` shell
-insert commands here
-```
-Run application:
-``` shell
-insert commands here
-```
-### Pictures
+#### How to manage the project with Eclipse STS4.
+1. Clone the [repository](https://github.com/CodeURJC-DAW-2019-20/webapp2 "GitHub") or [download the ZIP](https://github.com/CodeURJC-DAW-2019-20/webapp2/archive/master.zip "ZIP file").
+2. Open SpringToolSuite4 >> File >> Open Projects from File System.
+3. Select '/webapp' folder.
+4. Import both Maven and Eclipse Projects and click on Finish.
+- To run the application select 'Run As >> Spring Boot App'.
+- To build the project select 'Project >> Build Project' if 'Build Automatically is not selected (recommended to)'.
+
+#### Basic installarion of MySQL Server and MySQL Workbench (recommended) on Windows.
+1. [Download MySQL Windows Installer](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0.19.0.msi "MySQL Windows Installer").
+2. Run it as administrator.
+3. In 'Choosing a Setup Type' select *Developer Default*.
+4. In 'Check Requirements' screen install every of the items showed so the app works fine.
+5. Execute the installation of the products (MySQL Server must be there).
+6. Next.
+7. In 'High Avaliability' screen select *Standalone MySQL Server / Classic MySQL Replication* option.
+8. Next >> Next.
+9. Write a Password.
+10. Next >> Execute >> Finnish till installation ends.
+
+### Entities with pictures
 + Tournament has an image as its logo.
 + Each team has 6 images: the team logo, and a profile picture for the five team members.
 
@@ -149,7 +160,7 @@ We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") f
 		- Images upload.
 		- Images visualization.
 		- E-Mail sender: e-mail sent when a new user signs up.
-		- Documentation: Readme.
+		- Minor things: making Spring friendly with Bootstrap, documentation, spelling check, etc.
 		- Insertion of sample data for demo.
 	- Top 5 most important commits in 'Second Phase':
 		- [Email implemented!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/ed623ab115cc423e3d9282339be99007238e21cc "de0ce05") 
