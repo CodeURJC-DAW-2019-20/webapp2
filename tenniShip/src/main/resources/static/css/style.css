@@ -1149,14 +1149,6 @@ h5 {
     overflow: hidden;
 }
 
-.displayTournamentsHidden {
-    display: none;
-}
-
-.displayMatchesHidden {
-    display: none;
-}
-
 #registerMatchBothPages .registerMatchBothPages-item figure {
     background: #000;
     overflow: hidden;
