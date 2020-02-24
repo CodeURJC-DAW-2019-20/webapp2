@@ -1,6 +1,5 @@
 package com.practica.model;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,24 +8,22 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class Team {
-	
+
 	@Id
 	private String teamName;
-	
+
 	private boolean teamImage;
-	
-	@OneToMany (cascade = CascadeType.ALL)
+
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Player> players = new ArrayList<>();
-	
+
 	public Team() {
 	}
-	
+
 	public Team(String name) {
 		this.teamName = name;
-		//this.teamImage = teamImage;
 	}
 
 	public String getName() {
@@ -44,7 +41,7 @@ public class Team {
 	public void setPlayers(List<Player> players) {
 		this.players = players;
 	}
-	
+
 	public boolean hasTeamImage() {
 		return teamImage;
 	}

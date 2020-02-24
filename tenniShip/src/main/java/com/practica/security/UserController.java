@@ -31,72 +31,70 @@ public class UserController {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private ImageService imgService;
-	
+
 	@Autowired
 	private ApplicationContext appContext;
-	
+
 	@Autowired
 	private UserComponent userComponent;
-	
+
 	@Autowired
 	private TeamRepository teamRepository;
 
 	@Autowired
 	private TournamentRepository tournamentRepository;
-	
-	
+
 	@PostMapping("/register")
-	public String newUser(Model model,@ModelAttribute("personUser") User user,@RequestParam String passwordCheck,
-			@RequestParam Player player1,@RequestParam Player player2,@RequestParam Player player3,
-			@RequestParam Player player4,@RequestParam Player player5, @RequestParam List<MultipartFile> imageFile
-			) throws IOException {
-		
-		
+	public String newUser(Model model, @ModelAttribute("personUser") User user, @RequestParam String passwordCheck,
+			@RequestParam Player player1, @RequestParam Player player2, @RequestParam Player player3,
+			@RequestParam Player player4, @RequestParam Player player5, @RequestParam List<MultipartFile> imageFile)
+			throws IOException {
+
 		boolean canContinue = true;
-		
-		//User
+
+		// User
 		User userExist = userRepository.findByUserName(user.getUserName());
-		
+
 		boolean userNameAlready = (userExist != null);
 		boolean userEmpty = user.getUserName().isEmpty();
 		boolean userReady = !(userNameAlready || userEmpty);
-		model.addAttribute("userNameAlreadyExist",userNameAlready);
+		model.addAttribute("userNameAlreadyExist", userNameAlready);
 		model.addAttribute("userNameEmpty", userEmpty);
-		
-		//Email
+
+		// Email
 		User emailExist = userRepository.findByEmail(user.getEmail());
-		
+
 		boolean emailAlready = (emailExist != null);
 		boolean emailEmpty = user.getEmail().isEmpty();
-		boolean emailGood = (user.getEmail().contains("@") ) && (user.getEmail().length() > 10);
+		boolean emailGood = (user.getEmail().contains("@")) && (user.getEmail().length() > 10);
 		boolean emailReady = !(emailAlready || emailEmpty) && emailGood;
 		model.addAttribute("emailAlreadyExist", emailExist);
-		model.addAttribute("emailEmpty", emailEmpty);	
+		model.addAttribute("emailEmpty", emailEmpty);
 		model.addAttribute("emailNotGood", !emailGood);
-		
-		//PassWord
+
+		// PassWord
 		boolean passEmpty = user.getPasswordHash().isEmpty();
-		boolean passNotGood = user.getPasswordHash().length()<8;
+		boolean passNotGood = user.getPasswordHash().length() < 8;
 		boolean passReady = !(passEmpty || passNotGood);
 		model.addAttribute("passwordEmpty", passEmpty);
 		model.addAttribute("passwordNotGood", passNotGood);
-		
-		//PassConfirm
+
+		// PassConfirm
 		boolean samePassword = user.getPasswordHash().equals(passwordCheck);
 		model.addAttribute("passNotSame", !samePassword);
-		
-		//Team
+
+		// Team
 		Optional<Team> teamExist = teamRepository.findById(user.getTeam());
-		
+
 		boolean teamAlready = (teamExist.isPresent());
 		boolean teamEmty = user.getTeam().isEmpty();
 		boolean teamReady = !(teamAlready || teamEmty);
 		model.addAttribute("teamAlreadyExist", teamAlready);
 		model.addAttribute("teamEmpty", teamEmty);
-	
+
 		boolean player1NotEmpty = !(player1.getName().isEmpty());
 		boolean player2NotEmpty = !(player2.getName().isEmpty());
 		boolean player3NotEmpty = !(player3.getName().isEmpty());
@@ -107,54 +105,57 @@ public class UserController {
 		model.addAttribute("player3NameEmpty", true);
 		model.addAttribute("player4NameEmpty", true);
 		model.addAttribute("player5NameEmpty", true);
-		
-		boolean missingPics=false;
-		for(MultipartFile mf:imageFile) {
-			if(mf.isEmpty()) missingPics=true;
+
+		boolean missingPics = false;
+		for (MultipartFile mf : imageFile) {
+			if (mf.isEmpty())
+				missingPics = true;
 		}
 		model.addAttribute("ImageEmpty", missingPics);
-		
-		canContinue = (userReady && emailReady && passReady && samePassword && teamReady && player1NotEmpty && player2NotEmpty && player3NotEmpty && player4NotEmpty && player5NotEmpty && !(missingPics));
-		if(canContinue) {
-			List<String> l = new LinkedList<>(); l.add("ROLE_USER");
+
+		canContinue = (userReady && emailReady && passReady && samePassword && teamReady && player1NotEmpty
+				&& player2NotEmpty && player3NotEmpty && player4NotEmpty && player5NotEmpty && !(missingPics));
+		if (canContinue) {
+			List<String> l = new LinkedList<>();
+			l.add("ROLE_USER");
 			User userNew = new User(user.getUserName(), user.getTeam(), user.getEmail(), user.getPasswordHash(), l);
 			userRepository.save(userNew);
-			
+
 			Team teamNew = new Team(user.getTeam());
 			teamNew.getPlayers().add(player1);
 			teamNew.getPlayers().add(player2);
 			teamNew.getPlayers().add(player3);
 			teamNew.getPlayers().add(player4);
 			teamNew.getPlayers().add(player5);
-			
-			//Saving team icon
+
+			// Saving team icon
 			teamNew.setTeamImage(true);
 			teamRepository.save(teamNew);
 			imgService.saveImage("teams", teamNew.getName(), imageFile.get(0));
 			for (int i = 1; i < 6; i++) {
 				imgService.saveImage("players", teamNew.getName() + String.format("Player%d", i), imageFile.get(i));
 			}
-			
+
 			// Sending Confirmation Mail
-			MailSenderXX ms=(MailSenderXX) appContext.getBean("mailSenderXX");
+			MailSenderXX ms = (MailSenderXX) appContext.getBean("mailSenderXX");
 			ms.sendConfirmationEmail(user);
-		    
+
 			model.addAttribute("registeredSuccessful", true);
 			return sign_in(model);
-		    
+
 		} else {
 			return "registerAccount";
-		}		
+		}
 	}
-	
-	@GetMapping("/TenniShip")
-	public String index (Model model, HttpServletRequest request) {
 
-		if(userComponent.isLoggedUser()  && !request.isUserInRole("ADMIN")) {
+	@GetMapping("/TenniShip")
+	public String index(Model model, HttpServletRequest request) {
+
+		if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
 			String teamUser = userComponent.getTeam();
 			model.addAttribute("team", teamUser);
 		}
-		model.addAttribute("registered",userComponent.isLoggedUser() && !request.isUserInRole("ADMIN") );
+		model.addAttribute("registered", userComponent.isLoggedUser() && !request.isUserInRole("ADMIN"));
 		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
 		List<Tournament> allTournaments = tournamentRepository.getAllTournaments();
 		List<Team> allTeams = teamRepository.getAllTeams();
@@ -169,41 +170,36 @@ public class UserController {
 		model.addAttribute("tournamentNames", tournamentNames);
 		model.addAttribute("teamNames", teamNames);
 
-		return "index"; 
+		return "index";
 	}
 
 	@GetMapping("/TenniShip/SignIn")
-	public String sign_in (Model model) {
-		
-		if(userComponent.isLoggedUser()) {
+	public String sign_in(Model model) {
+
+		if (userComponent.isLoggedUser()) {
 			return "redirect:/TenniShip";
 		}
 		return "login";
 	}
 
 	@GetMapping("/TenniShip/loginerror")
-    	public String sign_in_wrong (Model model) {
-			
-			if(userComponent.isLoggedUser()) {
-				return "redirect:/TenniShip";
-			}
-			
-    		model.addAttribute("wrongData", true);
-    		return "login";
-    	} 
-	
-//	@GetMapping("/")
-//	private String redirect (Model model) {
-//		return index(model);
-//	}
-	
-	@GetMapping("/TenniShip/SignUp")
-	public String sign_up (Model model) {
-		
-		if(userComponent.isLoggedUser()) {
+	public String sign_in_wrong(Model model) {
+
+		if (userComponent.isLoggedUser()) {
 			return "redirect:/TenniShip";
 		}
-		
+
+		model.addAttribute("wrongData", true);
+		return "login";
+	}
+
+	@GetMapping("/TenniShip/SignUp")
+	public String sign_up(Model model) {
+
+		if (userComponent.isLoggedUser()) {
+			return "redirect:/TenniShip";
+		}
+
 		User user = new User();
 		model.addAttribute("personUser", user);
 		return "registerAccount";

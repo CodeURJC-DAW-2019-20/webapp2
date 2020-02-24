@@ -14,14 +14,15 @@ public class MailSenderXX {
 	private JavaMailSender javaMailSender;
 
 	public void sendConfirmationEmail(User user) {
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo(user.getEmail());
-        msg.setSubject("Register Confirmation e-Mail");
-        String msgBody="Welcome to TenniShip!\nYou successfully registered " + user.getTeam() + " as a team.\nThese are your credentials:\nUser: " + user.getUserName() + "\nPassword: " + user.getPasswordHash()+
-        		"\n\nIf you have any issue, please contact to tennishipSpring@gmail.com.";
-        msg.setText(msgBody);
-        
-        javaMailSender.send(msg);
-    }
+		SimpleMailMessage msg = new SimpleMailMessage();
+		msg.setTo(user.getEmail());
+		msg.setSubject("Register Confirmation e-Mail");
+		String msgBody = "Welcome to TenniShip!\nYou successfully registered " + user.getTeam()
+				+ " as a team.\nThese are your credentials:\nUser: " + user.getUserName() + "\nPassword: "
+				+ user.getPasswordHash() + "\n\nIf you have any issue, please contact to tennishipSpring@gmail.com.";
+		msg.setText(msgBody);
+
+		javaMailSender.send(msg);
+	}
 
 }
