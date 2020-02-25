@@ -123,7 +123,7 @@
 							src="/../img/clients/teams/{{teamName}}.jpg">
 							
 					</div>
-					<h3>{{teamName}}</h3>
+					<h3 id="teamNameIdH3">{{teamName}}</h3>
 				</div>
 				<div class="content">
 					<h3>Players</h3>
@@ -230,21 +230,7 @@
                             </ul>
                         </div>
                     </div>
-                    <ul class="list-group matchList">
-                        {{#matchList}}
-                        <li class="list-group-item displayMatchesHidden">
-                            <div class="row row-cols-2">
-                                <div class="col col-sm-6 col-12">
-                                    <a href="/TenniShip/Team/{{team1.teamName}}">{{team1.teamName}}</a> vs
-                                    <a href="/TenniShip/Team/{{team2.teamName}}">{{team2.teamName}}</a>
-                                </div>
-                                <div class="col col-sm-3 col-6"> {{homePoints}} - {{awayPoints}} </div>
-                                <div class="col col-sm-3 col-6">
-                                    <a href="/TenniShip/Tournament/{{tournament.name}}">{{tournament.name}}</a>
-                                </div>
-                            </div>
-                        </li>
-                        {{/matchList}}
+                    <ul id="matchListTeamFile" class="list-group matchList">
                     </ul>
 
                     <div class="text-center pt-3">

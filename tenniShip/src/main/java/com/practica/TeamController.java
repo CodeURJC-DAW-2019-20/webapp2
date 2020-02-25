@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.practica.model.Tournament;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -109,6 +110,27 @@ public class TeamController {
 			}
         	return "teamResults";
 		}
+
+	}
+
+	@GetMapping("/TenniShip/Team/{team}/ListMatches/{position}/{end}")
+	public String listTeams(Model model, HttpServletRequest request,  @PathVariable String team, @PathVariable int position,  @PathVariable int end) {
+			Optional<Team> t = teamRepository.findById(team);
+
+			if (t.isPresent()) {
+				List<Match> matches = teamRepository.getRecentMatches(t.get());
+
+				end = Integer.min(matches.size(), end);
+				if (end == (matches.size())) {
+					model.addAttribute("finished", true);
+				}
+				matches = matches.subList(position, end);
+				model.addAttribute("matchList", matches);
+				return "matchesList";
+			}
+			else {
+				return "error";
+			}
 
 	}
 
