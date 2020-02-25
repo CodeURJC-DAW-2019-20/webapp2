@@ -2,28 +2,28 @@
 
 TenniShip is a web app for managing tennis tournaments inspired in Davis Cup rules. It allows users to find teams, matches, keep track of scores, and check their standings in tourneys. 
 
-![Home Page](tenniShip/src/main/resources/static/img/screenshots/Index.png "Home Page")
+![Home Page](backend/tenniShip/src/main/resources/static/img/screenshots/Index.png "Home Page")
 The home page has two search bars: one for tournaments and another one for teams. This search bars are only for queries, so they redirect you to the team or tournament information sheet. There's another slide below, that explains what TenniShip can do and links the user to various actions.
 
 
 
-![Sign Up](tenniShip/src/main/resources/static/img/screenshots/signup.png "Sign Up")
+![Sign Up](backend/tenniShip/src/main/resources/static/img/screenshots/signup.png "Sign Up")
 Users can sign up in TenniShip as team leaders. Such as in Davis Cup official tournament, every team must have five players.
 
 
 
-![Tournament Sheet](tenniShip/src/main/resources/static/img/screenshots/TournamentSheet.png "Tournament Sheet")
-![Tournament Sheet](tenniShip/src/main/resources/static/img/screenshots/TournamentSheet2.png "Tournament Sheet")
+![Tournament Sheet](backend/tenniShip/src/main/resources/static/img/screenshots/TournamentSheet.png "Tournament Sheet")
+![Tournament Sheet](backend/tenniShip/src/main/resources/static/img/screenshots/TournamentSheet2.png "Tournament Sheet")
 Tournament information sheets indicate the actual phase of the tournament, its teams and its progress.
 
 
 
-![Register Match](tenniShip/src/main/resources/static/img/screenshots/registerMatch.png "Register Match")
+![Register Match](backend/tenniShip/src/main/resources/static/img/screenshots/registerMatch.png "Register Match")
 When a game is played, teams must log the result.
 
 
 
-![Team Sheet](tenniShip/src/main/resources/static/img/screenshots/teamFile.png "Team Sheet")
+![Team Sheet](backend/tenniShip/src/main/resources/static/img/screenshots/teamFile.png "Team Sheet")
 Team Sheet contains information about a team. It includes the team's logo, its players with their picture and name (on mouse hover), the tournaments played by them and their most recent results. There's a pie chart that showcases the percentage of matches won and lost in each tournament.
 
 
@@ -35,7 +35,10 @@ TenniShip has been made with HTML, CSS and JavaScript. BizPage Bootstrap templat
 ## Technical details
 ### Entities
 TenniShip has five different entities: match, tournament, team, player and user role. 
-![Entities](https://raw.githubusercontent.com/CodeURJC-DAW-2019-20/webapp2/master/tenniShip/src/main/resources/static/img/diagrams/MySQL_DB.PNG "DB Diagram")
+![Entities](backend/tenniShip/src/main/resources/static/img/diagrams/MySQL_DB.PNG "DB Diagram")
+
+### Classes and templates diagram
+![Classes diagram](backend/tenniShip/src/main/resources/static/img/diagrams/ClassesDiagram.jpg "Classes diagram")
 
 ### Users
 TenniShip has three different users: administrator, registered user and non-registered user.
@@ -100,15 +103,15 @@ Tournaments will automatically reorganize themselves when a match is played.
 
 
 
-![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/nonregister.jpeg)
+![Login/up](backend/tenniShip/src/main/resources/static/img/screen_transitions/nonregister.jpeg)
 
-![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/nonregister2.jpeg)
+![Login/up](backend/tenniShip/src/main/resources/static/img/screen_transitions/nonregister2.jpeg)
 
-![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/registerregister.jpeg)
+![Login/up](backend/tenniShip/src/main/resources/static/img/screen_transitions/registerregister.jpeg)
 
-![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/registercreator.jpeg)
+![Login/up](backend/tenniShip/src/main/resources/static/img/screen_transitions/registercreator.jpeg)
 
-![Login/up](tenniShip/src/main/resources/static/img/screen_transitions/admin.jpeg)
+![Login/up](backend/tenniShip/src/main/resources/static/img/screen_transitions/admin.jpeg)
 
 ## Process Tools
 We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") for tasks management.
@@ -202,7 +205,7 @@ We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") f
 	- Tasks:
 		- Data Base correctly implemented.
 		- Make Register Match functional and fix its bugs.
-		- Create Tournament Logic, team ranking, create matches, advanced sorting algorithm, tournament progression, useful querys and bugs fixed.
+		- Create Tournament Logic, team ranking, create matches, advanced sorting algorithm, tournament progression, useful queries and bugs fixed.
 		- Admin Role functions, deleting tournaments option available, edit matches option available too.
 		- Url and Navs uploaded.
 	- Top 5 most important commits in 'Second Phase':
@@ -220,4 +223,3 @@ We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") f
 
 ## License
 © BizPage Bootstrap template has been designed by BootstrapMade. [Original Bizpage Template](https://bootstrapmade.com/demo/BizPage/ "Bizpage").
-
