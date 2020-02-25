@@ -143,18 +143,42 @@ We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") f
 		- [Tournament Sheet Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentSheetController.java "TournamentSheetController.java")
 * Santi: 
 	- Tasks:
-		- d
+		- Implement main search of tournaments and teams with autocomplete.
+		- Add result pages of tournaments and teams to land on.
+		- Ajax functionality on tournament selection
+		- Mustache list rendering and format optimization
+		- Pie chart and tournament progress bar functionality added
 	- Top 5 most important commits in 'Second Phase':
-		- d
+		- [Team and Tournament Search fully functional](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7a82e22d1701f660938597942e4053599b0dff3a "7a82e22")
+		- [AJAX on Tournament Selection](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/2316124a8aa3ff8c1cc064c50633b12d3314b3cf "2316124")
+		- [Adaptive recent matches](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/8d7fc95627f73960d8c0bd291ca5db60fb23e4f6 "8d7fc95")
+		- [Search Box direct linking](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/d4fb335bb89e58e6e9d3ff8c110a86bb04bcf505 "d4fb335")
+		- [Team autocomplete in Tournament Creator](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/78a2172144e56acd31528c94a290946f52381832 "78a2172")
 	- Top 5 most modified files:
-		- d
+		- [Team Repository](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamRepository.java)
+		- [Main.js](https://github.com/CodeURJC-DAW-2019-20/webapp2/blame/master/tenniShip/src/main/resources/static/js/main.js)
+		- [Team Results](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/resources/templates/teamResults.html)
+		- [Team Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamController.java)
+		- [Show More Content](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/resources/static/js/showMoreContent.js)
 * Diego: 
 	- Tasks:
-		- d
+		- DataBase MySQL installation and queries.
+		- Data Graphics and Team Carousel for Tournaments.
+		- Entity Tournament, Tournament Controller and Bug fixing.
+		- Teamfile AJAX Button for Matches reloading
+		- Documentation: Diagrams
 	- Top 5 most important commits in 'Second Phase':
-		- d
+		- [Database migration and completion chart added](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/9c55012c80ae8a250431ef2002aa0b057aa1264e "9c55012")
+		- [Bugs Fixed, merge fixed and queries added](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/9ec1237a36df58061477bbf8687c22d5cbd4c422 "9ec1237")
+		- [Teams Pie Chart added](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/eed9ca3747474a083d34076d21c7bbb05b35da46 "eed9ca3")
+		- [Ajax Matches Reload](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/95d7f9b4fb722c7a58719c1e43b7b8d2e835497c "95d7f9b")
+		- [Entity Tournament Created](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/81f4c104b6427b09ff2a9cf494aa21d5519ff8b0 "81f4c10")
 	- Top 5 most modified files:
-		- d
+		- [ShowMoreContent.js](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/resources/static/js/showMoreContent.js)
+		- [TournamentController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentController.java)
+		- [TournamentSheetController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentSheetController.java)
+		- [TeamRepository.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamRepository.java)
+		- [TeamController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamController.java)
 * Álvaro: 
 	- Tasks:
 		- Images upload.
