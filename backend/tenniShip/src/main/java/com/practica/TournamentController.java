@@ -84,7 +84,7 @@ public class TournamentController {
 			rounds.put("Z", "Final");
 
 			if (tournamentRepository.getNextMatches(t.get(), tm.get()).isEmpty()) {
-				model.addAttribute("round", "All Played");
+				model.addAttribute("round", "See the tournament progress to check if your team has to play more games!");
 				model.addAttribute("allPlayed", true);
 				model.addAttribute("tournamentName", t.get().getName());
 			} else {
