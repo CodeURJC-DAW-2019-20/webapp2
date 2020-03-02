@@ -65,7 +65,6 @@ public class TournamentSheetController {
 			// return "redirect:/TenniShip/ADMIN/Tournament/" + tournament + "/EditMatches/"
 			// + group;
 		}
-
 	}
 
 	@GetMapping("/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}")
@@ -180,6 +179,8 @@ public class TournamentSheetController {
 			List<Team> last8 = new ArrayList<>();
 			List<Team> last4 = new ArrayList<>();
 			List<Team> last2 = new ArrayList<>();
+			int localGana = 0;
+			int visitanteGana = 0;
 
 			if (tournamentRepository.getPlayedMatchesJQL(t.get()) >= 18) { // Groups Played
 				if (tournamentRepository.getPhaseTeams(t.get(), "X").isEmpty()) { // RoundOf8 has to be created
@@ -202,49 +203,29 @@ public class TournamentSheetController {
 					last8.add(secondPlaceTeams.get(1).t);
 					Collections.shuffle(last8);
 
-					Match a = new Match(0, 0, "X");
-					a.setTeam1(last8.get(0));
-					a.setTeam2(last8.get(1));
-					a.setTournament(t.get());
-					matchRepository.save(a);
-					Match b = new Match(0, 0, "X");
-					b.setTeam1(last8.get(2));
-					b.setTeam2(last8.get(3));
-					b.setTournament(t.get());
-					matchRepository.save(b);
-					Match c = new Match(0, 0, "X");
-					c.setTeam1(last8.get(4));
-					c.setTeam2(last8.get(5));
-					c.setTournament(t.get());
-					matchRepository.save(c);
-					Match d = new Match(0, 0, "X");
-					d.setTeam1(last8.get(6));
-					d.setTeam2(last8.get(7));
-					d.setTournament(t.get());
-					matchRepository.save(d);
+					createMatches(last8, "X", t.get());
 				}
+				
 				for (int k = 0; k < 8; k += 2) { // RoundOf8
 					if (tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2)
 							.getHomePoints() > tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2)
 									.getAwayPoints()) {
-						model.addAttribute(String.format("team%dQuarters", k),
-								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getTeam1().getName());
-						model.addAttribute(String.format("team%dQuartersPoints", k),
-								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getHomePoints());
-						model.addAttribute(String.format("team%dQuarters", k + 1),
-								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getTeam2().getName());
-						model.addAttribute(String.format("team%dQuartersPoints", k + 1),
-								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getAwayPoints());
-					} else {
-						model.addAttribute(String.format("team%dQuarters", k + 1),
-								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getTeam1().getName());
-						model.addAttribute(String.format("team%dQuartersPoints", k + 1),
-								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getHomePoints());
-						model.addAttribute(String.format("team%dQuarters", k),
-								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getTeam2().getName());
-						model.addAttribute(String.format("team%dQuartersPoints", k),
-								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getAwayPoints());
+						
+						localGana = 0;
+						visitanteGana = 1;
 					}
+					else {
+						localGana = 1;
+						visitanteGana = 0;
+					}
+						model.addAttribute(String.format("team%dQuarters", k + localGana),
+								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getTeam1().getName());
+						model.addAttribute(String.format("team%dQuartersPoints", k + localGana),
+								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getHomePoints());
+						model.addAttribute(String.format("team%dQuarters", k + visitanteGana),
+								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getTeam2().getName());
+						model.addAttribute(String.format("team%dQuartersPoints", k + visitanteGana),
+								tournamentRepository.getPhaseMatches(t.get(), "X").get(k / 2).getAwayPoints());
 				}
 			} else {
 				for (int k = 0; k < 8; k += 2) { // RoundOf8
@@ -264,39 +245,27 @@ public class TournamentSheetController {
 							last4.add(Match.getTeam2());
 					});
 
-					Match a = new Match(0, 0, "Y");
-					a.setTeam1(last4.get(0));
-					a.setTeam2(last4.get(1));
-					a.setTournament(t.get());
-					matchRepository.save(a);
-					Match b = new Match(0, 0, "Y");
-					b.setTeam1(last4.get(2));
-					b.setTeam2(last4.get(3));
-					b.setTournament(t.get());
-					matchRepository.save(b);
+					createMatches(last4, "Y", t.get());
 				}
 				for (int k = 0; k < 4; k += 2) { // RoundOf4
 					if (tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2)
 							.getHomePoints() > tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2)
 									.getAwayPoints()) {
-						model.addAttribute(String.format("team%dSemi", k),
-								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getTeam1().getName());
-						model.addAttribute(String.format("team%dSemiPoints", k),
-								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getHomePoints());
-						model.addAttribute(String.format("team%dSemi", k + 1),
-								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getTeam2().getName());
-						model.addAttribute(String.format("team%dSemiPoints", k + 1),
-								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getAwayPoints());
-					} else {
-						model.addAttribute(String.format("team%dSemi", k + 1),
-								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getTeam1().getName());
-						model.addAttribute(String.format("team%dSemiPoints", k + 1),
-								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getHomePoints());
-						model.addAttribute(String.format("team%dSemi", k),
-								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getTeam2().getName());
-						model.addAttribute(String.format("team%dSemiPoints", k),
-								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getAwayPoints());
+						localGana = 0;
+						visitanteGana = 1;
 					}
+					else {
+						localGana = 1;
+						visitanteGana = 0;
+					}
+						model.addAttribute(String.format("team%dSemi", k + localGana),
+								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getTeam1().getName());
+						model.addAttribute(String.format("team%dSemiPoints", k + localGana),
+								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getHomePoints());
+						model.addAttribute(String.format("team%dSemi", k + visitanteGana),
+								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getTeam2().getName());
+						model.addAttribute(String.format("team%dSemiPoints", k + visitanteGana),
+								tournamentRepository.getPhaseMatches(t.get(), "Y").get(k / 2).getAwayPoints());
 				}
 			} else {
 				for (int k = 0; k < 4; k += 2) { // RoundOf4
@@ -316,34 +285,27 @@ public class TournamentSheetController {
 							last2.add(Match.getTeam2());
 					});
 
-					Match a = new Match(0, 0, "Z");
-					a.setTeam1(last2.get(0));
-					a.setTeam2(last2.get(1));
-					a.setTournament(t.get());
-					matchRepository.save(a);
+					createMatches(last2, "Z", t.get());
 				}
 				for (int k = 0; k < 2; k += 2) { // RoundOf2
 					if (tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2)
 							.getHomePoints() > tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2)
 									.getAwayPoints()) {
-						model.addAttribute(String.format("team%dFinal", k),
-								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getTeam1().getName());
-						model.addAttribute(String.format("team%dFinalPoints", k),
-								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getHomePoints());
-						model.addAttribute(String.format("team%dFinal", k + 1),
-								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getTeam2().getName());
-						model.addAttribute(String.format("team%dFinalPoints", k + 1),
-								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getAwayPoints());
-					} else {
-						model.addAttribute(String.format("team%dFinal", k + 1),
-								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getTeam1().getName());
-						model.addAttribute(String.format("team%dFinalPoints", k + 1),
-								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getHomePoints());
-						model.addAttribute(String.format("team%dFinal", k),
-								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getTeam2().getName());
-						model.addAttribute(String.format("team%dFinalPoints", k),
-								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getAwayPoints());
+						localGana = 0;
+						visitanteGana = 1;
 					}
+					else {
+						localGana = 1;
+						visitanteGana = 0;
+					}
+						model.addAttribute(String.format("team%dFinal", k + localGana),
+								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getTeam1().getName());
+						model.addAttribute(String.format("team%dFinalPoints", k + localGana),
+								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getHomePoints());
+						model.addAttribute(String.format("team%dFinal", k + visitanteGana),
+								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getTeam2().getName());
+						model.addAttribute(String.format("team%dFinalPoints", k + visitanteGana),
+								tournamentRepository.getPhaseMatches(t.get(), "Z").get(k / 2).getAwayPoints());
 				}
 			} else {
 				for (int k = 0; k < 2; k += 2) { // RoundOf2
@@ -384,6 +346,16 @@ public class TournamentSheetController {
 				model.addAttribute("resultsList", names);
 			}
 			return "tournamentResults";
+		}
+	}
+	
+	private void createMatches (List<Team> lastn, String phase, Tournament t) {
+		for (int i = 0; i < lastn.size(); i+=2) {
+			Match a = new Match(0, 0, phase);
+			a.setTeam1(lastn.get(i));
+			a.setTeam2(lastn.get(i+1));
+			a.setTournament(t);
+			matchRepository.save(a);
 		}
 	}
 }
