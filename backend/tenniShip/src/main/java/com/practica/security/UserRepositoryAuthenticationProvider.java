@@ -28,12 +28,12 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
 
 		Optional<User> user = userRepository.findByUserName(auth.getName());
-		if (user == null) {
+		if (!(user.isPresent())) {
 			throw new BadCredentialsException("User not found");
 		}
 
 		String password = (String) auth.getCredentials();
-		if (!new BCryptPasswordEncoder().matches(password, user.get().getPasswordHash())) {
+		if (!(new BCryptPasswordEncoder().matches(password, user.get().getPasswordHash()))) {
 			throw new BadCredentialsException("Wrong password");
 		}
 

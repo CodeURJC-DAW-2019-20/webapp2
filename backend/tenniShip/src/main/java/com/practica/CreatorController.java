@@ -180,9 +180,24 @@ public class CreatorController {
 		model.addAttribute("tourFinal", finalTournament);
 		model.addAttribute("next1", !finalTournament.getName().isEmpty());
 		
-		for (int i = 1; i < 19; i++) {
-			check(model, String.format("team%d", i), i);
-		}
+		check(model, team1, 1);
+		check(model, team2, 2);
+		check(model, team3, 3);
+		check(model, team4, 4);
+		check(model, team5, 5);
+		check(model, team6, 6);
+		check(model, team7, 7);
+		check(model, team8, 8);
+		check(model, team9, 9);
+		check(model, team10, 10);
+		check(model, team11, 11);
+		check(model, team12, 12);
+		check(model, team13, 13);
+		check(model, team14, 14);
+		check(model, team15, 15);
+		check(model, team16, 16);
+		check(model, team17, 17);
+		check(model, team18, 18);
 		exist(model, teamList);
 
 		model.addAttribute("next2", numberTeams == 18);
