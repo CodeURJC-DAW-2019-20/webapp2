@@ -2,6 +2,7 @@ package com.practica.security;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -26,25 +27,25 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 	@Override
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
 
-		User user = userRepository.findByUserName(auth.getName());
+		Optional<User> user = userRepository.findByUserName(auth.getName());
 		if (user == null) {
 			throw new BadCredentialsException("User not found");
 		}
 
 		String password = (String) auth.getCredentials();
-		if (!new BCryptPasswordEncoder().matches(password, user.getPasswordHash())) {
+		if (!new BCryptPasswordEncoder().matches(password, user.get().getPasswordHash())) {
 			throw new BadCredentialsException("Wrong password");
 		}
 
-		userComponent.setLoggedUser(user);
-		userComponent.setTeam(user);
+		userComponent.setLoggedUser(user.get());
+		userComponent.setTeam(user.get());
 
 		List<GrantedAuthority> roles = new ArrayList<>();
-		for (String role : user.getRoles()) {
+		for (String role : user.get().getRoles()) {
 			roles.add(new SimpleGrantedAuthority(role));
 		}
 
-		return new UsernamePasswordAuthenticationToken(user.getUserName(), password, roles);
+		return new UsernamePasswordAuthenticationToken(user.get().getUserName(), password, roles);
 	}
 
 	@Override

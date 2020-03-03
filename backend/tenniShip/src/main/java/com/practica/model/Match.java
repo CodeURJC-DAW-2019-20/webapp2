@@ -52,6 +52,15 @@ public class Match {
 	public String getType() {
 		return type;
 	}
+	
+	public String getStringType() {
+        switch (type) {
+        case "X" : return "Round of 8"; 
+        case "Y" : return "Round of 4"; 
+        case "Z" : return "Round of 3"; 
+        default : return "Group Stage";
+        }
+    }
 
 	public Team getTeam1() {
 		return team1;
