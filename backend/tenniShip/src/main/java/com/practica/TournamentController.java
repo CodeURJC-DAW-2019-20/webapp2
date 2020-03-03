@@ -6,8 +6,6 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,16 +70,6 @@ public class TournamentController {
 			String team = userComponent.getTeam();
 			model.addAttribute("team", team);
 			Optional<Team> tm = teamRepository.findById(team);
-			HashMap<String, String> rounds = new HashMap<>();
-			rounds.put("A", "Group Stage");
-			rounds.put("B", "Group Stage");
-			rounds.put("C", "Group Stage");
-			rounds.put("D", "Group Stage");
-			rounds.put("E", "Group Stage");
-			rounds.put("F", "Group Stage");
-			rounds.put("X", "Round of 8");
-			rounds.put("Y", "Round of 4");
-			rounds.put("Z", "Final");
 
 			if (tournamentRepository.getNextMatches(t.get(), tm.get()).isEmpty()) {
 				model.addAttribute("round", "See the tournament progress to check if your team has to play more games!");
@@ -89,7 +77,7 @@ public class TournamentController {
 				model.addAttribute("tournamentName", t.get().getName());
 			} else {
 				model.addAttribute("round",
-						rounds.get(tournamentRepository.getNextMatches(t.get(), tm.get()).get(0).getType()));
+						tournamentRepository.getNextMatches(t.get(), tm.get()).get(0).getStringType());
 			}
 			model.addAttribute("listMatches", tournamentRepository.getNextMatches(t.get(), tm.get()));
 			return "registerMatch";
