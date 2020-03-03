@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.practica.model.Team;
 
 @RestController
-@RequestMapping("api/teams")
+@RequestMapping("/api/teams")
 
 public class TeamRestController {
 

@@ -19,31 +19,42 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.antMatcher("/api/**");
-		
+
 		// User
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/SignIn").permitAll();//set logged user
-        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/TenniShip/SignUp").permitAll();	
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/SignIn").permitAll();// set logged user
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/TenniShip/SignUp").permitAll();
+
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/teams/Spain").permitAll();
+		// Tournament
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/RegisterMatch/Tournament/{tournament}")
+				.hasAnyRole("USER");
+		http.authorizeRequests()
+				.antMatchers(HttpMethod.PUT, "/api/TenniShip/RegisterMatch/Tournament/{tournament}/Submission")
+				.hasAnyRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/RegisterMatch/Tournament")
+				.hasAnyRole("USER");
+
+		// Creator
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/TenniShip/Creator").hasAnyRole("USER", "ADMIN");
 		
-		//Tournament
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/RegisterMatch/Tournament/{tournament}").hasAnyRole("USER");	
-        http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/TenniShip/RegisterMatch/Tournament/{tournament}/Submission").hasAnyRole("USER");
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/RegisterMatch/Tournament").hasAnyRole("USER");
-        
-        //Creator
-        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/TenniShip/Creator").hasAnyRole("USER","ADMIN");
-        
-        //http.authorizeRequests().antMatchers(HttpMethod.DELETE, "").hasAnyRole("ADMIN");
+		// http.authorizeRequests().antMatchers(HttpMethod.DELETE, "").hasAnyRole("ADMIN");
 
 		// Use HTTP basic authentication
 		http.httpBasic();
 
-        // Disable CSRF
-        http.csrf().disable();     
-    }
+		// Disable CSRF
+		http.csrf().disable();
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider);
+		// Do not redirect when logout
+		http.logout().logoutSuccessHandler((rq, rs, a) -> { });
+		
+		// Use HTTP basic authentication
+		http.httpBasic();
+	}
 
-    }
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.authenticationProvider(authenticationProvider);
+
+	}
 }

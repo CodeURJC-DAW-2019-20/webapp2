@@ -92,29 +92,29 @@ public class TournamentRestController {
 	
 	
 	@GetMapping("/TenniShip/RegisterMatch/Tournament")
-	public ResponseEntity<String> selectTournament() {
+	public ResponseEntity<List<Tournament>> selectTournament() {
 		if (userComponent.isLoggedUser()) {
 			String team = userComponent.getTeam();
 			Optional<Team> t = teamRepository.findById(team);
 
-			return new ResponseEntity<>("d", HttpStatus.OK);
+			return new ResponseEntity<>(teamRepository.getTournaments(t.get()), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}
 	}
 	
-	public static class selectMatchAuxiliarClass {
+	public static class SelectMatchAuxiliarClass {
 		String round;
 		List<Match> matches = new ArrayList<>();
 		
-		public selectMatchAuxiliarClass(String round, List<Match> matches) {
+		public SelectMatchAuxiliarClass(String round, List<Match> matches) {
 			this.round = round;
 			this.matches = matches;
 		}
 	}
 	
 	@GetMapping("/TenniShip/RegisterMatch/Tournament/{tournament}")
-	public ResponseEntity<selectMatchAuxiliarClass> selectMatch(@PathVariable String tournament) {
+	public ResponseEntity<SelectMatchAuxiliarClass> selectMatch(@PathVariable String tournament) {
 
 		Optional<Tournament> t = tournamentRepository.findById(tournament);// check if that team play this tournament
 
@@ -124,7 +124,7 @@ public class TournamentRestController {
 			Optional<Team> tm = teamRepository.findById(team);
 
 			if (!(tournamentRepository.getNextMatches(t.get(), tm.get()).isEmpty())) {
-				selectMatchAuxiliarClass objectToReturn = new selectMatchAuxiliarClass(tournamentRepository.getNextMatches(t.get(), tm.get()).get(0).getStringType()
+				SelectMatchAuxiliarClass objectToReturn = new SelectMatchAuxiliarClass(tournamentRepository.getNextMatches(t.get(), tm.get()).get(0).getStringType()
 						, tournamentRepository.getNextMatches(t.get(), tm.get()));
 				return new ResponseEntity<>(objectToReturn, HttpStatus.OK);
 			}
