@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.practica.model.Match;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
@@ -104,15 +105,27 @@ public class TournamentRestController {
 	}
 	
 	public static class SelectMatchAuxiliarClass {
-		String round;
-		List<Match> matches = new ArrayList<>();
+		interface Basic{}
 		
+		@JsonView(Basic.class)
+		private String round;
+		
+		@JsonView(Basic.class)
+		private List<Match> matches = new ArrayList<>();
+		
+		public SelectMatchAuxiliarClass() {
+			
+		}
+
 		public SelectMatchAuxiliarClass(String round, List<Match> matches) {
 			this.round = round;
 			this.matches = matches;
 		}
 	}
 	
+	interface selectMatch extends  Match.Basic, SelectMatchAuxiliarClass.Basic, Team.Basic, Tournament.Basic {}
+	
+	@JsonView(selectMatch.class)
 	@GetMapping("/TenniShip/RegisterMatch/Tournament/{tournament}")
 	public ResponseEntity<SelectMatchAuxiliarClass> selectMatch(@PathVariable String tournament) {
 
