@@ -56,22 +56,22 @@ public class UserController {
 		boolean canContinue = true;
 
 		// User
-		User userExist = userRepository.findByUserName(user.getUserName());
+		Optional<User> userExist = userRepository.findByUserName(user.getUserName());
 
-		boolean userNameAlready = (userExist != null);
+		boolean userNameAlready = userExist.isPresent();
 		boolean userEmpty = user.getUserName().isEmpty();
 		boolean userReady = !(userNameAlready || userEmpty);
 		model.addAttribute("userNameAlreadyExist", userNameAlready);
 		model.addAttribute("userNameEmpty", userEmpty);
 
 		// Email
-		User emailExist = userRepository.findByEmail(user.getEmail());
+		Optional<User> emailExist = userRepository.findByEmail(user.getEmail());
 
-		boolean emailAlready = (emailExist != null);
+		boolean emailAlready = emailExist.isPresent();
 		boolean emailEmpty = user.getEmail().isEmpty();
 		boolean emailGood = (user.getEmail().contains("@")) && (user.getEmail().length() > 10);
 		boolean emailReady = !(emailAlready || emailEmpty) && emailGood;
-		model.addAttribute("emailAlreadyExist", emailExist);
+		model.addAttribute("emailAlreadyExist", emailAlready);
 		model.addAttribute("emailEmpty", emailEmpty);
 		model.addAttribute("emailNotGood", !emailGood);
 

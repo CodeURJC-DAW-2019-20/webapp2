@@ -1,10 +1,12 @@
 package com.practica.security;
 
+import java.util.Optional;
+
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 
-	User findByUserName(String userName);
+	Optional<User> findByUserName(String userName);
 
-	User findByEmail(String email);
+	Optional<User> findByEmail(String email);
 }

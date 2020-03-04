@@ -25,7 +25,13 @@ class CSRFHandlerInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler,
 			final ModelAndView modelAndView) throws Exception {
 
-		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-		modelAndView.addObject("token", token.getToken());
+		if (modelAndView != null) {
+			CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+			if (token != null){
+				modelAndView.addObject("token", token.getToken());
+			} else {
+				modelAndView.addObject("token", "");
+			}
+		}
 	}
 }
