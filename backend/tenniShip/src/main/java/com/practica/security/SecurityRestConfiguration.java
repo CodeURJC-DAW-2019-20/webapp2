@@ -23,6 +23,7 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 		// User
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/SignIn").permitAll();// set logged user
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/TenniShip/SignUp").permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/Tournament/{tournament}").permitAll();
 
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/teams/Spain").permitAll();
 		// Tournament
@@ -37,7 +38,7 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 		// Creator
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/TenniShip/Creator").hasAnyRole("USER", "ADMIN");
 		
-		// http.authorizeRequests().antMatchers(HttpMethod.DELETE, "").hasAnyRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/TenniShip/Tournament/{tournament}/Deleted").hasAnyRole("ADMIN");
 
 		// Use HTTP basic authentication
 		http.httpBasic();
