@@ -66,12 +66,12 @@ public class TournamentRestController {
 		}
 	}
 
-	@GetMapping("/tournaments/{id}/image")
-	public ResponseEntity<Object> getTournamentImage(@PathVariable String id) throws IOException {
-		Optional<Tournament> tournament = tournamentRepository.findById(id);
+	@GetMapping("/TenniShip/Tournaments/{tournamentId}/image")
+	public ResponseEntity<Object> getTournamentImage(@PathVariable String tournamentId) throws IOException {
+		Optional<Tournament> tournament = tournamentRepository.findById(tournamentId);
 		if (tournament.isPresent()) {
 			if (tournament.get().hasImage()) {
-				return this.imgService.createResponseFromImage("tournaments", id);
+				return this.imgService.createResponseFromImage("tournaments", tournamentId);
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
@@ -79,6 +79,27 @@ public class TournamentRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+//	@GetMapping("/{teamId}/image/{npic}")
+//	public ResponseEntity<Object> getTeamImage(@PathVariable String teamId, @PathVariable String npic) throws IOException {
+//		/* nPic value is 0 for team pic, and 1-5 for players*/		
+//		Optional<Team> team = teamRepository.findById(teamId);
+//		if (team.isPresent()) {
+//			if (team.get().hasTeamImage()) {
+//				switch (npic) {
+//				case "0":
+//					return this.imgService.createResponseFromImage("teams", teamId);
+//
+//				default:
+//					return this.imgService.createResponseFromImage("players", teamId + "player" + npic);
+//				}
+//			} else {
+//				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//			}
+//		} else {
+//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//		}
+//	}
 
 	@GetMapping("/tournaments/{id}")
 	public ResponseEntity<Tournament> seeTournament(@PathVariable String id) {
