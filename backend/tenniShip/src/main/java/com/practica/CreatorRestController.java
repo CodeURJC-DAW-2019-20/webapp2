@@ -109,7 +109,7 @@ public class CreatorRestController {
 				creatorService.raffleTeamsCreateMatches(tournamentFinal, teamList);
 				CreatorAuxClassToReturn creatorAuxClassToReturn = new CreatorAuxClassToReturn(tournamentFinal,
 						teamList);
-				return new ResponseEntity<>(creatorAuxClassToReturn, HttpStatus.OK);
+				return new ResponseEntity<>(creatorAuxClassToReturn, HttpStatus.CREATED);
 			}
 
 		} else {
