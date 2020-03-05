@@ -1,6 +1,8 @@
 package com.practica;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.practica.model.Match;
+import com.practica.model.Player;
 import com.practica.model.Team;
+import com.practica.model.Tournament;
+import com.practica.security.UserComponent;
 
 @RestController
 @RequestMapping("/api/teams")
@@ -99,7 +106,8 @@ public class TeamRestController {
 			this.teamImage = team.hasTeamImage();
 			this.playerList = team.getPlayers();
 		}
-
+	}
+		
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Team newTeam(@RequestBody Team team) {
