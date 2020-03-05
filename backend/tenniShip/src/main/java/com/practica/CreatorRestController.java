@@ -120,10 +120,10 @@ public class CreatorRestController {
 	@PostMapping("/api/TenniShip/Tournament/{tournamentID}/image")
 	public ResponseEntity<Tournament> newTournamentImg(@PathVariable String tournamentID, @RequestParam MultipartFile imageFile)
 			throws IOException {
-		Optional<Tournament> tournament = tournamentRepository.findById(tournamentID);
+		Optional<Tournament> tournament = tournamentService.findById(tournamentID);
 		if (tournament.isPresent()) {
 			tournament.get().setImage(true);
-			tournamentRepository.save(tournament.get());
+			tournamentService.save(tournament.get());
 			imgService.saveImage("tournaments", tournament.get().getName(), imageFile);
 			return new ResponseEntity<>(HttpStatus.CREATED);
 		} else
