@@ -21,10 +21,9 @@ import com.practica.model.Match;
 import com.practica.model.Player;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
-import com.practica.security.UserComponent;
 
 @RestController
-@RequestMapping("/api/teams")
+@RequestMapping("/api/TenniShip")
 
 public class TeamRestController {
 
@@ -33,34 +32,6 @@ public class TeamRestController {
 
 	@Autowired
 	private ImageService imgService;
-
-	@Autowired
-	private UserComponent userComponent;
-
-//	@GetMapping("/{id}/image")
-//	public ResponseEntity<Object> getTeamImage(@PathVariable String id) throws IOException {
-//		Optional<Team> team = teamRepository.findById(id);
-//		if (team.isPresent()) {
-//			if (team.get().hasTeamImage()) {
-//				return this.imgService.createResponseFromImage("teams", id);
-//			} else {
-//				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//			}
-//		} else {
-//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//		}
-//	}
-//
-//	@GetMapping("/{id}")
-//	public ResponseEntity<Team> seeTeam(@PathVariable String id) {
-//
-//		Optional<Team> team = teamRepository.findById(id);
-//		if (team.isPresent()) {
-//			return new ResponseEntity<>(team.get(), HttpStatus.OK);
-//		} else {
-//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//		}
-//	}
 
 	public static class TeamFileData {
 
@@ -107,45 +78,28 @@ public class TeamRestController {
 			this.playerList = team.getPlayers();
 		}
 	}
-		
-	@PostMapping("/")
-	@ResponseStatus(HttpStatus.CREATED)
-	public Team newTeam(@RequestBody Team team) {
-		teamService.save(team);
-		return team;
+
+	@GetMapping("/Team/{teamID}/image/{npic}")
+	public ResponseEntity<Object> getTeamImage(@PathVariable String teamID, @PathVariable String npic)
+			throws IOException {
+		/* nPic value is 0 for team pic, and 1-5 for players */
+		Optional<Team> team = teamService.findById(teamID);
+		if (team.isPresent()) {
+			if (team.get().hasTeamImage()) {
+				switch (npic) {
+				case "0":
+					return this.imgService.createResponseFromImage("teams", teamID);
+
+				default:
+					return this.imgService.createResponseFromImage("players", teamID + "player" + npic);
+				}
+			} else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
-
-	@GetMapping("/{teamId}/image/{npic}")
-    	public ResponseEntity<Object> getTeamImage(@PathVariable String teamId, @PathVariable String npic) throws IOException {
-    		/* nPic value is 0 for team pic, and 1-5 for players*/
-    		Optional<Team> team = teamService.findById(teamId);
-    		if (team.isPresent()) {
-    			if (team.get().hasTeamImage()) {
-    				switch (npic) {
-    				case "0":
-    					return this.imgService.createResponseFromImage("teams", teamId);
-
-    				default:
-    					return this.imgService.createResponseFromImage("players", teamId + "player" + npic);
-    				}
-    			} else {
-    				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    			}
-    		} else {
-    			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    		}
-    	}
-
-    	@GetMapping("/{id}")
-        	public ResponseEntity<Team> seeTeam(@PathVariable String teamId) {
-
-        		Optional<Team> team = teamService.findById(teamId);
-        		if (team.isPresent()) {
-        			return new ResponseEntity<>(team.get(), HttpStatus.OK);
-        		} else {
-        			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        		}
-        	}
 
 	public static class listMatches {
 		public List<Match> listMatchesFinished = new ArrayList<>();
@@ -159,9 +113,9 @@ public class TeamRestController {
 	}
 
 	@JsonView(TeamDetails.class)
-	@GetMapping("/TenniShip/Team/{team}")
-	public ResponseEntity<TeamFileData> team(@PathVariable String team) {
-		Optional<Team> t = teamService.findById(team);
+	@GetMapping("/Team/{teamID}")
+	public ResponseEntity<TeamFileData> team(@PathVariable String teamID) {
+		Optional<Team> t = teamService.findById(teamID);
 
 		if (t.isPresent()) {
 
@@ -173,25 +127,25 @@ public class TeamRestController {
 		}
 	}
 
-	@GetMapping("/TenniShip/Team/{team}/ListMatches/{position}/{end}")
-	public ResponseEntity<listMatches> listTeams(@PathVariable String team, @PathVariable int position,
-			@PathVariable int end) {
-		Optional<Team> t = teamService.findById(team);
-
-		if (t.isPresent()) {
-			List<Match> matches = teamService.getRecentMatches(t.get());
-
-			end = Integer.min(matches.size(), end);
-			// This spot is prepared for the Ajax pagination for the matches...
-			// Dont know what to do here
-
-			listMatches listMatches = new listMatches(matches);
-			return new ResponseEntity<>(listMatches, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-
-	}
+//	@GetMapping("/{teamID}/ListMatches/{position}/{end}")
+//	public ResponseEntity<listMatches> listTeams(@PathVariable String teamID, @PathVariable int position,
+//			@PathVariable int end) {
+//		Optional<Team> t = teamService.findById(teamID);
+//
+//		if (t.isPresent()) {
+//			List<Match> matches = teamService.getRecentMatches(t.get());
+//
+//			end = Integer.min(matches.size(), end);
+//			// This spot is prepared for the Ajax pagination for the matches...
+//			// Dont know what to do here
+//
+//			listMatches listMatches = new listMatches(matches);
+//			return new ResponseEntity<>(listMatches, HttpStatus.OK);
+//		} else {
+//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//		}
+//
+//	}
 
 	public TeamFileData teamProfile(Team team) {
 

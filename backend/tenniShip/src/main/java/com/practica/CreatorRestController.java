@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,6 +25,7 @@ import com.practica.model.Tournament;
 import com.practica.security.UserComponent;
 
 @RestController
+@RequestMapping("/api/TenniShip")
 public class CreatorRestController {
 
 	@Autowired
@@ -85,7 +87,7 @@ public class CreatorRestController {
 	}
 
 	@JsonView(creator.class)
-	@PostMapping("/api/TenniShip/Creator")
+	@PostMapping("/Creator")
 	public ResponseEntity<CreatorAuxClassToReturn> createRest(@RequestBody CreatorAuxClass creatorAuxObject) {
 
 		if (userComponent.isLoggedUser()) {
@@ -117,7 +119,7 @@ public class CreatorRestController {
 		}
 	}
 	
-	@PostMapping("/api/TenniShip/Tournament/{tournamentID}/image")
+	@PostMapping("/Tournament/{tournamentID}/image")
 	public ResponseEntity<Tournament> newTournamentImg(@PathVariable String tournamentID, @RequestParam MultipartFile imageFile)
 			throws IOException {
 		Optional<Tournament> tournament = tournamentService.findById(tournamentID);

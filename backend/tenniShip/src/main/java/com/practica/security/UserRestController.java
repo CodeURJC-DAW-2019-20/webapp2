@@ -5,13 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +24,7 @@ import com.practica.model.Player;
 import com.practica.model.Team;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/TenniShip")
 public class UserRestController {
 
 	@Autowired
@@ -81,7 +78,7 @@ public class UserRestController {
 
 	}
 
-	@PostMapping("/TenniShip/SignUp")
+	@PostMapping("/SignUp")
 	public ResponseEntity<User> newUser(@RequestBody UserCreatedRest userWithTeam) {
 		if (userService.findByUserName(userWithTeam.getUserName()).isPresent()
 				|| userService.findByEmail(userWithTeam.getEmail()).isPresent() || userWithTeam.getEmail().isEmpty()
@@ -109,16 +106,17 @@ public class UserRestController {
 		MailSenderXX ms = (MailSenderXX) appContext.getBean("mailSenderXX");
 		ms.sendConfirmationEmail(userNew);
 
-		return new ResponseEntity<>(userNew, HttpStatus.OK);
+		return new ResponseEntity<>(userNew, HttpStatus.CREATED);
 	}
-	@PostMapping("/TenniShip/Team/{teamID}/image")
+	@PostMapping("/Team/{teamID}/image")
     	public ResponseEntity<Team> newTeamImg(@PathVariable String teamID, @RequestParam List<MultipartFile> imageFile)
     			throws IOException {
     		Optional<Team> team = teamService.findById(teamID);
     		if (team.isPresent()) {
     			team.get().setTeamImage(true);
     			teamService.save(team.get());
-    			imgService.saveImage("teams", team.get().getName(), imageFile.get(0));
+    			MultipartFile picture = imageFile.get(0);
+    			imgService.saveImage("teams", teamID, picture);
     			for (int i = 1; i < 6; i++) {
     				imgService.saveImage("players", team.get().getName() + String.format("Player%d", i), imageFile.get(i));
     			}

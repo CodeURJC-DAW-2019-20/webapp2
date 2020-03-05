@@ -28,7 +28,7 @@ import com.practica.model.Tournament;
 import com.practica.security.UserComponent;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/TenniShip")
 public class TournamentRestController {
 
 	@Autowired
@@ -46,33 +46,33 @@ public class TournamentRestController {
 	@Autowired
 	private MatchService matchService;
 
-	@PostMapping("/tournaments")
+	@PostMapping("/Tournament")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Tournament newTournament(@RequestBody Tournament tournament) {
 		tournamentService.save(tournament);
 		return tournament;
 	}
 
-	@PostMapping("/tournaments/{id}/image")
-	public ResponseEntity<Tournament> newTournamentImage(@PathVariable String id, @RequestParam MultipartFile imageFile)
-			throws IOException {
+//	@PostMapping("/Tournament/{tournamentID}/image")
+//	public ResponseEntity<Tournament> newTournamentImage(@PathVariable String tournamentID, @RequestParam MultipartFile imageFile)
+//			throws IOException {
+//
+//		Optional<Tournament> tournament = tournamentService.findById(tournamentID);
+//
+//		if (tournament.isPresent()) {
+//
+//			tournament.get().setImage(true);
+//			tournamentService.save(tournament.get());
+//
+//			imgService.saveImage("tournaments", tournament.get().getName(), imageFile);
+//			return new ResponseEntity<>(HttpStatus.CREATED);
+//
+//		} else {
+//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//		}
+//	}
 
-		Optional<Tournament> tournament = tournamentService.findById(id);
-
-		if (tournament.isPresent()) {
-
-			tournament.get().setImage(true);
-			tournamentService.save(tournament.get());
-
-			imgService.saveImage("tournaments", tournament.get().getName(), imageFile);
-			return new ResponseEntity<>(HttpStatus.CREATED);
-
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
-
-	@GetMapping("/TenniShip/Tournaments/{tournamentId}/image")
+	@GetMapping("/Tournament/{tournamentId}/image")
 	public ResponseEntity<Object> getTournamentImage(@PathVariable String tournamentId) throws IOException {
 		Optional<Tournament> tournament = tournamentService.findById(tournamentId);
 		if (tournament.isPresent()) {
@@ -86,31 +86,10 @@ public class TournamentRestController {
 		}
 	}
 
-//	@GetMapping("/{teamId}/image/{npic}")
-//	public ResponseEntity<Object> getTeamImage(@PathVariable String teamId, @PathVariable String npic) throws IOException {
-//		/* nPic value is 0 for team pic, and 1-5 for players*/
-//		Optional<Team> team = teamRepository.findById(teamId);
-//		if (team.isPresent()) {
-//			if (team.get().hasTeamImage()) {
-//				switch (npic) {
-//				case "0":
-//					return this.imgService.createResponseFromImage("teams", teamId);
-//
-//				default:
-//					return this.imgService.createResponseFromImage("players", teamId + "player" + npic);
-//				}
-//			} else {
-//				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//			}
-//		} else {
-//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//		}
-//	}
+	@GetMapping("/Tournament/{tournamentId}")
+	public ResponseEntity<Tournament> seeTournament(@PathVariable String tournamentId) {
 
-	@GetMapping("/tournaments/{id}")
-	public ResponseEntity<Tournament> seeTournament(@PathVariable String id) {
-
-		Optional<Tournament> tournament = tournamentService.findById(id);
+		Optional<Tournament> tournament = tournamentService.findById(tournamentId);
 		if (tournament.isPresent()) {
 			return new ResponseEntity<>(tournament.get(), HttpStatus.OK);
 		} else {
@@ -118,7 +97,7 @@ public class TournamentRestController {
 		}
 	}
 
-	@GetMapping("/TenniShip/RegisterMatch/Tournament")
+	@GetMapping("/RegisterMatch/Tournament")
 	public ResponseEntity<List<Tournament>> selectTournament() {
 		if (userComponent.isLoggedUser()) {
 			String team = userComponent.getTeam();
@@ -162,7 +141,7 @@ public class TournamentRestController {
 	}
 
 	@JsonView(PutMatch.class)
-	@PutMapping("/TenniShip/RegisterMatch/Tournament/{tournament}/Submission")
+	@PutMapping("/RegisterMatch/Tournament/{tournament}/Submission")
 	public ResponseEntity<Match> submitMatch(@PathVariable String tournament,
 			@RequestBody RegisterNewMatchAuxiliarClass newMatch, HttpServletRequest request)
 			throws InterruptedException {
@@ -217,7 +196,7 @@ public class TournamentRestController {
 	}
 
 	@JsonView(selectMatch.class)
-	@GetMapping("/TenniShip/RegisterMatch/Tournament/{tournament}")
+	@GetMapping("/RegisterMatch/Tournament/{tournament}")
 	public ResponseEntity<SelectMatchAuxiliarClass> selectMatch(@PathVariable String tournament) {
 
 		Optional<Tournament> t = tournamentService.findById(tournament);// check if that team play this tournament
