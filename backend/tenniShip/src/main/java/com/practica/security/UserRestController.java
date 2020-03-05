@@ -32,9 +32,6 @@ public class UserRestController {
 	private ApplicationContext appContext;
 
 	@Autowired
-	private UserComponent userComponent;
-
-	@Autowired
 	private TeamRepository teamRepository;
 
 	public static class UserCreatedRest {
@@ -114,25 +111,5 @@ public class UserRestController {
 		ms.sendConfirmationEmail(userNew);
 
 		return new ResponseEntity<>(userNew, HttpStatus.OK);
-	}
-
-	@GetMapping("/TenniShip/SignIn")
-	public ResponseEntity<User> signIn() {
-		if (!userComponent.isLoggedUser()) {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-		} else {
-			User loggedUser = userComponent.getLoggedUser();
-			return new ResponseEntity<>(loggedUser, HttpStatus.OK);
-		}
-	}
-
-	@GetMapping("/TenniShip/logout")
-	public ResponseEntity<Boolean> logOut(HttpSession session) {
-		if (!userComponent.isLoggedUser()) {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-		} else {
-			session.invalidate();
-			return new ResponseEntity<>(true, HttpStatus.OK);
-		}
 	}
 }

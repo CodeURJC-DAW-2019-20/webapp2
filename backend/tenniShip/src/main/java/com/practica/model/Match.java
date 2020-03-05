@@ -8,7 +8,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.fasterxml.jackson.databind.introspect.TypeResolutionContext.Basic;
 
 @Entity
 @Table(name = "partido") // is needed in Spanish because of a data base conflict

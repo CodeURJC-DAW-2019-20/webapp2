@@ -20,11 +20,10 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.antMatcher("/api/**");
 
+		
 		// User
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/SignIn").permitAll();// set logged user
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/TenniShip/SignUp").permitAll();
-
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/teams/Spain").permitAll();
 		// Tournament
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/RegisterMatch/Tournament/{tournament}")
 				.hasAnyRole("USER");
@@ -48,8 +47,6 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 		// Do not redirect when logout
 		http.logout().logoutSuccessHandler((rq, rs, a) -> { });
 		
-		// Use HTTP basic authentication
-		http.httpBasic();
 	}
 
 	@Override
