@@ -116,19 +116,17 @@ public class UserRestController {
 		return new ResponseEntity<>(userNew, HttpStatus.OK);
 	}
 	
-	@PostMapping("/TenniShip/Team/{id}/image")
+	@PostMapping("/TenniShip/Team/{teamID}/image")
 	public ResponseEntity<Team> newTeamImg(@PathVariable String teamID, @RequestParam List<MultipartFile> imageFile)
 			throws IOException {
 		Optional<Team> team = teamRepository.findById(teamID);
-		if (team.isPresent()) {
-			
+		if (team.isPresent()) {			
 			team.get().setTeamImage(true);
 			teamRepository.save(team.get());
-			
 			imgService.saveImage("teams", team.get().getName(), imageFile.get(0));
-//			for (int i = 1; i < 6; i++) {
-//				imgService.saveImage("players", team.get().getName() + String.format("Player%d", i), imageFile.get(i));
-//			}
+			for (int i = 1; i < 6; i++) {
+				imgService.saveImage("players", team.get().getName() + String.format("Player%d", i), imageFile.get(i));
+			}
 			return new ResponseEntity<>(HttpStatus.CREATED);
 		} else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
