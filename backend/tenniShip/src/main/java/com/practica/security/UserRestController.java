@@ -1,18 +1,26 @@
 package com.practica.security;
 
+import java.io.IOException;
 import java.util.ArrayList;
-
 import java.util.List;
+import java.util.Optional;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.practica.ImageService;
 import com.practica.MailSenderXX;
 import com.practica.TeamService;
 import com.practica.model.Player;
@@ -30,6 +38,9 @@ public class UserRestController {
 
 	@Autowired
 	private TeamService teamService;
+
+	@Autowired
+	private ImageService imgService;
 
 	public static class UserCreatedRest {
 		private String userName;
@@ -92,15 +103,7 @@ public class UserRestController {
 		teamNew.getPlayers().add(new Player(userWithTeam.getPlayers().get(3)));
 		teamNew.getPlayers().add(new Player(userWithTeam.getPlayers().get(4)));
 
-		teamService.save(teamNew);// in the future put in the line after "teamNew.setTeamImage(true);"
-
-		// Saving team icon
-//			teamNew.setTeamImage(true);
-//			
-//			imgService.saveImage("teams", teamNew.getName(), imageFile.get(0));
-//			for (int i = 1; i < 6; i++) {
-//				imgService.saveImage("players", teamNew.getName() + String.format("Player%d", i), imageFile.get(i));
-//			}
+		teamService.save(teamNew);
 
 		// Sending Confirmation Mail
 		MailSenderXX ms = (MailSenderXX) appContext.getBean("mailSenderXX");
@@ -108,4 +111,19 @@ public class UserRestController {
 
 		return new ResponseEntity<>(userNew, HttpStatus.OK);
 	}
+	@PostMapping("/TenniShip/Team/{teamID}/image")
+    	public ResponseEntity<Team> newTeamImg(@PathVariable String teamID, @RequestParam List<MultipartFile> imageFile)
+    			throws IOException {
+    		Optional<Team> team = teamService.findById(teamID);
+    		if (team.isPresent()) {
+    			team.get().setTeamImage(true);
+    			teamService.save(team.get());
+    			imgService.saveImage("teams", team.get().getName(), imageFile.get(0));
+    			for (int i = 1; i < 6; i++) {
+    				imgService.saveImage("players", team.get().getName() + String.format("Player%d", i), imageFile.get(i));
+    			}
+    			return new ResponseEntity<>(HttpStatus.CREATED);
+    		} else
+    			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    	}
 }

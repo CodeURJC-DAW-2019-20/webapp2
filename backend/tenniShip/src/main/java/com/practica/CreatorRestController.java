@@ -1,5 +1,6 @@
 package com.practica;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -10,9 +11,12 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.practica.model.Team;
@@ -111,6 +115,19 @@ public class CreatorRestController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
+	}
+	
+	@PostMapping("/api/TenniShip/Tournament/{tournamentID}/image")
+	public ResponseEntity<Tournament> newTournamentImg(@PathVariable String tournamentID, @RequestParam MultipartFile imageFile)
+			throws IOException {
+		Optional<Tournament> tournament = tournamentRepository.findById(tournamentID);
+		if (tournament.isPresent()) {
+			tournament.get().setImage(true);
+			tournamentRepository.save(tournament.get());
+			imgService.saveImage("tournaments", tournament.get().getName(), imageFile);
+			return new ResponseEntity<>(HttpStatus.CREATED);
+		} else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 }
