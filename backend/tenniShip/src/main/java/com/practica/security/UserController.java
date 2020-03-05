@@ -20,8 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.practica.ImageService;
 import com.practica.MailSenderXX;
-import com.practica.TeamRepository;
-import com.practica.TournamentRepository;
+import com.practica.TeamService;
+import com.practica.TournamentService;
 import com.practica.model.Player;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
@@ -30,8 +30,8 @@ import com.practica.model.Tournament;
 public class UserController {
 
 	@Autowired
-	private UserRepository userRepository;
-
+	private UserService userService;
+	
 	@Autowired
 	private ImageService imgService;
 
@@ -42,10 +42,10 @@ public class UserController {
 	private UserComponent userComponent;
 
 	@Autowired
-	private TeamRepository teamRepository;
+	private TeamService teamService;
 
 	@Autowired
-	private TournamentRepository tournamentRepository;
+	private TournamentService tournamentService;
 
 	@PostMapping("/register")
 	public String newUser(Model model, @ModelAttribute("personUser") User user, @RequestParam String passwordCheck,
@@ -56,7 +56,7 @@ public class UserController {
 		boolean canContinue = true;
 
 		// User
-		Optional<User> userExist = userRepository.findByUserName(user.getUserName());
+		Optional<User> userExist = userService.findByUserName(user.getUserName());
 
 		boolean userNameAlready = userExist.isPresent();
 		boolean userEmpty = user.getUserName().isEmpty();
@@ -65,7 +65,7 @@ public class UserController {
 		model.addAttribute("userNameEmpty", userEmpty);
 
 		// Email
-		Optional<User> emailExist = userRepository.findByEmail(user.getEmail());
+		Optional<User> emailExist = userService.findByEmail(user.getEmail());
 
 		boolean emailAlready = emailExist.isPresent();
 		boolean emailEmpty = user.getEmail().isEmpty();
@@ -87,7 +87,7 @@ public class UserController {
 		model.addAttribute("passNotSame", !samePassword);
 
 		// Team
-		Optional<Team> teamExist = teamRepository.findById(user.getTeam());
+		Optional<Team> teamExist = teamService.findById(user.getTeam());
 
 		boolean teamAlready = (teamExist.isPresent());
 		boolean teamEmty = user.getTeam().isEmpty();
@@ -119,7 +119,7 @@ public class UserController {
 			List<String> l = new LinkedList<>();
 			l.add("ROLE_USER");
 			User userNew = new User(user.getUserName(), user.getTeam(), user.getEmail(), user.getPasswordHash(), l);
-			userRepository.save(userNew);
+			userService.save(userNew);
 
 			Team teamNew = new Team(user.getTeam());
 			teamNew.getPlayers().add(player1);
@@ -130,7 +130,7 @@ public class UserController {
 
 			// Saving team icon
 			teamNew.setTeamImage(true);
-			teamRepository.save(teamNew);
+			teamService.save(teamNew);
 			imgService.saveImage("teams", teamNew.getName(), imageFile.get(0));
 			for (int i = 1; i < 6; i++) {
 				imgService.saveImage("players", teamNew.getName() + String.format("Player%d", i), imageFile.get(i));
@@ -157,8 +157,8 @@ public class UserController {
 		}
 		model.addAttribute("registered", userComponent.isLoggedUser() && !request.isUserInRole("ADMIN"));
 		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
-		List<Tournament> allTournaments = tournamentRepository.getAllTournaments();
-		List<Team> allTeams = teamRepository.getAllTeams();
+		List<Tournament> allTournaments = tournamentService.getAllTournaments();
+		List<Team> allTeams = teamService.getAllTeams();
 		List<String> tournamentNames = new ArrayList<>();
 		List<String> teamNames = new ArrayList<>();
 		for (Tournament t : allTournaments) {

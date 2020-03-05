@@ -23,10 +23,10 @@ import com.practica.security.UserComponent;
 public class CreatorRestController {
 
 	@Autowired
-	private TeamRepository teamRepository;
+	private TeamService teamService;
 
 	@Autowired
-	private TournamentRepository tournamentRepository;
+	private TournamentService tournamentService;
 
 	@Autowired
 	private ImageService imgService;
@@ -64,7 +64,7 @@ public class CreatorRestController {
 
 		@JsonView(Basic.class)
 		private List<Team> teams;
-		
+
 		@SuppressWarnings("unused")
 		public CreatorAuxClassToReturn() {
 
@@ -86,12 +86,12 @@ public class CreatorRestController {
 
 		if (userComponent.isLoggedUser()) {
 
-			if (tournamentRepository.findById(creatorAuxObject.getTournamentName()).isPresent()) {
+			if (tournamentService.findById(creatorAuxObject.getTournamentName()).isPresent()) {
 				return new ResponseEntity<>(HttpStatus.CONFLICT);
 			} else {
 				Set<Team> teams = new HashSet<>();
 				for (int i = 1; i < 19; i++) {
-					Optional<Team> team = teamRepository.findById(creatorAuxObject.getTeams().get(i - 1));
+					Optional<Team> team = teamService.findById(creatorAuxObject.getTeams().get(i - 1));
 					if (team.isPresent()) { // A team is not accepted a team twice
 						teams.add(team.get());
 					} else {
@@ -99,7 +99,7 @@ public class CreatorRestController {
 					}
 				}
 				Tournament tournamentFinal = new Tournament(creatorAuxObject.getTournamentName());
-				tournamentRepository.save(tournamentFinal);
+				tournamentService.save(tournamentFinal);
 				List<Team> teamList = new ArrayList<>();
 				teamList = teams.stream().collect(Collectors.toList());
 				creatorService.raffleTeamsCreateMatches(tournamentFinal, teamList);

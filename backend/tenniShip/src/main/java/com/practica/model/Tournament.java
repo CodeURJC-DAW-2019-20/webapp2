@@ -8,8 +8,9 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 public class Tournament {
 
-	public interface Basic{}
-	
+	public interface Basic {
+	}
+
 	@JsonView(Basic.class)
 	@Id
 	private String name;

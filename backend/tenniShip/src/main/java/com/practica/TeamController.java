@@ -19,117 +19,118 @@ import com.practica.model.Player;
 import com.practica.model.Team;
 import com.practica.security.UserComponent;
 
-
 @Controller
 public class TeamController {
-	
+
 	@Autowired
-	private TeamRepository teamRepository;
-	
+	private TeamService teamService;
+
 	@Autowired
 	private UserComponent userComponent;
-	
+
 	@PostMapping("/TenniShip/SearchTeam")
 	public String searchTeam(Model model, @RequestParam String teamName) {
-		
-		Optional<Team> t = teamRepository.findById(teamName);
-		
+
+		Optional<Team> t = teamService.findById(teamName);
+
 		if (t.isPresent()) {
-			return "redirect:/TenniShip/Team/"+teamName;
+			return "redirect:/TenniShip/Team/" + teamName;
 		} else {
 			return "redirect:/TenniShip";
-		}	
-	} 
-	
+		}
+	}
+
 	@GetMapping("/TenniShip/Team/{team}")
 	public String team(Model model, @PathVariable String team, HttpServletRequest request) {
-		
-		Optional<Team> t = teamRepository.findById(team);
-		
-		if(userComponent.isLoggedUser()  && !request.isUserInRole("ADMIN")) {
+
+		Optional<Team> t = teamService.findById(team);
+
+		if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
 			String teamUser = userComponent.getTeam();
 			model.addAttribute("team", teamUser);
 		}
-		model.addAttribute("registered",userComponent.isLoggedUser() && !request.isUserInRole("ADMIN") );
+		model.addAttribute("registered", userComponent.isLoggedUser() && !request.isUserInRole("ADMIN"));
 		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
 
-        if (t.isPresent()) {	/* If there's a team with that name, we show them the team page */
-        	
-        	double totalMatchesLost = 0.0;
-    		double totalMatchesWon = 0.0;
-    		double totalMatches = 0.0;
-    		
-        	model.addAttribute("teamName", t.get().getName());
+		if (t.isPresent()) { /* If there's a team with that name, we show them the team page */
 
-            List <String> tournamentsList = teamRepository.getTournamentsName(t.get());
-            model.addAttribute("imageListTournaments",tournamentsList);
+			double totalMatchesLost = 0.0;
+			double totalMatchesWon = 0.0;
+			double totalMatches = 0.0;
 
-        	totalMatchesLost=teamRepository.getMatchesLost(t.get().getName());
-        	totalMatchesWon=teamRepository.getMatchesWon(t.get().getName());
-        	
-        	totalMatches=totalMatchesLost+totalMatchesWon;
-        	
-        	totalMatchesLost = (totalMatchesLost/totalMatches)*100;
-        	totalMatchesWon = (totalMatchesWon/totalMatches)*100;
-        	
-        	model.addAttribute("lostMatches",totalMatchesLost);        	
-        	model.addAttribute("wonMatches",totalMatchesWon);
+			model.addAttribute("teamName", t.get().getName());
 
-        	/* If either of these values is higher than 50, we need to indicate it to the html through a clause */
-        	if (totalMatchesLost >= 50) {
-        		model.addAttribute("over50lost", true);
+			List<String> tournamentsList = teamService.getTournamentsName(t.get());
+			model.addAttribute("imageListTournaments", tournamentsList);
+
+			totalMatchesLost = teamService.getMatchesLost(t.get().getName());
+			totalMatchesWon = teamService.getMatchesWon(t.get().getName());
+
+			totalMatches = totalMatchesLost + totalMatchesWon;
+
+			totalMatchesLost = (totalMatchesLost / totalMatches) * 100;
+			totalMatchesWon = (totalMatchesWon / totalMatches) * 100;
+
+			model.addAttribute("lostMatches", totalMatchesLost);
+			model.addAttribute("wonMatches", totalMatchesWon);
+
+			/*
+			 * If either of these values is higher than 50, we need to indicate it to the
+			 * html through a clause
+			 */
+			if (totalMatchesLost >= 50) {
+				model.addAttribute("over50lost", true);
 			}
 			if (totalMatchesWon >= 50) {
 				model.addAttribute("over50won", true);
 			}
-        	
-        	List<Player> players = t.get().getPlayers();
-        	for (int i = 0; i < 5; i++) {
-        		model.addAttribute(String.format("player%d", i), players.get(i).getName());
-        	}
 
-			List<Match> recentMatches = teamRepository.getRecentMatches(t.get());
+			List<Player> players = t.get().getPlayers();
+			for (int i = 0; i < 5; i++) {
+				model.addAttribute(String.format("player%d", i), players.get(i).getName());
+			}
+
+			List<Match> recentMatches = teamService.getRecentMatches(t.get());
 			if (!recentMatches.isEmpty()) {
 				model.addAttribute("matchHistory", true);
 				model.addAttribute("matchList", recentMatches);
 			}
 
 			return "teamfile";
-        }
-        else {
-        	model.addAttribute("teamName", team);
-        	List<Team> results = teamRepository.findSimilarTeams(team);
-        	if (!results.isEmpty()) {
-        		List<String> names = new ArrayList<>();
+		} else {
+			model.addAttribute("teamName", team);
+			List<Team> results = teamService.findSimilarTeams(team);
+			if (!results.isEmpty()) {
+				List<String> names = new ArrayList<>();
 				model.addAttribute("results", true);
 				for (Team i : results) {
 					names.add(i.getName());
 				}
 				model.addAttribute("resultsList", names);
 			}
-        	return "teamResults";
+			return "teamResults";
 		}
 
 	}
 
 	@GetMapping("/TenniShip/Team/{team}/ListMatches/{position}/{end}")
-	public String listTeams(Model model, HttpServletRequest request,  @PathVariable String team, @PathVariable int position,  @PathVariable int end) {
-			Optional<Team> t = teamRepository.findById(team);
+	public String listTeams(Model model, HttpServletRequest request, @PathVariable String team,
+			@PathVariable int position, @PathVariable int end) {
+		Optional<Team> t = teamService.findById(team);
 
-			if (t.isPresent()) {
-				List<Match> matches = teamRepository.getRecentMatches(t.get());
+		if (t.isPresent()) {
+			List<Match> matches = teamService.getRecentMatches(t.get());
 
-				end = Integer.min(matches.size(), end);
-				if (end == (matches.size())) {
-					model.addAttribute("finished", true);
-				}
-				matches = matches.subList(position, end);
-				model.addAttribute("matchList", matches);
-				return "matchesList";
+			end = Integer.min(matches.size(), end);
+			if (end == (matches.size())) {
+				model.addAttribute("finished", true);
 			}
-			else {
-				return "error";
-			}
+			matches = matches.subList(position, end);
+			model.addAttribute("matchList", matches);
+			return "matchesList";
+		} else {
+			return "error";
+		}
 
 	}
 

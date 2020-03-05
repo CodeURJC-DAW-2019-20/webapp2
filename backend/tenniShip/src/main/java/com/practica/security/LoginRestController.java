@@ -1,6 +1,5 @@
 package com.practica.security;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 @RestController
 public class LoginRestController {
@@ -22,7 +20,7 @@ public class LoginRestController {
 
 	@RequestMapping("/api/TenniShip/SignIn")
 	public ResponseEntity<User> logIn() {
-		
+
 		if (!userComponent.isLoggedUser()) {
 			log.info("Not user logged");
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);

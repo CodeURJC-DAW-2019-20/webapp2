@@ -35,15 +35,13 @@ import com.practica.security.UserComponent;
 public class TeamRestController {
 
 	@Autowired
-	private TeamRepository teamRepository;
+	private TeamService teamService;
 
 	@Autowired
 	private ImageService imgService;
 
 	@Autowired
 	private UserComponent userComponent;
-
-
 
 //	@GetMapping("/{id}/image")
 //	public ResponseEntity<Object> getTeamImage(@PathVariable String id) throws IOException {
@@ -71,33 +69,34 @@ public class TeamRestController {
 //	}
 
 	public static class TeamFileData {
-		
-		interface Basic{}
-		
+
+		interface Basic {
+		}
+
 		@JsonView(Basic.class)
 		private String teamName;
-		
+
 		@JsonView(Basic.class)
 		private List<String> imageListTournaments = new ArrayList<>();
-		
+
 		@JsonView(Basic.class)
 		private boolean teamImage;
-		
+
 		@JsonView(Basic.class)
 		private double percentageLostMatches;
-		
+
 		@JsonView(Basic.class)
 		private double percentageWonMatches;
-		
+
 		@JsonView(Basic.class)
 		private List<Player> playerList = new ArrayList<>();
-		
+
 		@JsonView(Basic.class)
-		private List<Match> matchesList = new ArrayList<>();		
-		
+		private List<Match> matchesList = new ArrayList<>();
 
 		public TeamFileData(String teamName, List<String> imageListTournaments, boolean teamImage,
-				double percentageLostMatches, double percentageWonMatches, List<Player> playerList, List<Match> matchesList) {
+				double percentageLostMatches, double percentageWonMatches, List<Player> playerList,
+				List<Match> matchesList) {
 
 			this.teamName = teamName;
 			this.imageListTournaments = imageListTournaments;
@@ -113,7 +112,7 @@ public class TeamRestController {
 			this.teamImage = team.hasTeamImage();
 			this.playerList = team.getPlayers();
 		}
-		
+
 	}
 
 	public static class listMatches {
@@ -124,18 +123,19 @@ public class TeamRestController {
 		}
 	}
 
-	interface TeamDetails extends TeamFileData.Basic,Match.Basic,Team.Basic,Tournament.Basic,Player.Basic{}
-	
+	interface TeamDetails extends TeamFileData.Basic, Match.Basic, Team.Basic, Tournament.Basic, Player.Basic {
+	}
+
 	@JsonView(TeamDetails.class)
 	@GetMapping("/TenniShip/Team/{team}")
 	public ResponseEntity<TeamFileData> team(@PathVariable String team) {
-		Optional<Team> t = teamRepository.findById(team);
+		Optional<Team> t = teamService.findById(team);
 
 		if (t.isPresent()) {
-			
-			TeamFileData teamfiledata = teamProfile(t.get());				
+
+			TeamFileData teamfiledata = teamProfile(t.get());
 			return new ResponseEntity<>(teamfiledata, HttpStatus.OK);
-			
+
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -145,10 +145,10 @@ public class TeamRestController {
 	@GetMapping("/TenniShip/Team/{team}/ListMatches/{position}/{end}")
 	public ResponseEntity<listMatches> listTeams(@PathVariable String team, @PathVariable int position,
 			@PathVariable int end) {
-		Optional<Team> t = teamRepository.findById(team);
+		Optional<Team> t = teamService.findById(team);
 
 		if (t.isPresent()) {
-			List<Match> matches = teamRepository.getRecentMatches(t.get());
+			List<Match> matches = teamService.getRecentMatches(t.get());
 
 			end = Integer.min(matches.size(), end);
 			// This spot is prepared for the Ajax pagination for the matches...
@@ -162,32 +162,28 @@ public class TeamRestController {
 
 	}
 
-	
 	public TeamFileData teamProfile(Team team) {
-		
-		
+
 		double percentageMatchesLost = 0.0;
 		double percentageMatchesWon = 0.0;
 		double totalMatches = 0.0;
 
-		
-		percentageMatchesLost = teamRepository.getMatchesLost(team.getName());
-		percentageMatchesWon = teamRepository.getMatchesWon(team.getName());
+		percentageMatchesLost = teamService.getMatchesLost(team.getName());
+		percentageMatchesWon = teamService.getMatchesWon(team.getName());
 
 		totalMatches = percentageMatchesLost + percentageMatchesWon;
 
 		percentageMatchesLost = (percentageMatchesLost / totalMatches) * 100;
 		percentageMatchesWon = (percentageMatchesWon / totalMatches) * 100;
-		
-		List<String> tournamentsList = teamRepository.getTournamentsName(team);
+
+		List<String> tournamentsList = teamService.getTournamentsName(team);
 
 		List<Player> players = team.getPlayers();
 
-		List<Match> recentMatches = teamRepository.getRecentMatches(team);
-		
-		
-		return new TeamFileData(team.getName(),tournamentsList,team.hasTeamImage(),
-				percentageMatchesLost,percentageMatchesWon,players,recentMatches);
+		List<Match> recentMatches = teamService.getRecentMatches(team);
+
+		return new TeamFileData(team.getName(), tournamentsList, team.hasTeamImage(), percentageMatchesLost,
+				percentageMatchesWon, players, recentMatches);
 	}
 
 }

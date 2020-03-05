@@ -13,15 +13,15 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 public class Team {
 
-	public interface Basic {}
-	
+	public interface Basic {
+	}
+
 	@JsonView(Basic.class)
 	@Id
 	private String teamName;
 
 	private boolean teamImage;
 
-	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Player> players = new ArrayList<>();
 

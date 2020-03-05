@@ -4,20 +4,17 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.practica.MailSenderXX;
-import com.practica.TeamRepository;
+import com.practica.TeamService;
 import com.practica.model.Player;
 import com.practica.model.Team;
 
@@ -26,13 +23,13 @@ import com.practica.model.Team;
 public class UserRestController {
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserService userService;
 
 	@Autowired
 	private ApplicationContext appContext;
 
 	@Autowired
-	private TeamRepository teamRepository;
+	private TeamService teamService;
 
 	public static class UserCreatedRest {
 		private String userName;
@@ -75,19 +72,18 @@ public class UserRestController {
 
 	@PostMapping("/TenniShip/SignUp")
 	public ResponseEntity<User> newUser(@RequestBody UserCreatedRest userWithTeam) {
-		if (userRepository.findByUserName(userWithTeam.getUserName()).isPresent()
-				|| userRepository.findByEmail(userWithTeam.getEmail()).isPresent() || userWithTeam.getEmail().isEmpty()
+		if (userService.findByUserName(userWithTeam.getUserName()).isPresent()
+				|| userService.findByEmail(userWithTeam.getEmail()).isPresent() || userWithTeam.getEmail().isEmpty()
 				|| userWithTeam.getPasswordHash().isEmpty()
-				|| teamRepository.findById(userWithTeam.getTeamName()).isPresent()
-				|| userWithTeam.getTeamName().isEmpty() || userWithTeam.getTeamName().isEmpty()
-				|| userWithTeam.getPlayers().size() != 5) {
+				|| teamService.findById(userWithTeam.getTeamName()).isPresent() || userWithTeam.getTeamName().isEmpty()
+				|| userWithTeam.getTeamName().isEmpty() || userWithTeam.getPlayers().size() != 5) {
 
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}
 
 		User userNew = new User(userWithTeam.getUserName(), userWithTeam.getTeamName(), userWithTeam.getEmail(),
 				userWithTeam.getPasswordHash(), userWithTeam.getRoles());
-		userRepository.save(userNew);
+		userService.save(userNew);
 
 		Team teamNew = new Team(userWithTeam.getTeamName());
 		teamNew.getPlayers().add(new Player(userWithTeam.getPlayers().get(0)));
@@ -96,7 +92,7 @@ public class UserRestController {
 		teamNew.getPlayers().add(new Player(userWithTeam.getPlayers().get(3)));
 		teamNew.getPlayers().add(new Player(userWithTeam.getPlayers().get(4)));
 
-		teamRepository.save(teamNew);// in the future put in the line after "teamNew.setTeamImage(true);"
+		teamService.save(teamNew);// in the future put in the line after "teamNew.setTeamImage(true);"
 
 		// Saving team icon
 //			teamNew.setTeamImage(true);

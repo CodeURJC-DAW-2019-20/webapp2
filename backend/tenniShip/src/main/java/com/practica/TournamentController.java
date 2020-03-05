@@ -23,13 +23,13 @@ import com.practica.model.Match;
 public class TournamentController {
 
 	@Autowired
-	private TournamentRepository tournamentRepository;
+	private TournamentService tournamentService;
 
 	@Autowired
-	private MatchRepository matchRepository;
+	private MatchService matchService;
 
 	@Autowired
-	private TeamRepository teamRepository;
+	private TeamService teamService;
 
 	@Autowired
 	private UserComponent userComponent;
@@ -40,16 +40,16 @@ public class TournamentController {
 			HttpServletRequest request) throws InterruptedException {
 
 		if (quantityHome == 3 ^ quantityAway == 3) { // XOR
-			Optional<Team> home = teamRepository.findById(teamHome);
-			Optional<Team> away = teamRepository.findById(teamAway);
-			Optional<Tournament> t = tournamentRepository.findById(tournament);
+			Optional<Team> home = teamService.findById(teamHome);
+			Optional<Team> away = teamService.findById(teamAway);
+			Optional<Tournament> t = tournamentService.findById(tournament);
 
-			Match match = matchRepository.findMatch(home.get(), away.get(), t.get()).get(0);
+			Match match = matchService.findMatch(home.get(), away.get(), t.get()).get(0);
 
-			matchRepository.getOne(match.getId()).setHomePoints(quantityHome);
-			matchRepository.getOne(match.getId()).setAwayPoints(quantityAway);
+			matchService.getOne(match.getId()).setHomePoints(quantityHome);
+			matchService.getOne(match.getId()).setAwayPoints(quantityAway);
 
-			matchRepository.save(match);
+			matchService.save(match);
 		} else {
 			model.addAttribute("errormsg", "Someone has to win");
 			model.addAttribute("goback", true);
@@ -62,24 +62,24 @@ public class TournamentController {
 	@GetMapping("/TenniShip/RegisterMatch/Tournament/{tournament}")
 	public String selectMatch(Model model, @PathVariable String tournament, HttpServletRequest request) {
 
-		Optional<Tournament> t = tournamentRepository.findById(tournament);// check if that team play this tournament
+		Optional<Tournament> t = tournamentService.findById(tournament);// check if that team play this tournament
 
-		if (t.isPresent() && tournamentRepository.getTeams(t.get())
-				.contains(teamRepository.findById(userComponent.getTeam()).get())) {
+		if (t.isPresent()
+				&& tournamentService.getTeams(t.get()).contains(teamService.findById(userComponent.getTeam()).get())) {
 			model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
 			String team = userComponent.getTeam();
 			model.addAttribute("team", team);
-			Optional<Team> tm = teamRepository.findById(team);
+			Optional<Team> tm = teamService.findById(team);
 
-			if (tournamentRepository.getNextMatches(t.get(), tm.get()).isEmpty()) {
-				model.addAttribute("round", "See the tournament progress to check if your team has to play more games!");
+			if (tournamentService.getNextMatches(t.get(), tm.get()).isEmpty()) {
+				model.addAttribute("round",
+						"See the tournament progress to check if your team has to play more games!");
 				model.addAttribute("allPlayed", true);
 				model.addAttribute("tournamentName", t.get().getName());
 			} else {
-				model.addAttribute("round",
-						tournamentRepository.getNextMatches(t.get(), tm.get()).get(0).getStringType());
+				model.addAttribute("round", tournamentService.getNextMatches(t.get(), tm.get()).get(0).getStringType());
 			}
-			model.addAttribute("listMatches", tournamentRepository.getNextMatches(t.get(), tm.get()));
+			model.addAttribute("listMatches", tournamentService.getNextMatches(t.get(), tm.get()));
 			return "registerMatch";
 		} else {
 			model.addAttribute("errormsg",
@@ -92,10 +92,10 @@ public class TournamentController {
 	public String selectTournament(Model model, HttpServletRequest request) {
 		if (userComponent.isLoggedUser()) {
 			String team = userComponent.getTeam();
-			Optional<Team> t = teamRepository.findById(team);
+			Optional<Team> t = teamService.findById(team);
 
 			model.addAttribute("team", team);
-			model.addAttribute("listTournaments", teamRepository.getTournaments(t.get()));
+			model.addAttribute("listTournaments", teamService.getTournaments(t.get()));
 
 			return "selectTournament";
 		} else {
@@ -104,13 +104,14 @@ public class TournamentController {
 	}
 
 	@GetMapping("/TenniShip/RegisterMatch/Tournament/ListTournament/{position}/{end}")
-	public String listTournament(Model model, HttpServletRequest request,  @PathVariable int position,  @PathVariable int end) {
-		if(userComponent.isLoggedUser()) {
+	public String listTournament(Model model, HttpServletRequest request, @PathVariable int position,
+			@PathVariable int end) {
+		if (userComponent.isLoggedUser()) {
 			String team = userComponent.getTeam();
-			Optional<Team> t = teamRepository.findById(team);
+			Optional<Team> t = teamService.findById(team);
 
-			List<Tournament> tournaments = teamRepository.getTournaments(t.get());
-			end = Integer.min(tournaments.size(),end);
+			List<Tournament> tournaments = teamService.getTournaments(t.get());
+			end = Integer.min(tournaments.size(), end);
 			if (end == (tournaments.size())) {
 				model.addAttribute("finished", true);
 			}
@@ -121,10 +122,8 @@ public class TournamentController {
 			}
 			model.addAttribute("listTournaments", tourNames);
 
-
 			return "listTournaments";
-		}
-		else {
+		} else {
 			return "error";
 		}
 	}

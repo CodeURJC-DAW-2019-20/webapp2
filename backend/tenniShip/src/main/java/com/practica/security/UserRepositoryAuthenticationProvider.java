@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 public class UserRepositoryAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserService userService;
 
 	@Autowired
 	private UserComponent userComponent;
@@ -27,7 +27,7 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 	@Override
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
 
-		Optional<User> user = userRepository.findByUserName(auth.getName());
+		Optional<User> user = userService.findByUserName(auth.getName());
 		if (!(user.isPresent())) {
 			throw new BadCredentialsException("User not found");
 		}

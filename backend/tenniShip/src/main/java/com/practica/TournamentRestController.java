@@ -29,10 +29,10 @@ import com.practica.security.UserComponent;
 public class TournamentRestController {
 
 	@Autowired
-	private TournamentRepository tournamentRepository;
+	private TournamentService tournamentService;
 	
 	@Autowired
-	private TeamRepository teamRepository;
+	private TeamService teamService;
 
 	@Autowired
 	private ImageService imgService;
@@ -43,7 +43,7 @@ public class TournamentRestController {
 	@PostMapping("/tournaments")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Tournament newTournament(@RequestBody Tournament tournament) {
-		tournamentRepository.save(tournament);
+		tournamentService.save(tournament);
 		return tournament;
 	}
 
@@ -51,12 +51,12 @@ public class TournamentRestController {
 	public ResponseEntity<Tournament> newTournamentImage(@PathVariable String id, @RequestParam MultipartFile imageFile)
 			throws IOException {
 
-		Optional<Tournament> tournament = tournamentRepository.findById(id);
+		Optional<Tournament> tournament = tournamentService.findById(id);
 
 		if (tournament.isPresent()) {
 
 			tournament.get().setImage(true);
-			tournamentRepository.save(tournament.get());
+			tournamentService.save(tournament.get());
 
 			imgService.saveImage("tournaments", tournament.get().getName(), imageFile);
 			return new ResponseEntity<>(HttpStatus.CREATED);
@@ -68,7 +68,7 @@ public class TournamentRestController {
 
 	@GetMapping("/tournaments/{id}/image")
 	public ResponseEntity<Object> getTournamentImage(@PathVariable String id) throws IOException {
-		Optional<Tournament> tournament = tournamentRepository.findById(id);
+		Optional<Tournament> tournament = tournamentService.findById(id);
 		if (tournament.isPresent()) {
 			if (tournament.get().hasImage()) {
 				return this.imgService.createResponseFromImage("tournaments", id);
@@ -83,7 +83,7 @@ public class TournamentRestController {
 	@GetMapping("/tournaments/{id}")
 	public ResponseEntity<Tournament> seeTournament(@PathVariable String id) {
 
-		Optional<Tournament> tournament = tournamentRepository.findById(id);
+		Optional<Tournament> tournament = tournamentService.findById(id);
 		if (tournament.isPresent()) {
 			return new ResponseEntity<>(tournament.get(), HttpStatus.OK);
 		} else {
@@ -96,9 +96,9 @@ public class TournamentRestController {
 	public ResponseEntity<List<Tournament>> selectTournament() {
 		if (userComponent.isLoggedUser()) {
 			String team = userComponent.getTeam();
-			Optional<Team> t = teamRepository.findById(team);
+			Optional<Team> t = teamService.findById(team);
 
-			return new ResponseEntity<>(teamRepository.getTournaments(t.get()), HttpStatus.OK);
+			return new ResponseEntity<>(teamService.getTournaments(t.get()), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}
@@ -129,16 +129,16 @@ public class TournamentRestController {
 	@GetMapping("/TenniShip/RegisterMatch/Tournament/{tournament}")
 	public ResponseEntity<SelectMatchAuxiliarClass> selectMatch(@PathVariable String tournament) {
 
-		Optional<Tournament> t = tournamentRepository.findById(tournament);// check if that team play this tournament
+		Optional<Tournament> t = tournamentService.findById(tournament);// check if that team play this tournament
 
-		if (t.isPresent() && userComponent.isLoggedUser() && tournamentRepository.getTeams(t.get())
-				.contains(teamRepository.findById(userComponent.getTeam()).get())) {
+		if (t.isPresent() && userComponent.isLoggedUser() && tournamentService.getTeams(t.get())
+				.contains(teamService.findById(userComponent.getTeam()).get())) {
 			String team = userComponent.getTeam();
-			Optional<Team> tm = teamRepository.findById(team);
+			Optional<Team> tm = teamService.findById(team);
 
-			if (!(tournamentRepository.getNextMatches(t.get(), tm.get()).isEmpty())) {
-				SelectMatchAuxiliarClass objectToReturn = new SelectMatchAuxiliarClass(tournamentRepository.getNextMatches(t.get(), tm.get()).get(0).getStringType()
-						, tournamentRepository.getNextMatches(t.get(), tm.get()));
+			if (!(tournamentService.getNextMatches(t.get(), tm.get()).isEmpty())) {
+				SelectMatchAuxiliarClass objectToReturn = new SelectMatchAuxiliarClass(tournamentService.getNextMatches(t.get(), tm.get()).get(0).getStringType()
+						, tournamentService.getNextMatches(t.get(), tm.get()));
 				return new ResponseEntity<>(objectToReturn, HttpStatus.OK);
 			}
 		}

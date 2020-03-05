@@ -10,8 +10,9 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 public class Player {
 
-	public interface Basic{}
-	
+	public interface Basic {
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;

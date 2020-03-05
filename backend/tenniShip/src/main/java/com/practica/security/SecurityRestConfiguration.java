@@ -20,7 +20,6 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.antMatcher("/api/**");
 
-		
 		// User
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/SignIn").permitAll();// set logged user
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/TenniShip/SignUp").permitAll();
@@ -37,8 +36,9 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 
 		// Creator
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/TenniShip/Creator").hasAnyRole("USER", "ADMIN");
-		
-		// http.authorizeRequests().antMatchers(HttpMethod.DELETE, "").hasAnyRole("ADMIN");
+
+		// http.authorizeRequests().antMatchers(HttpMethod.DELETE,
+		// "").hasAnyRole("ADMIN");
 
 		// Use HTTP basic authentication
 		http.httpBasic();
@@ -47,8 +47,9 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 
 		// Do not redirect when logout
-		http.logout().logoutSuccessHandler((rq, rs, a) -> { });
-		
+		http.logout().logoutSuccessHandler((rq, rs, a) -> {
+		});
+
 	}
 
 	@Override
