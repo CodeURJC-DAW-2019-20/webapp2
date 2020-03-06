@@ -18,11 +18,12 @@ public class MailSenderXX {
 		msg.setTo(user.getEmail());
 		msg.setSubject("Register Confirmation e-Mail");
 		String msgBody = "Welcome to TenniShip!\nYou successfully registered " + user.getTeam()
-				+ " as a team.\nThese are your credentials:\nUser: " + user.getUserName() + "\nPassword: "
-				+ user.getPasswordHash() + "\n\nIf you have any issue, please contact to tennishipSpring@gmail.com.";
+				+ " as a team.\nThese is your user name, use it for sign in:\nUser: " + user.getUserName() +
+				"\n\nIf you have any issue, please contact to tennishipSpring@gmail.com.";
 		msg.setText(msgBody);
 
 		javaMailSender.send(msg);
 	}
+
 
 }
