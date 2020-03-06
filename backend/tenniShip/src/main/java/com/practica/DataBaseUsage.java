@@ -7,12 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 
+import com.practica.match.MatchRepository;
 import com.practica.model.Match;
 import com.practica.model.Player;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
 import com.practica.security.User;
 import com.practica.security.UserRepository;
+import com.practica.team.TeamRepository;
+import com.practica.tournament.TournamentRepository;
 
 @Controller
 public class DataBaseUsage implements CommandLineRunner {

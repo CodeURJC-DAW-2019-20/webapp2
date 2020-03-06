@@ -1,10 +1,15 @@
-package com.practica;
+package com.practica.tournamentsheet;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.practica.match.MatchService;
 import com.practica.model.Match;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
 import com.practica.security.UserComponent;
+import com.practica.team.TeamService;
+import com.practica.tournament.TournamentRestController;
+import com.practica.tournament.TournamentService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/TenniShip")
 public class TournamentSheetRestController {
 
 	@Autowired
@@ -32,7 +37,7 @@ public class TournamentSheetRestController {
 	static int j;
 
 	@JsonView(TournamentRestController.PutMatch.class)
-	@PutMapping("/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}/Submission")
+	@PutMapping("/ADMIN/Tournament/{tournament}/EditMatches/{group}/Submission")
 	public ResponseEntity<Match> submitMatchEdited(@PathVariable String tournament, @RequestBody Match newMatch,
 			@PathVariable String group, HttpServletRequest request) {
 
@@ -64,7 +69,7 @@ public class TournamentSheetRestController {
 	}
 
 	@JsonView(EditMatch.class)
-	@GetMapping("/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}")
+	@GetMapping("/ADMIN/Tournament/{tournament}/EditMatches/{group}")
 	public ResponseEntity<AuxEdit> editMatches(@PathVariable String tournament, @PathVariable String group,
 			HttpServletRequest request) {
 		if (userComponent.isLoggedUser() && request.isUserInRole("ADMIN")) {
@@ -80,7 +85,7 @@ public class TournamentSheetRestController {
 		}
 	}
 
-	@DeleteMapping("/TenniShip/ADMIN/Tournament/{tournament}/Deleted")
+	@DeleteMapping("/ADMIN/Tournament/{tournament}/Deleted")
 	public ResponseEntity<Tournament> deleteTournament(@PathVariable String tournament, HttpServletRequest request) {
 
 		if (userComponent.isLoggedUser() && request.isUserInRole("ADMIN")) {
@@ -144,6 +149,7 @@ public class TournamentSheetRestController {
 		@JsonView(Basic.class)
 		private double completion;
 
+		@SuppressWarnings("unused")
 		public TournamentSheetToReturn() {
 
 		}
@@ -167,7 +173,7 @@ public class TournamentSheetRestController {
 	}
 
 	@JsonView(tournamentSheet.class)
-	@GetMapping("/TenniShip/Tournament/{tournament}")
+	@GetMapping("/Tournament/{tournament}")
 	public ResponseEntity<TournamentSheetToReturn> tournament(@PathVariable String tournament,
 			HttpServletRequest request) {
 

@@ -1,4 +1,4 @@
-package com.practica;
+package com.practica.team;
 
 import java.util.List;
 

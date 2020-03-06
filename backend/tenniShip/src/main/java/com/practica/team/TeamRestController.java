@@ -1,4 +1,4 @@
-package com.practica;
+package com.practica.team;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.practica.ImageService;
 import com.practica.model.Match;
 import com.practica.model.Player;
 import com.practica.model.Team;

@@ -1,4 +1,4 @@
-package com.practica;
+package com.practica.match;
 
 import java.util.List;
 

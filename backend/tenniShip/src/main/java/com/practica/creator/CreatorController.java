@@ -1,4 +1,4 @@
-package com.practica;
+package com.practica.creator;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.practica.ImageService;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
 import com.practica.security.UserComponent;
+import com.practica.team.TeamService;
+import com.practica.tournament.TournamentService;
 
 @Controller
 public class CreatorController {

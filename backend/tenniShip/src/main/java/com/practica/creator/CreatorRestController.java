@@ -1,4 +1,4 @@
-package com.practica;
+package com.practica.creator;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,9 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.practica.ImageService;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
 import com.practica.security.UserComponent;
+import com.practica.team.TeamService;
+import com.practica.tournament.TournamentService;
 
 @RestController
 @RequestMapping("/api/TenniShip")

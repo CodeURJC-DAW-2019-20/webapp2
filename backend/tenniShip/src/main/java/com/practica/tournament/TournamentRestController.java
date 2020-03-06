@@ -1,4 +1,4 @@
-package com.practica;
+package com.practica.tournament;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,10 +21,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.practica.ImageService;
 import com.practica.model.Match;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
 import com.practica.security.UserComponent;
+import com.practica.team.TeamService;
 
 @RestController
 @RequestMapping("/api/TenniShip")
@@ -72,7 +74,7 @@ public class TournamentRestController {
 		}
 	}
 
-	interface PutMatch extends Match.Basic, Team.Basic, Tournament.Basic {
+	public interface PutMatch extends Match.Basic, Team.Basic, Tournament.Basic {
 	}
 
 

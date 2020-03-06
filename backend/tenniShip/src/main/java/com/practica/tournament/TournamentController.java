@@ -1,4 +1,4 @@
-package com.practica;
+package com.practica.tournament;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
 import com.practica.security.UserComponent;
+import com.practica.team.TeamService;
+import com.practica.match.MatchService;
 import com.practica.model.Match;
 
 @Controller

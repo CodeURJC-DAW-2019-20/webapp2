@@ -1,4 +1,4 @@
-package com.practica;
+package com.practica.tournamentsheet;
 
 
 
@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
 import com.practica.security.UserComponent;
+import com.practica.team.TeamService;
+import com.practica.tournament.TournamentService;
+import com.practica.match.MatchService;
 import com.practica.model.Match;
 
 @Controller

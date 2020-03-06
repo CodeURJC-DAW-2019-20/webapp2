@@ -1,4 +1,4 @@
-package com.practica;
+package com.practica.tournament;
 
 import java.util.List;
 

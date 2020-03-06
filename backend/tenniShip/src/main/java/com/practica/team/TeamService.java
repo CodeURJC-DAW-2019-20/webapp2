@@ -1,4 +1,4 @@
-package com.practica;
+package com.practica.team;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,7 @@ import com.practica.model.Match;
 import com.practica.model.Player;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
-
-import com.practica.TeamRestController.TeamFileData;
+import com.practica.team.TeamRestController.TeamFileData;
 
 @Service
 public class TeamService {
