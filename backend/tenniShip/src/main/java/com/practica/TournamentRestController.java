@@ -55,7 +55,7 @@ public class TournamentRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-
+	//https://localhost:8443/api/TenniShip/RegisterMatch/Tournament/?NumberOfTournamentsDisplayed=3
 	@GetMapping("/RegisterMatch/Tournament")
 	public ResponseEntity<List<Tournament>> selectTournament(HttpServletRequest request, Pageable page, @RequestParam("NumberOfTournamentsDisplayed") int end ) {
 		if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
@@ -82,7 +82,7 @@ public class TournamentRestController {
 			HttpServletRequest request) throws InterruptedException {
 
 		if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
-			return tournamentService.putTheMatch(tournament, newMatch);
+			return tournamentService.putTheMatch(tournament, newMatch,false);
 		} else
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 	}

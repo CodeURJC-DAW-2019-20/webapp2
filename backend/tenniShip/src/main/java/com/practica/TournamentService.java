@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.practica.model.Match;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
-import com.practica.security.UserComponent;
 
 @Service
 public class TournamentService {
@@ -77,12 +76,12 @@ public class TournamentService {
 		return tournamentRepository.findSimilarTournaments(tournament);
 	}
 
-	public ResponseEntity<Match> putTheMatch(String tournament, Match newMatch) {
-		Optional<Tournament> t = tournamentRepository.findById(tournament);
+	public ResponseEntity<Match> putTheMatch(String tournament, Match newMatch, boolean isAdmin) {
+		Optional<Tournament> t = findById(tournament);
 		Optional<Team> home = teamService.findById(newMatch.getTeam1().getName());
 		Optional<Team> away = teamService.findById(newMatch.getTeam2().getName());
 		if (t.isPresent() && home.isPresent() && away.isPresent()) {
-			if (tournamentRepository.getTeams(t.get()).contains(teamService.findById(userComponent.getTeam()).get())) {
+			if (isAdmin || getTeams(t.get()).contains(teamService.findById(userComponent.getTeam()).get())) {
 				if (newMatch.getHomePoints() == 3 ^ newMatch.getAwayPoints() == 3) { // XOR
 					Match match = matchService.findMatch(home.get(), away.get(), t.get()).get(0);
 					if (match != null) {
