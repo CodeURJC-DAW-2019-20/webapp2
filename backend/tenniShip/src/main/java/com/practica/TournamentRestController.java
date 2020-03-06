@@ -75,6 +75,7 @@ public class TournamentRestController {
 	interface PutMatch extends Match.Basic, Team.Basic, Tournament.Basic {
 	}
 
+
 	@JsonView(PutMatch.class)
 	@PutMapping("/RegisterMatch/Tournament/{tournament}/Submission")
 	public ResponseEntity<Match> submitMatch(@PathVariable String tournament, @RequestBody Match newMatch,
