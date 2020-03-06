@@ -9,20 +9,19 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.fasterxml.jackson.databind.introspect.TypeResolutionContext.Basic;
 
 @Entity
 public class Team {
 
-	public interface Basic {}
-	
+	public interface Basic {
+	}
+
 	@JsonView(Basic.class)
 	@Id
 	private String teamName;
 
 	private boolean teamImage;
 
-	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Player> players = new ArrayList<>();
 

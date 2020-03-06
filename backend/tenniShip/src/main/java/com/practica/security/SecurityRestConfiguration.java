@@ -23,11 +23,10 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 		// User
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/SignIn").permitAll();// set logged user
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/TenniShip/SignUp").permitAll();
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/Tournament/{tournament}").permitAll();
 
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/teams/Spain").permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/Team/**").permitAll();
 		// Tournament
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/RegisterMatch/Tournament/{tournament}")
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/RegisterMatch/Tournament/**")
 				.hasAnyRole("USER");
 		http.authorizeRequests()
 				.antMatchers(HttpMethod.PUT, "/api/TenniShip/RegisterMatch/Tournament/{tournament}/Submission")
@@ -37,8 +36,9 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 
 		// Creator
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/TenniShip/Creator").hasAnyRole("USER", "ADMIN");
-		
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/TenniShip/Tournament/{tournament}/Deleted").hasAnyRole("ADMIN");
+
+		// http.authorizeRequests().antMatchers(HttpMethod.DELETE,
+		// "").hasAnyRole("ADMIN");
 
 		// Use HTTP basic authentication
 		http.httpBasic();
@@ -47,10 +47,9 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 
 		// Do not redirect when logout
-		http.logout().logoutSuccessHandler((rq, rs, a) -> { });
-		
-		// Use HTTP basic authentication
-		http.httpBasic();
+		http.logout().logoutSuccessHandler((rq, rs, a) -> {
+		});
+
 	}
 
 	@Override

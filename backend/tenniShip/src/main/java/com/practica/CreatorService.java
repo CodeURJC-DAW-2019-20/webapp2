@@ -12,10 +12,10 @@ import com.practica.model.Tournament;
 
 @Service
 public class CreatorService {
-	
+
 	@Autowired
 	private MatchRepository matchRepository;
-		
+
 	public void raffleTeamsCreateMatches(Tournament tournament, List<Team> teams) {
 
 		Collections.shuffle(teams);

@@ -2,7 +2,6 @@ package com.practica;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.practica.model.Match;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
 import com.practica.security.UserComponent;
@@ -26,17 +24,16 @@ import com.practica.security.UserComponent;
 public class CreatorController {
 
 	@Autowired
-	private TeamRepository teamRepository;
+	private TeamService teamService;
 
 	@Autowired
-	private TournamentRepository tournamentRepository;
-
+	private TournamentService tournamentService;
 	@Autowired
 	private ImageService imgService;
 
 	@Autowired
 	private UserComponent userComponent;
-	
+
 	@Autowired
 	private CreatorService creatorService;
 
@@ -55,7 +52,7 @@ public class CreatorController {
 			model.addAttribute("team", teamUser);
 		}
 
-		Optional<Tournament> tourExist = tournamentRepository.findById(tour.getName());
+		Optional<Tournament> tourExist = tournamentService.findById(tour.getName());
 		boolean tournamenAlreadyExist = tourExist.isPresent();
 		boolean tourEmpty = tour.getName().isEmpty();
 		boolean tourReady = (!tournamenAlreadyExist && !tourEmpty);
@@ -113,16 +110,16 @@ public class CreatorController {
 	}
 
 	private void check(Model model, String team, int id) {
-		Optional<Team> team1Exist = teamRepository.findById(team);
+		Optional<Team> team1Exist = teamService.findById(team);
 		boolean team1NoExist = team1Exist.isPresent();
 		boolean team1Empty = team.isEmpty();
 		boolean team1Ready = (team1NoExist && !team1Empty);
 
 		if (team.isEmpty() && (teamList[id - 1] != null)) {
-			Optional<Team> team1finalExist = teamRepository.findById(teamList[id - 1]);
+			Optional<Team> team1finalExist = teamService.findById(teamList[id - 1]);
 			team1NoExist = team1finalExist.isPresent();
 			if (team1NoExist) {
-				if (exist2(model, teamList, teamList[id - 1]) == 1) {// aux == 1 
+				if (exist2(model, teamList, teamList[id - 1]) == 1) {// aux == 1
 					numberTeams--;
 				}
 			}
@@ -136,7 +133,8 @@ public class CreatorController {
 						if ((exist2(model, teamList, team)) < 2) {// aux < 2
 							numberTeams++;
 						}
-						if ((teamRepository.findById(aux).isPresent()) && ((exist2(model, teamList, team) == 0))) {// aux == 0
+						if ((teamService.findById(aux).isPresent()) && ((exist2(model, teamList, team) == 0))) {// aux
+																												// == 0
 							numberTeams--;
 						}
 					}
@@ -162,13 +160,13 @@ public class CreatorController {
 	}
 
 	@PostMapping("/TenniShip/Creator/Teams")
-	public String teams(Model model, @RequestParam String team1, @RequestParam String team2,
-			@RequestParam String team3, @RequestParam String team4, @RequestParam String team5,
-			@RequestParam String team6, @RequestParam String team7, @RequestParam String team8,
-			@RequestParam String team9, @RequestParam String team10, @RequestParam String team11,
-			@RequestParam String team12, @RequestParam String team13, @RequestParam String team14,
-			@RequestParam String team15, @RequestParam String team16, @RequestParam String team17,
-			@RequestParam String team18, HttpServletRequest request) {
+	public String teams(Model model, @RequestParam String team1, @RequestParam String team2, @RequestParam String team3,
+			@RequestParam String team4, @RequestParam String team5, @RequestParam String team6,
+			@RequestParam String team7, @RequestParam String team8, @RequestParam String team9,
+			@RequestParam String team10, @RequestParam String team11, @RequestParam String team12,
+			@RequestParam String team13, @RequestParam String team14, @RequestParam String team15,
+			@RequestParam String team16, @RequestParam String team17, @RequestParam String team18,
+			HttpServletRequest request) {
 
 		model.addAttribute("admin", userComponent.isLoggedUser() && request.isUserInRole("ADMIN"));
 
@@ -179,7 +177,7 @@ public class CreatorController {
 
 		model.addAttribute("tourFinal", finalTournament);
 		model.addAttribute("next1", !finalTournament.getName().isEmpty());
-		
+
 		check(model, team1, 1);
 		check(model, team2, 2);
 		check(model, team3, 3);
@@ -211,7 +209,7 @@ public class CreatorController {
 	}
 
 	private List<String> teamNames() {
-		List<Team> allTeams = teamRepository.getAllTeams();
+		List<Team> allTeams = teamService.getAllTeams();
 		List<String> teamNames = new ArrayList<>();
 		for (Team t : allTeams) {
 			teamNames.add(t.getName());
@@ -227,10 +225,10 @@ public class CreatorController {
 
 		model.addAttribute("next3Raffle", true);
 		model.addAttribute("tourFinal", finalTournament);
-		tournamentRepository.save(finalTournament);
+		tournamentService.save(finalTournament);
 		List<Team> teamListFinal = new ArrayList<>();
 		for (String x : teamList) {
-			Optional<Team> team = teamRepository.findById(x);
+			Optional<Team> team = teamService.findById(x);
 			teamListFinal.add(team.get());
 		}
 		creatorService.raffleTeamsCreateMatches(finalTournament, teamListFinal);

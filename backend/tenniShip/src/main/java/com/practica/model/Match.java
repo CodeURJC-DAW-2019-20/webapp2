@@ -8,23 +8,23 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.fasterxml.jackson.databind.introspect.TypeResolutionContext.Basic;
 
 @Entity
 @Table(name = "partido") // is needed in Spanish because of a data base conflict
 public class Match {
-	
-	public interface Basic {}
+
+	public interface Basic {
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	@JsonView(Basic.class)
 	private int homePoints;
 	@JsonView(Basic.class)
 	private int awayPoints;
-	
+
 	private String type;
 	/*
 	 * groupA : A groupB : B groupC : C groupD : D groupE : E groupF : F Round of 8:
@@ -33,7 +33,7 @@ public class Match {
 	@JsonView(Basic.class)
 	@ManyToOne
 	private Team team1;
-	
+
 	@JsonView(Basic.class)
 	@ManyToOne
 	private Team team2;
@@ -62,15 +62,19 @@ public class Match {
 	public String getType() {
 		return type;
 	}
-	
+
 	public String getStringType() {
-        switch (type) {
-        case "X" : return "Round of 8"; 
-        case "Y" : return "Round of 4"; 
-        case "Z" : return "Round of 3"; 
-        default : return "Group Stage";
-        }
-    }
+		switch (type) {
+		case "X":
+			return "Round of 8";
+		case "Y":
+			return "Round of 4";
+		case "Z":
+			return "Round of 3";
+		default:
+			return "Group Stage";
+		}
+	}
 
 	public Team getTeam1() {
 		return team1;
