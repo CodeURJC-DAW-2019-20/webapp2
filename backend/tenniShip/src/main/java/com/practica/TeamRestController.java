@@ -99,9 +99,9 @@ public class TeamRestController {
 		
 		if(t.isPresent()) {
 		
-			Page<Match> pages = teamService.getPages(t.get(), page,end);			
+			Page<Match> pages = teamService.getPagesInMatches(t.get(), page,end);			
 			
-			List<Match> listmatches = teamService.getPageMatches(pages);
+			List<Match> listmatches = teamService.getListMatches(pages);
 			
 			TeamFileData teamfiledata = teamService.teamProfile(t.get());
 			teamfiledata.setMatchesList(listmatches);

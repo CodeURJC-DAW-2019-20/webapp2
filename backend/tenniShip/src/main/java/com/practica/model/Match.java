@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
-@Table(name = "partido") // is needed in Spanish because of a data base conflict
+@Table(name = "partido") // this variable name is required in Spanish because MySQL has MATCH as a reserved word
 public class Match {
 
 	public interface Basic {
