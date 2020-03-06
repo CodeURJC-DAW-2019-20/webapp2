@@ -8,6 +8,8 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -54,12 +57,16 @@ public class TournamentRestController {
 	}
 
 	@GetMapping("/RegisterMatch/Tournament")
-	public ResponseEntity<List<Tournament>> selectTournament(HttpServletRequest request) {
+	public ResponseEntity<List<Tournament>> selectTournament(HttpServletRequest request, Pageable page, @RequestParam("NumberOfTournamentsDisplayed") int end ) {
 		if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
 			String team = userComponent.getTeam();
 			Optional<Team> t = teamService.findById(team);
+			
+			Page<Tournament> pages = teamService.getPagesInTournaments(t.get(), page,end);			
+			
+			List<Tournament> listtournaments = teamService.getListTournaments(pages);
 
-			return new ResponseEntity<>(teamService.getTournaments(t.get()), HttpStatus.OK);
+			return new ResponseEntity<>(listtournaments, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}
