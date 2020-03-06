@@ -77,7 +77,7 @@ public class TournamentSheetRestController {
         }
     }
 
-    interface editMatch extends AuxEdit.Basic, Match.Basic {}
+    interface editMatch extends AuxEdit.Basic, Match.Basic, Team.Basic, Tournament.Basic {}
 
     @JsonView(editMatch.class)
     @GetMapping("/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}")
@@ -174,7 +174,7 @@ public class TournamentSheetRestController {
         }
     }
 
-    interface tournamentSheet extends  Match.Basic, TournamentSheetToReturn.Basic, AuxiliarClass.Basic, Tournament.Basic {}
+    interface tournamentSheet extends  Match.Basic, TournamentSheetToReturn.Basic, AuxiliarClass.Basic, Tournament.Basic, Team.Basic {}
 
     @JsonView(tournamentSheet.class)
     @GetMapping("/TenniShip/Tournament/{tournament}")
