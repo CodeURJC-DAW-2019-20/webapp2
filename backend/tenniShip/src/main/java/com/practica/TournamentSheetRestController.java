@@ -18,6 +18,9 @@ import java.util.*;
 public class TournamentSheetRestController {
 
     @Autowired
+    private TournamentService tournamentService;
+
+    @Autowired
     private TournamentRepository tournamentRepository;
 
     @Autowired
@@ -35,7 +38,7 @@ public class TournamentSheetRestController {
     public ResponseEntity<Match> submitMatchEdited(@PathVariable String tournament, @RequestBody Match newMatch,
                                     @PathVariable String group, HttpServletRequest request) {
 
-        if (userComponent.isLoggedUser() && request.isUserInRole("ADMIN")) {
+        /*if (userComponent.isLoggedUser() && request.isUserInRole("ADMIN")) {
             int quantityHome = newMatch.getHomePoints();
             int quantityAway = newMatch.getAwayPoints();
             if (quantityHome == 3 ^ quantityAway == 3) { // XOR
@@ -62,7 +65,12 @@ public class TournamentSheetRestController {
         }
         else {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        }
+        }*/
+
+        if (userComponent.isLoggedUser() && request.isUserInRole("ADMIN")) {
+            return tournamentService.submitMatch(tournament,newMatch,request,userComponent);
+        } else
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
     public static class AuxEdit {

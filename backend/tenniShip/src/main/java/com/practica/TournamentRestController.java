@@ -39,9 +39,6 @@ public class TournamentRestController {
 	@Autowired
 	private UserComponent userComponent;
 
-	@Autowired
-	private MatchService matchService;
-
 	@GetMapping("/Tournament/{tournamentId}/image")
 	public ResponseEntity<Object> getTournamentImage(@PathVariable String tournamentId) throws IOException {
 		Optional<Tournament> tournament = tournamentService.findById(tournamentId);
@@ -79,7 +76,7 @@ public class TournamentRestController {
 		}
 	}
 
-	public static class RegisterNewMatchAuxiliarClass {
+	/*public static class RegisterNewMatchAuxiliarClass {
 
 		private String teamHome;
 		private int quantityHome;
@@ -105,42 +102,20 @@ public class TournamentRestController {
 		public int getQuantityAway() {
 			return quantityAway;
 		}
-	}
+	}*/
 
 	interface PutMatch extends Match.Basic, Team.Basic, Tournament.Basic {
 	}
 
+
 	@JsonView(PutMatch.class)
 	@PutMapping("/RegisterMatch/Tournament/{tournament}/Submission")
 	public ResponseEntity<Match> submitMatch(@PathVariable String tournament,
-			@RequestBody RegisterNewMatchAuxiliarClass newMatch, HttpServletRequest request)
+			@RequestBody Match newMatch, HttpServletRequest request)
 			throws InterruptedException {
 
 		if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
-			Optional<Tournament> t = tournamentService.findById(tournament);
-			Optional<Team> home = teamService.findById(newMatch.getTeamHome());
-			Optional<Team> away = teamService.findById(newMatch.getTeamAway());
-			if (t.isPresent() && home.isPresent() && away.isPresent()) {
-				if (tournamentService.getTeams(t.get()).contains(teamService.findById(userComponent.getTeam()).get())) {
-					if (newMatch.getQuantityHome() == 3 ^ newMatch.getQuantityAway() == 3) { // XOR
-						Match match = matchService.findMatch(home.get(), away.get(), t.get()).get(0);
-						if (match != null) {
-							matchService.getOne(match.getId()).setHomePoints(newMatch.getQuantityHome());
-							matchService.getOne(match.getId()).setAwayPoints(newMatch.getQuantityAway());
-
-							matchService.save(match);
-							return new ResponseEntity<>(match, HttpStatus.CREATED);
-						}
-						return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-					} else {
-						return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-					}
-				} else {
-					return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-				}
-			} else {
-				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			}
+			return tournamentService.submitMatch(tournament,newMatch,request,userComponent);
 		} else
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 	}
