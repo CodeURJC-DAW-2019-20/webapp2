@@ -34,11 +34,21 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/RegisterMatch/Tournament")
 				.hasAnyRole("USER");
 
-		// Creator
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/TenniShip/Creator").hasAnyRole("USER", "ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/Tournament/**").permitAll();
 
-		// http.authorizeRequests().antMatchers(HttpMethod.DELETE,
-		// "").hasAnyRole("ADMIN");
+		http.authorizeRequests()
+				.antMatchers(HttpMethod.GET, "/api/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}")
+				.hasAnyRole("ADMIN");
+
+		http.authorizeRequests()
+				.antMatchers(HttpMethod.PUT,
+						"/api/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}/Submission")
+				.hasAnyRole("ADMIN");
+
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/TenniShip/ADMIN/Tournament/{tournament}/Deleted")
+				.hasAnyRole("ADMIN");
+
+		http.authorizeRequests().anyRequest().authenticated();
 
 		// Use HTTP basic authentication
 		http.httpBasic();

@@ -39,9 +39,6 @@ public class TournamentRestController {
 	@Autowired
 	private UserComponent userComponent;
 
-	@Autowired
-	private MatchService matchService;
-
 	@GetMapping("/Tournament/{tournamentId}/image")
 	public ResponseEntity<Object> getTournamentImage(@PathVariable String tournamentId) throws IOException {
 		Optional<Tournament> tournament = tournamentService.findById(tournamentId);
@@ -56,17 +53,6 @@ public class TournamentRestController {
 		}
 	}
 
-//	@GetMapping("/Tournament/{tournamentId}")
-//	public ResponseEntity<Tournament> seeTournament(@PathVariable String tournamentId) {
-//
-//		Optional<Tournament> tournament = tournamentService.findById(tournamentId);
-//		if (tournament.isPresent()) {
-//			return new ResponseEntity<>(tournament.get(), HttpStatus.OK);
-//		} else {
-//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//		}
-//	}
-
 	@GetMapping("/RegisterMatch/Tournament")
 	public ResponseEntity<List<Tournament>> selectTournament(HttpServletRequest request) {
 		if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
@@ -79,68 +65,16 @@ public class TournamentRestController {
 		}
 	}
 
-	public static class RegisterNewMatchAuxiliarClass {
-
-		private String teamHome;
-		private int quantityHome;
-		private String teamAway;
-		private int quantityAway;
-
-		public RegisterNewMatchAuxiliarClass() {
-
-		}
-
-		public String getTeamHome() {
-			return teamHome;
-		}
-
-		public int getQuantityHome() {
-			return quantityHome;
-		}
-
-		public String getTeamAway() {
-			return teamAway;
-		}
-
-		public int getQuantityAway() {
-			return quantityAway;
-		}
-	}
-
 	interface PutMatch extends Match.Basic, Team.Basic, Tournament.Basic {
 	}
 
 	@JsonView(PutMatch.class)
 	@PutMapping("/RegisterMatch/Tournament/{tournament}/Submission")
-	public ResponseEntity<Match> submitMatch(@PathVariable String tournament,
-			@RequestBody RegisterNewMatchAuxiliarClass newMatch, HttpServletRequest request)
-			throws InterruptedException {
+	public ResponseEntity<Match> submitMatch(@PathVariable String tournament, @RequestBody Match newMatch,
+			HttpServletRequest request) throws InterruptedException {
 
 		if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
-			Optional<Tournament> t = tournamentService.findById(tournament);
-			Optional<Team> home = teamService.findById(newMatch.getTeamHome());
-			Optional<Team> away = teamService.findById(newMatch.getTeamAway());
-			if (t.isPresent() && home.isPresent() && away.isPresent()) {
-				if (tournamentService.getTeams(t.get()).contains(teamService.findById(userComponent.getTeam()).get())) {
-					if (newMatch.getQuantityHome() == 3 ^ newMatch.getQuantityAway() == 3) { // XOR
-						Match match = matchService.findMatch(home.get(), away.get(), t.get()).get(0);
-						if (match != null) {
-							matchService.getOne(match.getId()).setHomePoints(newMatch.getQuantityHome());
-							matchService.getOne(match.getId()).setAwayPoints(newMatch.getQuantityAway());
-
-							matchService.save(match);
-							return new ResponseEntity<>(match, HttpStatus.CREATED);
-						}
-						return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-					} else {
-						return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-					}
-				} else {
-					return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-				}
-			} else {
-				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			}
+			return tournamentService.putTheMatch(tournament, newMatch);
 		} else
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 	}
@@ -187,7 +121,7 @@ public class TournamentRestController {
 				return new ResponseEntity<>(objectToReturn, HttpStatus.OK);
 			}
 		}
-		if (!(userComponent.isLoggedUser()))
+		if (!(userComponent.isLoggedUser()) || request.isUserInRole("ADMIN"))
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}

@@ -12,11 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -36,35 +33,34 @@ public class TeamRestController {
 	@Autowired
 	private ImageService imgService;
 
-
 	@Autowired
 	private TeamRepository teamRepository;
 
 	public static class TeamFileData {
-		
-		interface Basic{}
-		
+
+		interface Basic {
+		}
+
 		@JsonView(Basic.class)
 		private String teamName;
-		
+
 		@JsonView(Basic.class)
 		private List<String> imageListTournaments = new ArrayList<>();
-		
+
 		@JsonView(Basic.class)
 		private boolean teamImage;
-		
+
 		@JsonView(Basic.class)
 		private double percentageLostMatches;
-		
+
 		@JsonView(Basic.class)
 		private double percentageWonMatches;
-		
+
 		@JsonView(Basic.class)
 		private List<Player> playerList = new ArrayList<>();
-		
+
 		@JsonView(Basic.class)
-		private List<Match> matchesList = new ArrayList<>();		
-		
+		private List<Match> matchesList = new ArrayList<>();
 
 		public TeamFileData(String teamName, List<String> imageListTournaments, boolean teamImage,
 				double percentageLostMatches, double percentageWonMatches, List<Player> playerList) {
@@ -77,38 +73,39 @@ public class TeamRestController {
 			this.playerList = playerList;
 		}
 
-
 		public List<Match> getMatchesList() {
 			return matchesList;
 		}
 
 		public void setMatchesList(List<Match> matchesList) {
 			this.matchesList = matchesList;
-		}	
-		
+		}
+
 	}
 
-		
-	interface MatchDetails extends TeamFileData.Basic,Match.Basic,Team.Basic,Tournament.Basic,Player.Basic{}
-	
+	interface MatchDetails extends TeamFileData.Basic, Match.Basic, Team.Basic, Tournament.Basic, Player.Basic {
+	}
+
 	@JsonView(MatchDetails.class)
 	@GetMapping("/Team/{team}")
-	public ResponseEntity<TeamFileData> listMatchesTeams(@PathVariable String team,Pageable page, @RequestParam("NumberOfMatchesListed") int end){
-		
+	// https://localhost:8443/api/TenniShip/Team/{team}/?NumberOfMatchesListed=end
+	public ResponseEntity<TeamFileData> getTeam(@PathVariable String team, Pageable page,
+			@RequestParam("NumberOfMatchesListed") int end) {
+
 		Optional<Team> t = teamRepository.findById(team);
-		
-		if(t.isPresent()) {
-		
-			Page<Match> pages = teamService.getPages(t.get(), page,end);			
-			
+
+		if (t.isPresent()) {
+
+			Page<Match> pages = teamService.getPages(t.get(), page, end);
+
 			List<Match> listmatches = teamService.getPageMatches(pages);
-			
+
 			TeamFileData teamfiledata = teamService.teamProfile(t.get());
 			teamfiledata.setMatchesList(listmatches);
 			return new ResponseEntity<>(teamfiledata, HttpStatus.OK);
-			
-		}else {
-			return new ResponseEntity(HttpStatus.NOT_FOUND);
+
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -133,6 +130,5 @@ public class TeamRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-
 
 }
