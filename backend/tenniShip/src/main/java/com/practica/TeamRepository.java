@@ -2,6 +2,8 @@ package com.practica;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -53,4 +55,10 @@ public interface TeamRepository extends JpaRepository<Team, String> {
 
 	@Query(value = "SELECT team.* FROM Team WHERE team_name LIKE %:keyword%", nativeQuery = true)
 	public List<Team> findSimilarTeams(@Param("keyword") String keyword);
+	
+	@Query("SELECT DISTINCT m " +
+			"FROM Match m JOIN Team t " +
+			"ON (m.team1.teamName=t.teamName OR m.team2.teamName=t.teamName) " +
+			"WHERE (((m.team1 = :team) OR (m.team2 = :team)) AND ( (m.homePoints > 0) OR (m.awayPoints > 0) ))")
+	public Page<Match> getRecentMatchesPaginated(Team team, Pageable pageable);
 }

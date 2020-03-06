@@ -1,14 +1,22 @@
 package com.practica;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.practica.model.Match;
+import com.practica.model.Player;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
+
+import com.practica.TeamRestController.TeamFileData;
 
 @Service
 public class TeamService {
@@ -66,5 +74,45 @@ public class TeamService {
 	
 	public List<Team> findSimilarTeams(String team) {
 		return teamRepository.findSimilarTeams(team);
+	}
+	
+public Page<Match> getPages(Team team, Pageable page, int end){
+		
+		page = PageRequest.of(0, end);
+		
+		return teamRepository.getRecentMatchesPaginated(team,page);
+	}
+	
+	public List<Match> getPageMatches(Page<Match> pages) {
+        List<Match> pageMatches = new ArrayList<>();
+        for (Match m : pages) {
+            pageMatches.add(m);
+        }
+
+        return pageMatches;
+    }
+	
+	
+	public TeamFileData teamProfile(Team team) {		
+		
+		double percentageMatchesLost = 0.0;
+		double percentageMatchesWon = 0.0;
+		double totalMatches = 0.0;
+
+		
+		percentageMatchesLost = teamRepository.getMatchesLost(team.getName());
+		percentageMatchesWon = teamRepository.getMatchesWon(team.getName());
+
+		totalMatches = percentageMatchesLost + percentageMatchesWon;
+
+		percentageMatchesLost = (percentageMatchesLost / totalMatches) * 100;
+		percentageMatchesWon = (percentageMatchesWon / totalMatches) * 100;
+		
+		List<String> tournamentsList = teamRepository.getTournamentsName(team);
+
+		List<Player> players = team.getPlayers();
+		
+		return new TeamFileData(team.getName(),tournamentsList,team.hasTeamImage(),
+				percentageMatchesLost,percentageMatchesWon,players);
 	}
 }
