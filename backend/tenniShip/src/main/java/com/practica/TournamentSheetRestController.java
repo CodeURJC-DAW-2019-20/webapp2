@@ -32,31 +32,36 @@ public class TournamentSheetRestController {
     static int j;
 
     @PutMapping("/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}/Submission")
-    public ResponseEntity<Tournament> submitMatchEdited(@PathVariable String tournament, @RequestParam String teamHome,
-                                    @PathVariable String group, @RequestParam String teamAway, @RequestParam int quantityHome,
-                                    @RequestParam int quantityAway, HttpServletRequest request) {
+    public ResponseEntity<Match> submitMatchEdited(@PathVariable String tournament, @RequestBody Match newMatch,
+                                    @PathVariable String group, HttpServletRequest request) {
 
-        if (quantityHome == 3 ^ quantityAway == 3) { // XOR
-            Optional<Team> home = teamRepository.findById(teamHome);
-            Optional<Team> away = teamRepository.findById(teamAway);
-            Optional<Tournament> t = tournamentRepository.findById(tournament);
+        if (userComponent.isLoggedUser() && request.isUserInRole("ADMIN")) {
+            int quantityHome = newMatch.getHomePoints();
+            int quantityAway = newMatch.getAwayPoints();
+            if (quantityHome == 3 ^ quantityAway == 3) { // XOR
+                Optional<Team> home = teamRepository.findById(newMatch.getTeam1().getName());
+                Optional<Team> away = teamRepository.findById(newMatch.getTeam2().getName());
+                Optional<Tournament> t = tournamentRepository.findById(tournament);
 
-            if (t.isPresent()) {
-                Match match = matchRepository.findMatch(home.get(), away.get(), t.get()).get(0);
+                if (t.isPresent() && home.isPresent() && away.isPresent()) {
+                    Match match = matchRepository.findMatch(home.get(), away.get(), t.get()).get(0);
 
-                matchRepository.getOne(match.getId()).setHomePoints(quantityHome);
-                matchRepository.getOne(match.getId()).setAwayPoints(quantityAway);
+                    matchRepository.getOne(match.getId()).setHomePoints(quantityHome);
+                    matchRepository.getOne(match.getId()).setAwayPoints(quantityAway);
 
-                matchRepository.save(match);
+                    matchRepository.save(match);
 
-                return new ResponseEntity<>(t.get(), HttpStatus.OK);
+                    return new ResponseEntity<>(match, HttpStatus.OK);
+                } else {
+                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                }
+
+            } else {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
-            else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-
-        } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
     }
 
