@@ -118,16 +118,20 @@ public class CreatorRestController {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 	}
-	
+
 	@PostMapping("/Tournament/{tournamentID}/image")
-	public ResponseEntity<Tournament> newTournamentImg(@PathVariable String tournamentID, @RequestParam MultipartFile imageFile)
-			throws IOException {
+	public ResponseEntity<Tournament> newTournamentImg(@PathVariable String tournamentID,
+			@RequestParam MultipartFile imageFile) throws IOException {
 		Optional<Tournament> tournament = tournamentService.findById(tournamentID);
 		if (tournament.isPresent()) {
-			tournament.get().setImage(true);
-			tournamentService.save(tournament.get());
-			imgService.saveImage("tournaments", tournament.get().getName(), imageFile);
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			if (userComponent.isLoggedUser() && tournamentService.getTeams(tournament.get())
+					.contains(teamService.findById(userComponent.getTeam()).get())) {
+				tournament.get().setImage(true);
+				tournamentService.save(tournament.get());
+				imgService.saveImage("tournaments", tournament.get().getName(), imageFile);
+				return new ResponseEntity<>(HttpStatus.CREATED);
+			} else
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		} else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
