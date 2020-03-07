@@ -109,17 +109,20 @@ public class TournamentSheetRestController {
 		interface Basic {
 		}
 
-		@JsonView(TournamentSheetToReturn.Basic.class)
-		private Team t;
-		@JsonView(TournamentSheetToReturn.Basic.class)
+		@JsonView(Basic.class)
+		private Team team;
+		@JsonView(Basic.class)
 		private Integer matchesWon; // Spain 3 - 2 France
-		@JsonView(TournamentSheetToReturn.Basic.class)
+		@JsonView(Basic.class)
 		private Integer pointsWon; // Spain matchesWon += 1, Spain pointsWon += 3
+		@JsonView(Basic.class)
+		private String group;
 
-		public AuxiliarClass(Team team, int matchesWon, int pointsWon) {
-			this.t = team;
+		public AuxiliarClass(Team team, int matchesWon, int pointsWon,String group) {
+			this.team = team;
 			this.matchesWon = matchesWon;
 			this.pointsWon = pointsWon;
+			this.group = group;
 		}
 
 		@Override
@@ -141,11 +144,11 @@ public class TournamentSheetRestController {
 		@JsonView(Basic.class)
 		private ArrayList<AuxiliarClass>[] groups;
 		@JsonView(Basic.class)
-		private List<Match> last4Matches = new ArrayList<>();
+		private List<Match> quarters = new ArrayList<>();
 		@JsonView(Basic.class)
-		private List<Match> last2Matches = new ArrayList<>();
+		private List<Match> theSemiFinals = new ArrayList<>();
 		@JsonView(Basic.class)
-		private List<Match> lastMatch = new ArrayList<>();
+		private List<Match> theFinal = new ArrayList<>();
 		@JsonView(Basic.class)
 		private double completion;
 
@@ -154,16 +157,16 @@ public class TournamentSheetRestController {
 
 		}
 
-		public TournamentSheetToReturn(Tournament t, ArrayList<AuxiliarClass>[] groups, List<Match> last4Matches,
-				List<Match> last2Matches, List<Match> lastMatch, double completion) {
+		public TournamentSheetToReturn(Tournament t, ArrayList<AuxiliarClass>[] groups, List<Match> quarters,
+				List<Match> theSemiFinals, List<Match> theFinal, double completion) {
 			this.tournament = t;
 			this.groups = groups;
 			/*
 			 * If the class is static, calls to tournamentRepository have to be made outside
 			 */
-			this.last4Matches = last4Matches;
-			this.last2Matches = last2Matches;
-			this.lastMatch = lastMatch;
+			this.quarters = quarters;
+			this.theSemiFinals = theSemiFinals;
+			this.theFinal = theFinal;
 			this.completion = completion;
 		}
 	}
@@ -198,7 +201,7 @@ public class TournamentSheetRestController {
 				tournamentService.getPhaseTeams(t.get(), groups[i]).forEach(tm -> {
 					sortedGroups[j].add(new AuxiliarClass(tm, teamService.getWonGroupMatches(t.get(), tm, groups[j]),
 							teamService.getWonGroupPointsPlayingHome(t.get(), tm, groups[j])
-									+ teamService.getWonGroupPointsPlayingAway(t.get(), tm, groups[j])));
+									+ teamService.getWonGroupPointsPlayingAway(t.get(), tm, groups[j]),groups[j]));
 				});
 				Collections.sort(sortedGroups[j]);
 
@@ -224,14 +227,14 @@ public class TournamentSheetRestController {
 					secondPlaceTeams.add(sortedGroups[5].get(1));
 					Collections.sort(secondPlaceTeams);
 
-					last8.add(sortedGroups[0].get(0).t);
-					last8.add(sortedGroups[1].get(0).t);
-					last8.add(sortedGroups[2].get(0).t);
-					last8.add(sortedGroups[3].get(0).t);
-					last8.add(sortedGroups[4].get(0).t);
-					last8.add(sortedGroups[5].get(0).t);
-					last8.add(secondPlaceTeams.get(0).t);
-					last8.add(secondPlaceTeams.get(1).t);
+					last8.add(sortedGroups[0].get(0).team);
+					last8.add(sortedGroups[1].get(0).team);
+					last8.add(sortedGroups[2].get(0).team);
+					last8.add(sortedGroups[3].get(0).team);
+					last8.add(sortedGroups[4].get(0).team);
+					last8.add(sortedGroups[5].get(0).team);
+					last8.add(secondPlaceTeams.get(0).team);
+					last8.add(secondPlaceTeams.get(1).team);
 					Collections.shuffle(last8);
 
 					createMatches(last8, "X", t.get());

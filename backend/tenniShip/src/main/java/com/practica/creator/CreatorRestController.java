@@ -118,7 +118,7 @@ public class CreatorRestController {
 			}
 
 		} else {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}
 	}
 
@@ -134,7 +134,7 @@ public class CreatorRestController {
 				imgService.saveImage("tournaments", tournament.get().getName(), imageFile);
 				return new ResponseEntity<>(HttpStatus.CREATED);
 			} else
-				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		} else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
