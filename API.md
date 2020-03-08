@@ -78,7 +78,7 @@ Create a brand new account.
 ````json
 {
     "userName": "userNew",
-    "passwordHash": "$2y$12$Mb/2k.wey7K560jZXvB9aO4h4LZ8EtjzBTzVugXgrSO5NYOcaht4S",
+    "passwordHash": "newpassword0928",
     "email": "example@gmail.com",
     "teamName": "TeamChamps",
     "roles": [
@@ -511,7 +511,7 @@ This request returns a bunch of information of the specified tournament.
 
 **Response example:** (some parts have been omitted with ``(...)`` because it was too long)
 
-````json
+````
 {
     "tournament": {
         "name": "Davis Cup"
@@ -519,36 +519,37 @@ This request returns a bunch of information of the specified tournament.
     "groups": [
         [
             {
-                "t": {
+                "team": {
                     "teamName": "Spain"
                 },
                 "matchesWon": 1,
-                "pointsWon": 4
+                "pointsWon": 4,
+                "group": "A"
             },
-            {
-                "t": {
-                    "teamName": "Serbia"
-                },
-                "matchesWon": 1,
-                "pointsWon": 3
-            },
-            {
-                "t": {
-                    "teamName": "France"
-                },
-                "matchesWon": 1,
-                "pointsWon": 3
-            }
+            (more teams...)
         ],
-        (...)
+        (more groups...)
     ],
-    "last4Matches": [
-        (...)
+    "quarters": [
+        {
+            "homePoints": 3,
+            "awayPoints": 0,
+            "team1": {
+                "teamName": "Australia"
+            },
+            "team2": {
+                "teamName": "Japan"
+            },
+            "tournament": {
+                "name": "Davis Cup"
+            }
+        },
+        (3 more matches...)
     ],
-    "last2Matches": [
-        (...)
+    "theSemiFinals": [
+        (two matches like the ones in quarters...)
     ],
-    "lastMatch": [
+    "theFinal": [
         {
             "homePoints": 0,
             "awayPoints": 0,
