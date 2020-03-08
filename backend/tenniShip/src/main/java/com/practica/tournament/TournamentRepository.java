@@ -1,4 +1,4 @@
-package com.practica;
+package com.practica.tournament;
 
 import java.util.List;
 
@@ -30,16 +30,9 @@ public interface TournamentRepository extends JpaRepository<Tournament, String> 
 	@Query("SELECT coalesce(COUNT(m.id),0) FROM Match m WHERE m.tournament= :t AND (m.homePoints > 0 OR m.awayPoints > 0)")
 	public int getPlayedMatchesJQL(Tournament t);
 
-	@Query(value = "SELECT coalesce(COUNT(partido.id),0) FROM partido JOIN tournament ON(tournament_name=tournament.name) WHERE tournament_name=:t AND (home_points>0 OR away_points>0)", nativeQuery = true)
-	public int getPlayedMatches(@Param("t") String t);
-
-	// SELECT * FROM team JOIN partido ON ((team.name=partido.team1_name) OR
-	// (team.name=partido.team2_name)) JOIN Tournament ON
-	// (partido.tournament_name=tournament.name) WHERE team.name='Spain'
-
-	@Query(value = "SELECT tournament.* FROM tournament", nativeQuery = true)
+	@Query("SELECT distinct t FROM Tournament t")
 	public List<Tournament> getAllTournaments();
 
-	@Query(value = "SELECT tournament.* FROM Tournament WHERE name LIKE %:keyword%", nativeQuery = true)
-	public List<Team> findSimilarTournaments(@Param("keyword") String keyword);
+	@Query("SELECT distinct t FROM Tournament t WHERE t.name LIKE %:keyword%")
+	public List<Team> findSimilarTournaments(String keyword);
 }

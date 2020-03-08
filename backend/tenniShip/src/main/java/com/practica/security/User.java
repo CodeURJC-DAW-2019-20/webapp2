@@ -12,6 +12,8 @@ import javax.validation.constraints.Email;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class User {
 	@Id
@@ -20,6 +22,7 @@ public class User {
 
 	private String userName;
 
+	@JsonIgnore
 	private String passwordHash;
 
 	@Email

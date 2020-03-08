@@ -5,13 +5,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Player {
+
+	public interface Basic {
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
+	@JsonView(Basic.class)
 	private String playerName;
 	private boolean playerImage;
 
