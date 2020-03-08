@@ -51,20 +51,16 @@ public class TeamService {
 		return teamRepository.getWonGroupPointsPlayingAway(tournament, team, phase);
 	}
 	
-	public int getMatchesWon(String team) {
+	public int getMatchesWon(Team team) {
 		return teamRepository.getMatchesWon(team);
 	}
 	
-	public int getMatchesLost(String team) {
+	public int getMatchesLost(Team team) {
 		return teamRepository.getMatchesLost(team);
 	}
 	
 	public List<Match> getRecentMatches(Team team) {
 		return teamRepository.getRecentMatches(team);
-	}
-	
-	public Team getTeamToAdd(String team) {
-		return teamRepository.getTeamToAdd(team);
 	}
 	
 	public List<Team> getAllTeams() {
@@ -115,8 +111,8 @@ public class TeamService {
 		double totalMatches = 0.0;
 
 		
-		percentageMatchesLost = teamRepository.getMatchesLost(team.getName());
-		percentageMatchesWon = teamRepository.getMatchesWon(team.getName());
+		percentageMatchesLost = teamRepository.getMatchesLost(team);
+		percentageMatchesWon = teamRepository.getMatchesWon(team);
 
 		totalMatches = percentageMatchesLost + percentageMatchesWon;
 

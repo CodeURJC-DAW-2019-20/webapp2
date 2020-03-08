@@ -67,10 +67,6 @@ public class TournamentService {
 		return tournamentRepository.getPlayedMatchesJQL(tournament);
 	}
 
-	public int getPlayedMatches(String tournament) {
-		return tournamentRepository.getPlayedMatches(tournament);
-	}
-
 	public List<Tournament> getAllTournaments() {
 		return tournamentRepository.getAllTournaments();
 	}

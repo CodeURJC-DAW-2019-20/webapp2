@@ -63,8 +63,8 @@ public class TeamController {
 			List<String> tournamentsList = teamService.getTournamentsName(t.get());
 			model.addAttribute("imageListTournaments", tournamentsList);
 
-			totalMatchesLost = teamService.getMatchesLost(t.get().getName());
-			totalMatchesWon = teamService.getMatchesWon(t.get().getName());
+			totalMatchesLost = teamService.getMatchesLost(t.get());
+			totalMatchesWon = teamService.getMatchesWon(t.get());
 
 			totalMatches = totalMatchesLost + totalMatchesWon;
 

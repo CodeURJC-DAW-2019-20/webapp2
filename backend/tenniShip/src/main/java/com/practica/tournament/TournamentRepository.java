@@ -30,12 +30,9 @@ public interface TournamentRepository extends JpaRepository<Tournament, String> 
 	@Query("SELECT coalesce(COUNT(m.id),0) FROM Match m WHERE m.tournament= :t AND (m.homePoints > 0 OR m.awayPoints > 0)")
 	public int getPlayedMatchesJQL(Tournament t);
 
-	@Query(value = "SELECT coalesce(COUNT(partido.id),0) FROM partido JOIN tournament ON(tournament_name=tournament.name) WHERE tournament_name=:t AND (home_points>0 OR away_points>0)", nativeQuery = true)
-	public int getPlayedMatches(@Param("t") String t);
-
-	@Query(value = "SELECT tournament.* FROM tournament", nativeQuery = true)
+	@Query("SELECT distinct t FROM Tournament t")
 	public List<Tournament> getAllTournaments();
 
-	@Query(value = "SELECT tournament.* FROM Tournament WHERE name LIKE %:keyword%", nativeQuery = true)
-	public List<Team> findSimilarTournaments(@Param("keyword") String keyword);
+	@Query("SELECT distinct t FROM Tournament t WHERE t.name LIKE %:keyword%")
+	public List<Team> findSimilarTournaments(String keyword);
 }

@@ -324,7 +324,7 @@ public class TournamentSheetController {
 
 			double progressPercentage;
 			final int TOTAL_MATCHES = 25;
-			progressPercentage = tournamentService.getPlayedMatches(t.get().getName());
+			progressPercentage = tournamentService.getPlayedMatchesJQL(t.get());
 			progressPercentage = (progressPercentage / TOTAL_MATCHES) * 100;
 
 			model.addAttribute("tournamentName", t.get().getName());
