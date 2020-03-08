@@ -503,10 +503,7 @@ This request returns a bunch of information of the specified tournament.
 
 * **Success response:** ``200 OK``
 
-* **Error responses:** 
-    * ``404 NOT FOUND`` if the tournament, teams, or the match weren't found in the system. 
-    * ``403 FORBIDDEN``	 if the user either isn't an admin, or doesn't have one of the teams in the match they want to change.
-    * ``400 BAD REQUEST`` if none of the teams, or both, have 3 points.
+* **Error responses:** ``404 NOT FOUND`` if the tournament hasn't been found in the system.
 
 * **Request example:** ``https://localhost:8443/api/TenniShip/Tournament/Davis Cup``
 
