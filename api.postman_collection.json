@@ -1,0 +1,578 @@
+{
+	"info": {
+		"_postman_id": "d977c310-8afd-4405-90d2-044d16f81773",
+		"name": "TenniShhip",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User management",
+			"item": [
+				{
+					"name": "SignIn",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "userSpain",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:8443/api/TenniShip/SignIn",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"TenniShip",
+								"SignIn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LogOut",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:8443/api/TenniShip/logout",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"TenniShip",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignUp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"userPrueba2\",\r\n    \"passwordHash\": \"12345678\",\r\n    \"email\": \"m.villacanas@alumnos.urjc.es\",\r\n    \"teamName\": \"elTeam25\",\r\n    \"roles\": [\"ROLE_USER\"],\r\n    \"players\": [\"Varo\",\"Ivan\",\"Santi\",\"Marcos\",\"Diego\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/TenniShip/SignUp",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"TenniShip",
+								"SignUp"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Team requests",
+			"item": [
+				{
+					"name": "Get Team Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/TenniShip/Team/Spain?NumberOfMatchesListed=2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"TenniShip",
+								"Team",
+								"Spain"
+							],
+							"query": [
+								{
+									"key": "NumberOfMatchesListed",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Obtain information related to a specific team, including a list of matches played by them."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Team Picture",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/TenniShip/Team/elTeam25/image/5",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"TenniShip",
+								"Team",
+								"elTeam25",
+								"image",
+								"5"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Team Pictures",
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": true,
+						"removeRefererHeaderOnRedirect": false
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "userPrueba2",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageFile",
+									"description": "imageFile",
+									"type": "file",
+									"src": [
+										"/D:/Pictures/Guess The Movie!/American Beauty.jpg",
+										"/D:/Pictures/Guess The Movie!/Big Eyes.jpg",
+										"/D:/Pictures/Guess The Movie!/Cadena Perpetua.jpg",
+										"/D:/Pictures/Guess The Movie!/Coldwar.png",
+										"/D:/Pictures/Guess The Movie!/Departed.jpg",
+										"/D:/Pictures/Guess The Movie!/Dreamgirls.jpg"
+									]
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/TenniShip/Team/elTeam25/image?",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"TenniShip",
+								"Team",
+								"elTeam25",
+								"image"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "elTeam25/image",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Match register",
+			"item": [
+				{
+					"name": "Get tournament list to register match",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/TenniShip/RegisterMatch/Tournament/?NumberOfTournamentsDisplayed=3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"TenniShip",
+								"RegisterMatch",
+								"Tournament",
+								""
+							],
+							"query": [
+								{
+									"key": "NumberOfTournamentsDisplayed",
+									"value": "3"
+								}
+							]
+						},
+						"description": "This request gives a list of tournaments the user's team participates in. This request requires that the user logs into a team account previously."
+					},
+					"response": []
+				},
+				{
+					"name": "See available match list of tournament",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/TenniShip/RegisterMatch/Tournament/Champions League",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"TenniShip",
+								"RegisterMatch",
+								"Tournament",
+								"Champions League"
+							]
+						},
+						"description": "After picking a tournament, users can use this request to see a list of matches whose score they can submit, all belonging to this tournament."
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Match Result",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"homePoints\": 0,\r\n    \"awayPoints\": 3,\r\n    \"team1\": {\r\n        \"teamName\": \"Spain\"\r\n    },\r\n    \"team2\": {\r\n        \"teamName\": \"CSKA Moscow\"\r\n    },\r\n    \"tournament\": {\r\n        \"name\": \"Champions League\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/TenniShip/RegisterMatch/Tournament/Champions League/Submission",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"TenniShip",
+								"RegisterMatch",
+								"Tournament",
+								"Champions League",
+								"Submission"
+							]
+						},
+						"description": "When the user picks a specific match, they just have to to this last request to submit the score."
+					},
+					"response": []
+				},
+				{
+					"name": "See list of matches in tournament group (admin only)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:8443/api/ADMIN/Tournament/Champions League/EditMatches/B",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"ADMIN",
+								"Tournament",
+								"Champions League",
+								"EditMatches",
+								"B"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "The system administrator, that is, the user with an admin role, is able to see a list of all the matches in a given group of a tournament. This request does that, so that the admin can choose a specific match, and change or submit the score in the next request, in a similar manner to how regular users do.\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Submit match result (admin version)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"homePoints\": 3,\r\n    \"awayPoints\": 1,\r\n    \"team1\": {\r\n        \"teamName\": \"Porto\"\r\n    },\r\n    \"team2\": {\r\n        \"teamName\": \"Galatasaray\"\r\n    },\r\n    \"tournament\": {\r\n        \"name\": \"Champions League\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/TenniShip/ADMIN/Tournament/Champions League/EditMatches/B/Submission",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"TenniShip",
+								"ADMIN",
+								"Tournament",
+								"Champions League",
+								"EditMatches",
+								"B",
+								"Submission"
+							]
+						},
+						"description": "The admin has a specific request to do the same as above. In this case, it's also required that the admin provides both tournament name and group. After that, in the body of the request, the appopiate match data will be sent. This request sends back that same data if everything went correctly."
+					},
+					"response": []
+				}
+			],
+			"description": "When a team plays a match, they're able to log the result. When they're logged on the appropiate user account, they can do a request to get a list of tournaments, pick the one that has the match they played, and then in another request see a list of matches that they can log in that tournament. With a final request, they can log the result of the corresponding match.",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tournament requests",
+			"item": [
+				{
+					"name": "Get tournament info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/TenniShip/Tournament/Davis Cup",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"TenniShip",
+								"Tournament",
+								"Davis Cup"
+							]
+						},
+						"description": "This request returns a bunch of information of the specified tournament."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tournament Pic",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/TenniShip/Tournament/Champions League/image",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"TenniShip",
+								"Tournament",
+								"Champions League",
+								"image"
+							]
+						},
+						"description": "This request returns the tournament logo, in case it has one."
+					},
+					"response": []
+				},
+				{
+					"name": "Save Tournament Picture",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageFile",
+									"type": "file",
+									"src": "/D:/Pictures/Guess The Movie!/Zero Dark Thirty.jpg"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/TenniShip/Tournament/UrjCup/image",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"TenniShip",
+								"Tournament",
+								"UrjCup",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tournament Creator",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tournamentName\": \"UrjCup\",\n    \"teams\": [\n        \"Valencia\",\n        \"Atlético de Madrid\",\n        \"Serbia\",\n        \"PSG\",\n        \"Portugal\",\n        \"Poland\",\n        \"Ajax\",\n        \"Andorra\",\n        \"Argentina\",\n        \"Finland\",\n        \"Australia\",\n        \"Barcelona\",\n        \"Germany\",\n        \"Napoli\",\n        \"Norway\",\n        \"France\",\n        \"Italy\",\n        \"Real Madrid\"\n    ]\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/TenniShip/Creator",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"TenniShip",
+								"Creator"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The following requests let users see, create, and delete tournaments, and get or upload their logos.",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
