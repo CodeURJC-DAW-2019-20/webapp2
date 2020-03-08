@@ -207,6 +207,25 @@ This request gets either the team logo, or one of the players' images.
 * **Response:** An object with the information of the corresponding image. In the example, it would be the image of the fifth player of the team.
 
 
+## Upload team image
+
+This requests lets us upload an image to be assigned to the tournament.
+
+* **URL:** ``/api/TenniShip/Team/{teamID}/image``
+
+* **URL parameters:** ``{teamID}`` should have the name of the team we chose.
+
+* **Method:** ``POST``
+
+* **Success response:** ``201 CREATED`` if it was uploaded successfully.
+
+* **Error responses:** 
+    * ``404 NOT FOUND`` if there's no team with that name.
+    * ``403 FORBIDDEN``	 if the user either isn't logged in, or doesn't have that team.
+
+* **Request example:** ``https://localhost:8443/api/TenniShip/Team/elTeam25/image``
+
+
 
 # Match register
 
@@ -574,7 +593,7 @@ This request returns a bunch of information of the specified tournament.
 
 This request returns the tournament logo, in case it has one.
 
-* **URL:** ``/Tournament/{tournamentID}/image``
+* **URL:** ``/api/TenniShip/Tournament/{tournamentID}/image``
 
 * **URL parameters:** ``{tournamentID}`` should have the name of the tournament we chose.
 
@@ -594,7 +613,7 @@ This request returns the tournament logo, in case it has one.
 
 This requests lets us upload an image to be assigned to the tournament.
 
-* **URL:** ``/Tournament/{tournamentId}/image``
+* **URL:** ``/api/TenniShip/Tournament/{tournamentId}/image``
 
 * **URL parameters:** ``{tournamentId}`` should have the name of the tournament we chose.
 
