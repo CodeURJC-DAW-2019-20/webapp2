@@ -67,13 +67,13 @@ Header
                     {{#registered}}
                     <li class="menu-has-children"><a href="#actions">Actions</a>
                         <ul>
-                            <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
+                            <li><a href="/TenniShip/RegisterMatch/Tournaments">Register a Match</a></li>
                             <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
                         </ul>
                     </li>
                     <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
                         <ul>
-                            <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
+                            <li><a href="/TenniShip/Teams/{{team}}">View Profile</a></li>
                             <li>
                                 <form action="/logout" method="post">
                                     <button class="btn" type="submit">Sign Out</button>
@@ -153,7 +153,7 @@ Header
                                                         <div class="justify-content-between">Group A</div>
                                                         {{#adminGroups}}
                                                         <div class="icon justify-content-between">
-                                                            <a href="/TenniShip/ADMIN/Tournament/{{tournamentName}}/EditMatches/A">
+                                                            <a href="/TenniShip/ADMIN/Tournaments/{{tournamentName}}/EditMatches/A">
                                                                 <i class="ion-android-create"><span
 																	class="tooltiptext">Edit Results</span></i>
                                                             </a> <input type="hidden" name="group" value="A">
@@ -166,17 +166,17 @@ Header
                                                         <div class="col-3">Points</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team0GroupA}}">{{team0GroupA}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team0GroupA}}">{{team0GroupA}}</a></div>
                                                         <div class="col-3">{{team0GroupAMatchesWon}}</div>
                                                         <div class="col-3">{{team0GroupAPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team1GroupA}}">{{team1GroupA}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team1GroupA}}">{{team1GroupA}}</a></div>
                                                         <div class="col-3">{{team1GroupAMatchesWon}}</div>
                                                         <div class="col-3">{{team1GroupAPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team2GroupA}}">{{team2GroupA}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team2GroupA}}">{{team2GroupA}}</a></div>
                                                         <div class="col-3">{{team2GroupAMatchesWon}}</div>
                                                         <div class="col-3">{{team2GroupAPointsWon}}</div>
                                                     </div>
@@ -188,7 +188,7 @@ Header
                                                         <div class="justify-content-between">Group B</div>
                                                         {{#adminGroups}}
                                                         <div class="icon justify-content-between">
-                                                            <a href="/TenniShip/ADMIN/Tournament/{{tournamentName}}/EditMatches/B">
+                                                            <a href="/TenniShip/ADMIN/Tournaments/{{tournamentName}}/EditMatches/B">
                                                                 <i class="ion-android-create"><span
 																	class="tooltiptext">Edit Results</span></i>
                                                             </a> <input type="hidden" name="group" value="B">
@@ -201,17 +201,17 @@ Header
                                                         <div class="col-3">Points</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team0GroupB}}">{{team0GroupB}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team0GroupB}}">{{team0GroupB}}</a></div>
                                                         <div class="col-3">{{team0GroupBMatchesWon}}</div>
                                                         <div class="col-3">{{team0GroupBPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team1GroupB}}">{{team1GroupB}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team1GroupB}}">{{team1GroupB}}</a></div>
                                                         <div class="col-3">{{team1GroupBMatchesWon}}</div>
                                                         <div class="col-3">{{team1GroupBPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team2GroupB}}">{{team2GroupB}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team2GroupB}}">{{team2GroupB}}</a></div>
                                                         <div class="col-3">{{team2GroupBMatchesWon}}</div>
                                                         <div class="col-3">{{team2GroupBPointsWon}}</div>
                                                     </div>
@@ -223,7 +223,7 @@ Header
                                                         <div class="justify-content-between">Group C</div>
                                                         {{#adminGroups}}
                                                         <div class="icon justify-content-between">
-                                                            <a href="/TenniShip/ADMIN/Tournament/{{tournamentName}}/EditMatches/C">
+                                                            <a href="/TenniShip/ADMIN/Tournaments/{{tournamentName}}/EditMatches/C">
                                                                 <i class="ion-android-create"><span
 																	class="tooltiptext">Edit Results</span></i>
                                                             </a> <input type="hidden" name="group" value="C">
@@ -236,17 +236,17 @@ Header
                                                         <div class="col-3">Points</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team0GroupC}}">{{team0GroupC}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team0GroupC}}">{{team0GroupC}}</a></div>
                                                         <div class="col-3">{{team0GroupCMatchesWon}}</div>
                                                         <div class="col-3">{{team0GroupCPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team1GroupC}}">{{team1GroupC}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team1GroupC}}">{{team1GroupC}}</a></div>
                                                         <div class="col-3">{{team1GroupCMatchesWon}}</div>
                                                         <div class="col-3">{{team1GroupCPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team2GroupC}}">{{team2GroupC}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team2GroupC}}">{{team2GroupC}}</a></div>
                                                         <div class="col-3">{{team2GroupCMatchesWon}}</div>
                                                         <div class="col-3">{{team2GroupCPointsWon}}</div>
                                                     </div>
@@ -258,7 +258,7 @@ Header
                                                         <div class="justify-content-between">Group D</div>
                                                         {{#adminGroups}}
                                                         <div class="icon justify-content-between">
-                                                            <a href="/TenniShip/ADMIN/Tournament/{{tournamentName}}/EditMatches/D">
+                                                            <a href="/TenniShip/ADMIN/Tournaments/{{tournamentName}}/EditMatches/D">
                                                                 <i class="ion-android-create"><span
 																	class="tooltiptext">Edit Results</span></i>
                                                             </a> <input type="hidden" name="group" value="D">
@@ -271,17 +271,17 @@ Header
                                                         <div class="col-3">Points</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team0GroupD}}">{{team0GroupD}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team0GroupD}}">{{team0GroupD}}</a></div>
                                                         <div class="col-3">{{team0GroupDMatchesWon}}</div>
                                                         <div class="col-3">{{team0GroupDPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team1GroupD}}">{{team1GroupD}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team1GroupD}}">{{team1GroupD}}</a></div>
                                                         <div class="col-3">{{team1GroupDMatchesWon}}</div>
                                                         <div class="col-3">{{team1GroupDPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team2GroupD}}">{{team2GroupD}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team2GroupD}}">{{team2GroupD}}</a></div>
                                                         <div class="col-3">{{team2GroupDMatchesWon}}</div>
                                                         <div class="col-3">{{team2GroupDPointsWon}}</div>
                                                     </div>
@@ -293,7 +293,7 @@ Header
                                                         <div class="justify-content-between">Group E</div>
                                                         {{#adminGroups}}
                                                         <div class="icon justify-content-between">
-                                                            <a href="/TenniShip/ADMIN/Tournament/{{tournamentName}}/EditMatches/E">
+                                                            <a href="/TenniShip/ADMIN/Tournaments/{{tournamentName}}/EditMatches/E">
                                                                 <i class="ion-android-create"><span
 																	class="tooltiptext">Edit Results</span></i>
                                                             </a> <input type="hidden" name="group" value="E">
@@ -306,17 +306,17 @@ Header
                                                         <div class="col-3">Points</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team0GroupE}}">{{team0GroupE}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team0GroupE}}">{{team0GroupE}}</a></div>
                                                         <div class="col-3">{{team0GroupEMatchesWon}}</div>
                                                         <div class="col-3">{{team0GroupEPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team1GroupE}}">{{team1GroupE}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team1GroupE}}">{{team1GroupE}}</a></div>
                                                         <div class="col-3">{{team1GroupEMatchesWon}}</div>
                                                         <div class="col-3">{{team1GroupEPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team2GroupE}}">{{team2GroupE}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team2GroupE}}">{{team2GroupE}}</a></div>
                                                         <div class="col-3">{{team2GroupEMatchesWon}}</div>
                                                         <div class="col-3">{{team2GroupEPointsWon}}</div>
                                                     </div>
@@ -328,7 +328,7 @@ Header
                                                         <div class="justify-content-between">Group F</div>
                                                         {{#adminGroups}}
                                                         <div class="icon justify-content-between">
-                                                            <a href="/TenniShip/ADMIN/Tournament/{{tournamentName}}/EditMatches/F">
+                                                            <a href="/TenniShip/ADMIN/Tournaments/{{tournamentName}}/EditMatches/F">
                                                                 <i class="ion-android-create"><span
 																	class="tooltiptext">Edit Results</span></i>
                                                             </a> <input type="hidden" name="group" value="F">
@@ -341,17 +341,17 @@ Header
                                                         <div class="col-3">Points</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team0GroupF}}">{{team0GroupF}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team0GroupF}}">{{team0GroupF}}</a></div>
                                                         <div class="col-3">{{team0GroupFMatchesWon}}</div>
                                                         <div class="col-3">{{team0GroupFPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team1GroupF}}">{{team1GroupF}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team1GroupF}}">{{team1GroupF}}</a></div>
                                                         <div class="col-3">{{team1GroupFMatchesWon}}</div>
                                                         <div class="col-3">{{team1GroupFPointsWon}}</div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col-6 teamLink"><a href="/TenniShip/Team/{{team2GroupF}}">{{team2GroupF}}</a></div>
+                                                        <div class="col-6 teamLink"><a href="/TenniShip/Teams/{{team2GroupF}}">{{team2GroupF}}</a></div>
                                                         <div class="col-3">{{team2GroupFMatchesWon}}</div>
                                                         <div class="col-3">{{team2GroupFPointsWon}}</div>
                                                     </div>
@@ -463,7 +463,7 @@ Header
                                 <div aria-labelledby="v-pills-seeTeams-tab" class="TeamMate tab-pane fade scrollspy-example" data-spy="scroll" id="v-pills-seeTeams" role="tabpanel">
                                     <div class="row">
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <a href="/TenniShip/Team/{{team0GroupA}}">
+                                            <a href="/TenniShip/Teams/{{team0GroupA}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="Team 1" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupA}}.jpg">
                                                     <div class="member-info">
@@ -476,7 +476,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <a href="/TenniShip/Team/{{team0GroupB}}">
+                                            <a href="/TenniShip/Teams/{{team0GroupB}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupB}}.jpg">
                                                     <div class="member-info">
@@ -489,7 +489,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
-                                            <a href="/TenniShip/Team/{{team0GroupC}}">
+                                            <a href="/TenniShip/Teams/{{team0GroupC}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupC}}.jpg">
                                                     <div class="member-info">
@@ -502,7 +502,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
-                                            <a href="/TenniShip/Team/{{team0GroupD}}">
+                                            <a href="/TenniShip/Teams/{{team0GroupD}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupD}}.jpg">
                                                     <div class="member-info">
@@ -515,7 +515,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <a href="/TenniShip/Team/{{team0GroupE}}">
+                                            <a href="/TenniShip/Teams/{{team0GroupE}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupE}}.jpg">
                                                     <div class="member-info">
@@ -528,7 +528,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <a href="/TenniShip/Team/{{team0GroupF}}">
+                                            <a href="/TenniShip/Teams/{{team0GroupF}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team0GroupF}}.jpg">
                                                     <div class="member-info">
@@ -541,7 +541,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <a href="/TenniShip/Team/{{team1GroupA}}">
+                                            <a href="/TenniShip/Teams/{{team1GroupA}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupA}}.jpg">
                                                     <div class="member-info">
@@ -554,7 +554,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <a href="/TenniShip/Team/{{team1GroupB}}">
+                                            <a href="/TenniShip/Teams/{{team1GroupB}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupB}}.jpg">
                                                     <div class="member-info">
@@ -567,7 +567,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
-                                            <a href="/TenniShip/Team/{{team1GroupC}}">
+                                            <a href="/TenniShip/Teams/{{team1GroupC}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupC}}.jpg">
                                                     <div class="member-info">
@@ -580,7 +580,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
-                                            <a href="/TenniShip/Team/{{team1GroupD}}">
+                                            <a href="/TenniShip/Teams/{{team1GroupD}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupD}}.jpg">
                                                     <div class="member-info">
@@ -593,7 +593,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <a href="/TenniShip/Team/{{team1GroupE}}">
+                                            <a href="/TenniShip/Teams/{{team1GroupE}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupE}}.jpg">
                                                     <div class="member-info">
@@ -606,7 +606,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <a href="/TenniShip/Team/{{team1GroupF}}">
+                                            <a href="/TenniShip/Teams/{{team1GroupF}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team1GroupF}}.jpg">
                                                     <div class="member-info">
@@ -619,7 +619,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <a href="/TenniShip/Team/{{team2GroupA}}">
+                                            <a href="/TenniShip/Teams/{{team2GroupA}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupA}}.jpg">
                                                     <div class="member-info">
@@ -632,7 +632,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <a href="/TenniShip/Team/{{team2GroupB}}">
+                                            <a href="/TenniShip/Teams/{{team2GroupB}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupB}}.jpg">
                                                     <div class="member-info">
@@ -645,7 +645,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.2s">
-                                            <a href="/TenniShip/Team/{{team2GroupC}}">
+                                            <a href="/TenniShip/Teams/{{team2GroupC}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupC}}.jpg">
                                                     <div class="member-info">
@@ -658,7 +658,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.3s">
-                                            <a href="/TenniShip/Team/{{team2GroupD}}">
+                                            <a href="/TenniShip/Teams/{{team2GroupD}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupD}}.jpg">
                                                     <div class="member-info">
@@ -671,7 +671,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
-                                            <a href="/TenniShip/Team/{{team2GroupE}}">
+                                            <a href="/TenniShip/Teams/{{team2GroupE}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupE}}.jpg">
                                                     <div class="member-info">
@@ -684,7 +684,7 @@ Header
                                         </div>
 
                                         <div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12" data-wow-delay="0.1s">
-                                            <a href="/TenniShip/Team/{{team2GroupF}}">
+                                            <a href="/TenniShip/Teams/{{team2GroupF}}">
                                                 <div class="member tournamentTeams">
                                                     <img alt="" class="img-fluid tournamentTeamsPic" src="/../img/clients/teams/{{team2GroupF}}.jpg">
                                                     <div class="member-info">
@@ -723,7 +723,7 @@ Header
                     <div class="modal-body">
                         <h6>Are you sure on deleting the tournament?</h6>
                     </div>
-                    <form action="/TenniShip/ADMIN/Tournament/{{tournamentName}}/Deleted" method="post">
+                    <form action="/TenniShip/ADMIN/Tournaments/{{tournamentName}}/Deleted" method="post">
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button>
                             <button class="btn buttonown" data-target="" data-toggle="modal" id="buttonDeleteTournamentConfirm" type="submit">Delete

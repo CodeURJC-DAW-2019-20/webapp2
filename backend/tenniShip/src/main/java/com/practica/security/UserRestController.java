@@ -117,7 +117,7 @@ public class UserRestController {
 		return new ResponseEntity<>(HttpStatus.CONFLICT);
 	}
 
-	@PostMapping("/Team/{teamID}/image")
+	@PostMapping("/Teams/{teamID}/image")
 	public ResponseEntity<Team> newTeamImg(@PathVariable String teamID, @RequestParam List<MultipartFile> imageFile)
 			throws IOException {
 		Optional<Team> team = teamService.findById(teamID);

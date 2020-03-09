@@ -23,7 +23,7 @@ function sleep(ms) {
         }
         var posNewTournaments = tourPosition + TOUR_PAGE_ELEM;
         $.ajax({
-            url: "https://localhost:8443/TenniShip/RegisterMatch/Tournament/ListTournament/" + tourPosition + "/" + posNewTournaments,
+            url: "https://localhost:8443/TenniShip/RegisterMatch/Tournaments/ListTournament/" + tourPosition + "/" + posNewTournaments,
             type: "GET",
             dataType: "html",
             success: function(msg){
@@ -54,7 +54,7 @@ function sleep(ms) {
         var teamName = document.getElementById("teamNameIdH3").innerHTML;
         var posNewMatches = matchPosition + MATCH_PAGE_ELEM;
         $.ajax({
-            url: "https://localhost:8443/TenniShip/Team/" + teamName + "/ListMatches/" + matchPosition + "/" + posNewMatches,
+            url: "https://localhost:8443/TenniShip/Teams/" + teamName + "/ListMatches/" + matchPosition + "/" + posNewMatches,
             type: "GET",
             dataType: "html",
             success: function(msg){

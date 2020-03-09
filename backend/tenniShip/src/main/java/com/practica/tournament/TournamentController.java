@@ -36,7 +36,7 @@ public class TournamentController {
 	@Autowired
 	private UserComponent userComponent;
 
-	@PostMapping("/TenniShip/RegisterMatch/Tournament/{tournament}/Submission")
+	@PostMapping("/TenniShip/RegisterMatch/Tournaments/{tournament}/Submission")
 	public String submitMatch(Model model, @PathVariable String tournament, @RequestParam String teamHome,
 			@RequestParam String teamAway, @RequestParam int quantityHome, @RequestParam int quantityAway,
 			HttpServletRequest request) throws InterruptedException {
@@ -58,10 +58,10 @@ public class TournamentController {
 			model.addAttribute("tournament", tournament);
 			return "error";
 		}
-		return "redirect:/TenniShip/RegisterMatch/Tournament/" + tournament;
+		return "redirect:/TenniShip/RegisterMatch/Tournaments/" + tournament;
 	}
 
-	@GetMapping("/TenniShip/RegisterMatch/Tournament/{tournament}")
+	@GetMapping("/TenniShip/RegisterMatch/Tournaments/{tournament}")
 	public String selectMatch(Model model, @PathVariable String tournament, HttpServletRequest request) {
 
 		Optional<Tournament> t = tournamentService.findById(tournament);// check if that team play this tournament
@@ -90,7 +90,7 @@ public class TournamentController {
 		}
 	}
 
-	@GetMapping("/TenniShip/RegisterMatch/Tournament")
+	@GetMapping("/TenniShip/RegisterMatch/Tournaments")
 	public String selectTournament(Model model, HttpServletRequest request) {
 		if (userComponent.isLoggedUser()) {
 			String team = userComponent.getTeam();
@@ -105,7 +105,7 @@ public class TournamentController {
 		}
 	}
 
-	@GetMapping("/TenniShip/RegisterMatch/Tournament/ListTournament/{position}/{end}")
+	@GetMapping("/TenniShip/RegisterMatch/Tournaments/ListTournament/{position}/{end}")
 	public String listTournament(Model model, HttpServletRequest request, @PathVariable int position,
 			@PathVariable int end) {
 		if (userComponent.isLoggedUser()) {

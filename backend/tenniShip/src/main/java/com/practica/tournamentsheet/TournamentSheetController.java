@@ -45,7 +45,7 @@ public class TournamentSheetController {
 	static int pointsWon = 0;
 	static int j;
 
-	@PostMapping("/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}/Submission")
+	@PostMapping("/TenniShip/ADMIN/Tournaments/{tournament}/EditMatches/{group}/Submission")
 	public String submitMatchEdited(Model model, @PathVariable String tournament, @RequestParam String teamHome,
 			@PathVariable String group, @RequestParam String teamAway, @RequestParam int quantityHome,
 			@RequestParam int quantityAway, HttpServletRequest request) {
@@ -62,7 +62,7 @@ public class TournamentSheetController {
 
 			matchService.save(match);
 
-			return "redirect:/TenniShip/Tournament/" + tournament;
+			return "redirect:/TenniShip/Tournaments/" + tournament;
 
 		} else {
 			model.addAttribute("errormsg", "Someone has to win");
@@ -76,7 +76,7 @@ public class TournamentSheetController {
 		}
 	}
 
-	@GetMapping("/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}")
+	@GetMapping("/TenniShip/ADMIN/Tournaments/{tournament}/EditMatches/{group}")
 	public String editMatches(Model model, @PathVariable String tournament, @PathVariable String group) {
 
 		Optional<Tournament> t = tournamentService.findById(tournament);
@@ -89,7 +89,7 @@ public class TournamentSheetController {
 		return "registerMatch";
 	}
 
-	@PostMapping("/TenniShip/ADMIN/Tournament/{tournament}/Deleted")
+	@PostMapping("/TenniShip/ADMIN/Tournaments/{tournament}/Deleted")
 	public String deleteTournament(Model model, @PathVariable String tournament) {
 
 		Optional<Tournament> t = tournamentService.findById(tournament);
@@ -108,7 +108,7 @@ public class TournamentSheetController {
 		Optional<Tournament> t = tournamentService.findById(tournamentName);
 
 		if (t.isPresent()) {
-			return "redirect:/TenniShip/Tournament/" + tournamentName;
+			return "redirect:/TenniShip/Tournaments/" + tournamentName;
 		} else {
 			return "redirect:/TenniShip";
 		}
@@ -135,7 +135,7 @@ public class TournamentSheetController {
 		}
 	}
 
-	@GetMapping("/TenniShip/Tournament/{tournament}")
+	@GetMapping("/TenniShip/Tournaments/{tournament}")
 	public String tournament(Model model, @PathVariable String tournament, HttpServletRequest request) {
 
 		Optional<Tournament> t = tournamentService.findById(tournament);

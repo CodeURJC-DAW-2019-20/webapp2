@@ -122,7 +122,7 @@ public class CreatorRestController {
 		}
 	}
 
-	@PostMapping("/Tournament/{tournamentID}/image")
+	@PostMapping("/Tournaments/{tournamentID}/image")
 	public ResponseEntity<Tournament> newTournamentImg(@PathVariable String tournamentID,
 			@RequestParam MultipartFile imageFile) throws IOException {
 		Optional<Tournament> tournament = tournamentService.findById(tournamentID);

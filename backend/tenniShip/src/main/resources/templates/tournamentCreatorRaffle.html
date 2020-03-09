@@ -68,13 +68,13 @@ Header
                     {{^admin}}
                     <li class="menu-has-children"><a href="#actions">Actions</a>
                         <ul>
-                            <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
+                            <li><a href="/TenniShip/RegisterMatch/Tournaments">Register a Match</a></li>
                             <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
                         </ul>
                     </li>
                     <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
                         <ul>
-                            <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
+                            <li><a href="/TenniShip/Teams/{{team}}">View Profile</a></li>
                             <li>
                                 <form action="/logout" method="post">
                                     <button class="btn" type="submit">Sign Out</button>
@@ -135,7 +135,7 @@ Header
                                     <p>Congratulations, the tournament has been created successfully. You can start
                                         playing whenever you want.</p>
                                     <div class="buttons">
-                                        <a class="btn" href="/TenniShip/Tournament/{{tourFinal.name}}">Go to the Tournament</a>
+                                        <a class="btn" href="/TenniShip/Tournaments/{{tourFinal.name}}">Go to the Tournament</a>
                                         <a class="btn" href="/TenniShip">Home</a>
                                     </div>
                                 </div>

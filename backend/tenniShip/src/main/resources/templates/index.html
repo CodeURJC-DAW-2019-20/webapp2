@@ -60,13 +60,13 @@
                     {{#registered}}
                     <li class="menu-has-children"><a href="#actions">Actions</a>
                         <ul>
-                            <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
+                            <li><a href="/TenniShip/RegisterMatch/Tournaments">Register a Match</a></li>
                             <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
                         </ul>
                     </li>
                     <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
                         <ul>
-                            <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
+                            <li><a href="/TenniShip/Teams/{{team}}">View Profile</a></li>
                             <li>
                                 <form action="/logout" method="post">
                                     <button class="btn" type="submit">Sign Out</button>
@@ -157,7 +157,7 @@
                                 <img alt="" class="img-fluid" src="../img/registerMatch.jpg">
                                 <div class="icon"><i class="ion-ios-tennisball"></i></div>
                             </div>
-                            <h2 class="title">{{^admin}}<a href="/TenniShip/RegisterMatch/Tournament">{{/admin}}Register a Match</a></h2>
+                            <h2 class="title">{{^admin}}<a href="/TenniShip/RegisterMatch/Tournaments">{{/admin}}Register a Match</a></h2>
                             <p>
                                 This section´s purpose is the insertion of the results of the matchs from a league in which your team is involved, it also lets the administrator of the league the ability to change match results. Working as a double check for the assurance of the participants.
                             </p>

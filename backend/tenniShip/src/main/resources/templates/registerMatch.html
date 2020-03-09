@@ -56,13 +56,13 @@
                     {{/admin}} {{^admin}}
                     <li class="menu-has-children"><a href="#actions">Actions</a>
                         <ul>
-                            <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
+                            <li><a href="/TenniShip/RegisterMatch/Tournaments">Register a Match</a></li>
                             <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
                         </ul>
                     </li>
                     <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
                         <ul>
-                            <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
+                            <li><a href="/TenniShip/Teams/{{team}}">View Profile</a></li>
                             <li>
                                 <form action="/logout" method="post">
                                     <button class="btn" type="submit">Sign Out</button>
@@ -93,7 +93,7 @@
 
         {{#allPlayed}}
         <div class="text-center pt-3">
-            <h4><a href="/TenniShip/Tournament/{{tournamentName}}" style="color: green;"><strong>Go to the Tournament</strong></a></h4>
+            <h4><a href="/TenniShip/Tournaments/{{tournamentName}}" style="color: green;"><strong>Go to the Tournament</strong></a></h4>
         </div>
         {{/allPlayed}}
 
@@ -101,9 +101,9 @@
             <div class="container">
 
                 {{#listMatches}} {{^admin}}
-                <form action="/TenniShip/RegisterMatch/Tournament/{{tournament.name}}/Submission" method="post">
+                <form action="/TenniShip/RegisterMatch/Tournaments/{{tournament.name}}/Submission" method="post">
                     {{/admin}} {{#admin}}
-                    <form action="/TenniShip/ADMIN/Tournament/{{tournament.name}}/EditMatches/{{type}}/Submission" method="post">
+                    <form action="/TenniShip/ADMIN/Tournaments/{{tournament.name}}/EditMatches/{{type}}/Submission" method="post">
                         {{/admin}}
                         <div class="row">
                             <div class="col-lg-4 col-md-3">
@@ -113,7 +113,7 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title TeamPositioningRegisterMatchIconLocal">
-                                            <a class="colorLinkTeam" href="/Team/{{team1.teamName}}">{{team1.name}}</a>
+                                            <a class="colorLinkTeam" href="/Teams/{{team1.teamName}}">{{team1.name}}</a>
                                             <input type="hidden" name="teamHome" value="{{team1.teamName}}">
                                         </h4>
                                         <p class="card-text TeamPositioningRegisterMatchIconLocal">Local´s Team</p>
@@ -159,7 +159,7 @@
                                     </div>
                                     <div class="card-body">
                                         <h4 class="card-title TeamPositioningRegisterMatchIconVisitor">
-                                            <a class="colorLinkTeam" href="/Team/{{team2.teamName}}">{{team2.teamName}}</a>
+                                            <a class="colorLinkTeam" href="/Teams/{{team2.teamName}}">{{team2.teamName}}</a>
                                             <input type="hidden" name="teamAway" value="{{team2.name}}">
                                         </h4>
                                         <p class="card-text TeamPositioningRegisterMatchIconVisitor">Visitor´s Team</p>

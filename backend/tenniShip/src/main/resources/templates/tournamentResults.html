@@ -58,13 +58,13 @@
                     {{#registered}}
                     <li class="menu-has-children"><a href="#actions">Actions</a>
                         <ul>
-                            <li><a href="/TenniShip/RegisterMatch/Tournament">Register a Match</a></li>
+                            <li><a href="/TenniShip/RegisterMatch/Tournaments">Register a Match</a></li>
                             <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
                         </ul>
                     </li>
                     <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
                         <ul>
-                            <li><a href="/TenniShip/Team/{{team}}">View Profile</a></li>
+                            <li><a href="/TenniShip/Teams/{{team}}">View Profile</a></li>
                             <li>
                                 <form action="/logout" method="post">
                                     <button class="btn" type="submit">Sign Out</button>
@@ -113,7 +113,7 @@
                     {{#resultsList}}
                     <li class="list-group-item">
                         <div class="row justify-content-center">
-                            <div class="col col-12 text-center"><a href="/TenniShip/Tournament/{{.}}">{{.}}</a></div>
+                            <div class="col col-12 text-center"><a href="/TenniShip/Tournaments/{{.}}">{{.}}</a></div>
                         </div>
                     </li>
                     {{/resultsList}}

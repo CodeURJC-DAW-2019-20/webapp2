@@ -30,7 +30,7 @@
       e.preventDefault();
       var input = document.getElementById("tournamentSearch");
       var text = input.value;
-      var url = "./TenniShip/Tournament/" + text;
+      var url = "./TenniShip/Tournaments/" + text;
       $(location).attr('href',url);
     }
   });
@@ -40,7 +40,7 @@
       e.preventDefault();
       var input = document.getElementById("teamSearch");
       var text = input.value;
-      var url = "./TenniShip/Team/" + text;
+      var url = "./TenniShip/Teams/" + text;
       $(location).attr('href',url);
     }
   });
