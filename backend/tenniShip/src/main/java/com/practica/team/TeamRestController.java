@@ -37,6 +37,11 @@ public class TeamRestController {
 	@Autowired
 	private TeamRepository teamRepository;
 
+	@GetMapping("/Teams")
+	public ResponseEntity<List<Team>> teams() {
+		return new ResponseEntity<>(teamRepository.getAllTeams(), HttpStatus.OK);
+	}
+
 	public static class TeamFileData {
 
 		interface Basic {

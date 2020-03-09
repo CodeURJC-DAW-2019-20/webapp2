@@ -44,6 +44,11 @@ public class TournamentRestController {
 	@Autowired
 	private UserComponent userComponent;
 
+	@GetMapping("/Tournaments")
+	public ResponseEntity<List<Tournament>> tournaments() {
+		return new ResponseEntity<>(tournamentService.getAllTournaments(), HttpStatus.OK);
+	}
+
 	@GetMapping("/Tournament/{tournamentId}/image")
 	public ResponseEntity<Object> getTournamentImage(@PathVariable String tournamentId) throws IOException {
 		Optional<Tournament> tournament = tournamentService.findById(tournamentId);
