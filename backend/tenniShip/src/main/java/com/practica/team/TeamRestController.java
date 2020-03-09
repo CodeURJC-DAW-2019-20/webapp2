@@ -142,10 +142,10 @@ public class TeamRestController {
 			if (team.get().hasTeamImage()) {
 				switch (npic) {
 				case "0":
-					return this.imgService.createResponseFromImage("teams", teamID);
+					return this.imgService.createResponseFromImage("registered/teams", teamID);
 
 				default:
-					return this.imgService.createResponseFromImage("players", teamID + "player" + npic);
+					return this.imgService.createResponseFromImage("registered/players", teamID + "player" + npic);
 				}
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);

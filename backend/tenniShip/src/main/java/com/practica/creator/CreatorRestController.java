@@ -131,7 +131,7 @@ public class CreatorRestController {
 					.contains(teamService.findById(userComponent.getTeam()).get())) {
 				tournament.get().setImage(true);
 				tournamentService.save(tournament.get());
-				imgService.saveImage("tournaments", tournament.get().getName(), imageFile);
+				imgService.saveImage("registered/tournaments", tournament.get().getName(), imageFile);
 				return new ResponseEntity<>(HttpStatus.CREATED);
 			} else
 				return new ResponseEntity<>(HttpStatus.FORBIDDEN);

@@ -131,9 +131,9 @@ public class UserController {
 			// Saving team icon
 			teamNew.setTeamImage(true);
 			teamService.save(teamNew);
-			imgService.saveImage("teams", teamNew.getName(), imageFile.get(0));
+			imgService.saveImage("registered/teams", teamNew.getName(), imageFile.get(0));
 			for (int i = 1; i < 6; i++) {
-				imgService.saveImage("players", teamNew.getName() + String.format("Player%d", i), imageFile.get(i));
+				imgService.saveImage("registered/players", teamNew.getName() + String.format("Player%d", i), imageFile.get(i));
 			}
 
 			// Sending Confirmation Mail
