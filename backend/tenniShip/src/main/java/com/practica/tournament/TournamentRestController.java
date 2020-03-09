@@ -57,22 +57,20 @@ public class TournamentRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	//https://localhost:8443/api/TenniShip/RegisterMatch/Tournament/?NumberOfTournamentsDisplayed=3
-	@GetMapping("/RegisterMatch/Tournament")
-	public ResponseEntity<List<Tournament>> selectTournament(HttpServletRequest request, Pageable page, @RequestParam("NumberOfTournamentsDisplayed") int end ) {
-		if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
-			String team = userComponent.getTeam();
-			Optional<Team> t = teamService.findById(team);
-			
-			Page<Tournament> pages = teamService.getPagesInTournaments(t.get(), page,end);			
-			
-			List<Tournament> listtournaments = teamService.getListTournaments(pages);
+	//https://localhost:8443/api/TenniShip/RegisterMatch/tournaments?page=0&size=1
+		@GetMapping("/RegisterMatch/tournaments")
+		public ResponseEntity<List<Tournament>> selectTournamentPaginated(HttpServletRequest request, Pageable page) {
+			if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
+				String team = userComponent.getTeam();
+				Optional<Team> t = teamService.findById(team);		
+				
+				List<Tournament> listtournaments = teamService.getPagesInTournaments(t.get(), page);
 
-			return new ResponseEntity<>(listtournaments, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+				return new ResponseEntity<>(listtournaments, HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+			}
 		}
-	}
 
 	public interface PutMatch extends Match.Basic, Team.Basic, Tournament.Basic {
 	}

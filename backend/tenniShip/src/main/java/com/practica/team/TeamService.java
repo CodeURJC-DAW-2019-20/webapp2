@@ -81,20 +81,10 @@ public class TeamService {
 		return teamRepository.getRecentMatchesPaginated(team,page).getContent();
 	}
 	
-	public Page<Tournament> getPagesInTournaments(Team team,Pageable page, int end){
-		
-		page = PageRequest.of(0, end);
-		
-		return teamRepository.getTournamentsPaginated(team, page);
-	}
 	
-	public List<Tournament> getListTournaments(Page<Tournament> pages){
-		List<Tournament> pageTournaments = new ArrayList<>();
-		for(Tournament t : pages) {
-			pageTournaments.add(t);
-		}
+	public List<Tournament> getPagesInTournaments(Team team, Pageable page){
 		
-		return pageTournaments;
+		return teamRepository.getTournamentsPaginated(team,page).getContent();
 	}
 	
 	

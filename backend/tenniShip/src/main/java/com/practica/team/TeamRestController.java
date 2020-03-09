@@ -89,8 +89,8 @@ public class TeamRestController {
 	}
 
 	@JsonView(MatchDetails.class)
-	@GetMapping("/Team/{team}")
-	// https://localhost:8443/api/TenniShip/Team/{team}/?NumberOfMatchesListed=end
+	@GetMapping("/Teams/{team}")
+	// https://localhost:8443/api/TenniShip/Teams/{team}
 	public ResponseEntity<TeamFileData> getTeam(@PathVariable String team) {
 
 		Optional<Team> t = teamRepository.findById(team);
@@ -110,8 +110,8 @@ public class TeamRestController {
 	
 	
 	@JsonView(MatchDetails.class)
-	@GetMapping("/Team/{team}/ListMatches")
-	// https://localhost:8443/api/TenniShip/Team/{team}/?NumberOfMatchesListed=end
+	@GetMapping("/Teams/{team}/Matches")
+	// https://localhost:8443/api/TenniShip/Team/{team}/Matches?page=pageRequested?size=sizeListMatches
 	public ResponseEntity<List<Match>> getMatchesListed(@PathVariable String team, Pageable page) {
 
 		Optional<Team> t = teamRepository.findById(team);
