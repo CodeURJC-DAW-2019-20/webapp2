@@ -7,25 +7,24 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.practica.ImageService;
 import com.practica.model.Match;
 import com.practica.model.Player;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
+import com.practica.model.Team.Basic;
 
 @RestController
-@RequestMapping("/api/TenniShip")
+@RequestMapping("/api/tenniship")
 
 public class TeamRestController {
 
@@ -38,7 +37,8 @@ public class TeamRestController {
 	@Autowired
 	private TeamRepository teamRepository;
 
-	@GetMapping("/Teams")
+	@JsonView(Team.Basic.class)
+	@GetMapping("/teams")
 	public ResponseEntity<List<Team>> teams() {
 		return new ResponseEntity<>(teamRepository.getAllTeams(), HttpStatus.OK);
 	}
@@ -52,9 +52,9 @@ public class TeamRestController {
 		private String teamName;
 
 		@JsonView(Basic.class)
-		private List<String> imageListTournaments = new ArrayList<>();
+		private List<String> Tournaments = new ArrayList<>();
 
-		@JsonView(Basic.class)
+		@JsonIgnore
 		private boolean teamImage;
 
 		@JsonView(Basic.class)
@@ -69,11 +69,11 @@ public class TeamRestController {
 		@JsonView(Basic.class)
 		private List<Match> matchesList = new ArrayList<>();
 
-		public TeamFileData(String teamName, List<String> imageListTournaments, boolean teamImage,
+		public TeamFileData(String teamName, List<String> Tournaments, boolean teamImage,
 				double percentageLostMatches, double percentageWonMatches, List<Player> playerList) {
 
 			this.teamName = teamName;
-			this.imageListTournaments = imageListTournaments;
+			this.Tournaments = Tournaments;
 			this.teamImage = teamImage;
 			this.percentageLostMatches = percentageLostMatches;
 			this.percentageWonMatches = percentageWonMatches;
@@ -94,8 +94,8 @@ public class TeamRestController {
 	}
 
 	@JsonView(MatchDetails.class)
-	@GetMapping("/Teams/{team}")
-	// https://localhost:8443/api/TenniShip/Teams/{team}
+	@GetMapping("/teams/{team}")
+	// https://localhost:8443/api/tenniship/teams/{team}
 	public ResponseEntity<TeamFileData> getTeam(@PathVariable String team) {
 
 		Optional<Team> t = teamRepository.findById(team);
@@ -115,8 +115,8 @@ public class TeamRestController {
 	
 	
 	@JsonView(MatchDetails.class)
-	@GetMapping("/Teams/{team}/Matches")
-	// https://localhost:8443/api/TenniShip/Team/{team}/Matches?page=pageRequested?size=sizeListMatches
+	@GetMapping("/teams/{team}/matches")
+	// https://localhost:8443/api/tenniship/teams/{team}/matches?page=pageRequested&size=sizeListMatches
 	public ResponseEntity<List<Match>> getMatchesListed(@PathVariable String team, Pageable page) {
 
 		Optional<Team> t = teamRepository.findById(team);
@@ -133,7 +133,7 @@ public class TeamRestController {
 	}
 	
 
-	@GetMapping("/Teams/{teamID}/image/{npic}")
+	@GetMapping("/teams/{teamID}/image/{npic}")
 	public ResponseEntity<Object> getTeamImage(@PathVariable String teamID, @PathVariable String npic)
 			throws IOException {
 		/* nPic value is 0 for team pic, and 1-5 for players */

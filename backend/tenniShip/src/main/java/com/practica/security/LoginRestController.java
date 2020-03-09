@@ -18,7 +18,7 @@ public class LoginRestController {
 	@Autowired
 	private UserComponent userComponent;
 
-	@RequestMapping("/api/TenniShip/SignIn")
+	@RequestMapping("/api/tenniship/signin")
 	public ResponseEntity<User> logIn() {
 
 		if (!userComponent.isLoggedUser()) {
@@ -31,7 +31,7 @@ public class LoginRestController {
 		}
 	}
 
-	@RequestMapping("/api/TenniShip/logout")
+	@RequestMapping("/api/tenniship/logout")
 	public ResponseEntity<Boolean> logOut(HttpSession session) {
 
 		if (!userComponent.isLoggedUser()) {

@@ -8,7 +8,6 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -25,11 +23,12 @@ import com.practica.ImageService;
 import com.practica.model.Match;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
+import com.practica.model.Team.Basic;
 import com.practica.security.UserComponent;
 import com.practica.team.TeamService;
 
 @RestController
-@RequestMapping("/api/TenniShip")
+@RequestMapping("/api/tenniship")
 public class TournamentRestController {
 
 	@Autowired
@@ -44,12 +43,13 @@ public class TournamentRestController {
 	@Autowired
 	private UserComponent userComponent;
 
-	@GetMapping("/Tournaments")
+	@JsonView(Tournament.Basic.class)
+	@GetMapping("/tournaments")
 	public ResponseEntity<List<Tournament>> tournaments() {
 		return new ResponseEntity<>(tournamentService.getAllTournaments(), HttpStatus.OK);
 	}
 
-	@GetMapping("/Tournaments/{tournamentId}/image")
+	@GetMapping("/tournaments/{tournamentId}/image")
 	public ResponseEntity<Object> getTournamentImage(@PathVariable String tournamentId) throws IOException {
 		Optional<Tournament> tournament = tournamentService.findById(tournamentId);
 		if (tournament.isPresent()) {
@@ -62,27 +62,27 @@ public class TournamentRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	//https://localhost:8443/api/TenniShip/RegisterMatch/tournaments?page=0&size=1
-		@GetMapping("/RegisterMatch/tournaments")
-		public ResponseEntity<List<Tournament>> selectTournamentPaginated(HttpServletRequest request, Pageable page) {
-			if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
-				String team = userComponent.getTeam();
-				Optional<Team> t = teamService.findById(team);		
-				
-				List<Tournament> listtournaments = teamService.getPagesInTournaments(t.get(), page);
+	//https://localhost:8443/api/tenniship/tournaments/teams/matches?page=0&size=1
+	@GetMapping("/tournaments/teams/matches")
+	public ResponseEntity<List<Tournament>> selectTournamentPaginated(HttpServletRequest request, Pageable page) {
+		if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
+			String team = userComponent.getTeam();
+			Optional<Team> t = teamService.findById(team);		
+			
+			List<Tournament> listtournaments = teamService.getPagesInTournaments(t.get(), page);
 
-				return new ResponseEntity<>(listtournaments, HttpStatus.OK);
-			} else {
-				return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-			}
+			return new ResponseEntity<>(listtournaments, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}
+	}
 
 	public interface PutMatch extends Match.Basic, Team.Basic, Tournament.Basic {
 	}
 
 
 	@JsonView(PutMatch.class)
-	@PutMapping("/RegisterMatch/Tournaments/{tournament}/Submission")
+	@PutMapping("/tournaments/{tournament}/matches")
 	public ResponseEntity<Match> submitMatch(@PathVariable String tournament, @RequestBody Match newMatch,
 			HttpServletRequest request) throws InterruptedException {
 
@@ -116,7 +116,7 @@ public class TournamentRestController {
 	}
 
 	@JsonView(selectMatch.class)
-	@GetMapping("/RegisterMatch/Tournaments/{tournament}")
+	@GetMapping("/tournaments/{tournament}/matches")
 	public ResponseEntity<SelectMatchAuxiliarClass> selectMatch(@PathVariable String tournament,
 			HttpServletRequest request) {
 

@@ -28,7 +28,7 @@ import com.practica.team.TeamService;
 import com.practica.tournament.TournamentService;
 
 @RestController
-@RequestMapping("/api/TenniShip")
+@RequestMapping("/api/tenniship")
 public class CreatorRestController {
 
 	@Autowired
@@ -90,7 +90,7 @@ public class CreatorRestController {
 	}
 
 	@JsonView(creator.class)
-	@PostMapping("/Creator")
+	@PostMapping("/tournaments")
 	public ResponseEntity<CreatorAuxClassToReturn> createRest(@RequestBody CreatorAuxClass creatorAuxObject) {
 
 		if (userComponent.isLoggedUser()) {
@@ -122,7 +122,7 @@ public class CreatorRestController {
 		}
 	}
 
-	@PostMapping("/Tournaments/{tournamentID}/image")
+	@PostMapping("/tournaments/{tournamentID}/image")
 	public ResponseEntity<Tournament> newTournamentImg(@PathVariable String tournamentID,
 			@RequestParam MultipartFile imageFile) throws IOException {
 		Optional<Tournament> tournament = tournamentService.findById(tournamentID);
