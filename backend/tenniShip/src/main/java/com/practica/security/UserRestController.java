@@ -25,7 +25,7 @@ import com.practica.model.Team;
 import com.practica.team.TeamService;
 
 @RestController
-@RequestMapping("/api/TenniShip")
+@RequestMapping("/api/tenniship")
 public class UserRestController {
 
 	@Autowired
@@ -82,7 +82,7 @@ public class UserRestController {
 
 	}
 
-	@PostMapping("/SignUp")
+	@PostMapping("/signup")
 	public ResponseEntity<User> newUser(@RequestBody UserCreatedRest userWithTeam) {
 		if (!userComponent.isLoggedUser()) {
 			if (userService.findByUserName(userWithTeam.getUserName()).isPresent()
@@ -117,7 +117,7 @@ public class UserRestController {
 		return new ResponseEntity<>(HttpStatus.CONFLICT);
 	}
 
-	@PostMapping("/Teams/{teamID}/image")
+	@PostMapping("/teams/{teamID}/image")
 	public ResponseEntity<Team> newTeamImg(@PathVariable String teamID, @RequestParam List<MultipartFile> imageFile)
 			throws IOException {
 		Optional<Team> team = teamService.findById(teamID);

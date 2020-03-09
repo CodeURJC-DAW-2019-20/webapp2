@@ -21,34 +21,44 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 		http.antMatcher("/api/**");
 
 		// User
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/SignIn").permitAll();// set logged user
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/TenniShip/SignUp").permitAll();
-
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/Teams/**").permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniship/signin").permitAll();// set logged user
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/tenniship/signup").permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniShip/logout").permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/tenniship/teams/{teamID}/image").hasAnyRole("USER");
+		
+		//Team
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniship/teams").permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniship/teams/**").permitAll();
+		
 		// Tournament
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/Tournaments/").permitAll();
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/RegisterMatch/Tournaments/**")
-				.hasAnyRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniship/tournaments").permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniship/tournaments/{tournamentId}/image").permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniship/tournaments/teams/matches")
+		.hasAnyRole("USER");
+		
 		http.authorizeRequests()
-				.antMatchers(HttpMethod.PUT, "/api/TenniShip/RegisterMatch/Tournaments/{tournament}/Submission")
+		.antMatchers(HttpMethod.PUT, "/api/tenniship/tournaments/{tournament}/matches")
+		.hasAnyRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniship/tournaments/{tournament}/matches")
 				.hasAnyRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/RegisterMatch/Tournaments")
-				.hasAnyRole("USER");
+		
 
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/TenniShip/Tournaments/**").permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniship/tournaments/**").permitAll();
 
+		//ADMIN
 		http.authorizeRequests()
-				.antMatchers(HttpMethod.GET, "/api/TenniShip/ADMIN/Tournaments/{tournament}/EditMatches/{group}")
+				.antMatchers(HttpMethod.GET, "/api/tenniship/admin/tournaments/{tournament}/matches/{group}")
 				.hasAnyRole("ADMIN");
 
 		http.authorizeRequests()
 				.antMatchers(HttpMethod.PUT,
-						"/api/TenniShip/ADMIN/Tournaments/{tournament}/EditMatches/{group}/Submission")
+						"/api/tenniship/admin/tournaments/{tournament}/matches/{group}")
 				.hasAnyRole("ADMIN");
 
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/TenniShip/ADMIN/Tournaments/{tournament}/Deleted")
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/tenniship/admin/tournaments/{tournament}")
 				.hasAnyRole("ADMIN");
-
+		
+		
 		http.authorizeRequests().anyRequest().authenticated();
 
 		// Use HTTP basic authentication
