@@ -71,36 +71,20 @@ public class TeamService {
 		return teamRepository.findSimilarTeams(team);
 	}
 	
-	public Page<Match> getPagesInMatches(Team team, Pageable page, int end){
+	public List<Match> getFirstPageMatches(Team team){
+		Pageable page = PageRequest.of(0,2);
+		return teamRepository.getRecentMatchesPaginated(team, page).getContent();
+	}	
+	
+	public List<Match> getPagesInMatches(Team team, Pageable page){
 		
-		page = PageRequest.of(0, end);
-		
-		return teamRepository.getRecentMatchesPaginated(team,page);
+		return teamRepository.getRecentMatchesPaginated(team,page).getContent();
 	}
 	
-	public List<Match> getListMatches(Page<Match> pages) {
-        List<Match> pageMatches = new ArrayList<>();
-        for (Match m : pages) {
-            pageMatches.add(m);
-        }
-
-        return pageMatches;
-    }
 	
-	public Page<Tournament> getPagesInTournaments(Team team,Pageable page, int end){
+	public List<Tournament> getPagesInTournaments(Team team, Pageable page){
 		
-		page = PageRequest.of(0, end);
-		
-		return teamRepository.getTournamentsPaginated(team, page);
-	}
-	
-	public List<Tournament> getListTournaments(Page<Tournament> pages){
-		List<Tournament> pageTournaments = new ArrayList<>();
-		for(Tournament t : pages) {
-			pageTournaments.add(t);
-		}
-		
-		return pageTournaments;
+		return teamRepository.getTournamentsPaginated(team,page).getContent();
 	}
 	
 	
