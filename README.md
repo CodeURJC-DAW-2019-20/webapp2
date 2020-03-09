@@ -254,7 +254,7 @@ The only step for executing the docker is to run the next script on CMD:
 C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -File <PreviousPath>\script.ps1
 ```
 
-### Execution Guide
+### Set-Up Guide
 
 1. Create the network. 
 ```
