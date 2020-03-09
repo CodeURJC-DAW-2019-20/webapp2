@@ -143,11 +143,11 @@ We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") f
 		- [Admin Role and Tournament Information!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/85b2a1859dd01387adc98e0c1a7056353ac56527 "85b2a18") 
 		- [Errors contempled](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/461fd6d754ab028439e62393bb9cb0cf1e980fa1 "461fd6d") 
 	- Top 5 most modified files:
-		- [Creator Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/CreatorController.java "CreatorController.java ") 
-		- [User Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/security/UserController.java "UserController.java") 
-		- [Security Configuration](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/security/SecurityConfiguration.java "SecurityConfiguration.java") 
-		- [Custom error controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/security/CustomErrorControler.java "CustomErrorControler.java") 
-		- [Tournament Sheet Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentSheetController.java "TournamentSheetController.java")
+		- [Creator Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/creator/CreatorController.java "CreatorController.java ") 
+		- [User Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/security/UserController.java "UserController.java") 
+		- [Security Configuration](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/security/SecurityConfiguration.java "SecurityConfiguration.java") 
+		- [Custom error controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/security/CustomErrorControler.java "CustomErrorControler.java") 
+		- [Tournament Sheet Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournamentsheet/TournamentSheetController.java "TournamentSheetController.java")
 * Santi: 
 	- Tasks:
 		- Implement main search of tournaments and teams with autocomplete.
@@ -162,11 +162,11 @@ We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") f
 		- [Search Box direct linking](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/d4fb335bb89e58e6e9d3ff8c110a86bb04bcf505 "d4fb335")
 		- [Team autocomplete in Tournament Creator](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/78a2172144e56acd31528c94a290946f52381832 "78a2172")
 	- Top 5 most modified files:
-		- [Team Repository](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamRepository.java)
-		- [Main.js](https://github.com/CodeURJC-DAW-2019-20/webapp2/blame/master/tenniShip/src/main/resources/static/js/main.js)
-		- [Team Results](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/resources/templates/teamResults.html)
-		- [Team Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamController.java)
-		- [Show More Content](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/resources/static/js/showMoreContent.js)
+		- [Team Repository](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamRepository.java)
+		- [Main.js](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/resources/static/js/main.js)
+		- [Team Results](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/resources/templates/teamResults.html)
+		- [Team Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamController.java)
+		- [Show More Content](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/resources/static/js/showMoreContent.js)
 * Diego: 
 	- Tasks:
 		- DataBase MySQL installation and queries.
@@ -181,11 +181,11 @@ We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") f
 		- [Ajax Matches Reload](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/95d7f9b4fb722c7a58719c1e43b7b8d2e835497c "95d7f9b")
 		- [Entity Tournament Created](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/81f4c104b6427b09ff2a9cf494aa21d5519ff8b0 "81f4c10")
 	- Top 5 most modified files:
-		- [ShowMoreContent.js](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/resources/static/js/showMoreContent.js)
-		- [TournamentController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentController.java)
-		- [TournamentSheetController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentSheetController.java)
-		- [TeamRepository.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamRepository.java)
-		- [TeamController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamController.java)
+		- [ShowMoreContent.js](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/resources/static/js/showMoreContent.js)
+		- [TournamentController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentController.java)
+		- [TournamentSheetController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournamentsheet/TournamentSheetController.java)
+		- [TeamRepository.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamRepository.java)
+		- [TeamController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamController.java)
 * Álvaro: 
 	- Tasks:
 		- Images upload.
@@ -200,11 +200,11 @@ We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") f
 		- [Project Fixed](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/25c47d3700c9e54fc956d58e9690c6a86463518e "25c47d3") 
 		- [Tournament Sheet images, default avatar and minor fixes](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/26e9e5e5468259ccd846bb6973fa5b3a65deb495 "26e9e5e") 
 	- Top 5 most modified files in 'Second Phase':
-		- [Mail Sender](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/MailSenderXX.java "MailSenderXX.java") 
-		- [Images Service](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/ImageService.java "Image Service") 
-		- [Data Base Usage](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/DataBaseUsage.java "DataBaseUsage.java") 
-		- [Tournament Rest Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentRestController.java "TournamentRestController.java") 
-		- [Team Rest Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamRestController.java "TeamRestController.java") 
+		- [Mail Sender] (https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/MailSenderXX.java "MailSenderXX.java") 
+		- [Images Service] (https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/ImageService.java"Image Service") 
+		- [Data Base Usage] (https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/DataBaseUsage.java"DataBaseUsage.java") 
+		- [Tournament Rest Controller] (https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentRestController.java "TournamentRestController.java") 
+		- [Team Rest Controller] (https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamRestController.java "TeamRestController.java") 
 * Marcos: 
 	- Tasks:
 		- Data Base correctly implemented.
@@ -219,11 +219,11 @@ We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") f
 		- [Admin Role and Tournament Information!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/85b2a1859dd01387adc98e0c1a7056353ac56527 "85b2a18") 
 		- [Navs fixed!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/a6cba970ad16ec86e72cf8c247a01423097f2818 "a6cba97") 
 	- Top 5 most modified files:
-		- [Tournament Sheet Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentSheetController.java "TournamentSheetController.java") 
-		- [Tournament Repository](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentRepository.java "TournamentRepository.java") 
-		- [Data Base Usage](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/DataBaseUsage.java "DataBaseUsage.java") 
-		- [Tournament Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentController.java "TournamentController.java") 
-		- [Team Repository](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamRepository.java "TeamRepository.java")
+		- [Tournament Sheet Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournamentsheet/TournamentSheetController.java "TournamentSheetController.java") 
+		- [Tournament Repository](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentRepository.java "TournamentRepository.java") 
+		- [Data Base Usage](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/DataBaseUsage.java "DataBaseUsage.java") 
+		- [Tournament Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentController.java "TournamentController.java") 
+		- [Team Repository](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamRepository.java "TeamRepository.java")
 
 
 
