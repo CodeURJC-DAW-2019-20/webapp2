@@ -73,7 +73,7 @@ public class CreatorController {
 
 			// Save TournamentImage
 			finalTournament.setImage(true);
-			imgService.saveImage("tournaments", finalTournament.getName(), imageFile);
+			imgService.saveImage("registered/tournaments", finalTournament.getName(), imageFile);
 		}
 
 		/* Adding a list of all teams for the autocomplete */

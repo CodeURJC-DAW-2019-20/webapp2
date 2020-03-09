@@ -126,9 +126,9 @@ public class UserRestController {
 				team.get().setTeamImage(true);
 				teamService.save(team.get());
 				MultipartFile picture = imageFile.get(0);
-				imgService.saveImage("teams", teamID, picture);
+				imgService.saveImage("registered/teams", teamID, picture);
 				for (int i = 1; i < 6; i++) {
-					imgService.saveImage("players", team.get().getName() + String.format("Player%d", i),
+					imgService.saveImage("registered/players", team.get().getName() + String.format("Player%d", i),
 							imageFile.get(i));
 				}
 				return new ResponseEntity<>(HttpStatus.CREATED);
