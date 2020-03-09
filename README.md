@@ -306,7 +306,7 @@ docker container run --network tenniship-network --name tenniship-container -p 8
 		- Tournament Creator with its whole complexity.
 		- Admin Role functions, deleting tournaments option available, edit matches option available too.
 		- Error control system.
-	- Top 5 most important commits in 'Second Phase':
+	- Top 5 most important commits in 'ThirdPhase':
 		- [Security](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7f240b58b11e45f423a56eea8ca2ff36d8dcfe2e "7f240b5") 
 		- [Sign In and Sign up](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/a9edf05acc9d203045504abfeac3a1533f1a24c7 "a9edf05") 
 		- [Tournament Creator](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/2ce263e2dfd2874f67f142123617b25ab63c2ba3 "2ce263e") 
@@ -325,7 +325,7 @@ docker container run --network tenniship-network --name tenniship-container -p 8
 		- Ajax functionality on tournament selection
 		- Mustache list rendering and format optimization
 		- Pie chart and tournament progress bar functionality added
-	- Top 5 most important commits in 'Second Phase':
+	- Top 5 most important commits in 'ThirdPhase':
 		- [Team and Tournament Search fully functional](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7a82e22d1701f660938597942e4053599b0dff3a "7a82e22")
 		- [AJAX on Tournament Selection](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/2316124a8aa3ff8c1cc064c50633b12d3314b3cf "2316124")
 		- [Adaptive recent matches](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/8d7fc95627f73960d8c0bd291ca5db60fb23e4f6 "8d7fc95")
@@ -344,7 +344,7 @@ docker container run --network tenniship-network --name tenniship-container -p 8
 		- Entity Tournament, Tournament Controller and Bug fixing.
 		- Teamfile AJAX Button for Matches reloading
 		- Documentation: Diagrams
-	- Top 5 most important commits in 'Second Phase':
+	- Top 5 most important commits in 'Third Phase':
 		- [Database migration and completion chart added](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/9c55012c80ae8a250431ef2002aa0b057aa1264e "9c55012")
 		- [Bugs Fixed, merge fixed and queries added](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/9ec1237a36df58061477bbf8687c22d5cbd4c422 "9ec1237")
 		- [Teams Pie Chart added](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/eed9ca3747474a083d34076d21c7bbb05b35da46 "eed9ca3")
@@ -358,23 +358,23 @@ docker container run --network tenniship-network --name tenniship-container -p 8
 		- [TeamController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamController.java)
 * Álvaro: 
 	- Tasks:
-		- Images upload.
-		- Images visualization.
-		- E-Mail sender: e-mail sent when a new user signs up.
-		- Minor things: making Spring friendly with Bootstrap, documentation, spelling check, etc.
-		- Insertion of sample data for demo.
-	- Top 5 most important commits in 'Second Phase':
-		- [Email implemented!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/ed623ab115cc423e3d9282339be99007238e21cc "de0ce05") 
-		- [Images implemented!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/ed623ab115cc423e3d9282339be99007238e21cc "ed623ab") 
-		- [Images implemented on header and Register Match!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/f37bb40a44d591178751cc6f5f487d5578646f2c "f37bb40") 
-		- [Project Fixed](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/25c47d3700c9e54fc956d58e9690c6a86463518e "25c47d3") 
-		- [Tournament Sheet images, default avatar and minor fixes](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/26e9e5e5468259ccd846bb6973fa5b3a65deb495 "26e9e5e") 
-	- Top 5 most modified files in 'Second Phase':
-		- [Mail Sender](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/MailSenderXX.java "MailSenderXX.java") 
-		- [Images Service](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/ImageService.java "Image Service") 
-		- [Data Base Usage](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/DataBaseUsage.java "DataBaseUsage.java") 
-		- [Tournament Rest Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentRestController.java "TournamentRestController.java") 
-		- [Team Rest Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamRestController.java "TeamRestController.java") 
+		- Docker implementation (grupal commit)..
+		- Images adaptation for Docker.
+		- Images uploading and visualization via Res.
+		- Access constraints via Res.
+		- Managing images and email with new adaptation, and some API Rest Sentences.
+	- Top 5 most important commits in 'ThirdPhase':
+		- [Implemented authoritation improvements to Via Rest ](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/abcfcef0a0baa701b181b2ae5115b857829971ba) 
+		- [Docker Done!!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/35e215a35331ae9a7bbf6346ee2f479ed556b498) 
+		- [Images for Docker](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/0aac00c9995b7af7116ae88d817dae0b0fc941e3) 
+		- [Email Security Fixed](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7c6a749049e47e932a9ddf9d3f4d808faccd25db) 
+		- [Images Implemented via Rest](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/689aa6a8991ca074ff077d2709ccd35aa9270480) 
+	- Top 5 most modified files in 'Third Phase':
+		- [CreatorRestController]https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/creator/CreatorRestController.java "CreatorRestController.java") 
+		- [UserRestController](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/security/UserRestController.java "UserRestController.java") 
+		- [SecurityRestConfiguration](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/security/SecurityRestConfiguration.java "SecurityRestConfiguration.java") 
+		- [docker-compose](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/Docker/docker-compose.yml "docker-compose.yml") 
+		- [TeamRestController](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamRestController.java "TeamRestController.java") 
 * Marcos: 
 	- Tasks:
 		- Cleaning-Code.
@@ -382,7 +382,7 @@ docker container run --network tenniship-network --name tenniship-container -p 8
 		- Bugs-fixing.
 		- Docker co-implementation.
 		- Documentation.
-	- Top 5 most important commits in 'Second Phase':
+	- Top 5 most important commits in 'Third Phase':
 		- [Cleaning Code!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/9dead5560cf94a6397f1e26fa67b4195bdd27469 "9dead55") 
 		- [Api-Rest Starting!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/9c6616e4bdb1965f000e802a0845ab89f1260276 "9c6616e") 
 		- [Json Views!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7cbba110f02a8a5d5b28a1ce39342d2ae2e047f0 "7cbba11") 
