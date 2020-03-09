@@ -37,7 +37,7 @@ public class TournamentSheetRestController {
 	static int j;
 
 	@JsonView(TournamentRestController.PutMatch.class)
-	@PutMapping("/ADMIN/Tournament/{tournament}/EditMatches/{group}/Submission")
+	@PutMapping("/ADMIN/Tournaments/{tournament}/EditMatches/{group}/Submission")
 	public ResponseEntity<Match> submitMatchEdited(@PathVariable String tournament, @RequestBody Match newMatch,
 			@PathVariable String group, HttpServletRequest request) {
 
@@ -69,7 +69,7 @@ public class TournamentSheetRestController {
 	}
 
 	@JsonView(EditMatch.class)
-	@GetMapping("/ADMIN/Tournament/{tournament}/EditMatches/{group}")
+	@GetMapping("/ADMIN/Tournaments/{tournament}/EditMatches/{group}")
 	public ResponseEntity<AuxEdit> editMatches(@PathVariable String tournament, @PathVariable String group,
 			HttpServletRequest request) {
 		if (userComponent.isLoggedUser() && request.isUserInRole("ADMIN")) {
@@ -85,7 +85,7 @@ public class TournamentSheetRestController {
 		}
 	}
 
-	@DeleteMapping("/ADMIN/Tournament/{tournament}/Deleted")
+	@DeleteMapping("/ADMIN/Tournaments/{tournament}/Deleted")
 	public ResponseEntity<Tournament> deleteTournament(@PathVariable String tournament, HttpServletRequest request) {
 
 		if (userComponent.isLoggedUser() && request.isUserInRole("ADMIN")) {
@@ -176,7 +176,7 @@ public class TournamentSheetRestController {
 	}
 
 	@JsonView(tournamentSheet.class)
-	@GetMapping("/Tournament/{tournament}")
+	@GetMapping("/Tournaments/{tournament}")
 	public ResponseEntity<TournamentSheetToReturn> tournament(@PathVariable String tournament,
 			HttpServletRequest request) {
 

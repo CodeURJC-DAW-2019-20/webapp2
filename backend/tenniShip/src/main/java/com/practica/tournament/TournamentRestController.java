@@ -49,7 +49,7 @@ public class TournamentRestController {
 		return new ResponseEntity<>(tournamentService.getAllTournaments(), HttpStatus.OK);
 	}
 
-	@GetMapping("/Tournament/{tournamentId}/image")
+	@GetMapping("/Tournaments/{tournamentId}/image")
 	public ResponseEntity<Object> getTournamentImage(@PathVariable String tournamentId) throws IOException {
 		Optional<Tournament> tournament = tournamentService.findById(tournamentId);
 		if (tournament.isPresent()) {
@@ -62,8 +62,8 @@ public class TournamentRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	//https://localhost:8443/api/TenniShip/RegisterMatch/Tournament/?NumberOfTournamentsDisplayed=3
-	@GetMapping("/RegisterMatch/Tournament")
+	//https://localhost:8443/api/TenniShip/RegisterMatch/Tournaments/?NumberOfTournamentsDisplayed=3
+	@GetMapping("/RegisterMatch/Tournaments")
 	public ResponseEntity<List<Tournament>> selectTournament(HttpServletRequest request, Pageable page, @RequestParam("NumberOfTournamentsDisplayed") int end ) {
 		if (userComponent.isLoggedUser() && !request.isUserInRole("ADMIN")) {
 			String team = userComponent.getTeam();
@@ -84,7 +84,7 @@ public class TournamentRestController {
 
 
 	@JsonView(PutMatch.class)
-	@PutMapping("/RegisterMatch/Tournament/{tournament}/Submission")
+	@PutMapping("/RegisterMatch/Tournaments/{tournament}/Submission")
 	public ResponseEntity<Match> submitMatch(@PathVariable String tournament, @RequestBody Match newMatch,
 			HttpServletRequest request) throws InterruptedException {
 
@@ -118,7 +118,7 @@ public class TournamentRestController {
 	}
 
 	@JsonView(selectMatch.class)
-	@GetMapping("/RegisterMatch/Tournament/{tournament}")
+	@GetMapping("/RegisterMatch/Tournaments/{tournament}")
 	public ResponseEntity<SelectMatchAuxiliarClass> selectMatch(@PathVariable String tournament,
 			HttpServletRequest request) {
 

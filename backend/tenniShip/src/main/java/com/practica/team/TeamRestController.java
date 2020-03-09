@@ -93,8 +93,8 @@ public class TeamRestController {
 	}
 
 	@JsonView(MatchDetails.class)
-	@GetMapping("/Team/{team}")
-	// https://localhost:8443/api/TenniShip/Team/{team}/?NumberOfMatchesListed=end
+	@GetMapping("/Teams/{team}")
+	// https://localhost:8443/api/TenniShip/Teams/{team}/?NumberOfMatchesListed=end
 	public ResponseEntity<TeamFileData> getTeam(@PathVariable String team, Pageable page,
 			@RequestParam("NumberOfMatchesListed") int end) {
 
@@ -115,7 +115,7 @@ public class TeamRestController {
 		}
 	}
 
-	@GetMapping("/Team/{teamID}/image/{npic}")
+	@GetMapping("/Teams/{teamID}/image/{npic}")
 	public ResponseEntity<Object> getTeamImage(@PathVariable String teamID, @PathVariable String npic)
 			throws IOException {
 		/* nPic value is 0 for team pic, and 1-5 for players */

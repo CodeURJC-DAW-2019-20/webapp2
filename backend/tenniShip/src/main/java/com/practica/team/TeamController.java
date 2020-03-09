@@ -34,13 +34,13 @@ public class TeamController {
 		Optional<Team> t = teamService.findById(teamName);
 
 		if (t.isPresent()) {
-			return "redirect:/TenniShip/Team/" + teamName;
+			return "redirect:/TenniShip/Teams/" + teamName;
 		} else {
 			return "redirect:/TenniShip";
 		}
 	}
 
-	@GetMapping("/TenniShip/Team/{team}")
+	@GetMapping("/TenniShip/Teams/{team}")
 	public String team(Model model, @PathVariable String team, HttpServletRequest request) {
 
 		Optional<Team> t = teamService.findById(team);
@@ -113,7 +113,7 @@ public class TeamController {
 
 	}
 
-	@GetMapping("/TenniShip/Team/{team}/ListMatches/{position}/{end}")
+	@GetMapping("/TenniShip/Teams/{team}/ListMatches/{position}/{end}")
 	public String listTeams(Model model, HttpServletRequest request, @PathVariable String team,
 			@PathVariable int position, @PathVariable int end) {
 		Optional<Team> t = teamService.findById(team);
