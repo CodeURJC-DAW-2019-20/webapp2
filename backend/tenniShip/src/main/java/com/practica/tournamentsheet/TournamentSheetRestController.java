@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/TenniShip")
+@RequestMapping("/api/tenniship")
 public class TournamentSheetRestController {
 
 	@Autowired
@@ -37,7 +37,7 @@ public class TournamentSheetRestController {
 	static int j;
 
 	@JsonView(TournamentRestController.PutMatch.class)
-	@PutMapping("/ADMIN/Tournaments/{tournament}/EditMatches/{group}/Submission")
+	@PutMapping("/admin/tournaments/{tournament}/matches/{group}")
 	public ResponseEntity<Match> submitMatchEdited(@PathVariable String tournament, @RequestBody Match newMatch,
 			@PathVariable String group, HttpServletRequest request) {
 
@@ -69,7 +69,7 @@ public class TournamentSheetRestController {
 	}
 
 	@JsonView(EditMatch.class)
-	@GetMapping("/ADMIN/Tournaments/{tournament}/EditMatches/{group}")
+	@GetMapping("/admin/tournaments/{tournament}/matches/{group}")
 	public ResponseEntity<AuxEdit> editMatches(@PathVariable String tournament, @PathVariable String group,
 			HttpServletRequest request) {
 		if (userComponent.isLoggedUser() && request.isUserInRole("ADMIN")) {
@@ -85,7 +85,7 @@ public class TournamentSheetRestController {
 		}
 	}
 
-	@DeleteMapping("/ADMIN/Tournaments/{tournament}/Deleted")
+	@DeleteMapping("/admin/tournaments/{tournament}")
 	public ResponseEntity<Tournament> deleteTournament(@PathVariable String tournament, HttpServletRequest request) {
 
 		if (userComponent.isLoggedUser() && request.isUserInRole("ADMIN")) {
@@ -176,7 +176,7 @@ public class TournamentSheetRestController {
 	}
 
 	@JsonView(tournamentSheet.class)
-	@GetMapping("/Tournaments/{tournament}")
+	@GetMapping("/tournaments/{tournament}")
 	public ResponseEntity<TournamentSheetToReturn> tournament(@PathVariable String tournament,
 			HttpServletRequest request) {
 
