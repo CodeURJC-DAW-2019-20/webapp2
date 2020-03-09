@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -90,25 +91,42 @@ public class TeamRestController {
 	@JsonView(MatchDetails.class)
 	@GetMapping("/Team/{team}")
 	// https://localhost:8443/api/TenniShip/Team/{team}/?NumberOfMatchesListed=end
-	public ResponseEntity<TeamFileData> getTeam(@PathVariable String team, Pageable page,
-			@RequestParam("NumberOfMatchesListed") int end) {
+	public ResponseEntity<TeamFileData> getTeam(@PathVariable String team) {
 
 		Optional<Team> t = teamRepository.findById(team);
 		
 		if(t.isPresent()) {
 		
-			Page<Match> pages = teamService.getPagesInMatches(t.get(), page,end);			
-			
-			List<Match> listmatches = teamService.getListMatches(pages);
+			List<Match> pages = teamService.getFirstPageMatches(t.get());			
 			
 			TeamFileData teamfiledata = teamService.teamProfile(t.get());
-			teamfiledata.setMatchesList(listmatches);
+			teamfiledata.setMatchesList(pages);
 			return new ResponseEntity<>(teamfiledata, HttpStatus.OK);
 
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	
+	@JsonView(MatchDetails.class)
+	@GetMapping("/Team/{team}/ListMatches")
+	// https://localhost:8443/api/TenniShip/Team/{team}/?NumberOfMatchesListed=end
+	public ResponseEntity<List<Match>> getMatchesListed(@PathVariable String team, Pageable page) {
+
+		Optional<Team> t = teamRepository.findById(team);
+		
+		if(t.isPresent()) {
+		
+			List<Match> pages = teamService.getPagesInMatches(t.get(), page);			
+
+			return new ResponseEntity<>(pages, HttpStatus.OK);
+
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
 
 	@GetMapping("/Team/{teamID}/image/{npic}")
 	public ResponseEntity<Object> getTeamImage(@PathVariable String teamID, @PathVariable String npic)
