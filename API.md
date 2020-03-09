@@ -4,15 +4,13 @@ All API queries are based off the accessible URLs through the website, except th
 
 This page is separated on groups of actions, related on aspects of the website.
 
-
-
 # User management
 
 ## Sign in
 
 Log into an already existing account.
 
-* **URL:** ``/api/TenniShip/SignIn``
+* **URL:** ``/api/tenniship/signin``
 
 * **Method:** ``GET``
 
@@ -24,7 +22,7 @@ Log into an already existing account.
 
 **Response example:**
 
-````json
+```json
 {
     "userName": "userSpain",
     "email": "tennishipdaw1@gmail.com",
@@ -33,7 +31,7 @@ Log into an already existing account.
         "ROLE_USER"
     ]
 }
-````
+```
 
 
 
@@ -41,7 +39,7 @@ Log into an already existing account.
 
 Log out of the current account you've signed into.
 
-* **URL:** ``/api/TenniShip/logout``
+* **URL:** ``/api/tenniship/logout``
 
 * **Method:** ``GET``
 
@@ -53,9 +51,9 @@ Log out of the current account you've signed into.
 
 **Response example:**
 
-````json
+```json
 true
-````
+```
 
 
 
@@ -63,7 +61,7 @@ true
 
 Create a brand new account.
 
-* **URL:** ``/api/TenniShip/SignUp``
+* **URL:** ``/api/tenniship/signup``
 
 * **Method:** ``POST``
 
@@ -75,45 +73,70 @@ Create a brand new account.
 
 **Request body example:**
 
-````json
+```json
 {
-    "userName": "userNew",
-    "passwordHash": "newpassword0928",
-    "email": "example@gmail.com",
-    "teamName": "TeamChamps",
-    "roles": [
-        "ROLE_USER"
-    ],
-    "players": [ "Anderson Stevens", "Brew Moore", "Pete Shen", "Pam Locke", "Mia Fey" ]
+    "userName": "Marcos",
+    "passwordHash": "12345678",
+    "email": "m.villacanas.2017@alumnos.urjc.com",
+    "teamName": "HelloMica",
+    "roles": ["ROLE_USER"],
+    "players": ["Varo","Ivan","Santi","Marcos","Diego"]
 }
-````
+```
 
 **Response example:**
 
-````json
+```json
 {
-    "userName": "userNew",
-    "email": "example@gmail.com",
-    "team": "TeamChamps",
+    "userName": "Marcos",
+    "email": "m.villacanas.2017@alumnos.urjc.com",
+    "team": "HelloMica",
     "roles": [
         "ROLE_USER"
     ]
 }
-````
+```
 
 
 
 # Team requests
 
+## Get list of teams
+
+This request returns a list of all the teams in the system.
+
+* **URL:** ``/api/tenniship/teams``
+
+* **Method:** ``GET``
+
+* **Success response:** ``200 OK``
+
+* **Error responses:** ``500 INTERNAL ERROR`` under unlikely unrelated issues.
+
+* **Response example:** 
+```
+[
+    {
+        "teamName": "Ajax"
+    },
+    {
+        "teamName": "Andorra"
+    },
+    {
+        "teamName": "Argentina"
+    },
+    (...)
+]
+```
+
+
 ## Get team data
 
 Obtain information related to a specific team, including a list of matches played by them.
 
-* **URL:** ``/api/TenniShip/Team/{team}/?NumberOfMatchesListed={end}``
+* **URL:** ``/api/tenniship/teams/{team}``
 
-* **URL parameters:** 
-    * ``{team}`` with the team name. 
-    * ``{end}`` with the maximum amount of matches the user wants to receive.
+* **URL parameters:** ``{team}`` with the team name. 
 
 * **Method:** ``GET``
 
@@ -121,21 +144,18 @@ Obtain information related to a specific team, including a list of matches playe
 
 * **Error responses:** ``404 NOT FOUND`` if there isn't a team with that name.
 
-* **Request example:** ``https://localhost:8443/api/TenniShip/Team/Spain?NumberOfMatchesListed=2``
+* **Request example:** ``https://localhost:8443/api/tenniship/teams/Chelsea``
 
 **Response example:**
 
-````json
+```json
 {
-    "teamName": "Spain",
-    "imageListTournaments": [
-        "Davis Cup",
-        "Champions League",
-        "Eurocup"
+    "teamName": "Chelsea",
+    "Tournaments": [
+        "Champions League"
     ],
-    "teamImage": false,
-    "percentageLostMatches": 50.0,
-    "percentageWonMatches": 50.0,
+    "percentageLostMatches": 100.0,
+    "percentageWonMatches": 0.0,
     "playerList": [
         {
             "playerName": "Varo"
@@ -155,42 +175,93 @@ Obtain information related to a specific team, including a list of matches playe
     ],
     "matchesList": [
         {
-            "homePoints": 3,
-            "awayPoints": 0,
+            "homePoints": 1,
+            "awayPoints": 3,
             "team1": {
-                "teamName": "Spain"
+                "teamName": "Chelsea"
             },
             "team2": {
-                "teamName": "Serbia"
+                "teamName": "Tottenham"
             },
             "tournament": {
-                "name": "Davis Cup"
+                "name": "Champions League"
             }
         },
         {
             "homePoints": 3,
-            "awayPoints": 1,
+            "awayPoints": 0,
             "team1": {
-                "teamName": "France"
+                "teamName": "Valencia"
             },
             "team2": {
-                "teamName": "Spain"
+                "teamName": "Chelsea"
             },
             "tournament": {
-                "name": "Davis Cup"
+                "name": "Champions League"
             }
         }
     ]
 }
-````
+```
 
+
+## Get matches from team
+
+This request returns a list of matches played by a specific team in a pageable manner.
+
+* **URL:** ``/api/tenniship/teams/{team}/matches?page={page}&size={size}``
+
+* **URL parameters:** 
+    * ``{team}`` with the team name. 
+    * ``?page=`` with a number of the page we want to receive.
+    * ``&size=`` with a number of the amount of matches we want to receive.
+
+* **Method:** ``GET``
+
+* **Success response:** ``200 OK``
+
+* **Error responses:** ``404 NOT FOUND`` if the system couldn't find the team.
+
+* **Request example:** ``https://localhost:8443/api/tenniship/teams/Spain/matches?page=1&size=2``
+
+* **Response example:** 
+```json
+[
+    {
+        "homePoints": 3,
+        "awayPoints": 0,
+        "team1": {
+            "teamName": "Denmark"
+        },
+        "team2": {
+            "teamName": "Spain"
+        },
+        "tournament": {
+            "name": "Davis Cup"
+        }
+    },
+    {
+        "homePoints": 1,
+        "awayPoints": 3,
+        "team1": {
+            "teamName": "Denmark"
+        },
+        "team2": {
+            "teamName": "Spain"
+        },
+        "tournament": {
+            "name": "Champions League"
+        }
+    }
+]
+```
 
 
 ## Get team images
 
 This request gets either the team logo, or one of the players' images.
 
-* **URL:** ``/api/TenniShip/Team/{team}/image/{npic}``
+* **URL:** ``/api/tenniship/teams/{team}/image/{npic}``
 
 * **URL parameters:** 
     * ``{team}`` with the team name. 
@@ -202,16 +273,16 @@ This request gets either the team logo, or one of the players' images.
 
 * **Error responses:** ``404 NOT FOUND`` if the system couldn't find the image, or there isn't one.
 
-* **Request example:** ``https://localhost:8443/api/TenniShip/Team/elTeam25/image/5``
+* **Request example:** ``https://localhost:8443/api/tenniship/teams/Spain/image/1``
 
-* **Response:** An object with the information of the corresponding image. In the example, it would be the image of the fifth player of the team.
+* **Response:** An object with the information of the corresponding image. In the example, it would be the image of the first player of the team named Spain.
 
 
 ## Upload team image
 
 This requests lets us upload an image to be assigned to the tournament.
 
-* **URL:** ``/api/TenniShip/Team/{teamID}/image``
+* **URL:** ``/api/tenniship/teams/{teamID}/image``
 
 * **URL parameters:** ``{teamID}`` should have the name of the team we chose.
 
@@ -223,7 +294,7 @@ This requests lets us upload an image to be assigned to the tournament.
     * ``404 NOT FOUND`` if there's no team with that name.
     * ``403 FORBIDDEN``	 if the user either isn't logged in, or doesn't have that team.
 
-* **Request example:** ``https://localhost:8443/api/TenniShip/Team/elTeam25/image``
+* **Request example:** ``https://localhost:8443/api/tenniship/teams/HelloMica/image `` and ``imageFile`` as a key in the body (of ``form-data`` type), containing 6 images.
 
 
 
@@ -231,13 +302,16 @@ This requests lets us upload an image to be assigned to the tournament.
 
 When a team plays a match, they're able to log the result. When they're logged on the appropiate user account, they can do a request to get a list of tournaments, pick the one that has the match they played, and then in another request see a list of matches that they can log in that tournament. With a final request, they can log the result of the corresponding match.
 
-## Get tournament list to register match
+## Get tournaments in which the user's team participates
 
 This request gives a list of tournaments the user's team participates in. This request requires that the user logs into a team account previously.
 
-* **URL:** ``/api/TenniShip/RegisterMatch/Tournament?NumberOfTournamentsDisplayed={n}``
+* **URL:** ``/api/tenniship/tournaments/teams/matches?page={page}&size={size}``
 
-* **URL parameters:** ``{n}`` indicates the maximum number of tournaments the user wants to receive.
+* **URL parameters:** 
+    * ``?page=`` with a number of the page we want to receive.
+    * ``&size=`` with a number of the amount of matches we want to receive.
+    * If pageable parameters aren't added, the full list will be shown.
 
 * **Method:** ``GET``
 
@@ -245,13 +319,11 @@ This request gives a list of tournaments the user's team participates in. This r
 
 * **Error responses:** ``403 FORBIDDEN`` if the user isn't logged in, or isn't a regular user.
 
-* **Request example:** ``https://localhost:8443/api/TenniShip/RegisterMatch/Tournament/?NumberOfTournamentsDisplayed=3``
-
-* **Response entity:** Tournament list
+* **Request example:** ``https://localhost:8443/api/tenniship/tournaments/teams/matches``
 
 **Response example:**
 
-````json
+```json
 [
     {
         "name": "Champions League"
@@ -263,7 +335,7 @@ This request gives a list of tournaments the user's team participates in. This r
         "name": "Eurocup"
     }
 ]
-````
+```
 
 
 
@@ -271,7 +343,7 @@ This request gives a list of tournaments the user's team participates in. This r
 
 After picking a tournament, users can use this request to see a list of matches whose score they can submit, all belonging to this tournament.
 
-* **URL:** ``/api/TenniShip/RegisterMatch/Tournament/{tournament}``
+* **URL:** ``/api/tenniship/tournaments/{tournament}/matches``
 
 * **URL parameters:** ``{tournament}`` should have the name of the tournament we chose.
 
@@ -283,13 +355,13 @@ After picking a tournament, users can use this request to see a list of matches 
     * ``403 FORBIDDEN`` if the user isn't logged in, or isn't a regular user. 
     * ``404 NOT FOUND`` if the system couldn't return a list of matches.
 
-* **Request example:** ``https://localhost:8443/api/TenniShip/RegisterMatch/Tournament/Champions League``
+* **Request example:** ``https://localhost:8443/api/tenniship/tournaments/EuroCup/matches``
 
 * **Response entity:** Object with an indicator of the current round in that tournament, and a list of matches.
 
 **Response example:**
 
-````json
+```json
 {
     "round": "Group Stage",
     "matches": [
@@ -300,15 +372,28 @@ After picking a tournament, users can use this request to see a list of matches 
                 "teamName": "Spain"
             },
             "team2": {
-                "teamName": "CSKA Moscow"
+                "teamName": "Hungary"
             },
             "tournament": {
-                "name": "Champions League"
+                "name": "Eurocup"
+            }
+        },
+        {
+            "homePoints": 0,
+            "awayPoints": 0,
+            "team1": {
+                "teamName": "Spain"
+            },
+            "team2": {
+                "teamName": "Finland"
+            },
+            "tournament": {
+                "name": "Eurocup"
             }
         }
     ]
 }
-````
+```
 
 
 
@@ -316,7 +401,7 @@ After picking a tournament, users can use this request to see a list of matches 
 
 When the user picks a specific match, they just have to to this last request to submit the score.
 
-* **URL:** ``/api/TenniShip/RegisterMatch/Tournament/{tournament}/Submission``
+* **URL:** ``/api/tenniship/tournaments/{tournament}/matches``
 
 * **URL parameters:** ``{tournament}`` should have the name of the tournament we chose.
 
@@ -329,180 +414,45 @@ When the user picks a specific match, they just have to to this last request to 
     * ``403 FORBIDDEN``	 if the user either isn't an admin, or doesn't have one of the teams in the match they want to change.
     * ``400 BAD REQUEST`` if none of the teams, or both, have 3 points.
 
-* **Request example:** ``https://localhost:8443/api/TenniShip/RegisterMatch/Tournament/Champions League/Submission``
+* **Request example:** ``https://localhost:8443/api/tenniship/tournaments/Eurocup/matches``
 
 * **Response entity:** The same Match object that has been submitted, with the updated info (that means, it will look the same as the request if it worked correctly).
 
 **Request body example:**
 
-````json
+```json
 {
-    "homePoints": 0,
-    "awayPoints": 3,
+    "homePoints": 3,
+    "awayPoints": 0,
     "team1": {
         "teamName": "Spain"
     },
     "team2": {
-        "teamName": "CSKA Moscow"
+        "teamName": "Hungary"
     },
     "tournament": {
-        "name": "Champions League"
+        "name": "Eurocup"
     }
 }
-````
+```
 
 **Response example:** (the same as the request in this case)
 
-````json
+```json
 {
-    "homePoints": 0,
-    "awayPoints": 3,
+    "homePoints": 3,
+    "awayPoints": 0,
     "team1": {
         "teamName": "Spain"
     },
     "team2": {
-        "teamName": "CSKA Moscow"
+        "teamName": "Hungary"
     },
     "tournament": {
-        "name": "Champions League"
+        "name": "Eurocup"
     }
 }
-````
-
-
-
-## See list of matches in tournament group (admin only)
-
-The system administrator, that is, the user with an admin role, is able to see a list of **all** the matches in a given group of a tournament. This request does that, so that the admin can choose a specific match, and change or submit the score in the next request, in a similar manner to how regular users do.
-
-* **URL:** ``/api/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}``
-
-* **URL parameters:** 
-    * ``{tournament}`` should have the name of the tournament we chose.
-    * ``{group}`` should be the code of the group we choose (A, B, C, D, E, F, X, Y, or Z).
-
-* **Method:** ``GET``
-
-* **Success response:** ``200 OK``
-
-* **Error responses:** 
-    * ``403 FORBIDDEN`` if the user isn't logged in, or isn't an admin.
-    * ``404 NOT FOUND`` if the system couldn't find the tournament.
-
-* **Request example:** ``https://localhost:8443/api/ADMIN/Tournament/Champions League/EditMatches/B``
-
-* **Response entity:** Object with an indicator of the current round in that tournament, and a list of matches.
-
-**Response example:**
-
-````json
-{
-    "admin": true,
-    "round": "Group Stage",
-    "matches": [
-        {
-            "homePoints": 0,
-            "awayPoints": 3,
-            "team1": {
-                "teamName": "Galatasaray"
-            },
-            "team2": {
-                "teamName": "Inter Milan"
-            },
-            "tournament": {
-                "name": "Champions League"
-            }
-        },
-        {
-            "homePoints": 3,
-            "awayPoints": 2,
-            "team1": {
-                "teamName": "Porto"
-            },
-            "team2": {
-                "teamName": "Galatasaray"
-            },
-            "tournament": {
-                "name": "Champions League"
-            }
-        },
-        {
-            "homePoints": 3,
-            "awayPoints": 2,
-            "team1": {
-                "teamName": "Inter Milan"
-            },
-            "team2": {
-                "teamName": "Porto"
-            },
-            "tournament": {
-                "name": "Champions League"
-            }
-        }
-    ]
-}
-````
-
-
-
-## Submit match result (admin version)
-
-The admin has a specific request to do the same as above. In this case, it's also required that the admin provides both tournament name and group. After that, in the body of the request, the appopiate match data will be sent. This request sends back that same data if everything went correctly.
-
-* **URL:** ``/api/TenniShip/ADMIN/Tournament/{tournament}/EditMatches/{group}/Submission``
-
-* **URL parameters:** 
-    * ``{tournament}`` should have the name of the tournament we chose.
-    * ``{group}`` should be the code of the group we choose (A, B, C, D, E, F, X, Y, or Z).
-
-* **Method:** ``PUT``
-
-* **Success response:** ``201 CREATED`` if everything worked correctly.
-
-* **Error responses:** 
-    * ``404 NOT FOUND`` if the tournament, teams, or the match weren't found in the system. 
-    * ``403 FORBIDDEN``	 if the user either isn't an admin, or doesn't have one of the teams in the match they want to change.
-    * ``400 BAD REQUEST`` if none of the teams, or both, have 3 points.
-
-* **Request example:** ``https://localhost:8443/api/TenniShip/ADMIN/Tournament/Champions League/EditMatches/B/Submission``
-
-* **Response entity:** The same Match object that has been submitted, with the updated info (that means, it will look the same as the request if it worked correctly).
-
-**Request body example:**
-
-````json
-{
-    "homePoints": 3,
-    "awayPoints": 1,
-    "team1": {
-        "teamName": "Porto"
-    },
-    "team2": {
-        "teamName": "Galatasaray"
-    },
-    "tournament": {
-        "name": "Champions League"
-    }
-}
-````
-
-**Response example:** (the same as the request in this case)
-
-````json
-{
-    "homePoints": 3,
-    "awayPoints": 1,
-    "team1": {
-        "teamName": "Porto"
-    },
-    "team2": {
-        "teamName": "Galatasaray"
-    },
-    "tournament": {
-        "name": "Champions League"
-    }
-}
-````
+```
 
 
 
@@ -510,11 +460,39 @@ The admin has a specific request to do the same as above. In this case, it's als
 
 The following requests let users see, create, and delete tournaments, and get or upload their logos.
 
+## Get list of tournaments
+
+This request returns a list of all the tournaments in the system.
+
+* **URL:** ``/api/tenniship/tournaments``
+
+* **Method:** ``GET``
+
+* **Success response:** ``200 OK``
+
+* **Error responses:** ``500 INTERNAL ERROR`` under unlikely unrelated issues.
+
+* **Response example:** 
+```
+[
+    {
+        "name": "Champions League"
+    },
+    {
+        "name": "Davis Cup"
+    },
+    {
+        "name": "Eurocup"
+    }
+]
+```
+
+
 ## Get tournament info
 
 This request returns a bunch of information of the specified tournament.
 
-* **URL:** ``/api/TenniShip/Tournament/{tournament}``
+* **URL:** ``/api/tenniship/tournaments/{tournament}``
 
 * **URL parameters:** ``{tournament}`` should have the name of the tournament we want to see.
 
@@ -524,13 +502,13 @@ This request returns a bunch of information of the specified tournament.
 
 * **Error responses:** ``404 NOT FOUND`` if the tournament hasn't been found in the system.
 
-* **Request example:** ``https://localhost:8443/api/TenniShip/Tournament/Davis Cup``
+* **Request example:** ``https://localhost:8443/api/tenniship/tournaments/Davis%20Cup``
 
 * **Response entity:** An object with the tournament, a list of groups with all the teams and their points, and several lists of matches of the final phases, plus the completion percentage.
 
 **Response example:** (some parts have been omitted with ``(...)`` because it was too long)
 
-````
+```
 {
     "tournament": {
         "name": "Davis Cup"
@@ -585,7 +563,7 @@ This request returns a bunch of information of the specified tournament.
     ],
     "completion": 96.0
 }
-````
+```
 
 
 
@@ -593,7 +571,7 @@ This request returns a bunch of information of the specified tournament.
 
 This request returns the tournament logo, in case it has one.
 
-* **URL:** ``/api/TenniShip/Tournament/{tournamentID}/image``
+* **URL:** ``/api/tenniship/tournaments/{tournamentID}/image``
 
 * **URL parameters:** ``{tournamentID}`` should have the name of the tournament we chose.
 
@@ -603,7 +581,7 @@ This request returns the tournament logo, in case it has one.
 
 * **Error responses:** ``404 NOT FOUND`` if the tournament hasn't been found, or it doesn't have an image.
 
-* **Request example:** ``https://localhost:8443/api/TenniShip/Tournament/Champions League/image``
+* **Request example:** ``https://localhost:8443/api/tenniship/tournaments/Eurocup/image``
 
 * **Response entity:** Content-type is image/jpg, and the body is the apporpiate data of the image.
 
@@ -613,7 +591,7 @@ This request returns the tournament logo, in case it has one.
 
 This requests lets us upload an image to be assigned to the tournament.
 
-* **URL:** ``/api/TenniShip/Tournament/{tournamentId}/image``
+* **URL:** ``/api/tenniship/tournaments/{tournamentId}/image``
 
 * **URL parameters:** ``{tournamentId}`` should have the name of the tournament we chose.
 
@@ -625,7 +603,7 @@ This requests lets us upload an image to be assigned to the tournament.
     * ``404 NOT FOUND`` if there's no tournament with that name.
     * ``401 UNAUTHORIZED``	 if the user either isn't an admin, or doesn't have the team whose image they want to upload.
 
-* **Request example:** ``https://localhost:8443/api/TenniShip/Tournament/URJCup/image``
+* **Request example:** ``https://localhost:8443/api/tenniship/tournaments/UrjCup/image``
 
 
 
@@ -633,7 +611,7 @@ This requests lets us upload an image to be assigned to the tournament.
 
 This request lets users create a new tournament from scratch. All the necessary info is sent on the request body.
 
-* **URL:** ``/api/TenniShip/Creator``
+* **URL:** ``/api/tenniship/tournaments``
 
 * **Method:** ``POST``
 
@@ -647,12 +625,12 @@ This request lets users create a new tournament from scratch. All the necessary 
 
 **Request body example:**
 
-````json
+```json
 {
     "tournamentName": "UrjCup",
     "teams": [
         "Valencia",
-        "Atlético de Madrid",
+        "Spain",
         "Serbia",
         "PSG",
         "Portugal",
@@ -671,81 +649,220 @@ This request lets users create a new tournament from scratch. All the necessary 
         "Real Madrid"
     ]
 }
-````
+```
 
 **Response example:**
 
-````json
+```json
 {
     "tournamentName": {
         "name": "UrjCup"
     },
     "teams": [
         {
-            "teamName": "Napoli"
-        },
-        {
             "teamName": "Finland"
-        },
-        {
-            "teamName": "Norway"
-        },
-        {
-            "teamName": "France"
-        },
-        {
-            "teamName": "Australia"
-        },
-        {
-            "teamName": "Serbia"
-        },
-        {
-            "teamName": "Real Madrid"
         },
         {
             "teamName": "Germany"
         },
         {
+            "teamName": "Norway"
+        },
+        {
+            "teamName": "Spain"
+        },
+        {
             "teamName": "Italy"
-        },
-        {
-            "teamName": "Ajax"
-        },
-        {
-            "teamName": "Atlético de Madrid"
-        },
-        {
-            "teamName": "Andorra"
         },
         {
             "teamName": "Valencia"
         },
         {
+            "teamName": "Napoli"
+        },
+        {
             "teamName": "Argentina"
+        },
+        {
+            "teamName": "Serbia"
         },
         {
             "teamName": "Barcelona"
         },
         {
-            "teamName": "Portugal"
+            "teamName": "PSG"
         },
         {
             "teamName": "Poland"
         },
         {
-            "teamName": "PSG"
+            "teamName": "Andorra"
+        },
+        {
+            "teamName": "Portugal"
+        },
+        {
+            "teamName": "Ajax"
+        },
+        {
+            "teamName": "Australia"
+        },
+        {
+            "teamName": "Real Madrid"
+        },
+        {
+            "teamName": "France"
         }
     ]
 }
-````
+```
 
 
 
-## Delete tournament (admin only)
+# Admin requests
+
+The following requests need admin permission to be done. Unlike some others that the admin can do, these ones can't be used by regular users.
+
+## See list of matches in tournament group
+
+The system administrator, that is, the user with an admin role, is able to see a list of **all** the matches in a given group of a tournament. This request does that, so that the admin can choose a specific match, and change or submit the score in the next request, in a similar manner to how regular users do.
+
+* **URL:** ``/api/tenniship/admin/tournaments/{tournament}/matches/{group}``
+
+* **URL parameters:** 
+    * ``{tournament}`` should have the name of the tournament we chose.
+    * ``{group}`` should be the code of the group we choose (A, B, C, D, E, F, X, Y, or Z).
+
+* **Method:** ``GET``
+
+* **Success response:** ``200 OK``
+
+* **Error responses:** 
+    * ``403 FORBIDDEN`` if the user isn't logged in, or isn't an admin.
+    * ``404 NOT FOUND`` if the system couldn't find the tournament.
+
+* **Request example:** ``https://localhost:8443/api/tenniship/admin/tournaments/Davis%20Cup/matches/A``
+
+* **Response entity:** Object with an indicator of the current round in that tournament, and a list of matches.
+
+**Response example:**
+
+```json
+{
+    "admin": true,
+    "round": "Group Stage",
+    "matches": [
+        {
+            "homePoints": 3,
+            "awayPoints": 0,
+            "team1": {
+                "teamName": "Spain"
+            },
+            "team2": {
+                "teamName": "Serbia"
+            },
+            "tournament": {
+                "name": "Davis Cup"
+            }
+        },
+        {
+            "homePoints": 3,
+            "awayPoints": 0,
+            "team1": {
+                "teamName": "Serbia"
+            },
+            "team2": {
+                "teamName": "France"
+            },
+            "tournament": {
+                "name": "Davis Cup"
+            }
+        },
+        {
+            "homePoints": 3,
+            "awayPoints": 1,
+            "team1": {
+                "teamName": "France"
+            },
+            "team2": {
+                "teamName": "Spain"
+            },
+            "tournament": {
+                "name": "Davis Cup"
+            }
+        }
+    ]
+}
+```
+
+
+
+## Submit match result
+
+The admin has a specific request to do the same as the owner of a team. In this case, it's also required that the admin provides both tournament name and group. After that, in the body of the request, the appopiate match data will be sent. This request sends back that same data if everything went correctly.
+
+* **URL:** ``/api/tenniship/admin/tournaments/{tournament}/matches/{group}``
+
+* **URL parameters:** 
+    * ``{tournament}`` should have the name of the tournament we chose.
+    * ``{group}`` should be the code of the group we choose (A, B, C, D, E, F, X, Y, or Z).
+
+* **Method:** ``PUT``
+
+* **Success response:** ``201 CREATED`` if everything worked correctly.
+
+* **Error responses:** 
+    * ``404 NOT FOUND`` if the tournament, teams, or the match weren't found in the system. 
+    * ``403 FORBIDDEN``	 if the user either isn't an admin, or doesn't have one of the teams in the match they want to change.
+    * ``400 BAD REQUEST`` if none of the teams, or both, have 3 points.
+
+* **Request example:** ``https://localhost:8443/api/tenniship/admin/tournaments/Davis%20Cup/matches/A``
+
+* **Response entity:** The same Match object that has been submitted, with the updated info (that means, it will look the same as the request if it worked correctly).
+
+**Request body example:**
+
+```json
+{
+    "homePoints": 0,
+    "awayPoints": 3,
+    "team1": {
+        "teamName": "Spain"
+    },
+    "team2": {
+        "teamName": "Serbia"
+    },
+    "tournament": {
+        "name": "Davis Cup"
+    }
+}
+```
+
+**Response example:** (the same as the request in this case)
+
+```json
+{
+    "homePoints": 0,
+    "awayPoints": 3,
+    "team1": {
+        "teamName": "Spain"
+    },
+    "team2": {
+        "teamName": "Serbia"
+    },
+    "tournament": {
+        "name": "Davis Cup"
+    }
+}
+```
+
+
+
+## Delete tournament
 
 The admin is able to delete tournaments through this request.
 
-* **URL:** ``/api/TenniShip/ADMIN/Tournament/{tournament}/Deleted``
+* **URL:** ``/api/tenniship/admin/tournaments/{tournament}``
 
 * **URL parameters:** ``{tournament}`` should have the name of the tournament we want to delete.
 
@@ -757,12 +874,12 @@ The admin is able to delete tournaments through this request.
     * ``403 FORBIDDEN`` if the user isn't logged into an admin account.
     * ``404 NOT FOUND`` if there's no tournament with that name.
 
-* **Request example:** ``https://localhost:8443/api/TenniShip/ADMIN/Tournament/URJCUP/Deleted``
+* **Request example:** ``https://localhost:8443/api/tenniship/admin/tournaments/EuroCup``
 
 **Response example:**
 
-````json
+```json
 {
-    "name": "URJCUP"
+    "name": "EuroCup"
 }
-````
+```
