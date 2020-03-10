@@ -54,7 +54,7 @@ public class TournamentRestController {
 		Optional<Tournament> tournament = tournamentService.findById(tournamentId);
 		if (tournament.isPresent()) {
 			if (tournament.get().hasImage()) {
-				return this.imgService.createResponseFromImage("tournaments", tournamentId);
+				return this.imgService.createResponseFromImage("registered/tournaments", tournamentId);
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}

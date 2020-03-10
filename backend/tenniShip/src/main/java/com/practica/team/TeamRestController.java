@@ -145,7 +145,7 @@ public class TeamRestController {
 					return this.imgService.createResponseFromImage("registered/teams", teamID);
 
 				default:
-					return this.imgService.createResponseFromImage("registered/players", teamID + "player" + npic);
+					return this.imgService.createResponseFromImage("registered/players", teamID + "Player" + npic);
 				}
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
