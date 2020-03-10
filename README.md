@@ -1,4 +1,4 @@
-﻿# TenniShip
+# TenniShip
 
 TenniShip is a web app for managing tennis tournaments inspired in Davis Cup rules. It allows users to find teams, matches, keep track of scores, and check their standings in tourneys. 
 
@@ -301,49 +301,47 @@ docker container run --network tenniship-network --name tenniship-container -p 8
 ## Authors' participation
 * Iván: 
 	- Tasks:
-		- Security, HTTPS and needed roles added. Authenticated users sessions added too. 
-		- Sign in and Sign Up are available
-		- Tournament Creator with its whole complexity.
-		- Admin Role functions, deleting tournaments option available, edit matches option available too.
-		- Error control system.
+		- Participation in the implementation of Docker
+		- Participation in the implementation of REST API queries
+		- Security development
+		- General bug-fixing and error tracking
 	- Top 5 most important commits in 'ThirdPhase':
-		- [Security](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7f240b58b11e45f423a56eea8ca2ff36d8dcfe2e "7f240b5") 
-		- [Sign In and Sign up](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/a9edf05acc9d203045504abfeac3a1533f1a24c7 "a9edf05") 
-		- [Tournament Creator](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/2ce263e2dfd2874f67f142123617b25ab63c2ba3 "2ce263e") 
-		- [Admin Role and Tournament Information!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/85b2a1859dd01387adc98e0c1a7056353ac56527 "85b2a18") 
-		- [Errors contempled](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/461fd6d754ab028439e62393bb9cb0cf1e980fa1 "461fd6d") 
+		- [Docker Done!!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/35e215a35331ae9a7bbf6346ee2f479ed556b498 "6a6c735")
+		- [RestStarting](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/8567c00fe29b015e5bd46cd665d0b90040b2945f "8567c00")
+		- [JsonView used for complex returns](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7cbba110f02a8a5d5b28a1ce39342d2ae2e047f0 "7cbba11")
+		- [Services added](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/226494f4e39f09361d03b760d5ed84d0e4b7194a "226494f")
+		- [Tournament Sheet Updated](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/ea4056803d9c50b8477411895ab73f498dc72ce8 "ea40568")
 	- Top 5 most modified files:
-		- [Creator Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/CreatorController.java "CreatorController.java ") 
-		- [User Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/security/UserController.java "UserController.java") 
-		- [Security Configuration](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/security/SecurityConfiguration.java "SecurityConfiguration.java") 
-		- [Custom error controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/security/CustomErrorControler.java "CustomErrorControler.java") 
-		- [Tournament Sheet Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TournamentSheetController.java "TournamentSheetController.java")
+		- [docker-compose.yml](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/Docker/docker-compose.yml)
+		- [CreatorRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/creator/CreatorRestController.java)
+		- [SecurityRestConfiguration.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/security/SecurityRestConfiguration.java)
+		- [TournamentRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentRestController.java)
+		- [TournamentSheetRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournamentsheet/TournamentSheetRestController.java)
 * Santi: 
 	- Tasks:
-		- Implement main search of tournaments and teams with autocomplete.
-		- Add result pages of tournaments and teams to land on.
-		- Ajax functionality on tournament selection
-		- Mustache list rendering and format optimization
-		- Pie chart and tournament progress bar functionality added
+		- Creating REST API documentation
+		- Porting Tournament Sheet methods to REST API
+		- Completing initial Postman collection before link changes
+		- API request error handling check
 	- Top 5 most important commits in 'ThirdPhase':
-		- [Team and Tournament Search fully functional](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7a82e22d1701f660938597942e4053599b0dff3a "7a82e22")
-		- [AJAX on Tournament Selection](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/2316124a8aa3ff8c1cc064c50633b12d3314b3cf "2316124")
-		- [Adaptive recent matches](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/8d7fc95627f73960d8c0bd291ca5db60fb23e4f6 "8d7fc95")
-		- [Search Box direct linking](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/d4fb335bb89e58e6e9d3ff8c110a86bb04bcf505 "d4fb335")
-		- [Team autocomplete in Tournament Creator](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/78a2172144e56acd31528c94a290946f52381832 "78a2172")
+		- [API.md created](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/655e06507468e2676b05358b760c90b9a82cf978)
+		- [First changes to TournamentSheetRestController](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/f1b215d4789b4e3f59f0b729df399dac7d93bbc2)
+		- [Ported tournamentSheet main method to REST](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/f3a53a4de2edc44e7e1e3fbefac674d7206be2d1)
+		- [API.md updated with new urls](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/12ab317edededb3eae0c4757991a98da51d0fc35)
+		- [Uploading Postman collection](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/1d4fed958ef093d95033fc4b8aba433c0bfd838e)
 	- Top 5 most modified files:
-		- [Team Repository](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamRepository.java)
-		- [Main.js](https://github.com/CodeURJC-DAW-2019-20/webapp2/blame/master/tenniShip/src/main/resources/static/js/main.js)
-		- [Team Results](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/resources/templates/teamResults.html)
-		- [Team Controller](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/java/com/practica/TeamController.java)
-		- [Show More Content](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/tenniShip/src/main/resources/static/js/showMoreContent.js)
+		- [API.md](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/API.md)
+		- [TournamentSheetRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournamentsheet/TournamentSheetRestController.java)
+		- [TournamentService.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentService.java)
+		- [Postman collection](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/api.postman_collection.json)
+		- [TournamentRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentRestController.java)
 * Diego: 
 	- Tasks:
 		- API implementation of Team
         	- Paging for Team
-        	- Paging for Tournaments
-        	- Documentation: Diagrams
-        	- Docker
+            	- Paging for Tournaments
+                	- Documentation: Diagrams
+                    	- Docker
 	- Top 5 most important commits in 'Third Phase':
 		- [Paging for Tournaments and Refactoring](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/1830bfedfe9dfe402b5686feed9d8e740af0a970 "837fcfb")
 		- [Paging For Teams refactored and URLs refactored](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/837fcfbf2ea3de52337cd2b154781db845dd8d37 "c8cacb5")
