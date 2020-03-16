@@ -21,7 +21,6 @@ import com.practica.model.Match;
 import com.practica.model.Player;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
-import com.practica.model.Team.Basic;
 
 @RestController
 @RequestMapping("/api/tenniship")

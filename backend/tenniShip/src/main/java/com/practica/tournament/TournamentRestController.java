@@ -23,7 +23,6 @@ import com.practica.ImageService;
 import com.practica.model.Match;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
-import com.practica.model.Team.Basic;
 import com.practica.security.UserComponent;
 import com.practica.team.TeamService;
 

@@ -1,0 +1,48 @@
+<spaheader id="header">
+    <div class="container-fluid">
+
+        <div class="pull-left" id="logo">
+            <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li class="menu-has-children teamMenu" *ngIf="admin"><a href="#"><strong>ADMIN</strong></a>
+                    <ul>
+                        <li>
+                            <form action="/logout" method="post">
+                                <button class="btn" type="submit">Sign Out</button>
+                                <input type="hidden" name="_csrf" value="{{token}}">
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-has-children" *ngIf="admin === false && registered"><a href="#actions">Actions</a>
+                    <ul>
+                        <li><a href="/TenniShip/RegisterMatch/Tournaments">Register a Match</a></li>
+                        <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
+                    </ul>
+                </li>
+                <li class="menu-has-children teamMenu" *ngIf="admin === false && registered"><a href="#">Spain</a>
+                    <ul>
+                        <li><a href="/TenniShip/Teams/Spain">View Profile</a></li>
+                        <li>
+                            <form action="/logout" method="post">
+                                <button class="btn" type="submit">Sign Out</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                <li *ngIf="admin === false && registered"><img alt="" class="rounded-circle loginImage" src="/images/registered/teams/Spain.jpg"></li> 
+                <li *ngIf="registered === false">
+                    <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
+                </li>
+                <li *ngIf="registered === false">
+                    <a class="btn signInIndexBtnText" href="/TenniShip/SignIn" type="submit">Sign In</a>
+                </li>
+            </ul>
+        </nav>     
+        <!-- #nav-menu-container -->
+    </div>
+</spaheader>
