@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Tournament Creator - Tenniship</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+
+	<!-- Favicons -->
+	<link href="/../img/favicon.png" rel="icon">
+	<link href="/../img/apple-touch-icon.png" rel="apple-touch-icon">
+
+	<!-- Google Fonts -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+		rel="stylesheet">
+
+	<!-- Bootstrap CSS File -->
+	<link href="/../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Libraries CSS Files -->
+	<link href="/../lib/font-awesome/css/font-awesome.min.css"
+		rel="stylesheet">
+	<link href="/../lib/animate/animate.min.css" rel="stylesheet">
+	<link href="/../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+	<link href="/../lib/owlcarousel/assets/owl.carousel.min.css"
+		rel="stylesheet">
+	<link href="/../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+	<link href="/../lib/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+
+	<!-- Main Stylesheet File -->
+	<link href="/../css/style.css" rel="stylesheet">
+
+	<!-- =======================================================
+		  Theme Name: BizPage
+		  Theme URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+		  Author: BootstrapMade.com
+		  License: https://bootstrapmade.com/license/
+		======================================================= -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body id="TCreatorPage">
+
+	<!--==========================
+Header
+============================-->
+	<header id="header">
+        <div class="container-fluid">
+
+            <div class="pull-left" id="logo">
+                <h1><a class="scrollto" href="/TenniShip">TenniShip</a></h1>
+            </div>
+
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    {{#admin}}
+                	<li class="menu-has-children teamMenu"><a href="#"><strong>ADMIN</strong></a>
+                        <ul>
+                            <li>
+                                <form action="/logout" method="post">
+                                    <button class="btn" type="submit">Sign Out</button>
+                                    <input type="hidden" name="_csrf" value="{{token}}">
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    {{/admin}}
+                    {{^admin}}
+                    <li class="menu-has-children"><a href="#actions">Actions</a>
+                        <ul>
+                            <li><a href="/TenniShip/RegisterMatch/Tournaments">Register a Match</a></li>
+                            <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-has-children teamMenu"><a href="#">{{team}}</a>
+                        <ul>
+                            <li><a href="/TenniShip/Teams/{{team}}">View Profile</a></li>
+                            <li>
+                                <form action="/logout" method="post">
+                                    <button class="btn" type="submit">Sign Out</button>
+                                    <input type="hidden" name="_csrf" value="{{token}}">
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><img alt="" class="rounded-circle loginImage" src="/images/registered/teams/{{team}}.jpg"></li>
+                	{{/admin}}
+                </ul>
+            </nav>
+            <!-- #nav-menu-container -->
+        </div>
+    </header>
+    <!-- #header -->
+
+
+	<main id="main">
+		<section class="section-bg wow " id="TCreator">
+			<!--meter fadeInUp-->
+			<div class="container">
+
+				<header class="section-header">
+					<h3>Tournament Creator</h3>
+					<p>You can already create your own tournament. Let's Go!!</p>
+				</header>
+
+				<div class="row">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+						<button aria-controls="navbarTogglerDemo01" aria-expanded="false"
+							aria-label="Toggle navigation" class="navbar-toggler"
+							data-target="#navbarTogglerDemo01" data-toggle="collapse"
+							type="button">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+
+						<div
+							class="collapse navbar-collapse col-12 col-lg-3 shadow p-3 mb-5 rounded"
+							id="navbarTogglerDemo01">
+							<div aria-orientation="vertical"
+								class="nav flex-column nav-pills" id="v-pills-tab"
+								role="tablist">
+								<a aria-controls="v-pills-new" aria-selected="true"
+									class="nav-link active" data-toggle="pill" href="#v-pills-new"
+									id="v-pills-new-tab" role="tab">New Tournament</a> <a
+									aria-controls="v-pills-teams" aria-selected="false"
+									class="nav-link" data-toggle="pill" href="#v-pills-teams"
+									id="v-pills-teams-tab" role="tab"
+									{{^next1}} style="pointer-events: none; cursor: default; color: transparent;"{{/next1}}>Teams</a>
+								<a aria-controls="v-pills-raffle" aria-selected="false"
+									class="nav-link" data-toggle="pill" href="#v-pills-raffle"
+									id="v-pills-raffle-tab" role="tab"
+									{{^next2}} style="pointer-events: none; cursor: default; color: transparent;"{{/next2}} >Raffle
+									Teams</a>
+							</div>
+						</div>
+					</nav>
+
+					<div class="col-12 col-lg-9 shadow p-3 mb-5 bg-white rounded"
+						id="TCreatorInfo">
+						<div class="tab-content" id="v-pills-tabContent">
+
+							<div aria-labelledby="v-pills-new-tab"
+								class="TCreatorNew tab-pane fade show active" id="v-pills-new"
+								role="tabpanel">
+								<div class="form">
+									<form action="/TenniShip/Creator/Tournament" class="mt-3"
+										method="post" role="form" modelAttribute="newTournament" enctype="multipart/form-data">
+										<div class="form-group">
+											<p>Introduce the Tournament Name:</p>
+											<div class="input-group flex-nowrap">
+												<div class="input-group-prepend">
+													<span class="input-group-text" id="addon-wrapping">></span>
+												</div>
+												<input aria-describedby="addon-wrapping" aria-label=""
+													name="name" class="form-control"
+													placeholder="Tournament Name" type="text"
+													{{#tourFinal.name}} value="{{tourFinal.name}}"{{/tourFinal.name}}>
+											</div>
+											<div class="errorsText">
+												{{#tourAlready}}
+												<p>Tournament already exist</p>
+												{{/tourAlready}} {{#tourEmpty}}
+												<p>Introduce a tournament</p>
+												{{/tourEmpty}}
+											</div>
+										</div>
+
+										<div class="input-group mb-3">
+											<div class="custom-file">
+												<input class="custom-file-input" type="file" name="imageFile"
+													accept=".jpg" /> <label
+													aria-describedby="inputGroupFileAddon02"
+													class="custom-file-label">Tournament Logo</label>
+											</div>
+										</div>
+										
+										 <div class="errorsText">
+                                            {{#imageEmpty}}
+                                            <p>Missing picture</p>
+                                            {{/imageEmpty}}
+                                        </div>
+										
+										<div class="text-right pt-3 button">
+											<button class="input-group-test btn" type="submit">Next</button>
+										</div>
+										<input type="hidden" name="_csrf" value="{{token}}">
+									</form>
+								</div>
+							</div>
+
+							<div aria-labelledby="v-pills-teams-tab"
+								class="TCreatorTeams tab-pane fade" id="v-pills-teams"
+								role="tabpanel">
+								<div class="row">
+									<div class="col-9">
+										<div class="tab-content" id="v-pills-tabContent">
+
+											<form action="/TenniShip/Creator/Teams" method="post"
+												role="form">
+												<div aria-labelledby="v-pills-team1-tab"
+													class="tab-pane fade show active" id="v-pills-team1"
+													role="tabpanel">
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 1:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team1" {{#teamFinal0}} value="{{teamFinal0}}"{{/teamFinal0}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty0}} {{#teamNo0}}
+															<p>Team doesn't exist</p>
+															{{/teamNo0}} {{/teamEmpty0}} {{#teamEmpty0}}
+															<p>Introduce a team</p>
+															{{/teamEmpty0}} {{#teamInList0}}
+															<p>The team has already been introduced</p>
+															{{/teamInList0}}
+														</div>
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 2:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team2" {{#teamFinal1}} value="{{teamFinal1}}"{{/teamFinal1}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty1}} {{#teamNo1}}
+															<p>Team doesn't exist</p>
+															{{/teamNo1}} {{/teamEmpty1}} {{#teamEmpty1}}
+															<p>Introduce a team</p>
+															{{/teamEmpty1}} {{#teamInList1}}
+															<p>The team has already been introduced</p>
+															{{/teamInList1}}
+														</div>
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 3:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team3" {{#teamFinal2}} value="{{teamFinal2}}"{{/teamFinal2}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty2}} {{#teamNo2}}
+															<p>Team doesn't exist</p>
+															{{/teamNo2}} {{/teamEmpty2}} {{#teamEmpty2}}
+															<p>Introduce a team</p>
+															{{/teamEmpty2}} {{#teamInList2}}
+															<p>The team has already been introduced</p>
+															{{/teamInList2}}
+														</div>
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 4:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team4" {{#teamFinal3}} value="{{teamFinal3}}"{{/teamFinal3}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty3}} {{#teamNo3}}
+															<p>Team doesn't exist</p>
+															{{/teamNo3}} {{/teamEmpty3}} {{#teamEmpty3}}
+															<p>Introduce a team</p>
+															{{/teamEmpty3}} {{#teamInList3}}
+															<p>The team has already been introduced</p>
+															{{/teamInList3}}
+														</div>
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 5:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team5" {{#teamFinal4}} value="{{teamFinal4}}"{{/teamFinal4}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty4}} {{#teamNo4}}
+															<p>Team doesn't exist</p>
+															{{/teamNo4}} {{/teamEmpty4}} {{#teamEmpty4}}
+															<p>Introduce a team</p>
+															{{/teamEmpty4}} {{#teamInList4}}
+															<p>The team has already been introduced</p>
+															{{/teamInList4}}
+														</div>
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 6:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team6" {{#teamFinal5}} value="{{teamFinal5}}"{{/teamFinal5}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty5}} {{#teamNo5}}
+															<p>Team doesn't exist</p>
+															{{/teamNo5}} {{/teamEmpty5}} {{#teamEmpty5}}
+															<p>Introduce a team</p>
+															{{/teamEmpty5}} {{#teamInList5}}
+															<p>The team has already been introduced</p>
+															{{/teamInList5}}
+														</div>
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 7:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team7" {{#teamFinal6}} value="{{teamFinal6}}"{{/teamFinal6}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty6}} {{#teamNo6}}
+															<p>Team doesn't exist</p>
+															{{/teamNo6}} {{/teamEmpty6}} {{#teamEmpty6}}
+															<p>Introduce a team</p>
+															{{/teamEmpty6}} {{#teamInList6}}
+															<p>The team has already been introduced</p>
+															{{/teamInList6}}
+														</div>
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 8:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team8" {{#teamFinal7}} value="{{teamFinal7}}"{{/teamFinal7}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty7}} {{#teamNo7}}
+															<p>Team doesn't exist</p>
+															{{/teamNo7}} {{/teamEmpty7}} {{#teamEmpty7}}
+															<p>Introduce a team</p>
+															{{/teamEmpty7}} {{#teamInList7}}
+															<p>The team has already been introduced</p>
+															{{/teamInList7}}
+														</div>
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 9:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team9" {{#teamFinal8}} value="{{teamFinal8}}"{{/teamFinal8}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty8}} {{#teamNo8}}
+															<p>Team doesn't exist</p>
+															{{/teamNo8}} {{/teamEmpty8}} {{#teamEmpty8}}
+															<p>Introduce a team</p>
+															{{/teamEmpty8}} {{#teamInList8}}
+															<p>The team has already been introduced</p>
+															{{/teamInList8}}
+														</div>
+
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 10:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team10" {{#teamFinal9}} value="{{teamFinal9}}"{{/teamFinal9}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty9}} {{#teamNo9}}
+															<p>Team doesn't exist</p>
+															{{/teamNo9}} {{/teamEmpty9}} {{#teamEmpty9}}
+															<p>Introduce a team</p>
+															{{/teamEmpty9}} {{#teamInList9}}
+															<p>The team has already been introduced</p>
+															{{/teamInList9}}
+														</div>
+
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 11:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team11" {{#teamFinal10}} value="{{teamFinal10}}"{{/teamFinal10}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty10}} {{#teamNo10}}
+															<p>Team doesn't exist</p>
+															{{/teamNo10}} {{/teamEmpty10}} {{#teamEmpty10}}
+															<p>Introduce a team</p>
+															{{/teamEmpty10}} {{#teamInList10}}
+															<p>The team has already been introduced</p>
+															{{/teamInList10}}
+														</div>
+
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 12:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team12" {{#teamFinal11}} value="{{teamFinal11}}"{{/teamFinal11}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty11}} {{#teamNo11}}
+															<p>Team doesn't exist</p>
+															{{/teamNo11}} {{/teamEmpty11}} {{#teamEmpty11}}
+															<p>Introduce a team</p>
+															{{/teamEmpty11}} {{#teamInList11}}
+															<p>The team has already been introduced</p>
+															{{/teamInList11}}
+														</div>
+
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 13:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team13" {{#teamFinal12}} value="{{teamFinal12}}"{{/teamFinal12}}>
+														</div>
+
+														<div class="errorsText">
+															{{^teamEmpty12}} {{#teamNo12}}
+															<p>Team doesn't exist</p>
+															{{/teamNo12}} {{/teamEmpty12}} {{#teamEmpty12}}
+															<p>Introduce a team</p>
+															{{/teamEmpty12}} {{#teamInList12}}
+															<p>The team has already been introduced</p>
+															{{/teamInList12}}
+														</div>
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 14:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team14" {{#teamFinal13}} value="{{teamFinal13}}"{{/teamFinal13}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty13}} {{#teamNo13}}
+															<p>Team doesn't exist</p>
+															{{/teamNo13}} {{/teamEmpty13}} {{#teamEmpty13}}
+															<p>Introduce a team</p>
+															{{/teamEmpty13}} {{#teamInList13}}
+															<p>The team has already been introduced</p>
+															{{/teamInList13}}
+														</div>
+
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 15:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team15" {{#teamFinal14}} value="{{teamFinal14}}"{{/teamFinal14}}>
+														</div>
+
+														<div class="errorsText">
+															{{^teamEmpty14}} {{#teamNo14}}
+															<p>Team doesn't exist</p>
+															{{/teamNo14}} {{/teamEmpty14}} {{#teamEmpty14}}
+															<p>Introduce a team</p>
+															{{/teamEmpty14}} {{#teamInList14}}
+															<p>The team has already been introduced</p>
+															{{/teamInList14}}
+														</div>
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 16:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team16" {{#teamFinal15}} value="{{teamFinal15}}"{{/teamFinal15}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty15}} {{#teamNo15}}
+															<p>Team doesn't exist</p>
+															{{/teamNo15}} {{/teamEmpty15}} {{#teamEmpty15}}
+															<p>Introduce a team</p>
+															{{/teamEmpty15}} {{#teamInList15}}
+															<p>The team has already been introduced</p>
+															{{/teamInList15}}
+														</div>
+
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 17:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team17" {{#teamFinal16}} value="{{teamFinal16}}"{{/teamFinal16}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty16}} {{#teamNo16}}
+															<p>Team doesn't exist</p>
+															{{/teamNo16}} {{/teamEmpty16}} {{#teamEmpty16}}
+															<p>Introduce a team</p>
+															{{/teamEmpty16}} {{#teamInList16}}
+															<p>The team has already been introduced</p>
+															{{/teamInList16}}
+														</div>
+
+													</div>
+
+													<div class="form formTeam">
+														<p>Enter the name of Team 18:</p>
+														<div class="input-group flex-nowrap">
+															<div class="input-group-prepend">
+																<span class="input-group-text" id="addon-wrapping">></span>
+															</div>
+															<input aria-describedby="addon-wrapping" aria-label=""
+																class="form-control teamSearch" placeholder="Team Name" type="text"
+																name="team18" {{#teamFinal17}} value="{{teamFinal17}}"{{/teamFinal17}}>
+														</div>
+														<div class="errorsText">
+															{{^teamEmpty17}} {{#teamNo17}}
+															<p>Team doesn't exist</p>
+															{{/teamNo17}} {{/teamEmpty17}} {{#teamEmpty17}}
+															<p>Introduce a team</p>
+															{{/teamEmpty17}} {{#teamInList17}}
+															<p>The team has already been introduced</p>
+															{{/teamInList17}}
+														</div>
+
+													</div>
+
+
+													<div class="text-center pt-3 button">
+														<button class="input-group-test btn" type="submit">Next</button>
+													</div>
+
+												</div>
+												<input type="hidden" name="_csrf" value="{{token}}">
+											</form>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div aria-labelledby="v-pills-raffle-tab"
+								class="TCreatorRaffle tab-pane fade" id="v-pills-raffle"
+								role="tabpanel">
+								<div>
+									<div class="TCreatorTitles">
+										<h3>Tournament Name:</h3>
+										<p>{{tourFinal.name}}</p>
+										<form action="/TenniShip/Creator/Raffle" method="post">
+											<div class="text-right pt-3 button">
+												<button class="input-group-test btn" type="submit">Raffle</button>
+											</div>
+											<input type="hidden" name="_csrf" value="{{token}}">
+										</form>
+										<h3 class="listTeams">Teams</h3>
+									</div>
+								</div>
+								<div class="Separateboth"></div>
+								<div class="TeamMate scrollspy-example" data-spy="scroll">
+
+									<div class="row">
+										{{#listTeam}}
+										<div class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
+											<div class="member tournamentPic">
+												<img alt="" class="img-fluid tournamentTeamsPic" src="/images/registered/teams/{{.}}.jpg">
+												<div class="member-info">
+													<div class="member-info-content">
+														<h4>{{.}}</h4>
+													</div>
+												</div>
+											</div>
+										</div>
+										{{/listTeam}}
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!--==========================
+Footer
+============================-->
+	<footer id="footer">
+		<div class="container">
+			<div class="copyright">
+				&copy; Copyright <a href="https://bootstrapmade.com/license/"><strong>BizPage</strong></a>.
+				All Rights Reserved
+			</div>
+			<div class="credits">ReDesigned by paDAWans</div>
+		</div>
+	</footer>
+	<!-- #footer -->
+
+	<a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
+	<!-- Uncomment below if you want to use a preloader -->
+	<div id="preloader"></div>
+
+	<!-- JavaScript Libraries -->
+	<script src="/../lib/jquery/jquery.min.js"></script>
+	<script src="/../lib/jquery/jquery-migrate.min.js"></script>
+	<script src="/../lib/jquery-ui/jquery-ui.min.js"></script>
+	<script src="/../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/../lib/easing/easing.min.js"></script>
+	<script src="/../lib/superfish/hoverIntent.js"></script>
+	<script src="/../lib/superfish/superfish.min.js"></script>
+	<script src="/../lib/wow/wow.min.js"></script>
+	<script src="/../lib/waypoints/waypoints.min.js"></script>
+	<script src="/../lib/counterup/counterup.min.js"></script>
+	<script src="/../lib/owlcarousel/owl.carousel.min.js"></script>
+	<script src="/../lib/isotope/isotope.pkgd.min.js"></script>
+	<script src="/../lib/lightbox/js/lightbox.min.js"></script>
+	<script src="/../lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+	<!-- Contact Form JavaScript File -->
+	<script src="../contactform/contactform.js"></script>
+
+	<!-- Template Main Javascript File -->
+	<script src="/../js/main.js"></script>
+	<script src="/../js/showMoreContent.js"></script>
+	<script>
+
+		var teamNames = [
+			{{#teamNames}}"{{.}}",{{/teamNames}}
+		];
+
+		$( ".teamSearch" ).autocomplete({
+			source: teamNames
+		});
+
+	</script>
+
+</body>
+
+</html>

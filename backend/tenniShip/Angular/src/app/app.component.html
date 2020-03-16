@@ -19,7 +19,7 @@
                 <div class="col-md-6 wow fadeInUp">
                     <div class="home-col">
                         <div class="img">
-                            <img alt="" class="img-fluid" src="../img/trophy.png">
+                            <img alt="" class="img-fluid" src="/assets/resources/static/img/trophy.png">
                             <div class="icon"><i class="ion-trophy"></i></div>
                         </div>
                         <h2 class="title"><a href="#">Tournament Search</a></h2>
@@ -32,7 +32,7 @@
                 <div class="col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="home-col">
                         <div class="img">
-                            <img alt="" class="img-fluid" src="../img/team.png">
+                            <img alt="" class="img-fluid" src="/assets/resources/static/img/team.png">
                             <div class="icon"><i class="ion-ios-people"></i></div>
                         </div>
                         <h2 class="title"><a href="#">Team Search</a></h2>
@@ -61,10 +61,14 @@
                 <div class="col-md-6 wow fadeInUp">
                     <div class="actions-col">
                         <div class="img">
-                            <img alt="" class="img-fluid" src="../img/registerMatch.jpg">
+                            <img alt="" class="img-fluid" src="/assets/resources/static/img/registerMatch.jpg">
                             <div class="icon"><i class="ion-ios-tennisball"></i></div>
                         </div>
-                        <h2 class="title"><a href="/TenniShip/RegisterMatch/Tournaments" *ngIf="admin === false" >Register a Match</a></h2>
+                        <h2 class="title">
+                            <ng-container *ngIf="admin" >
+                            <a href="/TenniShip/RegisterMatch/Tournaments" >Register a Match</a>
+                            </ng-container>
+                        </h2>
                         <p>
                             This section´s purpose is the insertion of the results of the matchs from a league in which your team is involved, it also lets the administrator of the league the ability to change match results. Working as a double check for the assurance of the participants.
                         </p>
@@ -75,7 +79,7 @@
                 <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="actions-col">
                         <div class="img">
-                            <img alt="" class="img-fluid" src="../img/emptyStadium.jpg">
+                            <img alt="" class="img-fluid" src="/assets/resources/static/img/emptyStadium.jpg">
                             <div class="icon"><i class="ion-podium"></i></div>
                         </div>
                         <h2 class="title"><a href="/TenniShip/Creator">Tournament Creator</a></h2>
