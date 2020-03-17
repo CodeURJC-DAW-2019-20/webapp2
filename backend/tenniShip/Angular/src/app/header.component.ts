@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   //styleUrls: ['.app.component.css']
 })
 export class HeaderComponent {
-  //title = 'spaheader';
+  title = 'spaheader';
   admin = true;
   registered = true;
 }
