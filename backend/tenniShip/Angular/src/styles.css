@@ -191,16 +191,17 @@ h6 {
 
 /* Header style specific to the index page */
 
-body#index #header:not(.header-scrolled) {
+main.index #header:not(.header-scrolled) {
   background: linear-gradient(45deg, black, transparent);
 }
 
-body#index {
+main.index {
   padding-top: 0;
 }
 
-body#index #home {
-  padding-top: 152px;
+main.index #home {
+  padding-top: 92px;
+  margin-top: -92px;
 }
 
 
@@ -1307,7 +1308,7 @@ h5 {
 
 /* Correction for the footer*/
 
-body:not(#index) main#main {
+main#main:not(.index) {
   margin-bottom: 50px;
 }
 
