@@ -191,7 +191,7 @@ h6 {
 
 /* Header style specific to the index page */
 
-main.index #header:not(.header-scrolled) {
+#header.indexHeader:not(.header-scrolled) {
   background: linear-gradient(45deg, black, transparent);
 }
 
@@ -199,7 +199,7 @@ main.index {
   padding-top: 0;
 }
 
-main.index #home {
+#home {
   padding-top: 92px;
   margin-top: -92px;
 }

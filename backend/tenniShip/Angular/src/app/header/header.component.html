@@ -1,4 +1,4 @@
-<header id="header">
+<header id="header" [class.indexHeader]="indexPage" [class.header-scrolled]="scrolled" (window:scroll)="setScrolled()">
     <div class="container-fluid">
 
         <div class="pull-left" id="logo">

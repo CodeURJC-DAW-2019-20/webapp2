@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HeaderComponent } from "./header/header.component";
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Angular';
   admin = true;
+  indexPage = true;   // S
+
+
+
 }
