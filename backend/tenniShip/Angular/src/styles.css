@@ -1308,7 +1308,7 @@ h5 {
 
 /* Correction for the footer*/
 
-body:not(#index) main#main {
+main#main:not(.index) {
   margin-bottom: 50px;
 }
 
