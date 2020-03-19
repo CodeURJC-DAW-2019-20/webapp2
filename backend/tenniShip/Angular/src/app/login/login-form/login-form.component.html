@@ -1,0 +1,18 @@
+<div class="form">
+
+    <form [formGroup]="credentials" (ngSubmit)="onSubmit()" action="/TenniShip/SignIn" method="post" role="form">
+        <div class="form-group">
+            <input class="form-control" formControlName="username" id="username" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" formControlName="password" id="password" name="password" placeholder="Password" type="password" />
+            <div class="validation"></div>
+        </div>
+        <div class="text-center pt-3">
+            <button class="btn" type="submit">Log in</button>
+        </div>
+    </form>
+</div>
+<div class="text-center">
+    <p class="pt-3">New to Tenniship? <a [routerLink]="['/TenniShip/SignUp']">Create an account!</a></p>
+</div>
