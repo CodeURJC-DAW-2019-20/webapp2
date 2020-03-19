@@ -45,9 +45,6 @@
     }
   });
 
-  // Initiate the wowjs animation library
-  new WOW().init();
-
   // Initiate superfish on nav menu
   $('.nav-menu').superfish({
     animation: {
