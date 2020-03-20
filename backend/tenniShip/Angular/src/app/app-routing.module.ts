@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {HomeComponent} from "./home/home.component";
+import {TeamInfoComponent} from "./team-info/team-info.component";
 
 const routes: Routes = [
   {path: 'TenniShip', component: HomeComponent, },
+  {path: 'TenniShip/Team/:team_id', component:TeamInfoComponent},
 
 ]
 export const routing = RouterModule.forRoot(routes);
