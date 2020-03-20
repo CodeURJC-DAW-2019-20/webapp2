@@ -4,8 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
-  {path: 'TenniShip', component: HomeComponent, },
-
+  {path: 'TenniShip', component: HomeComponent }
 ]
 export const routing = RouterModule.forRoot(routes);
 //Aqui van las rutas de los componentes
