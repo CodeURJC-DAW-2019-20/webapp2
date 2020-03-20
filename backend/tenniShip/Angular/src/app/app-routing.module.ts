@@ -3,12 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {HomeComponent} from "./home/home.component";
 import {LoginComponent} from "./login/login.component";
-import {LoginTitleComponent} from "./login/login-title/login-title.component";
-import {LoginFormComponent} from "./login/login-form/login-form.component";
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {path: 'TenniShip', component: HomeComponent},
-  {path: 'TenniShip/SignIn', component: LoginComponent}
+  {path: 'TenniShip/SignIn', component: LoginComponent},
+  {path: 'TenniShip/SignUp', component:SignupComponent}
 ]
 export const routing = RouterModule.forRoot(routes);
 //Aqui van las rutas de los componentes

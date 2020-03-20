@@ -10,10 +10,11 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { LoginTitleComponent } from './login/login-title/login-title.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
-    AppComponent, HeaderComponent, FooterComponent, HomeComponent, LoginComponent, LoginTitleComponent, LoginFormComponent
+    AppComponent, HeaderComponent, FooterComponent, HomeComponent, LoginComponent, LoginTitleComponent, LoginFormComponent, SignupComponent
   ],
   imports: [
     BrowserModule,
