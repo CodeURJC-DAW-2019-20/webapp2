@@ -1775,7 +1775,7 @@ body:not(#index) main#main {
     color: white;
 }
 
-#navbarTogglerDemo01 {
+#nav-angular {
     align-self: first baseline;
 }
 
@@ -1853,15 +1853,15 @@ body#TCreatorPage .ui-autocomplete {
     color: #000;
 }
 
-#navbarTogglerDemo01 {
+#nav-angular {
     background: rgba(0, 0, 0, 0.9);
 }
 
-#navbarTogglerDemo01 a {
+#nav-angular a {
     color: white;
 }
 
-#navbarTogglerDemo01 a:hover {
+#nav-angular a:hover {
     color: white;
 }
 
