@@ -15,6 +15,7 @@ import { TournamentSheetComponent } from './tournament-sheet/tournament-sheet.co
 import { TournamentSheetGroupsComponent } from './tournament-sheet/tournament-sheet-groups/tournament-sheet-groups.component';
 import { TournamentSheetFinalComponent } from './tournament-sheet/tournament-sheet-final/tournament-sheet-final.component';
 import { TournamentSheetTeamsComponent } from './tournament-sheet/tournament-sheet-teams/tournament-sheet-teams.component';
+import { TournamentSheetModalComponent } from './tournament-sheet/tournament-sheet-modal/tournament-sheet-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TournamentSheetTeamsComponent } from './tournament-sheet/tournament-she
     TournamentSheetComponent, 
     TournamentSheetGroupsComponent, 
     TournamentSheetFinalComponent, 
-    TournamentSheetTeamsComponent
+    TournamentSheetTeamsComponent, 
+    TournamentSheetModalComponent
   ],
   imports: [
     BrowserModule,
