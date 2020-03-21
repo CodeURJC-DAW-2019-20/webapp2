@@ -1,3 +1,5 @@
+// @ts-ignore
 export const environment = {
-  production: true
+  production: true,
+  //apiUrl: ['https://localhost:8443/api']
 };

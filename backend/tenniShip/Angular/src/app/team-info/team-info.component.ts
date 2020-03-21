@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Team} from "../model/team";
-import {TeamService} from "../Services/team.service";
+import {TeamService} from "./team.service";
 import {HttpClient, HttpClientJsonpModule, HttpHeaders} from "@angular/common/http";
 
 
