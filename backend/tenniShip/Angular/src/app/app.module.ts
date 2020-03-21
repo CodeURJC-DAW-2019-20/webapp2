@@ -11,6 +11,10 @@ import { CreatorComponent } from './creator/creator.component';
 import { CreatorTournamentComponent } from './creator/creator-tournament/creator-tournament.component';
 import { CreatorTeamsComponent } from './creator/creator-teams/creator-teams.component';
 import { CreatorRaffleComponent } from './creator/creator-raffle/creator-raffle.component';
+import { TournamentSheetComponent } from './tournament-sheet/tournament-sheet.component';
+import { TournamentSheetGroupsComponent } from './tournament-sheet/tournament-sheet-groups/tournament-sheet-groups.component';
+import { TournamentSheetFinalComponent } from './tournament-sheet/tournament-sheet-final/tournament-sheet-final.component';
+import { TournamentSheetTeamsComponent } from './tournament-sheet/tournament-sheet-teams/tournament-sheet-teams.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { CreatorRaffleComponent } from './creator/creator-raffle/creator-raffle.
     CreatorComponent, 
     CreatorTournamentComponent, 
     CreatorTeamsComponent, 
-    CreatorRaffleComponent
+    CreatorRaffleComponent, 
+    TournamentSheetComponent, 
+    TournamentSheetGroupsComponent, 
+    TournamentSheetFinalComponent, 
+    TournamentSheetTeamsComponent
   ],
   imports: [
     BrowserModule,
