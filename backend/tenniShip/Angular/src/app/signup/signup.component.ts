@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-signup',
@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
     picplayer3: new FormControl(''),
     picplayer4: new FormControl(''),
     picplayer5: new FormControl('')
-   });
+  });
 
   constructor() { }
 

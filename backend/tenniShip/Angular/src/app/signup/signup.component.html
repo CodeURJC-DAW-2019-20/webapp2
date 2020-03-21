@@ -9,9 +9,9 @@
                 <h3>User Data</h3>
                 <div id="sendmessage">Your message has been sent. Thank you!</div>
                 <div id="errormessage"></div>
-                <form [formGroup]="userData" (ngSubmit)="onSubmit()" action="/register" method="post" role="form" modelAttribute="personUser" enctype="multipart/form-data">
+                <form [formGroup]="userData" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
                     <div class="form-group">
-                        <input class="form-control" formControlName="username" id="username" name="userName" placeholder="User Name" type="text">
+                        <input class="form-control" formControlName="username" id="username" name="userName" placeholder="User Name" type="text" required>
 
                     </div>
                     <div class="form-group">
