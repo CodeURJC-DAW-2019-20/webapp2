@@ -7,5 +7,5 @@ export interface Match {
   team1: Team;
   team2: Team;
   tournament: Tournament;
-
+  type: string;
 }
