@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 import {HomeComponent} from "./home/home.component";
 import {TeamInfoComponent} from "./team-info/team-info.component";
 
@@ -14,7 +16,7 @@ export const routing = RouterModule.forRoot(routes);
 //Más tarde, a la hora de poner links, los links cambian el componente activo
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), CarouselModule.forRoot()],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
