@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from "@angular/common/http";
+import {CarouselModule} from "ngx-bootstrap";
+import {NgxChartsModule, PieChartModule} from "@swimlane/ngx-charts";
+import { GraphicPieComponent } from './team-info/graphic-pie/graphic-pie.component';
+import { MatchesPaginatedComponent } from './team-info/matches-paginated/matches-paginated.component';
 
 import {AppRoutingModule, routing} from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,16 +39,21 @@ import { TeamInfoComponent } from './team-info/team-info.component';
     TournamentSheetFinalComponent,
     TournamentSheetTeamsComponent,
     TournamentSheetModalComponent,
-    TeamInfoComponent
+    TeamInfoComponent,
+    GraphicPieComponent,
+    MatchesPaginatedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     routing,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    CarouselModule,
+    NgxChartsModule, 
+    PieChartModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,TeamInfoComponent,GraphicPieComponent]
 })
 export class AppModule { }
