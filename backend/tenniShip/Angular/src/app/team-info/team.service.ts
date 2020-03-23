@@ -61,7 +61,7 @@ export class TeamService {
         this.extractTeamPlayers(response as any);
         this.extractPercentageWonMatches(response as any);
         this.extractPercentageLostMatches(response as any);
-    })//, catchError(err => Observable.throw('Server error'))
+    }), catchError(err => Observable.throw('Server error'))
     )
   }
 

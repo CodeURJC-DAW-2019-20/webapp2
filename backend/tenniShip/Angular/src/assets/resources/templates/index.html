@@ -76,7 +76,7 @@
                         </ul>
                     </li>
                     <li><img alt="" class="rounded-circle loginImage" src="/images/registered/teams/{{team}}.jpg"></li>
-                    {{/registered}} 
+                    {{/registered}}
                     {{^registered}}
                     <li>
                         <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
@@ -88,7 +88,7 @@
                 </ul>
             </nav>
             {{/admin}}
-           
+
             <!-- #nav-menu-container -->
         </div>
     </header>
@@ -148,9 +148,9 @@
                 </header>
 
                 <div class="row actions-cols">
-		
-		
-					
+
+
+
                     <div class="col-md-6 wow fadeInUp">
                         <div class="actions-col">
                             <div class="img">
@@ -163,8 +163,8 @@
                             </p>
                         </div>
                     </div>
-					
-					
+
+
                     <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="actions-col">
                             <div class="img">
@@ -226,12 +226,12 @@
     <script>
 
         var tournamentNames = [
-            {{#tournamentNames}}"{{.}}",{{/tournamentNames}}
-        ];
+            {{#tournamentNames}}"{{.}}",{;{/tournamentNames}};
+        ]
 
         var teamNames = [
-            {{#teamNames}}"{{.}}",{{/teamNames}}
-        ];
+            {{#teamNames}}"{{.}}",{;{/teamNames}};
+        ]
 
         $( "#teamSearch" ).autocomplete({
             source: teamNames
@@ -239,7 +239,7 @@
 
         $( "#tournamentSearch" ).autocomplete({
             source: tournamentNames
-        })
+        });
 
     </script>
 

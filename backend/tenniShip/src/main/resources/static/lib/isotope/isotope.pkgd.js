@@ -240,7 +240,7 @@ proto.emitEvent = function( eventName, args ) {
   var onceListeners = this._onceEvents && this._onceEvents[ eventName ];
 
   for ( var i=0; i < listeners.length; i++ ) {
-    var listener = listeners[i]
+    var listener = listeners[i];
     var isOnce = onceListeners && onceListeners[ listener ];
     if ( isOnce ) {
       // remove listener

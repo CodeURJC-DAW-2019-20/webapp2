@@ -6,7 +6,6 @@ import {Tournament} from "../model/tournament";
 import {Match} from "../model/match";
 import {GraphicTeam} from "../model/graphic-team";
 
-
 @Component({
   selector: 'app-team-info',
   templateUrl: './team-info.component.html',
@@ -25,10 +24,6 @@ export class TeamInfoComponent implements OnInit {
   }
 
   ngOnInit():void {
-    // this.teamService.getTeam(this.team_id).subscribe((data:Team)=>this.team);
-    // this.teamService.getGraphicData(this.team_id).subscribe((data:GraphicTeam)=>this.graphic_data);
-    // this.teamService.getMatchesList(this.team_id).subscribe((data:Match[])=>this.matchesList);
-    // this.teamService.getTournamentList(this.team_id).subscribe((data:Tournament[])=>this.tournamentList)
     this.searchTeam(this.team_id);
   }
 
@@ -43,6 +38,7 @@ export class TeamInfoComponent implements OnInit {
       }
     )
   }
+
 
   getTeam(){
     return this.team;
