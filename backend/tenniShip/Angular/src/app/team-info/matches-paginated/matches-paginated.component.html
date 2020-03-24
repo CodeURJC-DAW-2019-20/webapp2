@@ -28,4 +28,9 @@
       <button class="btn btn-primary" id="loadContentButtonMatches" (click)="addMatches()">Show more</button>
     </div>
   </div>
+  <div *ngIf="pagingConfirmation===false">
+    <ngb-alert [dismissible]="false">
+      <strong>Warning</strong> There are no more matches to show
+    </ngb-alert>
+  </div>
 </div>
