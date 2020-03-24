@@ -11,7 +11,7 @@ import {TeamFileData} from "../model/team-file-data";
 export class TeamInfoComponent implements OnInit {
 
   public _teamFileData: TeamFileData;
-  public team_id:string;
+  public team_id: string;
 
   constructor(private route : ActivatedRoute, private teamService: TeamService){
     this.team_id = route.snapshot.params.team_id;
