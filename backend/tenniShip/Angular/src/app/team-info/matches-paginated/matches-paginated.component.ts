@@ -42,11 +42,11 @@ export class MatchesPaginatedComponent implements OnInit {
         this._matchesListTableAux=data;
         console.log(this._matchesListTable);
         if(typeof this._matchesListTableAux[0]==='undefined'){
-
+          this.pagingConfirmation=false;
         }else {
           this._matchesListTable.push(this._matchesListTableAux[0]);
           if(typeof this._matchesListTableAux[1]==='undefined'){
-
+            this.pagingConfirmation=false;
           }else{
             this._matchesListTable.push(this._matchesListTableAux[1]);
           }
