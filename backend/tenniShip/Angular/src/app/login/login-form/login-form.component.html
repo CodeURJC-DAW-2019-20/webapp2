@@ -1,5 +1,5 @@
 <div class="form">
-
+    <div *ngIf="message" class="alert  wrongmsg">{{message}}</div>
     <form action="/TenniShip/SignIn" [formGroup]="credentials">
         <div class="form-group">
             <input class="form-control" #username formControlName="username" id="username" name="username" placeholder="Username" type="text">

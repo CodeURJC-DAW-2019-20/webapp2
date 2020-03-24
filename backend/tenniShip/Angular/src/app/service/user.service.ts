@@ -16,7 +16,6 @@ export class UserService {
         'Content-Type':  'application/json',
         'Authorization': 'Basic ' + btoa(un+':'+pass)
       })
-      //'Authorization':'Basic' +btoa(`${un}:${pass}`)
     };
     console.log('adios'); 
     return this.http.get('/api/tenniship/signin',httpOptions);

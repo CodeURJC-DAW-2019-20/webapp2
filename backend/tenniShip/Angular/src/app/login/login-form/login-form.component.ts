@@ -2,6 +2,7 @@ import { Component, OnInit, ɵisBoundToModule__POST_R3__ } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { UserService } from 'src/app/service/user.service';
 import{Router} from '@angular/router';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-login-form',
@@ -14,17 +15,11 @@ export class LoginFormComponent implements OnInit {
     username: new FormControl(''),
     password: new FormControl(''),
   });
+  message=('');
 
   constructor(public userService: UserService, public router:Router) {}
 
   ngOnInit() {
-
-    // this.userService.login('Marcos', '12345678')
-    //   .subscribe(
-    //     res => {
-    //       console.log(res);
-    //     });
-
   }
 
   login(username: string, password: string, event: Event) {
@@ -34,6 +29,7 @@ export class LoginFormComponent implements OnInit {
       },
       error => {
         console.error(error);
+        this.message="Wrong data. Please, try again."
       }
       
     );
