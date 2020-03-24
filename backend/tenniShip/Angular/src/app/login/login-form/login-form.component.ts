@@ -1,6 +1,6 @@
 import { Component, OnInit, ɵisBoundToModule__POST_R3__ } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { UserService } from 'src/app/service/user.service';
+import { LoginService } from 'src/app/service/login.service';
 import{Router} from '@angular/router';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
@@ -17,7 +17,7 @@ export class LoginFormComponent implements OnInit {
   });
   message=('');
 
-  constructor(public userService: UserService, public router:Router) {}
+  constructor(public userService: LoginService, public router:Router) {}
 
   ngOnInit() {
   }
