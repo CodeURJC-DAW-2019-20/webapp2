@@ -15,6 +15,10 @@ import { LoginTitleComponent } from './login/login-title/login-title.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { SignupComponent } from './signup/signup.component';
 import {UserService} from './service/user.service';
+import {CarouselModule} from "ngx-bootstrap";
+import {NgxChartsModule, PieChartModule} from "@swimlane/ngx-charts";
+import { GraphicPieComponent } from './team-info/graphic-pie/graphic-pie.component';
+import { MatchesPaginatedComponent } from './team-info/matches-paginated/matches-paginated.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +26,16 @@ import {UserService} from './service/user.service';
     FooterComponent, HomeComponent,
     LoginComponent, LoginTitleComponent,
     LoginFormComponent, SignupComponent,
-    TeamInfoComponent
+    TeamInfoComponent,
+    GraphicPieComponent,
+    MatchesPaginatedComponent
   ],
   imports: [
     BrowserModule, NgbModule,
     AppRoutingModule, HttpClientModule,
-    routing, ReactiveFormsModule
+    routing, ReactiveFormsModule, CarouselModule,NgxChartsModule, PieChartModule
   ],
   providers: [UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,TeamInfoComponent,GraphicPieComponent]
 })
 export class AppModule { }

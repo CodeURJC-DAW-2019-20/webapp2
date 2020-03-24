@@ -8,5 +8,4 @@ export interface Match {
   team2: Team;
   tournament: Tournament;
   type: string;
-
 }

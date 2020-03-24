@@ -2,12 +2,9 @@
   <div class="container">
     <div class="section-header">
       <div class="team-icon img-thumbnail">
-
-        <img alt="Team logo" class="img-fluid team-img"
-             src="../../../images/registered/teams/{{getTeam().teamName}}.jpg">
-
+        <img alt="Team logo" class="img-fluid team-img" src="../../../images/registered/teams/{{getTeam()?.teamName}}.jpg">
       </div>
-      <h3 id="teamNameIdH3">{{getTeam().teamName}}</h3>
+      <h3 id="teamNameIdH3">{{getTeam()?.teamName}}</h3>
     </div>
     <div class="content">
       <h3>Players</h3>
@@ -15,10 +12,10 @@
         <div class="container">
           <div class="row justify-content-center" >
             <div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp"
-                 style="visibility: visible; animation-name: fadeInUp;" *ngFor="let player of getTeam().playerList">
+                 style="visibility: visible; animation-name: fadeInUp;" *ngFor="let player of getTeam()?.playerList">
               <div class="member">
                 <img alt="" class="img-fluid"
-                     src="/images/registered/players/{{getTeam().teamName}}{{player}}.jpg">
+                     src="/images/registered/players/{{getTeam()?.teamName}}{{player}}.jpg">
                 <div class="member-info">
                   <div class="member-info-content">
                     <h4>{{player.playerName}}</h4>
@@ -29,6 +26,29 @@
           </div>
         </div>
       </div>
+
+
+      <h3>Tournaments</h3>
+      <section class="wow fadeInUp">
+        <div class="container">
+          <carousel [interval]="2000" >
+            <slide *ngFor="let Tournament of getTournamentList()">
+              <img src="../../../images/registered/tournaments/{{Tournament}}.jpg" alt="image slide" style="display: block; width: 100%;">
+            </slide>
+          </carousel>
+        </div>
+      </section>
+
+      <h3>Matches played</h3>
+      <section class="wow fadeInUp">
+        <div class="container row mb-5">
+          <app-graphic-pie></app-graphic-pie>
+        </div>
+        <div class="container row mb-5">
+          <app-matches-paginated></app-matches-paginated>
+        </div>
+      </section>
+
     </div>
   </div>
 </section>

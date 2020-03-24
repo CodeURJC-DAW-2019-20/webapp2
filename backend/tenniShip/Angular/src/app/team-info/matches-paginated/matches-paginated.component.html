@@ -1,0 +1,28 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Home</th>
+    <th scope="col">VS</th>
+    <th scope="col">Away</th>
+    <th scope="col">HomePoints</th>
+    <th scope="col">-</th>
+    <th scope="col">AwayPoints</th>
+    <th scope="col">Tournament</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let match of getMatchesListTable()">
+    <td>{{ match.team1}}</td>
+    <td>VS</td>
+    <td>{{ match.team2 }}</td>
+    <td>{{ match.homePoints}}</td>
+    <td>-</td>
+    <td>{{ match.awayPoints}}</td>
+    <td>{{ match.tournament }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="text-center pt-3">
+  <button class="btn btn-primary" id="loadContentButtonMatches" (click)="getMatchesListTableUpdate(2)">Show more</button>
+</div>
