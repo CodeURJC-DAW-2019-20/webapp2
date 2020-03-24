@@ -8,6 +8,7 @@ import {TeamInfoComponent} from "./team-info/team-info.component";
 import {LoginComponent} from "./login/login.component";
 import { SignupComponent } from './signup/signup.component';
 
+
 const routes: Routes = [
   {path: 'TenniShip', component: HomeComponent},
   {path: 'TenniShip/SignIn', component: LoginComponent},

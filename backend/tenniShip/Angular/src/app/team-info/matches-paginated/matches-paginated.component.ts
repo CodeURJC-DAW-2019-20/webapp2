@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Match} from "../../model/match";
 import {TeamService} from "../team.service";
 import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
+import {catchError, map} from "rxjs/operators";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-matches-paginated',
@@ -10,27 +13,37 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class MatchesPaginatedComponent implements OnInit {
 
-  private _matchesListTable: Match[] = new Array<Match>();
+  public _matchesListTable: Match[] = new Array<Match>();
   size = this._matchesListTable.length;
   team_id : string;
+  url: string = '/api/TenniShip/Team/'
 
-  constructor(private route:ActivatedRoute, private teamService : TeamService) {
+  constructor(private route:ActivatedRoute, private teamService : TeamService, private http : HttpClient) {
     this.team_id = route.snapshot.params.team_id;
   }
 
   ngOnInit(): void {
   }
 
-  getMatchesListTableUpdate(page:number) {
-    this.addMatchesToTheList(page,this._matchesListTable);
-    return this._matchesListTable;
-  }
-
   getMatchesListTable(): Match[] {
     return this._matchesListTable;
   }
 
-  addMatchesToTheList(page:number, matchesList: Match[]){
-    this.teamService.getMoreMatches(this.team_id,page).subscribe(data=>matchesList.concat(data));
+  public getMoreMatches(page:number):Observable<any>{
+    let theUrl = this.url + this.team_id +'/matches?page='+ page + '&size=2';
+
+    return this.http.get<Match[]>(theUrl).pipe(
+      map(response=>response),
+      catchError(err => Observable.throw('Server error'))
+    )
+  }
+
+  public addMatches(page:number){
+    this.getMoreMatches(page).subscribe(
+      data=>{
+        this._matchesListTable.concat(data);
+        console.log(this._matchesListTable);
+      }
+    )
   }
 }
