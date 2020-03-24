@@ -2,10 +2,10 @@
     <div class="container-fluid">
         <div class="row justify-content-between" style="padding: 1%">
 
-            <div class="groupCard flex-fill">
-                <div class="container groupStage">
+            <div class="groupCard flex-fill" *ngFor="let grupo of getTournamentSheetGroups(); ; let i = index">
+                <div class="container groupStage" >
                     <div class="row justify-content-between TournamentGroup">
-                        <div class="justify-content-between">Group A</div>
+                        <div class="justify-content-between">Group {{getGroup(i)}}</div>
                         <!--
                         {{#adminGroups}}
                         -->
@@ -14,7 +14,7 @@
                             <a href="">
                                 <i class="ion-android-create"><span
                                     class="tooltiptext">Edit Results</span></i>
-                            </a> <input type="hidden" name="group" value="A">
+                            </a> <input type="hidden" name="group" value="getGroup(i)">
                         </div>
                         <!--
                         {{/adminGroups}}
@@ -25,241 +25,16 @@
                         <div class="col-3">Wins</div>
                         <div class="col-3">Points</div>
                     </div>
-                    <div class="row justify-content-between">
+                    <div class="row justify-content-between" *ngFor="let auxClass of grupo">
                         <!--<a href="/TenniShip/Teams/{{team0GroupA}}">-->
-                        <div class="col-6 teamLink"><a href="">team0A</a></div>
-                        <div class="col-3">team0AMW</div>
-                        <div class="col-3">team0APW</div>
+                        <div class="col-6 teamLink"><a href="">{{auxClass.team.teamName}}</a></div>
+                        <div class="col-3">{{auxClass.matchesWon}}</div>
+                        <div class="col-3">{{auxClass.pointsWon}}</div>
                     </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team1GroupA}}">-->
-                        <div class="col-6 teamLink"><a href="">team1A</a></div>
-                        <div class="col-3">team1AMW</div>
-                        <div class="col-3">team1APW</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team2GroupA}}">-->
-                        <div class="col-6 teamLink"><a href="">team2A</a></div>
-                        <div class="col-3">team2AMW</div>
-                        <div class="col-3">team2APW</div>
-                    </div>
+                    
                 </div>
             </div>
-            <div class="groupCard flex-fill">
-                <div class="container groupStage">
-                    <div class="row justify-content-between TournamentGroup">
-                        <div class="justify-content-between">Group B</div>
-                        <!--
-                        {{#adminGroups}}
-                        -->
-                        <div class="icon justify-content-between">
-                            <!--<a href="/TenniShip/ADMIN/Tournaments/{{tournamentName}}/EditMatches/B">-->
-                            <a href="">
-                                <i class="ion-android-create"><span
-                                    class="tooltiptext">Edit Results</span></i>
-                            </a> <input type="hidden" name="group" value="B">
-                        </div>
-                        <!--
-                        {{/adminGroups}}
-                        -->
-                    </div>
-                    <div class="row justify-content-between groupHeader">
-                        <div class="col-6">Team Name</div>
-                        <div class="col-3">Wins</div>
-                        <div class="col-3">Points</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team0GroupB}}">-->
-                        <div class="col-6 teamLink"><a href="">team0B</a></div>
-                        <div class="col-3">team0BMW</div>
-                        <div class="col-3">team0BPW</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team1GroupB}}">-->
-                        <div class="col-6 teamLink"><a href="">team1B</a></div>
-                        <div class="col-3">team1BMW</div>
-                        <div class="col-3">team1BPW</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team2GroupB}}">-->
-                        <div class="col-6 teamLink"><a href="">team2B</a></div>
-                        <div class="col-3">team2BMW</div>
-                        <div class="col-3">team2BPW</div>
-                    </div>
-                </div>
-            </div>
-            <div class="groupCard flex-fill">
-                <div class="container groupStage">
-                    <div class="row justify-content-between TournamentGroup">
-                        <div class="justify-content-between">Group C</div>
-                        <!--
-                        {{#adminGroups}}
-                        -->
-                        <div class="icon justify-content-between">
-                            <!--<a href="/TenniShip/ADMIN/Tournaments/{{tournamentName}}/EditMatches/C">-->
-                            <a href="">
-                                <i class="ion-android-create"><span
-                                    class="tooltiptext">Edit Results</span></i>
-                            </a> <input type="hidden" name="group" value="C">
-                        </div>
-                        <!--
-                        {{/adminGroups}}
-                        -->
-                    </div>
-                    <div class="row justify-content-between groupHeader">
-                        <div class="col-6">Team Name</div>
-                        <div class="col-3">Wins</div>
-                        <div class="col-3">Points</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team0GroupC}}">-->
-                        <div class="col-6 teamLink"><a href="">team0C</a></div>
-                        <div class="col-3">team0CMW</div>
-                        <div class="col-3">team0CPW</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team1GroupC}}">-->
-                        <div class="col-6 teamLink"><a href="">team1C</a></div>
-                        <div class="col-3">team1CMW</div>
-                        <div class="col-3">team1CPW</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team2GroupC}}">-->
-                        <div class="col-6 teamLink"><a href="">team2C</a></div>
-                        <div class="col-3">team2CMW</div>
-                        <div class="col-3">team2CPW</div>
-                    </div>
-                </div>
-            </div>
-            <div class="groupCard flex-fill">
-                <div class="container groupStage">
-                    <div class="row justify-content-between TournamentGroup">
-                        <div class="justify-content-between">Group D</div>
-                        <!--
-                        {{#adminGroups}}
-                        -->
-                        <div class="icon justify-content-between">
-                            <!--<a href="/TenniShip/ADMIN/Tournaments/{{tournamentName}}/EditMatches/D">-->
-                            <a href="">
-                                <i class="ion-android-create"><span
-                                    class="tooltiptext">Edit Results</span></i>
-                            </a> <input type="hidden" name="group" value="D">
-                        </div>
-                        <!--
-                        {{/adminGroups}}
-                        -->
-                    </div>
-                    <div class="row justify-content-between groupHeader">
-                        <div class="col-6">Team Name</div>
-                        <div class="col-3">Wins</div>
-                        <div class="col-3">Points</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team0GroupD}}">-->
-                        <div class="col-6 teamLink"><a href="">team0D</a></div>
-                        <div class="col-3">team0DMW</div>
-                        <div class="col-3">team0DPW</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team1GroupD}}">-->
-                        <div class="col-6 teamLink"><a href="">team1D</a></div>
-                        <div class="col-3">team1DMW</div>
-                        <div class="col-3">team1DPW</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team2GroupD}}">-->
-                        <div class="col-6 teamLink"><a href="">team2D</a></div>
-                        <div class="col-3">team2DMW</div>
-                        <div class="col-3">team2DPW</div>
-                    </div>
-                </div>
-            </div>
-            <div class="groupCard flex-fill">
-                <div class="container groupStage">
-                    <div class="row justify-content-between TournamentGroup">
-                        <div class="justify-content-between">Group E</div>
-                        <!--
-                        {{#adminGroups}}
-                        -->
-                        <div class="icon justify-content-between">
-                            <!--<a href="/TenniShip/ADMIN/Tournaments/{{tournamentName}}/EditMatches/E">-->
-                            <a href="">
-                                <i class="ion-android-create"><span
-                                    class="tooltiptext">Edit Results</span></i>
-                            </a> <input type="hidden" name="group" value="E">
-                        </div>
-                        <!--
-                        {{/adminGroups}}
-                        -->
-                    </div>
-                    <div class="row justify-content-between groupHeader">
-                        <div class="col-6">Team Name</div>
-                        <div class="col-3">Wins</div>
-                        <div class="col-3">Points</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team0GroupE}}">-->
-                        <div class="col-6 teamLink"><a href="">team0E</a></div>
-                        <div class="col-3">team0EMW</div>
-                        <div class="col-3">team0EPW</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team1GroupE}}">-->
-                        <div class="col-6 teamLink"><a href="">team1E</a></div>
-                        <div class="col-3">team1EMW</div>
-                        <div class="col-3">team1EPW</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team2GroupE}}">-->
-                        <div class="col-6 teamLink"><a href="">team2E</a></div>
-                        <div class="col-3">team2EMW</div>
-                        <div class="col-3">team2EPW</div>
-                    </div>
-                </div>
-            </div>
-            <div class="groupCard flex-fill">
-                <div class="container groupStage">
-                    <div class="row justify-content-between TournamentGroup">
-                        <div class="justify-content-between">Group F</div>
-                        <!--
-                        {{#adminGroups}}
-                        -->
-                        <div class="icon justify-content-between">
-                            <!--<a href="/TenniShip/ADMIN/Tournaments/{{tournamentName}}/EditMatches/F">-->
-                            <a href="">
-                                <i class="ion-android-create"><span
-                                    class="tooltiptext">Edit Results</span></i>
-                            </a> <input type="hidden" name="group" value="F">
-                        </div>
-                        <!--
-                        {{/adminGroups}}
-                        -->
-                    </div>
-                    <div class="row justify-content-between groupHeader">
-                        <div class="col-6">Team Name</div>
-                        <div class="col-3">Wins</div>
-                        <div class="col-3">Points</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team0GroupF}}">-->
-                        <div class="col-6 teamLink"><a href="">team0F</a></div>
-                        <div class="col-3">team0FMW</div>
-                        <div class="col-3">team0FPW</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team1GroupF}}">-->
-                        <div class="col-6 teamLink"><a href="">team1F</a></div>
-                        <div class="col-3">team1FMW</div>
-                        <div class="col-3">team1FPW</div>
-                    </div>
-                    <div class="row justify-content-between">
-                        <!--<a href="/TenniShip/Teams/{{team2GroupF}}">-->
-                        <div class="col-6 teamLink"><a href="">team2F</a></div>
-                        <div class="col-3">team2FMW</div>
-                        <div class="col-3">team2FPW</div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>

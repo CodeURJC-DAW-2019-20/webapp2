@@ -1,4 +1,7 @@
-import { Component, Type } from '@angular/core';
+import { Component, Type, Input } from '@angular/core';
+import { Router} from '@angular/router';
+import {TournamentSheetService} from "./../tournament-sheet.service";
+import {TournamentSheetModalService} from "./tournament-sheet-modal-service.service";
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -15,12 +18,23 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
-    <button type="button" class="btn buttonown" (click)="modal.close('Ok click')">Delete</button>
+    <button type="button" class="btn buttonown" (click)="modal.close('Ok click'); deleteAndGoHome()">Delete</button>
   </div>
   `
 })
+
 export class NgbdModalConfirm {
-  constructor(public modal: NgbActiveModal) {}
+  public tournamentName;
+
+  constructor(public router: Router, public modal: NgbActiveModal, 
+    private tournamentSheetService: TournamentSheetService, 
+    private comunicador: TournamentSheetModalService) {
+    }
+
+  deleteAndGoHome() { 
+    this.tournamentSheetService.deleteTournamentSheet(this.comunicador.getTournamentName());
+    this.router.navigate(['/TenniShip']); 
+  }
 }
 
 const MODALS: {[name: string]: Type<any>} = {
@@ -34,9 +48,12 @@ const MODALS: {[name: string]: Type<any>} = {
 })
 
 export class TournamentSheetModalComponent {
-  constructor(private _modalService: NgbModal) {}
+  @Input() tournamentName: string;
+
+  constructor(public _modalService: NgbModal, public comunicador: TournamentSheetModalService) {}
 
   open(name: string) {
+    this.comunicador.setTournamentName(this.tournamentName);
     this._modalService.open(MODALS[name]);
   }
 }
