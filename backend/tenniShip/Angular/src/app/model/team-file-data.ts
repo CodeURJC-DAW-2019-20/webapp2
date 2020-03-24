@@ -1,6 +1,4 @@
-import {Team} from "./team";
 import {Tournament} from "./tournament";
-import {Match} from "./match";
 import {Player} from "./player";
 
 export interface TeamFileData {
@@ -10,5 +8,4 @@ export interface TeamFileData {
   tournamentList : Tournament [];
   percentageLostMatches: number;
   percentageWonMatches: number;
-  matchesList : Match [];
 }

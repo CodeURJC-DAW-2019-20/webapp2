@@ -21,7 +21,6 @@ export class TeamInfoComponent implements OnInit {
     this.teamService.getTeamFileData(this.team_id).subscribe(
       data => {
         this._teamFileData = data;
-        this.teamService.setTeamFileAux(data);
         console.log(data);
         console.log(this.getTeamFileData());
       }
