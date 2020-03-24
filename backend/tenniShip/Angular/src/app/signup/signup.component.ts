@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -33,7 +34,6 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.userData.value);
+    // console.warn(this.userData.value);
   }
 }

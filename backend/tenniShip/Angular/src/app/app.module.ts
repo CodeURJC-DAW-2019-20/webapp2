@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginTitleComponent } from './login/login-title/login-title.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { SignupComponent } from './signup/signup.component';
+import {UserService} from './service/user.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { SignupComponent } from './signup/signup.component';
     AppRoutingModule, HttpClientModule,
     routing, ReactiveFormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
