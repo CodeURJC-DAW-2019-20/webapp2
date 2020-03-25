@@ -1,0 +1,40 @@
+<div aria-labelledby="v-pills-home-tab" class="tab-pane fade show active" id="v-pills-home" role="tabpanel">
+    <div class="container-fluid">
+        <div class="row justify-content-between" style="padding: 1%">
+
+            <div class="groupCard flex-fill" *ngFor="let grupo of getTournamentSheetGroups(); ; let i = index">
+                <div class="container groupStage" >
+                    <div class="row justify-content-between TournamentGroup">
+                        <div class="justify-content-between">Group {{getGroup(i)}}</div>
+                        <!--
+                        {{#adminGroups}}
+                        -->
+                        <div class="icon justify-content-between">
+                            <!--<a href="/TenniShip/ADMIN/Tournaments/{{tournamentName}}/EditMatches/A">-->
+                            <a href="">
+                                <i class="ion-android-create"><span
+                                    class="tooltiptext">Edit Results</span></i>
+                            </a> <input type="hidden" name="group" value="getGroup(i)">
+                        </div>
+                        <!--
+                        {{/adminGroups}}
+                        -->
+                    </div>
+                    <div class="row justify-content-between groupHeader">
+                        <div class="col-6">Team Name</div>
+                        <div class="col-3">Wins</div>
+                        <div class="col-3">Points</div>
+                    </div>
+                    <div class="row justify-content-between" *ngFor="let auxClass of grupo">
+                        <!--<a href="/TenniShip/Teams/{{team0GroupA}}">-->
+                        <div class="col-6 teamLink"><a href="">{{auxClass.team.teamName}}</a></div>
+                        <div class="col-3">{{auxClass.matchesWon}}</div>
+                        <div class="col-3">{{auxClass.pointsWon}}</div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
