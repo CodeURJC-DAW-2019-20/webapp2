@@ -15,10 +15,10 @@
             <div class="row justify-content-center">
               <div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp"
                    style="visibility: visible; animation-name: fadeInUp;"
-                   *ngFor="let player of getTeamFileData().playerList">
+                   *ngFor="let player of getTeamFileData()?.playerList">
                 <div class="member">
                   <img alt="" class="img-fluid"
-                       src="/images/registered/players/{{getTeamFileData().teamName}}{{player}}.jpg">
+                       src="/images/registered/players/{{getTeamFileData()?.teamName}}{{player}}.jpg">
                   <div class="member-info">
                     <div class="member-info-content">
                       <h4>{{player.playerName}}</h4>

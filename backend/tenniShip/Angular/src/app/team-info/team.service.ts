@@ -10,7 +10,6 @@ import {TeamFileData} from "../model/team-file-data";
 export class TeamService {
 
   teamsUrl : string;
-  private _teamFileAux : TeamFileData;
 
   constructor(private http : HttpClient) {
     this.teamsUrl =  "/api/tenniship/teams/"
@@ -37,9 +36,5 @@ export class TeamService {
       'Something bad happened; please try again later.');
   }
 
-
-  setTeamFileAux(value: TeamFileData) {
-    this._teamFileAux = value;
-  }
 }
 

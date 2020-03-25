@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Match} from "../../model/match";
-import {TeamService} from "../team.service";
 import {ActivatedRoute} from "@angular/router";
-import {Observable} from "rxjs";
-import {catchError, map} from "rxjs/operators";
 import {HttpClient} from "@angular/common/http";
+import {MatchesPaginatedService} from "./matches-paginated.service";
 
 @Component({
   selector: 'app-matches-paginated',
@@ -16,34 +14,48 @@ export class MatchesPaginatedComponent implements OnInit {
   public _matchesListTable: Match[] = new Array<Match>();
   size = this._matchesListTable.length;
   team_id : string;
-  url: string = '/api/TenniShip/Team/'
+  page:number=0;
+  public _matchesListTableAux : Match[] = new Array<Match>();
+  public pagingConfirmation:boolean = true;
 
-  constructor(private route:ActivatedRoute, private teamService : TeamService, private http : HttpClient) {
+  constructor(private route:ActivatedRoute, private matchesPaginatedService : MatchesPaginatedService, private http : HttpClient) {
     this.team_id = route.snapshot.params.team_id;
   }
 
   ngOnInit(): void {
+    this.matchesPaginatedService.getFirstPage(this.team_id).subscribe(
+      data=>{
+        this._matchesListTable=data;
+        console.log(data);
+      }
+    );
+    this.page++;
   }
 
   getMatchesListTable(): Match[] {
     return this._matchesListTable;
   }
 
-  public getMoreMatches(page:number):Observable<any>{
-    let theUrl = this.url + this.team_id +'/matches?page='+ page + '&size=2';
-
-    return this.http.get<Match[]>(theUrl).pipe(
-      map(response=>response),
-      catchError(err => Observable.throw('Server error'))
-    )
-  }
-
-  public addMatches(page:number){
-    this.getMoreMatches(page).subscribe(
+  public addMatches(){
+    this.matchesPaginatedService.getMoreMatches(this.team_id,this.page).subscribe(
       data=>{
-        this._matchesListTable.concat(data);
+        this._matchesListTableAux=data;
         console.log(this._matchesListTable);
+        if(typeof this._matchesListTableAux[0]==='undefined'){
+          this.pagingConfirmation=false;
+        }else {
+          this._matchesListTable.push(this._matchesListTableAux[0]);
+          if(typeof this._matchesListTableAux[1]==='undefined'){
+            this.pagingConfirmation=false;
+          }else{
+            this._matchesListTable.push(this._matchesListTableAux[1]);
+          }
+        }
       }
-    )
+    );
+    this._matchesListTableAux = new Array<Match>();
+    this.page++;
   }
+
 }
+
