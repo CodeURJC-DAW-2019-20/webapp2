@@ -47,7 +47,7 @@ export class SignupComponent implements OnInit {
       let nameplayer4:string=this.userData.controls['nameplayer4'].value;
       let nameplayer5:string=this.userData.controls['nameplayer5'].value;
       console.log("passwords match");
-      this.loginService.signin(username,password,email,teamName,[nameplayer1,nameplayer2,nameplayer3,nameplayer4,nameplayer5]).subscribe(
+      this.loginService.signIn(username,password,email,teamName,[nameplayer1,nameplayer2,nameplayer3,nameplayer4,nameplayer5]).subscribe(
         res =>{
           console.log(res);
         },
@@ -55,7 +55,7 @@ export class SignupComponent implements OnInit {
           console.error(error);
           // this.message="Wrong data. Please, try again."
         }
-        
+
       );
     }
     else{

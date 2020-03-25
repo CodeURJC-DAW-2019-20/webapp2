@@ -21,7 +21,7 @@ export class LoginService {
     return this.http.get('/api/tenniship/signin', httpOptions);
   }
 
-  signin(un, pass, email, teamName: string, pn: Array<string>) {
+  signIn(un, pass, email, teamName: string, pn: Array<string>) {
 
     const data = {
       "userName": un, "passwordHash": pass, "email": email,
