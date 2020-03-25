@@ -1,0 +1,33 @@
+<!--==========================
+  registerMatchSelectTournament Section
+============================-->
+<section class="section-bg" id="registerMatchBothPages">
+  <div class="container">
+
+    <header class="section-header">
+      <h3 class="section-title">Select the Tournament</h3>
+    </header>
+
+    <div id="tournamentListChange" class="row registerMatchBothPages-container">
+      <div *ngFor="let tournament of tournamentList; index as i" class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp displayTournamentsHidden">
+        <div class="registerMatchBothPages-wrap">
+          <figure>
+            <a href="/TenniShip/RegisterMatch/Tournaments/{{tournament}}"><img alt="" class="img-fluid" src="/images/registered/tournaments/{{.}}.jpg"></a>
+          </figure>
+
+          <div class="registerMatchBothPages-info">
+            <h4><a href="/TenniShip/RegisterMatch/Tournaments/{{tournament}}">{{tournament}}</a></h4>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!tournamentList" class="container">
+        <div class="alert alert-secondary" id="finishedIndicator" style="text-align: center">All tournaments displayed</div>
+      </div>
+    </div>
+
+    <div class="text-center pt-3 TournamentButton">
+      <button class="button btn" id="loadContentButtonTournament" type="button">Show more</button>
+    </div>
+
+  </div>
+</section><!-- #registerMatchSelectTournament -->
