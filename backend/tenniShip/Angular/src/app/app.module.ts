@@ -6,8 +6,9 @@ import {CarouselModule} from "ngx-bootstrap";
 import {NgxChartsModule, PieChartModule} from "@swimlane/ngx-charts";
 import { GraphicPieComponent } from './team-info/graphic-pie/graphic-pie.component';
 import { MatchesPaginatedComponent } from './team-info/matches-paginated/matches-paginated.component';
+import { ReactiveFormsModule } from '@angular/forms'
 
-import {AppRoutingModule, routing} from './app-routing.module';
+import { AppRoutingModule, routing } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -22,6 +23,11 @@ import { TournamentSheetFinalComponent } from './tournament-sheet/tournament-she
 import { TournamentSheetTeamsComponent } from './tournament-sheet/tournament-sheet-teams/tournament-sheet-teams.component';
 import { TournamentSheetModalComponent } from './tournament-sheet/tournament-sheet-modal/tournament-sheet-modal.component';
 import { TeamInfoComponent } from './team-info/team-info.component';
+import { LoginComponent } from './login/login.component';
+import { LoginTitleComponent } from './login/login-title/login-title.component';
+import { LoginFormComponent } from './login/login-form/login-form.component';
+import { SignupComponent } from './signup/signup.component';
+import {LoginService} from './service/login.service';
 
 
 @NgModule({
@@ -39,6 +45,10 @@ import { TeamInfoComponent } from './team-info/team-info.component';
     TournamentSheetFinalComponent,
     TournamentSheetTeamsComponent,
     TournamentSheetModalComponent,
+    LoginComponent, 
+    LoginTitleComponent,
+    LoginFormComponent, 
+    SignupComponent,
     TeamInfoComponent,
     GraphicPieComponent,
     MatchesPaginatedComponent
@@ -50,10 +60,11 @@ import { TeamInfoComponent } from './team-info/team-info.component';
     NgbModule,
     HttpClientModule,
     CarouselModule,
-    NgxChartsModule, 
+    NgxChartsModule,
+    ReactiveFormsModule,  
     PieChartModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent,TeamInfoComponent,GraphicPieComponent]
 })
 export class AppModule { }
