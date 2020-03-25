@@ -45,7 +45,7 @@
         <h3>Matches played</h3>
         <section class="wow fadeInUp">
           <div class="container row mb-5" style="margin:auto;">
-            <app-graphic-pie style="margin: auto; width:100%;"></app-graphic-pie>
+            <app-graphic-pie [teamFileData]="getTeamFileData()" ]style="margin: auto; width:100%;"></app-graphic-pie>
           </div>
           <div class="container row mb-5" style="margin:auto;">
             <app-matches-paginated style="margin: auto; width:100%"></app-matches-paginated>
