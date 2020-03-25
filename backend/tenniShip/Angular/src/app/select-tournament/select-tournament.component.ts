@@ -1,17 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import {Tournament} from "../model/tournament";
 
 @Component({
   selector: 'app-select-tournament',
   templateUrl: './select-tournament.component.html',
-  styleUrls: []
 })
 export class SelectTournamentComponent implements OnInit {
 
-  public tournamentList = ["Champions League", "Davis Cup", "EuroCup"];
+  private _tournamentList: Tournament[] = new Array<Tournament>();
+  public finished: Boolean;
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit(): void {
+    this._tournamentList = [{name : "Champions League"}, {name : "EuroCup"}, {name : "Davis Cup"}];
+    this.finished = Object.keys(this._tournamentList).length === 0;
   }
+
+  getTournamentList(): Tournament[] {
+    return this._tournamentList;
+  }
+
 
 }

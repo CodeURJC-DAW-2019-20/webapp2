@@ -9,18 +9,18 @@
     </header>
 
     <div id="tournamentListChange" class="row registerMatchBothPages-container">
-      <div *ngFor="let tournament of tournamentList; index as i" class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp displayTournamentsHidden">
+      <div *ngFor="let tournament of getTournamentList(); index as i" class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp displayTournamentsHidden">
         <div class="registerMatchBothPages-wrap">
           <figure>
-            <a href="/TenniShip/RegisterMatch/Tournaments/{{tournament}}"><img alt="" class="img-fluid" src="/images/registered/tournaments/{{.}}.jpg"></a>
+            <a href="/TenniShip/RegisterMatch/Tournaments/{{tournament.name}}"><img alt="" class="img-fluid" src="/images/registered/tournaments/{{tournament.name}}.jpg"></a>
           </figure>
 
           <div class="registerMatchBothPages-info">
-            <h4><a href="/TenniShip/RegisterMatch/Tournaments/{{tournament}}">{{tournament}}</a></h4>
+            <h4><a href="/TenniShip/RegisterMatch/Tournaments/{{tournament.name}}">{{tournament.name}}</a></h4>
           </div>
         </div>
       </div>
-      <div *ngIf="!tournamentList" class="container">
+      <div *ngIf="finished" class="container">
         <div class="alert alert-secondary" id="finishedIndicator" style="text-align: center">All tournaments displayed</div>
       </div>
     </div>

@@ -1305,9 +1305,10 @@ h5 {
 
 /* Correction for the footer*/
 
-body:not(#index) main#main {
+/*body:not(#index) main#main {
     margin-bottom: 50px;
 }
+Temporarily commented */
 
 #UnderTitleParagraph {
     text-align: center;

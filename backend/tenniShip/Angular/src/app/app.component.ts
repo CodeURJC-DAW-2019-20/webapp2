@@ -12,8 +12,10 @@ export class AppComponent {
   admin = true;
   indexPage = true;   // Should change when it's not on the index page
 
-  constructor(private wowService: NgwWowService){
+  /*constructor(private wowService: NgwWowService){
       this.wowService.init();
-  }
+  }*/
+
+  constructor() {}
 
 }
