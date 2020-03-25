@@ -4,7 +4,7 @@
       <div class="section-header">
         <div class="team-icon img-thumbnail">
           <img alt="Team logo" class="img-fluid team-img"
-               src="../../../images/registered/teams/{{getTeamFileData()?.teamName}}.jpg">
+               src="{{dir}}teams/{{getTeamFileData()?.teamName}}.jpg">
         </div>
         <h3 id="teamNameIdH3">{{getTeamFileData()?.teamName}}</h3>
       </div>
@@ -15,10 +15,10 @@
             <div class="row justify-content-center">
               <div class="col-lg-2 col-md-4 col-sm-6 col-6 wow fadeInUp"
                    style="visibility: visible; animation-name: fadeInUp;"
-                   *ngFor="let player of getTeamFileData()?.playerList">
+                   *ngFor="let player of getTeamFileData()?.playerList; let i = index">
                 <div class="member">
                   <img alt="" class="img-fluid"
-                       src="/images/registered/players/{{getTeamFileData()?.teamName}}{{player}}.jpg">
+                       src="{{dir}}players/{{getTeamFileData()?.teamName}}Player{{i+1}}.jpg">
                   <div class="member-info">
                     <div class="member-info-content">
                       <h4>{{player.playerName}}</h4>
@@ -32,11 +32,11 @@
 
         <h3>Tournaments</h3>
         <section class="wow fadeInUp">
-          <div class="container">
+          <div class="container" style="margin:auto;">
             <carousel [interval]="2000">
               <slide *ngFor="let Tournament of getTeamFileData()?.tournamentList">
-                <img src="../../../images/registered/tournaments/{{Tournament}}.jpg" alt="image slide"
-                     style="display: block; width: 100%;">
+                <img src="../../images/registered/tournaments/{{Tournament}}.jpg" alt="image slide"
+                     style="display: block; width: 50%; margin:auto; text-align: center">
               </slide>
             </carousel>
           </div>
@@ -44,11 +44,11 @@
 
         <h3>Matches played</h3>
         <section class="wow fadeInUp">
-          <div class="container row mb-5">
-            <app-graphic-pie></app-graphic-pie>
+          <div class="container row mb-5" style="margin:auto;">
+            <app-graphic-pie style="margin: auto; width:100%;"></app-graphic-pie>
           </div>
-          <div class="container row mb-5">
-            <app-matches-paginated></app-matches-paginated>
+          <div class="container row mb-5" style="margin:auto;">
+            <app-matches-paginated style="margin: auto; width:100%"></app-matches-paginated>
           </div>
         </section>
 

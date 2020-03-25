@@ -10,7 +10,7 @@ import {single} from "./data";
 export class GraphicPieComponent implements OnInit {
 
   single: any [];
-  view: any[] = [700,400];
+  view: any[] = [0,400];
 
   // options
   gradient: boolean = true;

@@ -12,6 +12,7 @@ export class TeamInfoComponent implements OnInit {
 
   public _teamFileData: TeamFileData;
   public team_id: string;
+  public dir : string = './../../../../images/registered/';
 
   constructor(private route : ActivatedRoute, private teamService: TeamService){
     this.team_id = route.snapshot.params.team_id;
