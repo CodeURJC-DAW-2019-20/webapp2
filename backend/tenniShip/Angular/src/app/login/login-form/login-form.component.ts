@@ -2,7 +2,6 @@ import { Component, OnInit, ɵisBoundToModule__POST_R3__ } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { LoginService } from 'src/app/service/login.service';
 import{Router} from '@angular/router';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-login-form',
@@ -17,13 +16,13 @@ export class LoginFormComponent implements OnInit {
   });
   message=('');
 
-  constructor(public userService: LoginService, public router:Router) {}
+  constructor(public loginService: LoginService, public router:Router) {}
 
   ngOnInit() {
   }
 
   login(username: string, password: string, event: Event) {
-    this.userService.login(username,password).subscribe(
+    this.loginService.login(username,password).subscribe(
       res =>{
         console.log(res);
       },
