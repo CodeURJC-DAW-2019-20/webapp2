@@ -10,6 +10,7 @@ import {TeamFileData} from "../model/team-file-data";
 export class TeamService {
 
   teamsUrl : string;
+  private winRate: number;
 
   constructor(private http : HttpClient) {
     this.teamsUrl =  "/api/tenniship/teams/"
@@ -36,5 +37,13 @@ export class TeamService {
       'Something bad happened; please try again later.');
   }
 
+
+  getWinPercentage(): number {
+    return this.winRate;
+  }
+
+  setWinPercentage(value: number) {
+    this.winRate = value;
+  }
 }
 

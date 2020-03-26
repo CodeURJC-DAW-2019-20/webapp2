@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TeamService} from "./team.service";
 import {TeamFileData} from "../model/team-file-data";
@@ -9,7 +9,6 @@ import {TeamFileData} from "../model/team-file-data";
   styleUrls: ['./team-info.component.css']
 })
 export class TeamInfoComponent implements OnInit {
-
   public _teamFileData: TeamFileData;
   public team_id: string;
   public dir : string = './../../../../images/registered/';
@@ -22,6 +21,7 @@ export class TeamInfoComponent implements OnInit {
     this.teamService.getTeamFileData(this.team_id).subscribe(
       data => {
         this._teamFileData = data;
+        this.teamService.setWinPercentage(this._teamFileData.percentageWonMatches);
         console.log(data);
         console.log(this.getTeamFileData());
       }

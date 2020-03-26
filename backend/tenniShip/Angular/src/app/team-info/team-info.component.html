@@ -45,7 +45,14 @@
         <h3>Matches played</h3>
         <section class="wow fadeInUp">
           <div class="container row mb-5" style="margin:auto;">
-            <app-graphic-pie style="margin: auto; width:100%;"></app-graphic-pie>
+            <app-graphic-pie style="margin: auto;"></app-graphic-pie>
+            <div class="col-sm-6 col-12">
+              <h5>Tournament participation:</h5>
+              <ul class="list-group tourn-part">
+                  <li class="list-group-item" style="--bg: #51e28f;">Matches Won</li>
+                  <li class="list-group-item" style="--bg: #dc5187;">Matches Lost</li>
+              </ul>
+          </div>
           </div>
           <div class="container row mb-5" style="margin:auto;">
             <app-matches-paginated style="margin: auto; width:100%"></app-matches-paginated>

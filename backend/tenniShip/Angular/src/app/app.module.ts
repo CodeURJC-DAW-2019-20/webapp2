@@ -7,6 +7,7 @@ import {NgxChartsModule, PieChartModule} from "@swimlane/ngx-charts";
 import { GraphicPieComponent } from './team-info/graphic-pie/graphic-pie.component';
 import { MatchesPaginatedComponent } from './team-info/matches-paginated/matches-paginated.component';
 import { ReactiveFormsModule } from '@angular/forms'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule, routing } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -66,7 +67,8 @@ import {LoginService} from './service/login.service';
     CarouselModule,
     NgxChartsModule,
     ReactiveFormsModule,
-    PieChartModule
+    PieChartModule,
+    BrowserAnimationsModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent,TeamInfoComponent,GraphicPieComponent]

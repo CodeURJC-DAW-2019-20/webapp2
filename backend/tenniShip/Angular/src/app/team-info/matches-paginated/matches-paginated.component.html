@@ -3,18 +3,18 @@
     <thead>
     <tr>
       <th scope="col">Home</th>
-      <th scope="col">VS</th>
+      <th scope="col">vs</th>
       <th scope="col">Away</th>
-      <th scope="col">HomePoints</th>
+      <th scope="col">Home Points</th>
       <th scope="col">-</th>
-      <th scope="col">AwayPoints</th>
+      <th scope="col">Away Points</th>
       <th scope="col">Tournament</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let match of getMatchesListTable(); let i = index">
       <td>{{ match.team1.teamName}}</td>
-      <td>VS</td>
+      <td>vs</td>
       <td>{{ match.team2.teamName }}</td>
       <td>{{ match.homePoints}}</td>
       <td>-</td>
