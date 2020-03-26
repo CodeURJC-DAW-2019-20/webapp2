@@ -7,7 +7,7 @@ import {MatchesPaginatedService} from "./matches-paginated.service";
 @Component({
   selector: 'app-matches-paginated',
   templateUrl: './matches-paginated.component.html',
-  styleUrls: ['./matches-paginated.component.css']
+  styleUrls: []
 })
 export class MatchesPaginatedComponent implements OnInit {
 

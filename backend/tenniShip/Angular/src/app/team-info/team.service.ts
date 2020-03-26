@@ -10,7 +10,7 @@ import {TeamFileData} from "../model/team-file-data";
 export class TeamService {
 
   teamsUrl : string;
-  private _teamFileData: TeamFileData;
+  private winRate: number;
 
   constructor(private http : HttpClient) {
     this.teamsUrl =  "/api/tenniship/teams/"
@@ -38,12 +38,12 @@ export class TeamService {
   }
 
 
-  getterTeamFileData(): TeamFileData {
-    return this._teamFileData;
+  getWinPercentage(): number {
+    return this.winRate;
   }
 
-  setTeamFileData(value: TeamFileData) {
-    this._teamFileData = value;
+  setWinPercentage(value: number) {
+    this.winRate = value;
   }
 }
 

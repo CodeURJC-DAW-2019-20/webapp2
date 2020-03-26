@@ -21,11 +21,11 @@ export class TeamInfoComponent implements OnInit {
     this.teamService.getTeamFileData(this.team_id).subscribe(
       data => {
         this._teamFileData = data;
+        this.teamService.setWinPercentage(this._teamFileData.percentageWonMatches);
         console.log(data);
         console.log(this.getTeamFileData());
       }
     );
-    this.teamService.setTeamFileData(this.getTeamFileData());
   }
 
   getTeamFileData(): TeamFileData {
