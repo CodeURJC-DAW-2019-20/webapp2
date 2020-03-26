@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Tournament} from "../model/tournament";
+import {PageLengthService} from "../service/page-length.service";
+import {SelectTournamentService} from "./select-tournament.service";
 
 @Component({
   selector: 'app-select-tournament',
@@ -8,19 +10,43 @@ import {Tournament} from "../model/tournament";
 export class SelectTournamentComponent implements OnInit {
 
   private _tournamentList: Tournament[] = new Array<Tournament>();
-  public finished: Boolean;
+  private currentPage = 0;
+  private pageSize = 2;   // Can be changed if we want
+  public morePages: Boolean = true;
 
-  constructor() {
-
-  }
+  constructor(private pagelength: PageLengthService, private selectTournamentService: SelectTournamentService) {}
 
   ngOnInit(): void {
-    this._tournamentList = [{name : "Champions League"}, {name : "EuroCup"}, {name : "Davis Cup"}];
-    this.finished = Object.keys(this._tournamentList).length === 0;
+    this.selectTournamentService.getPage(0,this.pageSize).subscribe(
+      data =>{
+        this._tournamentList = data;
+      }
+    );
+    this.currentPage++;
   }
 
   getTournamentList(): Tournament[] {
     return this._tournamentList;
+  }
+
+  public showMore(): void {
+    this.selectTournamentService.getPage(this.currentPage,this.pageSize).subscribe(
+      data => {
+        let aux = data;
+        let i = 0;
+        while(this.morePages && i < this.pageSize) {
+          if (typeof aux[i] === 'undefined') {
+            this.morePages = false;
+          }
+          else {
+            this._tournamentList.push(aux[i]);
+            i++;
+          }
+        }
+      }
+    );
+    this.currentPage++;
+    this.pagelength.updatePageLength();
   }
 
 

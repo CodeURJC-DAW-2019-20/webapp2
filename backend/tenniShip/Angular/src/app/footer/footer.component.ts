@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PageLengthService} from "../service/page-length.service";
 
 @Component({
   selector: 'app-footer',
@@ -11,9 +12,12 @@ export class FooterComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private pageLength: PageLengthService) {
+    this.pageLength.shortContent.subscribe(shortContent => this.shortContent = shortContent);
+  }
 
   ngOnInit(): void {
+
   }
 
   setShortContent(): void {

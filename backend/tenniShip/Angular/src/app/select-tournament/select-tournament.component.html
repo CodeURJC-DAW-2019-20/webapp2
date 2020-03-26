@@ -20,13 +20,13 @@
           </div>
         </div>
       </div>
-      <div *ngIf="finished" class="container">
-        <div class="alert alert-secondary" id="finishedIndicator" style="text-align: center">All tournaments displayed</div>
-      </div>
     </div>
 
-    <div class="text-center pt-3 TournamentButton">
-      <button class="button btn" id="loadContentButtonTournament" type="button">Show more</button>
+    <div *ngIf="morePages" class="text-center pt-3 TournamentButton">
+      <button (click)="showMore()" class="button btn" id="loadContentButtonTournament" type="button">Show more</button>
+    </div>
+    <div *ngIf="!morePages">
+      <ngb-alert [dismissible]="false">There are no more tournaments to show</ngb-alert>
     </div>
 
   </div>

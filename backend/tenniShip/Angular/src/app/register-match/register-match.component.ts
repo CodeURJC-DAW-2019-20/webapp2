@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-register-match',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterMatchComponent implements OnInit {
 
-  constructor() { }
+  public tournament_id: string;
+
+  constructor(private route: ActivatedRoute) {
+    this.tournament_id = route.snapshot.params.tournament_id;
+  }
 
   ngOnInit(): void {
   }

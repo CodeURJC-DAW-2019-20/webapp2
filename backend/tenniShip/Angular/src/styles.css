@@ -1308,9 +1308,11 @@ h5 {
 
 /* Correction for the footer*/
 
-main#main:not(.index) {
-  margin-bottom: 50px;
+/*body:not(#index) main#main {
+    margin-bottom: 50px;
 }
+Temporarily commented till we add id=index to body on index
+ */
 
 #UnderTitleParagraph {
     text-align: center;
