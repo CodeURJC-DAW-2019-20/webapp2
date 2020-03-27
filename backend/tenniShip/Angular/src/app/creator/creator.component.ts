@@ -1,18 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { CreatorService } from './creator.service';
 
 @Component({
   selector: 'app-creator',
   templateUrl: './creator.component.html',
-  styleUrls: []
+  styleUrls: ['./creator.component.css'],
+  providers: [CreatorService]
 })
 export class CreatorComponent implements OnInit {
 
   public isMenuCollapsed = true;
-  public active = "tournament";
+  
+  public active = this.creatorService.active;
 
-  constructor() { }
+  constructor(private creatorService: CreatorService) { }
 
   ngOnInit(): void {
+  }
+
+  change(navTag: string) {
+    this.active = navTag;
   }
 
 }

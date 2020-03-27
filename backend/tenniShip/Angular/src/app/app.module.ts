@@ -22,6 +22,7 @@ import { TournamentSheetFinalComponent } from './tournament-sheet/tournament-she
 import { TournamentSheetTeamsComponent } from './tournament-sheet/tournament-sheet-teams/tournament-sheet-teams.component';
 import { TournamentSheetModalComponent } from './tournament-sheet/tournament-sheet-modal/tournament-sheet-modal.component';
 import { TeamInfoComponent } from './team-info/team-info.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { TeamInfoComponent } from './team-info/team-info.component';
     HttpClientModule,
     CarouselModule,
     NgxChartsModule, 
-    PieChartModule
+    PieChartModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent,TeamInfoComponent,GraphicPieComponent]

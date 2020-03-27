@@ -1,17 +1,35 @@
 <div id="v-pills-teams" class="TCreatorTeams">
     <div class="row">
         <div class="col-9">
-                <form action="/TenniShip/Creator/Teams" method="post">
-                    <div>
+                <div class="text-right pt-3 button">
+                    <button (click)="checkTeams()" class="input-group-test btn" type="submit">Check</button>
+                    <p  *ngIf="next2" style="font-size: 13px;color: #18d26e;" >Everything is fine. You can continue.</p>
+                </div>
+                <div>
+                    <div >
+                         <!-- <div *ngFor="let team of myTeams; let i = index"  class="form formTeam">
+                            <p>Enter the name of Team {{i+1}}:</p>
+                            <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">></span>
+                                </div>
+                                <input [(ngModel)]="myTeams[i]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            </div>
+                            <div *ngIf="myErrors[i]">
+                                <p class="errorsText"> {{myMsgErrors[i]}}</p>
+                            </div>
+                        </div> -->
                         <div class="form formTeam">
                             <p>Enter the name of Team 1:</p>
                             <div class="input-group flex-nowrap">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team1">
+                                <input [(ngModel)]="myTeams[0]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[0]">
+                                <p class="errorsText"> {{myMsgErrors[0]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -20,9 +38,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team2">
+                                <input [(ngModel)]="myTeams[1]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[1]">
+                                <p class="errorsText"> {{myMsgErrors[1]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -31,10 +51,12 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team3">
+                                <input [(ngModel)]="myTeams[2]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
-                        </div>
+                            <div *ngIf="myErrors[2]">
+                                <p class="errorsText"> {{myMsgErrors[2]}}</p>
+                            </div>
+                        </div> 
 
                         <div class="form formTeam">
                             <p>Enter the name of Team 4:</p>
@@ -42,9 +64,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team4">
+                                <input [(ngModel)]="myTeams[3]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[3]">
+                                <p class="errorsText"> {{myMsgErrors[3]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -53,9 +77,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team5">
+                                <input [(ngModel)]="myTeams[4]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[4]">
+                                <p class="errorsText"> {{myMsgErrors[4]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -64,9 +90,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team6">
+                                <input [(ngModel)]="myTeams[5]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[5]">
+                                <p class="errorsText"> {{myMsgErrors[5]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -75,9 +103,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team7">
+                                <input [(ngModel)]="myTeams[6]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[6]">
+                                <p class="errorsText"> {{myMsgErrors[6]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -86,9 +116,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team8">
+                                <input [(ngModel)]="myTeams[7]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[7]">
+                                <p class="errorsText"> {{myMsgErrors[7]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -97,9 +129,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team9">
+                                <input [(ngModel)]="myTeams[8]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[8]">
+                                <p class="errorsText"> {{myMsgErrors[8]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -108,9 +142,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team10">
+                                <input [(ngModel)]="myTeams[9]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[9]">
+                                <p class="errorsText"> {{myMsgErrors[9]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -119,9 +155,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team11">
+                                <input [(ngModel)]="myTeams[10]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[10]">
+                                <p class="errorsText"> {{myMsgErrors[10]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -130,9 +168,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team12">
+                                <input [(ngModel)]="myTeams[11]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[11]">
+                                <p class="errorsText"> {{myMsgErrors[11]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -141,9 +181,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team13">
+                                <input [(ngModel)]="myTeams[12]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[12]">
+                                <p class="errorsText"> {{myMsgErrors[12]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -152,9 +194,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team14">
+                                <input [(ngModel)]="myTeams[13]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[13]">
+                                <p class="errorsText"> {{myMsgErrors[13]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -163,9 +207,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team15">
+                                <input [(ngModel)]="myTeams[14]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[14]">
+                                <p class="errorsText"> {{myMsgErrors[14]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -174,9 +220,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team16">
+                                <input [(ngModel)]="myTeams[15]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[15]">
+                                <p class="errorsText"> {{myMsgErrors[15]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -185,9 +233,11 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team17">
+                                <input [(ngModel)]="myTeams[16]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[16]">
+                                <p class="errorsText"> {{myMsgErrors[16]}}</p>
+                            </div>
                         </div>
 
                         <div class="form formTeam">
@@ -196,16 +246,18 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">></span>
                                 </div>
-                                <input class="form-control teamSearch" placeholder="Team Name" type="text" name="team18">
+                                <input [(ngModel)]="myTeams[17]" class="form-control teamSearch" placeholder="Team Name" type="text">
                             </div>
-                            <div class="errorsText"> </div>
+                            <div *ngIf="myErrors[17]">
+                                <p class="errorsText"> {{myMsgErrors[17]}}</p>
+                            </div>
                         </div>
-
-                        <div class="text-center pt-3 button">
-                            <button class="input-group-test btn mb-3" type="submit">Next</button>
+                        <div *ngIf="next2" class="text-center pt-3 button">
+                            <button (click)="next2Check()" class="input-group-test btn mb-3" type="submit">Next</button>
                         </div>
                     </div>
-                </form>
+                    
+                </div>
 
         </div>
     </div>

@@ -970,7 +970,7 @@ div.img {
     background: #13a456;
 }
 
-.errorsText p {
+.errorsText  {
     color: red;
     margin: 0px;
     font-size: 13px;
@@ -1779,7 +1779,7 @@ body:not(#index) main#main {
     align-self: first baseline;
 }
 
-.TCreatorNew form {
+.TCreatorNew .elform {
     align-content: center;
     display: grid;
     justify-content: center;
