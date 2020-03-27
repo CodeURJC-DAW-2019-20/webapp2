@@ -14,7 +14,7 @@
                         <input class="form-control" #username formControlName="username" id="username" placeholder="User Name" type="text">
                         <div class="errorsText">
                             <p *ngIf="emptyUsername">{{emptyMSG}}</p>
-                            <!-- <p *ngIf="usedUsername">{{usedUsernameMSG}}</p> -->
+                            <p *ngIf="usedUsername">{{usedUsernameMSG}}</p>
                         </div>
 
                     </div>
@@ -22,13 +22,13 @@
                         <input class="form-control" #email formControlName="email" id="email" name="email" placeholder="Email" type="text">
                         <div class="errorsText">
                             <p *ngIf="invalidEmail">{{invalidEmailMSG}}</p>
-                            <!-- <p *ngIf="usedEmail">{{usedEmailMSG}}</p> -->
+                            <p *ngIf="usedEmail">{{usedEmailMSG}}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <input class="form-control" #password formControlName="password" id="password" placeholder="Password" type="password">
                         <div class="errorsText">
-                            <p *ngIf="pssLength">{{pssLengthMSG}}</p>
+                            <p *ngIf="shortPassword">{{pssLengthMSG}}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -43,7 +43,7 @@
                         <input class="form-control" #teamName formControlName="teamName" id="name" name="team" placeholder="Team Name" type="text">
                         <div class="errorsText">
                             <p *ngIf="emptyTeamName">{{emptyMSG}}</p>
-                            <!-- <p *ngIf="usedTeamName">{{usedTeamNameMSG}}</p> -->
+                            <p *ngIf="usedTeamName">{{usedTeamNameMSG}}</p>
                         </div>
                     </div>
                     <div class="input-group mb-3">

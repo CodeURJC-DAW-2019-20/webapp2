@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +16,10 @@ export class LoginService {
         'Authorization': 'Basic ' + btoa(un + ':' + pass)
       })
     };
-    console.log('adios');
     return this.http.get('/api/tenniship/signin', httpOptions);
   }
 
-  signIn(un, pass, email, teamName: string, pn: Array<string>) {
+  signIn(un:string, pass:string, email:string, teamName: string, pn: Array<string>) {
 
     const data = {
       "userName": un, "passwordHash": pass, "email": email,
@@ -29,8 +27,20 @@ export class LoginService {
     };
     const config = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
     return this.http.post<any>('/api/tenniship/signup', data, config);
-
   }
+
+  validateDDBB(userName:string, teamName:string, email: string) {
+    let requestUrl: string = '/api/tenniship/validator/user?userName=' + userName + '&teamName=' + teamName + '&email=' + email;
+    const config = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
+    return this.http.get<Array<boolean>>(requestUrl, config);
+  }
+
+  // uploadTeamImages(files: Array<File>, team: string) {
+  //   // const formData: FormData = new FormData();
+  //   // formData.append('imageFile', JSON.stringify(files));
+  //   return this.http.post('/api/tenniship/teams/' + team + '/image', {'imageFile': files});
+  //   // return this.http.post('/api/tenniship/teams/' + team + '/image',formData);
+  // }
 
 
 }
