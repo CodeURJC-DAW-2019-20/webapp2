@@ -12,7 +12,7 @@ export class SelectTournamentComponent implements OnInit {
   private _tournamentList: Tournament[] = new Array<Tournament>();
   private currentPage = 0;
   private pageSize = 2;   // Can be changed if we want
-  public morePages: Boolean = true;
+  public morePages: boolean = true;
 
   constructor(private pagelength: PageLengthService, private selectTournamentService: SelectTournamentService) {}
 
