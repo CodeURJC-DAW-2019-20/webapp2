@@ -8,11 +8,12 @@ import { CreatorComponent } from "./creator/creator.component";
 import { TournamentSheetComponent } from "./tournament-sheet/tournament-sheet.component";
 import {TeamInfoComponent} from "./team-info/team-info.component";
 
+
 const routes: Routes = [
   {path: 'TenniShip', component: HomeComponent },
   {path: 'TenniShip/Creator', component: CreatorComponent },
   {path: 'TenniShip/Team/:team_id', component:TeamInfoComponent},
-  {path: 'TenniShip/Tournament', component: TournamentSheetComponent }
+  {path: 'TenniShip/Tournament/:tournament_id', component: TournamentSheetComponent }
 ]
 
 

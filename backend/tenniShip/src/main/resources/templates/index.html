@@ -226,11 +226,11 @@
     <script>
 
         var tournamentNames = [
-            {{#tournamentNames}}"{{.}}",{{/tournamentNames}}
+            {{#tournamentNames}}"{{.}}",{{/tournamentNames}};
         ];
 
         var teamNames = [
-            {{#teamNames}}"{{.}}",{{/teamNames}}
+            {{#teamNames}}"{{.}}",{{/teamNames}};
         ];
 
         $( "#teamSearch" ).autocomplete({
@@ -239,7 +239,7 @@
 
         $( "#tournamentSearch" ).autocomplete({
             source: tournamentNames
-        })
+        });
 
     </script>
 

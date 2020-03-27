@@ -1,25 +1,30 @@
-import { Injectable } from '@angular/core';
+import {Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
-import { map } from 'rxjs/operators';
-import {TeamFileData} from "../model/team-file-data";
+import {map } from 'rxjs/operators';
+import {TournamentSheetData} from "../model/tournament-sheet-data";
 
 
 @Injectable({providedIn: 'root'})
-export class TeamService {
+export class TournamentSheetService {
 
-  teamsUrl : string;
-  private _teamFileAux : TeamFileData;
+  tournamentsUrl : string;
+  public _tournamentSheetAux : TournamentSheetData;
 
   constructor(private http : HttpClient) {
-    this.teamsUrl =  "/api/tenniship/teams/"
+    this.tournamentsUrl =  "/api/tenniship/tournaments/"
   }
 
-  public getTeamFileData(teamName: string){
-    return this.http.get<TeamFileData>(this.teamsUrl+teamName).pipe(
+  public getTournamentSheetData(tournamentName: string){
+    return this.http.get<TournamentSheetData>(this.tournamentsUrl+tournamentName).pipe(
       map(response=>response),
       catchError(this.handleError));
+  }
+
+  public deleteTournamentSheet(tournamentName: string){
+      this.http.delete(this.tournamentsUrl+tournamentName).subscribe
+      (response => console.log(response),error => console.error(error));
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -37,9 +42,8 @@ export class TeamService {
       'Something bad happened; please try again later.');
   }
 
-
-  setTeamFileAux(value: TeamFileData) {
-    this._teamFileAux = value;
+  setTournamentSheetData(value: TournamentSheetData) {
+    this._tournamentSheetAux = value;
   }
 }
 
