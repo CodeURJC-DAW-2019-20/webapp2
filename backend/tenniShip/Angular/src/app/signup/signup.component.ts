@@ -80,7 +80,6 @@ export class SignupComponent implements OnInit {
 
 
   onSubmit() {
-    //this.uploadImages();
     /* Update form fields variables */
     this.username = this.userData.controls['username'].value;
     this.password = this.userData.controls['password'].value;
@@ -97,6 +96,7 @@ export class SignupComponent implements OnInit {
       console.log("Validating database data...");   // HttpResponse gotten
       if (this.validateRegisterFields()) {          // Validation of other front-end fields
         console.log("Credentials are OK");
+        this.uploadFiles();
         this.loginService.signIn(this.username, this.password, this.email, this.teamName, [this.nameplayer1, this.nameplayer2,
         this.nameplayer3, this.nameplayer4, this.nameplayer5]).subscribe(
           res => {
@@ -205,30 +205,36 @@ export class SignupComponent implements OnInit {
     })
   }
 
+  selectFile0(event){
+    this.loginService.selectFiles[0] = event.target.files;
+  }
+  selectFile1(event){
+    this.loginService.selectFiles[1] = event.target.files;
+  }
+  selectFile2(event){
+    this.loginService.selectFiles[2] = event.target.files;
+  }
+  selectFile3(event){
+    this.loginService.selectFiles[3] = event.target.files;
+  }
+  selectFile4(event){
+    this.loginService.selectFiles[4] = event.target.files;
+  }
+  selectFile5(event){
+    this.loginService.selectFiles[5] = event.target.files;
+  }
 
-
-
-  // selectedFiles: Array<File>;
-  // selectedFile0 = this.userData.controls['teamPic'].value;
-  // selectedFile1 = this.userData.controls['picplayer1'].value;
-  // selectedFile2 = this.userData.controls['picplayer2'].value;
-  // selectedFile3 = this.userData.controls['picplayer3'].value;
-  // selectedFile4 = this.userData.controls['picplayer4'].value;
-  // selectedFile5 = this.userData.controls['picplayer5'].value;
-  // imageSend: FileList;
-
-  // currentFile: File;
-
-  // uploadImages() {
-  //   this.loginService.uploadTeamImages([, this.selectedFile0, this.selectedFile1, this.selectedFile2,
-  //     this.selectedFile3, this.selectedFile4, this.selectedFile5], "pruebaTeam").subscribe(
-  //       res => {
-  //         console.log("wiiii: " + res)
-  //       },
-  //       error => {
-  //         console.log("buaaaaa: " + error)
-  //       }
-  //     );
-  // }
+  uploadFiles(){
+    console.log(this.loginService.selectFiles);
+    var inputPics = [this.loginService.selectFiles[0].item(0),this.loginService.selectFiles[1].item(0),this.loginService.selectFiles[2].item(0),this.loginService.selectFiles[3].item(0),this.loginService.selectFiles[4].item(0),this.loginService.selectFiles[5].item(0)];
+    this.loginService.uploadTeamImages(inputPics,this.teamName).subscribe(
+      res => {
+        console.log("Images Uploaded: "+ res);
+      }, 
+      error => {
+        console.error("Error ocurred when uploading images: "+error);
+      }
+    );
+  }
 
 }

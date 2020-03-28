@@ -48,7 +48,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="custom-file">
-                            <input class="custom-file-input" #teamPic formControlName="teamPic" type="file" name="imageFile" accept=".jpg" /> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Team Logo</label>
+                            <input class="custom-file-input" (change)="selectFile0($event)" #teamPic formControlName="teamPic" type="file" name="imageFile" accept=".jpg" /> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Team Logo</label>
                         </div>
                     </div>
 
@@ -68,7 +68,7 @@
                     </div>
                     <div class="input-group mb-3 pt-3">
                         <div class="custom-file">
-                            <input class="custom-file-input" #picplayer1 formControlName="picplayer1" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s photo</label>
+                            <input class="custom-file-input" (change)="selectFile1($event)" #picplayer1 formControlName="picplayer1" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s photo</label>
                         </div>
                     </div>
 
@@ -84,7 +84,7 @@
                     </div>
                     <div class="input-group mb-3 pt-3">
                         <div class="custom-file">
-                            <input class="custom-file-input" #picplayer2 formControlName="picplayer2" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s photo</label>
+                            <input class="custom-file-input" (change)="selectFile2($event)" #picplayer2 formControlName="picplayer2" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s photo</label>
                         </div>
                     </div>
 
@@ -100,7 +100,7 @@
                     </div>
                     <div class="input-group mb-3 pt-3">
                         <div class="custom-file">
-                            <input class="custom-file-input" #picplayer3 formControlName="picplayer3" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s photo</label>
+                            <input class="custom-file-input" (change)="selectFile3($event)" #picplayer3 formControlName="picplayer3" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s photo</label>
                         </div>
                     </div>
 
@@ -116,7 +116,7 @@
                     </div>
                     <div class="input-group mb-3 pt-3">
                         <div class="custom-file">
-                            <input class="custom-file-input" #picplayer4 formControlName="picplayer4" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s photo</label>
+                            <input class="custom-file-input" (change)="selectFile4($event)" #picplayer4 formControlName="picplayer4" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s photo</label>
                         </div>
                     </div>
 
@@ -132,7 +132,7 @@
                     </div>
                     <div class="input-group mb-3 pt-3">
                         <div class="custom-file">
-                            <input class="custom-file-input" #picplayer5 formControlName="picplayer5" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s photo</label>
+                            <input class="custom-file-input" (change)="selectFile5($event)" #picplayer5 formControlName="picplayer5" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s photo</label>
                         </div>
                     </div>
 

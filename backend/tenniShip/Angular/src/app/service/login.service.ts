@@ -9,6 +9,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class LoginService {
   constructor(private http: HttpClient) { }
 
+  public selectFiles:FileList[] = new Array(6);
+
   login(un: string, pass: string) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -35,12 +37,17 @@ export class LoginService {
     return this.http.get<Array<boolean>>(requestUrl, config);
   }
 
-  // uploadTeamImages(files: Array<File>, team: string) {
-  //   // const formData: FormData = new FormData();
-  //   // formData.append('imageFile', JSON.stringify(files));
-  //   return this.http.post('/api/tenniship/teams/' + team + '/image', {'imageFile': files});
-  //   // return this.http.post('/api/tenniship/teams/' + team + '/image',formData);
-  // }
+  uploadTeamImages(files: Array<File>, team: string) {
+    console.log("Files to be uploaded: " + files);
+    const formData: FormData = new FormData();
+    formData.append('imageFile', files[0]);
+    formData.append('imageFile',files[1]);
+    formData.append('imageFile', files[2]);
+    formData.append('imageFile',files[3]);
+    formData.append('imageFile', files[4]);
+    formData.append('imageFile',files[5]);
 
+    return this.http.post('/api/tenniship/teams/' + team + '/image', formData);
+  }
 
 }
