@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 export class CreatorRaffleComponent implements OnInit {
 
 	public raffled: boolean = false;
+	public currentFile: File;
 
 	constructor(private creatorService: CreatorService) { }
 
@@ -26,14 +27,22 @@ export class CreatorRaffleComponent implements OnInit {
 		return this.creatorService.getFinalTournament();
 	}
 
+	public upload() {
+		this.currentFile = this.creatorService.selectedFiles.item(0);
+		this.creatorService.upload(this.currentFile).subscribe(
+			_=>_ 
+		);
+	} 
+
 	public raffle() {
 		let tournamentName: string = this.creatorService.getFinalTournament();
 		let teams: string [] = this.creatorService.getFinalTeams();
 		let newTour: newTournament = { tournamentName, teams };
 		this.creatorService.newTournament(newTour).subscribe(
-			_ => { this.raffled = true},
+			_ => { this.raffled = true;
+				this.upload();
+			},
 			catchError(error => Observable.throw('Server error'))
 		);
-		// ADD IMAGE
 	}
 }

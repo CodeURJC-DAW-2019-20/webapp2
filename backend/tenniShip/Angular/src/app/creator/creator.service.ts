@@ -9,6 +9,7 @@ export class CreatorService {
 
     urlTournament: string;
     urlTeams: string;
+    urlImage: string;
 
     public tournaments: string[]; 
     public teams: string[] = [];
@@ -17,9 +18,12 @@ export class CreatorService {
     private finalTournament: string;
     private finalTeams: string [];
 
+    public selectedFiles: FileList;
+
     constructor (private http: HttpClient) {
         this.urlTournament = "/api/tenniship/tournaments";
         this.urlTeams = "/api/tenniship/teams";
+        this.urlImage = "/image";
     }
 
    public getTournaments () {
@@ -58,6 +62,13 @@ export class CreatorService {
             catchError(error => Observable.throw('Server error'))
         );
     }
+
+    public upload(file: File){
+		const formData: FormData = new FormData();
+        formData.append('imageFile', file);
+		return this.http.post(this.urlTournament+"/"+this.finalTournament+this.urlImage,formData);
+    }
+    
 
     public getFinalTournament() {
         return this.finalTournament;

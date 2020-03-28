@@ -24,8 +24,8 @@
 
             <div class="input-group mb-3">
                 <div class="custom-file">
-                    <input [(ngModel)]="tournamentImage"
-                        class="custom-file-input" type="file"
+                    <input [(ngModel)]="tournamentImage" (change)="selectFile($event)"
+                        class="custom-file-input" type="file" name="image"
                         accept=".jpg" /> <label
                         class="custom-file-label">Tournament Logo</label>
                 </div>

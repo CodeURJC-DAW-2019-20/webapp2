@@ -57,4 +57,8 @@ export class CreatorTournamentComponent implements OnInit {
 			this.changeToTeams.emit(this.creatorService.active);
 		}
 	}
+	
+	public selectFile(event) {
+		this.creatorService.selectedFiles = event.target.files;		
+	}
 }
