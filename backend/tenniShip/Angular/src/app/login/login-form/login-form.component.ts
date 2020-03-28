@@ -1,6 +1,6 @@
 import { Component, OnInit, ɵisBoundToModule__POST_R3__ } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { LoginService } from 'src/app/service/login.service';
+import { UserService } from 'src/app/service/user.service';
 import{Router} from '@angular/router';
 
 @Component({
@@ -15,14 +15,18 @@ export class LoginFormComponent implements OnInit {
     password: new FormControl(''),
   });
   message=('');
+  registeredSuccesfully:boolean;
 
-  constructor(public loginService: LoginService, public router:Router) {}
+  constructor(public userService: UserService, public router:Router) {}
 
   ngOnInit() {
+    // this.registeredSuccesfully = this.userService.registerSucceded;
+    // this.userService.succesfullBoolean();
+    // console.log(this.userService.registerSucceded);
   }
 
   login(username: string, password: string, event: Event) {
-    this.loginService.login(username,password).subscribe(
+    this.userService.login(username,password).subscribe(
       res =>{
         console.log(res);
       },

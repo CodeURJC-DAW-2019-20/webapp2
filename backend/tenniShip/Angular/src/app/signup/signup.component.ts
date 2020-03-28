@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { LoginService } from 'src/app/service/login.service';
-import { Router } from '@angular/router';
+import { UserService } from 'src/app/service/user.service';
+import { Router, NavigationExtras } from '@angular/router';
 
 
 @Component({
@@ -71,7 +71,7 @@ export class SignupComponent implements OnInit {
 
 
   /*        IMPLEMENTATION AREA        */
-  constructor(public loginService: LoginService, public router: Router) { }
+  constructor(public userService: UserService, public router: Router) { }
 
   ngOnInit(): void {
     this.emptyPlayerName = new Array<boolean>(5);
@@ -97,9 +97,10 @@ export class SignupComponent implements OnInit {
       if (this.validateRegisterFields()) {          // Validation of other front-end fields
         console.log("Credentials are OK");
         this.uploadFiles();
-        this.loginService.signIn(this.username, this.password, this.email, this.teamName, [this.nameplayer1, this.nameplayer2,
+        this.userService.signUp(this.username, this.password, this.email, this.teamName, [this.nameplayer1, this.nameplayer2,
         this.nameplayer3, this.nameplayer4, this.nameplayer5]).subscribe(
           res => {
+            // this.userService.succesfullBoolean();
             console.log("Register successfull: " + res);
           },
           error => {
@@ -107,6 +108,7 @@ export class SignupComponent implements OnInit {
           }
         );
         this.userData.reset();
+        this.redirection();
       }
       else {
         console.log("Some input data are wrong");
@@ -189,7 +191,7 @@ export class SignupComponent implements OnInit {
 
   databaseValidator(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.loginService.validateDDBB(this.username, this.teamName, this.email).subscribe(
+      this.userService.validateDDBB(this.username, this.teamName, this.email).subscribe(
         res => {
           this.usedUsername = res[0].valueOf();
           this.usedTeamName = res[1].valueOf();
@@ -206,28 +208,28 @@ export class SignupComponent implements OnInit {
   }
 
   selectFile0(event){
-    this.loginService.selectFiles[0] = event.target.files;
+    this.userService.selectFiles[0] = event.target.files;
   }
   selectFile1(event){
-    this.loginService.selectFiles[1] = event.target.files;
+    this.userService.selectFiles[1] = event.target.files;
   }
   selectFile2(event){
-    this.loginService.selectFiles[2] = event.target.files;
+    this.userService.selectFiles[2] = event.target.files;
   }
   selectFile3(event){
-    this.loginService.selectFiles[3] = event.target.files;
+    this.userService.selectFiles[3] = event.target.files;
   }
   selectFile4(event){
-    this.loginService.selectFiles[4] = event.target.files;
+    this.userService.selectFiles[4] = event.target.files;
   }
   selectFile5(event){
-    this.loginService.selectFiles[5] = event.target.files;
+    this.userService.selectFiles[5] = event.target.files;
   }
 
   uploadFiles(){
-    console.log(this.loginService.selectFiles);
-    var inputPics = [this.loginService.selectFiles[0].item(0),this.loginService.selectFiles[1].item(0),this.loginService.selectFiles[2].item(0),this.loginService.selectFiles[3].item(0),this.loginService.selectFiles[4].item(0),this.loginService.selectFiles[5].item(0)];
-    this.loginService.uploadTeamImages(inputPics,this.teamName).subscribe(
+    console.log(this.userService.selectFiles);
+    var inputPics = [this.userService.selectFiles[0].item(0),this.userService.selectFiles[1].item(0),this.userService.selectFiles[2].item(0),this.userService.selectFiles[3].item(0),this.userService.selectFiles[4].item(0),this.userService.selectFiles[5].item(0)];
+    this.userService.uploadTeamImages(inputPics,this.teamName).subscribe(
       res => {
         console.log("Images Uploaded: "+ res);
       }, 
@@ -235,6 +237,14 @@ export class SignupComponent implements OnInit {
         console.error("Error ocurred when uploading images: "+error);
       }
     );
+  }
+
+  redirection(){
+    let navigationExtras: NavigationExtras = {
+      queryParamsHandling: 'preserve',
+      preserveFragment: true
+    };
+    this.router.navigate([this.userService.redirectToHome], navigationExtras);
   }
 
 }

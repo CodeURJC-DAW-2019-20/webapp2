@@ -14,7 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginTitleComponent } from './login/login-title/login-title.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { SignupComponent } from './signup/signup.component';
-import {LoginService} from './service/login.service';
+import { UserService} from './service/user.service';
 import {CarouselModule} from "ngx-bootstrap";
 import {NgxChartsModule, PieChartModule} from "@swimlane/ngx-charts";
 import { GraphicPieComponent } from './team-info/graphic-pie/graphic-pie.component';
@@ -35,7 +35,7 @@ import { MatchesPaginatedComponent } from './team-info/matches-paginated/matches
     AppRoutingModule, HttpClientModule,
     routing, ReactiveFormsModule, CarouselModule,NgxChartsModule, PieChartModule
   ],
-  providers: [LoginService],
+  providers: [UserService],
   bootstrap: [AppComponent,TeamInfoComponent,GraphicPieComponent]
 })
 export class AppModule { }

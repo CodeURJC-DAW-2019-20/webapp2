@@ -6,10 +6,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 
 @Injectable()
-export class LoginService {
+export class UserService {
   constructor(private http: HttpClient) { }
 
   public selectFiles:FileList[] = new Array(6);
+  redirectToHome:string = "/TenniShip/SignIn";
+  registerSucceded:boolean;
 
   login(un: string, pass: string) {
     const httpOptions = {
@@ -21,7 +23,7 @@ export class LoginService {
     return this.http.get('/api/tenniship/signin', httpOptions);
   }
 
-  signIn(un:string, pass:string, email:string, teamName: string, pn: Array<string>) {
+  signUp(un:string, pass:string, email:string, teamName: string, pn: Array<string>) {
 
     const data = {
       "userName": un, "passwordHash": pass, "email": email,
@@ -48,6 +50,10 @@ export class LoginService {
     formData.append('imageFile',files[5]);
 
     return this.http.post('/api/tenniship/teams/' + team + '/image', formData);
+  }
+
+  succesfullBoolean(){
+    this.registerSucceded = !this.registerSucceded;
   }
 
 }
