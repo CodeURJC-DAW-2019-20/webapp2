@@ -39,6 +39,7 @@ export class SignupComponent implements OnInit {
   invalidEmailMSG: string = ('Enter a valid e-mail direction');
   usedTeamNameMSG: string = ('already exists as a team.');
   usedPlayerNameMSG: string = ('There cannot be two players with the same name');
+  missingPicMSG: string = ('No image uploaded!');
 
   /* Boolean values for the database validation response (databaseValidator())*/
   usedUsername: boolean;
@@ -49,13 +50,14 @@ export class SignupComponent implements OnInit {
   pssNotMatch: boolean;              // Passwords do not match
   shortPassword: boolean;                // Password legth is below 8 characters
   invalidEmail: boolean;             // Email is empty or does not follow a correct email format
-  notTeamPic: boolean;               // Team Picture is missing
   usedPlayerName: Array<boolean>;    // Repeated player name
 
   /* Boolean for empty fields*/
   emptyUsername: boolean;
   emptyTeamName: boolean;
   emptyPlayerName: Array<boolean>;
+  noTeamPic: boolean;               // Team Picture is missing
+  noPlayerPic: Array<boolean>;      // Player Picture is missing
 
   /* Form fields*/
   username: string = this.userData.controls['username'].value;
@@ -76,6 +78,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.emptyPlayerName = new Array<boolean>(5);
     this.usedPlayerName = new Array<boolean>(5);
+    this.noPlayerPic = new Array<boolean>(5);
   }
 
 
@@ -118,7 +121,7 @@ export class SignupComponent implements OnInit {
 
   validateRegisterFields() {
     return (this.usernameValidator() && this.emailValidator() && this.passwordValidator()
-      && this.teamNameValidator() && this.playersNameValidator())
+      && this.teamNameValidator() && this.playersNameValidator() && this.teamPicValidator() && this.playerPicsValidator())
   }
 
   usernameValidator() {
@@ -165,6 +168,11 @@ export class SignupComponent implements OnInit {
     return false;
   }
 
+  teamPicValidator() {
+    this.noTeamPic = this.userData.controls['teamPic'].value == ('');
+    return !this.noTeamPic;
+  }
+
   playersNameValidator(): boolean {
     /* Auxiliar data structure for validate there is no repeated name on it */
     let aux: Array<string> = new Array<string>(5);
@@ -189,6 +197,16 @@ export class SignupComponent implements OnInit {
     return !error;
   }
 
+  playerPicsValidator(): boolean {
+    let res: boolean = true;
+    for (let i = 0; i < 5; i++) {
+      this.noPlayerPic[i] = this.userData.controls['picplayer' + (i + 1)].value == ('');
+      if (this.noPlayerPic[i])
+        res = false;
+    }
+    return res;
+  }
+
   databaseValidator(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.userService.validateDDBB(this.username, this.teamName, this.email).subscribe(
@@ -207,39 +225,40 @@ export class SignupComponent implements OnInit {
     })
   }
 
-  selectFile0(event){
+  selectFile0(event) {
     this.userService.selectFiles[0] = event.target.files;
   }
-  selectFile1(event){
+  selectFile1(event) {
     this.userService.selectFiles[1] = event.target.files;
   }
-  selectFile2(event){
+  selectFile2(event) {
     this.userService.selectFiles[2] = event.target.files;
   }
-  selectFile3(event){
+  selectFile3(event) {
     this.userService.selectFiles[3] = event.target.files;
   }
-  selectFile4(event){
+  selectFile4(event) {
     this.userService.selectFiles[4] = event.target.files;
   }
-  selectFile5(event){
+  selectFile5(event) {
     this.userService.selectFiles[5] = event.target.files;
   }
 
-  uploadFiles(){
+  uploadFiles() {
     console.log(this.userService.selectFiles);
-    var inputPics = [this.userService.selectFiles[0].item(0),this.userService.selectFiles[1].item(0),this.userService.selectFiles[2].item(0),this.userService.selectFiles[3].item(0),this.userService.selectFiles[4].item(0),this.userService.selectFiles[5].item(0)];
-    this.userService.uploadTeamImages(inputPics,this.teamName).subscribe(
+    var inputPics = [this.userService.selectFiles[0].item(0), this.userService.selectFiles[1].item(0), this.userService.selectFiles[2].item(0), this.userService.selectFiles[3].item(0), this.userService.selectFiles[4].item(0), this.userService.selectFiles[5].item(0)];
+    this.userService.uploadTeamImages(inputPics, this.teamName).subscribe(
       res => {
-        console.log("Images Uploaded: "+ res);
-      }, 
+        this.noTeamPic = false;
+        console.log("Images Uploaded: " + res);
+      },
       error => {
-        console.error("Error ocurred when uploading images: "+error);
+        console.error("Error ocurred when uploading images: " + error);
       }
     );
   }
 
-  redirection(){
+  redirection() {
     let navigationExtras: NavigationExtras = {
       queryParamsHandling: 'preserve',
       preserveFragment: true
