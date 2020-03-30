@@ -4,7 +4,7 @@
             <button (click)="checkTournaments()" class="input-group-test btn" type="submit">Check</button>
             <p  *ngIf="next1 && !errorImg" style="font-size: 13px;color: #18d26e;" >Everything is fine. You can continue.</p>
         </div>
-        <div  
+        <div
             class="mt-3 elform"
             enctype="multipart/form-data">
             <div class="form-group">
@@ -33,7 +33,7 @@
             <div *ngIf="errorImg">
                 <p class="errorsText">Missing picture</p>
             </div>
-            
+
             <div *ngIf="next1 && !errorImg" class="text-right pt-3 button">
                 <button (click)="next1Check()" class="input-group-test btn" type="submit">Next</button>
             </div>

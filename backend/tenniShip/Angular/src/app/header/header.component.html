@@ -19,13 +19,13 @@
                 <!--It does not work yet-->
                 <li class="menu-has-children" *ngIf="admin === false && registered"><a href="#actions">Actions</a>
                     <ul>
-                        <li><a href="/TenniShip/RegisterMatch/Tournaments">Register a Match</a></li>
-                        <li><a href="/TenniShip/Creator">Tournament Creator</a></li>
+                        <li><a [routerLink]="['','TenniShip','RegisterMatch','Tournaments']">Register a Match</a></li>
+                        <li><a [routerLink]="['','TenniShip','Creator']">Tournament Creator</a></li>
                     </ul>
                 </li>
                 <li class="menu-has-children teamMenu" *ngIf="admin === false && registered"><a href="#">Spain</a>
                     <ul>
-                        <li><a href="/TenniShip/Teams/Spain">View Profile</a></li>
+                        <li><a [routerLink]="['','TenniShip','Team','Spain']">View Profile</a></li>
                         <li>
                             <form action="/logout" method="post">
                                 <button class="btn" type="submit">Sign Out</button>
@@ -35,10 +35,10 @@
                 </li>
                 <li *ngIf="admin === false && registered"><img alt="" class="rounded-circle loginImage" src="/images/registered/teams/Spain.jpg"></li>
                 <li *ngIf="registered === false">
-                    <a class="btn btn-primary signUpIndexBtnText" href="/TenniShip/SignUp" type="submit">Sign Up</a>
+                    <a class="btn btn-primary signUpIndexBtnText" [routerLink]="['','TenniShip','SignUp']" type="submit">Sign Up</a>
                 </li>
                 <li *ngIf="registered === false">
-                    <a class="btn signInIndexBtnText" href="/TenniShip/SignIn" type="submit">Sign In</a>
+                    <a class="btn signInIndexBtnText" [routerLink]="['','TenniShip','SignIn']" type="submit">Sign In</a>
                 </li>
             </ul>
         </nav>

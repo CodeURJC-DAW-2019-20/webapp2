@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'TenniShip/Team/:team_id', component:TeamInfoComponent},
   {path: 'TenniShip/Tournament/:tournament_id', component: TournamentSheetComponent },
   {path: 'TenniShip/SignIn', component: LoginComponent},
-  {path: 'TenniShip/SignUp', component:SignupComponent},
+  {path: 'TenniShip/SignUp', component: SignupComponent},
   {path: 'TenniShip/Error', component: ErrorsComponent},
   {path: '**', redirectTo:'TenniShip/Error'}
 ]

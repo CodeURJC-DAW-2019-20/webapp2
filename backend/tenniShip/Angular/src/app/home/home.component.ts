@@ -9,6 +9,7 @@ export class HomeComponent implements OnInit {
 
   admin = true;
   registered = true;
+  dirImagesPage: string ="/assets/resources/static/img/"
 
   constructor() { }
 

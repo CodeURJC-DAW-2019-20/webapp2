@@ -12,27 +12,25 @@ export class CreatorTeamsComponent implements OnInit {
 	@Output()
 	changeToRaffle = new EventEmitter<string>();
 
-	public myTeams: string[] = new Array(18);
-	// public myTeams: string[] = new Array (
-    //     "Valencia",
-    //     "Spain",
-    //     "Serbia",
-    //     "PSG",
-    //     "Portugal",
-    //     "Poland",
-    //     "Ajax",
-    //     "Andorra",
-    //     "Argentina",
-    //     "Finland",
-    //     "Australia",
-    //     "Barcelona",
-    //     "Germany",
-    //     "Napoli",
-    //     "Norway",
-    //     "France",
-    //     "Italy",
-    //     "Real Madrid"
-	// );
+	// public myTeams: string[] = new Array(18);
+	public myTeams: string[] = ["Valencia",
+        "Spain",
+        "Serbia",
+        "PSG",
+        "Portugal",
+        "Poland",
+        "Ajax",
+        "Andorra",
+        "Argentina",
+        "Finland",
+        "Australia",
+        "Barcelona",
+        "Germany",
+        "Napoli",
+        "Norway",
+        "France",
+        "Italy",
+        "Real Madrid"];
 	public myErrors: boolean[] = new Array(18);
 	public myMsgErrors: string[] = new Array(18);
 	public next2: boolean = false;
@@ -42,8 +40,8 @@ export class CreatorTeamsComponent implements OnInit {
 	ngOnInit(): void {
 		this.creatorService.getTeams().subscribe(
 			teams => this.creatorService.teams = teams,
-			error => this.handleError(error)  
-		); 
+			error => this.handleError(error)
+		);
 	}
 
 	checkTeams() {
