@@ -1,6 +1,6 @@
 import {Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {throwError} from "rxjs";
+import {throwError, Observable} from "rxjs";
 import {catchError} from "rxjs/operators";
 import {map } from 'rxjs/operators';
 import {TournamentSheetData} from "../model/tournament-sheet-data";
@@ -19,7 +19,7 @@ export class TournamentSheetService {
   public getTournamentSheetData(tournamentName: string){
     return this.http.get<TournamentSheetData>(this.tournamentsUrl+tournamentName).pipe(
       map(response=>response),
-      catchError(this.handleError));
+      catchError(error => this.handleError(error)));
   }
 
   public deleteTournamentSheet(tournamentName: string){
@@ -27,20 +27,24 @@ export class TournamentSheetService {
       (response => console.log(response),error => console.error(error));
   }
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
-    return throwError(
-      'Something bad happened; please try again later.');
-  }
+  // private handleError(error: HttpErrorResponse) {
+  //   if (error.error instanceof ErrorEvent) {
+  //     // A client-side or network error occurred. Handle it accordingly.
+  //     console.error('An error occurred:', error.error.message);
+  //   } else {
+  //     // The backend returned an unsuccessful response code.
+  //     // The response body may contain clues as to what went wrong,
+  //     console.error(
+  //       `Backend returned code ${error.status}, ` +
+  //       `body was: ${error.error}`);
+  //   }
+  //   return throwError(
+  //     'Something bad happened; please try again later.');
+  // }
+  private handleError(error: any) {
+		console.error(error);
+		return Observable.throw("Server error (" + error.status + "): " + error.text())
+	}
 
   setTournamentSheetData(value: TournamentSheetData) {
     this._tournamentSheetAux = value;

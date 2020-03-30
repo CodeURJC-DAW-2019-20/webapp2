@@ -3,8 +3,7 @@ import {TeamService} from "../team.service";
 
 @Component({
   selector: 'app-graphic-pie',
-  templateUrl: './graphic-pie.component.html',
-  styleUrls: []
+  templateUrl: './graphic-pie.component.html'
 })
 export class GraphicPieComponent {
 

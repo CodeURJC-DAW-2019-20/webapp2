@@ -1,14 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {HttpClientModule} from "@angular/common/http";
-import {CarouselModule} from "ngx-bootstrap";
-import {NgxChartsModule, PieChartModule} from "@swimlane/ngx-charts";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { CarouselModule } from "ngx-bootstrap";
+import { NgxChartsModule, PieChartModule } from "@swimlane/ngx-charts";
 import { GraphicPieComponent } from './team-info/graphic-pie/graphic-pie.component';
 import { MatchesPaginatedComponent } from './team-info/matches-paginated/matches-paginated.component';
 import { ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule, routing } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -28,9 +27,10 @@ import { LoginComponent } from './login/login.component';
 import { LoginTitleComponent } from './login/login-title/login-title.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { SignupComponent } from './signup/signup.component';
-import {LoginService} from './service/login.service';
-import { ErrorComponent } from './team-info/error/error.component';
-
+import { LoginService } from './service/login.service';
+import { FormsModule } from '@angular/forms';
+import { ErrorsComponent } from './errors/errors.component';
+import { ErrorInterceptor } from './errors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,7 @@ import { ErrorComponent } from './team-info/error/error.component';
     TeamInfoComponent,
     GraphicPieComponent,
     MatchesPaginatedComponent,
-    ErrorComponent
+    ErrorsComponent
   ],
   imports: [
     BrowserModule,
@@ -66,9 +66,15 @@ import { ErrorComponent } from './team-info/error/error.component';
     NgxChartsModule,
     ReactiveFormsModule,  
     PieChartModule,
+    NgxChartsModule, 
+    PieChartModule,
+    FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [LoginService],
+  providers: [
+    LoginService,
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent,TeamInfoComponent,GraphicPieComponent]
 })
 export class AppModule { }

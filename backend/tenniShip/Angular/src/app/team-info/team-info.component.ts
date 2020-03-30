@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TeamService} from "./team.service";
 import {TeamFileData} from "../model/team-file-data";
+import {ErrorService} from "../errors/errors.service";
 
 @Component({
   selector: 'app-team-info',
@@ -14,7 +15,8 @@ export class TeamInfoComponent implements OnInit {
   public dir: string = './../../../../images/registered/';
   public areYouThere: boolean ;
 
-  constructor(private route: ActivatedRoute, private teamService: TeamService) {
+  constructor(private route: ActivatedRoute, private teamService: TeamService,
+    private errorService: ErrorService) {
 
   }
 
@@ -43,6 +45,11 @@ export class TeamInfoComponent implements OnInit {
 
   getTeamFileData(): TeamFileData {
     return this._teamFileData;
+  }
+
+  public handleError(error: any) {
+    this.errorService.setMsg("team "+ this.team_id)
+    console.error(error);
   }
 
 }

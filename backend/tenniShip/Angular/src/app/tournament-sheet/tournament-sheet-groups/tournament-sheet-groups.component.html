@@ -26,8 +26,7 @@
                         <div class="col-3">Points</div>
                     </div>
                     <div class="row justify-content-between" *ngFor="let auxClass of grupo">
-                        <!--<a href="/TenniShip/Teams/{{team0GroupA}}">-->
-                        <div class="col-6 teamLink"><a href="">{{auxClass.team.teamName}}</a></div>
+                        <div class="col-6 teamLink"><a [routerLink]="['','TenniShip','Team',auxClass.team.teamName]">{{auxClass.team.teamName}}</a></div>
                         <div class="col-3">{{auxClass.matchesWon}}</div>
                         <div class="col-3">{{auxClass.pointsWon}}</div>
                     </div>

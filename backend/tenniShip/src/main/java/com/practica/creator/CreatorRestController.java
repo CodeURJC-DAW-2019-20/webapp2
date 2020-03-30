@@ -107,14 +107,18 @@ public class CreatorRestController {
 						return new ResponseEntity<>(HttpStatus.CONFLICT);
 					}
 				}
-				Tournament tournamentFinal = new Tournament(creatorAuxObject.getTournamentName());
-				tournamentService.save(tournamentFinal);
-				List<Team> teamList = new ArrayList<>();
-				teamList = teams.stream().collect(Collectors.toList());
-				creatorService.raffleTeamsCreateMatches(tournamentFinal, teamList);
-				CreatorAuxClassToReturn creatorAuxClassToReturn = new CreatorAuxClassToReturn(tournamentFinal,
-						teamList);
-				return new ResponseEntity<>(creatorAuxClassToReturn, HttpStatus.CREATED);
+				if (teams.size() == 18 ) {
+					Tournament tournamentFinal = new Tournament(creatorAuxObject.getTournamentName());
+					tournamentService.save(tournamentFinal);
+					List<Team> teamList = new ArrayList<>();
+					teamList = teams.stream().collect(Collectors.toList());
+					creatorService.raffleTeamsCreateMatches(tournamentFinal, teamList);
+					CreatorAuxClassToReturn creatorAuxClassToReturn = new CreatorAuxClassToReturn(tournamentFinal,
+							teamList);
+					return new ResponseEntity<>(creatorAuxClassToReturn, HttpStatus.CREATED);
+				} else {
+					return new ResponseEntity<>(HttpStatus.CONFLICT);
+				}
 			}
 
 		} else {

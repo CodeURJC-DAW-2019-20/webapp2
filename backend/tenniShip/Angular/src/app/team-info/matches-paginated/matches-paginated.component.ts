@@ -6,8 +6,7 @@ import {MatchesPaginatedService} from "./matches-paginated.service";
 
 @Component({
   selector: 'app-matches-paginated',
-  templateUrl: './matches-paginated.component.html',
-  styleUrls: []
+  templateUrl: './matches-paginated.component.html'
 })
 export class MatchesPaginatedComponent implements OnInit {
 
@@ -57,11 +56,16 @@ export class MatchesPaginatedComponent implements OnInit {
             this._matchesListTable.push(this._matchesListTableAux[1]);
           }
         }
-      }
+      },
+      error => this.handleError(error)
     );
     this._matchesListTableAux = new Array<Match>();
     this.page++;
   }
 
+
+  public handleError(error: any) {
+    console.error(error);
+  }  
 }
 
