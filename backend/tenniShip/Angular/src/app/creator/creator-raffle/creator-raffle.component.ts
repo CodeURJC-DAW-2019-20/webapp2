@@ -30,7 +30,8 @@ export class CreatorRaffleComponent implements OnInit {
 	public upload() {
 		this.currentFile = this.creatorService.selectedFiles.item(0);
 		this.creatorService.upload(this.currentFile).subscribe(
-			_=>_ 
+			_=>_ ,
+		error => this.handleError(error) 
 		);
 	} 
 
@@ -44,5 +45,9 @@ export class CreatorRaffleComponent implements OnInit {
 			},
 			catchError(error => Observable.throw('Server error'))
 		);
+	}
+
+	public handleError(error: any) {
+		console.error(error);
 	}
 }

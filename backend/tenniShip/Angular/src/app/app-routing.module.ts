@@ -3,10 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
-import {HomeComponent} from "./home/home.component";
+import { HomeComponent } from "./home/home.component";
 import { CreatorComponent } from "./creator/creator.component";
 import { TournamentSheetComponent } from "./tournament-sheet/tournament-sheet.component";
-import {TeamInfoComponent} from "./team-info/team-info.component";
+import { TeamInfoComponent } from "./team-info/team-info.component";
 import { ErrorsComponent } from './errors/errors.component';
 
 

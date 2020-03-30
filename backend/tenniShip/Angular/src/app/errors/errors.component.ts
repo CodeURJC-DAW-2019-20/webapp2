@@ -4,7 +4,7 @@ import { ErrorService } from './errors.service';
 @Component({
 	selector: 'app-errors',
 	templateUrl: './errors.component.html',
-	styleUrls: ['./errors.component.css']
+	styleUrls: []
 })
 export class ErrorsComponent implements OnInit {
 
@@ -13,7 +13,7 @@ export class ErrorsComponent implements OnInit {
 
 	ngOnInit(): void {
 		 this.errorService.createMsg();
-		 this.errormsg = this.errorService.errorMsg;
+		 this.errormsg = this.errorService.mainErrorName;
 	}
 
 }

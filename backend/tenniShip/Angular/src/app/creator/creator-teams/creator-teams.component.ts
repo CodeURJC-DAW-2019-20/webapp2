@@ -41,7 +41,8 @@ export class CreatorTeamsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.creatorService.getTeams().subscribe(
-			teams => this.creatorService.teams = teams
+			teams => this.creatorService.teams = teams,
+			error => this.handleError(error)  
 		); 
 	}
 
@@ -85,5 +86,9 @@ export class CreatorTeamsComponent implements OnInit {
 
 	public checkCanContinue () {
 		this.myErrors.indexOf(true) === -1 ? this.next2 = true :this.next2 = false ;
+	}
+
+	public handleError(error: any) {
+		console.error(error);
 	}
 }

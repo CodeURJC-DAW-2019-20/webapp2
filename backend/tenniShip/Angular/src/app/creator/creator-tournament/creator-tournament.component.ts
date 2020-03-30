@@ -4,7 +4,7 @@ import { CreatorService } from '../creator.service';
 @Component({
 	selector: 'app-creator-tournament',
 	templateUrl: './creator-tournament.component.html',
-	styleUrls: ['./creator-tournament.component.css']
+	styleUrls: []
 })
 export class CreatorTournamentComponent implements OnInit {
 
@@ -22,8 +22,9 @@ export class CreatorTournamentComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.creatorService.getTournaments().subscribe(
-			tournaments => this.creatorService.tournaments = tournaments 
-		); 
+			tournaments => this.creatorService.tournaments = tournaments,
+			error => this.handleError(error)  
+		);
 	}
 
 	checkTournaments(): boolean {
@@ -60,5 +61,9 @@ export class CreatorTournamentComponent implements OnInit {
 	
 	public selectFile(event) {
 		this.creatorService.selectedFiles = event.target.files;		
+	}
+
+	public handleError(error: any) {
+		console.error(error);
 	}
 }

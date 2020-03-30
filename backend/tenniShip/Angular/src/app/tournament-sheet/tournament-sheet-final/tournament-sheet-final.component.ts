@@ -2,7 +2,6 @@ import {Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TournamentSheetService} from "./../tournament-sheet.service";
 import {TournamentSheetData} from "../../model/tournament-sheet-data";
-import {Match} from "../../model/match";
 
 @Component({
   selector: 'app-tournament-final',

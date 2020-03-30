@@ -8,8 +8,7 @@ import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-matches-paginated',
-  templateUrl: './matches-paginated.component.html',
-  styleUrls: ['./matches-paginated.component.css']
+  templateUrl: './matches-paginated.component.html'
 })
 export class MatchesPaginatedComponent implements OnInit {
 
@@ -43,7 +42,12 @@ export class MatchesPaginatedComponent implements OnInit {
       data=>{
         this._matchesListTable.concat(data);
         console.log(this._matchesListTable);
-      }
+      },
+      error => this.handleError(error)
     )
   }
+
+  public handleError(error: any) {
+    console.error(error);
+  }  
 }

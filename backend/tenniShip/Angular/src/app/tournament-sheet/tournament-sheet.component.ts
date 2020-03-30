@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {TournamentSheetService} from "./tournament-sheet.service";
 import {TournamentSheetData} from "../model/tournament-sheet-data";
 import { catchError } from 'rxjs/operators';
+import {ErrorService} from "../errors/errors.service"
 
 @Component({
   selector: 'app-tournament-sheet',
@@ -16,7 +17,8 @@ export class TournamentSheetComponent implements OnInit {
   public _tournamentSheetData: TournamentSheetData;
   public tournament_id: string;
 
-  constructor(private route : ActivatedRoute, private tournamentSheetService: TournamentSheetService){
+  constructor(private route : ActivatedRoute, private tournamentSheetService: TournamentSheetService, 
+    private errorService: ErrorService){
     this.tournament_id = route.snapshot.params.tournament_id;
   }
 
@@ -41,6 +43,7 @@ export class TournamentSheetComponent implements OnInit {
   }
 
   public handleError(error: any) {
+    this.errorService.setMsg("tournament "+ this.tournament_id);
     console.error(error);
   }
 

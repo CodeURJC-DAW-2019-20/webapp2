@@ -4,8 +4,7 @@ import {single} from "./data";
 
 @Component({
   selector: 'app-graphic-pie',
-  templateUrl: './graphic-pie.component.html',
-  styleUrls: ['./graphic-pie.component.css']
+  templateUrl: './graphic-pie.component.html'
 })
 export class GraphicPieComponent implements OnInit {
 
