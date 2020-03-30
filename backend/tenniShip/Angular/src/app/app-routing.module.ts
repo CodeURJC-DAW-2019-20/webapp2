@@ -7,13 +7,16 @@ import {HomeComponent} from "./home/home.component";
 import { CreatorComponent } from "./creator/creator.component";
 import { TournamentSheetComponent } from "./tournament-sheet/tournament-sheet.component";
 import {TeamInfoComponent} from "./team-info/team-info.component";
+import { ErrorsComponent } from './errors/errors.component';
 
 
 const routes: Routes = [
   {path: 'TenniShip', component: HomeComponent },
   {path: 'TenniShip/Creator', component: CreatorComponent },
   {path: 'TenniShip/Team/:team_id', component:TeamInfoComponent},
-  {path: 'TenniShip/Tournament/:tournament_id', component: TournamentSheetComponent }
+  {path: 'TenniShip/Tournament/:tournament_id', component: TournamentSheetComponent },
+  {path: 'TenniShip/Error', component: ErrorsComponent},
+  {path: '**', redirectTo:'TenniShip/Error'}
 ]
 
 

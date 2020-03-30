@@ -24,12 +24,17 @@ export class TeamInfoComponent implements OnInit {
         this.teamService.setTeamFileAux(data);
         console.log(data);
         console.log(this.getTeamFileData());
-      }
+      },
+      error => this.handleError(error)
     );
   }
 
   getTeamFileData(): TeamFileData {
     return this._teamFileData;
+  }
+
+  public handleError(error: any) {
+    console.error(error);
   }
 
 }

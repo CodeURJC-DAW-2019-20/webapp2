@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import {CarouselModule} from "ngx-bootstrap";
 import {NgxChartsModule, PieChartModule} from "@swimlane/ngx-charts";
 import { GraphicPieComponent } from './team-info/graphic-pie/graphic-pie.component';
@@ -23,7 +23,8 @@ import { TournamentSheetTeamsComponent } from './tournament-sheet/tournament-she
 import { TournamentSheetModalComponent } from './tournament-sheet/tournament-sheet-modal/tournament-sheet-modal.component';
 import { TeamInfoComponent } from './team-info/team-info.component';
 import { FormsModule } from '@angular/forms';
-
+import { ErrorsComponent } from './errors/errors.component';
+import { ErrorInterceptor } from './errors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FormsModule } from '@angular/forms';
     TournamentSheetModalComponent,
     TeamInfoComponent,
     GraphicPieComponent,
-    MatchesPaginatedComponent
+    MatchesPaginatedComponent,
+    ErrorsComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,7 @@ import { FormsModule } from '@angular/forms';
     PieChartModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent,TeamInfoComponent,GraphicPieComponent]
 })
 export class AppModule { }
