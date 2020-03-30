@@ -10,8 +10,9 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   public selectFiles:FileList[] = new Array(6);
+
   redirectToHome:string = "/TenniShip/SignIn";
-  registerSucceded:boolean;
+  registerSucceded:boolean = false;
 
   login(un: string, pass: string) {
     const httpOptions = {
