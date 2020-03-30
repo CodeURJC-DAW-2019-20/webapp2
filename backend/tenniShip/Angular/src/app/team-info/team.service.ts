@@ -22,6 +22,8 @@ export class TeamService {
       catchError(this.handleError));
   }
 
+
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

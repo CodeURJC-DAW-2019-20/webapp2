@@ -29,6 +29,7 @@ import { LoginTitleComponent } from './login/login-title/login-title.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { SignupComponent } from './signup/signup.component';
 import {LoginService} from './service/login.service';
+import { ErrorComponent } from './team-info/error/error.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import {LoginService} from './service/login.service';
     SignupComponent,
     TeamInfoComponent,
     GraphicPieComponent,
-    MatchesPaginatedComponent
+    MatchesPaginatedComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

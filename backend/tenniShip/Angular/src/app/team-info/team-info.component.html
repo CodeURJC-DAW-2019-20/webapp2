@@ -1,4 +1,4 @@
-<div *ngIf="getTeamFileData()">
+<div *ngIf="areYouThere">
   <section class="section-bg wow fadeInUp">
     <div class="container">
       <div class="section-header">
@@ -35,7 +35,7 @@
           <div class="container" style="margin:auto;">
             <carousel [interval]="2000">
               <slide *ngFor="let Tournament of getTeamFileData()?.tournamentList">
-                <img src="../../images/registered/tournaments/{{Tournament}}.jpg" alt="image slide"
+                <img src="../../images/registered/tournaments/{{Tournament}}.jpg" [routerLink]="['TenniShip/Tournament/',Tournament.name]" alt="image slide"
                      style="display: block; width: 50%; margin:auto; text-align: center">
               </slide>
             </carousel>
@@ -62,4 +62,7 @@
       </div>
     </div>
   </section>
+</div>
+<div *ngIf="areYouThere===false">
+  <app-error></app-error>
 </div>

@@ -13,13 +13,13 @@
     </thead>
     <tbody>
     <tr *ngFor="let match of getMatchesListTable(); let i = index">
-      <td>{{ match.team1.teamName}}</td>
+      <td><a [routerLink]="['','TenniShip','Team',match.team1.teamName]" >{{ match.team1.teamName}}</a></td>
       <td>vs</td>
-      <td>{{ match.team2.teamName }}</td>
+      <td><a [routerLink]="['','TenniShip','Team',match.team2.teamName]">{{ match.team2.teamName }}</a></td>
       <td>{{ match.homePoints}}</td>
       <td>-</td>
       <td>{{ match.awayPoints}}</td>
-      <td>{{ match.tournament.name }}</td>
+      <td><a [routerLink]="['','TenniShip/Tournament',match.tournament.name]">{{ match.tournament.name }}</a></td>
     </tr>
     </tbody>
   </table>
