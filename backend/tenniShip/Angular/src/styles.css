@@ -1080,6 +1080,7 @@ div.img {
 
 
 /*Search Bar*/
+/* TODO: Delete this when the new searchboxes work */
 
 .active-green-3 input[type=search] {
     border: 1px solid rgba(24, 210, 110, .4);
@@ -1088,6 +1089,10 @@ div.img {
 
 .active-green-3 .fa {
     color: #18d26e;
+}
+
+app-tournament-search, app-team-search {
+  width: 100%;
 }
 
 

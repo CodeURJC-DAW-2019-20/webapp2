@@ -31,6 +31,8 @@ import { LoginTitleComponent } from './login/login-title/login-title.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { SignupComponent } from './signup/signup.component';
 import {LoginService} from './service/login.service';
+import { TournamentSearchComponent } from './searchbox/tournament-search/tournament-search.component';
+import { TeamSearchComponent } from './searchbox/team-search/team-search.component';
 
 
 @NgModule({
@@ -56,7 +58,9 @@ import {LoginService} from './service/login.service';
     GraphicPieComponent,
     MatchesPaginatedComponent,
     RegisterMatchComponent,
-    SelectTournamentComponent
+    SelectTournamentComponent,
+    TournamentSearchComponent,
+    TeamSearchComponent
   ],
   imports: [
     BrowserModule,

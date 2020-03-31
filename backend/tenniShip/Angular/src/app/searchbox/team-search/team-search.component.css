@@ -1,0 +1,11 @@
+/* Seach box css */
+
+#teamSearch {
+  border: 1px solid rgba(24, 210, 110, .4);
+  box-shadow: 0 .2rem 1rem rgba(24, 210, 110, .4) !important;
+  padding-left: 10px;
+}
+
+.active-green-3 .fa {
+  color: #18d26e;
+}
