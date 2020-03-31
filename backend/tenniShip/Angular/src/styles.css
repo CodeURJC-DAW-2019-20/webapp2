@@ -971,7 +971,7 @@ div.img {
     background: #13a456;
 }
 
-.errorsText p {
+.errorsText  {
     color: red;
     margin: 0px;
     font-size: 13px;
@@ -1787,7 +1787,7 @@ Temporarily commented till we add id=index to body on index
     align-self: first baseline;
 }
 
-.TCreatorNew form {
+.TCreatorNew .elform {
     align-content: center;
     display: grid;
     justify-content: center;

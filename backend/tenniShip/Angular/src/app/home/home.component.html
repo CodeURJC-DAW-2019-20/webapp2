@@ -9,10 +9,10 @@
       <div class="col-md-6 wow fadeInUp">
         <div class="home-col">
           <div class="img">
-            <img alt="" class="img-fluid" src="/assets/resources/static/img/trophy.png">
+            <img alt="" class="img-fluid" src="{{dirImagesPage}}trophy.png">
             <div class="icon"><i class="ion-trophy"></i></div>
           </div>
-          <h2 class="title"><a href="#">Tournament Search</a></h2>
+          <h2 class="title"><a>Tournament Search</a></h2>
           <div id="tournamentForm" class="form-inline active-green-3">
             <app-tournament-search></app-tournament-search>
           </div>
@@ -22,10 +22,10 @@
       <div class="col-md-6 wow fadeInUp" data-wow-delay="0.2s">
         <div class="home-col">
           <div class="img">
-            <img alt="" class="img-fluid" src="/assets/resources/static/img/team.png">
+            <img alt="" class="img-fluid" src="{{dirImagesPage}}team.png">
             <div class="icon"><i class="ion-ios-people"></i></div>
           </div>
-          <h2 class="title"><a href="#">Team Search</a></h2>
+          <h2 class="title"><a>Team Search</a></h2>
           <div id="teamForm" class="form-inline active-green-3 mx-auto" >
             <app-team-search></app-team-search>
           </div>
@@ -51,12 +51,12 @@
       <div class="col-md-6 wow fadeInUp">
         <div class="actions-col">
           <div class="img">
-            <img alt="" class="img-fluid" src="/assets/resources/static/img/registerMatch.jpg">
+            <img alt="" class="img-fluid" src="{{dirImagesPage}}registerMatch.jpg">
             <div class="icon"><i class="ion-ios-tennisball"></i></div>
           </div>
           <h2 class="title">
             <ng-container *ngIf="admin" >
-              <a href="/TenniShip/RegisterMatch/Tournaments" >Register a Match</a>
+              <a [routerLink]="['','TenniShip','RegisterMatch','Tournaments']" >Register a Match</a>
             </ng-container>
           </h2>
           <p>
@@ -69,10 +69,10 @@
       <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
         <div class="actions-col">
           <div class="img">
-            <img alt="" class="img-fluid" src="/assets/resources/static/img/emptyStadium.jpg">
+            <img alt="" class="img-fluid" src="{{dirImagesPage}}emptyStadium.jpg">
             <div class="icon"><i class="ion-podium"></i></div>
           </div>
-          <h2 class="title"><a href="/TenniShip/Creator">Tournament Creator</a></h2>
+          <h2 class="title"><a [routerLink]="['','TenniShip','Creator']">Tournament Creator</a></h2>
           <p>
             The tournament creator lets you make your own tournaments, set up the teams and information, and you'll be able to manage them on the go. Now keeping track of scores and standings is easier than ever!
           </p>
