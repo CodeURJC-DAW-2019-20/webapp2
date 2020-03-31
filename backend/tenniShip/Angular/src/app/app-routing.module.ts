@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'TenniShip/SignIn', component: LoginComponent},
   {path: 'TenniShip/SignUp', component: SignupComponent},
   {path: 'TenniShip/Error', component: ErrorsComponent},
-  {path: '**', redirectTo:'TenniShip/Error'}
+  {path: '**', redirectTo:'TenniShip/Error'},
   {path: 'TenniShip/SignUp', component:SignupComponent},
   {path: 'TenniShip/RegisterMatch/Tournaments', component: SelectTournamentComponent},
   {path: 'TenniShip/RegisterMatch/Tournaments/:tournament_id', component: RegisterMatchComponent}

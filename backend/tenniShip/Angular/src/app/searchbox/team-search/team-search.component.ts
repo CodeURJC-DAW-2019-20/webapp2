@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
 import {debounceTime, distinctUntilChanged, map} from "rxjs/operators";
 import {AutocompleteService} from "../autocomplete.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-team-search',
@@ -9,6 +10,7 @@ import {AutocompleteService} from "../autocomplete.service";
   styleUrls: ['./team-search.component.css']
 })
 export class TeamSearchComponent implements OnInit {
+  model: any;
   private teams: string[] = [];
 
   search = (text$: Observable<string>) =>
@@ -19,7 +21,7 @@ export class TeamSearchComponent implements OnInit {
         : this.teams.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
     );
 
-  constructor(private autocomplete: AutocompleteService) { }
+  constructor(private autocomplete: AutocompleteService, private router: Router) { }
 
   ngOnInit(): void {
     this.autocomplete.getAllTeams().subscribe(
@@ -32,6 +34,10 @@ export class TeamSearchComponent implements OnInit {
         }
       }
     )
+  }
+
+  go() {
+    this.router.navigate(['','TenniShip','Team',this.model]);
   }
 
 }

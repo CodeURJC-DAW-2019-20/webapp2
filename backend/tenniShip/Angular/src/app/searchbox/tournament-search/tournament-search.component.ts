@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
 import {debounceTime, distinctUntilChanged, map} from "rxjs/operators";
 import {AutocompleteService} from "../autocomplete.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-tournament-search',
@@ -9,6 +10,7 @@ import {AutocompleteService} from "../autocomplete.service";
   styleUrls: ['./tournament-search.component.css']
 })
 export class TournamentSearchComponent implements OnInit {
+  model: any;
   private tournaments: string[] = [];
 
   search = (text$: Observable<string>) =>
@@ -19,7 +21,7 @@ export class TournamentSearchComponent implements OnInit {
         : this.tournaments.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
     );
 
-  constructor(private autocomplete: AutocompleteService) { }
+  constructor(private autocomplete: AutocompleteService, private router: Router) { }
 
   ngOnInit(): void {
     this.autocomplete.getAllTournaments().subscribe(
@@ -32,6 +34,10 @@ export class TournamentSearchComponent implements OnInit {
         }
       }
     )
+  }
+
+  go() {
+    this.router.navigate(['','TenniShip','Tournament',this.model]);
   }
 
 }

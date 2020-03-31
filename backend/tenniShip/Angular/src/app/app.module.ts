@@ -36,7 +36,6 @@ import { UserService} from './service/user.service';
 import { TournamentSearchComponent } from './searchbox/tournament-search/tournament-search.component';
 import { TeamSearchComponent } from './searchbox/team-search/team-search.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +57,12 @@ import { TeamSearchComponent } from './searchbox/team-search/team-search.compone
     SignupComponent,
     TeamInfoComponent,
     GraphicPieComponent,
-    MatchesPaginatedComponent
+    MatchesPaginatedComponent,
+    ErrorsComponent,
+    RegisterMatchComponent,
+    SelectTournamentComponent,
+    TournamentSearchComponent,
+    TeamSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -70,9 +74,18 @@ import { TeamSearchComponent } from './searchbox/team-search/team-search.compone
     NgxChartsModule,
     ReactiveFormsModule,
     PieChartModule,
+    NgxChartsModule,
+    PieChartModule,
+    FormsModule,
+    NgxChartsModule,
+    PieChartModule,
+    FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [LoginService],
+  providers: [
+    UserService,
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent,TeamInfoComponent,GraphicPieComponent]
 })
 export class AppModule { }
