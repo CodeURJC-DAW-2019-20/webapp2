@@ -1,4 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,15 @@ export class HeaderComponent implements OnInit {
   scrolled = false;
 
 
-  constructor() { }
+  constructor(private router: Router) {
+    router.events.subscribe(
+        data => {
+          this.indexPage = (router.url === "/TenniShip"); // Makes header black if the user is not on the index page
+          this.setScrolled();
+        }
+    );
+  }
+
 
   ngOnInit(): void {
   }
