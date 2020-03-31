@@ -98,20 +98,21 @@ export class SignupComponent implements OnInit {
     this.databaseValidator().then(() => {           // Promise -> Checks and waits for database httpResponse
       console.log("Validating database data...");   // HttpResponse gotten
       if (this.validateRegisterFields()) {          // Validation of other front-end fields
-        this.uploadFiles();
         console.log("Credentials are OK");
         this.userService.signUp(this.username, this.password, this.email, this.teamName, [this.nameplayer1, this.nameplayer2,
         this.nameplayer3, this.nameplayer4, this.nameplayer5]).subscribe(
           res => {
+            this.uploadFiles();
             this.userService.registerSucceded = !this.userService.registerSucceded;
             console.log("Register successfull: " + res);
+            this.userData.reset();
+            this.redirection();
           },
           error => {
             console.error("Something went wrong: " + error);
+            this.userData.reset();
           }
         );
-        this.userData.reset();
-        this.redirection();
       }
       else {
         console.log("Some input data are wrong");
