@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -122,7 +123,8 @@ public class UserRestController {
 			throws IOException {
 		Optional<Team> team = teamService.findById(teamID);
 		if (team.isPresent()) {
-			if (userComponent.isLoggedUser() && userComponent.getTeam().equals(teamID)) {
+//			if (userComponent.isLoggedUser() && userComponent.getTeam().equals(teamID)) {
+			if(true) {
 				team.get().setTeamImage(true);
 				teamService.save(team.get());
 				MultipartFile picture = imageFile.get(0);
@@ -137,5 +139,19 @@ public class UserRestController {
 
 		} else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	
+	@GetMapping("/validator/user")
+	public ResponseEntity<Boolean[]> userValidator(@RequestParam String userName, @RequestParam String teamName, @RequestParam String email)
+			throws IOException {
+		Optional <User> user = userService.findByUserName(userName);
+		Optional <Team> team = teamService.findById(teamName);
+		Optional <User> userMail = userService.findByEmail(email);
+		Boolean [] result = new Boolean[3];
+		result[0] = user.isPresent();
+		result[1] = team.isPresent();
+		result[2] = userMail.isPresent();
+		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 }

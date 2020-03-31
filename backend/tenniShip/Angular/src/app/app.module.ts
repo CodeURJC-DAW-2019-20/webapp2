@@ -27,10 +27,10 @@ import { LoginComponent } from './login/login.component';
 import { LoginTitleComponent } from './login/login-title/login-title.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { SignupComponent } from './signup/signup.component';
-import { LoginService } from './service/login.service';
 import { FormsModule } from '@angular/forms';
 import { ErrorsComponent } from './errors/errors.component';
 import { ErrorInterceptor } from './errors/error.interceptor';
+import { UserService} from './service/user.service';
 
 @NgModule({
   declarations: [
@@ -72,7 +72,7 @@ import { ErrorInterceptor } from './errors/error.interceptor';
     BrowserAnimationsModule
   ],
   providers: [
-    LoginService,
+    UserService,
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent,TeamInfoComponent,GraphicPieComponent]

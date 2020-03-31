@@ -1,8 +1,7 @@
 import { Component, OnInit, ɵisBoundToModule__POST_R3__ } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { LoginService } from 'src/app/service/login.service';
-import{Router} from '@angular/router';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { UserService } from 'src/app/service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -15,27 +14,42 @@ export class LoginFormComponent implements OnInit {
     username: new FormControl(''),
     password: new FormControl(''),
   });
-  message=('');
+  message = ('');
+  emptyMSG: string = ('This field is empty!');
+  emptyUsername: boolean;
+  emptyPassword: boolean;
+  invalidCredentials: boolean;
 
-  constructor(public userService: LoginService, public router:Router) {}
+  constructor(public userService: UserService, public router: Router) { }
 
   ngOnInit() {
+    console.log(this.userService.registerSucceded);
+    this.invalidCredentials = false;
   }
 
   login(username: string, password: string, event: Event) {
-    this.userService.login(username,password).subscribe(
-      res =>{
-        console.log(res);
-      },
-      error => {
-        console.error(error);
-        this.message="Wrong data. Please, try again."
+    if (this.credentials.controls['username'].value != ('')) {
+      if (this.credentials.controls['password'].value != ('')) {
+        this.userService.login(username, password).subscribe(
+          res => {
+            console.log(res);
+          },
+          error => {
+            this.invalidCredentials = true;
+            this.message = "Wrong data."
+            console.error(error);
+          }
+
+        );
       }
-      
-    );
+      else
+        this.emptyPassword = true;
+    }
+    else
+      this.emptyUsername = true;
   }
 
-  navigate(){
-   
+  navigate() {
+
   }
 }
