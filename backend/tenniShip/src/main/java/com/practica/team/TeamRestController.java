@@ -21,7 +21,6 @@ import com.practica.model.Match;
 import com.practica.model.Player;
 import com.practica.model.Team;
 import com.practica.model.Tournament;
-import com.practica.model.Team.Basic;
 
 @RestController
 @RequestMapping("/api/tenniship")
@@ -52,7 +51,7 @@ public class TeamRestController {
 		private String teamName;
 
 		@JsonView(Basic.class)
-		private List<String> Tournaments = new ArrayList<>();
+		private List<String> tournamentList = new ArrayList<>();
 
 		@JsonIgnore
 		private boolean teamImage;
@@ -69,11 +68,11 @@ public class TeamRestController {
 		@JsonView(Basic.class)
 		private List<Match> matchesList = new ArrayList<>();
 
-		public TeamFileData(String teamName, List<String> Tournaments, boolean teamImage,
+		public TeamFileData(String teamName, List<String> tournamentList, boolean teamImage,
 				double percentageLostMatches, double percentageWonMatches, List<Player> playerList) {
 
 			this.teamName = teamName;
-			this.Tournaments = Tournaments;
+			this.tournamentList = tournamentList;
 			this.teamImage = teamImage;
 			this.percentageLostMatches = percentageLostMatches;
 			this.percentageWonMatches = percentageWonMatches;
