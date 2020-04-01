@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {User} from "../model/user.model";
+import {map} from "rxjs/operators";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -7,21 +10,35 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class UserService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
 
   public selectFiles:FileList[] = new Array(6);
 
   redirectToHome:string = "/TenniShip/SignIn";
-  registerSucceded:boolean = false;
+  registerSucceeded:boolean = false;
+  currentUser: Observable<User>;
+  currentUserSubject:BehaviorSubject<User>;
 
   login(un: string, pass: string) {
-    const httpOptions = {
+    var httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + btoa(un + ':' + pass)
       })
     };
-    return this.http.get('/api/tenniship/signin', httpOptions);
+    return this.http.get<any>('/api/tenniship/signin', httpOptions).
+    pipe(
+      map(user=>{
+        console.log(user);
+        user.authData = window.btoa(un + ':' + pass);
+        localStorage.setItem('currentUser',JSON.stringify(user));
+        this.currentUserSubject.next(user);
+        console.log(user);
+      })
+    )
   }
 
   signUp(un:string, pass:string, email:string, teamName: string, pn: Array<string>) {
@@ -32,6 +49,16 @@ export class UserService {
     };
     const config = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
     return this.http.post<any>('/api/tenniship/signup', data, config);
+  }
+
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
+  }
+
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
   }
 
   validateDDBB(userName:string, teamName:string, email: string) {
@@ -51,10 +78,6 @@ export class UserService {
     formData.append('imageFile',files[5]);
 
     return this.http.post('/api/tenniship/teams/' + team + '/image', formData);
-  }
-
-  succesfullBoolean(){
-    this.registerSucceded = !this.registerSucceded;
   }
 
 }

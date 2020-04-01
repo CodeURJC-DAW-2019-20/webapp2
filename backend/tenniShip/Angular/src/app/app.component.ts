@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from "./header/header.component";
+import {User} from "./model/user.model";
 import {NgwWowService} from "ngx-wow";
 
 @Component({
@@ -10,12 +10,7 @@ import {NgwWowService} from "ngx-wow";
 export class AppComponent {
   title = 'Angular';
   admin = true;
-  indexPage = true;   // Should change when it's not on the index page
+  currentUser:User;
 
-  /*constructor(private wowService: NgwWowService){
-      this.wowService.init();
-  }*/
-
-  constructor() {}
 
 }

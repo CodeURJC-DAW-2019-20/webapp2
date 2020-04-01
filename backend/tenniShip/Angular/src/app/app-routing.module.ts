@@ -12,18 +12,18 @@ import { TeamInfoComponent } from "./team-info/team-info.component";
 import { ErrorsComponent } from './errors/errors.component';
 import { SelectTournamentComponent } from "./select-tournament/select-tournament.component";
 import { RegisterMatchComponent } from "./register-match/register-match.component";
+import {AuthGuard} from "./auth/auth.guard";
 
 
 const routes: Routes = [
   {path: 'TenniShip', component: HomeComponent },
-  {path: 'TenniShip/Creator', component: CreatorComponent },
+  {path: 'TenniShip/Creator', component: CreatorComponent, canActivate: [AuthGuard]},
   {path: 'TenniShip/Team/:team_id', component:TeamInfoComponent},
-  {path: 'TenniShip/Tournament/:tournament_id', component: TournamentSheetComponent },
+  {path: 'TenniShip/Tournament/:tournament_id', component: TournamentSheetComponent},
   {path: 'TenniShip/SignIn', component: LoginComponent},
   {path: 'TenniShip/SignUp', component: SignupComponent},
   {path: 'TenniShip/Error', component: ErrorsComponent},
   {path: '**', redirectTo:'TenniShip/Error'},
-  {path: 'TenniShip/SignUp', component:SignupComponent},
   {path: 'TenniShip/RegisterMatch/Tournaments', component: SelectTournamentComponent},
   {path: 'TenniShip/RegisterMatch/Tournaments/:tournament_id', component: RegisterMatchComponent}
 ]
@@ -33,6 +33,7 @@ export const routing = RouterModule.forRoot(routes);
 // Más tarde, a la hora de poner links, los links cambian el componente activo
 
 @NgModule({
+
   imports: [RouterModule.forRoot(routes), CarouselModule.forRoot()],
   exports: [RouterModule]
 })

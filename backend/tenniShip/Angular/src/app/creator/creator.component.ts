@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CreatorService } from './creator.service';
+import {UserService} from "../service/user.service";
+import {User} from "../model/user.model";
 
 @Component({
   selector: 'app-creator',
@@ -10,7 +12,7 @@ import { CreatorService } from './creator.service';
 export class CreatorComponent implements OnInit {
 
   public isMenuCollapsed = true;
-  
+
   public active = this.creatorService.active;
 
   constructor(private creatorService: CreatorService) { }

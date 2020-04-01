@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CreatorService } from '../creator.service';
-import { newTournament } from '../../model/newtournament'; 
+import { newTournament } from '../../model/newtournament';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import {User} from "../../model/user.model";
+import {UserService} from "../../service/user.service";
 
 @Component({
 	selector: 'app-creator-raffle',
@@ -14,7 +16,9 @@ export class CreatorRaffleComponent implements OnInit {
 	public raffled: boolean = false;
 	public currentFile: File;
 
-	constructor(private creatorService: CreatorService) { }
+	constructor(private creatorService: CreatorService) {
+
+  }
 
 	ngOnInit(): void {
 	}
@@ -31,9 +35,9 @@ export class CreatorRaffleComponent implements OnInit {
 		this.currentFile = this.creatorService.selectedFiles.item(0);
 		this.creatorService.upload(this.currentFile).subscribe(
 			_=>_ ,
-		error => this.handleError(error) 
+		error => this.handleError(error)
 		);
-	} 
+	}
 
 	public raffle() {
 		let tournamentName: string = this.creatorService.getFinalTournament();

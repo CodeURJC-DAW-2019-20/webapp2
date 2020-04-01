@@ -35,6 +35,8 @@ import { ErrorInterceptor } from './errors/error.interceptor';
 import { UserService} from './service/user.service';
 import { TournamentSearchComponent } from './searchbox/tournament-search/tournament-search.component';
 import { TeamSearchComponent } from './searchbox/team-search/team-search.component';
+import {BasicAuthInterceptor} from "./auth/basic-auth.interceptor";
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -77,14 +79,13 @@ import { TeamSearchComponent } from './searchbox/team-search/team-search.compone
     NgxChartsModule,
     PieChartModule,
     FormsModule,
-    NgxChartsModule,
-    PieChartModule,
-    FormsModule,
     BrowserAnimationsModule
   ],
   providers: [
     UserService,
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent,TeamInfoComponent,GraphicPieComponent]
 })

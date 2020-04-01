@@ -1,5 +1,7 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {UserService} from "../service/user.service";
+import {User} from "../model/user.model";
 
 @Component({
   selector: 'app-header',
@@ -8,23 +10,29 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
 
-  admin = false;
-  registered = true;
+  admin:boolean = true;
+  currentUser:User;
   indexPage = true;   // Should change when the current page is not index
   scrolled = false;
 
-
-  constructor(private router: Router) {
+  constructor(private router: Router, private userService:UserService) {
     router.events.subscribe(
         data => {
           this.indexPage = (router.url === "/TenniShip"); // Makes header black if the user is not on the index page
           this.setScrolled();
         }
     );
+    this.userService.currentUser.subscribe(x => this.currentUser = x);;
   }
 
 
   ngOnInit(): void {
+
+  }
+
+  logout() {
+    this.userService.logout();
+    this.router.navigate(['','TenniShip']);
   }
 
   // Header scroll class

@@ -1,7 +1,8 @@
 import { Component, OnInit, ɵisBoundToModule__POST_R3__ } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { UserService } from 'src/app/service/user.service';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-login-form',
@@ -19,12 +20,19 @@ export class LoginFormComponent implements OnInit {
   emptyUsername: boolean;
   emptyPassword: boolean;
   invalidCredentials: boolean;
+  returnUrl:string;
 
-  constructor(public userService: UserService, public router: Router) { }
+  constructor(public userService: UserService, public router: Router, public route:ActivatedRoute) {
+    if(this.userService.currentUserValue){
+      this.router.navigate(['','TenniShip']);
+    }
+  }
 
   ngOnInit() {
-    console.log(this.userService.registerSucceded);
+    console.log(this.userService.registerSucceeded);
     this.invalidCredentials = false;
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/TenniShip';
   }
 
   login(username: string, password: string, event: Event) {
@@ -33,13 +41,13 @@ export class LoginFormComponent implements OnInit {
         this.userService.login(username, password).subscribe(
           res => {
             console.log(res);
+            this.navigate();
           },
           error => {
             this.invalidCredentials = true;
-            this.message = "Wrong data."
+            this.message = "Wrong data.";
             console.error(error);
           }
-
         );
       }
       else
@@ -50,6 +58,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   navigate() {
-
+    this.router.navigate([this.returnUrl]);
   }
 }

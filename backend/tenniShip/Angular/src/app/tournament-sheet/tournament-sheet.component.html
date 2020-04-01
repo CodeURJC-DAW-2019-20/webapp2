@@ -46,7 +46,7 @@
                                 <a ngbNavLink>Teams</a>
                             </li>
                         </ul>
-                        <div [ngbNavOutlet]="nav" class="ml-4"></div>                   
+                        <div [ngbNavOutlet]="nav" class="ml-4"></div>
                     </div>
                 </nav>
 
@@ -61,14 +61,16 @@
                             </div>
                             <div *ngIf="active==='teams'">
                                 <app-tournament-teams></app-tournament-teams>
-                            </div>   
-                        </div> 
+                            </div>
+                        </div>
                     </div>
-                </div>  
+                </div>
             </div>
         </div>
-        
-        <app-tournament-sheet-modal [tournamentName]=getTournamentName()></app-tournament-sheet-modal>
+<!--        <div *ngIf="isAdmin()">-->
+          <app-tournament-sheet-modal [tournamentName]=getTournamentName()></app-tournament-sheet-modal>
+<!--        </div>-->
+
 
     </section>
 </div>
