@@ -561,7 +561,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------*/
 
 #home {
-    background: url("/assets/resources/static/img/stadium.jpg") center top no-repeat fixed;
+    background: url("src/assets/resources/static/img/stadium.jpg") center top no-repeat fixed;
     background-size: cover;
     padding: 60px 0 40px 0;
     position: relative;
@@ -715,7 +715,7 @@ div.img {
 --------------------------------*/
 
 #actions {
-    background: url("/assets/resources/static/img/blackWhiteTennis.jpg") center top no-repeat fixed;
+    background: url("src/assets/resources/static/img/blackWhiteTennis.jpg") center top no-repeat fixed;
     background-size: cover;
     padding: 60px 0 40px 0;
     position: relative;

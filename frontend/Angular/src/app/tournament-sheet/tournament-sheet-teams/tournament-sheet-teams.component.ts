@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TournamentSheetService} from "./../tournament-sheet.service";
+import {TournamentSheetService} from "../tournament-sheet.service";
 import {TournamentSheetData} from "../../model/tournament-sheet-data";
 import {AuxiliarClass} from "../../model/tournament-sheet-auxdata";
 import {ActivatedRoute} from "@angular/router";
@@ -13,7 +13,7 @@ export class TournamentSheetTeamsComponent implements OnInit {
 
   public _tournamentSheetData: TournamentSheetData;
 
-  constructor(private route : ActivatedRoute, private tournamentSheetService: TournamentSheetService){ 
+  constructor(private route : ActivatedRoute, private tournamentSheetService: TournamentSheetService){
     this._tournamentSheetData = this.tournamentSheetService._tournamentSheetAux;
   }
 
@@ -21,12 +21,12 @@ export class TournamentSheetTeamsComponent implements OnInit {
   }
 
   getTournamentSheetTeams(): AuxiliarClass[][] {
-    var primeros: AuxiliarClass[] = new Array(6)  
+    var primeros: AuxiliarClass[] = new Array(6)
     var segundos: AuxiliarClass[] = new Array(6)
     var terceros: AuxiliarClass[] = new Array(6)
 
     for(var j = 0; j < 6; j++){
-      for(var i = 0; i<this._tournamentSheetData.groups.length; i++) { 
+      for(var i = 0; i<this._tournamentSheetData.groups.length; i++) {
         if (i == 0) {
           primeros[j] = this._tournamentSheetData.groups[j][i]
         }
@@ -38,7 +38,7 @@ export class TournamentSheetTeamsComponent implements OnInit {
         }
       }
     }
-    var teams: AuxiliarClass[][] = new Array(3)  
+    var teams: AuxiliarClass[][] = new Array(3)
     teams[0] = primeros
     teams[1] = segundos
     teams[2] = terceros

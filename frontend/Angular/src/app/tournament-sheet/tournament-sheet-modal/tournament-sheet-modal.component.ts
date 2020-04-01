@@ -1,6 +1,6 @@
 import { Component, Type, Input } from '@angular/core';
 import { Router} from '@angular/router';
-import {TournamentSheetService} from "./../tournament-sheet.service";
+import {TournamentSheetService} from "../tournament-sheet.service";
 import {TournamentSheetModalService} from "./tournament-sheet-modal-service.service";
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -26,14 +26,14 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class NgbdModalConfirm {
   public tournamentName;
 
-  constructor(public router: Router, public modal: NgbActiveModal, 
-    private tournamentSheetService: TournamentSheetService, 
+  constructor(public router: Router, public modal: NgbActiveModal,
+    private tournamentSheetService: TournamentSheetService,
     private comunicador: TournamentSheetModalService) {
     }
 
-  deleteAndGoHome() { 
+  deleteAndGoHome() {
     this.tournamentSheetService.deleteTournamentSheet(this.comunicador.getTournamentName());
-    this.router.navigate(['/TenniShip']); 
+    this.router.navigate(['/TenniShip']);
   }
 }
 

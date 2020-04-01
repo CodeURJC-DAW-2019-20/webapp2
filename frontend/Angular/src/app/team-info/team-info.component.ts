@@ -12,7 +12,7 @@ import {ErrorService} from "../errors/errors.service";
 export class TeamInfoComponent implements OnInit {
   public _teamFileData: TeamFileData;
   public team_id: string;
-  public dir: string = './../../../../images/registered/';
+  public dir: string = './../../images/registered/';
 
   constructor(private route: ActivatedRoute, private teamService: TeamService, private errorService: ErrorService) {}
 
