@@ -31,6 +31,8 @@ import { FormsModule } from '@angular/forms';
 import { ErrorsComponent } from './errors/errors.component';
 import { ErrorInterceptor } from './errors/error.interceptor';
 import { UserService} from './service/user.service';
+import {BasicAuthInterceptor} from "./auth/basic-auth.interceptor";
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -73,7 +75,9 @@ import { UserService} from './service/user.service';
   ],
   providers: [
     UserService,
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent,TeamInfoComponent,GraphicPieComponent]
 })

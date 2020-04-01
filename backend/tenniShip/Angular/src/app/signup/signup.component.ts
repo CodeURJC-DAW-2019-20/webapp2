@@ -103,7 +103,7 @@ export class SignupComponent implements OnInit {
         this.nameplayer3, this.nameplayer4, this.nameplayer5]).subscribe(
           res => {
             this.uploadFiles();
-            this.userService.registerSucceded = !this.userService.registerSucceded;
+            this.userService.registerSucceeded = !this.userService.registerSucceeded;
             console.log("Register successfull: " + res);
             this.userData.reset();
             this.redirection();

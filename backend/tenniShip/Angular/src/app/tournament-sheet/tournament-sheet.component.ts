@@ -4,6 +4,8 @@ import {TournamentSheetService} from "./tournament-sheet.service";
 import {TournamentSheetData} from "../model/tournament-sheet-data";
 import { catchError } from 'rxjs/operators';
 import {ErrorService} from "../errors/errors.service"
+import {UserService} from "../service/user.service";
+import {User} from "../model/user.model";
 
 @Component({
   selector: 'app-tournament-sheet',
@@ -16,10 +18,12 @@ export class TournamentSheetComponent implements OnInit {
   public active = "groups";
   public _tournamentSheetData: TournamentSheetData;
   public tournament_id: string;
+  public currentUser:User;
 
-  constructor(private route : ActivatedRoute, private tournamentSheetService: TournamentSheetService, 
-    private errorService: ErrorService){
+  constructor(private route : ActivatedRoute, private tournamentSheetService: TournamentSheetService,
+    private errorService: ErrorService, private userService:UserService){
     this.tournament_id = route.snapshot.params.tournament_id;
+    this.userService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit():void {
@@ -46,5 +50,9 @@ export class TournamentSheetComponent implements OnInit {
     this.errorService.setMsg("tournament "+ this.tournament_id);
     console.error(error);
   }
+
+  // public isAdmin():boolean{
+  //   return this.currentUser.roles.includes("ROLE_ADMIN");
+  // }
 
 }

@@ -2,5 +2,6 @@ export class User {
     username: string;
     password: string;
     email:string;
-    // token: string;
+    authData?:string;
+    roles:string[];
 }
