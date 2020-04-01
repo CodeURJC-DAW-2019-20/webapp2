@@ -10,14 +10,14 @@ import {SelectTournamentService} from "./select-tournament.service";
 export class SelectTournamentComponent implements OnInit {
 
   private _tournamentList: Tournament[] = new Array<Tournament>();
-  private currentPage = 0;
+  private currentPage = 1;
   private pageSize = 2;   // Can be changed if we want
   public morePages: boolean = true;
 
   constructor(private pagelength: PageLengthService, private selectTournamentService: SelectTournamentService) {}
 
   ngOnInit(): void {
-    this.selectTournamentService.getPage(0,this.pageSize).subscribe(
+    this.selectTournamentService.getPage(1,this.pageSize).subscribe(
       data =>{
         this._tournamentList = data;
       }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PageLengthService} from "../service/page-length.service";
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
+import {tick} from "@angular/core/testing";
+import {filter} from "rxjs/operators";
 
 @Component({
   selector: 'app-footer',
@@ -12,20 +14,22 @@ export class FooterComponent implements OnInit {
   shortContent = false;
 
   constructor(private pageLength: PageLengthService, private router: Router) {
-    this.pageLength.shortContent.subscribe(shortContent => this.shortContent = shortContent);
+    this.pageLength.shortContent.subscribe(shortContent => {this.shortContent = shortContent});
     router.events.subscribe(
       data => {
-        this.setShortContent(); // Refresh short content if the user changes the page
+        this.shortContent = true;
       }
-    )
+    );
   }
 
   ngOnInit(): void {
-
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => this.setShortContent());
   }
 
   setShortContent(): void {
-    this.shortContent = window.innerHeight >= document.body.offsetHeight + 92;
+    this.shortContent = window.innerHeight >= document.body.offsetHeight;
   }
 
 }
