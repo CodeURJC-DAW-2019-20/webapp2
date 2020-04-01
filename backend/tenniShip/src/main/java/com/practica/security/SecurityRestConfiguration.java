@@ -21,7 +21,6 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 		http.antMatcher("/api/**");
 
 		// User
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniship/validator/user").permitAll();
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniship/signin").permitAll();// set logged user
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/tenniship/signup").permitAll();
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniShip/logout").permitAll();

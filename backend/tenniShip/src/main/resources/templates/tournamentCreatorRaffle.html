@@ -191,8 +191,8 @@ Footer
 <script>
 
     var teamNames = [
-        {{#teamNames}}"{{.}}",{;{/teamNames}};
-    ]
+        {{#teamNames}}"{{.}}",{{/teamNames}}
+    ];
 
         $( ".teamSearch" ).autocomplete({
             source: teamNames
