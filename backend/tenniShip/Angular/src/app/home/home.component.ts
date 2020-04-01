@@ -5,7 +5,7 @@ import {User} from "../model/user.model";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: []
+  styles: ["#home { padding-top: 152px }"],
 })
 export class HomeComponent implements OnInit {
 

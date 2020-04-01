@@ -13,6 +13,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import {RegisterMatchComponent} from "./register-match/register-match.component";
+import {SelectTournamentComponent} from "./select-tournament/select-tournament.component";
 import { CreatorComponent } from './creator/creator.component';
 import { CreatorTournamentComponent } from './creator/creator-tournament/creator-tournament.component';
 import { CreatorTeamsComponent } from './creator/creator-teams/creator-teams.component';
@@ -31,6 +33,8 @@ import { FormsModule } from '@angular/forms';
 import { ErrorsComponent } from './errors/errors.component';
 import { ErrorInterceptor } from './errors/error.interceptor';
 import { UserService} from './service/user.service';
+import { TournamentSearchComponent } from './searchbox/tournament-search/tournament-search.component';
+import { TeamSearchComponent } from './searchbox/team-search/team-search.component';
 import {BasicAuthInterceptor} from "./auth/basic-auth.interceptor";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
@@ -56,7 +60,11 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
     TeamInfoComponent,
     GraphicPieComponent,
     MatchesPaginatedComponent,
-    ErrorsComponent
+    ErrorsComponent,
+    RegisterMatchComponent,
+    SelectTournamentComponent,
+    TournamentSearchComponent,
+    TeamSearchComponent
   ],
   imports: [
     BrowserModule,

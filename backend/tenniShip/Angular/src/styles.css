@@ -191,16 +191,17 @@ h6 {
 
 /* Header style specific to the index page */
 
-body#index #header:not(.header-scrolled) {
-    background: linear-gradient(45deg, black, transparent);
+#header.indexHeader:not(.header-scrolled) {
+  background: linear-gradient(45deg, black, transparent);
 }
 
-body#index {
-    padding-top: 0;
+main.index {
+  padding-top: 0;
 }
 
-body#index #home {
-    padding-top: 152px;
+#home {
+  padding-top: 92px;
+  margin-top: -92px;
 }
 
 
@@ -1079,6 +1080,7 @@ div.img {
 
 
 /*Search Bar*/
+/* TODO: Delete this when the new searchboxes work */
 
 .active-green-3 input[type=search] {
     border: 1px solid rgba(24, 210, 110, .4);
@@ -1087,6 +1089,10 @@ div.img {
 
 .active-green-3 .fa {
     color: #18d26e;
+}
+
+app-tournament-search, app-team-search {
+  width: 100%;
 }
 
 
@@ -1307,9 +1313,11 @@ h5 {
 
 /* Correction for the footer*/
 
-body:not(#index) main#main {
+/*body:not(#index) main#main {
     margin-bottom: 50px;
 }
+Temporarily commented till we add id=index to body on index
+ */
 
 #UnderTitleParagraph {
     text-align: center;
