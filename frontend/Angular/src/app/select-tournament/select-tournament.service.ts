@@ -18,7 +18,6 @@ export class SelectTournamentService {
 
   public getPage(pageNumber:number, pageSize:number) {
     let url = this.baseUrl + "?page=" + pageNumber + "&size=" + pageSize;
-    console.log(url);
     return this.http.get<Tournament[]>(url).pipe(
       map(response=>response),
       catchError(this.handleError)

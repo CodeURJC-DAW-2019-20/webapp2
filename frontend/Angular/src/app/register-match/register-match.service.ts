@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {RegisterMatchData} from "../model/register-match-data";
 import {catchError, map} from "rxjs/operators";
-import {throwError} from "rxjs";
+import {Observable, throwError} from "rxjs";
+import {Match} from "../model/match";
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,19 @@ export class RegisterMatchService {
   // https://localhost:8443/api/tenniship/tournaments/{tournament}/matches
   private adminUrl: string;
   // https://localhost:8443/api/tenniship/admin/tournaments/{tournament}/matches/{group}
+  private registerUrl: string;
+  // https://localhost:8443/api/tenniship/tournaments/{tournament}/matches
 
   constructor(private http: HttpClient) {
     this.baseUrl = "/api/tenniship/tournaments/";
     this.adminUrl = "/api/tenniship/admin/tournaments/";
+    this.registerUrl = "/api/tenniship/tournaments/";
   }
 
   getData(tournament: string) {
     let url = this.baseUrl + tournament + "/matches";
+    console.log("getData");
+    console.log(url);
     return this.http.get<RegisterMatchData>(url).pipe(
       map(response=>response),
       catchError(this.handleError)
@@ -33,6 +39,16 @@ export class RegisterMatchService {
       map(response=>response),
       catchError(this.handleError)
     )
+  }
+
+  registerMatch(tourName: string, match: Match): Observable<Match> {
+    let url = this.registerUrl + tourName + "/matches"; // tourName could be obtained from the match object, but just in case
+    console.log(url);
+    console.log(match);
+    return this.http.put<Match>(url,match).pipe(
+      map(response => response),
+      catchError(error => Observable.throw('Server error'))
+    );
   }
 
   private handleError(error: HttpErrorResponse) {
