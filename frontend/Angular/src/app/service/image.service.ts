@@ -14,12 +14,12 @@ export class ImageService {
   constructor(private  http : HttpClient) { }
 
   public getTeamImage(teamName:string,i : number):Observable<Blob>{
-    let url : string = this.urlFather + 'teams/'+teamName+'/image/'+i;
+    let url : string = this.urlFather + 'teams/'+ teamName + '/image/' + i;
     return this.http.get(url,{responseType:'blob'});
   }
 
   public getTournamentImage(tournamentName:string):Observable<Blob>{
-    let url : string = this.urlFather + 'tournaments/'+tournamentName+'/image';
+    let url : string = this.urlFather + 'tournaments/' + tournamentName + '/image';
     return this.http.get(url,{responseType:'blob'});
   }
 

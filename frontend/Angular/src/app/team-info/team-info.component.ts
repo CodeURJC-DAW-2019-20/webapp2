@@ -32,14 +32,13 @@ export class TeamInfoComponent implements OnInit {
   createImageFromBlob(image: Blob,i:number) {
     let reader = new FileReader();
     reader.addEventListener("load", () => {
-      if(i==0){
+      if (i==0){
         this.imagesTeam = reader.result;
-      }else if(i<6) {
+      } else if (i<6) {
         this.playerArrayImage[i-1]=reader.result;
-      }else{
+      } else {
         this.tournamentArrayImage[i-6] = reader.result;
       }
-
     }, false);
 
     if (image) {

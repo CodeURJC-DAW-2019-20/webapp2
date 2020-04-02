@@ -35,7 +35,7 @@
                 </div>
             </li>       
         
-            <li *ngIf="!getIsAdmin()"><img alt="" class="rounded-circle loginImage" src="">
+            <li *ngIf="!getIsAdmin()"><img alt="" class="rounded-circle loginImage" [src]="teamImage">
             </li>
         </ul>
         <ul *ngIf="!currentUser" class="nav-menu">
