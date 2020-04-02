@@ -55,6 +55,7 @@ export class UserService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+    return this.http.get('api/tenniship/logout');
   }
 
   public get currentUserValue(): User {

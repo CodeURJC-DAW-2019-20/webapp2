@@ -23,10 +23,10 @@ const routes: Routes = [
   {path: 'TenniShip/SignIn', component: LoginComponent},
   {path: 'TenniShip/SignUp', component: SignupComponent},
   {path: 'TenniShip/Error', component: ErrorsComponent},
-  {path: '**', redirectTo:'TenniShip/Error'},
   {path: 'TenniShip/RegisterMatch/Tournaments', component: SelectTournamentComponent},
-  {path: 'TenniShip/RegisterMatch/Tournaments/:tournament_id', component: RegisterMatchComponent}
-]
+  {path: 'TenniShip/RegisterMatch/Tournaments/:tournament_id', component: RegisterMatchComponent},
+  {path: '**', redirectTo:'TenniShip/Error'},
+];
 
 export const routing = RouterModule.forRoot(routes);
 // Aqui van las rutas de los componentes

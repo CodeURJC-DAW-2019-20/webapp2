@@ -20,9 +20,10 @@ export class HeaderComponent implements OnInit {
         data => {
           this.indexPage = (router.url === "/TenniShip"); // Makes header black if the user is not on the index page
           this.setScrolled();
+
         }
     );
-    this.userService.currentUser.subscribe(x => this.currentUser = x);;
+    this.userService.currentUser.subscribe(x => this.currentUser = x);
   }
 
 

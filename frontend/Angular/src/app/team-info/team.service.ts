@@ -22,6 +22,7 @@ export class TeamService {
       catchError(error => this.handleError(error)));
   }
 
+
   getWinPercentage(): number {
     return this.winRate;
   }
@@ -32,7 +33,7 @@ export class TeamService {
 
   public handleError(error: any) {
 		console.error(error);
-		return Observable.throw("Server error (" + error.status + "): " + error.text())
+    return Observable.throw("Server error (" + error.status + "): " + error.text());
 	}
 
 }
