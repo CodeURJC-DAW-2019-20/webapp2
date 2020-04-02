@@ -36,6 +36,7 @@ export class RegisterMatchComponent implements OnInit {
   }
 
   getMatchList(): Match[] {
+    console.log(this.registerMatchData.matchList);
     return this.registerMatchData.matchList;
   }
 

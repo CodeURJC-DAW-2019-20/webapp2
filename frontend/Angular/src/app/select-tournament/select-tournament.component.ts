@@ -33,6 +33,7 @@ export class SelectTournamentComponent implements OnInit {
     this.selectTournamentService.getPage(this.currentPage,this.pageSize).subscribe(
       data => {
         let aux = data;
+        console.log(aux);
         let i = 0;
         while(this.morePages && i < this.pageSize) {
           if (typeof aux[i] === 'undefined') {
