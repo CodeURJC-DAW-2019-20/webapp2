@@ -1911,6 +1911,11 @@ body#TCreatorPage .ui-autocomplete {
     position: relative;
 }
 
+.TCreatorTeams .teamsButtons{
+    display: flex;
+    justify-content: space-around;
+}
+
 .flex-resp {
     flex-direction: column;
 }
@@ -2046,6 +2051,7 @@ body#TCreatorPage .ui-autocomplete {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 52px;
 }
 
 .created>div {

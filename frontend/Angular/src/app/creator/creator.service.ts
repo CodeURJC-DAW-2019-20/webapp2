@@ -3,8 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { newTournament } from '../model/newtournament';
-import {UserService} from "../service/user.service";
-import {User} from "../model/user.model";
 
 @Injectable()
 export class CreatorService {
@@ -13,7 +11,6 @@ export class CreatorService {
     urlTeams: string;
     urlImage: string;
 
-    public currentUser:User;
 
     public tournaments: string[];
     public teams: string[] = [];
@@ -24,11 +21,10 @@ export class CreatorService {
 
     public selectedFiles: FileList;
 
-    constructor (private http: HttpClient, private userService:UserService) {
+    constructor (private http: HttpClient) {
         this.urlTournament = "/api/tenniship/tournaments";
         this.urlTeams = "/api/tenniship/teams";
         this.urlImage = "/image";
-        this.userService.currentUser.subscribe(x => this.currentUser = x);
     }
 
    public getTournaments () {

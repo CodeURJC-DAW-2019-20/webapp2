@@ -13,7 +13,8 @@ export class CreatorTeamsComponent implements OnInit {
 	changeToRaffle = new EventEmitter<string>();
 
 	// public myTeams: string[] = new Array(18);
-	public myTeams: string[] = ["Valencia",
+	public myTeams: string[] = [
+		"Valencia",
         "Spain",
         "Serbia",
         "PSG",
