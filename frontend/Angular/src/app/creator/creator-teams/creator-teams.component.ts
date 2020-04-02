@@ -75,7 +75,7 @@ export class CreatorTeamsComponent implements OnInit {
 	}
 
 	public next2Check () {
-		this.checkTeams()
+		this.checkTeams();
 		if (this.next2) {
 			this.creatorService.setFinalTeams(this.myTeams);
 			this.creatorService.active = "raffle";

@@ -8,7 +8,8 @@ import {ImageService} from "../service/image.service";
 @Component({
   selector: 'app-team-info',
   templateUrl: './team-info.component.html',
-  styleUrls: ['./team-info.component.css']
+  styleUrls: ['./team-info.component.css'],
+  providers: [TeamService]
 })
 export class TeamInfoComponent implements OnInit {
   public _teamFileData: TeamFileData;
@@ -79,6 +80,9 @@ export class TeamInfoComponent implements OnInit {
   }
 
   getTournamentImage(i:number){
+    if(this.tournamentArrayImage.length===i){
+      return this.tournamentArrayImage[0];
+    }
     return this.tournamentArrayImage[i];
   }
 
