@@ -73,7 +73,11 @@ export class SignupComponent implements OnInit {
 
 
   /*        IMPLEMENTATION AREA        */
-  constructor(public userService: UserService, public router: Router) { }
+  constructor(public userService: UserService, public router: Router) {
+    if (this.userService.currentUserValue) {
+      this.router.navigate(['', 'TenniShip']);
+    }
+  }
 
   ngOnInit(): void {
     this.emptyPlayerName = new Array<boolean>(5);
