@@ -73,7 +73,11 @@ export class SignupComponent implements OnInit {
 
 
   /*        IMPLEMENTATION AREA        */
-  constructor(public userService: UserService, public router: Router) { }
+  constructor(public userService: UserService, public router: Router) {
+    if (this.userService.currentUserValue) {
+      this.router.navigate(['', 'TenniShip']);
+    }
+  }
 
   ngOnInit(): void {
     this.emptyPlayerName = new Array<boolean>(5);
@@ -103,7 +107,8 @@ export class SignupComponent implements OnInit {
         this.nameplayer3, this.nameplayer4, this.nameplayer5]).subscribe(
           res => {
             this.uploadFiles();
-            this.userService.registerSucceeded = !this.userService.registerSucceeded;
+            if (this.userService.registerSucceeded == false)
+              this.userService.registerSucceeded = true;
             console.log("Register successfull: " + res);
             this.userData.reset();
             this.redirection();

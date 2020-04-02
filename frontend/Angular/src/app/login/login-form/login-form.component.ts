@@ -1,7 +1,7 @@
 import { Component, OnInit, ɵisBoundToModule__POST_R3__ } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { UserService } from 'src/app/service/user.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -20,11 +20,11 @@ export class LoginFormComponent implements OnInit {
   emptyUsername: boolean;
   emptyPassword: boolean;
   invalidCredentials: boolean;
-  returnUrl:string;
+  returnUrl: string;
 
-  constructor(public userService: UserService, public router: Router, public route:ActivatedRoute) {
-    if(this.userService.currentUserValue){
-      this.router.navigate(['','TenniShip']);
+  constructor(public userService: UserService, public router: Router, public route: ActivatedRoute) {
+    if (this.userService.currentUserValue) {
+      this.router.navigate(['', 'TenniShip']);
     }
   }
 
@@ -55,6 +55,8 @@ export class LoginFormComponent implements OnInit {
     }
     else
       this.emptyUsername = true;
+    if (this.userService.registerSucceeded == true)
+      this.userService.registerSucceeded = false;
   }
 
   navigate() {

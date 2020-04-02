@@ -1,47 +1,48 @@
 <header id="header" [class.indexHeader]="indexPage" [class.header-scrolled]="scrolled" (window:scroll)="setScrolled()">
     <div class="container-fluid">
 
-    <div class="pull-left" id="logo">
-      <h1><a class="scrollto" [routerLink]="['', 'TenniShip']">TenniShip</a></h1>
-    </div>
+        <div class="pull-left" id="logo">
+            <h1><a class="scrollto" [routerLink]="['', 'TenniShip']">TenniShip</a></h1>
+        </div>
 
-    <nav id="nav-menu-container">
-      <ul class="nav-menu">
-<!--        <li class="menu-has-children teamMenu" *ngIf="admin"><a><strong>ADMIN</strong></a>-->
-<!--          <ul>-->
-<!--            <li>-->
-<!--              <form action="/logout" method="post">-->
-<!--                <button class="btn" type="submit">Sign Out</button>-->
-<!--              </form>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--        </li>-->
-        <!--It does not work yet-->
-        <li class="menu-has-children" *ngIf="currentUser"><a href="#actions">Actions</a>
-          <ul>
-            <li><a [routerLink]="['','TenniShip','RegisterMatch','Tournaments']">Register a Match</a></li>
-            <li><a [routerLink]="['','TenniShip','Creator']">Tournament Creator</a></li>
-          </ul>
-        </li>
-        <li class="menu-has-children teamMenu" *ngIf="currentUser"><a href="#">Spain</a>
-          <ul>
-            <li><a [routerLink]="['','TenniShip','Team','Spain']">View Profile</a></li>
-            <li>
-              <button class="btn" type="submit" (click)="logout()">Sign Out</button>
-            </li>
-          </ul>
-        </li>
-        <li *ngIf="currentUser"><img alt="" class="rounded-circle loginImage" src="/images/registered/teams/Spain.jpg">
-        </li>
-        <li *ngIf="!currentUser">
-          <a class="btn btn-primary signUpIndexBtnText" [routerLink]="['','TenniShip','SignUp']" type="submit">Sign
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <!--        <li class="menu-has-children teamMenu" *ngIf="admin"><a><strong>ADMIN</strong></a>-->
+                <!--          <ul>-->
+                <!--            <li>-->
+                <!--              <form action="/logout" method="post">-->
+                <!--                <button class="btn" type="submit">Sign Out</button>-->
+                <!--              </form>-->
+                <!--            </li>-->
+                <!--          </ul>-->
+                <!--        </li>-->
+                <!--It does not work yet-->
+                <button class="btn" type="submit" (click)="logout()">Sign Out</button>
+                <li class="menu-has-children" *ngIf="currentUser"><a href="#actions">Actions</a>
+                    <ul>
+                        <li><a [routerLink]="['','TenniShip','RegisterMatch','Tournaments']">Register a Match</a></li>
+                        <li><a [routerLink]="['','TenniShip','Creator']">Tournament Creator</a></li>
+                    </ul>
+                </li>
+                <li class="menu-has-children teamMenu" *ngIf="currentUser"><a href="#">Spain</a>
+                    <ul>
+                        <li><a [routerLink]="['','TenniShip','Team','Spain']">View Profile</a></li>
+                        <li>
+
+                        </li>
+                    </ul>
+                </li>
+                <li *ngIf="currentUser"><img alt="" class="rounded-circle loginImage" src="/images/registered/teams/Spain.jpg">
+                </li>
+                <li *ngIf="!currentUser">
+                    <a class="btn btn-primary signUpIndexBtnText" [routerLink]="['','TenniShip','SignUp']" type="submit">Sign
             Up</a>
-        </li>
-        <li *ngIf="!currentUser">
-          <a class="btn signInIndexBtnText" [routerLink]="['','TenniShip','SignIn']" type="submit">Sign In</a>
-        </li>
-      </ul>
-    </nav>
-    <!-- #nav-menu-container -->
-  </div>
+                </li>
+                <li *ngIf="!currentUser">
+                    <a class="btn signInIndexBtnText" [routerLink]="['','TenniShip','SignIn']" type="submit">Sign In</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- #nav-menu-container -->
+    </div>
 </header>
