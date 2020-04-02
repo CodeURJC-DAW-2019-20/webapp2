@@ -56,6 +56,14 @@ export class HeaderComponent implements OnInit {
     this.scrolled = (window.pageYOffset > 100);
   }
 
+  getTeam(){    
+    return this.currentUser.team;
+  }
+
+  getIsAdmin() {    
+    return this.currentUser.roles.indexOf('ROLE_ADMIN') !== -1;
+  }
+
 }
 
 

@@ -361,6 +361,10 @@ main.index {
     margin: 0;
 }
 
+.link {
+    color: black!important;
+}
+
 .teamMenu button {
     padding: 10px;
     color: #333;
@@ -374,8 +378,8 @@ main.index {
     outline: none;
 }
 
-.teamMenu button:hover {
-    color: #18d26e;
+.teamMenu a:hover {
+    color: #18d26e!important;
 }
 
 
