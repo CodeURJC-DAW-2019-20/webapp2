@@ -1,0 +1,52 @@
+<header id="header" [class.indexHeader]="indexPage" [class.header-scrolled]="scrolled" (window:scroll)="setScrolled()">
+    <div class="container-fluid">
+
+    <div class="pull-left" id="logo">
+        <h1><a class="scrollto" [routerLink]="['', 'TenniShip']">TenniShip</a></h1>
+    </div>
+
+    <nav id="nav-menu-container">
+        <ul *ngIf="currentUser" class="nav-menu">
+            <li *ngIf="getIsAdmin()">
+                <div ngbDropdown class="d-inline-block">
+                    <button class="btn teamMenu"><a class="menu-has-children" id="dropdownBasic1" ngbDropdownToggle>ADMIN</a></button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="menu-has-children teamMenu">
+                        <button class="btn teamMenu link" ngbDropdownItem><a class="link" (click)="logout()">Sign Out</a></button>
+                    </div>
+                </div>
+            </li>  
+            
+            <li *ngIf="!getIsAdmin()">
+                <div ngbDropdown class="d-inline-block">
+                    <button class="btn teamMenu"><a class="menu-has-children" id="dropdownBasic2" ngbDropdownToggle>Actions</a></button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="menu-has-children teamMenu">
+                        <button class="btn teamMenu link" ngbDropdownItem><a class="link" [routerLink]="['','TenniShip','RegisterMatch','Tournaments']">Register a Match</a></button>
+                        <button class="btn teamMenu link" ngbDropdownItem><a class="link" [routerLink]="['','TenniShip','Creator']">Tournament Creator</a></button>
+                    </div>
+                </div>
+            </li>  
+            <li *ngIf="!getIsAdmin()">
+                <div ngbDropdown class="d-inline-block">
+                    <button class="btn teamMenu"><a class="menu-has-children" id="dropdownBasic3" ngbDropdownToggle>{{currentUser?.team}}</a></button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic3" class="menu-has-children teamMenu">
+                        <button class="btn teamMenu link" ngbDropdownItem><a class="link" [routerLink]="['','TenniShip','Team', getTeam()]">View Profile</a></button>
+                        <button class="btn teamMenu link" ngbDropdownItem><a class="link" (click)="logout()">Sign Out</a></button>
+                    </div>
+                </div>
+            </li>       
+        
+            <li *ngIf="!getIsAdmin()"><img alt="" class="rounded-circle loginImage" src="">
+            </li>
+        </ul>
+        <ul *ngIf="!currentUser" class="nav-menu">
+            <li>
+                <a class="btn btn-primary signUpIndexBtnText" [routerLink]="['','TenniShip','SignUp']" type="submit">Sign
+                    Up</a>
+            </li>
+            <li>
+                <a class="btn signInIndexBtnText" [routerLink]="['','TenniShip','SignIn']" type="submit">Sign In</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</header>

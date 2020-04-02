@@ -28,6 +28,7 @@ public class ImageService implements WebMvcConfigurer {
 		registry.addResourceHandler("/images/**")
 				.addResourceLocations("file:" + FILES_FOLDER.toAbsolutePath().toString() + "/");
 		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+
 	}
 
 	private Path createFilePath(String id, Path folder) {
