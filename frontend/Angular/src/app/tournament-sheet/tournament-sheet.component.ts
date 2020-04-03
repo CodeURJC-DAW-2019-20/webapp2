@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 import {ErrorService} from "../errors/errors.service"
 import {UserService} from "../service/user.service";
 import {User} from "../model/user.model";
+import {ImageService} from "../service/image.service";
 
 @Component({
   selector: 'app-tournament-sheet',
@@ -18,10 +19,11 @@ export class TournamentSheetComponent implements OnInit {
   public active = "groups";
   public _tournamentSheetData: TournamentSheetData;
   public tournament_id: string;
-  public currentUser:User;
+  public currentUser:User;  
+  public imageTournament;
 
   constructor(private route : ActivatedRoute, private tournamentSheetService: TournamentSheetService,
-    private errorService: ErrorService, private userService:UserService){
+    private errorService: ErrorService, private userService:UserService, private imageService: ImageService){
     this.tournament_id = route.snapshot.params.tournament_id;
     this.userService.currentUser.subscribe(x => this.currentUser = x);
   }
@@ -31,15 +33,34 @@ export class TournamentSheetComponent implements OnInit {
       data => {
         this._tournamentSheetData = data;
         this.tournamentSheetService.setTournamentSheetData(data);
-        console.log(data);
-        console.log(this.getTournamentSheetData());
+
+        this.imageService.getTournamentImage(this._tournamentSheetData.tournament.name).subscribe(
+          image=>{
+            this.createImageFromBlob(image);
+          },
+        );
       },
       error => this.handleError(error)
     );
   }
 
+  createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      this.imageTournament = reader.result;
+    }, false);
+
+    if (image) {
+      reader.readAsDataURL(image);
+    }
+  }
+
   getTournamentName(): string {
     return this.tournament_id;
+  }
+
+  getTournamentImage() {
+    return this.imageTournament;
   }
 
   getTournamentSheetData(): TournamentSheetData {
