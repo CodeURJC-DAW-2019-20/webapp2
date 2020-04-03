@@ -106,7 +106,7 @@ export class SignupComponent implements OnInit {
         this.userService.signUp(this.username, this.password, this.email, this.teamName, [this.nameplayer1, this.nameplayer2,
         this.nameplayer3, this.nameplayer4, this.nameplayer5]).subscribe(
           res => {
-            this.loginAux().then(() => {
+            this.loginAfterSignUp().then(() => {    //wait for logging response to upload images
               this.uploadFiles();
               console.log("Register successfull: " + res);
               this.userData.reset();
@@ -231,7 +231,7 @@ export class SignupComponent implements OnInit {
     })
   }
 
-  loginAux(): Promise<any> {
+  loginAfterSignUp(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.userService.login(this.username, this.password).subscribe(
         res => {
