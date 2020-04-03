@@ -59,27 +59,30 @@
 
                     <h3>Players Data</h3>
 
-                    <h5>Player 1</h5>
-                    <div class="form-row">
-                        <div class="col">
-                            <input class="form-control" #nameplayer1 formControlName="nameplayer1" name="player1" placeholder="Player's name" type="text">
-                            <div class="errorsText">
-                                <p *ngIf="emptyPlayerName[0]">{{emptyMSG}}</p>
-                                <p *ngIf="usedPlayerName[0]">{{usedPlayerNameMSG}}</p>
+                    <div *ngFor="let i of arrayTwo(5)">
+                        <h5>Player 1</h5>
+                        <div class="form-row">
+                            <div class="col">
+                                <input class="form-control" #nameplayer1 formControlName="nameplayer1" name="player1" placeholder="Player's name" type="text">
+                                <div class="errorsText">
+                                    <p *ngIf="emptyPlayerName[0]">{{emptyMSG}}</p>
+                                    <p *ngIf="usedPlayerName[0]">{{usedPlayerNameMSG}}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="input-group mb-3 pt-3">
-                        <div class="custom-file">
-                            <input class="custom-file-input" (change)="selectFile1($event)" #picplayer1 formControlName="picplayer1" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s
-                                photo</label>
+                        <div class="input-group mb-3 pt-3">
+                            <div class="custom-file">
+                                <input class="custom-file-input" (change)="selectFile1($event)" #picplayer1 formControlName="picplayer1" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s
+                                    photo</label>
+                            </div>
+                        </div>
+                        <div class="errorsText attachDivToBox">
+                            <p *ngIf="noPlayerPic[0]" class="attachTextToBox">{{missingPicMSG}}</p>
                         </div>
                     </div>
-                    <div class="errorsText attachDivToBox">
-                        <p *ngIf="noPlayerPic[0]" class="attachTextToBox">{{missingPicMSG}}</p>
-                    </div>
 
-                    <h5>Player 2</h5>
+
+                    <!-- <h5>Player 2</h5>
                     <div class="form-row">
                         <div class="col">
                             <input class="form-control" #nameplayer2 formControlName="nameplayer2" name="player2" placeholder="Player's  name" type="text">
@@ -157,7 +160,7 @@
                     </div>
                     <div class="errorsText attachDivToBox">
                         <p *ngIf="noPlayerPic[4]" class="attachTextToBox">{{missingPicMSG}}</p>
-                    </div>
+                    </div> -->
 
                     <div class="text-center pt-3 button">
                         <button class="input-group-test btn" type="submit">Sign Up!</button>
