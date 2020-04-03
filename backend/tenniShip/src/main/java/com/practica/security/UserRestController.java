@@ -122,8 +122,7 @@ public class UserRestController {
 			throws IOException {
 		Optional<Team> team = teamService.findById(teamID);
 		if (team.isPresent()) {
-//			if (userComponent.isLoggedUser() && userComponent.getTeam().equals(teamID)) {
-			if (true) {
+			if (userComponent.isLoggedUser() && userComponent.getTeam().equals(teamID)) {
 				team.get().setTeamImage(true);
 				teamService.save(team.get());
 				MultipartFile picture = imageFile.get(0);

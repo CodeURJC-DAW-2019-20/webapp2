@@ -29,9 +29,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.userService.registerSucceeded);
     this.invalidCredentials = false;
-
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/TenniShip';
   }
 
@@ -55,8 +53,6 @@ export class LoginFormComponent implements OnInit {
     }
     else
       this.emptyUsername = true;
-    if (this.userService.registerSucceeded == true)
-      this.userService.registerSucceeded = false;
   }
 
   navigate() {
