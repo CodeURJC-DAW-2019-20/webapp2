@@ -17,8 +17,7 @@ export class UserService {
 
   public selectFiles: FileList[] = new Array(6);
 
-  redirectToHome: string = "/TenniShip/SignIn";
-  registerSucceeded: boolean = false;
+  redirectToHome: string = "/TenniShip";
   currentUser: Observable<User>;
   currentUserSubject: BehaviorSubject<User>;
 

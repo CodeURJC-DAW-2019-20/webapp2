@@ -1,8 +1,5 @@
 <div class="form">
     <div *ngIf="invalidCredentials" class="alert  wrongmsg">{{message}}</div>
-    <div *ngIf="userService.registerSucceeded">
-        <div class="alert successmsg">You has been registered successfully</div>
-    </div>
     <form action="/TenniShip/SignIn" [formGroup]="credentials">
         <div class="form-group">
             <input class="form-control" #username formControlName="username" id="username" name="username" placeholder="Username" type="text">
