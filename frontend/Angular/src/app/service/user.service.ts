@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from "../model/user.model";
 import { map } from "rxjs/operators";
 import { BehaviorSubject, Observable } from "rxjs";
+import { ImageService } from './image.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable()
 export class UserService {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private imageService: ImageService) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -23,7 +24,7 @@ export class UserService {
   teamImage;
   loged: boolean = false;
 
-  login(un: string, pass: string) {
+  login(un: string, pass: string, oldUser: boolean) {
     var httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -37,6 +38,14 @@ export class UserService {
           user.authData = window.btoa(un + ':' + pass);
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
+          this.loged = true; 
+          if (oldUser && !this.getIsAdmin()) {
+            this.imageService.getTeamImage(this.currentUserValue.team,0).subscribe(
+              image => {
+                this.createImageFromBlob(image)
+              }
+            );
+          }
           //console.log(user);
         })
       )

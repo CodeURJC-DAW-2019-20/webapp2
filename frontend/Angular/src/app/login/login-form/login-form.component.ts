@@ -37,16 +37,8 @@ export class LoginFormComponent implements OnInit {
   login(username: string, password: string, event: Event) {
     if (this.credentials.controls['username'].value != ('')) {
       if (this.credentials.controls['password'].value != ('')) {
-        this.userService.login(username, password).subscribe(
+        this.userService.login(username, password,true).subscribe(
           res => {
-            this.userService.loged = true; 
-            if (!this.userService.getIsAdmin()) {
-              this.imageService.getTeamImage(this.userService.currentUserValue.team,0).subscribe(
-                image => {
-                  this.userService.createImageFromBlob(image)
-                }
-              );
-            }
             this.navigate()
           },
           error => {

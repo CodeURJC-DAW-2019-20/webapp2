@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { UserService } from 'src/app/service/user.service';
 import { Router, NavigationExtras } from '@angular/router';
+import { ImageService } from '../service/image.service';
 
 
 @Component({
@@ -73,7 +74,7 @@ export class SignupComponent implements OnInit {
 
 
   /*        IMPLEMENTATION AREA        */
-  constructor(public userService: UserService, public router: Router) {
+  constructor(public userService: UserService, public router: Router, private imageService: ImageService) {
     if (this.userService.currentUserValue) {
       this.router.navigate(['', 'TenniShip']);
     }
@@ -233,7 +234,7 @@ export class SignupComponent implements OnInit {
 
   loginAfterSignUp(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.userService.login(this.username, this.password).subscribe(
+      this.userService.login(this.username, this.password,false).subscribe(
         res => {
           console.log("User logged successfully: " + this.username + " -> " + res);
           resolve()
@@ -271,6 +272,11 @@ export class SignupComponent implements OnInit {
     this.userService.uploadTeamImages(inputPics, this.teamName).subscribe(
       res => {
         this.noTeamPic = false;
+        this.imageService.getTeamImage(this.userService.currentUserValue.team,0).subscribe(
+          image => {
+            this.userService.createImageFromBlob(image)
+          }
+        );
         console.log("Images Uploaded: " + res);
       },
       error => {
