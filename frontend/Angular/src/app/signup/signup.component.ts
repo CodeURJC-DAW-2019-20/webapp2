@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { UserService } from 'src/app/service/user.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { ImageService } from '../service/image.service';
+import { SpinerService } from '../service/spiner.service';
 
 
 @Component({
@@ -74,7 +75,7 @@ export class SignupComponent implements OnInit {
 
 
   /*        IMPLEMENTATION AREA        */
-  constructor(public userService: UserService, public router: Router, private imageService: ImageService) {
+  constructor(public userService: UserService, public router: Router, private imageService: ImageService, private spinerService: SpinerService) {
     if (this.userService.currentUserValue) {
       this.router.navigate(['', 'TenniShip']);
     }
@@ -104,6 +105,7 @@ export class SignupComponent implements OnInit {
       console.log("Validating database data...");   // HttpResponse gotten
       if (this.validateRegisterFields()) {          // Validation of other front-end fields
         console.log("Credentials are OK");
+        this.spinerService.changeLoading(true);
         this.userService.signUp(this.username, this.password, this.email, this.teamName, [this.nameplayer1, this.nameplayer2,
         this.nameplayer3, this.nameplayer4, this.nameplayer5]).subscribe(
           res => {
@@ -111,11 +113,13 @@ export class SignupComponent implements OnInit {
               this.uploadFiles();
               console.log("Register successfull: " + res);
               this.userData.reset();
+              this.spinerService.changeLoading(false);
               this.redirection();
             });
           },
           error => {
             console.error("Something went wrong: " + error);
+            this.spinerService.changeLoading(false);
             this.userData.reset();
           }
         );

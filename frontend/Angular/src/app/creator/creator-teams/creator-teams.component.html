@@ -249,11 +249,11 @@
                     </div>
                     <p *ngIf="next2" style="font-size: 13px; color: #18d26e;text-align: center;" >Everything is fine. You can continue.</p>
                     <div class="teamsButtons">
-                        <div *ngIf="next2" class="pt-3 button">
-                            <button (click)="next2Check()" class="input-group-test btn mb-3" type="submit">Next</button>
-                        </div>
                         <div class="pt-3 button">
                             <button (click)="checkTeams()" class="input-group-test btn mb-3" type="submit">Check</button>
+                        </div>
+                        <div *ngIf="next2" class="pt-3 button">
+                            <button (click)="next2Check()" class="input-group-test btn mb-3" type="submit">Next</button>
                         </div>
                     </div>
                     

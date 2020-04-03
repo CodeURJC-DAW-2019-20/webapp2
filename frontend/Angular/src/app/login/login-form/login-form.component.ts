@@ -23,7 +23,7 @@ export class LoginFormComponent implements OnInit {
   invalidCredentials: boolean;
   returnUrl: string;
 
-  constructor(public userService: UserService, public router: Router, public route: ActivatedRoute,private imageService:ImageService) {
+  constructor(public userService: UserService, public router: Router, public route: ActivatedRoute) {
     if (this.userService.currentUserValue) {
       this.router.navigate(['', 'TenniShip']);
     }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SpinerService } from './service/spiner.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: []
 })
 export class AppComponent {
-  title = 'Angular';
+
+  constructor(public spinerService: SpinerService){}
+
 }

@@ -4,6 +4,7 @@ import {TeamService} from "./team.service";
 import {TeamFileData} from "../model/team-file-data";
 import {ErrorService} from "../errors/errors.service";
 import {ImageService} from "../service/image.service";
+import { SpinerService } from '../service/spiner.service';
 
 @Component({
   selector: 'app-team-info',
@@ -18,7 +19,7 @@ export class TeamInfoComponent implements OnInit {
   public playerArrayImage: any [];
   public tournamentArrayImage: any [];
   dir:string;
-  constructor(private route: ActivatedRoute, private teamService: TeamService, private errorService: ErrorService, private imageService:ImageService) {}
+  constructor(private route: ActivatedRoute, private teamService: TeamService, private errorService: ErrorService, private imageService:ImageService, private spinerService: SpinerService) {}
 
   ngOnInit(): void {
     this.refreshUrl();
@@ -50,17 +51,11 @@ export class TeamInfoComponent implements OnInit {
 
   public refreshInfo():void{
     this.playerArrayImage = new Array(5);
+    this.spinerService.changeLoading(true);
     this.teamService.getTeamFileData(this.team_id).subscribe(
       data => {
         this._teamFileData = data;
         console.log(this._teamFileData.tournamentList[0]);
-        for(let i=0;i<6;i++){
-          this.imageService.getTeamImage(this.team_id,i).subscribe(
-            image=>{
-              this.createImageFromBlob(image,i);
-            },
-          );
-        }
         this.tournamentArrayImage = new Array(this._teamFileData.tournamentList.length);
         for(let i=6;i<this.tournamentArrayImage.length+6;i++){
           this.imageService.getTournamentImage(<string><unknown>(this._teamFileData.tournamentList[i-6])).subscribe(
@@ -69,8 +64,18 @@ export class TeamInfoComponent implements OnInit {
             },
           );
         }
+        for(let i=0;i<6;i++){
+          this.imageService.getTeamImage(this.team_id,i).subscribe(
+            image=>{
+              this.createImageFromBlob(image,i);
+              if (i === 5) {
+                this.spinerService.changeLoading(false);
+              }
+            },
+          );
+        }
         this.teamService.setWinPercentage(this._teamFileData.percentageWonMatches);
-      },error => this.handleError(error)
+      },error => {this.handleError(error),this.spinerService.changeLoading(false);}
     );
 
   }
