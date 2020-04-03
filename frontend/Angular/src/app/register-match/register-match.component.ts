@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {RegisterMatchData} from "../model/register-match-data";
 import {Match} from "../model/match";
 import {PageLengthService} from "../service/page-length.service";
@@ -19,8 +19,9 @@ export class RegisterMatchComponent implements OnInit {
   // If admin: /TenniShip/RegisterMatch/Tournaments/{{tournament.name}}/Submission
   // If user:  /TenniShip/ADMIN/Tournaments/{{tournament.name}}/EditMatches/{{type}}/Submission
   private registerMatchData: RegisterMatchData;
+  dirImagesPage: string ="/assets/resources/static/img/";
 
-  constructor(private pageLength: PageLengthService, private registerMatchService: RegisterMatchService, private route: ActivatedRoute) {
+  constructor(private pageLength: PageLengthService, private registerMatchService: RegisterMatchService, private route: ActivatedRoute, private router: Router) {
     this.tournament_id = route.snapshot.params.tournament_id;
     // Needs a decision to be made about how to handle admin variation
     this.registerMatchService.getData(this.tournament_id).subscribe(
@@ -68,6 +69,7 @@ export class RegisterMatchComponent implements OnInit {
       this.registerMatchService.registerMatch(this.tournament_id, this.registerMatchData.matches[i]).subscribe();
       // IMPORTANT: You have to subscribe first, or the request won't be sent
       this.registerMatchService.registerMatch(this.tournament_id, this.registerMatchData.matches[i]);
+      this.router.navigate(['/TenniShip', 'RegisterMatch', 'Tournaments', this.tournament_id]);
     }
     else {
       alert("Error: One and only one of the teams has to have 3 points");
