@@ -6,12 +6,12 @@ import {BehaviorSubject} from "rxjs";
 })
 export class PageLengthService {
 
-  private lengthChangeSource = new BehaviorSubject(window.innerHeight >= document.body.offsetHeight + 92);
+  private lengthChangeSource = new BehaviorSubject(window.innerHeight >= document.body.offsetHeight);
   shortContent = this.lengthChangeSource.asObservable();
 
   constructor() { }
 
   updatePageLength() {
-    this.lengthChangeSource.next(window.innerHeight >= document.body.offsetHeight + 92);
+    this.lengthChangeSource.next(window.innerHeight >= document.body.offsetHeight);
   }
 }

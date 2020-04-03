@@ -1,7 +1,8 @@
-import { Component, OnInit, ɵisBoundToModule__POST_R3__ } from '@angular/core';
+import { Component, OnInit, ɵisBoundToModule__POST_R3__, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { UserService } from 'src/app/service/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ImageService } from 'src/app/service/image.service';
 
 
 @Component({
@@ -22,16 +23,14 @@ export class LoginFormComponent implements OnInit {
   invalidCredentials: boolean;
   returnUrl: string;
 
-  constructor(public userService: UserService, public router: Router, public route: ActivatedRoute) {
+  constructor(public userService: UserService, public router: Router, public route: ActivatedRoute,private imageService:ImageService) {
     if (this.userService.currentUserValue) {
       this.router.navigate(['', 'TenniShip']);
     }
   }
 
   ngOnInit() {
-    console.log(this.userService.registerSucceeded);
     this.invalidCredentials = false;
-
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/TenniShip';
   }
 
@@ -40,8 +39,15 @@ export class LoginFormComponent implements OnInit {
       if (this.credentials.controls['password'].value != ('')) {
         this.userService.login(username, password).subscribe(
           res => {
-            console.log(res);
-            this.navigate();
+            this.userService.loged = true; 
+            if (!this.userService.getIsAdmin()) {
+              this.imageService.getTeamImage(this.userService.currentUserValue.team,0).subscribe(
+                image => {
+                  this.userService.createImageFromBlob(image)
+                }
+              );
+            }
+            this.navigate()
           },
           error => {
             this.invalidCredentials = true;
@@ -55,8 +61,6 @@ export class LoginFormComponent implements OnInit {
     }
     else
       this.emptyUsername = true;
-    if (this.userService.registerSucceeded == true)
-      this.userService.registerSucceeded = false;
   }
 
   navigate() {

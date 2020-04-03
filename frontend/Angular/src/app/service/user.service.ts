@@ -17,10 +17,11 @@ export class UserService {
 
   public selectFiles: FileList[] = new Array(6);
 
-  redirectToHome: string = "/TenniShip/SignIn";
-  registerSucceeded: boolean = false;
+  redirectToHome: string = "/TenniShip";
   currentUser: Observable<User>;
   currentUserSubject: BehaviorSubject<User>;
+  teamImage;
+  loged: boolean = false;
 
   login(un: string, pass: string) {
     var httpOptions = {
@@ -32,11 +33,11 @@ export class UserService {
     return this.http.get<any>('/api/tenniship/signin', httpOptions).
       pipe(
         map(user => {
-          console.log(user);
+          //console.log(user);
           user.authData = window.btoa(un + ':' + pass);
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
-          console.log(user);
+          //console.log(user);
         })
       )
   }
@@ -76,6 +77,21 @@ export class UserService {
     formData.append('imageFile', files[5]);
 
     return this.http.post('/api/tenniship/teams/' + team + '/image', formData);
+  }
+
+  getIsAdmin() {    
+    return this.currentUserValue.roles.indexOf('ROLE_ADMIN') !== -1;
+  }
+  
+  public createImageFromBlob (image: Blob){
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      this.teamImage = reader.result;
+    }, false);
+ 
+    if (image) {
+      reader.readAsDataURL(image);
+    }
   }
 
 }

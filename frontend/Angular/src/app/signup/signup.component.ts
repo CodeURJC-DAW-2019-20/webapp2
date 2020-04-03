@@ -106,12 +106,12 @@ export class SignupComponent implements OnInit {
         this.userService.signUp(this.username, this.password, this.email, this.teamName, [this.nameplayer1, this.nameplayer2,
         this.nameplayer3, this.nameplayer4, this.nameplayer5]).subscribe(
           res => {
-            this.uploadFiles();
-            if (this.userService.registerSucceeded == false)
-              this.userService.registerSucceeded = true;
-            console.log("Register successfull: " + res);
-            this.userData.reset();
-            this.redirection();
+            this.loginAfterSignUp().then(() => {    //wait for logging response to upload images
+              this.uploadFiles();
+              console.log("Register successfull: " + res);
+              this.userData.reset();
+              this.redirection();
+            });
           },
           error => {
             console.error("Something went wrong: " + error);
@@ -225,6 +225,21 @@ export class SignupComponent implements OnInit {
         },
         error => {
           console.error("Something went wrong: undefined: " + error);
+          reject()
+        }
+      );
+    })
+  }
+
+  loginAfterSignUp(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.userService.login(this.username, this.password).subscribe(
+        res => {
+          console.log("User logged successfully: " + this.username + " -> " + res);
+          resolve()
+        },
+        error => {
+          console.error("Error when logging: " + error);
           reject()
         }
       );

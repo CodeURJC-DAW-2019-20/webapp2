@@ -4,7 +4,7 @@
 </div>
 
 <div *ngIf="allPlayed" class="text-center pt-3">
-  <h4><a href="/TenniShip/Tournaments/{{tournamentName}}" style="color: green;"><strong>Go to the Tournament</strong></a></h4>
+  <h4><a href="/TenniShip/Tournaments/{{tournament_id}}" style="color: green;"><strong>Go to the Tournament</strong></a></h4>
 </div>
 
 <section class="section-bg" id="registerMatchBothPages">
@@ -20,7 +20,7 @@
               </div>
               <div class="card-body">
                 <h4 class="card-title TeamPositioningRegisterMatchIconLocal">
-                  <a class="colorLinkTeam" href="/Teams/{{match.team1.teamName}}">{{match.team1.teamName}}</a>
+                  <a class="colorLinkTeam" [routerLink]="['TenniShip', 'Teams', match.team1.teamName]">{{match.team1.teamName}}</a>
                   <input type="hidden" name="teamHome" value="{{match.team1.teamName}}">
                 </h4>
                 <p class="card-text TeamPositioningRegisterMatchIconLocal">Local´s Team</p>
@@ -31,7 +31,7 @@
           <div class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp ">
             <div class="registerMatchBothPages-wrap ">
               <figure>
-                <img alt="" class="img-fluid rackets" src="/../img/rackets.png">
+                <img alt="" class="img-fluid rackets" src="{{dirImagesPage}}rackets.png">
               </figure>
 
               <div class="registerMatchBothPages-info ">
@@ -42,16 +42,16 @@
 
                   <div class="TeamPositioningRegisterMatchIconLocal">
                     <div class="def-number-input number-input safari_only">
-                      <button class="minus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                      <input class="quantity" min="0" max="3" name="quantityHome" type="number" value="{{match.homePoints}}">
-                      <button class="plus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
+                      <button class="minus" type="button" (click)="changePoints(i,true,false)"></button>
+                      <input class="quantity" min="0" max="3" name="quantityHome" type="number" [value]="match.homePoints">
+                      <button class="plus" type="button" (click)="changePoints(i,true,true)"></button>
                     </div>
                   </div>
                   <div class="TeamPositioningRegisterMatchIconVisitor">
                     <div class="def-number-input number-input safari_only">
-                      <button class="minus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
-                      <input class="quantity" min="0" max="3" name="quantityAway" type="number" value="{{match.awayPoints}}">
-                      <button class="plus" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"></button>
+                      <button class="minus" type="button" (click)="changePoints(i,false,false)"></button>
+                      <input class="quantity" min="0" max="3" name="quantityAway" type="number" [value]="match.awayPoints">
+                      <button class="plus" type="button" (click)="changePoints(i,false,true)"></button>
                     </div>
                   </div>
                 </div>
@@ -66,7 +66,7 @@
               </div>
               <div class="card-body">
                 <h4 class="card-title TeamPositioningRegisterMatchIconVisitor">
-                  <a class="colorLinkTeam" href="/Teams/{{match.team2.teamName}}">{{match.team2.teamName}}</a>
+                  <a class="colorLinkTeam" [routerLink]="['TenniShip', 'Teams', match.team2.teamName]">{{match.team2.teamName}}</a>
                   <input type="hidden" name="teamAway" value="{{match.team2.teamName}}">
                 </h4>
                 <p class="card-text TeamPositioningRegisterMatchIconVisitor">Visitor´s Team</p>
@@ -75,7 +75,7 @@
           </div>
         </div>
         <div class="centerButton">
-          <button class="btn SubmitButtonMatch" type="submit">Submit</button>
+          <button class="btn SubmitButtonMatch" type="submit" (click)="submitMatch(i)">Submit</button>
         </div>
         <!--<input type="hidden" name="_csrf" value="{{token}}">-->
       </form>

@@ -334,7 +334,6 @@ main.index {
 }
 
 .nav-menu ul {
-    margin: 4px 0 0 0;
     padding: 10px;
     box-shadow: 0 0 30px rgba(127, 137, 161, 0.25);
     background: #fff;
@@ -514,6 +513,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .section-header:first-of-type h3 {
     margin-top: 60px;
+}
+
+section.section-bg {
+  padding: 50px 0;
 }
 
 
@@ -1084,7 +1087,6 @@ div.img {
 
 
 /*Search Bar*/
-/* TODO: Delete this when the new searchboxes work */
 
 .active-green-3 input[type=search] {
     border: 1px solid rgba(24, 210, 110, .4);

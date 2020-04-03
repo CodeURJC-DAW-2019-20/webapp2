@@ -12,11 +12,11 @@
       <div *ngFor="let tournament of getTournamentList(); index as i" class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp displayTournamentsHidden">
         <div class="registerMatchBothPages-wrap">
           <figure>
-            <a href="/TenniShip/RegisterMatch/Tournaments/{{tournament.name}}"><img alt="" class="img-fluid" src="/images/registered/tournaments/{{tournament.name}}.jpg"></a>
+            <a [routerLink]="[tournament.name]"><img alt="" class="img-fluid" src="/images/registered/tournaments/{{tournament.name}}.jpg"></a>
           </figure>
 
           <div class="registerMatchBothPages-info">
-            <h4><a href="/TenniShip/RegisterMatch/Tournaments/{{tournament.name}}">{{tournament.name}}</a></h4>
+            <h4><a [routerLink]="[tournament.name]">{{tournament.name}}</a></h4>
           </div>
         </div>
       </div>
