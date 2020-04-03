@@ -8,7 +8,7 @@
                 !-->
                 <div class="tournament-icon img-thumbnail">
                     <!--<img alt="Tournament Image" class="tournamentPic rounded mx-auto d-block" src="/images/registered/tournaments/{{tournamentName}}.jpg">-->
-                    <img alt="Tournament Image" class="tournamentPic rounded mx-auto d-block" src="./assets/resources/static/img/clients/tournaments/{{getTournamentSheetData().tournament.name}}.jpg">
+                    <img alt="Tournament Image" class="tournamentPic rounded mx-auto d-block" [src]="getTournamentImage()">
                 </div>
                 <!--
                 {{/hasImage}}
