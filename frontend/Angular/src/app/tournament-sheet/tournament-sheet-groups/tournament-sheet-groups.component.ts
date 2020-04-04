@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {TournamentSheetService} from "../tournament-sheet.service";
 import {TournamentSheetData} from "../../model/tournament-sheet-data";
 import {AuxiliarClass} from "../../model/tournament-sheet-auxdata";
@@ -10,14 +10,19 @@ import { UserService} from "../../shared-services/user.service";
   templateUrl: './tournament-sheet-groups.component.html',
   styleUrls: []
 })
-export class TournamentSheetGroupsComponent implements OnInit {
+export class TournamentSheetGroupsComponent implements OnInit,OnChanges {
 
   public _tournamentSheetData: TournamentSheetData;
 
-  constructor(private route : ActivatedRoute, private tournamentSheetService: TournamentSheetService,
-    public userService: UserService){
-    this._tournamentSheetData = this.tournamentSheetService._tournamentSheetAux;
+  @Input()
+  dataFinalTournament: TournamentSheetData;
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.dataFinalTournament = changes.dataFinalTournament.currentValue;
+    this._tournamentSheetData = this.dataFinalTournament;
   }
+
+  constructor(public userService: UserService){ }
 
   ngOnInit():void {
   }

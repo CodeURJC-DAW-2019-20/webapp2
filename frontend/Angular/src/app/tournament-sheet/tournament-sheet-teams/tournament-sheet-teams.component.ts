@@ -39,11 +39,11 @@ export class TournamentSheetTeamsComponent implements OnInit {
         }
       }
     }
-    
-    
+
+
     for(var j = 0; j < 6; j++){
       for(var i = 0; i < 3; i++){
-        this.saveImage(this._tournamentSheetData.groups[j][i].team.teamName)   
+        this.saveImage(this._tournamentSheetData.groups[j][i].team.teamName)
       }
     }
   }
@@ -57,7 +57,7 @@ export class TournamentSheetTeamsComponent implements OnInit {
         this.createImageFromBlob(image, name);
       },
     );
-    
+
   }
 
   getTournamentSheetTeams(): AuxiliarClass[][] {
@@ -76,7 +76,7 @@ export class TournamentSheetTeamsComponent implements OnInit {
         this.teamArrayName[this.imageIndex] = name;
         this.imageIndex++;
       }, false);
-  
+
       if (image) {
         reader.readAsDataURL(image);
       }
@@ -90,7 +90,7 @@ export class TournamentSheetTeamsComponent implements OnInit {
         name = this.segundos[j].team.teamName;
       else
         name = this.terceros[j].team.teamName;
-      
+
       let correctIndex = this.teamArrayName.findIndex((element) => element == name);
       return this.teamArrayImage[ correctIndex ];
     }

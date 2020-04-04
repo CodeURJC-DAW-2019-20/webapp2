@@ -1,4 +1,4 @@
-import {Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, SystemJsNgModuleLoader} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TournamentSheetService} from "../tournament-sheet.service";
 import {TournamentSheetData} from "../../model/tournament-sheet-data";
@@ -8,15 +8,23 @@ import {TournamentSheetData} from "../../model/tournament-sheet-data";
   templateUrl: './tournament-sheet-final.component.html',
   styleUrls: []
 })
-export class TournamentSheetFinalComponent implements OnInit {
+export class TournamentSheetFinalComponent implements OnInit,OnChanges {
+
+  @Input()
+  dataFinalTournament: TournamentSheetData;
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.dataFinalTournament = changes.dataFinalTournament.currentValue;
+    this._tournamentSheetData = this.dataFinalTournament;
+  }
 
   public _tournamentSheetData: TournamentSheetData;
 
-  constructor(private route : ActivatedRoute, private tournamentSheetService: TournamentSheetService){
-    this._tournamentSheetData = this.tournamentSheetService._tournamentSheetAux;
+  constructor(){
   }
 
   ngOnInit(): void {
+
   }
 
   getQuartersTeam(i, homeORaway): string {
