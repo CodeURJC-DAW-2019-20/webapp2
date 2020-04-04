@@ -6,7 +6,7 @@
         </div>
 
         <nav id="nav-menu-container">
-            <ul *ngIf="userService.logged" class="nav-menu">
+            <ul *ngIf="userService.logged || (userService.currentUserValue!=null)" class="nav-menu">
                 <li *ngIf="userService.getIsAdmin()">
                     <div ngbDropdown class="d-inline-block">
                         <button class="btn teamMenu"><a class="menu-has-children" id="dropdownBasic1" ngbDropdownToggle>ADMIN</a></button>
@@ -38,7 +38,7 @@
                 <li *ngIf="!userService.getIsAdmin()"><img alt="" class="rounded-circle loginImage" [src]="userService.teamImage">
                 </li>
             </ul>
-            <ul *ngIf="!userService.logged" class="nav-menu">
+            <ul *ngIf="!userService.logged || (userService.currentUserValue==null)" class="nav-menu">
                 <li>
                     <a class="btn btn-primary signUpIndexBtnText" [routerLink]="['','TenniShip','SignUp']" type="submit">Sign Up</a>
                 </li>
