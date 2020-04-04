@@ -18,7 +18,8 @@
         <div id="progress-content" class="container">
 
             <div class="progress">
-                <!--aria-valuenow="{{completion}}"--><!--style="width: {{completion}}%;"-->
+                <!--aria-valuenow="{{completion}}"-->
+                <!--style="width: {{completion}}%;"-->
                 <div aria-valuemax="100" aria-valuemin="0" class="progress-bar" role="progressbar" [style.width.%]="getTournamentSheetData().completion">
                     <span class="skill">Tournament completion: <i class="val">{{getTournamentSheetData().completion}} %</i></span>
                 </div>
@@ -54,22 +55,22 @@
                     <div class="tournamentBoard shadow p-3 mb-5 bg-white rounded">
                         <div class="tab-content" id="v-pills-tabContent">
                             <div *ngIf="active==='groups'">
-                                <app-tournament-groups></app-tournament-groups>
+                                <app-tournament-groups [dataFinalTournament]="_tournamentSheetData"></app-tournament-groups>
                             </div>
                             <div *ngIf="active==='final'">
-                                <app-tournament-final></app-tournament-final>
+                                <app-tournament-final [dataFinalTournament]="_tournamentSheetData"></app-tournament-final>
                             </div>
                             <div *ngIf="active==='teams'">
-                                <app-tournament-teams></app-tournament-teams>
+                                <app-tournament-teams [dataFinalTournament]="_tournamentSheetData"></app-tournament-teams>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-<!--        <div *ngIf="isAdmin()">-->
-          <app-tournament-sheet-modal [tournamentName]=getTournamentName()></app-tournament-sheet-modal>
-<!--        </div>-->
+        <div *ngIf="userService.logged && userService.getIsAdmin()">
+            <app-tournament-sheet-modal [tournamentName]=getTournamentName()></app-tournament-sheet-modal>
+        </div>
 
 
     </section>

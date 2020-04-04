@@ -4,10 +4,10 @@ import {TournamentSheetService} from "./tournament-sheet.service";
 import {TournamentSheetData} from "../model/tournament-sheet-data";
 import { catchError } from 'rxjs/operators';
 import {ErrorService} from "../errors/errors.service"
-import {UserService} from "../service/user.service";
+import {UserService} from "../shared-services/user.service";
 import {User} from "../model/user.model";
-import {ImageService} from "../service/image.service";
-import { SpinerService } from '../service/spiner.service';
+import {ImageService} from "../shared-services/image.service";
+import { SpinnerService } from '../shared-services/spinner.service';
 
 @Component({
   selector: 'app-tournament-sheet',
@@ -20,32 +20,36 @@ export class TournamentSheetComponent implements OnInit {
   public active = "groups";
   public _tournamentSheetData: TournamentSheetData;
   public tournament_id: string;
-  public currentUser:User;  
   public imageTournament;
 
   constructor(private route : ActivatedRoute, private tournamentSheetService: TournamentSheetService,
-    private errorService: ErrorService, private userService:UserService, private imageService: ImageService, private spinerService: SpinerService){
-    this.tournament_id = route.snapshot.params.tournament_id;
-    this.userService.currentUser.subscribe(x => this.currentUser = x);
+    private errorService: ErrorService, public userService:UserService, private imageService: ImageService, private spinerService: SpinnerService){
+  }
+
+  public refreshPage(){
+    this.route.params.subscribe(params => {
+      this.tournament_id = params.tournament_id;
+      this.spinerService.changeLoading(true);
+      this.tournamentSheetService.getTournamentSheetData(this.tournament_id).subscribe(
+        data => {
+          this._tournamentSheetData = data;
+          this.tournamentSheetService.setTournamentSheetData(data);
+          this.imageService.getTournamentImage(this._tournamentSheetData.tournament.name).subscribe(
+            image=>{
+              this.createImageFromBlob(image);
+              this.spinerService.changeLoading(false);
+            },
+          );
+        },
+        error => {this.handleError(error);
+          this.spinerService.changeLoading(false);
+        }
+      );
+    });
   }
 
   ngOnInit():void {
-    this.spinerService.changeLoading(true);
-    this.tournamentSheetService.getTournamentSheetData(this.tournament_id).subscribe(
-      data => {
-        this._tournamentSheetData = data;
-        this.tournamentSheetService.setTournamentSheetData(data);
-
-        this.imageService.getTournamentImage(this._tournamentSheetData.tournament.name).subscribe(
-          image=>{
-            this.createImageFromBlob(image);
-            this.spinerService.changeLoading(false);
-          },
-        );
-        
-      },
-      error => {this.handleError(error), this.spinerService.changeLoading(false);}
-    );
+    this.refreshPage();
   }
 
   createImageFromBlob(image: Blob) {

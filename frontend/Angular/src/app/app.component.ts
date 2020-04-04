@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SpinerService } from './service/spiner.service';
+import { SpinnerService } from './shared-services/spinner.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,6 @@ import { SpinerService } from './service/spiner.service';
 })
 export class AppComponent {
 
-  constructor(public spinerService: SpinerService){}
+  constructor(public spinerService: SpinnerService){}
 
 }

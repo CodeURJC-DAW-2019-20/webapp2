@@ -1,8 +1,8 @@
 import { Component, OnInit, ɵisBoundToModule__POST_R3__, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { UserService } from 'src/app/service/user.service';
+import { UserService } from 'src/app/shared-services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ImageService } from 'src/app/service/image.service';
+import { ImageService } from 'src/app/shared-services/image.service';
 
 
 @Component({

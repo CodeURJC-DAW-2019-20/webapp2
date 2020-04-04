@@ -22,7 +22,7 @@ export class UserService {
   currentUser: Observable<User>;
   currentUserSubject: BehaviorSubject<User>;
   teamImage;
-  loged: boolean = false;
+  logged: boolean = false;
 
   login(un: string, pass: string, oldUser: boolean) {
     var httpOptions = {
@@ -34,11 +34,10 @@ export class UserService {
     return this.http.get<any>('/api/tenniship/signin', httpOptions).
       pipe(
         map(user => {
-          //console.log(user);
           user.authData = window.btoa(un + ':' + pass);
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
-          this.loged = true; 
+          this.logged = true; 
           if (oldUser && !this.getIsAdmin()) {
             this.imageService.getTeamImage(this.currentUserValue.team,0).subscribe(
               image => {
@@ -46,7 +45,6 @@ export class UserService {
               }
             );
           }
-          //console.log(user);
         })
       )
   }

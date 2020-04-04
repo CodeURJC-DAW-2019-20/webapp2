@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Tournament} from "../model/tournament";
-import {PageLengthService} from "../service/page-length.service";
+import {PageLengthService} from "../shared-services/page-length.service";
 import {SelectTournamentService} from "./select-tournament.service";
 import {ImageService} from "../service/image.service";
 import {SpinerService} from "../service/spiner.service";

@@ -3,8 +3,8 @@ import {ActivatedRoute} from "@angular/router";
 import {TeamService} from "./team.service";
 import {TeamFileData} from "../model/team-file-data";
 import {ErrorService} from "../errors/errors.service";
-import {ImageService} from "../service/image.service";
-import { SpinerService } from '../service/spiner.service';
+import {ImageService} from "../shared-services/image.service";
+import { SpinnerService } from '../shared-services/spinner.service';
 
 @Component({
   selector: 'app-team-info',
@@ -19,7 +19,7 @@ export class TeamInfoComponent implements OnInit {
   public playerArrayImage: any [];
   public tournamentArrayImage: any [];
   dir:string;
-  constructor(private route: ActivatedRoute, private teamService: TeamService, private errorService: ErrorService, private imageService:ImageService, private spinerService: SpinerService) {}
+  constructor(private route: ActivatedRoute, private teamService: TeamService, private errorService: ErrorService, private imageService:ImageService, private spinerService: SpinnerService) {}
 
   ngOnInit(): void {
     this.refreshUrl();
@@ -55,7 +55,6 @@ export class TeamInfoComponent implements OnInit {
     this.teamService.getTeamFileData(this.team_id).subscribe(
       data => {
         this._teamFileData = data;
-        console.log(this._teamFileData.tournamentList[0]);
         this.tournamentArrayImage = new Array(this._teamFileData.tournamentList.length);
         for(let i=6;i<this.tournamentArrayImage.length+6;i++){
           this.imageService.getTournamentImage(<string><unknown>(this._teamFileData.tournamentList[i-6])).subscribe(

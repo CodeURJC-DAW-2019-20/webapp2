@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({providedIn: 'root'})
-export class SpinerService {
+export class SpinnerService {
 	public loading: boolean = false;
 
 	public changeLoading(b: boolean){

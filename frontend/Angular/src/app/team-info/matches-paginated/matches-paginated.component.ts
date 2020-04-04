@@ -22,7 +22,6 @@ export class MatchesPaginatedComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.team_id = params.team_id;
-      console.log(this.team_id);
       this.page=0;
       this._matchesListTableAux= new Array<Match>();
       this._matchesListTable= new Array<Match>();
@@ -30,7 +29,6 @@ export class MatchesPaginatedComponent implements OnInit {
       this.matchesPaginatedService.getFirstPage(this.team_id).subscribe(
         data=>{
           this._matchesListTable = data;
-          console.log(data);
         }
       );
       this.page++;
@@ -66,6 +64,6 @@ export class MatchesPaginatedComponent implements OnInit {
 
   public handleError(error: any) {
     console.error(error);
-  }  
+  }
 }
 

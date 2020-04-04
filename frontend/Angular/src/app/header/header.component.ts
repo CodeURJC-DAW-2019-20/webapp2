@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from "@angular/router";
-import { UserService } from "../service/user.service";
+import { UserService } from "../shared-services/user.service";
 import { User } from "../model/user.model";
-import { HttpClient } from '@angular/common/http';
-import { ImageService } from '../service/image.service';
+import { ImageService } from '../shared-services/image.service';
 
 @Component({
 	selector: 'app-header',
@@ -16,7 +15,7 @@ export class HeaderComponent implements OnInit {
 	indexPage = true;   // Should change when the current page is not index
 	scrolled = false;
 
-	constructor(private router: Router, public userService: UserService) {
+	constructor(private router: Router, public userService: UserService,private imageService: ImageService) {
 		router.events.subscribe(
 			data => {
 				this.indexPage = (router.url === "/TenniShip"); // Makes header black if the user is not on the index page
@@ -27,6 +26,15 @@ export class HeaderComponent implements OnInit {
 
 
 	ngOnInit(): void {
+		this.userService.currentUser.subscribe(x => this.currentUser = x);
+		if (this.currentUser != null) {
+			this.userService.logged = true; 
+			this.imageService.getTeamImage(this.userService.currentUserValue.team,0).subscribe(
+				image => {
+				  this.userService.createImageFromBlob(image)
+				}
+			  );
+		}
 	}
 
 	logout(): Promise<any> {
@@ -36,7 +44,7 @@ export class HeaderComponent implements OnInit {
 					// remove user from local storage to log user out
 					localStorage.removeItem('currentUser');
 					this.userService.currentUserSubject.next(null);
-					this.userService.loged = false;
+					this.userService.logged = false;
 					this.router.navigate(['', 'TenniShip']);
 				},
 				error => {

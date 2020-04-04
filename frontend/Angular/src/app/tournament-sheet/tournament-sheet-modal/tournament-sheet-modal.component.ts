@@ -28,12 +28,16 @@ export class NgbdModalConfirm {
 
   constructor(public router: Router, public modal: NgbActiveModal,
     private tournamentSheetService: TournamentSheetService,
-    private comunicador: TournamentSheetModalService) {
+    private communicator: TournamentSheetModalService) {
     }
 
   deleteAndGoHome() {
-    this.tournamentSheetService.deleteTournamentSheet(this.comunicador.getTournamentName());
-    this.router.navigate(['/TenniShip']);
+    this.tournamentSheetService.deleteTournamentSheet(this.communicator.getTournamentName())
+    .subscribe(
+      res => {
+        this.router.navigate(['/TenniShip']);
+      }
+    );
   }
 }
 
@@ -50,10 +54,10 @@ const MODALS: {[name: string]: Type<any>} = {
 export class TournamentSheetModalComponent {
   @Input() tournamentName: string;
 
-  constructor(public _modalService: NgbModal, public comunicador: TournamentSheetModalService) {}
+  constructor(public _modalService: NgbModal, public communicator: TournamentSheetModalService) {}
 
   open(name: string) {
-    this.comunicador.setTournamentName(this.tournamentName);
+    this.communicator.setTournamentName(this.tournamentName);
     this._modalService.open(MODALS[name]);
   }
 }

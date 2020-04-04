@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PageLengthService} from "../service/page-length.service";
+import {PageLengthService} from "../shared-services/page-length.service";
 import {NavigationEnd, Router} from "@angular/router";
 import {tick} from "@angular/core/testing";
 import {filter} from "rxjs/operators";

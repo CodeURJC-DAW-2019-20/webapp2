@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {RegisterMatchData} from "../model/register-match-data";
 import {Match} from "../model/match";
-import {PageLengthService} from "../service/page-length.service";
+import {PageLengthService} from "../shared-services/page-length.service";
 import {RegisterMatchService} from "./register-match.service";
 
 @Component({
