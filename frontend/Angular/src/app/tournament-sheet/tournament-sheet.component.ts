@@ -4,10 +4,10 @@ import {TournamentSheetService} from "./tournament-sheet.service";
 import {TournamentSheetData} from "../model/tournament-sheet-data";
 import { catchError } from 'rxjs/operators';
 import {ErrorService} from "../errors/errors.service"
-import {UserService} from "../service/user.service";
+import {UserService} from "../shared-services/user.service";
 import {User} from "../model/user.model";
-import {ImageService} from "../service/image.service";
-import { SpinerService } from '../service/spiner.service';
+import {ImageService} from "../shared-services/image.service";
+import { SpinerService } from '../shared-services/spiner.service';
 
 @Component({
   selector: 'app-tournament-sheet',
@@ -24,7 +24,7 @@ export class TournamentSheetComponent implements OnInit {
   public imageTournament;
 
   constructor(private route : ActivatedRoute, private tournamentSheetService: TournamentSheetService,
-    private errorService: ErrorService, private userService:UserService, private imageService: ImageService, private spinerService: SpinerService){
+    private errorService: ErrorService, public userService:UserService, private imageService: ImageService, private spinerService: SpinerService){
     this.tournament_id = route.snapshot.params.tournament_id;
     this.userService.currentUser.subscribe(x => this.currentUser = x);
   }

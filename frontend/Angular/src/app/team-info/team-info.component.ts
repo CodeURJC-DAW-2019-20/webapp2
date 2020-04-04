@@ -3,8 +3,8 @@ import {ActivatedRoute} from "@angular/router";
 import {TeamService} from "./team.service";
 import {TeamFileData} from "../model/team-file-data";
 import {ErrorService} from "../errors/errors.service";
-import {ImageService} from "../service/image.service";
-import { SpinerService } from '../service/spiner.service';
+import {ImageService} from "../shared-services/image.service";
+import { SpinerService } from '../shared-services/spiner.service';
 
 @Component({
   selector: 'app-team-info',

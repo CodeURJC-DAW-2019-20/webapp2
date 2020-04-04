@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { UserService } from 'src/app/service/user.service';
+import { UserService } from 'src/app/shared-services/user.service';
 import { Router, NavigationExtras } from '@angular/router';
-import { ImageService } from '../service/image.service';
-import { SpinerService } from '../service/spiner.service';
+import { ImageService } from '../shared-services/image.service';
+import { SpinerService } from '../shared-services/spiner.service';
 
 
 @Component({
@@ -238,7 +238,7 @@ export class SignupComponent implements OnInit {
 
   loginAfterSignUp(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.userService.login(this.username, this.password,false).subscribe(
+      this.userService.login(this.username, this.password, false).subscribe(
         res => {
           console.log("User logged successfully: " + this.username + " -> " + res);
           resolve()
@@ -276,7 +276,7 @@ export class SignupComponent implements OnInit {
     this.userService.uploadTeamImages(inputPics, this.teamName).subscribe(
       res => {
         this.noTeamPic = false;
-        this.imageService.getTeamImage(this.userService.currentUserValue.team,0).subscribe(
+        this.imageService.getTeamImage(this.userService.currentUserValue.team, 0).subscribe(
           image => {
             this.userService.createImageFromBlob(image)
           }

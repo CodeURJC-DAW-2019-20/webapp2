@@ -3,7 +3,7 @@ import { CreatorService } from '../creator.service';
 import { newTournament } from '../../model/newtournament';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { ImageService } from 'src/app/service/image.service';
+import { ImageService } from 'src/app/shared-services/image.service';
 
 @Component({
 	selector: 'app-creator-raffle',

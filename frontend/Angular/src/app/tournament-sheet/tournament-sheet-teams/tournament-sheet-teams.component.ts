@@ -3,7 +3,7 @@ import {TournamentSheetService} from "../tournament-sheet.service";
 import {TournamentSheetData} from "../../model/tournament-sheet-data";
 import {AuxiliarClass} from "../../model/tournament-sheet-auxdata";
 import {ActivatedRoute} from "@angular/router";
-import {ImageService} from "../../service/image.service";
+import {ImageService} from "../../shared-services/image.service";
 
 @Component({
   selector: 'app-tournament-teams',

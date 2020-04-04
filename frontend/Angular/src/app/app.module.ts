@@ -32,7 +32,7 @@ import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { ErrorsComponent } from './errors/errors.component';
 import { ErrorInterceptor } from './errors/error.interceptor';
-import { UserService} from './service/user.service';
+import { UserService} from './shared-services/user.service';
 import { TournamentSearchComponent } from './searchbox/tournament-search/tournament-search.component';
 import { TeamSearchComponent } from './searchbox/team-search/team-search.component';
 import {BasicAuthInterceptor} from "./auth/basic-auth.interceptor";
