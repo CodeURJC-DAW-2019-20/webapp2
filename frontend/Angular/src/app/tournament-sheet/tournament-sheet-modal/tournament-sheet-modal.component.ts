@@ -35,7 +35,6 @@ export class NgbdModalConfirm {
     this.tournamentSheetService.deleteTournamentSheet(this.communicator.getTournamentName())
     .subscribe(
       res => {
-        console.log(res)
         this.router.navigate(['/TenniShip']);
       }
     );

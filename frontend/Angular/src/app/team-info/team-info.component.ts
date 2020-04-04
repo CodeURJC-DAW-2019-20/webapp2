@@ -55,7 +55,6 @@ export class TeamInfoComponent implements OnInit {
     this.teamService.getTeamFileData(this.team_id).subscribe(
       data => {
         this._teamFileData = data;
-        console.log(this._teamFileData.tournamentList[0]);
         this.tournamentArrayImage = new Array(this._teamFileData.tournamentList.length);
         for(let i=6;i<this.tournamentArrayImage.length+6;i++){
           this.imageService.getTournamentImage(<string><unknown>(this._teamFileData.tournamentList[i-6])).subscribe(
