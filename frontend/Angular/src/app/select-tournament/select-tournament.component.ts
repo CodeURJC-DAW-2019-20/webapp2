@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Tournament} from "../model/tournament";
 import {PageLengthService} from "../shared-services/page-length.service";
 import {SelectTournamentService} from "./select-tournament.service";
-import {ImageService} from "../service/image.service";
-import {SpinerService} from "../service/spiner.service";
+import {ImageService} from "../shared-services/image.service"
+import {SpinnerService} from "../shared-services/spinner.service";
 
 @Component({
   selector: 'app-select-tournament',
@@ -18,10 +18,11 @@ export class SelectTournamentComponent implements OnInit {
   public morePages: boolean = true;
 
   constructor(private pagelength: PageLengthService, private selectTournamentService: SelectTournamentService,
-              private imageService: ImageService, private spinerService: SpinerService) {}
+              private imageService: ImageService, private spinnerService: SpinnerService) {}
 
   ngOnInit(): void {
     this.tournamentImages = new Array(this.pageSize);
+    this.spinnerService.changeLoading(true);
     this.selectTournamentService.getPage(0,this.pageSize).subscribe(
       data =>{
         this._tournamentList = data;
@@ -29,6 +30,9 @@ export class SelectTournamentComponent implements OnInit {
           this.imageService.getTournamentImage(this._tournamentList[i].name).subscribe(
             image=>{
               this.createImageFromBlob(image,i);
+              if (i === this.pageSize -1) {
+                this.spinnerService.changeLoading(false);
+              }
             },
           );
         }
@@ -42,6 +46,7 @@ export class SelectTournamentComponent implements OnInit {
   }
 
   public showMore(): void {
+    this.spinnerService.changeLoading(true);
     this.selectTournamentService.getPage(this.currentPage,this.pageSize).subscribe(
       data => {
         let aux = data;
@@ -65,6 +70,7 @@ export class SelectTournamentComponent implements OnInit {
     );
     this.currentPage++;
     this.pagelength.updatePageLength();
+    this.spinnerService.changeLoading(false);
   }
 
   createImageFromBlob(image: Blob, i:number) {
