@@ -4,7 +4,7 @@ import {TeamService} from "./team.service";
 import {TeamFileData} from "../model/team-file-data";
 import {ErrorService} from "../errors/errors.service";
 import {ImageService} from "../shared-services/image.service";
-import { SpinerService } from '../shared-services/spiner.service';
+import { SpinnerService } from '../shared-services/spinner.service';
 
 @Component({
   selector: 'app-team-info',
@@ -19,7 +19,7 @@ export class TeamInfoComponent implements OnInit {
   public playerArrayImage: any [];
   public tournamentArrayImage: any [];
   dir:string;
-  constructor(private route: ActivatedRoute, private teamService: TeamService, private errorService: ErrorService, private imageService:ImageService, private spinerService: SpinerService) {}
+  constructor(private route: ActivatedRoute, private teamService: TeamService, private errorService: ErrorService, private imageService:ImageService, private spinerService: SpinnerService) {}
 
   ngOnInit(): void {
     this.refreshUrl();

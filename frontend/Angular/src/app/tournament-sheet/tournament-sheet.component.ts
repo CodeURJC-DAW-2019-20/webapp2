@@ -7,7 +7,7 @@ import {ErrorService} from "../errors/errors.service"
 import {UserService} from "../shared-services/user.service";
 import {User} from "../model/user.model";
 import {ImageService} from "../shared-services/image.service";
-import { SpinerService } from '../shared-services/spiner.service';
+import { SpinnerService } from '../shared-services/spinner.service';
 
 @Component({
   selector: 'app-tournament-sheet',
@@ -23,18 +23,17 @@ export class TournamentSheetComponent implements OnInit {
   public imageTournament;
 
   constructor(private route : ActivatedRoute, private tournamentSheetService: TournamentSheetService,
-    private errorService: ErrorService, public userService:UserService, private imageService: ImageService, private spinerService: SpinerService){
+    private errorService: ErrorService, public userService:UserService, private imageService: ImageService, private spinerService: SpinnerService){
   }
 
   public refreshPage(){
     this.route.params.subscribe(params => {
-      this.tournament_id = this.route.snapshot.params.tournament_id;
+      this.tournament_id = params.tournament_id;
       this.spinerService.changeLoading(true);
       this.tournamentSheetService.getTournamentSheetData(this.tournament_id).subscribe(
         data => {
           this._tournamentSheetData = data;
           this.tournamentSheetService.setTournamentSheetData(data);
-
           this.imageService.getTournamentImage(this._tournamentSheetData.tournament.name).subscribe(
             image=>{
               this.createImageFromBlob(image);

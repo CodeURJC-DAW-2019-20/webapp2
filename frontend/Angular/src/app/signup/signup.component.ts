@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { UserService } from 'src/app/shared-services/user.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { ImageService } from '../shared-services/image.service';
-import { SpinerService } from '../shared-services/spiner.service';
+import { SpinnerService } from '../shared-services/spinner.service';
 
 
 @Component({
@@ -75,7 +75,7 @@ export class SignupComponent implements OnInit {
 
 
   /*        IMPLEMENTATION AREA        */
-  constructor(public userService: UserService, public router: Router, private imageService: ImageService, private spinerService: SpinerService) {
+  constructor(public userService: UserService, public router: Router, private imageService: ImageService, private spinerService: SpinnerService) {
     if (this.userService.currentUserValue) {
       this.router.navigate(['', 'TenniShip']);
     }
