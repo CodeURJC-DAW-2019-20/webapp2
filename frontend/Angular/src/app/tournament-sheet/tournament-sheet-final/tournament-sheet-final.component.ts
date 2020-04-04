@@ -24,13 +24,13 @@ export class TournamentSheetFinalComponent implements OnInit {
       return "-Keep playing";
     }
     if (homeORaway == 0) {
-      if (this._tournamentSheetData.quarters[i].homePoints > this._tournamentSheetData.quarters[i].homePoints) {
+      if (this._tournamentSheetData.quarters[i].homePoints >= this._tournamentSheetData.quarters[i].awayPoints) {
         return this._tournamentSheetData.quarters[i].team1.teamName;
       }
       return this._tournamentSheetData.quarters[i].team2.teamName;
     }
     else if (homeORaway == 1) {
-      if (this._tournamentSheetData.quarters[i].homePoints < this._tournamentSheetData.quarters[i].homePoints) {
+      if (this._tournamentSheetData.quarters[i].homePoints < this._tournamentSheetData.quarters[i].awayPoints) {
         return this._tournamentSheetData.quarters[i].team1.teamName;
       }
       return this._tournamentSheetData.quarters[i].team2.teamName;
@@ -52,13 +52,13 @@ export class TournamentSheetFinalComponent implements OnInit {
       return "-Keep playing";
     }
     if (homeORaway == 0) {
-      if (this._tournamentSheetData.theSemiFinals[i].homePoints > this._tournamentSheetData.theSemiFinals[i].homePoints) {
+      if (this._tournamentSheetData.theSemiFinals[i].homePoints >= this._tournamentSheetData.theSemiFinals[i].awayPoints) {
         return this._tournamentSheetData.theSemiFinals[i].team1.teamName;
       }
       return this._tournamentSheetData.theSemiFinals[i].team2.teamName;
     }
     else if (homeORaway == 1) {
-      if (this._tournamentSheetData.theSemiFinals[i].homePoints < this._tournamentSheetData.theSemiFinals[i].homePoints) {
+      if (this._tournamentSheetData.theSemiFinals[i].homePoints < this._tournamentSheetData.theSemiFinals[i].awayPoints) {
         return this._tournamentSheetData.theSemiFinals[i].team1.teamName;
       }
       return this._tournamentSheetData.theSemiFinals[i].team2.teamName;
@@ -80,13 +80,13 @@ export class TournamentSheetFinalComponent implements OnInit {
       return "-Keep playing";
     }
     if (homeORaway == 0) {
-      if (this._tournamentSheetData.theFinal[i].homePoints > this._tournamentSheetData.theFinal[i].homePoints) {
+      if (this._tournamentSheetData.theFinal[i].homePoints >= this._tournamentSheetData.theFinal[i].awayPoints) {
         return this._tournamentSheetData.theFinal[i].team1.teamName;
       }
       return this._tournamentSheetData.theFinal[i].team2.teamName;
     }
     else if (homeORaway == 1) {
-      if (this._tournamentSheetData.theFinal[i].homePoints < this._tournamentSheetData.theFinal[i].homePoints) {
+      if (this._tournamentSheetData.theFinal[i].homePoints < this._tournamentSheetData.theFinal[i].awayPoints) {
         return this._tournamentSheetData.theFinal[i].team1.teamName;
       }
       return this._tournamentSheetData.theFinal[i].team2.teamName;

@@ -31,4 +31,8 @@ export class TournamentSheetGroupsComponent implements OnInit {
     return groupIds[i];
   }
 
+  isGroupStage(){
+    return this._tournamentSheetData.quarters.length === 0;
+  }
+
 }
