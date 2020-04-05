@@ -33,23 +33,29 @@ export class RegisterMatchComponent implements OnInit {
     // Needs a decision to be made about how to handle admin variation
     this.registerMatchService.getData(this.tournament_id).subscribe(
       data => {
-        this.registerMatchData = data;
-        this.registerMatchData.matches = data.matches;
-        this.round = data.round;
-        for (let i=0; i<data.matches.length; i++) {
-          this.imageService.getTeamImage(this.registerMatchData.matches[i].team1.teamName,0).subscribe(
-            image=>{
-              this.createImageFromBlob(image,i,true);
-            },
-          );
-          this.imageService.getTeamImage(this.registerMatchData.matches[i].team2.teamName,0).subscribe(
-            image=>{
-              this.createImageFromBlob(image,i,false);
-              if (i === this.registerMatchData.matches.length - 1) {
-                this.spinnerService.changeLoading(false);
-              }
-            },
-          );
+        if (typeof data === 'undefined') {
+          this.router.navigate(['TenniShip', 'Error']);
+        }
+        else {
+          this.registerMatchData = data;
+          this.registerMatchData.matches = data.matches;
+          this.round = data.round;
+
+          for (let i = 0; i < data.matches.length; i++) {
+            this.imageService.getTeamImage(this.registerMatchData.matches[i].team1.teamName, 0).subscribe(
+              image => {
+                this.createImageFromBlob(image, i, true);
+              },
+            );
+            this.imageService.getTeamImage(this.registerMatchData.matches[i].team2.teamName, 0).subscribe(
+              image => {
+                this.createImageFromBlob(image, i, false);
+                if (i === this.registerMatchData.matches.length - 1) {
+                  this.spinnerService.changeLoading(false);
+                }
+              },
+            );
+          }
         }
       }
     );

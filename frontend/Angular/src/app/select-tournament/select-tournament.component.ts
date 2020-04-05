@@ -4,6 +4,8 @@ import {PageLengthService} from "../shared-services/page-length.service";
 import {SelectTournamentService} from "./select-tournament.service";
 import {ImageService} from "../shared-services/image.service"
 import {SpinnerService} from "../shared-services/spinner.service";
+import {UserService} from "../shared-services/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-select-tournament',
@@ -16,25 +18,33 @@ export class SelectTournamentComponent implements OnInit {
   private currentPage = 0;
   private pageSize = 2;   // Can be changed if we want
   public morePages: boolean = true;
+  private admin: boolean;
 
   constructor(private pagelength: PageLengthService, private selectTournamentService: SelectTournamentService,
-              private imageService: ImageService, private spinnerService: SpinnerService) {}
+              private imageService: ImageService, private spinnerService: SpinnerService,
+              private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.tournamentImages = new Array(this.pageSize);
     this.spinnerService.changeLoading(true);
+    this.admin = this.userService.getIsAdmin();
     this.selectTournamentService.getPage(0,this.pageSize).subscribe(
       data =>{
         this._tournamentList = data;
-        for (let i=0; i < this.pageSize; i++) {
-          this.imageService.getTournamentImage(this._tournamentList[i].name).subscribe(
-            image=>{
-              this.createImageFromBlob(image,i);
-              if (i === this.pageSize -1) {
-                this.spinnerService.changeLoading(false);
-              }
-            },
-          );
+        if (typeof data === 'undefined') {
+          this.router.navigate(['TenniShip', 'Error']);
+        }
+        else {
+          for (let i = 0; i < this.pageSize; i++) {
+            this.imageService.getTournamentImage(this._tournamentList[i].name).subscribe(
+              image => {
+                this.createImageFromBlob(image, i);
+                if (i === this.pageSize - 1) {
+                  this.spinnerService.changeLoading(false);
+                }
+              },
+            );
+          }
         }
       }
     );

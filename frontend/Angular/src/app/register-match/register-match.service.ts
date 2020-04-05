@@ -4,6 +4,7 @@ import {RegisterMatchData} from "../model/register-match-data";
 import {catchError, map} from "rxjs/operators";
 import {Observable, throwError} from "rxjs";
 import {Match} from "../model/match";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class RegisterMatchService {
   private registerUrl: string;
   // https://localhost:8443/api/tenniship/tournaments/{tournament}/matches
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.baseUrl = "/api/tenniship/tournaments/";
     this.adminUrl = "/api/tenniship/admin/tournaments/";
     this.registerUrl = "/api/tenniship/tournaments/";
