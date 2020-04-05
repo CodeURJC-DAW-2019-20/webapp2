@@ -13,7 +13,7 @@ export class ErrorsComponent implements OnInit {
 
 	ngOnInit(): void {
 		 this.errorService.createMsg();
-		 this.errormsg = this.errorService.mainErrorName;
+		 this.errormsg = this.errorService.errorInformation;
 	}
 
 }

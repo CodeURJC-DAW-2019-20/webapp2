@@ -35,9 +35,11 @@
           <div class="container" style=" margin:auto;">
             <carousel [itemsPerSlide]="3" [noWrap]="false" [singleSlideOffset]="true"
                       [startFromIndex]="getTeamFileData()?.tournamentList.length" [interval]="2000">
-              <slide *ngFor="let Tournament of getTeamFileData()?.tournamentList; let j = index"
+              <slide *ngFor="let tournament of getTeamFileData()?.tournamentList; let j = index"
                      style="display: inline-block; width: 20%; text-align:center;margin:auto">
-                <img [src]="getTournamentImage(j)" alt="image slide" style="display: block; width: 100%;">
+                    <a [routerLink]="['','TenniShip','Tournament', tournament]">
+                      <img [src]="getTournamentImage(j)" alt="image slide" style="display: block; width: 100%;">
+                    </a>
               </slide>
             </carousel>
           </div>

@@ -80,33 +80,32 @@ export class TournamentSheetTeamsComponent implements OnInit,OnChanges {
     teams[1] = this.segundos;
     teams[2] = this.terceros;
     return teams;
+  }
 
+  createImageFromBlob(image: Blob, name: string) {
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      this.teamArrayImage[this.imageIndex] = reader.result;
+      this.teamArrayName[this.imageIndex] = name;
+      this.imageIndex++;
+    }, false);
+
+    if (image) {
+      reader.readAsDataURL(image);
     }
+  }
 
-    createImageFromBlob(image: Blob, name: string) {
-      let reader = new FileReader();
-      reader.addEventListener("load", () => {
-        this.teamArrayImage[this.imageIndex] = reader.result;
-        this.teamArrayName[this.imageIndex] = name;
-        this.imageIndex++;
-      }, false);
+  getTeamImage(i: number, j: number){
+    let name: string;
+    if (i == 0)
+      name = this.primeros[j].team.teamName;
+    else if (i == 1)
+      name = this.segundos[j].team.teamName;
+    else
+      name = this.terceros[j].team.teamName;
 
-      if (image) {
-        reader.readAsDataURL(image);
-      }
-    }
-
-    getTeamImage(i: number, j: number){
-      let name: string;
-      if (i == 0)
-        name = this.primeros[j].team.teamName;
-      else if (i == 1)
-        name = this.segundos[j].team.teamName;
-      else
-        name = this.terceros[j].team.teamName;
-
-      let correctIndex = this.teamArrayName.findIndex((element) => element == name);
-      return this.teamArrayImage[ correctIndex ];
-    }
+    let correctIndex = this.teamArrayName.findIndex((element) => element == name);
+    return this.teamArrayImage[ correctIndex ];
+  }
 
 }
