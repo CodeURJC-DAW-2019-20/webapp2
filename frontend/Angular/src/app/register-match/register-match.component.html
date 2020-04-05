@@ -4,7 +4,7 @@
 </div>
 
 <div *ngIf="allPlayed" class="text-center pt-3">
-  <h4><a href="/TenniShip/Tournaments/{{tournament_id}}" style="color: green;"><strong>Go to the Tournament</strong></a></h4>
+  <h4><a [routerLink]="['TenniShip', 'Tournaments', tournament_id]" style="color: green;"><strong>Go to the Tournament</strong></a></h4>
 </div>
 
 <section class="section-bg" id="registerMatchBothPages">
@@ -16,7 +16,7 @@
           <div class="col-lg-4 col-md-3">
             <div class="card cardMatch">
               <div class="view overlay">
-                <img alt="Card image cap" class="cardMatchImg card-img-top" src="/images/registered/teams/{{match.team1.teamName}}.jpg">
+                <img alt="Card image cap" class="cardMatchImg card-img-top" [src]="getHomeImage(i)">
               </div>
               <div class="card-body">
                 <h4 class="card-title TeamPositioningRegisterMatchIconLocal">
@@ -62,7 +62,7 @@
           <div class="col-lg-4 col-md-3 ">
             <div class="card cardMatch">
               <div class="view overlay">
-                <img alt="Card image cap" class="cardMatchImg card-img-top" src="/images/registered/teams/{{match.team2.teamName}}.jpg">
+                <img alt="Card image cap" class="cardMatchImg card-img-top" [src]="getAwayImage(i)">
               </div>
               <div class="card-body">
                 <h4 class="card-title TeamPositioningRegisterMatchIconVisitor">
