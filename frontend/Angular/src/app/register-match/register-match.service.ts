@@ -52,6 +52,16 @@ export class RegisterMatchService {
     );
   }
 
+  registerAdminMatch(tourName: string, match: Match, group: string): Observable<Match> {
+    let url = this.adminUrl + tourName + "/matches/" + group;
+    console.log(url);
+    console.log(match);
+    return this.http.put<Match>(url,match).pipe(
+      map(response => response),
+      catchError(error => Observable.throw('Server error'))
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

@@ -8,7 +8,7 @@
                         <div class="justify-content-between">Group {{getGroup(i)}}</div>
                         <div *ngIf="userService.logged && userService.getIsAdmin() && isGroupStage()" class="icon justify-content-between">
                             <!--<a href="/TenniShip/ADMIN/Tournaments/{{tournamentName}}/EditMatches/A">-->
-                            <a href="">
+                            <a [routerLink]="['', 'TenniShip', 'ADMIN', 'Tournaments', _tournamentSheetData.tournament.name, 'EditMatches', getGroup(i)]">
                                 <i class="ion-android-create"><span class="tooltiptext">Edit Results</span></i>
                             </a> <input type="hidden" name="group" value="getGroup(i)">
                         </div>

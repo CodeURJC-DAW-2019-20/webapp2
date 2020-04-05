@@ -13,6 +13,7 @@ import { ErrorsComponent } from './errors/errors.component';
 import { SelectTournamentComponent } from "./select-tournament/select-tournament.component";
 import { RegisterMatchComponent } from "./register-match/register-match.component";
 import {AuthGuard} from "./auth/auth.guard";
+import {AdminRegisterMatchComponent} from "./register-match/admin-register-match.component";
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'TenniShip/Error', component: ErrorsComponent},
   {path: 'TenniShip/RegisterMatch/Tournaments', component: SelectTournamentComponent, canActivate: [AuthGuard]},
   {path: 'TenniShip/RegisterMatch/Tournaments/:tournament_id', component: RegisterMatchComponent, canActivate: [AuthGuard]},
+  {path: 'TenniShip/ADMIN/Tournaments/:tournament_id/EditMatches/:group_id', component: AdminRegisterMatchComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo:'TenniShip/Error'},
 ];
 

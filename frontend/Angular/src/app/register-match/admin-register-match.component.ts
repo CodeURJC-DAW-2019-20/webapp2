@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
 import {RegisterMatchData} from "../model/register-match-data";
-import {Match} from "../model/match";
 import {PageLengthService} from "../shared-services/page-length.service";
 import {RegisterMatchService} from "./register-match.service";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ImageService} from "../shared-services/image.service";
 import {SpinnerService} from "../shared-services/spinner.service";
+import {Match} from "../model/match";
 
 @Component({
-  selector: 'app-register-match',
+  selector: 'app-admin-register-match',
   templateUrl: './register-match.component.html',
 })
-export class RegisterMatchComponent implements OnInit {
+export class AdminRegisterMatchComponent implements OnInit {
 
   public tournament_id: string;
   public round: string;
@@ -24,17 +24,20 @@ export class RegisterMatchComponent implements OnInit {
   dirImagesPage: string ="/assets/resources/static/img/";
   private homeImages = [];
   private awayImages = [];
+  private group: string;
 
   constructor(private pageLength: PageLengthService, private registerMatchService: RegisterMatchService,
               private route: ActivatedRoute, private router: Router, private imageService: ImageService,
               private spinnerService: SpinnerService) {
+
     this.tournament_id = route.snapshot.params.tournament_id;
+    this.group = route.snapshot.params.group_id;
     this.spinnerService.changeLoading(true);
     // Needs a decision to be made about how to handle admin variation
-    this.registerMatchService.getData(this.tournament_id).subscribe(
+    this.registerMatchService.getAdminData(this.tournament_id,this.group).subscribe(
       data => {
         if (typeof data === 'undefined') {
-          this.router.navigate(['TenniShip', 'Error']);
+          this.router.navigate(['', 'TenniShip', 'Error']);
         }
         else {
           this.registerMatchData = data;
@@ -94,10 +97,10 @@ export class RegisterMatchComponent implements OnInit {
   submitMatch(i: number){
     let aux = this.registerMatchData.matches[i];
     if (((aux.homePoints === 3) && (aux.awayPoints != 3)) || ((aux.homePoints != 3) && (aux.awayPoints === 3))) {
-      this.registerMatchService.registerMatch(this.tournament_id, this.registerMatchData.matches[i]).subscribe();
+      this.registerMatchService.registerAdminMatch(this.tournament_id, this.registerMatchData.matches[i], this.group).subscribe();
       // IMPORTANT: You have to subscribe first, or the request won't be sent
-      this.registerMatchService.registerMatch(this.tournament_id, this.registerMatchData.matches[i]);
-      alert("Match updated successfully");
+      this.registerMatchService.registerAdminMatch(this.tournament_id, this.registerMatchData.matches[i], this.group);
+      alert("Match updated succesfully");
       this.router.navigate(['', 'TenniShip']);
     }
     else {

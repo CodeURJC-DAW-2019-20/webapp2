@@ -37,6 +37,7 @@ import { TournamentSearchComponent } from './searchbox/tournament-search/tournam
 import { TeamSearchComponent } from './searchbox/team-search/team-search.component';
 import {BasicAuthInterceptor} from "./auth/basic-auth.interceptor";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import { AdminRegisterMatchComponent } from './register-match/admin-register-match.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
     RegisterMatchComponent,
     SelectTournamentComponent,
     TournamentSearchComponent,
-    TeamSearchComponent
+    TeamSearchComponent,
+    AdminRegisterMatchComponent
   ],
   imports: [
     BrowserModule,
