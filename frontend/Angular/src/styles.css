@@ -1594,6 +1594,7 @@ Temporarily commented till we add id=index to body on index
 }
 
 #progress-content .progress .skill {
+    position: absolute;
     font-family: "Open Sans", sans-serif;
     line-height: 35px;
     padding: 0;
