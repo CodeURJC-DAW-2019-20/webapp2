@@ -20,7 +20,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[0]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[0]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[0]">
                             <p class="errorsText"> {{myMsgErrors[0]}}</p>
@@ -33,7 +33,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[1]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[1]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[1]">
                             <p class="errorsText"> {{myMsgErrors[1]}}</p>
@@ -46,7 +46,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[2]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[2]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[2]">
                             <p class="errorsText"> {{myMsgErrors[2]}}</p>
@@ -59,7 +59,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[3]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[3]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[3]">
                             <p class="errorsText"> {{myMsgErrors[3]}}</p>
@@ -72,7 +72,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[4]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[4]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[4]">
                             <p class="errorsText"> {{myMsgErrors[4]}}</p>
@@ -85,7 +85,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[5]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[5]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[5]">
                             <p class="errorsText"> {{myMsgErrors[5]}}</p>
@@ -98,7 +98,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[6]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[6]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[6]">
                             <p class="errorsText"> {{myMsgErrors[6]}}</p>
@@ -111,7 +111,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[7]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[7]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[7]">
                             <p class="errorsText"> {{myMsgErrors[7]}}</p>
@@ -124,7 +124,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[8]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[8]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[8]">
                             <p class="errorsText"> {{myMsgErrors[8]}}</p>
@@ -137,7 +137,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[9]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[9]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[9]">
                             <p class="errorsText"> {{myMsgErrors[9]}}</p>
@@ -150,7 +150,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[10]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[10]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[10]">
                             <p class="errorsText"> {{myMsgErrors[10]}}</p>
@@ -163,7 +163,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[11]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[11]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[11]">
                             <p class="errorsText"> {{myMsgErrors[11]}}</p>
@@ -176,7 +176,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[12]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[12]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[12]">
                             <p class="errorsText"> {{myMsgErrors[12]}}</p>
@@ -189,7 +189,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[13]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[13]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[13]">
                             <p class="errorsText"> {{myMsgErrors[13]}}</p>
@@ -202,7 +202,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[14]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[14]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[14]">
                             <p class="errorsText"> {{myMsgErrors[14]}}</p>
@@ -215,7 +215,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[15]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[15]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[15]">
                             <p class="errorsText"> {{myMsgErrors[15]}}</p>
@@ -228,7 +228,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[16]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[16]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[16]">
                             <p class="errorsText"> {{myMsgErrors[16]}}</p>
@@ -241,7 +241,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">></span>
                             </div>
-                            <input [(ngModel)]="myTeams[17]" class="form-control teamSearch" placeholder="Team Name" type="text">
+                            <input [(ngModel)]="myTeams[17]" [ngbTypeahead]="search" class="form-control teamSearch" placeholder="Team Name" type="text">
                         </div>
                         <div *ngIf="myErrors[17]">
                             <p class="errorsText"> {{myMsgErrors[17]}}</p>
@@ -256,7 +256,7 @@
                             <button (click)="next2Check()" class="input-group-test btn mb-3" type="submit">Next</button>
                         </div>
                     </div>
-                    
+
                 </div>
 
 

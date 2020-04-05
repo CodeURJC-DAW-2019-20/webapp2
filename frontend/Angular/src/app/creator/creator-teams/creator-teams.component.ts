@@ -1,6 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CreatorService } from '../creator.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import {AutocompleteService} from "../../searchbox/autocomplete.service";
+import {Observable} from "rxjs";
+import {debounceTime, distinctUntilChanged, map} from "rxjs/operators";
 
 @Component({
 	selector: 'app-creator-teams',
@@ -35,14 +38,33 @@ export class CreatorTeamsComponent implements OnInit {
 	public myErrors: boolean[] = new Array(18);
 	public myMsgErrors: string[] = new Array(18);
 	public next2: boolean = false;
+	private teams: string[] = [];
 
-	constructor(public creatorService: CreatorService) { }
+  search = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map(term => term.length < 2 ? []
+        : this.teams.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+    );
+
+	constructor(public creatorService: CreatorService, private autocomplete: AutocompleteService) { }
 
 	ngOnInit(): void {
 		this.creatorService.getTeams().subscribe(
 			teams => this.creatorService.teams = teams,
 			error => this.handleError(error)
 		);
+    this.autocomplete.getAllTeams().subscribe(
+      data => {
+        let aux = data;
+        let i = 0;
+        while (!(typeof aux[i] === 'undefined')) {
+          this.teams.push(aux[i].teamName);
+          i++;
+        }
+      }
+    );
 	}
 
 	checkTeams() {
