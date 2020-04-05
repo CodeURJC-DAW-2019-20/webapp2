@@ -29,6 +29,7 @@ export class TournamentSheetComponent implements OnInit {
   public refreshPage(){
     this.route.params.subscribe(params => {
       this.tournament_id = params.tournament_id;
+      this.preventError();
       this.spinerService.changeLoading(true);
       this.tournamentSheetService.getTournamentSheetData(this.tournament_id).subscribe(
         data => {
@@ -40,8 +41,9 @@ export class TournamentSheetComponent implements OnInit {
               this.spinerService.changeLoading(false);
             },
           );
+          this.errorNotFound();
         },
-        error => {this.handleError(error);
+        error => {console.error(error);
           this.spinerService.changeLoading(false);
         }
       );
@@ -75,13 +77,12 @@ export class TournamentSheetComponent implements OnInit {
     return this._tournamentSheetData;
   }
 
-  public handleError(error: any) {
+  preventError(): void {
     this.errorService.setMsg("tournament "+ this.tournament_id);
-    console.error(error);
   }
 
-  // public isAdmin():boolean{
-  //   return this.currentUser.roles.includes("ROLE_ADMIN");
-  // }
+  errorNotFound(): void {
+    this.errorService.setMsg("page");
+  }
 
 }

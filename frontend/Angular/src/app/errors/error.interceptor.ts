@@ -14,20 +14,25 @@ export class ErrorInterceptor implements HttpInterceptor{
 		return next.handle(request).pipe(
 			retry(1),
 			catchError((error: HttpErrorResponse) => {
-			let errorMessage = '';
-			if (error.error instanceof ErrorEvent) {
-				// client-side error
-				this.errorService.errorNum = error.status;
-				errorMessage = `Error: ${error.error.message}`;
-			} else {
-				// server-side error
-				this.errorService.errorNum = error.status;
-				errorMessage = `Error Code: ${error.status}\nhtxMessage: ${error.message}`;
-			}
-			console.log(this.errorService.errorNum);
-			console.log(error.status);
-			console.log(errorMessage);
-			this.router.navigate(['TenniShip/Error']);
+				let errorMessage = '';
+				if (error.error instanceof ErrorEvent) {
+					// client-side error
+					this.errorService.errorNum = error.status;
+					errorMessage = `Error: ${error.error.message}`;
+				} else {
+					// server-side error
+					this.errorService.errorNum = error.status;
+					errorMessage = `Error Code: ${error.status}\nhtxMessage: ${error.message}`;
+				}
+				console.log(this.errorService.errorNum);
+				console.log(error.status);
+				console.log(errorMessage);
+				if (this.router.url.indexOf('SignIn') > -1) 
+					this.router.navigate(['TenniShip/SignIn']);
+				else {
+					this.errorService.setapiError();
+					this.router.navigate(['TenniShip/Error']);
+				}
 			return throwError(errorMessage);
 			})
 		)

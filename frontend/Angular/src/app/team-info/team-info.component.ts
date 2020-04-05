@@ -19,7 +19,8 @@ export class TeamInfoComponent implements OnInit {
   public playerArrayImage: any [];
   public tournamentArrayImage: any [];
   dir:string;
-  constructor(private route: ActivatedRoute, private teamService: TeamService, private errorService: ErrorService, private imageService:ImageService, private spinerService: SpinnerService) {}
+  constructor(private route: ActivatedRoute, private teamService: TeamService, private errorService: ErrorService,
+     private imageService:ImageService, private spinerService: SpinnerService) {}
 
   ngOnInit(): void {
     this.refreshUrl();
@@ -28,6 +29,7 @@ export class TeamInfoComponent implements OnInit {
   public refreshUrl():void{
     this.route.params.subscribe(params => {
       this.team_id = params.team_id;
+      this.preventError();
       this.refreshInfo();
     })
   }
@@ -74,9 +76,9 @@ export class TeamInfoComponent implements OnInit {
           );
         }
         this.teamService.setWinPercentage(this._teamFileData.percentageWonMatches);
-      },error => {this.handleError(error),this.spinerService.changeLoading(false);}
+        this.errorNotFound();
+      },error => {console.error(error) ,this.spinerService.changeLoading(false);}
     );
-
   }
 
   getPlayerImage(i:number){
@@ -94,9 +96,11 @@ export class TeamInfoComponent implements OnInit {
     return this._teamFileData;
   }
 
-  public handleError(error: any) {
+  preventError(): void {
     this.errorService.setMsg("team "+ this.team_id);
-    console.error(error);
   }
 
+  errorNotFound(): void {
+    this.errorService.setMsg("page");
+  }
 }

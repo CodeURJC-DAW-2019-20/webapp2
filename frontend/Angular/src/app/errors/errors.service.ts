@@ -4,21 +4,29 @@ import { Injectable } from '@angular/core';
 export class ErrorService {
     
     public errorNum: number;
-    public mainErrorName: string = "page";
+    public apiError: boolean = false;
+    public errorResponsible: string = "page";
+    public errorInformation: string = "";
 
     constructor () {}
 
     public createMsg () {
-        if (this.errorNum === 404) {
-            this.mainErrorName = "The "+ this.mainErrorName + " you are looking for is not available";
+        if (this.errorNum === 404 || !this.apiError) {
+            this.errorInformation = "The "+ this.errorResponsible + " you are looking for is not available";
         } else if ((this.errorNum === 403) || (this.errorNum === 401)) {
-            this.mainErrorName = "The "+ this.mainErrorName + " you are looking for needs special permissions";
+            this.errorInformation = "The "+ this.errorResponsible + " you are looking for needs special permissions";
         } else {
-            this.mainErrorName = "We regret to inform something went wrong, please try again later"
-        } 
+            this.errorInformation = "We regret to inform something went wrong, please try again later"
+        }
+        this.errorResponsible = "page"; 
+        this.apiError = false;
     }
 
     public setMsg (guilty: string) {
-        this.mainErrorName= guilty;
+        this.errorResponsible= guilty;
+    }
+
+    public setapiError () {
+        this.apiError = true;
     }
 }
