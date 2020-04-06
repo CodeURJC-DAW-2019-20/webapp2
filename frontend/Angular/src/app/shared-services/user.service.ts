@@ -27,7 +27,7 @@ export class UserService {
   login(un: string, pass: string, oldUser: boolean) {
     var httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
+        'X-Requested-With' : 'XMLHttpRequest',
         'Authorization': 'Basic ' + btoa(un + ':' + pass)
       })
     };
