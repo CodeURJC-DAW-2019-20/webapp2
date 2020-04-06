@@ -3,6 +3,7 @@ import { Router} from '@angular/router';
 import {TournamentSheetService} from "../tournament-sheet.service";
 import {TournamentSheetModalService} from "./tournament-sheet-modal-service.service";
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SpinnerService } from 'src/app/shared-services/spinner.service';
 
 @Component({
   selector: 'ngbd-modal-confirm',
@@ -28,15 +29,20 @@ export class NgbdModalConfirm {
 
   constructor(public router: Router, public modal: NgbActiveModal,
     private tournamentSheetService: TournamentSheetService,
-    private communicator: TournamentSheetModalService) {
+    private communicator: TournamentSheetModalService,
+    private spinnerService: SpinnerService) {
     }
 
   deleteAndGoHome() {
+    this.spinnerService.changeLoading(true);
     this.tournamentSheetService.deleteTournamentSheet(this.communicator.getTournamentName())
     .subscribe(
       res => {
+        this.spinnerService.changeLoading(false);
         this.router.navigate(['/TenniShip']);
-      }
+      },
+      error => { console.log(error),this.spinnerService.changeLoading(false);} 
+      
     );
   }
 }
