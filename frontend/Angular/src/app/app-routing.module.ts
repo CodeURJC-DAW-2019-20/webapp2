@@ -27,7 +27,8 @@ const routes: Routes = [
   {path: 'TenniShip/RegisterMatch/Tournaments', component: SelectTournamentComponent, canActivate: [AuthGuard]},
   {path: 'TenniShip/RegisterMatch/Tournaments/:tournament_id', component: RegisterMatchComponent, canActivate: [AuthGuard]},
   {path: 'TenniShip/ADMIN/Tournaments/:tournament_id/EditMatches/:group_id', component: AdminRegisterMatchComponent, canActivate: [AuthGuard]},
-  {path: '**', redirectTo:'TenniShip/Error'},
+  { path: '', redirectTo: 'TenniShip', pathMatch: 'full' },
+  {path: '**', redirectTo:'TenniShip/Error'}
 ];
 
 export const routing = RouterModule.forRoot(routes);
