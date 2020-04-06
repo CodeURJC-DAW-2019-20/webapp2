@@ -5,6 +5,7 @@ import {TeamFileData} from "../model/team-file-data";
 import {ErrorService} from "../errors/errors.service";
 import {ImageService} from "../shared-services/image.service";
 import { SpinnerService } from '../shared-services/spinner.service';
+import {PageLengthService} from "../shared-services/page-length.service";
 
 @Component({
   selector: 'app-team-info',
@@ -20,7 +21,7 @@ export class TeamInfoComponent implements OnInit {
   public tournamentArrayImage: any [];
   dir:string;
   constructor(private route: ActivatedRoute, private teamService: TeamService, private errorService: ErrorService,
-     private imageService:ImageService, private spinerService: SpinnerService) {}
+     private imageService:ImageService, private spinerService: SpinnerService, private pageLengthService: PageLengthService) {}
 
   ngOnInit(): void {
     this.refreshUrl();
@@ -70,6 +71,7 @@ export class TeamInfoComponent implements OnInit {
             image=>{
               this.createImageFromBlob(image,i);
               if (i === 5) {
+                this.pageLengthService.updatePageLength();
                 this.spinerService.changeLoading(false);
               }
             },

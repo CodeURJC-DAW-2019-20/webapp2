@@ -8,6 +8,7 @@ import {UserService} from "../shared-services/user.service";
 import {User} from "../model/user.model";
 import {ImageService} from "../shared-services/image.service";
 import { SpinnerService } from '../shared-services/spinner.service';
+import {PageLengthService} from "../shared-services/page-length.service";
 
 @Component({
   selector: 'app-tournament-sheet',
@@ -23,7 +24,8 @@ export class TournamentSheetComponent implements OnInit {
   public imageTournament;
 
   constructor(private route : ActivatedRoute, private tournamentSheetService: TournamentSheetService,
-    private errorService: ErrorService, public userService:UserService, private imageService: ImageService, private spinerService: SpinnerService){
+              private errorService: ErrorService, public userService:UserService, private imageService: ImageService,
+              private spinerService: SpinnerService, private pageLengthService: PageLengthService){
   }
 
   public refreshPage(){
@@ -38,6 +40,7 @@ export class TournamentSheetComponent implements OnInit {
           this.imageService.getTournamentImage(this._tournamentSheetData.tournament.name).subscribe(
             image=>{
               this.createImageFromBlob(image);
+              this.pageLengthService.updatePageLength();
               this.spinerService.changeLoading(false);
             },
           );

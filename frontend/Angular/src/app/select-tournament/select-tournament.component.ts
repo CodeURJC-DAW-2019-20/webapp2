@@ -22,7 +22,7 @@ export class SelectTournamentComponent implements OnInit {
 
   constructor(private pagelength: PageLengthService, private selectTournamentService: SelectTournamentService,
               private imageService: ImageService, private spinnerService: SpinnerService,
-              private userService: UserService, private router: Router) {}
+              private userService: UserService, private router: Router, private pageLengthService: PageLengthService) {}
 
   ngOnInit(): void {
     this.tournamentImages = new Array(this.pageSize);
@@ -40,6 +40,7 @@ export class SelectTournamentComponent implements OnInit {
               image => {
                 this.createImageFromBlob(image, i);
                 if (i === this.pageSize - 1) {
+                  this.pageLengthService.updatePageLength();
                   this.spinnerService.changeLoading(false);
                 }
               },

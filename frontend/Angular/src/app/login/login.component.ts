@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PageLengthService} from "../shared-services/page-length.service";
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pageLengthService: PageLengthService) { }
 
   ngOnInit(): void {
+    this.pageLengthService.setshortContent(true);
   }
 
 }

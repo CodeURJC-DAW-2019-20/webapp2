@@ -4,6 +4,8 @@ import { newTournament } from '../../model/newtournament';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { ImageService } from 'src/app/shared-services/image.service';
+import {SpinnerService} from "../../shared-services/spinner.service";
+import {PageLengthService} from "../../shared-services/page-length.service";
 
 @Component({
 	selector: 'app-creator-raffle',
@@ -16,7 +18,8 @@ export class CreatorRaffleComponent implements OnInit {
 	public currentFile: File;
 	public teamsImage: any[] = new Array(18);
 
-	constructor(private creatorService: CreatorService, private imageService:ImageService) {
+	constructor(private creatorService: CreatorService, private imageService:ImageService,
+              private pageLengthService: PageLengthService) {
 
   }
 
@@ -26,8 +29,8 @@ export class CreatorRaffleComponent implements OnInit {
 				image => this.createImageFromBlob(image,i),
 				error => this.handleError(error)
 			);
-			
 		}
+		this.pageLengthService.updatePageLength();
 	}
 
 	public createImageFromBlob (image: Blob, i:number){

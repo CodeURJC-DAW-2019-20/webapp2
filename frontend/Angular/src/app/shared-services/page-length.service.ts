@@ -14,4 +14,8 @@ export class PageLengthService {
   updatePageLength() {
     this.lengthChangeSource.next(window.innerHeight >= document.body.offsetHeight);
   }
+
+  setshortContent(value: boolean) {
+    this.lengthChangeSource.next(value);
+  }
 }

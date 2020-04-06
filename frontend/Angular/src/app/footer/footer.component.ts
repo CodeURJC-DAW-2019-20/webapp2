@@ -15,14 +15,14 @@ export class FooterComponent implements OnInit {
 
   constructor(private pageLength: PageLengthService, private router: Router) {
     this.pageLength.shortContent.subscribe(shortContent => {this.shortContent = shortContent});
-    router.events.subscribe(
-      data => {
-        this.shortContent = true;
-      }
-    );
   }
 
   ngOnInit(): void {
+    this.router.events.subscribe(
+      data => {
+        this.setShortContent();
+      }
+    );
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => this.setShortContent());

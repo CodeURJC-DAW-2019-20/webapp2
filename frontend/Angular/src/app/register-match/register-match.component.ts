@@ -27,7 +27,7 @@ export class RegisterMatchComponent implements OnInit {
 
   constructor(private pageLength: PageLengthService, private registerMatchService: RegisterMatchService,
               private route: ActivatedRoute, private router: Router, private imageService: ImageService,
-              private spinnerService: SpinnerService) {
+              private spinnerService: SpinnerService, private pageLengthService: PageLengthService) {
     this.tournament_id = route.snapshot.params.tournament_id;
     this.spinnerService.changeLoading(true);
     // Needs a decision to be made about how to handle admin variation
@@ -51,6 +51,7 @@ export class RegisterMatchComponent implements OnInit {
               image => {
                 this.createImageFromBlob(image, i, false);
                 if (i === this.registerMatchData.matches.length - 1) {
+                  this.pageLengthService.updatePageLength();
                   this.spinnerService.changeLoading(false);
                 }
               },

@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CreatorService } from '../creator.service';
+import {SpinnerService} from "../../shared-services/spinner.service";
+import {PageLengthService} from "../../shared-services/page-length.service";
 
 @Component({
 	selector: 'app-creator-tournament',
@@ -11,7 +13,7 @@ export class CreatorTournamentComponent implements OnInit {
 	@Output()
 	changeToTeams = new EventEmitter<string>();
 
-	constructor(private creatorService: CreatorService) { }
+	constructor(private creatorService: CreatorService, private pageLengthService: PageLengthService) { }
 
 	public tournamentContent: string;
 	public tournamentImage: string;
@@ -23,8 +25,9 @@ export class CreatorTournamentComponent implements OnInit {
 	ngOnInit(): void {
 		this.creatorService.getTournaments().subscribe(
 			tournaments => this.creatorService.tournaments = tournaments,
-			error => this.handleError(error)  
+			error => this.handleError(error)
 		);
+		this.pageLengthService.setshortContent(true);
 	}
 
 	checkTournaments(): boolean {
@@ -58,9 +61,9 @@ export class CreatorTournamentComponent implements OnInit {
 			this.changeToTeams.emit(this.creatorService.active);
 		}
 	}
-	
+
 	public selectFile(event) {
-		this.creatorService.selectedFiles = event.target.files;		
+		this.creatorService.selectedFiles = event.target.files;
 	}
 
 	public handleError(error: any) {
