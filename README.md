@@ -238,7 +238,7 @@ Click on the next Link in order to consult the ApiRest user guide using Postman.
 ## Updated Design
 
 ### Classes and templates diagram
-![Classes diagram](backend/tenniShip/src/main/resources/static/img/diagrams/3StepUpdateClassDiagram.png "Classes diagram")
+![Classes diagram](frontend/Angular/src/assets/resources/static/img/diagrams/Fase3Corregido.png "Classes diagram")
 
 ## Docker
 
