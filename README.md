@@ -244,65 +244,34 @@ Click on the next Link in order to consult the ApiRest user guide using Postman.
 
 ### Execution Guide
 
-Take into account that previously git clone of this repository is needed, so that you are able to execute the script from:
+Take into account that previously git clone of this repository is needed, so that you are able to execute the application from the next directory:
 ```
-...\webapp2\backend\tenniShip
-```
-
-The only step for executing the docker is to run the next script on CMD:
-```
-C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -File <PreviousPath>\script.ps1
+./Docker
 ```
 
-### Set-Up Guide
+The only step for executing the application is to run the next script on CMD:
+```
+docker-compose up
+```
 
-1. Create the network. 
+To stop the application:
 ```
-docker network create tenniship-network
+docker-compose down
 ```
-2. Create the Data Base Container. 
+
+### Building the image
+
+To create the image, you just have to launch the Power Shell script, this will be responsible for creating the image, and push to the repository on docker hub: 
 ```
-docker container run --name tennishipsql --network tenniship-network -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=tenniship -d mysql:8 
+C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -File <ProjectPath>/build.ps1
 ```
-3. Change Application.properties. 
-```
-spring.datasource.url=jdbc:mysql://tennishipsql:3306/tenniship?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC 
-```
-4. Change pom.xml. 
-```
-<properties>
-    <java.version>1.8</java.version>
-    <start-class>com.practica.Application</start-class>
-</properties> 
-```
-5. Create jar. 
-```
-docker run --rm -v "<Tenniship folder path>":/usr/src/project -w /usr/src/project maven:alpine mvn package
-```
-6. Create Dockerfile.
-7. Build the image. 
-```
-docker image build -t padawansurjc/tennishipapp -f Docker/Dockerfile . 
-```
-8. Login in DockerHub. 
-```
-docker login 
-```
-9. Push the image to DockerHub. 
-```
-docker push padawansurjc/tennishipapp:latest
-```
-10. Create the TenniShip Container. 
-```
-docker container run --network tenniship-network --name tenniship-container -p 8443:8443 -d padawansurjc/tennishipapp
-```
-11. Create docker-compose.yml.
+
 
 ## Authors' participation
 * Iván: 
 	- Tasks:
-		- Participation in the implementation of Docker
-		- Participation in the implementation of REST API queries
+		- Co-implementation of Docker
+		- ApiRest co-implementation
 		- Security development
 		- General bug-fixing and error tracking
 	- Top 5 most important commits in 'ThirdPhase':
@@ -338,10 +307,10 @@ docker container run --network tenniship-network --name tenniship-container -p 8
 * Diego: 
 	- Tasks:
 		- API implementation of Team
-        	- Paging for Team
-            	- Paging for Tournaments
-                	- Documentation: Diagrams
-                    	- Docker
+        - Paging for Team
+        - Paging for Tournaments
+        - Documentation: Diagrams
+        - Docker
 	- Top 5 most important commits in 'Third Phase':
 		- [Paging for Tournaments and Refactoring](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/1830bfedfe9dfe402b5686feed9d8e740af0a970 "837fcfb")
 		- [Paging For Teams refactored and URLs refactored](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/837fcfbf2ea3de52337cd2b154781db845dd8d37 "c8cacb5")
