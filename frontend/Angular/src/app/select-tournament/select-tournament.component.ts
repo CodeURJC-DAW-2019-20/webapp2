@@ -18,7 +18,7 @@ export class SelectTournamentComponent implements OnInit {
   private currentPage = 0;
   private pageSize = 2;   // Can be changed if we want
   public morePages: boolean = true;
-  private admin: boolean;
+  public admin: boolean = false;
 
   constructor(private pagelength: PageLengthService, private selectTournamentService: SelectTournamentService,
               private imageService: ImageService, private spinnerService: SpinnerService,
@@ -26,30 +26,34 @@ export class SelectTournamentComponent implements OnInit {
 
   ngOnInit(): void {
     this.tournamentImages = new Array(this.pageSize);
-    this.spinnerService.changeLoading(true);
     this.admin = this.userService.getIsAdmin();
-    this.selectTournamentService.getPage(0,this.pageSize).subscribe(
-      data =>{
-        this._tournamentList = data;
-        if (typeof data === 'undefined') {
-          this.router.navigate(['TenniShip', 'Error']);
-        }
-        else {
-          for (let i = 0; i < this.pageSize; i++) {
-            this.imageService.getTournamentImage(this._tournamentList[i].name).subscribe(
-              image => {
-                this.createImageFromBlob(image, i);
-                if (i === this.pageSize - 1) {
-                  this.pageLengthService.updatePageLength();
-                  this.spinnerService.changeLoading(false);
-                }
-              },
-            );
+    if(this.userService.getIsAdmin()) {
+      this.admin = true;
+    } else {    
+      this.spinnerService.changeLoading(true);
+      this.selectTournamentService.getPage(0,this.pageSize).subscribe(
+        data =>{
+          this._tournamentList = data;
+          if (typeof data === 'undefined') {
+            this.router.navigate(['TenniShip', 'Error']);
+          }
+          else {
+            for (let i = 0; i < this.pageSize; i++) {
+              this.imageService.getTournamentImage(this._tournamentList[i].name).subscribe(
+                image => {
+                  this.createImageFromBlob(image, i);
+                  if (i === this.pageSize - 1) {
+                    this.pageLengthService.updatePageLength();
+                    this.spinnerService.changeLoading(false);
+                  }
+                },
+              );
+            }
           }
         }
-      }
-    );
-    this.currentPage++;
+      );
+      this.currentPage++;
+    }
   }
 
   getTournamentList(): Tournament[] {

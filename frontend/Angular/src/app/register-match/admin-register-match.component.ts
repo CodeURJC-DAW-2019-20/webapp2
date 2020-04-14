@@ -21,7 +21,7 @@ export class AdminRegisterMatchComponent implements OnInit {
   // If admin: /TenniShip/RegisterMatch/Tournaments/{{tournament.name}}/Submission
   // If user:  /TenniShip/ADMIN/Tournaments/{{tournament.name}}/EditMatches/{{type}}/Submission
   private registerMatchData: RegisterMatchData;
-  dirImagesPage: string ="/assets/resources/static/img/";
+  dirImagesPage: string ="./assets/resources/static/img/";
   private homeImages = [];
   private awayImages = [];
   private group: string;
@@ -102,7 +102,7 @@ export class AdminRegisterMatchComponent implements OnInit {
       // IMPORTANT: You have to subscribe first, or the request won't be sent
       this.registerMatchService.registerAdminMatch(this.tournament_id, this.registerMatchData.matches[i], this.group);
       alert("Match updated succesfully");
-      this.router.navigate(['', 'TenniShip']);
+      this.router.navigate(['', 'TenniShip', 'Tournament', this.tournament_id]);
     }
     else {
       alert("Error: One and only one of the teams has to have 3 points");
