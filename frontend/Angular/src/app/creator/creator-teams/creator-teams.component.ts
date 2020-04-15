@@ -15,8 +15,8 @@ export class CreatorTeamsComponent implements OnInit {
 	@Output()
 	changeToRaffle = new EventEmitter<string>();
 
-	// public myTeams: string[] = new Array(18);
-	public myTeams: string[] = [
+	public myTeams: string[] = new Array(18);
+	/*public myTeams: string[] = [
 		"Valencia",
         "Spain",
         "Serbia",
@@ -34,7 +34,7 @@ export class CreatorTeamsComponent implements OnInit {
         "Norway",
         "France",
         "Italy",
-        "Real Madrid"];
+        "Real Madrid"];*/
 	public myErrors: boolean[] = new Array(18);
 	public myMsgErrors: string[] = new Array(18);
 	public next2: boolean = false;

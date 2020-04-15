@@ -34,15 +34,16 @@ export class SelectTournamentComponent implements OnInit {
       this.selectTournamentService.getPage(0,this.pageSize).subscribe(
         data =>{
           this._tournamentList = data;
-          if (typeof data === 'undefined') {
+          if ((typeof data === 'undefined') || typeof this._tournamentList[0] === 'undefined') {
+            this.spinnerService.changeLoading(false);
             this.router.navigate(['TenniShip', 'Error']);
           }
           else {
-            for (let i = 0; i < this.pageSize; i++) {
+            for (let i = 0; i < this._tournamentList.length; i++) {
               this.imageService.getTournamentImage(this._tournamentList[i].name).subscribe(
                 image => {
                   this.createImageFromBlob(image, i);
-                  if (i === this.pageSize - 1) {
+                  if (i === this._tournamentList.length - 1) {
                     this.pageLengthService.updatePageLength();
                     this.spinnerService.changeLoading(false);
                   }

@@ -29,11 +29,13 @@ export class HeaderComponent implements OnInit {
 		this.userService.currentUser.subscribe(x => this.currentUser = x);
 		if (this.currentUser != null) {
 			this.userService.logged = true; 
-			this.imageService.getTeamImage(this.userService.currentUserValue.team,0).subscribe(
-				image => {
-				  this.userService.createImageFromBlob(image)
-				}
-			  );
+			if (!this.userService.getIsAdmin()) {
+				this.imageService.getTeamImage(this.userService.currentUserValue.team,0).subscribe(
+					image => {
+					  this.userService.createImageFromBlob(image)
+					}
+				  );
+			}
 		}
 	}
 
