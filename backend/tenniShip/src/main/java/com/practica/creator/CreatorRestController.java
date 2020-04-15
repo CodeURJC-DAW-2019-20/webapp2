@@ -8,6 +8,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -124,11 +126,11 @@ public class CreatorRestController {
 
 	@PostMapping("/tournaments/{tournamentID}/image")
 	public ResponseEntity<Tournament> newTournamentImg(@PathVariable String tournamentID,
-			@RequestParam MultipartFile imageFile) throws IOException {
+			@RequestParam MultipartFile imageFile, HttpServletRequest request) throws IOException {
 		Optional<Tournament> tournament = tournamentService.findById(tournamentID);
 		if (tournament.isPresent()) {
-			if (userComponent.isLoggedUser() && tournamentService.getTeams(tournament.get())
-					.contains(teamService.findById(userComponent.getTeam()).get())) {
+			if (request.isUserInRole("ADMIN") || (userComponent.isLoggedUser() && tournamentService.getTeams(tournament.get())
+					.contains(teamService.findById(userComponent.getTeam()).get()))) {
 				tournament.get().setImage(true);
 				tournamentService.save(tournament.get());
 				imgService.saveImage("registered/tournaments", tournament.get().getName(), imageFile);

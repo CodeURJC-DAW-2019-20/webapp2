@@ -1,0 +1,172 @@
+<section class="section-bg wow fadeInUp" id="setting">
+    <div class="container shadow p-3 mb-5 bg-white rounded">
+        <div class="container-separation">
+            <div class="section-header">
+                <h3 id="Title">Register Account</h3>
+                <p id="UnderTitleParagraph">Register your account on the platform Tenniship</p>
+            </div>
+            <div class="form">
+                <h3>User Data</h3>
+                <!-- <div id="sendmessage">Your message has been sent. Thank you!</div> -->
+                <!-- <div id="errormessage"></div> -->
+                <form [formGroup]="userData" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input class="form-control" #username formControlName="username" id="username" placeholder="User Name" type="text">
+                        <div class="errorsText">
+                            <p class="errorMSGStyle" *ngIf="emptyUsername">{{emptyMSG}}</p>
+                            <p class="errorMSGStyle" *ngIf="usedUsername">{{usedUsernameMSG}}</p>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" #email formControlName="email" id="email" name="email" placeholder="Email" type="text">
+                        <div class="errorsText">
+                            <p class="errorMSGStyle" *ngIf="invalidEmail">{{invalidEmailMSG}}</p>
+                            <p class="errorMSGStyle" *ngIf="usedEmail">{{usedEmailMSG}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" #password formControlName="password" id="password" placeholder="Password" type="password">
+                        <div class="errorsText">
+                            <p class="errorMSGStyle" *ngIf="shortPassword">{{pssLengthMSG}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" #passwordCheck formControlName="passwordCheck" name="passwordCheck" placeholder="Confirm your Password" type="password">
+                        <div class="errorsText">
+                            <p class="errorMSGStyle" *ngIf="pssNotMatch">{{pssNotMatchMSG}}</p>
+                        </div>
+                    </div>
+
+                    <h3>Team Data</h3>
+                    <div class="form-group">
+                        <input class="form-control" #teamName formControlName="teamName" id="name" name="team" placeholder="Team Name" type="text">
+                        <div class="errorsText">
+                            <p class="errorMSGStyle" *ngIf="emptyTeamName">{{emptyMSG}}</p>
+                            <p class="errorMSGStyle" *ngIf="usedTeamName">{{usedTeamNameMSG}}</p>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input class="custom-file-input" (change)="selectFile0($event)" #teamPic formControlName="teamPic" type="file" name="imageFile" accept=".jpg" /> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Team Logo</label>
+                        </div>
+                    </div>
+                    <div class="errorsText attachDivToBox">
+                        <p class="errorMSGStyle" *ngIf="noTeamPic" class="attachTextToBox">{{missingPicMSG}}</p>
+                    </div>
+
+                    <div class="separation"></div>
+
+                    <h3>Players Data</h3>
+
+                    <h5>Player 1</h5>
+                    <div class="form-row">
+                        <div class="col">
+                            <input class="form-control" #nameplayer1 formControlName="nameplayer1" name="player1" placeholder="Player's name" type="text">
+                            <div class="errorsText">
+                                <p class="errorMSGStyle" *ngIf="emptyPlayerName[0]">{{emptyMSG}}</p>
+                                <p class="errorMSGStyle" *ngIf="usedPlayerName[0]">{{usedPlayerNameMSG}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3 pt-3">
+                        <div class="custom-file">
+                            <input class="custom-file-input" (change)="selectFile1($event)" #picplayer1 formControlName="picplayer1" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s
+                                photo</label>
+                        </div>
+                    </div>
+                    <div class="errorsText attachDivToBox">
+                        <p class="errorMSGStyle" *ngIf="noPlayerPic[0]" class="attachTextToBox">{{missingPicMSG}}</p>
+                    </div>
+
+
+                    <h5>Player 2</h5>
+                    <div class="form-row">
+                        <div class="col">
+                            <input class="form-control" #nameplayer2 formControlName="nameplayer2" name="player2" placeholder="Player's  name" type="text">
+                            <div class="errorsText">
+                                <p class="errorMSGStyle" *ngIf="emptyPlayerName[1]">{{emptyMSG}}</p>
+                                <p class="errorMSGStyle" *ngIf="usedPlayerName[1]">{{usedPlayerNameMSG}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3 pt-3">
+                        <div class="custom-file">
+                            <input class="custom-file-input" (change)="selectFile2($event)" #picplayer2 formControlName="picplayer2" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s
+                                photo</label>
+                        </div>
+                    </div>
+                    <div class="errorsText attachDivToBox">
+                        <p class="errorMSGStyle" *ngIf="noPlayerPic[1]" class="attachTextToBox">{{missingPicMSG}}</p>
+                    </div>
+
+                    <h5>Player 3</h5>
+                    <div class="form-row">
+                        <div class="col">
+                            <input class="form-control" #nameplayer3 formControlName="nameplayer3" name="player3" placeholder="Player's  name" type="text">
+                            <div class="errorsText">
+                                <p class="errorMSGStyle" *ngIf="emptyPlayerName[2]">{{emptyMSG}}</p>
+                                <p class="errorMSGStyle" *ngIf="usedPlayerName[2]">{{usedPlayerNameMSG}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3 pt-3">
+                        <div class="custom-file">
+                            <input class="custom-file-input" (change)="selectFile3($event)" #picplayer3 formControlName="picplayer3" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s
+                                photo</label>
+                        </div>
+                    </div>
+                    <div class="errorsText attachDivToBox">
+                        <p class="errorMSGStyle" *ngIf="noPlayerPic[2]" class="attachTextToBox">{{missingPicMSG}}</p>
+                    </div>
+
+                    <h5>Player 4</h5>
+                    <div class="form-row">
+                        <div class="col">
+                            <input class="form-control" #nameplayer4 formControlName="nameplayer4" name="player4" placeholder="Player's  name" type="text">
+                            <div class="errorsText">
+                                <p class="errorMSGStyle" *ngIf="emptyPlayerName[3]">{{emptyMSG}}</p>
+                                <p class="errorMSGStyle" *ngIf="usedPlayerName[3]">{{usedPlayerNameMSG}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3 pt-3">
+                        <div class="custom-file">
+                            <input class="custom-file-input" (change)="selectFile4($event)" #picplayer4 formControlName="picplayer4" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s
+                                photo</label>
+                        </div>
+                    </div>
+                    <div class="errorsText attachDivToBox">
+                        <p class="errorMSGStyle" *ngIf="noPlayerPic[3]" class="attachTextToBox">{{missingPicMSG}}</p>
+                    </div>
+
+                    <h5>Player 5</h5>
+                    <div class="form-row">
+                        <div class="col">
+                            <input class="form-control" #nameplayer5 formControlName="nameplayer5" name="player5" placeholder="Player's name" type="text">
+                            <div class="errorsText">
+                                <p class="errorMSGStyle" *ngIf="emptyPlayerName[4]">{{emptyMSG}}</p>
+                                <p class="errorMSGStyle" *ngIf="usedPlayerName[4]">{{usedPlayerNameMSG}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3 pt-3">
+                        <div class="custom-file">
+                            <input class="custom-file-input" (change)="selectFile5($event)" #picplayer5 formControlName="picplayer5" type="file" name="imageFile" accept=".jpg"> <label aria-describedby="inputGroupFileAddon02" class="custom-file-label">Player´s
+                                photo</label>
+                        </div>
+                    </div>
+                    <div class="errorsText attachDivToBox">
+                        <p class="errorMSGStyle" *ngIf="noPlayerPic[4]" class="attachTextToBox">{{missingPicMSG}}</p>
+                    </div>
+
+                    <div class="text-center pt-3 button">
+                        <button class="input-group-test btn" type="submit">Sign Up!</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

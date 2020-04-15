@@ -1,0 +1,42 @@
+<div *ngIf="!raffled" class="TCreatorRaffle">
+    <div>
+        <div class="TCreatorTitles">
+            <h3>Tournament Name:</h3>
+            <p>{{getTournament()}}</p>
+            <div class="text-right pt-3 button">
+                <button (click)="raffle()" class="input-group-test btn" type="submit">Raffle</button>
+            </div>
+            <h3 class="listTeams">Teams</h3>
+        </div>
+    </div>
+    <div class="Separateboth"></div>
+    <div class="TeamMate">
+        <div class="row">
+            <div *ngFor="let team of getTeams(); let i = index" class="col-lg-2 col-md-3 col-sm-4 col-sm-6 col-12">
+                <div class="member tournamentPic">
+                    <img alt="" class="img-fluid tournamentTeamsPic" [src]="getTeamImage(i)">
+                    <div class="member-info">
+                        <div class="member-info-content">
+                            <h4>{{team}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="raffled" class="tab-content" id="v-pills-tabContent">
+        <div class="created">
+            <div>
+                <h3>the tournament has been created</h3>
+                <p>Congratulations, the tournament has been created successfully. You can start
+                    playing whenever you want.</p>
+                <div class="buttons">
+                    <a class="btn" [routerLink]="['','TenniShip','Tournament', getTournament()]">Go to the Tournament</a>
+                    <a class="btn" [routerLink]="['','TenniShip']">Home</a>
+                </div>
+            </div>
+        </div>
+</div>

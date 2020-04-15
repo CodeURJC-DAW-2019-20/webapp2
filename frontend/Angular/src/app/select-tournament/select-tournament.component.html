@@ -1,0 +1,43 @@
+<!--==========================
+  registerMatchSelectTournament Section
+============================-->
+<section class="section-bg" id="registerMatchBothPages">
+  <div class="container">
+
+    <div *ngIf="admin">
+      <header class="section-header">
+        <h3 class="section-title">You are Admin. You can not register a match</h3>
+      </header>
+      <div class="text-center pt-3">
+        <button class="btn buttonown"><a  [routerLink] = "['','TenniShip']">Home</a></button>
+    </div>
+    </div>
+
+    <div *ngIf="!admin">
+      <header class="section-header">
+        <h3 class="section-title">Select the Tournament</h3>
+      </header>
+
+      <div id="tournamentListChange" class="row registerMatchBothPages-container">
+        <div *ngFor="let tournament of getTournamentList(); index as i" class="col-lg-4 col-md-6 registerMatchBothPages-item filter-app wow fadeInUp displayTournamentsHidden">
+          <div class="registerMatchBothPages-wrap">
+            <figure>
+              <a [routerLink]="[tournament.name]"><img class="img-fluid" [src]="getTournamentImages(i)"></a>
+            </figure>
+
+            <div class="registerMatchBothPages-info">
+              <h4><a [routerLink]="[tournament.name]">{{tournament.name}}</a></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="morePages" class="text-center pt-3 TournamentButton">
+        <button (click)="showMore()" class="button btn" id="loadContentButtonTournament" type="button">Show more</button>
+      </div>
+      <div *ngIf="!morePages">
+        <ngb-alert [dismissible]="false">There are no more tournaments to show</ngb-alert>
+      </div>
+    </div>
+  </div>
+</section><!-- #registerMatchSelectTournament -->

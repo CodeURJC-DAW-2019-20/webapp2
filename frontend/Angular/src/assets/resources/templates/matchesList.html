@@ -1,0 +1,19 @@
+{{#matchList}}
+<li class="list-group-item displayMatchesHidden">
+    <div class="row row-cols-2">
+        <div class="col col-sm-6 col-12">
+            <a href="/TenniShip/Teams/{{team1.teamName}}">{{team1.teamName}}</a> vs
+            <a href="/TenniShip/Teams/{{team2.teamName}}">{{team2.teamName}}</a>
+        </div>
+        <div class="col col-sm-3 col-6"> {{homePoints}} - {{awayPoints}} </div>
+        <div class="col col-sm-3 col-6">
+            <a href="/TenniShip/Tournaments/{{tournament.name}}">{{tournament.name}}</a>
+        </div>
+    </div>
+</li>
+{{/matchList}}
+{{#finished}}
+<div class="container">
+    <div class="alert alert-secondary" id="finishedIndicator" style="text-align: center">All matches displayed</div>
+</div>
+{{/finished}}

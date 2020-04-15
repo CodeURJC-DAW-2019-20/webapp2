@@ -18,6 +18,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		// Public pages
+		http.authorizeRequests().antMatchers("/new/**").permitAll();
 		http.authorizeRequests().antMatchers("/register").permitAll();
 		http.authorizeRequests().antMatchers("/TenniShip").permitAll();
 		http.authorizeRequests().antMatchers("/TenniShip/SignIn").permitAll();
@@ -26,9 +27,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/TenniShip/Tournaments/**").permitAll();
 		http.authorizeRequests().antMatchers("/TenniShip/loginerror").permitAll();
 		http.authorizeRequests().antMatchers("/logout").permitAll();
-		http.authorizeRequests().antMatchers("/error").permitAll();
+		http.authorizeRequests().antMatchers("/error").permitAll();		
 		http.authorizeRequests().antMatchers("/contactform/**", "/css/**", "/js/**", "/img/**", "/lib/**","/images/**").permitAll();
-
 		// Private pages (all other pages)
 		http.authorizeRequests().antMatchers("/TenniShip/ADMIN/**").hasRole("ADMIN");
 		http.authorizeRequests().anyRequest().authenticated();
