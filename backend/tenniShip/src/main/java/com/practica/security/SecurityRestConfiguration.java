@@ -24,12 +24,11 @@ public class SecurityRestConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniship/signin").permitAll();// set logged user
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/tenniship/signup").permitAll();
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniShip/logout").permitAll();
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/tenniship/teams/{teamID}/image").permitAll();
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/tenniship/teams/{teamID}/image").hasAnyRole("USER");
 		
 		//Team
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniship/teams").permitAll();
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniship/teams/**").permitAll();
-//		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/tenniship/teams/**").permitAll();
 		
 		// Tournament
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/tenniship/tournaments").permitAll();

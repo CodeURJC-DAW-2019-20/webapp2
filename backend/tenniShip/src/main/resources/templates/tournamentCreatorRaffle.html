@@ -190,7 +190,13 @@ Footer
 <script src="/../js/showMoreContent.js"></script>
 <script>
 
-  
+    var teamNames = [
+        {{#teamNames}}"{{.}}",{{/teamNames}}
+    ];
+
+        $( ".teamSearch" ).autocomplete({
+            source: teamNames
+        });
 
 </script>
 
