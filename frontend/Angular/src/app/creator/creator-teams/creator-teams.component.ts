@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CreatorService } from '../creator.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import {AutocompleteService} from "../../searchbox/autocomplete.service";
 import {Observable} from "rxjs";
 import {debounceTime, distinctUntilChanged, map} from "rxjs/operators";
+import { UserService } from 'src/app/shared-services/user.service';
 
 @Component({
 	selector: 'app-creator-teams',
@@ -35,10 +35,11 @@ export class CreatorTeamsComponent implements OnInit {
         "France",
         "Italy",
         "Real Madrid"];*/
-	public myErrors: boolean[] = new Array(18);
-	public myMsgErrors: string[] = new Array(18);
+	public myErrors: boolean[] = new Array(19);
+	public myMsgErrors: string[] = new Array(19);
 	public next2: boolean = false;
 	private teams: string[] = [];
+	private myOwnTeam: string;
 
   search = (text$: Observable<string>) =>
     text$.pipe(
@@ -48,23 +49,26 @@ export class CreatorTeamsComponent implements OnInit {
         : this.teams.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
     );
 
-	constructor(public creatorService: CreatorService, private autocomplete: AutocompleteService) { }
+	constructor(public creatorService: CreatorService, private autocomplete: AutocompleteService,private userService: UserService) { }
 
 	ngOnInit(): void {
+		if (!this.userService.getIsAdmin()) {
+			this.myOwnTeam = this.userService.getTeamUser();
+		}
 		this.creatorService.getTeams().subscribe(
 			teams => this.creatorService.teams = teams,
 			error => this.handleError(error)
 		);
-    this.autocomplete.getAllTeams().subscribe(
-      data => {
-        let aux = data;
-        let i = 0;
-        while (!(typeof aux[i] === 'undefined')) {
-          this.teams.push(aux[i].teamName);
-          i++;
-        }
-      }
-    );
+		this.autocomplete.getAllTeams().subscribe(
+		data => {
+			let aux = data;
+			let i = 0;
+			while (!(typeof aux[i] === 'undefined')) {
+			this.teams.push(aux[i].teamName);
+			i++;
+			}
+		}
+		);
 	}
 
 	checkTeams() {
@@ -78,10 +82,17 @@ export class CreatorTeamsComponent implements OnInit {
 			} else if (this.alreadyIntroduced(this.myTeams[index]) > 1) {
 				this.myErrors[index] = true;
 				this.myMsgErrors[index] = 'The team has already been introduced';
-				} else {
+			} else {
 				this.myErrors[index] = false;
 				this.myMsgErrors[index] = '';
 			}
+		}
+		if (!(this.userService.getIsAdmin()) && !(this.myOwnTeamIn())) {
+			this.myErrors[18] = true;
+			this.myMsgErrors[18] = `Your team ${this.myOwnTeam} need to be in the tournament.`;
+		} else {
+			this.myErrors[18] = false;
+			this.myMsgErrors[18] = '';
 		}
 		this.checkCanContinue ();
 	}
@@ -107,6 +118,10 @@ export class CreatorTeamsComponent implements OnInit {
 
 	public checkCanContinue () {
 		this.myErrors.indexOf(true) === -1 ? this.next2 = true :this.next2 = false ;
+	}
+
+	private myOwnTeamIn(){
+		return this.myTeams.indexOf(this.myOwnTeam) !== -1;
 	}
 
 	public handleError(error: any) {

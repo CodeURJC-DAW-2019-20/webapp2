@@ -89,6 +89,10 @@ export class UserService {
   getIsAdmin() {    
     return this.currentUserValue.roles.indexOf('ROLE_ADMIN') !== -1;
   }
+
+  getTeamUser(){
+    return this.currentUserValue.team;
+  }
   
   public createImageFromBlob (image: Blob){
     let reader = new FileReader();
