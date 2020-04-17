@@ -371,7 +371,7 @@ C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -File <ProjectPath>/bu
 
 ### Execution Guide
 
-You can dockerize this app by executing this [script](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/Docker/build.bat, "build.bat").
+You can dockerize this app by executing this [script](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/Docker/build.bat, "build.bat") .
 
 
 ## Authors' participation
