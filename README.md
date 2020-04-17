@@ -129,6 +129,7 @@ Tournaments will automatically reorganize themselves when a match is played.
 We used [Trello](https://trello.com/b/uJDmvvK9/daw-tareas/ "TenniShip Trello") for tasks management.
 
 ## Authors' participation
+
 * Iván: 
 	- Tasks:
 		- Security, HTTPS and needed roles added. Authenticated users sessions added too. 
@@ -362,6 +363,111 @@ C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -File <ProjectPath>/bu
 		- [ExecutionScript](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/script.ps1 "script.ps1") 
 		- [README](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/README.md "ReadMe.md")
 
+# Phase 4
+
+## Angular 
+
+## Docker
+
+### Execution Guide
+
+You can dockerize this app by executing this [script](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/Docker/build.bat, "build.bat").
+
+
+## Authors' participation
+* Iván: 
+	- Tasks:
+		- Co-implementation of Docker
+		- ApiRest co-implementation
+		- Security development
+		- General bug-fixing and error tracking
+	- Top 5 most important commits in 'ThirdPhase':
+		- [Docker Done!!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/35e215a35331ae9a7bbf6346ee2f479ed556b498 "6a6c735")
+		- [RestStarting](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/8567c00fe29b015e5bd46cd665d0b90040b2945f "8567c00")
+		- [JsonView used for complex returns](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7cbba110f02a8a5d5b28a1ce39342d2ae2e047f0 "7cbba11")
+		- [Services added](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/226494f4e39f09361d03b760d5ed84d0e4b7194a "226494f")
+		- [Tournament Sheet Updated](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/ea4056803d9c50b8477411895ab73f498dc72ce8 "ea40568")
+	- Top 5 most modified files:
+		- [docker-compose.yml](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/Docker/docker-compose.yml)
+		- [CreatorRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/creator/CreatorRestController.java)
+		- [SecurityRestConfiguration.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/security/SecurityRestConfiguration.java)
+		- [TournamentRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentRestController.java)
+		- [TournamentSheetRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournamentsheet/TournamentSheetRestController.java)
+* Santi: 
+	- Tasks:
+		- Creating REST API documentation
+		- Porting Tournament Sheet methods to REST API
+		- Completing initial Postman collection before link changes
+		- API request error handling check
+	- Top 5 most important commits in 'ThirdPhase':
+		- [API.md created](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/655e06507468e2676b05358b760c90b9a82cf978)
+		- [First changes to TournamentSheetRestController](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/f1b215d4789b4e3f59f0b729df399dac7d93bbc2)
+		- [Ported tournamentSheet main method to REST](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/f3a53a4de2edc44e7e1e3fbefac674d7206be2d1)
+		- [API.md updated with new urls](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/12ab317edededb3eae0c4757991a98da51d0fc35)
+		- [Uploading Postman collection](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/1d4fed958ef093d95033fc4b8aba433c0bfd838e)
+	- Top 5 most modified files:
+		- [API.md](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/API.md)
+		- [TournamentSheetRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournamentsheet/TournamentSheetRestController.java)
+		- [TournamentService.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentService.java)
+		- [Postman collection](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/api.postman_collection.json)
+		- [TournamentRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentRestController.java)
+* Diego: 
+	- Tasks:
+		- API implementation of Team
+        - Paging for Team
+        - Paging for Tournaments
+        - Documentation: Diagrams
+        - Docker
+	- Top 5 most important commits in 'Third Phase':
+		- [Paging for Tournaments and Refactoring](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/1830bfedfe9dfe402b5686feed9d8e740af0a970 "837fcfb")
+		- [Paging For Teams refactored and URLs refactored](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/837fcfbf2ea3de52337cd2b154781db845dd8d37 "c8cacb5")
+		- [Documentation : Class Diagram](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/c8cacb542267c6ecbdd3ee3354d41aca527d8f79 "35e215a")
+		- [API for TeamController](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/fb14eb053735a84a7c787e5181a352631ab5e1c9 "7cbba11")
+		- [Docker Done!!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/35e215a35331ae9a7bbf6346ee2f479ed556b498 "6a6c735")
+	- Top 5 most modified files:
+		- [TeamRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamRestController.java)
+		- [TournamentRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentRestController.java)
+		- [TeamService.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamService.java)
+		- [TeamRepository.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamRepository.java)
+		- [Dockerfile](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/Docker/Dockerfile)
+* Álvaro: 
+	- Tasks:
+		- Sign Up component.
+		- Sign In component.
+		- User communication with backend.
+		- Image upload via Angular.
+		- Application waits for API call returns..
+	- Top 5 most important commits in 'ThirdPhase':
+		- [SignUp Implemented! (without images)](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/667608990dd4d2a089b08984c8c7256cff8b2a82) 
+		- [Validation with DataBase implemented and other fixtures ](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7719ba6663b4d98a6e8784035811c863b82bc579) 
+		- [Images Upload implemented! v1.0 ](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/78ebd9f698c6b649dfefe2394707436c1ce97efb) 
+		- [LogOut Fixed and minor other fixes ](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/29512e33bd935e6d0e9fb9c126c810cc334b03fe) 
+		- [SignUp and Login fully implemented!! ⭐](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/39de94eaa660b20778be54603300c67187e0188f) 
+	- Top 5 most modified files in 'Third Phase':
+		- [signup.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/signup/signup.component.ts) 
+		- [signup.component.html](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/signup/signup.component.html) 
+		- [login-form.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/login/login-form/login-form.component.ts) 
+		- [login-form.component.html](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/login/login-form/login-form.component.html) 
+		- [user.service.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/shared-services/user.service.ts) 
+* Marcos: 
+	- Tasks:
+		- Cleaning-Code.
+		- ApiRest co- implementation.
+		- Bugs-fixing.
+		- Docker co-implementation.
+		- Documentation.
+	- Top 5 most important commits in 'Third Phase':
+		- [Cleaning Code!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/9dead5560cf94a6397f1e26fa67b4195bdd27469 "9dead55") 
+		- [Api-Rest Starting!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/9c6616e4bdb1965f000e802a0845ab89f1260276 "9c6616e") 
+		- [Json Views!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7cbba110f02a8a5d5b28a1ce39342d2ae2e047f0 "7cbba11") 
+		- [Docker!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/35e215a35331ae9a7bbf6346ee2f479ed556b498 "35e215a") 
+		- [Documentation!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/c8afc590c381b8d98f8629144d4e56ac89a7f0ad "c8afc59") 
+	- Top 5 most modified files:
+		- [SecurityRestConfiguration](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/security/SecurityRestConfiguration.java "SecurityRestConfiguration.java") 
+		- [Team Repository](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamRepository.java "TeamRepository.java") 
+		- [TournamentSheetRestController](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournamentsheet/TournamentSheetRestController.java "TournamentSheetRestController.java") 
+		- [ExecutionScript](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/script.ps1 "script.ps1") 
+		- [README](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/README.md "ReadMe.md")
 
 ## License
 © BizPage Bootstrap template has been designed by BootstrapMade. [Original Bizpage Template](https://bootstrapmade.com/demo/BizPage/ "Bizpage").
