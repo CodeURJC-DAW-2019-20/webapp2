@@ -367,6 +367,11 @@ C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -File <ProjectPath>/bu
 
 ## Angular 
 
+### Components diagram
+![Angular diagram](frontend/Angular/src/assets/resources/static/img/diagrams/Fase4.png "Angular diagram")
+
+
+
 ## Docker
 
 ### Execution Guide
@@ -381,7 +386,7 @@ You can dockerize this app by executing this [script](https://github.com/CodeURJ
 		- ApiRest co-implementation
 		- Security development
 		- General bug-fixing and error tracking
-	- Top 5 most important commits in 'ThirdPhase':
+	- Top 5 most important commits in 'Fourth Phase':
 		- [Docker Done!!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/35e215a35331ae9a7bbf6346ee2f479ed556b498 "6a6c735")
 		- [RestStarting](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/8567c00fe29b015e5bd46cd665d0b90040b2945f "8567c00")
 		- [JsonView used for complex returns](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7cbba110f02a8a5d5b28a1ce39342d2ae2e047f0 "7cbba11")
@@ -399,7 +404,7 @@ You can dockerize this app by executing this [script](https://github.com/CodeURJ
 		- Porting Tournament Sheet methods to REST API
 		- Completing initial Postman collection before link changes
 		- API request error handling check
-	- Top 5 most important commits in 'ThirdPhase':
+	- Top 5 most important commits in 'Fourth Phase':
 		- [API.md created](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/655e06507468e2676b05358b760c90b9a82cf978)
 		- [First changes to TournamentSheetRestController](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/f1b215d4789b4e3f59f0b729df399dac7d93bbc2)
 		- [Ported tournamentSheet main method to REST](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/f3a53a4de2edc44e7e1e3fbefac674d7206be2d1)
@@ -418,7 +423,7 @@ You can dockerize this app by executing this [script](https://github.com/CodeURJ
         - Paging for Tournaments
         - Documentation: Diagrams
         - Docker
-	- Top 5 most important commits in 'Third Phase':
+	- Top 5 most important commits in 'Fourth Phase':
 		- [Paging for Tournaments and Refactoring](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/1830bfedfe9dfe402b5686feed9d8e740af0a970 "837fcfb")
 		- [Paging For Teams refactored and URLs refactored](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/837fcfbf2ea3de52337cd2b154781db845dd8d37 "c8cacb5")
 		- [Documentation : Class Diagram](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/c8cacb542267c6ecbdd3ee3354d41aca527d8f79 "35e215a")
@@ -436,14 +441,14 @@ You can dockerize this app by executing this [script](https://github.com/CodeURJ
 		- Sign In component.
 		- User communication with backend.
 		- Image upload via Angular.
-		- Application waits for API call returns..
+		- Application waits for API call returns.
 	- Top 5 most important commits in 'ThirdPhase':
 		- [SignUp Implemented! (without images)](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/667608990dd4d2a089b08984c8c7256cff8b2a82) 
 		- [Validation with DataBase implemented and other fixtures ](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7719ba6663b4d98a6e8784035811c863b82bc579) 
 		- [Images Upload implemented! v1.0 ](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/78ebd9f698c6b649dfefe2394707436c1ce97efb) 
 		- [LogOut Fixed and minor other fixes ](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/29512e33bd935e6d0e9fb9c126c810cc334b03fe) 
 		- [SignUp and Login fully implemented!! ⭐](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/39de94eaa660b20778be54603300c67187e0188f) 
-	- Top 5 most modified files in 'Third Phase':
+	- Top 5 most modified files in 'Fourth Phase':
 		- [signup.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/signup/signup.component.ts) 
 		- [signup.component.html](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/signup/signup.component.html) 
 		- [login-form.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/login/login-form/login-form.component.ts) 
@@ -452,22 +457,22 @@ You can dockerize this app by executing this [script](https://github.com/CodeURJ
 * Marcos: 
 	- Tasks:
 		- Cleaning-Code.
-		- ApiRest co- implementation.
-		- Bugs-fixing.
-		- Docker co-implementation.
-		- Documentation.
-	- Top 5 most important commits in 'Third Phase':
-		- [Cleaning Code!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/9dead5560cf94a6397f1e26fa67b4195bdd27469 "9dead55") 
-		- [Api-Rest Starting!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/9c6616e4bdb1965f000e802a0845ab89f1260276 "9c6616e") 
-		- [Json Views!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7cbba110f02a8a5d5b28a1ce39342d2ae2e047f0 "7cbba11") 
-		- [Docker!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/35e215a35331ae9a7bbf6346ee2f479ed556b498 "35e215a") 
-		- [Documentation!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/c8afc590c381b8d98f8629144d4e56ac89a7f0ad "c8afc59") 
+		- Tournament Sheet Component.
+		- Authorizations System.
+		- Error Handling.
+		- New Component Super Diagram.
+	- Top 5 most important commits in 'Fourth Phase':
+		- [Error Handler and Cleaning Code!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/78bcd0cbab85e1a13dfcab9dc1a3a0b84a6f6cc1) 
+		- [Tournament Sheet Backend!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/f2577a1efd9bb95b49961369e7c12d9fff4bc33e) 
+		- [Authorization System!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/aeb2165aaa373e7ca5b4448c95e04cf0f5305671) 
+		- [Docker!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/36fc9269da0b8ddbd319dd00865d76ec13a5d64b) 
+		- [Tournament Sheet Frontend!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/6972c3b1b39f92c3a4940b5a263cd6013239e5da) 
 	- Top 5 most modified files:
-		- [SecurityRestConfiguration](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/security/SecurityRestConfiguration.java "SecurityRestConfiguration.java") 
-		- [Team Repository](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamRepository.java "TeamRepository.java") 
-		- [TournamentSheetRestController](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournamentsheet/TournamentSheetRestController.java "TournamentSheetRestController.java") 
-		- [ExecutionScript](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/script.ps1 "script.ps1") 
-		- [README](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/README.md "ReadMe.md")
+		- [TS Teams](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/tournament-sheet/tournament-sheet-teams/tournament-sheet-teams.component.ts "Tournament-sheet-teams-component.ts") 
+		- [Angular Modals](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/tournament-sheet/tournament-sheet-modal/tournament-sheet-modal.component.ts "Tournament-sheet-modal.ts") 
+		- [Error Interceptor](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/errors/error.interceptor.ts "ErrorInterceptor.ts") 
+		- [Docker Execution Script](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/Docker/build.bat "build.bat") 
+		- [TS Final](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/tournament-sheet/tournament-sheet-final/tournament-sheet-final.component.ts "Tournament-sheet-final-component.ts")
 
 ## License
 © BizPage Bootstrap template has been designed by BootstrapMade. [Original Bizpage Template](https://bootstrapmade.com/demo/BizPage/ "Bizpage").
