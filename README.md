@@ -419,10 +419,10 @@ You can dockerize this app by executing this [script](https://github.com/CodeURJ
 * Diego: 
 	- Tasks:
 		- Team Info and all child components (first connection to API!!)
-        	- Data Refresh for Components and Interfaces creation
-        	- Paging for Teams and Bug Fixing
-        	- Documentation: Diagram Update
-        	- Docker, Image Petitions, Error Control and Authoritations Control for Registered and Admin users (CoImplementation)
+        - Data Refresh for Components and Interfaces creation
+        - Paging for Teams and Bug Fixing
+        - Documentation: Diagram Update
+       	- Docker, Image Petitions, Error Control and Authoritations Control for Registered and Admin users (CoImplementation)
 	- Top 5 most important commits in 'Third Phase':
 		- [Backend Connected through a request!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/655dc9a524fd1420c925d514e798ee767fa74db1 "edaefeb")
 		- [Paging Functional for Team](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/44f060cf1dec5d97645fa9b2b0d9c6cdaa2d45bd "655dc9a")
