@@ -418,23 +418,23 @@ You can dockerize this app by executing this [script](https://github.com/CodeURJ
 		- [TournamentRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentRestController.java)
 * Diego: 
 	- Tasks:
-		- API implementation of Team
-        - Paging for Team
-        - Paging for Tournaments
-        - Documentation: Diagrams
-        - Docker
-	- Top 5 most important commits in 'Fourth Phase':
-		- [Paging for Tournaments and Refactoring](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/1830bfedfe9dfe402b5686feed9d8e740af0a970 "837fcfb")
-		- [Paging For Teams refactored and URLs refactored](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/837fcfbf2ea3de52337cd2b154781db845dd8d37 "c8cacb5")
-		- [Documentation : Class Diagram](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/c8cacb542267c6ecbdd3ee3354d41aca527d8f79 "35e215a")
-		- [API for TeamController](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/fb14eb053735a84a7c787e5181a352631ab5e1c9 "7cbba11")
-		- [Docker Done!!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/35e215a35331ae9a7bbf6346ee2f479ed556b498 "6a6c735")
+		- Team Info and all child components (first connection to API!!)
+        	- Data Refresh for Components and Interfaces creation
+        	- Paging for Teams and Bug Fixing
+        	- Documentation: Diagram Update
+        	- Docker, Image Petitions, Error Control and Authoritations Control for Registered and Admin users (CoImplementation)
+	- Top 5 most important commits in 'Third Phase':
+		- [Backend Connected through a request!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/655dc9a524fd1420c925d514e798ee767fa74db1 "edaefeb")
+		- [Paging Functional for Team](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/44f060cf1dec5d97645fa9b2b0d9c6cdaa2d45bd "655dc9a")
+		- [Images Team Functional](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/979cd250102cd17b018ee378f3a234739d613002 "ce83f4e")
+		- [Functional Authorizations Control!!! ](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/aeb2165aaa373e7ca5b4448c95e04cf0f5305671 "4177639")
+		- [Functional Tournament Sheet Teams when rerouting](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/28e5ba680f08dd595035d0a7db45205fe8826def "c4b7579")
 	- Top 5 most modified files:
-		- [TeamRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamRestController.java)
-		- [TournamentRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentRestController.java)
-		- [TeamService.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamService.java)
-		- [TeamRepository.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/team/TeamRepository.java)
-		- [Dockerfile](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/Docker/Dockerfile)
+		- [Team.service.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/team-info/team.service.ts)
+		- [Team-info.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/team-info/team-info.component.ts)
+		- [Matches-paginated.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/team-info/matches-paginated/matches-paginated.component.ts)
+		- [Tournament-sheet.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/tournament-sheet/tournament-sheet.component.ts)
+		- [Matches-paginated.service.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blame/master/frontend/Angular/src/app/team-info/matches-paginated/matches-paginated.service.ts)
 * Álvaro: 
 	- Tasks:
 		- Sign Up component.
