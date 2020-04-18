@@ -14,7 +14,7 @@ cd ../..
 
 docker image build -t padawansurjc/tennishipapp -f Docker/Dockerfile .
 
-docker login --username=padawansurjc --password=ascensubela
+docker login --username=%1 --password=%2
 
 docker push padawansurjc/tennishipapp
 
