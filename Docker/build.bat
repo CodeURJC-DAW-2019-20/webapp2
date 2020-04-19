@@ -4,7 +4,7 @@ cd ./frontend/Angular
 
 docker run --rm --name angular-container -v "%cd%":/angular -w /angular node:12.16.1 /bin/bash -c "npm install; npm run-script build"
 
-xcopy /E %cd%\dist\Angular ..\..\backend\tenniShip\src\main\resources\static\new
+xcopy /E "%cd%"\dist\Angular ..\..\backend\tenniShip\src\main\resources\static\new
 
 cd ../../backend/tenniShip
 

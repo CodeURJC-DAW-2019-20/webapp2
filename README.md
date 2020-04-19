@@ -262,9 +262,9 @@ docker-compose down
 
 ### Building the image
 
-To create the image, you just have to launch the Power Shell script, this will be responsible for creating the image, and push to the repository on docker hub: 
+To create the image, you just have to launch the script, this will be responsible for creating the image, and push to the repository on docker hub: 
 ```
-C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -File <ProjectPath>/build.ps1
+./Docker/build.bat
 ```
 
 
@@ -382,22 +382,23 @@ You can dockerize this app by executing this [script](https://github.com/CodeURJ
 ## Authors' participation
 * Iván: 
 	- Tasks:
-		- Co-implementation of Docker
-		- ApiRest co-implementation
-		- Security development
-		- General bug-fixing and error tracking
+		- Tournament Creator and all child components
+		- Error Handling
+		- Header component
+		- Docker, Image Petitions, Error Control and Authorizations Control for Registered and Admin users, and Data Refresh for Components and Interfaces creation (Co-Implementation)
+		- Spinners
 	- Top 5 most important commits in 'Fourth Phase':
-		- [Docker Done!!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/35e215a35331ae9a7bbf6346ee2f479ed556b498 "6a6c735")
-		- [RestStarting](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/8567c00fe29b015e5bd46cd665d0b90040b2945f "8567c00")
-		- [JsonView used for complex returns](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/7cbba110f02a8a5d5b28a1ce39342d2ae2e047f0 "7cbba11")
-		- [Services added](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/226494f4e39f09361d03b760d5ed84d0e4b7194a "226494f")
-		- [Tournament Sheet Updated](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/ea4056803d9c50b8477411895ab73f498dc72ce8 "ea40568")
+		- [Creator Back-End Done!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/166da713971a17117d97f0560a921b2c2c33b983 "166da71")
+		- [Creator Front-End Done!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/a25c36d443a9bca25f1d04aeb8f181b535206d5c "a25c36d")
+		- [Handler errors ](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/f49195e6eec9e2a5337111fd3c300900c3871a9b "f49195e")
+		- [Functional Authorizations Control!!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/aeb2165aaa373e7ca5b4448c95e04cf0f5305671 "aeb2165")
+		- [Docker Done](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/36fc9269da0b8ddbd319dd00865d76ec13a5d64b "36fc926")
 	- Top 5 most modified files:
-		- [docker-compose.yml](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/Docker/docker-compose.yml)
-		- [CreatorRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/creator/CreatorRestController.java)
-		- [SecurityRestConfiguration.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/security/SecurityRestConfiguration.java)
-		- [TournamentRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentRestController.java)
-		- [TournamentSheetRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournamentsheet/TournamentSheetRestController.java)
+		- [creator-teams.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/creator/creator-teams/creator-teams.component.ts)
+		- [creator-raffle.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/creator/creator-raffle/creator-raffle.component.ts)
+		- [creator.service.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/creator/creator.service.ts)
+		- [error.interceptor.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/errors/error.interceptor.ts)
+		- [header.component.html](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/header/header.component.html)
 * Santi: 
 	- Tasks:
 		- Creating REST API documentation
@@ -422,7 +423,7 @@ You can dockerize this app by executing this [script](https://github.com/CodeURJ
         - Data Refresh for Components and Interfaces creation
         - Paging for Teams and Bug Fixing
         - Documentation: Diagram Update
-       	- Docker, Image Petitions, Error Control and Authoritations Control for Registered and Admin users (CoImplementation)
+        - Docker, Image Petitions, Error Control and Authoritations Control for Registered and Admin users (CoImplementation)
 	- Top 5 most important commits in 'Third Phase':
 		- [Backend Connected through a request!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/655dc9a524fd1420c925d514e798ee767fa74db1 "edaefeb")
 		- [Paging Functional for Team](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/44f060cf1dec5d97645fa9b2b0d9c6cdaa2d45bd "655dc9a")
