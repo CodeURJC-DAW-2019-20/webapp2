@@ -401,22 +401,22 @@ You can dockerize this app by executing this [script](https://github.com/CodeURJ
 		- [header.component.html](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/header/header.component.html)
 * Santi: 
 	- Tasks:
-		- Creating REST API documentation
-		- Porting Tournament Sheet methods to REST API
-		- Completing initial Postman collection before link changes
-		- API request error handling check
+		- Register match and admin register match pages
+		- Tournament selector page and error handling
+		- Frontpage searchboxes and autocomplete functionality
+		- Footer functionality, header scroll changer and other JS ported to TS
 	- Top 5 most important commits in 'Fourth Phase':
-		- [API.md created](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/655e06507468e2676b05358b760c90b9a82cf978)
-		- [First changes to TournamentSheetRestController](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/f1b215d4789b4e3f59f0b729df399dac7d93bbc2)
-		- [Ported tournamentSheet main method to REST](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/f3a53a4de2edc44e7e1e3fbefac674d7206be2d1)
-		- [API.md updated with new urls](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/12ab317edededb3eae0c4757991a98da51d0fc35)
-		- [Uploading Postman collection](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/1d4fed958ef093d95033fc4b8aba433c0bfd838e)
+		- [Admin register match component](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/0d8658c8907bc0032d88d9abbe61191df1ec4964)
+		- [Register match page now supposedly functional too](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/d48f236060ec8aeee5dd8d18d14b7dc910d7c133)
+		- [Admin register match page!!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/d1e082301d3c3a3a0f698b712e8545578dfe7b82)
+		- [Footer positioning finally fixed](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/147cd1354f90adfc8d7d7f96c938b4cc70b692a6)
+		- [Select tournament service and component do requests...](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/a0388a6c5ee290d0bde14a86c41ec79c4f00bd84)
 	- Top 5 most modified files:
-		- [API.md](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/API.md)
-		- [TournamentSheetRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournamentsheet/TournamentSheetRestController.java)
-		- [TournamentService.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentService.java)
-		- [Postman collection](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/api.postman_collection.json)
-		- [TournamentRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentRestController.java)
+		- [register-match.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/register-match/register-match.component.ts)
+		- [select-tournament.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/select-tournament/select-tournament.component.ts)
+		- [team-search.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/721340acc2a4a9e6debe3d9ac0055c25b1f154eb/backend/tenniShip/Angular/src/app/searchbox/team-search/team-search.component.ts)
+		- [admin-register-match.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/register-match/admin-register-match.component.ts)
+		- [footer.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/app/footer/footer.component.ts)
 * Diego: 
 	- Tasks:
 		- Team Info and all child components (first connection to API!!)
