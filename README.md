@@ -282,7 +282,7 @@ To create the image, you just have to launch the script, this will be responsibl
 		- [Services added](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/226494f4e39f09361d03b760d5ed84d0e4b7194a "226494f")
 		- [Tournament Sheet Updated](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/ea4056803d9c50b8477411895ab73f498dc72ce8 "ea40568")
 	- Top 5 most modified files:
-		- [docker-compose.yml](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/Docker/docker-compose.yml)
+		- [docker-compose.yml](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/Docker/docker-compose.yml)
 		- [CreatorRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/creator/CreatorRestController.java)
 		- [SecurityRestConfiguration.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/security/SecurityRestConfiguration.java)
 		- [TournamentRestController.java](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/backend/tenniShip/src/main/java/com/practica/tournament/TournamentRestController.java)
