@@ -368,6 +368,7 @@ To create the image, you just have to launch the script, this will be responsibl
 ## Angular 
 
 ### Components diagram
+[Alternate diagram here](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/assets/resources/static/img/diagrams/Fase4-alt.png)
 ![Angular diagram](frontend/Angular/src/assets/resources/static/img/diagrams/Fase4.png "Angular diagram")
 
 
