@@ -5,7 +5,7 @@ TenniShip is a web app for managing tennis tournaments inspired in Davis Cup rul
 ## Demo Video
 
 Check first our demo video:
-[Demo Video!] (https://www.youtube.com/watch?v=OT3qRSFsoTI) 
+Link ->  (https://www.youtube.com/watch?v=OT3qRSFsoTI) 
 
 
 ![Home Page](backend/tenniShip/src/main/resources/static/img/screenshots/Index.png "Home Page")
