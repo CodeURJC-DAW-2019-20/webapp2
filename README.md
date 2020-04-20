@@ -2,6 +2,12 @@
 
 TenniShip is a web app for managing tennis tournaments inspired in Davis Cup rules. It allows users to find teams, matches, keep track of scores, and check their standings in tourneys. 
 
+## Demo Video
+
+Check first our demo video:
+[Demo Video!] (https://www.youtube.com/watch?v=OT3qRSFsoTI) 
+
+
 ![Home Page](backend/tenniShip/src/main/resources/static/img/screenshots/Index.png "Home Page")
 The home page has two search bars: one for tournaments and another one for teams. This search bars are only for queries, so they redirect you to the team or tournament information sheet. There's another slide below, that explains what TenniShip can do and links the user to various actions.
 
@@ -367,6 +373,15 @@ To create the image, you just have to launch the script, this will be responsibl
 
 ## Angular 
 
+### Development Enviropment
+```
+1. First, install Angular Cli -> npm install -g @angular/cli
+2. Second step, install some dependencies -> npm install
+3. Thirdly, start your server using -> npm start
+4. Last but not least, search for -> localhost:4200/TenniShip
+5. Enjoy :)
+```
+
 ### Components diagram
 [Alternate diagram here](https://github.com/CodeURJC-DAW-2019-20/webapp2/blob/master/frontend/Angular/src/assets/resources/static/img/diagrams/Fase4-alt.png)
 ![Angular diagram](frontend/Angular/src/assets/resources/static/img/diagrams/Fase4.png "Angular diagram")
@@ -460,8 +475,7 @@ You can dockerize this app by executing this [script](https://github.com/CodeURJ
 	- Tasks:
 		- Cleaning-Code.
 		- Tournament Sheet Component.
-		- Authorizations System.
-		- Error Handling.
+		- Docker, Image Petitions, Error Control and Authoritations Control for Registered and Admin users (Co-Implementation)
 		- New Component Super Diagram.
 	- Top 5 most important commits in 'Fourth Phase':
 		- [Error Handler and Cleaning Code!](https://github.com/CodeURJC-DAW-2019-20/webapp2/commit/78bcd0cbab85e1a13dfcab9dc1a3a0b84a6f6cc1) 
